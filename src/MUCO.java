@@ -10,7 +10,6 @@ public class MUCO {
 		int bjg = 1;
 		String myName = "MJ";
 		
-		
 		//mj 1244
 		int jj;
 
