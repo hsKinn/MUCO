@@ -12,7 +12,7 @@ public class MUCO {
 		
 		
 		//mj 1244
-		
+		int jj;
 
 	}
 	int KGM;
