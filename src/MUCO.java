@@ -13,6 +13,9 @@ public class MUCO {
 		
 		//mj 1244
 		
+		//leina2
+		int newleekiyeon;
+		newleekiyeon = 90;
 
 	}
 	int KGM;
