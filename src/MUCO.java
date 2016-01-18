@@ -14,7 +14,7 @@ public class MUCO {
 <<<<<<< HEAD
 		
 		//leina2
-		int newleekiyeon;
+		int newleekiyeon; 
 		newleekiyeon = 90;
 =======
 		int jj;
