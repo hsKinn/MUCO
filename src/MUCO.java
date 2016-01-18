@@ -11,14 +11,11 @@ public class MUCO {
 		String myName = "MJ";
 		
 		//mj 1244
-<<<<<<< HEAD
-		
+
 		//leina2
 		int newleekiyeon; 
 		newleekiyeon = 90;
-=======
 		int jj;
->>>>>>> origin/KGM2
 
 		
 		//mj2 1244
