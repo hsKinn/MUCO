@@ -17,6 +17,7 @@ public class MUCO {
 		//mj2 1244
 		int numb = 1;
 		
+		
 	}
 	int KGM;
 }
