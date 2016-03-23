@@ -1,5 +1,10 @@
 package com.ktds.muco.table.history.vo;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public interface Description {
 
 	public static final String VISIT_LOGIN_PAGE = "[%s]님이 로그인 페이지에 접근했습니다.";

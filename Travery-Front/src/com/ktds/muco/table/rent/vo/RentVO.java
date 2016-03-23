@@ -2,6 +2,11 @@ package com.ktds.muco.table.rent.vo;
 
 import com.ktds.muco.table.reserve.vo.ReserveVO;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class RentVO extends ReserveVO {
 
 	private int rentId;

@@ -1,0 +1,5 @@
+package com.ktds.muco.table.reportedMember.vo;
+
+public class ReportedMemberVO {
+
+}

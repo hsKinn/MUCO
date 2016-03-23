@@ -1,5 +1,10 @@
 package com.ktds.muco.table.member.dao;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public interface Const {
 	
 	public static final String DB_URL = "jdbc:oracle:thin:@10.225.152.191:1521:XE";

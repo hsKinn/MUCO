@@ -2,6 +2,11 @@ package com.ktds.muco.table.city.vo;
 
 import com.ktds.muco.table.country.vo.CountryVO;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class CityVO extends CountryVO {
 
 	private int cityId;

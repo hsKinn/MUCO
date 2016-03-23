@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+
+div#bodyWithoutHeader {
+	height:80.89%;
+	width:100%;
+}
+
+div#leftMenu {
+	height: 100%;
+	padding : 20px;
+	background-color: #333333;
+	float: left;
+}
+
+div#leftMenu ul li{
+	margin-top: 50px;
+	color: #ffffff;
+}
+
+div#leftMenu ul li a{
+	margin-top: 50px;
+	color: #ffffff;
+	text-decoration: none;
+}

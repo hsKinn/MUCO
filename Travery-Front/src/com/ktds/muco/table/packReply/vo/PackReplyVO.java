@@ -2,6 +2,13 @@ package com.ktds.muco.table.packReply.vo;
 
 import com.ktds.muco.table.pack.vo.PackVO;
 
+/**
+ * 
+ * 나만의 여행 패키지 댓글
+ * 
+ * @author 김광민
+ *
+ */
 public class PackReplyVO extends PackVO {
 
 	private int packReplyId;

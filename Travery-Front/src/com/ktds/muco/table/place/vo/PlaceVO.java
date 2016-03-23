@@ -3,7 +3,7 @@ package com.ktds.muco.table.place.vo;
 import com.ktds.muco.table.city.vo.CityVO;
 
 /**
- * PlaceVO
+ * 여행지
  * 
  * latitude : 위도
  * longitude : 경도

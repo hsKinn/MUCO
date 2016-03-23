@@ -9,17 +9,22 @@ import java.sql.SQLException;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.util.xml.XML;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class MemberDAO {
 	
 
 	/**
 	 * 
-	 * 회원가입 DAO
+	 * 회원가입
 	 * 
-	 * @param memberVO
 	 * @author 유병훈
+	 * 
 	 */
-	public void getAddNewMember(MemberVO memberVO) {
+	public void addNewMember(MemberVO memberVO) {
 		
 		loadOracleDriver();
 		
@@ -29,10 +34,10 @@ public class MemberDAO {
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			
-			String query = XML.getNodeString("//query/member/getAddNewMember/text()");
+			String query = XML.getNodeString("//query/member/addNewMember/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getEmail());
-			stmt.setString(2, memberVO.getPasssword());
+			stmt.setString(2, memberVO.getPassword());
 			stmt.setString(3, memberVO.getName());
 			
 			stmt.executeUpdate();
@@ -44,9 +49,67 @@ public class MemberDAO {
 		finally {
 			closeDB(conn, stmt, null);	
 		}
-		
 	}
 	
+	/**
+	 * 
+	 * 로그인하기위해 해당 유저가 존재하는지 확인
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	public MemberVO getMemberByEmailAndPassword(MemberVO memberVO) {
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/getMemberByIdAndPassword/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, memberVO.getEmail());
+			stmt.setString(2, memberVO.getPassword());
+
+			rs = stmt.executeQuery();
+
+			MemberVO validMemberVO = null;
+
+			if (rs.next()) {
+
+				validMemberVO = new MemberVO();
+
+				validMemberVO.setEmail(rs.getString("EMAIL"));
+				validMemberVO.setPassword(rs.getString("PASSWORD"));
+				validMemberVO.setName(rs.getString("NAME"));
+				validMemberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
+				validMemberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
+				validMemberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
+				validMemberVO.setJoinDate(rs.getString("JOIN_DT"));
+				validMemberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+
+			}
+
+			return validMemberVO;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
 	private void loadOracleDriver() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -55,6 +118,13 @@ public class MemberDAO {
 		}
 	}
 	
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
 		if ( rs != null ) {
 			try {
@@ -72,5 +142,4 @@ public class MemberDAO {
 			} catch (SQLException e) {}
 		}
 	}
-
 }

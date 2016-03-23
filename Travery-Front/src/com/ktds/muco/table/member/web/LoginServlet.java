@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.ktds.muco.util.root.Root;
 
 /**
+ * 
  * Servlet implementation class LoginServlet
+ * 
+ * @author 김광민
+ * 
  */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+div#login {
+	width: 250px;
+	height: 250px;
+	margin-top: 10%;
+	margin-left: 40%;
+	text-align: right;
+	background-color: #8000ff;
+	float: left;
+}
+
+div#login input {
+	margin-top: 50px;
+	margin-left: 20px;
+	float: left;
+}
+
+input#userId, input#userPw {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	height: 30px;
+	width: 200px;
+}
+
+input#btnLogin {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	margin-left: 5px;
+	padding: 7px;
+	width: 80px;
+	background-color: #333333;
+	color: #ffffff;
+	float: left;
+}
+
+button#btnSignUp {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	margin-top: 50px;
+	margin-right: 5px;
+	padding: 7px;
+	width: 80px;
+	background-color: #333333;
+	color: #ffffff;
+	float: left;
+}
+
+#userId {
+	margin-right: 10px;
+}
