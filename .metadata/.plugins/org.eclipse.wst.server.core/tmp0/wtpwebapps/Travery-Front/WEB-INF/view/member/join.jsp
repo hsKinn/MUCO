@@ -1,4 +1,5 @@
 <!-- 유병훈 -->
+<!-- 건들지마 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -60,7 +61,7 @@
 			<form id="joinForm">
 				<input type="text" id="userEmail" name="userEmail" placeholder="Email"/>
 				<input type="password" id="userPassword" name="userPassword" placeholder="Password"/>
-				<input type="text" id="userName" name="userName" placeholder="Nickname"/>
+				<input type="text" id="userName" name="userName" placeholder="Nick name"/>
 				<input type="button" id="btnJoin" value="가입하기" />
 			</form>
 		</div>
