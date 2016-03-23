@@ -1,0 +1,223 @@
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-03-23 18:23:13.366
+!MESSAGE Background Indexer Crash Recovery
+!STACK 0
+java.lang.OutOfMemoryError: Java heap space
+	at org.eclipse.jdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:38)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:663)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:466)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:458)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:560)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:197)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:905)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:947)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:644)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.run(JobManager.java:388)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.wst.jsdt.core 4 4 2016-03-23 18:23:16.158
+!MESSAGE Background Indexer Crash Recovery
+!STACK 0
+java.lang.OutOfMemoryError: Java heap space
+	at org.eclipse.wst.jsdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:38)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:621)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:444)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:436)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:528)
+	at org.eclipse.wst.jsdt.internal.core.index.Index.save(Index.java:197)
+	at org.eclipse.wst.jsdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:679)
+	at org.eclipse.wst.jsdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:721)
+	at org.eclipse.wst.jsdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:475)
+	at org.eclipse.wst.jsdt.internal.core.search.processing.JobManager.run(JobManager.java:376)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-03-23 18:23:18.669
+!MESSAGE An internal error occurred during: "Building workspace".
+!STACK 0
+java.lang.OutOfMemoryError: Java heap space
+	at org.eclipse.wst.jsdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:38)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:621)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.addQueryResults(DiskIndex.java:199)
+	at org.eclipse.wst.jsdt.internal.core.index.Index.query(Index.java:151)
+	at org.eclipse.wst.jsdt.internal.core.search.matching.FieldPattern.queryIn(FieldPattern.java:330)
+	at org.eclipse.wst.jsdt.internal.core.search.matching.InternalSearchPattern.findIndexMatches(InternalSearchPattern.java:92)
+	at org.eclipse.wst.jsdt.internal.core.search.matching.OrPattern.findIndexMatches(OrPattern.java:59)
+	at org.eclipse.wst.jsdt.internal.core.search.matching.MatchLocator.findIndexMatches(MatchLocator.java:407)
+	at org.eclipse.wst.jsdt.internal.core.search.PatternSearchJob.search(PatternSearchJob.java:116)
+	at org.eclipse.wst.jsdt.internal.core.search.PatternSearchJob.execute(PatternSearchJob.java:66)
+	at org.eclipse.wst.jsdt.internal.core.search.processing.JobManager.performConcurrentJob(JobManager.java:280)
+	at org.eclipse.wst.jsdt.internal.core.search.BasicSearchEngine.searchAllBindingNames(BasicSearchEngine.java:689)
+	at org.eclipse.wst.jsdt.internal.core.NameLookup.findBindingSearch(NameLookup.java:2170)
+	at org.eclipse.wst.jsdt.internal.core.NameLookup.findBinding(NameLookup.java:831)
+	at org.eclipse.wst.jsdt.internal.core.SearchableEnvironment.findBinding(SearchableEnvironment.java:195)
+	at org.eclipse.wst.jsdt.internal.core.SearchableEnvironment.findBinding(SearchableEnvironment.java:342)
+	at org.eclipse.wst.jsdt.internal.core.builder.NameEnvironment.findBinding(NameEnvironment.java:404)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.LookupEnvironment.askForBinding(LookupEnvironment.java:252)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.PackageBinding.getTypeOrPackage(PackageBinding.java:249)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.Scope.getTypeOrPackage(Scope.java:2156)
+	at org.eclipse.wst.jsdt.internal.compiler.lookup.Scope.getBinding(Scope.java:1136)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.SingleNameReference.findBinding(SingleNameReference.java:355)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.SingleNameReference.resolveType(SingleNameReference.java:256)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.Assignment.resolveType(Assignment.java:179)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.Expression.resolve(Expression.java:431)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.Block.resolve(Block.java:89)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.IfStatement.resolve(IfStatement.java:191)
+	at org.eclipse.wst.jsdt.internal.compiler.ast.CompilationUnitDeclaration.resolve(CompilationUnitDeclaration.java:462)
+	at org.eclipse.wst.jsdt.internal.compiler.Compiler.process(Compiler.java:612)
+	at org.eclipse.wst.jsdt.internal.compiler.Compiler.compile(Compiler.java:366)
+	at org.eclipse.wst.jsdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:288)
+	at org.eclipse.wst.jsdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:303)
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2016-03-23 18:23:24.175
+!MESSAGE cacheFile=file:/C:/Users/206-001/Documents/MUCO/.metadata/.plugins/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:23:38.740
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:23:38.740
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:23:55.461
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:23:55.461
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.equinox.p2.updatechecker 4 0 2016-03-23 18:24:01.917
+!MESSAGE Exception in update check thread
+!STACK 0
+org.eclipse.core.runtime.OperationCanceledException
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:125)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:156)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:735)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:657)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SESSION 2016-03-23 18:24:00.844 -----------------------------------------------
+eclipse.buildId=3.7.2.201511261048-RELEASE-e45
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.jface 2 0 2016-03-23 18:24:04.964
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-03-23 18:24:04.964
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@23169374,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4f2b1a2f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-03-23 18:24:08.805
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\206-001'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2016-03-23 18:24:43.269
+!MESSAGE Server returned lastModified <= 0 for https://raw.github.com/guari/eclipse-ui-theme/master/com.github.eclipseuitheme.themes.updatesite/content.jar
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2016-03-23 18:26:18.556
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/tools/mylyn/update/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2016-03-23 18:26:18.558
+!MESSAGE No repository found at http://download.eclipse.org/tools/mylyn/update/.
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:27:40.317
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:27:40.317
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-03-23 18:27:53.742
+!MESSAGE Project facet grails.app has not been defined. It is used in plugin com.vmware.vfabric.ide.eclipse.tcserver.core.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-03-23 18:27:53.742
+!MESSAGE Project facet grails.app has not been defined. It is used in plugin org.eclipse.cft.server.branding.core.
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:27:54.964
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:27:54.964
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:28:11.643
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:28:11.643
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:28:31.932
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:28:31.932
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:28:46.205
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:28:46.205
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:29:08.605
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:29:08.605
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:29:27.043
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:29:27.043
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:31:48.630
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:31:48.630
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:32:03.628
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:32:03.628
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:32:54.721
+!MESSAGE Could not publish server configuration for Tomcat v8.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2016-03-23 18:32:54.721
+!MESSAGE Multiple Contexts have a path of "/".
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2016-03-23 18:34:00.916
+!MESSAGE cacheFile=file:/C:/Users/206-001/Documents/MUCO/.metadata/.plugins/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
