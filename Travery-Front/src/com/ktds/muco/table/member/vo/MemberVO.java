@@ -10,6 +10,8 @@ public class MemberVO extends PlaceVO {
 	private int isAdmin;
 	private String mainImageName;
 	private String mainImageLocation;
+	private String joinDate;
+	private String recentAccessDate;
 
 	public String getEmail() {
 		return email;
@@ -57,5 +59,21 @@ public class MemberVO extends PlaceVO {
 
 	public void setMainImageLocation(String mainImageLocation) {
 		this.mainImageLocation = mainImageLocation;
+	}
+
+	public String getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public String getRecentAccessDate() {
+		return recentAccessDate;
+	}
+
+	public void setRecentAccessDate(String recentAccessDate) {
+		this.recentAccessDate = recentAccessDate;
 	}
 }
