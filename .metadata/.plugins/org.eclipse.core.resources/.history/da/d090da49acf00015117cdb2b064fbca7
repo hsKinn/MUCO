@@ -9,7 +9,7 @@
 	<!-- Index -->
 	<div id="index">
 		<div id="letsJoin">
-			<a href="<c:url value="/join"/>">Join</a>
+			<a href="<c:url value="/join"/>">Join abcc</a>
 		</div>
 		<div class="clear"></div>
 		<div id="letsLogIn">
