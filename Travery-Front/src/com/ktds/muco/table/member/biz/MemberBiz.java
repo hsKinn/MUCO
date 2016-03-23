@@ -34,5 +34,19 @@ public class MemberBiz {
 		memberDAO.getAddNewMember(memberVO);
 		
 	}
+	
+	/**
+	 * 회원Email 중복체크 biz
+	 * 
+	 * @param request
+	 * @author 유병훈
+	 */
+	public boolean getMemberEmailCheck(HttpServletRequest request) {
+
+		String userEmail = request.getParameter("checkUserEmail");
+		
+		return memberDAO.getMemberEmailCheck(userEmail) > 0;
+		
+	}
 
 }

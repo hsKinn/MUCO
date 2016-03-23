@@ -47,6 +47,42 @@ public class MemberDAO {
 		
 	}
 	
+	/**
+	 * 
+	 * 회원Email 중복체크 DAO
+	 * 
+	 * @param userEmail
+	 * @author 유병훈
+	 */
+	public int getMemberEmailCheck(String userEmail) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/getMemberEmailCheck/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, userEmail);
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(),e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+
+	}
+	
 	private void loadOracleDriver() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -72,5 +108,7 @@ public class MemberDAO {
 			} catch (SQLException e) {}
 		}
 	}
+
+	
 
 }
