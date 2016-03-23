@@ -47,10 +47,6 @@
 			form.submit();
 		} );
 		
-		
-		
-		
-		
 	} );
 	
 </script>
