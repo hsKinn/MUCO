@@ -19,6 +19,8 @@ import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
  * Servlet Filter implementation class SessionCheckFilter
+ * 
+ * @author 김광민
  */
 public class SessionCheckFilter implements Filter {
 

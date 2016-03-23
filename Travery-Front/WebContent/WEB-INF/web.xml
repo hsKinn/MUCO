@@ -41,12 +41,82 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>MemberEmailCheckServlet</display-name>
-    <servlet-name>MemberEmailCheckServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.member.web.MemberEmailCheckServlet</servlet-class>
+    <display-name>DoLoginServlet</display-name>
+    <servlet-name>DoLoginServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.DoLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MemberEmailCheckServlet</servlet-name>
-    <url-pattern>/memberEmailCheck</url-pattern>
+    <servlet-name>DoLoginServlet</servlet-name>
+    <url-pattern>/doLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HitTheRoadServlet</display-name>
+    <servlet-name>HitTheRoadServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.HitTheRoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HitTheRoadServlet</servlet-name>
+    <url-pattern>/hitTheRoad</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyPackServlet</display-name>
+    <servlet-name>MyPackServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.MyPackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyPackServlet</servlet-name>
+    <url-pattern>/myPack</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SharePackServlet</display-name>
+    <servlet-name>SharePackServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.SharePackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SharePackServlet</servlet-name>
+    <url-pattern>/sharePack</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RecommendPlaceServlet</display-name>
+    <servlet-name>RecommendPlaceServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.RecommendPlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RecommendPlaceServlet</servlet-name>
+    <url-pattern>/recommendPlace</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TripReservationServlet</display-name>
+    <servlet-name>TripReservationServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reserve.web.TripReservationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TripReservationServlet</servlet-name>
+    <url-pattern>/tripReservation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonalInfoServlet</display-name>
+    <servlet-name>PersonalInfoServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.PersonalInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalInfoServlet</servlet-name>
+    <url-pattern>/personalInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

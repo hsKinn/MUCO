@@ -1,3 +1,6 @@
+<!-- 유병훈 -->
+<!-- 건들지마 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -45,40 +48,6 @@
 		} );
 		
 		
-		$("#userEmail").blur(function(){
-				
-				$.post(
-						
-					"<c:url value="/memberEmailCheck" />"
-					, {"checkUserEmail" : $("#userEmail").val() }
-					, function(data){
-						
-						var jsonData = {};
-						
-						try {
-							jsonData = JSON.parse(data);
-						}
-						catch(e) {
-						}
-						
-						if ( jsonData.result ) {
-							if ( jsonData.isExistMemberEmail ) {
-								alert("존재하는 아이디입니다.");
-								$("#userEmail").val("");
-								$("#userEmail").focus();
-							}
-							else {
-								
-							}
-						}
-						else{
-							alert("세션을 종료합니다.");
-							location.href = "<c:url value="/" />";
-						}
-						
-					});
-					
-			});
 		
 		
 		
@@ -92,7 +61,7 @@
 			<form id="joinForm">
 				<input type="text" id="userEmail" name="userEmail" placeholder="Email"/>
 				<input type="password" id="userPassword" name="userPassword" placeholder="Password"/>
-				<input type="text" id="userName" name="userName" placeholder="Nickname"/>
+				<input type="text" id="userName" name="userName" placeholder="Nick name"/>
 				<input type="button" id="btnJoin" value="가입하기" />
 			</form>
 		</div>

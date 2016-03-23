@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	<member>
+		<addNewMember>
+			INSERT INTO MEMBER (
+	                      			EMAIL
+	                       		 	, PASSWORD
+	                       			, NAME
+	                   			) 
+			VALUES              ( 
+	                        		?,
+	                        		?,
+	                        		?
+	                     		)
+     	</addNewMember>
+	</member>
+</query>

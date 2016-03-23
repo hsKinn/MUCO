@@ -2,6 +2,11 @@ package com.ktds.muco.table.reserve.vo;
 
 import com.ktds.muco.table.pack.vo.PackVO;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class ReserveVO extends PackVO {
 
 	private int reserveId;

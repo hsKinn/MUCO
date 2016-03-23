@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.ktds.muco.util.root.Root;
 
 /**
+ * 
  * Servlet implementation class JoinServlet
+ * 
+ * @author 유병훈
+ * 
  */
 public class JoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

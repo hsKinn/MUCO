@@ -2,6 +2,11 @@ package com.ktds.muco.table.placeReply.vo;
 
 import com.ktds.muco.table.member.vo.MemberVO;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class PlaceReplyVO extends MemberVO {
 
 	private int placeReplyId;

@@ -1,0 +1,37 @@
+<!-- 김광민 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- Left Menu -->
+
+<div id="leftMenu">
+	<ul>
+		<li>
+			<a href="<c:url value="/list/init"/>">
+				최근에 등록된 게시글 보기
+			</a>
+		</li>
+		<li>
+			<a href="<c:url value="/list/init"/>">
+				차단된 사용자가 등록한 게시글 보기
+			</a>
+		</li>
+		<li>
+			<a href="<c:url value="/list/init"/>">
+				차단된 게시글 보기
+			</a>
+		</li>
+		<li>
+			<a href="<c:url value="/list/init"/>">
+				신고가 접수된 게시글 보기
+			</a>
+		</li>
+		<li>
+			<a href="<c:url value="/list/init"/>">
+				전체 게시글 보기
+			</a>
+		</li>
+	</ul>
+</div>

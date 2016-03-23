@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.ktds.muco.table.member.biz.MemberBiz;
 
 /**
+ * 
  * Servlet implementation class DoJoinServlet
+ * 
+ * @author 유병훈
+ * 
  */
 public class DoJoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +37,7 @@ public class DoJoinServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		memberBiz.getAddNewMember(request);
+		memberBiz.addNewMember(request);
 		
 		response.sendRedirect("/");
 		

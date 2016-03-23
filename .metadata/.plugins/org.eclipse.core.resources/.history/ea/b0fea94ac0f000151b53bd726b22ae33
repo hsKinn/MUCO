@@ -1,0 +1,5 @@
+package com.ktds.muco.table.transport.dao;
+
+public class TransportDAO {
+
+}
