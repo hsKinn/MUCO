@@ -1,0 +1,25 @@
+package com.ktds.muco.table.pack.vo;
+
+import java.util.List;
+
+import com.ktds.muco.util.web.Paging;
+
+public class SharePackListVO {
+	
+	private List<PackVO> packList;
+	private Paging paging;
+	
+	public List<PackVO> getPackList() {
+		return packList;
+	}
+	public void setPackList(List<PackVO> packList) {
+		this.packList = packList;
+	}
+	public Paging getPaging() {
+		return paging;
+	}
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+	
+}

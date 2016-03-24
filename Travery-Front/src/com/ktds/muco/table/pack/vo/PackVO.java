@@ -13,8 +13,16 @@ public class PackVO extends MemberVO {
 	private String packTitle;
 	private int viewCount;
 	private int likeCount;
-	private String description;
 	private int isPublic;
+	private String image_location;
+
+	public String getImage_location() {
+		return image_location;
+	}
+
+	public void setImage_location(String image_location) {
+		this.image_location = image_location;
+	}
 
 	public int getPackId() {
 		return packId;
@@ -46,14 +54,6 @@ public class PackVO extends MemberVO {
 
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public int getIsPublic() {

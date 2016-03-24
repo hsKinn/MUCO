@@ -1,0 +1,5 @@
+package com.ktds.muco.table.pack.dao;
+
+public class SharePackDAO {
+
+}

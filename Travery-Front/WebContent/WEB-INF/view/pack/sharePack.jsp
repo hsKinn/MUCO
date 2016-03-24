@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 <div id="share-top">
 	<div id="searchBox">
-		<input type="text" id="search" name="search" placeholder="  #Hash Tag"  />
+		<input type="text" id="search" name="search" placeholder="   #Hash Tag"  />
 		<button type="button" class="btn btn-info">
       		<span class="glyphicon glyphicon-search"></span>검색
     	</button>

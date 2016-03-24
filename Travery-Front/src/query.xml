@@ -40,6 +40,76 @@
 	<pack>
 	</pack>
 	
+	<sharePack>
+	
+		<getAllPackageCountByHashTag>
+			SELECT  COUNT(P.PACK_ID)
+			FROM    PACK P
+					, HASH_TAG H
+			WHERE	P.PACK_ID = H.PACK_ID
+			AND		IS_PUBLIC = 1
+			AND		(
+						HASH_TAG_NAME LIKE '%' || ? || '%'
+					)
+		</getAllPackageCountByHashTag>
+
+		<getAllPackageListByHashTag>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , LIKE_COUNT
+			                             , M.NAME
+			                             , IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     AND	 (
+			                     			HASH_TAG_NAME LIKE '%' || ? || '%'
+			                     		 )
+			                     ORDER   BY LIKE_COUNT DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?      
+        </getAllPackageListByHashTag>		
+        
+        <getAllPackageListCount>
+			SELECT  COUNT(PACK_ID)
+			FROM    PACK
+			WHERE	IS_PUBLIC = 1			
+        </getAllPackageListCount>
+        
+        <getAllPackageList>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , LIKE_COUNT
+			                             , M.NAME
+			                             , IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY LIKE_COUNT DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?          
+        </getAllPackageList>
+        
+	</sharePack>
+	
 	<packLike>
 	</packLike>
 	

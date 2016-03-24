@@ -1,0 +1,48 @@
+package com.ktds.muco.table.pack.biz;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.pack.dao.PackDAO;
+import com.ktds.muco.table.pack.vo.PackListVO;
+import com.ktds.muco.table.pack.vo.PackSearchVO;
+import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.util.web.Paging;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackBiz {
+	
+	private PackDAO packDAO;
+	
+	public PackBiz() {
+		packDAO = new PackDAO();
+	}
+	
+
+	public PackListVO getAllPackageList(PackSearchVO packSearchVO) {
+		
+		int allPackageCount = 0;
+		int allPackageCountByHashTag = 0;
+		
+		Paging paging = new Paging(6);
+		List<PackVO> packages = new ArrayList<PackVO>();
+		
+		// Count
+		if ( packSearchVO.getSearchKeyword() != null ) {
+			
+			allPackageCountByHashTag = packDAO.getAllPackageCountByHashTag(packSearchVO);
+			paging.setTotalArticleCount(allPackageCountByHashTag);
+		}
+		else {
+			allPackageCount = packDAO.getAllPackageCount(packSearchVO);
+			paging.setTotalArticleCount(allPackageCount);
+		}
+		
+		return null;
+	}
+
+}

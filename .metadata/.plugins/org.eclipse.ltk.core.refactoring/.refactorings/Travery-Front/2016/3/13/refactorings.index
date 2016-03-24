@@ -9,3 +9,6 @@
 1458721623588	Delete element
 1458721671942	Delete element
 1458721677810	Delete element
+1458797694505	Rename type 'PackListVO'
+1458797726433	Rename type 'SharePackListVO'
+1458797754169	Rename field 'packDAO'
