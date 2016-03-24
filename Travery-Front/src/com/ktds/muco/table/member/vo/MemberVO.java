@@ -96,3 +96,4 @@ public class MemberVO extends PlaceVO {
       this.recentAccessDate = recentAccessDate;
    }
 }
+

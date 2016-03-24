@@ -17,11 +17,6 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	$("#myPackMenu").mouseout(function(){
-		$("#myPackMenu").css("color", "#ffffff");
-	});
-	$("#myPackMenu").css("color", "#ffffff");
-
 });
 </script>
 
