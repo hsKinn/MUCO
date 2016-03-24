@@ -12,7 +12,8 @@ import com.ktds.muco.util.xml.XML;
 import com.ktds.muco.vo.ImageVO;
 
 public class ImageDAO {
-	public int insertFile(ImageVO imageVO) {
+	
+	public void insertImage(ImageVO imageVO) {
 
 		loadOracleDriver();
 
@@ -20,8 +21,8 @@ public class ImageDAO {
 		PreparedStatement stmt = null;
 
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "toor");
-			String query = XML.getNodeString("//query/file/insertFile/text()");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/image/insertImage/text()");
 			stmt = conn.prepareStatement(query);
 
 			stmt.setInt(1, imageVO.getImageId());
@@ -29,8 +30,6 @@ public class ImageDAO {
 			stmt.setString(3, imageVO.getImageLocation());
 
 			stmt.executeUpdate();
-
-			return 
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -49,8 +48,8 @@ public class ImageDAO {
 		ImageVO imageVO = null;
 		
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "toor");
-			String query = XML.getNodeString("//query/file/getFileListByArticleId/text()");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/image/getImageListByPlaceId/text()");
 			stmt = conn.prepareStatement(query);
 
 			stmt.setInt(1, PlaceId);

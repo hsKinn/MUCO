@@ -7,28 +7,29 @@ import com.ktds.muco.vo.ImageVO;
 import com.ktds.muco.web.MultipartHttpServletRequest;
 import com.ktds.muco.web.MultipartHttpServletRequest.MultipartFile;
 
+
 public class ImageBiz {
 
-	private ImageDAO idao;
+	private ImageDAO imageDAO;
 	
 	public ImageBiz(){
-		idao = new ImageDAO();
+		imageDAO = new ImageDAO();
 	}
 	
-	public void insertFileToss(MultipartHttpServletRequest request, int articleId) {
+	public void insertFileToss(MultipartHttpServletRequest request, int placeId) {
 		
-		MultipartFile file = request.getFile("file");
-		File upFile = file.write("D:\\" + file.getFileName());
+		MultipartFile image = request.getFile("image");
+		File upLoadImage = image.write("D:\\" + image.getFileName());
 			
 /*		if ( file.getFileName() != null && file.getFileName().length() > 0) {
 		}*/
 		
 		ImageVO imageVO = new ImageVO();
 		
-		imageVO.setImageId(articleId);
-		imageVO.setImageName(file.getFileName());
-		imageVO.setImageLocation(upFile.getPath());
+		imageVO.setImageId(placeId);
+		imageVO.setImageName(image.getFileName());
+		imageVO.setImageLocation(upLoadImage.getPath());
 		
-		idao.insertFile(imageVO);
+		imageDAO.insertImage(imageVO);
 	}
 }
