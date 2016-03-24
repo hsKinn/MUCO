@@ -2,6 +2,11 @@ package com.ktds.muco.table.history.vo;
 
 import com.ktds.muco.table.member.vo.MemberVO;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class HistoryVO extends MemberVO {
 
 	private int historyId;

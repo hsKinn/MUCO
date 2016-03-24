@@ -1,22 +1,47 @@
 @CHARSET "UTF-8";
 
+<<<<<<< HEAD
 div#index {
 	margin-top: 15%;
 	margin-left:40%;
+=======
+/* 김광민 */
+
+div#index {
+	margin-top: 15%;
+	margin-left:45%;
+>>>>>>> YBH3
 }
 
 div#index a {
 	text-decoration: none;
+<<<<<<< HEAD
 }
 
 div#letsJoin {
 	background-color: #00ffff;
+=======
+	color: #ffffff;
+}
+
+div#letsJoin {
+	text-align: center;
+	width: 100px;
+	background-color: #333333;
+>>>>>>> YBH3
 	padding: 10px;
 	float:left;
 }
 
 div#letsLogIn {
+<<<<<<< HEAD
 	background-color: #ffff00;
+=======
+	margin-top: 10px;
+	text-align: center;
+	width: 100px;
+	background-color: #333333;
+>>>>>>> YBH3
 	padding: 10px;
 	float:left;
 }

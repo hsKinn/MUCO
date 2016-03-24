@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+<<<<<<< HEAD
+=======
+/* 김광민 */
+
+>>>>>>> YBH3
 div#wrapper {
 	/* 사용자의 컴퓨터 해상도를 모른다. 그래서 비율을 적어야 한다. */
 	height:100%;
@@ -9,10 +14,15 @@ div#wrapper {
 
 div#header {
 	background-color: #333333;
+<<<<<<< HEAD
+=======
+	color: #ffffff;
+>>>>>>> YBH3
 	height: 100px;
 	width: 100%;
 }
 
+<<<<<<< HEAD
 div#headerDiv {
 	height: 100%;
 	float: left;
@@ -21,5 +31,16 @@ div#headerDiv {
 div#header img {
 	width: 380px;
 	height: 100%;
+=======
+div#traveryIcon {
+	height: 100%;
+	margin-left: 38%;
+	float: left;
+}
+
+div#traveryIcon img {
+	height: 100%;
+	width: 380px;
+>>>>>>> YBH3
 	float: left;
 }

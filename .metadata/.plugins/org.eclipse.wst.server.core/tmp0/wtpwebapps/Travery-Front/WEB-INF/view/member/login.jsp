@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<!-- 김광민 -->
+<!-- 건들지마 -->
+
+>>>>>>> YBH3
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,6 +32,7 @@
 	}
 %>
 
+<<<<<<< HEAD
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -45,6 +52,33 @@ $(document).ready(function() {
 			<input type="hidden" id="facebookLogin" name="facebookLogin" />
 	 	</form>
 	</div>
+=======
+<!-- Header -->
+<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+
+<!-- Close "#header" -->
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#btnLogin").click(function(){
+		var form = $("#loginForm");
+		form.attr("method", "post");
+		form.attr("action", "<c:url value="/doLogin"/>")
+		form.submit();
+	});
+});
+</script>
+
+<!-- Login -->
+<div id="login">
+	<form id="loginForm">
+		<input type="text" tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" />
+		<input type="password" tabindex="2" id="userPw" name="userPw" placeholder=" Password" />
+		<input type="button" id="btnLogin" value="로그인" />
+ 	</form>
+</div>
+>>>>>>> YBH3
 	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

@@ -1,0 +1,12 @@
+package com.ktds.muco.table.reportedMember.vo;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class ReportedMemberVO MemberVO{
+	
+	private int reportedId;
+	private 
+}

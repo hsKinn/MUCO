@@ -1,5 +1,10 @@
 package com.ktds.muco.table.country.vo;
 
+/**
+ * 
+ * @author 김광민
+ *
+ */
 public class CountryVO {
 
 	private int countryId;

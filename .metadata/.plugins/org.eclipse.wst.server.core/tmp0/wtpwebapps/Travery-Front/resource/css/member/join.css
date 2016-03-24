@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+<<<<<<< HEAD
 div#join {
 	width: 250px;
 	height: 300px;
@@ -12,6 +13,21 @@ div#join {
 
 
 input {
+=======
+/* 유병훈 */
+
+div#join {
+	width: 250px;
+	height: 280px;
+	margin-top: 10%;
+	margin-left: 42%;
+	text-align: right;
+	background-color: #333333;
+	float: left;
+}
+
+div#join input {
+>>>>>>> YBH3
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	height: 30px;

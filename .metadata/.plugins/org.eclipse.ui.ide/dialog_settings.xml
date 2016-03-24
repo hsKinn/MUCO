@@ -153,4 +153,18 @@
 		<item value="org.springsource.sts.package:3.7.3.201602250940-RELEASE-e45"/>
 		<item value="org.springsource.sts:3.7.3.201602250940-RELEASE"/>
 	</list>
+<<<<<<< HEAD
+=======
+	<section name="ExternalProjectImportWizard">
+		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\206-001\Desktop\Travery-Front.zip"/>
+		</list>
+	</section>
+>>>>>>> YBH3
 </section>

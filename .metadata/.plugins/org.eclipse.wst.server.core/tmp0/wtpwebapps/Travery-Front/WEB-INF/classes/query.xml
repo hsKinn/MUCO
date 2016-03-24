@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <query>
+<<<<<<< HEAD
 	<member>
 		<getAddNewMember>
+=======
+
+	<city>
+	</city>
+	
+	<country>
+	</country>
+	
+	<evaluation>
+	</evaluation>
+	
+	<history>
+	</history>
+	
+	<image>
+	</image>
+	
+	<member>
+		<addNewMember>
+>>>>>>> YBH3
 			INSERT INTO MEMBER (
 	                      			EMAIL
 	                       		 	, PASSWORD
@@ -12,6 +33,7 @@
 	                        		?,
 	                        		?
 	                     		)
+<<<<<<< HEAD
      	</getAddNewMember>
      	
      	<getMemberEmailCheck>
@@ -21,3 +43,59 @@
      	</getMemberEmailCheck>
 	</member>
 </query>
+=======
+     	</addNewMember>
+     	<getMemberByIdAndPassword>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     	</getMemberByIdAndPassword>
+	</member>
+	
+	<pack>
+	</pack>
+	
+	<packLike>
+	</packLike>
+	
+	<packReply>
+	</packReply>
+	
+	<place>
+	</place>
+	
+	<placeLike>
+	</placeLike>
+	
+	<placeReply>
+	</placeReply>
+	
+	<qna>
+	</qna>
+	
+	<rent>
+	</rent>
+	
+	<reportedMember>
+	</reportedMember>
+	
+	<reserve>
+	</reserve>
+	
+	<standard>
+	</standard>
+	
+	<stay>
+	</stay>
+	
+	<transport>
+	</transport>
+	
+</query>
+
+
+
+
+
+>>>>>>> YBH3
