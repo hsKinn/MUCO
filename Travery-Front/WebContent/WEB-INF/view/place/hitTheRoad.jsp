@@ -279,14 +279,16 @@
 <!-- Hit the road -->
 
 <div id="hitTheRoad">
+
+	<!-- 첫번째 열 -->
 	<div class="row"
 		style="width: 100%; height: 85%; float: left; margin-left: 10px; margin-top: 10px;">
 		<div class="col-sm-10" style="height: 100%;">
-			<div class="container"
-				style="height: 100%; width: 100%; float: left;">
+			<div class="container" style="height: 100%; width: 100%; float: left;">
+			
+				<!-- 탭 -->
 				<ul class="nav nav-pills">
-					<li class="active"><a data-toggle="pill" href="#home">나라
-							선택</a></li>
+					<li class="active"><a data-toggle="pill" href="#home">나라 선택</a></li>
 					<li><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
 					<li><a data-toggle="pill" href="#menu2">나의 패키지</a></li>
 					<li><a data-toggle="pill" href="#menu3">경로 설정</a></li>
@@ -297,14 +299,15 @@
 
 					<!-- 나라 선택 -->
 					<div id="home" class="tab-pane fade in active">
-						<div id="map1"
-							style="width: 1350px; height: 550px; background-color: red;"></div>
-						<button id="focus-multiple">한국과 일본</button>
-						<button id="focus-init">세계지도 보기</button>
+						<div id="map1" style="width: 1350px; height: 550px; background-color: red;"></div>
+						<button id="focus-multiple" style="background-color: #333333; color: #ffffff; padding: 3px; margin-top:2px;">한국과 일본</button>
+						<button id="focus-init" style="background-color: #333333; color: #ffffff; padding: 3px; margin-top:2px; margin-left: 2px;">세계지도 보기</button>
 					</div>
 
 					<!-- 여행지 검색 -->
-					<div id="menu1" class="tab-pane fade"></div>
+					<div id="menu1" class="tab-pane fade">
+						
+					</div>
 
 					<!-- 나의 패키지 -->
 					<div id="menu2" class="tab-pane fade"></div>
@@ -314,12 +317,48 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-2" style="background-color: blue; height: 100%;"></div>
+		
+		<!-- 선택된 나라 리스트 -->
+		<div class="col-sm-2" style="background-color: #333333; height: 100%;">
+		</div>
 	</div>
+	
+	<!-- 두번째 열 -->
 	<div class="row"
 		style="width: 100%; height: 30%; float: left; margin-left: 10px; margin-top: 10px;">
-		<div class="col-sm-10" style="background-color: black; height: 100%;"></div>
-		<div class="col-sm-2" style="background-color: green; height: 100%;"></div>
+		
+		<!-- 여행지 임시 리스트 -->
+		<div class="col-sm-10" style="background-color: #333333; height: 100%;">
+		</div>
+		
+		<!-- 기준 선택 -->
+		<div class="col-sm-2" style="height: 100%;">
+		
+				<!-- Drop Down : X 축 -->
+				<div class="dropdown" style="float:left;">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X 축
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Bright / Dark</a></li>
+						<li><a href="#">High Price / Low Price</a></li>
+						<li><a href="#">Active / Calm</a></li>
+					</ul>
+				</div>
+				
+				<!-- Drop Down : Y 축 -->
+				<div class="dropdown" style="float:left; margin-left: 20px;">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y 축
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Bright / Dark</a></li>
+						<li><a href="#">High Price / Low Price</a></li>
+						<li><a href="#">Active / Calm</a></li>
+					</ul>
+				</div>
+				
+		</div>
 	</div>
 </div>
 
