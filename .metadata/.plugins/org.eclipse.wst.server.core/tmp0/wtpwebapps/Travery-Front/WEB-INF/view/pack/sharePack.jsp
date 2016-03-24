@@ -16,12 +16,7 @@
 <!-- Share Package -->
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	$("#sharePackMenu").mouseout(function(){
-		$("#sharePackMenu").css("color", "#ffffff");
-	});
-	$("#sharePackMenu").css("color", "#ffffff");
-	
+
 });
 </script>
 
