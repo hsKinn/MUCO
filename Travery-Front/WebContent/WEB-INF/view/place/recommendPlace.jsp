@@ -13,6 +13,7 @@
 <!-- Left Menu -->
 <jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
 
+<!-- Recommend Place -->
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -24,7 +25,6 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Recommend Place -->
 
 Recommend Place
 
