@@ -5,7 +5,39 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-22T12:44:36Z</updated>
+  <updated>2016-03-23T22:20:25Z</updated>
+  <entry>
+    <title>Spring Cloud Stream 1.0.0.RC1 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/23/spring-cloud-stream-1-0-0-rc1-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2016-03-23:2440</id>
+    <updated>2016-03-23T22:20:25Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that the first release candidate for &lt;a href="http://cloud.spring.io/spring-cloud-stream/"&gt;Spring Cloud Stream&lt;/a&gt; is out. As the last milestone before 1.0.0.RELEASE, it stabilizes the APIs, and comes with a number of new features and bug fixes, in the area of tooling support, and content type management. Here is a highlight of the most important changes:&lt;/p&gt;&lt;h4&gt;&lt;a href="#binder-and-binding-property-restructuring" class="anchor" name="binder-and-binding-property-restructuring"&gt;&lt;/a&gt;Binder and binding property restructuring&lt;/h4&gt;
+&lt;p&gt;The configuration for binders and bindings has changed to a model friendlier to &lt;a href="https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html"&gt;Spring Boot configuration metadata&lt;/a&gt;. Now all the configuration properties (including binding-specific properties) support validation and completion (in Spring Tool Suite). &lt;/p&gt;
+&lt;p&gt;Configuration properties for generic binding settings, as well as binder-specific settings, have changed, please consult the &lt;a href="http://docs.spring.io/spring-cloud-stream/docs/1.0.0.RC1/reference/htmlsingle/index.html"&gt;documentation&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;NOTE: The short form for destinations, e.g. &lt;code&gt;spring.cloud.stream.bindings.input=someDestination&lt;/code&gt;, is not supported anymore. The standard form, i.e. &lt;code&gt;spring.cloud.stream.bindings.input.destination=someDestination&lt;/code&gt; must be used instead.&lt;/p&gt;&lt;h4&gt;&lt;a href="#streamlistener-for-spring-messaging-alignment-and-content-type-handling" class="anchor" name="streamlistener-for-spring-messaging-alignment-and-content-type-handling"&gt;&lt;/a&gt;@StreamListener for Spring Messaging alignment and content-type handling&lt;/h4&gt;
+&lt;p&gt;In addition to Spring Integration support, which is a first class citizen in Spring Cloud Stream, 1.0.0.RC1 introduces a new &lt;code&gt;@StreamListener&lt;/code&gt; annotation for message dispatching to methods, based on the Spring Messaging infrastructure for argument and content type handling (more details &lt;a href="http://docs.spring.io/spring-cloud-stream/docs/1.0.0.RC1/reference/htmlsingle/index.html#__streamlistener_for_automatic_content_type_handling"&gt;here&lt;/a&gt;). This allows for more seamless handling for messages with known content types (e.g. marhalled JSON with a content type header) and better interoperability with other Spring Cloud Stream applications, and for certain types of middleware, like Rabbit MQ, or even applications that are not based on Spring Cloud Stream.&lt;/p&gt;
+&lt;p&gt;For example, an application that receives &lt;code&gt;String&lt;/code&gt; payloads with an &lt;code&gt;application/json&lt;/code&gt; content type header, can do the transformation to the Vote POJO directly.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@EnableBinding(Sink.class)&#xD;
+public class VoteHandler {&#xD;
+&#xD;
+  @Autowired&#xD;
+  VotingService votingService;&#xD;
+&#xD;
+  @StreamListener(Sink.INPUT)&#xD;
+  public void handle(Vote vote) {&#xD;
+    votingService.record(vote);&#xD;
+  }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Additionally the release features a number of bug fixes in the area of content type management, as well as improved documentation. The entire list of changes is available &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues?q=milestone%3A1.0.0.RC1"&gt;in Git Hub&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;We are looking forward to a 1.0.0.RELEASE at the beginning of April.&lt;/p&gt;
+&lt;p&gt;And, as always, we welcome feedback: either in &lt;a href="https://github.com/spring-cloud/spring-cloud-stream"&gt;GitHub&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/springcentral"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you happen to be in Barcelona mid-May, don¡¯t miss the chance to join the &lt;a href="http://www.springio.net"&gt;Spring I/O conference&lt;/a&gt; where I¡¯ll be presenting Spring Cloud Stream. Also, the registration for SpringOne Platform (early August, Las Vegas) has opened recently, in case you want to benefit from early bird ticket pricing. The latter is also still open for &lt;a href="http://springoneplatform.io/submit"&gt;talk proposals&lt;/a&gt; (but only until March 24, so hurry up!). So if you¡¯re interested to give a talk about Spring or Pivotal-related technologies, feel free to submit!&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Statemachine 1.1.0.M2 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/22/spring-statemachine-1-1-0-m2-released" />
@@ -632,31 +664,5 @@ Flux.fromStream(stream)&#xD;
 &lt;p&gt;Building on the ease of development and deployment provided by Spring Boot and the cloud native capabilities of Spring Cloud, the Spring Cloud Stream project provides a simple and powerful framework for creating event-driven microservices. They make it easy to develop data-processing Spring Boot applications that build upon the capabilities of Spring Integration. At a higher level of abstraction, Spring Cloud Data Flow is an integrated orchestration layer that provides a highly productive experience for deploying and managing sophisticated data pipelines consisting of standalone microservices. Streams are defined using a DSL abstraction and can be managed via shell and a web UI. Furthermore, a pluggable runtime SPI allows Spring Cloud Data Flow to coordinate these applications across a variety of distributed runtime platforms such as Apache YARN, Cloud Foundry, Kubernetes, or Apache Mesos.&lt;/p&gt;
 &lt;p&gt;You&amp;rsquo;ll see live deployment demos on different platforms ranging from local cluster to a remote Cloud to show the simplicity of the developer experience.&lt;/p&gt;
 &lt;p&gt;Tuesday, March 22nd, 2016 3:00PM London GMT &lt;a href="http://connect.pivotal.io/OSS_Webinar_7AMStreamProcessingintheCloudwDataMicroservices_RegisterSpring.html"&gt;Register&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Tuesday, March 22nd, 2016 10:00AM PST (San Francisco GMT-08:00) &lt;a href="http://connect.pivotal.io/OSS_Webinar_10AMStreamProcessingintheCloudwDataMicroservices_RegisterSpring.html"&gt;Register&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - March 8th, 2016</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/08/this-week-in-spring-march-8th-2016" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2016-03-08:2417</id>
-    <updated>2016-03-08T10:37:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in Bruhl, Germany for the amazing &lt;a href="http://javaland.eu"&gt;JavaLand&lt;/a&gt; show, then it&amp;rsquo;s off to Scotland to visit a large customer, and then it&amp;rsquo;s off to Romania for &lt;a href="https://voxxeddays.com/bucharest/"&gt;Voxxed Days Bucharest&lt;/a&gt;. If you&amp;rsquo;re in any of those places, &lt;a href="http://twitter.com/starbuxman"&gt;I&amp;rsquo;d love to connect&lt;/a&gt;!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring ninja Stephane Nicoll introduces &lt;a href="https://spring.io/blog/2016/03/04/core-container-refinements-in-spring-framework-4-3"&gt;some of the niceties in Spring framework 4.3&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Do not miss Micah Silverman&amp;rsquo;s upcoming webinar introducing &lt;a href="https://spring.io/blog/2016/03/03/webinar-spring-security-authentication-with-spring-boot-and-more"&gt;the amazing Stormpath and Spring/Spring Boot-based integration and Auto-configuration&lt;/a&gt;. Stormpath is an epic identity provider as-a-service. It&amp;rsquo;s ideal for cloud-based applications.&lt;/li&gt;
-  &lt;li&gt;Spring IO Platform lead &lt;a href="https://spring.io/blog/2016/03/02/spring-io-platform-2-0-3-release"&gt;Andy Wilkinson just announced Spring IO Platform 2.0.3&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;From SpringOne2GX 2015, Integration lead Gary Russell shows us &lt;a href="http://spring.io/blog/2016/03/08/springone2gx-2015-replay-applied-spring-integration-spring-amqp-and-rabbitmq-in-spring-xd"&gt;how RabbitMQ powers Spring XD&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Thomas Risberg, also from SpringOne2GX 2015, shows us how simpler Hadoop workflows, and distribution portability make raw Hadoop much simpler for Spring developers. &lt;a href="http://spring.io/admin/blog/2420-springone2gx-2015-replay-hadoop-workflows-distributed-yarn-apps-and-spring"&gt;Check out the replay!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Petar Tahchiev applies Springdom to the problem domain of e-commerce in this SpringOne2GX 2015 replay, &lt;a href="http://spring.io/blog/2016/03/08/springone2gx-2015-replay-building-a-next-generation-cloud-e-commerce-platform-with-spring"&gt;Building a next-generation cloud e-commerce platform with Spring&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;JavaCodeGeeks has posted Srujana Cherukuri&amp;rsquo;s &lt;a href="https://examples.javacodegeeks.com/enterprise-java/spring/boot/spring-boot-tutorial-beginners/"&gt;fantastic introduction to using Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Want to &lt;a href="https://blog.openshift.com/using-spring-boot-on-openshift/"&gt;use Spring Boot on Openshift&lt;/a&gt;?&lt;/li&gt;
-  &lt;li&gt;I dig this post explaining &lt;a href="http://graphaware.com/neo4j/2016/02/24/upgrading-spring-data-neo4j-4-1.html"&gt;how to upgrade from Neo4J 4.0 to 4.1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Redis &lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/redis/cluster"&gt;now supports Redis Cluster&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;there&amp;rsquo;s a lot of good stuff &lt;a href="http://www.infoq.com/news/2016/03/junit5-alpha"&gt;in the upcoming JUnit 5&lt;/a&gt;: get the bits, kick the tires and go!&lt;/li&gt;
-  &lt;li&gt;If you&amp;rsquo;re using Apache Wicket, &lt;a href="http://www.infoq.com/news/2016/03/apache-wicket-7.2"&gt;there&amp;rsquo;s a discussion on it over at InfoQ&lt;/a&gt; &lt;em&gt;and&lt;/em&gt;, as we learn in that article, there&amp;rsquo;s apparently a Spring Boot Auto-configuration, too! The Auto-configuration seems a bit odd, in that it replaces some of the normal things you see in a Spring Boot application but it looks easy enough to get working.&lt;/li&gt;
-  &lt;li&gt;we&amp;rsquo;re planning our big &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; conference and it&amp;rsquo;s going to be amazing! We hope you&amp;rsquo;ll join us! &lt;a href="http://springoneplatform.io/submit"&gt;If you&amp;rsquo;ve got a story to tell, then please, by all means, submit your talk!&lt;/a&gt; by 3/24!&lt;/li&gt;
-&lt;/ul&gt;</content>
   </entry>
 </feed>
