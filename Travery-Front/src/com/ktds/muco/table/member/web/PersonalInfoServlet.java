@@ -7,6 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.ha.backend.Sender;
+
+import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
  * 
@@ -34,10 +39,32 @@ public class PersonalInfoServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @author 이기연
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/personalInfo.jsp");
-		rd.forward(request, response);
+	
+		//1. 세션정보
+		HttpSession session = request.getSession();
+		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		// 2. 세션정보가 있는지 확인
+		// true : 세션 정보 있음 - 회원 정보 열람
+		if ( loginMember != null) {
+			request.setAttribute("email", loginMember.getEmail());
+			request.setAttribute("name", loginMember.getName());
+			request.setAttribute("password", loginMember.getPassword());
+			request.setAttribute("phoneNumber", loginMember.getPhoneNumber());
+			request.setAttribute("mainImageName", loginMember.getMainImageName());
+			request.setAttribute("mainImageLocation", loginMember.getMainImageLocation());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/personalInfo.jsp");
+			rd.forward(request, response);
+		}
+		// false : 세션 정보 없음 - 회원 정보 열람 불가
+		else {
+			response.sendRedirect("/");
+		}
 	}
 
 }

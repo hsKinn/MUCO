@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+/* 이기연 */
+
+div#personalInfoWrapper {
+	float: left;
+}
+
+img#editImg {
+	width: 10px;
+}

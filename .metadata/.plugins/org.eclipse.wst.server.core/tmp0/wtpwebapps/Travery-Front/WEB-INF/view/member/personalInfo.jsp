@@ -21,47 +21,98 @@ $(document).ready(function() {
 	});
 	$("#personalInfoMenu").css("color", "#ffffff");
 	
+	$("#name").mouseenter(function(){
+		cursor
+	});
+	
+	$("#editProfile").hover(function(){
+		$("#editProfile").css("color", "#333333");
+	});
+	$("#editProfile").mouseout(function(){
+		$("#editProfile").css("color", "#808080");
+	});
+	
+	$("#editName").hover(function(){
+		$("#editName").css("color", "#333333");
+	});
+	$("#editName").mouseout(function(){
+		$("#editName").css("color", "#808080");
+	});
+	
+	$("#editPassword").hover(function(){
+		$("#editPassword").css("color", "#333333");
+	});
+	$("#editPassword").mouseout(function(){
+		$("#editPassword").css("color", "#808080");
+	});
+	
+	$("#editPhoneNumber").hover(function(){
+		$("#editPhoneNumber").css("color", "#333333");
+	});
+	$("#editPhoneNumber").mouseout(function(){
+		$("#editPhoneNumber").css("color", "#808080");
+	});	
 });
 </script>
 
 <!-- Personal Info -->
 
+<div class="well" id="personalInfoWrapper">
+<h1>Personal Info</h1>
 
-<div id="personalInfoWrapper">
-Personal Info
-
-	<table id="personalInfoTable">
+	<form>
+	<table class="table">
 		<tr id="photo">
+			<th>Photo</th>
+			<td>
+				<c:if test="${ empty mainImageLocation }" >
+					<img id="profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+				</c:if>
+				
+				<c:if test="${ not empty mainImageLocation }" >
+					사용자가 등록한 img 출력	
+				</c:if>
+				
+			</td>
+			<td><span class="glyphicon glyphicon-pencil" id="editProfile"></span></td>
+		</tr>
+		
+		<tr id="name">
+			<th>Username</th>
+			<td>${ name }</td>
+			<td><span class="glyphicon glyphicon-pencil" id="editName"></span></td>
+		</tr>
+		
+		<tr id="email">
+			<th>Email</th>
+			<td colspan="2">${ email }</td>
+		</tr>
+		
+		<tr id="password">
+			<th>Password</th>
+			<td> ********</td>
+			<td><span class="glyphicon glyphicon-pencil" id="editPassword"></span></td>
+		</tr>
+		<tr style="background-color:red">
 			<td>1</td>
 			<td>2</td>
 			<td>3</td>
 		</tr>
-		
-		<tr id="name">
-			<td>Username</td>
-			<td></td>
-			<td></td>
-		</tr>
-		
-		<tr id="Email">
-			<td>Email</td>
-			<td></td>
-			<td></td>
-		</tr>
-		
-		<tr id="Password">
-			<td>Password</td>
-			<td></td>
-			<td></td>		
-		</tr>
+		<tr style="background-color:blue">
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>		
 		
 		<tr id="phoneNumber">
-			<td>Phonenumber</td>
-			<td></td>
-			<td></td>
+			<th>Phonenumber</th>
+			<td>${ phoneNumber }</td>
+			<td><span class="glyphicon glyphicon-pencil" id="editPhoneNumber"></span></td>
 		</tr>
 	</table>
-</div>
+	</form>
+	
+</div> <!-- personalInfoWrapper : close -->
 
 
 

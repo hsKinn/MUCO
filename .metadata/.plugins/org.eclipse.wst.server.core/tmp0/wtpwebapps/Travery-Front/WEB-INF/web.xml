@@ -119,4 +119,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonalInfoActionServlet</display-name>
+    <servlet-name>PersonalInfoActionServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.PersonalInfoActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalInfoActionServlet</servlet-name>
+    <url-pattern>/personalInfoAction</url-pattern>
+  </servlet-mapping>
 </web-app>
