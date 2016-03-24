@@ -1,6 +1,7 @@
 package com.ktds.muco.table.pack.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,6 +40,17 @@ public class PackInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int packId = Integer.parseInt(request.getParameter("packId"));
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
+		
+		StringBuffer json = new StringBuffer();
+		json.append("{");
+		json.append("\"result\" : true");
+		json.append(", \"isFavorite\" : " +isExistFavoriteData);
+		json.append("}");
+		
+		PrintWriter out = response.getWriter();
+		out.print(json.toString());
+		out.flush();
+		out.close();
 		
 		request.setAttribute("packVO", packVO);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/myPack.jsp");

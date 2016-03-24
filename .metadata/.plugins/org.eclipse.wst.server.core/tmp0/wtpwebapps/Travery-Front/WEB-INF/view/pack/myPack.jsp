@@ -17,6 +17,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+<<<<<<< HEAD
 	$("#myPackMenu").mouseout(function(){
 		$("#myPackMenu").css("color", "#ffffff");
 	});
@@ -58,6 +59,8 @@ $(document).ready(function() {
 	
 	});
 
+=======
+>>>>>>> origin/KGM
 });
 </script>
 

@@ -1,0 +1,68 @@
+<!-- 김광민 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!-- Left Menu -->
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	// 마우스 대면 글씨 흰색으로
+	$("#hitTheRoadMenu").mouseenter(function(){
+		$("#hitTheRoadMenu").css("color", "#ffffff");
+	});
+	$("#myPackMenu").mouseenter(function(){
+		$("#myPackMenu").css("color", "#ffffff");
+	});
+	$("#sharePackMenu").mouseenter(function(){
+		$("#sharePackMenu").css("color", "#ffffff");
+	});
+	$("#recommendPlaceMenu").mouseenter(function(){
+		$("#recommendPlaceMenu").css("color", "#ffffff");
+	});
+	$("#tripReservationMenu").mouseenter(function(){
+		$("#tripReservationMenu").css("color", "#ffffff");
+	});
+	$("#personalInfoMenu").mouseenter(function(){
+		$("#personalInfoMenu").css("color", "#ffffff");
+	});
+	
+	// 마우스 떼면 다시 원래 색으로
+	$("#hitTheRoadMenu").mouseleave(function(){
+		$("#hitTheRoadMenu").css("color", "#959595");
+	});
+	$("#myPackMenu").mouseleave(function(){
+		$("#myPackMenu").css("color", "#959595");
+	});
+	$("#sharePackMenu").mouseleave(function(){
+		$("#sharePackMenu").css("color", "#959595");
+	});
+	$("#recommendPlaceMenu").mouseleave(function(){
+		$("#recommendPlaceMenu").css("color", "#959595");
+	});
+	$("#tripReservationMenu").mouseleave(function(){
+		$("#tripReservationMenu").css("color", "#959595");
+	});
+	$("#personalInfoMenu").mouseleave(function(){
+		$("#personalInfoMenu").css("color", "#959595");
+	});
+	
+});
+</script>
+
+<div id="bodyWithoutHeader">
+	<div class="container" style="float:left; width:250px; height:100%; background-color: #333333; font-weight: bold;">
+		<div class="row" style="width:100%;">
+			<nav class="col-sm-3" style="width:100%;">
+				<ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205" style="width:100%;">
+					<li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu"> HIT THE ROAD </a></li>
+					<li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY PACKAGE </a></li>
+					<li><a href="<c:url value="/sharePack"/>" id="sharePackMenu"> SHARE PACKAGE </a></li>
+					<li><a href="<c:url value="/recommendPlace"/>" id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
+					<li><a href="<c:url value="/tripReservation"/>" id="tripReservationMenu"> TRIP RESERVATION </a></li>
+					<li><a href="<c:url value="/personalInfo"/>" id="personalInfoMenu"> PERSONAL INFO </a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
