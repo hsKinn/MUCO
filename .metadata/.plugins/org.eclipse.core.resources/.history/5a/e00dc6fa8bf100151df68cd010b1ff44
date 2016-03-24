@@ -41,16 +41,17 @@ $(document).ready(function() {
   				<span class="caret"></span>
   			</button>
  			<ul class="dropdown-menu">
-			    <li><a href="#">등록일 순</a></li>
-			    <li><a href="#">추천 순</a></li>
+			    <li><a href="#">HTML</a></li>
+			    <li><a href="#">CSS</a></li>
+			    <li><a href="#">JavaScript</a></li>
   			</ul>
 		</div>
 	</div>
 </div>	
 	
 <div id="share-body">
-	<c:forEach items="${ packages.packList }" var="pakage">
-		<div class="sharePack"> ${ pakage.packTitle }</div>
+	<c:forEach var="i" begin="1" end="6" step="1">
+		<div class="sharePack"> ${i}번째 내용</div>
 	</c:forEach>
 	
     <form id="searchForm">

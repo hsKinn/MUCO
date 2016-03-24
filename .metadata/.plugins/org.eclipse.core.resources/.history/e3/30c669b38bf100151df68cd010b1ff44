@@ -32,10 +32,10 @@ div#share-top #sortBox {
 	margin-right: 3%;
 }
 
-div#sortBox button.btn {
+div.btn {
+	float: left;
 	width: 100%;
-	height: 36px;
-	margin-bottom: 4px;
+	height: 33px;
 }
 
 div#share-body {

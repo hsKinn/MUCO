@@ -49,8 +49,8 @@ $(document).ready(function() {
 </div>	
 	
 <div id="share-body">
-	<c:forEach items="${ packages.packList }" var="pakage">
-		<div class="sharePack"> ${ pakage.packTitle }</div>
+	<c:forEach var="i" begin="1" end="6" step="1">
+		<div class="sharePack"> ${i}번째 내용</div>
 	</c:forEach>
 	
     <form id="searchForm">

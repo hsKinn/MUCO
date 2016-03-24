@@ -50,7 +50,7 @@ $(document).ready(function() {
 	
 <div id="share-body">
 	<c:forEach items="${ packages.packList }" var="pakage">
-		<div class="sharePack"> ${ pakage.packTitle }</div>
+		<div class="sharePack"> ${ pakage.packId }번째 내용</div>
 	</c:forEach>
 	
     <form id="searchForm">
