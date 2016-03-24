@@ -1,5 +1,4 @@
 <!-- 김광민 -->
-<!-- 건들지마 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
