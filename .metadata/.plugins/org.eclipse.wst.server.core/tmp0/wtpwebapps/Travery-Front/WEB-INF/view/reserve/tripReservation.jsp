@@ -21,22 +21,24 @@ $(document).ready(function() {
 	});
 	$("#tripReservationMenu").css("color", "#ffffff");
 	
+	
 });
 </script>
 
 
 
-<!-- Trip Reservation -->s
+<!-- Trip Reservation -->
 <div id="tripReservationWrapper">
-
+	<form id="reservationForm">
+	<b style="color:#ffffff; font-size: 37px; padding-left:33%;">TRIP RESERVATION</b>
 	<div class="form-group">
 		
-	 	<label for="usr1">출발지:
-	  	<input type="text" class="form-control" id="usr1" />
+	 	<label for="departure">출발지:
+	  	<input type="text" class="form-control" id="departure" />
 	  	</label>
 	  	<img src="/resource/img/reserve/arrow.png" style="height:20px;"/>
-	  	<label for="sel11">여행지:
-	  	<select class="form-control" id="sel11" style="width:200px;" >
+	  	<label for="destination">여행지:
+	  	<select class="form-control" id="destination" style="width:200px;" >
 	    	<option>my list</option>
 	    	<option>my list</option>
 	    	<option>my list</option>
@@ -50,27 +52,27 @@ $(document).ready(function() {
 	
 	<div class="form-group">
 		
-	  	<label for="usr2">교통:
-	  	<input type="text" disabled="disabled" value="비행기"class="form-control" id="usr2" />
+	  	<label for="traffic">교통:
+	  	<input type="text" disabled="disabled" value="비행기"class="form-control" id="traffic" />
 	  	</label>
 	  	
-	  	<label for="sel12">등급:
-	  	<select class="form-control" id="sel12" style="width:200px;" >
+	  	<label for="grade">등급:
+	  	<select class="form-control" id="grade" style="width:200px;" >
 	    	<option>이코노미</option>
 	    	<option>비지니스</option>
 	  	</select>
 	  	</label>
 	  	
-	  	<label for="dt">출국일:
-	  	<input type="date" class="form-control" id="dt" />
+	  	<label for="departureDate">출국일:
+	  	<input type="date" class="form-control" id="departureDate" />
 	  	</label>
 	  	
-	  	<label for="dt1">귀국일:
-	  	<input type="date" class="form-control" id="dt1" />
+	  	<label for="destinationDate">귀국일:
+	  	<input type="date" class="form-control" id="destinationDate" />
 	  	</label>
 	  	
-	  	<label for="num">인원:
-	  	<input type="number" class="form-control" id="num" value="1"/>
+	  	<label for="traPerson">인원:
+	  	<input type="number" class="form-control" id="traPerson" value="1"/>
 	  	</label>
 	  	
 	</div>
@@ -79,16 +81,16 @@ $(document).ready(function() {
 	
 	<div class="form-group">
 	
-	  <label for="sel3">숙소:
-	  <select class="form-control" id="sel3" style="width:200px;" >
+	  <label for="accommodations">숙소:
+	  <select class="form-control" id="accommodations" style="width:200px;" >
 	    <option>호텔</option>
 	    <option>호스텔</option>
 	    <option>게스트하우스</option>
 	  </select>
 	  </label>
 	  
-	  <label for="sel14">등급:
-	  <select class="form-control" id="sel14" style="width:200px;" >
+	  <label for="accGrade">등급:
+	  <select class="form-control" id="accGrade" style="width:200px;" >
 	  	<option>1인실</option>
 	  	<option>2인실</option>
 	  	<option>3인실</option>
@@ -99,16 +101,16 @@ $(document).ready(function() {
 	  </select>
 	  </label>
 	  
-	  <label for="dt2">체크인:
-	  <input type="date" class="form-control" id="dt2"  />
+	  <label for="checkIn">체크인:
+	  <input type="date" class="form-control" id="checkIn"  />
 	  </label>
 	  	
-	  <label for="dt3">체크아웃:
-	  <input type="date" class="form-control" id="dt3"  />
+	  <label for="checkOut">체크아웃:
+	  <input type="date" class="form-control" id="checkOut"  />
 	  </label>
 	  
-	  <label for="num1">인원:
-	  <input type="number" class="form-control" id="num1" value="1" />
+	  <label for="accPerson">인원:
+	  <input type="number" class="form-control" id="accPerson" value="1" />
 	  </label>
 	  
 	</div>
@@ -117,8 +119,8 @@ $(document).ready(function() {
 	
 	<div class="form-group">
 	
-	  <label for="sel5">렌트카:
-	  <select class="form-control" id="sel5" style="width:200px;">
+	  <label for="rentCar">렌트카:
+	  <select class="form-control" id="rentCar" style="width:200px;">
 	    <option>대형</option>
 	    <option>중형</option>
 	    <option>소형</option>
@@ -127,16 +129,16 @@ $(document).ready(function() {
 	  </select>
 	  </label>
 	  
-	  <label for="dt4">대여일:
-	  <input type="date" class="form-control" id="dt4" />
+	  <label for="rentDate">대여일:
+	  <input type="date" class="form-control" id="rentDate" />
 	  </label>
 	  	
-	  <label for="dt5">반납일:
-	  <input type="date" class="form-control" id="dt5" />
+	  <label for="returnDate">반납일:
+	  <input type="date" class="form-control" id="returnDate" />
 	  </label>
 	  
-	  <label for="num2">인원:
-	  <input type="number" class="form-control" id="num2" value="1"/>
+	  <label for="rentPerson">인원:
+	  <input type="number" class="form-control" id="rentPerson" value="1"/>
 	  </label>
 	  
 	</div>
@@ -144,9 +146,11 @@ $(document).ready(function() {
 	<hr>
 	
 	<div id="reserveSubmit" >
-	<button type="submit" class="btn btn-default">제출</button>
+	<button type="submit" class="btn btn-default" id="subminBtn" name="subminBtn">제출</button>
 	</div>
 	
+	</form>
+		
 </div>
 
 	

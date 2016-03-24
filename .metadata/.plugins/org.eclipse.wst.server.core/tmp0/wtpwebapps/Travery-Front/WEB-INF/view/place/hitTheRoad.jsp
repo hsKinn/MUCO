@@ -24,9 +24,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Hit the road -->
 
-Hit the road
 	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
