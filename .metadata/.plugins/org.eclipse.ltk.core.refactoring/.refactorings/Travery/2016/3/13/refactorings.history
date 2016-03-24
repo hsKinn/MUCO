@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;place&apos;&#x0D;&#x0A;- Original project: &apos;Travery&apos;&#x0D;&#x0A;- Destination element: &apos;place&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     btn-create.png&#x0D;&#x0A;     btn-modify.png&#x0D;&#x0A;     btn-delete.png" description="Copy files" element1="WebContent/resource/img/btn-create.png" element2="WebContent/resource/img/btn-modify.png" element3="WebContent/resource/img/btn-delete.png" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1458792219411" target="/Travery-Front/WebContent/resource/img/place" units="0" version="1.0"/>
+</session>

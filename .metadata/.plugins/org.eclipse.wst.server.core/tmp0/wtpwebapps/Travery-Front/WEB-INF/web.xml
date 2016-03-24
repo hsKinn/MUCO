@@ -119,4 +119,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceInfoControlServlet</display-name>
+    <servlet-name>PlaceInfoControlServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceInfoControlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceInfoControlServlet</servlet-name>
+    <url-pattern>/placeInfoControl</url-pattern>
+  </servlet-mapping>
 </web-app>

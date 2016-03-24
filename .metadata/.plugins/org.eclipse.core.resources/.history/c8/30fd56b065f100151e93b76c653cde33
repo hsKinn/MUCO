@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+/* 김동규 */
+
+div#recommendPlace_Wrapper {
+	width: 100%;
+	height: 100%;
+	float: left;
+}
+div#search_part {
+	width:80%;
+	margin: 20%;
+}
+div#daily_part {
+}
+div#weekly_part {
+}
+div#monthly_part {
+}
+div#new_part {	
+}
+div#my_recommend_Btn{
+	
+}

@@ -45,7 +45,7 @@
 				}
 			});
 			if ( !isChecked ) {
-				alert("Choose The checkBoxes");
+				alert("삭제하실 추천리스트를 선택해주세요.");
 				return;
 			}
 			if ( confirm("정말로 삭제 하시겠습니까?") ) {

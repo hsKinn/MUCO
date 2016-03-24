@@ -50,8 +50,6 @@ $(document).ready(function() {
 	
 });
 </script>
-
-<div id="bodyWithoutHeader">
 	<div id="leftMenu">
 		<ul>
 			<li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu"> HIT THE ROAD </a></li>

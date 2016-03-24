@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+/* 김동규 */
+
+div#placeInfoControl_Wrapper {
+	width: 90%;
+	height: 100%; background-color : green;
+	float: left;
+	background-color: green;
+}

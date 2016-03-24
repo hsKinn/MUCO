@@ -24,9 +24,20 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/personalInfo.css"/>" />
 
+<!-- Boot strap -->
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-teal.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <title>Travery</title>
 <script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
+
+<!-- Boot strap -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<div id="wrapper">
