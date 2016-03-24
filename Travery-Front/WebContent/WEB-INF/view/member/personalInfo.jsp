@@ -26,7 +26,44 @@ $(document).ready(function() {
 
 <!-- Personal Info -->
 
+
+<div id="personalInfoWrapper">
 Personal Info
+
+	<table id="personalInfoTable">
+		<tr id="photo">
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		
+		<tr id="name">
+			<td>Username</td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		<tr id="Email">
+			<td>Email</td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		<tr id="Password">
+			<td>Password</td>
+			<td></td>
+			<td></td>		
+		</tr>
+		
+		<tr id="phoneNumber">
+			<td>Phonenumber</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</div>
+
+
 
 
 
