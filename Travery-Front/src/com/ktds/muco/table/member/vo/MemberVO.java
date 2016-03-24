@@ -6,9 +6,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * 
  * Member VO
  * 
- * mainImageName 메인 사진 이름
- * mainImageLocation 메인 사진 위치
- * joinDate 회원가입 날짜
+ * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
  * recentAccessDate 최근 접속 날짜
  * 
  * @author 김광민
@@ -19,6 +17,7 @@ public class MemberVO extends PlaceVO {
 	private String email = "";
 	private String password = "";
 	private String name = "";
+	private String phoneNumber = "";
 	private int isAdmin = 0;
 	private String mainImageName = "";
 	private String mainImageLocation = "";
@@ -47,6 +46,14 @@ public class MemberVO extends PlaceVO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public int getIsAdmin() {

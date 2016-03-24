@@ -15,11 +15,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-
-	$("#tripReservationMenu").mouseout(function(){
-		$("#tripReservationMenu").css("color", "#ffffff");
-	});
-	$("#tripReservationMenu").css("color", "#ffffff");
 	
 });
 </script>

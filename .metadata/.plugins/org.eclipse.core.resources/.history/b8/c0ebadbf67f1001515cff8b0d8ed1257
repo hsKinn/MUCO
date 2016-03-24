@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#hitTheRoad {
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 90%;
+	height: 100%;
+	background-color: #ffffff;
+	float: left;
+}
