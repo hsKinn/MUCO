@@ -22,7 +22,17 @@ public class Paging {
 
 	private int pageNo;
 
+<<<<<<< HEAD
 	public Paging( int printArticle ) {
+=======
+	/**
+	 * Paging 생성자
+	 * 
+	 * @param printArticle count
+	 * @author 김광민
+	 */
+	public Paging(int printArticle) {
+>>>>>>> origin/KGM
 		this.printArticle = printArticle;
 		this.printPage = 10;
 	}
