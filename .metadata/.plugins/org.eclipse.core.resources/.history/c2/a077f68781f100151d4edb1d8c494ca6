@@ -1,0 +1,188 @@
+<!-- 이기연 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- Header -->
+<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+
+<!-- Log out -->
+<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
+
+<!-- Left Menu -->
+<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	// menu에서 jquery 색상 
+	$("#personalInfoMenu").mouseout(function(){
+		$("#personalInfoMenu").css("color", "#ffffff");
+	});
+	$("#personalInfoMenu").css("color", "#ffffff");
+	
+	$("#name").mouseenter(function(){
+		cursor
+	});
+	
+	
+	// edit icon jquery 색상
+	$("#editProfile").hover(function(){
+		$("#editProfile").css("color", "#333333");
+	});
+	$("#editProfile").mouseout(function(){
+		$("#editProfile").css("color", "#808080");
+	});
+	
+	$("#editNameBtn").hover(function(){
+		$("#editNameBtn").css("color", "#333333");
+	});
+	$("#editNameBtn").mouseout(function(){
+		$("#editNameBtn").css("color", "#808080");
+	});
+	
+	$("#editPassword").hover(function(){
+		$("#editPassword").css("color", "#333333");
+	});
+	$("#editPassword").mouseout(function(){
+		$("#editPassword").css("color", "#808080");
+	});
+	
+	$("#editPhoneNumber").hover(function(){
+		$("#editPhoneNumber").css("color", "#333333");
+	});
+	$("#editPhoneNumber").mouseout(function(){
+		$("#editPhoneNumber").css("color", "#808080");
+	});	
+	
+	// 수정 row 들은 우선 hide 
+	$("#nameForEdit").hide();
+	$("#passwordForEdit").hide();
+	$("#phoneNumberForEdit").hide();
+	
+	// name 수정 
+	$(".editNameBtn").click(function(){
+		$("#name").hide();
+		$("#nameForEdit").show();
+	});
+	
+	// password 수정 
+	$(".editPasswordBtn").click(function(){
+		$("#password").hide();
+		$("#passwordForEdit").show();
+	});
+	
+	// phonNumber 수정
+	$(".editPhonenumberBtn").click(function(){
+		$("#password").hide();
+		$("#phoneNumberForEdit").show();
+	});
+	
+	
+});
+</script>
+
+<!-- Personal Info -->
+
+<div class="well" id="personalInfoWrapper">
+<h1>Personal Info</h1>
+
+	<form id="personalInfoForm">
+	<table class="table" id="personalInfoTable">
+		
+		<!-- 사진 -->
+		<tr id="photo">
+			<th>Photo</th>
+			<td>
+				<c:if test="${ empty mainImageLocation }" >
+					<img id="profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+					<br/>
+					사진을 등록해주세요
+				</c:if>
+				
+				<c:if test="${ not empty mainImageLocation }" >
+					<img id="profile" class="img-circle" />
+				</c:if>
+			</td>
+			<td><span class="glyphicon glyphicon-pencil" id="editPhoneNumber"></span></td>
+		</tr>
+		
+		<!-- 이름 -->
+		<tr id="name">
+			<th>Username</th>
+			<td class="editNameBtn">${ name }</td>
+			<td><span class="glyphicon glyphicon-pencil editNameBtn" id="editNameBtn" ></span></td>
+		</tr>
+		<tr id="nameForEdit" >
+			<th>Username</th>
+			<td colspan="2">
+				<input type="text" placeholder="Username" value="${name}"/> <br />
+				<span id="saveName">Save</span> <span id="cancelName">Cancel</span>
+			</td>
+		</tr>	
+		
+		<!-- 이메일 -->
+		<tr id="email">
+			<th>Email</th>
+			<td colspan="2">${ email }</td>
+		</tr>
+		
+		
+		<!-- 비밀번호 -->
+		<tr id="password">
+			<th>Password</th>
+			<td class="editPasswordBtn"> ********</td>
+			<td><span class="glyphicon glyphicon-pencil editPasswordBtn" id="editPassword"></span></td>
+		</tr>
+		
+		<tr id="passwordForEdit">
+			<th>Password</th>
+			<td colspan="2">
+				<input type="password" placeholder="Current Password" />
+				<br/>
+				<br/>
+				<input type="password" placeholder="New Password" />
+				<br/>
+				<br/>
+				<input type="password" placeholder="New Password check" />
+				<br/>
+				<br/>
+				<span id="savePassword">Save</span> <span id="cancelPassword">Cancel</span>
+			</td>
+		</tr>
+		
+		<!-- 연락처 -->
+		<tr id="phoneNumber">
+			<th>Phonenumber</th>
+			<td class="editPhonenumberBtn">
+				<c:if test="${ empty phonenumber }">
+					입력된 전화번호가 없습니다.
+				</c:if>
+				<c:if test="${ not empty phonenumber }">
+					${ phoneNumber }
+				</c:if>
+			</td>
+			<td><span class="glyphicon glyphicon-pencil editPhonenumberBtn" id="editPhoneNumber"></span></td>
+		</tr>
+		
+		<tr id="phoneNumberForEdit" style="background-color:skyblue">
+			<th>Phonenumber</th>
+			<td colspan="2">
+				<input type="text" placeholder="Phonenumber"/> <br/>
+				<span id="savePhoneNumber">Save</span> <span id="cancelPhoneNumber">Cancel</span>
+			</td>
+		</tr>			
+		
+	</table>
+	</form>
+	
+</div> <!-- personalInfoWrapper : close -->
+
+
+
+
+
+	
+<!-- Footer -->
+<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

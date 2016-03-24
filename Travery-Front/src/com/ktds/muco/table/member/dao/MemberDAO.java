@@ -104,6 +104,40 @@ public class MemberDAO {
 	}
 	
 	/**
+	 * 회원 정보 수정
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void modifyPersonalInfo(MemberVO memberVO) {
+
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/modifyPersonalInfo/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getEmail());
+			stmt.setString(2, memberVO.getPassword());
+			stmt.setString(3, memberVO.getName());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}
+		
+	}
+	
+	/**
 	 * 
 	 * Load Oracle Driver
 	 * 
@@ -142,4 +176,5 @@ public class MemberDAO {
 			} catch (SQLException e) {}
 		}
 	}
+
 }
