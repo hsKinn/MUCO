@@ -25,7 +25,12 @@ $(document).ready(function() {
 });
 </script>
 
+<body>
 My Package
+<div style="color:#ff1234">
+
+</div>
+</body>
 
 	
 <!-- Footer -->
