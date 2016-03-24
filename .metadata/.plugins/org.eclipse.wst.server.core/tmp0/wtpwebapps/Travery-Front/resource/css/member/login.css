@@ -6,11 +6,7 @@ div#login {
 	margin-top: 10%;
 	margin-left: 40%;
 	text-align: right;
-<<<<<<< HEAD
-	background-color: #8000ff;
-=======
 	background-color: #333333;
->>>>>>> YBH3
 	float: left;
 }
 
@@ -20,11 +16,7 @@ div#login input {
 	float: left;
 }
 
-<<<<<<< HEAD
-input#userId, input#userPw {
-=======
 input#userEmail, input#userPw {
->>>>>>> YBH3
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	height: 30px;
@@ -37,13 +29,8 @@ input#btnLogin {
 	margin-left: 5px;
 	padding: 7px;
 	width: 80px;
-<<<<<<< HEAD
-	background-color: #333333;
-	color: #ffffff;
-=======
 	background-color: #c0c0c0;
 	color: #333333;
->>>>>>> YBH3
 	float: left;
 }
 

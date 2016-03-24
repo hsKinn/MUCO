@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 <!-- 유병훈 -->
 <!-- 건들지마 -->
 
->>>>>>> YBH3
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -51,7 +48,6 @@
 		} );
 		
 		
-<<<<<<< HEAD
 		$("#userEmail").blur(function(){
 				
 				$.post(
@@ -86,8 +82,6 @@
 					});
 					
 			});
-=======
->>>>>>> YBH3
 		
 		
 		
@@ -101,11 +95,7 @@
 			<form id="joinForm">
 				<input type="text" id="userEmail" name="userEmail" placeholder="Email"/>
 				<input type="password" id="userPassword" name="userPassword" placeholder="Password"/>
-<<<<<<< HEAD
-				<input type="text" id="userName" name="userName" placeholder="Nickname"/>
-=======
 				<input type="text" id="userName" name="userName" placeholder="Nick name"/>
->>>>>>> YBH3
 				<input type="button" id="btnJoin" value="가입하기" />
 			</form>
 		</div>

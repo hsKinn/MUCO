@@ -28,23 +28,18 @@
 	                        		?,
 	                        		?
 	                     		)
-<<<<<<< HEAD
-     	</getAddNewMember>
-     	
+     	</addNewMember>
      	<getMemberEmailCheck>
      		SELECT	COUNT(EMAIL)
 			FROM	MEMBER
 			WHERE	EMAIL = ?
      	</getMemberEmailCheck>
-=======
-     	</addNewMember>
      	<getMemberByIdAndPassword>
      		SELECT	*
      		FROM	MEMBER
      		WHERE	EMAIL = ?
      		AND		PASSWORD = ?
      	</getMemberByIdAndPassword>
->>>>>>> YBH3
 	</member>
 	
 	<pack>

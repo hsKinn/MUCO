@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-=======
 <!-- 김광민 -->
 <!-- 건들지마 -->
 
@@ -68,4 +63,3 @@ $(document).ready(function() {
 			<li><a href="<c:url value="/personalInfo"/>" id="personalInfoMenu"> PERSONAL INFO </a></li>
 		</ul>
 	</div>
->>>>>>> YBH3

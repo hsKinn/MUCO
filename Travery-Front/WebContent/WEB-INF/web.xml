@@ -39,9 +39,8 @@
     <servlet-name>DoJoinServlet</servlet-name>
     <url-pattern>/doJoin</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
-<<<<<<< HEAD
     <display-name>MemberEmailCheckServlet</display-name>
     <servlet-name>MemberEmailCheckServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.member.web.MemberEmailCheckServlet</servlet-class>
@@ -49,7 +48,8 @@
   <servlet-mapping>
     <servlet-name>MemberEmailCheckServlet</servlet-name>
     <url-pattern>/memberEmailCheck</url-pattern>
-=======
+   </servlet-mapping> 
+   <servlet>
     <display-name>DoLoginServlet</display-name>
     <servlet-name>DoLoginServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.member.web.DoLoginServlet</servlet-class>
@@ -127,6 +127,5 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
->>>>>>> YBH3
   </servlet-mapping>
 </web-app>

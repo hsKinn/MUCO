@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 <!-- 김광민 -->
 <!-- 건들지마 -->
 
->>>>>>> YBH3
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -32,27 +29,6 @@
 	}
 %>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-$(document).ready(function() {
-	
-});
-</script>
-
-<!-- Header -->
-<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
-	</div><!-- id="header" -->
-
-	<!-- Login -->
-	<div id="login">
-		<form id="loginForm">
-			<input type="text" tabindex="1" id="userId" name="userId" placeholder=" ID" />
-			<input type="password" tabindex="2" id="userPw" name="userPw" placeholder=" Password" />
-			<input type="button" id="btnLogin" value="로그인" />
-			<input type="hidden" id="facebookLogin" name="facebookLogin" />
-	 	</form>
-	</div>
-=======
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
@@ -78,7 +54,6 @@ $(document).ready(function() {
 		<input type="button" id="btnLogin" value="로그인" />
  	</form>
 </div>
->>>>>>> YBH3
 	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

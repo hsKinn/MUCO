@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <query>
-<<<<<<< HEAD
-	<member>
-		<getAddNewMember>
-=======
 
 	<city>
 	</city>
@@ -22,7 +18,6 @@
 	
 	<member>
 		<addNewMember>
->>>>>>> YBH3
 			INSERT INTO MEMBER (
 	                      			EMAIL
 	                       		 	, PASSWORD
@@ -33,18 +28,12 @@
 	                        		?,
 	                        		?
 	                     		)
-<<<<<<< HEAD
-     	</getAddNewMember>
-     	
+     	</addNewMember>
      	<getMemberEmailCheck>
      		SELECT	COUNT(EMAIL)
 			FROM	MEMBER
 			WHERE	EMAIL = ?
      	</getMemberEmailCheck>
-	</member>
-</query>
-=======
-     	</addNewMember>
      	<getMemberByIdAndPassword>
      		SELECT	*
      		FROM	MEMBER
@@ -98,4 +87,3 @@
 
 
 
->>>>>>> YBH3

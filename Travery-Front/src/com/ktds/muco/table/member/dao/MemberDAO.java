@@ -105,7 +105,6 @@ public class MemberDAO {
 	
 	/**
 	 * 
-<<<<<<< HEAD
 	 * 회원Email 중복체크 DAO
 	 * 
 	 * @param userEmail
@@ -140,13 +139,12 @@ public class MemberDAO {
 
 	}
 	
-=======
+	/**
 	 * Load Oracle Driver
 	 * 
 	 * @author 김광민
 	 * 
 	 */
->>>>>>> YBH3
 	private void loadOracleDriver() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -179,10 +177,4 @@ public class MemberDAO {
 			} catch (SQLException e) {}
 		}
 	}
-<<<<<<< HEAD
-
-	
-
-=======
->>>>>>> YBH3
 }
