@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+div#bottom{
+	margin-left: 50%;
+	margin-top: 100%;
+	
+}
+
+ul#topMenu li:FIRST-CHILD {
+	margin-left: 0px;
+}

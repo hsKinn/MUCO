@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	<newPlace>
+		<insertNewPlaceInfo>
+			INSERT	INTO	NEW_PLACE	(
+											PLACE_ID
+											, LATITUDE
+											, LONGITUDE
+											, ADDRESS
+										)
+			VALUES						(
+											PLACE_ID_SEQ.NEXTVAL
+											, ?
+											, ?
+											, ?
+										)		
+		</insertNewPlaceInfo>
+	</newPlace>
+	
+	<myPackage>
+		<reLoadingPlace>
+			SELECT  LONGITUDE
+			        , LATITUDE
+			FROM    NEW_PLACE
+			WHERE   NEW_PLACE_ID = ?
+		</reLoadingPlace>
+	</myPackage>
+</query>

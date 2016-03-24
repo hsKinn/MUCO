@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+body, input, div, span, p, a, caption, lable, h1, h2, h3, h4, h5, h6, textarea, iframe, ul, ol, li, dd, dt, b, u, i, strong, pre, code, address, city, header, aside{
+	color: #333333;
+	font-family: "나눔바른고딕", "나눔 고딕", "돋움체", "Helvetica";
+	font-size: 12pt;
+}
+
+td, th{
+    padding:5px;
+    height:20px;
+    width:20px;
+    font-size:14px;
+}
+
+img {
+	/* 이미지 주변의 파란 줄 제거 */
+	display:block;
+	margin: 0 auto;
+	border: none;
+}
+body {
+	background-color: #0297F3;
+	height: 100%;
+	/* margin: 0px; */
+	/*#02C0F8*/
+	/*#02588E*/
+}
+div#wrapper {
+	width: 80%;
+	background-color: #FFFFFF;
+}
+
+div#header img {
+	width: 95px;
+	height: 95px;
+	float: left;
+}
+
+div#header div {
+	padding-top: 40px;
+	float: left;
+}
+div.clear {
+	clear: both;
+}

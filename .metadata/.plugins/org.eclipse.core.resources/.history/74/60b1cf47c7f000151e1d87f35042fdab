@@ -1,0 +1,58 @@
+package com.ktds.muco.web;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ktds.muco.dao.NewPlaceDAO;
+import com.ktds.muco.vo.NewPlaceVO;
+
+/**
+ * Servlet implementation class AddNewPlaceServlet
+ */
+public class AddNewPlaceServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private NewPlaceDAO npDAO;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AddNewPlaceServlet() {
+        super();
+        npDAO = new NewPlaceDAO();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong Forbidden Responses.");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+		String latitude = request.getParameter("lat");
+		String longitude = request.getParameter("lng");
+		String address = request.getParameter("address");
+//		String image = request.getParameter("image");
+//		String text = request.getParameter("text");
+
+		NewPlaceVO vo = new NewPlaceVO();
+		vo.setLatitude(Double.parseDouble(latitude));
+		vo.setLongitude(Double.parseDouble(longitude));
+		vo.setAddress(address);
+//		vo.setImage(image);
+//		vo.setText(text);
+		
+		npDAO.insertNewPlaceInfo(vo);
+		
+		response.sendRedirect("/Travery/newPlace");
+		return;
+	}
+}

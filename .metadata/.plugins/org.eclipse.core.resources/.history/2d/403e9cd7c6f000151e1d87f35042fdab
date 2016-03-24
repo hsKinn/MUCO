@@ -1,0 +1,48 @@
+package com.ktds.muco.vo;
+
+public class NewPlaceVO {
+
+	private int newPlaceId;
+	private double latitude;
+	private	double longitude;
+	private String address;
+	private String image;
+	private String text;
+	
+	public int getNewPlaceId() {
+		return newPlaceId;
+	}
+	public void setNewPlaceId(int newPlaceId) {
+		this.newPlaceId = newPlaceId;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+}

@@ -1,0 +1,81 @@
+package com.ktds.muco.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.util.xml.XML;
+import com.ktds.muco.vo.PlaceVO;
+
+public class MyPackageDAO {
+	
+	public List<PlaceVO> reLoadingPlace() {
+	
+		List<PlaceVO> nvo = new ArrayList<PlaceVO>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		NewPlaceVO vo = null;
+		
+		loadOracleDriver();
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/myPackage/reLoadingPlace/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, newPlaceId);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new PlaceVO();
+				
+				vo.setLatitude(rs.getDouble("LATITUDE"));
+				vo.setLongitude(rs.getDouble("LONGITUDE"));
+				vo.setAddress(rs.getString("ADDRESS"));
+//				vo.setNewPlaceId(rs.getInt("NEW_PLACE_ID"));
+//				vo.setImage(rs.getString("IMAGE"));
+//				vo.setText(rs.getString("TEXT"));
+				
+				nvo.add(vo);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+		return nvo;
+	}
+		
+	public void loadOracleDriver(){
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+	
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if( rs != null ) {
+			try {
+				rs.close();
+			} catch (SQLException e) {}
+		}
+		if( stmt != null ) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {}
+		}
+		if( conn !=null ) {
+			try {
+				conn.close();
+			} catch (SQLException e) {}
+		}
+	}
+
+}
