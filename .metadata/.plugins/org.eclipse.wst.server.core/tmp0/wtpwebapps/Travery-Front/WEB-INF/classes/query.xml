@@ -38,6 +38,16 @@
 	</member>
 	
 	<pack>
+		<getPackListByEmail>
+			SELECT  *
+			FROM    PACK
+			WHERE   EMAIL = ?
+		</getPackListByEmail>
+		<getPackDataByPackId>
+			SELECT  *
+			FROM    PACK
+			WHERE   PACK_ID = ?
+		</getPackDataByPackId>
 	</pack>
 	
 	<packLike>

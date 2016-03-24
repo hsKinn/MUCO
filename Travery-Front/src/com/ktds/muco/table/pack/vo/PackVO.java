@@ -13,7 +13,6 @@ public class PackVO extends MemberVO {
 	private String packTitle;
 	private int viewCount;
 	private int likeCount;
-	private String description;
 	private int isPublic;
 
 	public int getPackId() {
@@ -46,14 +45,6 @@ public class PackVO extends MemberVO {
 
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public int getIsPublic() {

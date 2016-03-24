@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+/* 백지경 */
+
+div#myPackageWrapperdiv{
+	background-color:#ffff80;
+	height:100%;
+	width:100%;
+}
+div#packListdiv{
+	background-color:#9966ff;
+	float:left;
+	height:100%;
+	width:50%;
+	
+}
+div#placesOfPackListdiv{
+	background-color:#bb99ff;
+	float:left;
+	height:100%;
+	width:50%;
+}

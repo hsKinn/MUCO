@@ -119,4 +119,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PackInfoServlet</display-name>
+    <servlet-name>PackInfoServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.PackInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PackInfoServlet</servlet-name>
+    <url-pattern>/packInfo</url-pattern>
+  </servlet-mapping>
 </web-app>
