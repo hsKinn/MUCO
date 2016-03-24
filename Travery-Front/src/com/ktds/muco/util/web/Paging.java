@@ -22,8 +22,8 @@ public class Paging {
 
 	private int pageNo;
 
-	public Paging() {
-		this.printArticle = 10;
+	public Paging( int printArticle ) {
+		this.printArticle = printArticle;
 		this.printPage = 10;
 	}
 
