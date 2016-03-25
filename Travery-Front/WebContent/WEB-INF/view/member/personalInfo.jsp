@@ -95,39 +95,44 @@ $(document).ready(function() {
 		$("#nameForEdit").hide();
 		$("#name").show();
 	});
-	// - save 
-	$("#saveName").click(function() {
-		$.post( //파라미터 3개 가지고 있음 
-				"/personalInfoAction" //어디로 요청
-				, { "name" : $("#name").val() } //뭘 준다.  
-				, function(data) { // 콜백, 응답해주는것 (우리가 직접 처리해줘야 한다)
-					// 방법 3. 
-					var jsonData = {}
-					try {
-						jsonData = JSON.parse(data);
-					} catch (e) {
-						jsonData.result = false;
-					}
-					
-					alert(jsonData);
-					console.log(jsonData);
-					
-					if ( jsonData.result ) {
-						var text = $("#name").text();
-						if (jsonData.isFavorite) {
-							$("#favorite").text("♥");
-						} 
-						else {
-							$("#favorite").text("♡");
-						}
-					} else {
-						alert("세션이 완료되었습니다.");
-						location.href="/";
-					}
-				}  
-				
-			);
-	});	
+	
+	 $("#name").blur(function(){
+         
+         $.post(
+               
+            "<c:url value="/memberEmailCheck" />"
+            , {"checkUserEmail" : $("#userEmail").val() }
+            , function(data){
+               
+               var jsonData = {};
+               
+               try {
+                  jsonData = JSON.parse(data);
+               }
+               catch(e) {
+               }
+               
+               if ( jsonData.result ) {
+                  if ( jsonData.isExistMemberEmail ) {
+                     alert("존재하는 아이디입니다.");
+                     $("#userEmail").val("");
+                     $("#userEmail").focus();
+                  }
+                  else {
+                     
+                  }
+               }
+               else{
+                  alert("세션을 종료합니다.");
+                  location.href = "<c:url value="/" />";
+               }
+               
+            });
+            
+      });
+
+	
+	
 	
 	// password 
 	// - cancel	
@@ -145,7 +150,12 @@ $(document).ready(function() {
 		
 	// 최종 save 
 	
+	//popover
 	$('[data-toggle="popover"]').popover(); 
+	$('[data-toggle="photo_popover"]').popover(); 
+	
+	//validation check
+
 	
 });
 </script>
@@ -161,7 +171,11 @@ $(document).ready(function() {
 		
 		<!-- 사진 -->
 		<tr id="photo">
-			<td></td>
+			<td>
+				<a href="#" data-toggle="photo_popover" title="Photo?" data-content="자신의 프로필 사진">
+					<span class="glyphicon glyphicon-question-sign"></span>
+				</a>			
+			</td>
 			<th>Photo</th>
 			<td>
 				<c:if test="${ empty mainImageLocation }" >
@@ -192,9 +206,10 @@ $(document).ready(function() {
 			<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
 			<th>Username</th>
 			<td colspan="2">
-				<input type="text" placeholder="Username" name="name" value="${name}"/> <br />
+				<input type="text" class="form-control" placeholder="Username" name="name" value="${name}" >
+				<br />
 				<span id="validationCheck"></span>
-				<span id="cancelName">Cancel</span>
+				<button type="button" class="btn btn-default btn-sm" id="cancelName">Cancel</button>
 			</td>
 		</tr>	
 		
@@ -218,16 +233,11 @@ $(document).ready(function() {
 			<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
 			<th>Password</th>
 			<td colspan="2">
-				<input type="password" name="currentPassword" placeholder="Current Password" />
+				<input type="password" class="form-control" name="currentPassword" placeholder="Current Password">
+				<input type="password" class="form-control" name="newPassword" placeholder="New Password">
+				<input type="password" class="form-control" name="newPasswordCheck" placeholder="New Password check">
 				<br/>
-				<br/>
-				<input type="password" name="newPassword" placeholder="New Password" />
-				<br/>
-				<br/>
-				<input type="password" name="newPasswordCheck" placeholder="New Password check" />
-				<br/>
-				<br/>
-				<span id="cancelPassword">Cancel</span>
+				<button type="button" class="btn btn-default btn-sm" id="cancelPassword">Cancel</button>
 			</td>
 		</tr>
 		
@@ -255,14 +265,15 @@ $(document).ready(function() {
 			</td>
 			<th>phoneNumber</th>
 			<td colspan="2">
-				<input type="text" name="phoneNumber" placeholder="phoneNumber" value="${ phoneNumber }"/> <br/> <br/>
-				<span id="cancelPhoneNumber">Cancel</span>
+				<input type="text" class="form-control" name="phoneNumber" placeholder="phoneNumber" value="${ phoneNumber }" >
+				<br/>
+				<button type="button" class="btn btn-default btn-sm" id="cancelPhoneNumber">Cancel</button>
 			</td>
 		</tr>			
 		
 		
 		<tr>
-		<td colspan="3">
+		<td colspan="4">
 			<br/>
 			<input type="submit" class="btn btn-default" value="save"></input>
 		</td>

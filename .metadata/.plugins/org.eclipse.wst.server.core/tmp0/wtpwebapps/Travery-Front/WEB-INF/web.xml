@@ -129,4 +129,14 @@
     <servlet-name>PersonalInfoActionServlet</servlet-name>
     <url-pattern>/personalInfoAction</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NameCheckServlet</display-name>
+    <servlet-name>NameCheckServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.NameCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NameCheckServlet</servlet-name>
+    <url-pattern>/nameCheck</url-pattern>
+  </servlet-mapping>
 </web-app>
