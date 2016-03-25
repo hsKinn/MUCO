@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="com.oracle.jrockit.jfr.RequestDelegate"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="org.apache.catalina.ha.backend.Sender"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.biz.MemberBiz"/>
+</qualifiedTypeNameHistroy>
