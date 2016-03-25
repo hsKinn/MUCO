@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+div#logout {
+	text-align: right;
+}
+
+img {
+	height: 25px;
+	float: right;
+}
+

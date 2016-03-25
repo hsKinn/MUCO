@@ -32,22 +32,16 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/Travery-Front/WEB-INF/view/common/header.jsp
-=======
 <!-- jVector Map -->
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>"/>
 
->>>>>>> origin/KGM:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Travery-Front/WEB-INF/view/common/header.jsp
 <title>Travery</title>
 <script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
 
 <!-- Boot strap -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/Travery-Front/WEB-INF/view/common/header.jsp
-=======
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
->>>>>>> origin/KGM:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Travery-Front/WEB-INF/view/common/header.jsp
 
 </head>
 <body>

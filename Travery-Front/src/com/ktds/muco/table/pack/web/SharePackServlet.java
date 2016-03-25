@@ -57,7 +57,7 @@ public class SharePackServlet extends HttpServlet {
 		}
 		catch(NumberFormatException nfe) {
 			
-			packSearchVO = (PackSearchVO) session.getAttribute("_SEARCH");
+			packSearchVO = (PackSearchVO) session.getAttribute("_SEARCH_");
 			
 			if ( packSearchVO == null ) {
 				packSearchVO = new PackSearchVO();
@@ -71,7 +71,7 @@ public class SharePackServlet extends HttpServlet {
 		PackListVO packages = sharePackBiz.getAllPackageList(packSearchVO);
 		
 		request.setAttribute("packages", packages);
-		request.setAttribute("packsearchVO", packSearchVO);
+		request.setAttribute("packSearchVO", packSearchVO);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/sharePack.jsp");
 		rd.forward(request, response);

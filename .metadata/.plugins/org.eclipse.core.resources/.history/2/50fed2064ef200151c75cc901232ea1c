@@ -1,0 +1,5 @@
+package com.ktds.muco.table.hashtag.vo;
+
+public class HashTagVO {
+
+}

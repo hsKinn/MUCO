@@ -8,12 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ktds.muco.table.hashtag.dao.HashTagDAO;
 import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
 import com.ktds.muco.table.pack.vo.PackVO;
 import com.ktds.muco.util.xml.XML;
 
 public class SharePackDAO {
+	
+	private HashTagDAO hashtagDAO;
+	
+	public SharePackDAO () {
+		hashtagDAO = new HashTagDAO();
+	}
 	
 	
 	/**
@@ -96,7 +103,104 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImage_location(rs.getString("IMAGE_LOCATION"));
+				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
+				
+				packages.add(pack);
+			}
+			
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+		return packages;
+	} // getAllPackageListByHashTag END
+
+
+	/**
+	 * Get All PackageList Count
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packSearchVO
+	 * @return
+	 */
+	public int getAllPackageListCount(PackSearchVO packSearchVO) {
+
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/sharePack/getAllPackageListCount/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			int articleCount = 0;
+			rs.next();
+			articleCount = rs.getInt(1);
+			
+			return articleCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}		
+		
+	} //getAllPackageListCount END
+
+	
+	/**
+	 * Get All Package List
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packSearchVO
+	 * @return
+	 */
+	public List<PackVO> getAllPackageList(PackSearchVO packSearchVO) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<PackVO> packages = new ArrayList<PackVO>();
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/sharePack/getAllPackageList/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packSearchVO.getEndIndex());
+			stmt.setInt(2, packSearchVO.getStartIndex());
+			
+			rs = stmt.executeQuery();
+			
+			PackVO pack = null;
+			
+			while ( rs.next() ) {
+				
+				pack = new PackVO();
+				
+				pack.setPackId(rs.getInt("PACK_ID"));
+				pack.setPackTitle(rs.getString("PACK_TITLE"));
+				pack.setViewCount(rs.getInt("VIEW_COUNT"));
+				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
+				pack.setName(rs.getString("NAME"));
+				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));;
+				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				
 				packages.add(pack);
 			}
@@ -109,10 +213,8 @@ public class SharePackDAO {
 		}
 		
 		return packages;
-	}	
-	
-	
-	
+		
+	} // getAllPackageList END
 	
 	
 	/**
@@ -154,86 +256,5 @@ public class SharePackDAO {
 			} catch (SQLException e) {}
 		}
 	} // closeDB END
-
-
-	public int getAllPackageListCount(PackSearchVO packSearchVO) {
-
-		loadOracleDriver();
-		
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		
-		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
-			String query = XML.getNodeString("//query/sharePack/getAllPackageListCount/text()");
-			stmt = conn.prepareStatement(query);
-			
-			rs = stmt.executeQuery();
-			
-			int articleCount = 0;
-			rs.next();
-			articleCount = rs.getInt(1);
-			
-			return articleCount;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
-			closeDB(conn, stmt, rs);
-		}		
-		
-	} //getAllPackageListCount END
-
-
-	public List<PackVO> getAllPackageList(PackSearchVO packSearchVO) {
-		
-		loadOracleDriver();
-		
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		
-		List<PackVO> packages = new ArrayList<PackVO>();
-		
-		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			String query = XML.getNodeString("//query/sharePack/getAllPackageList/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, packSearchVO.getEndIndex());
-			stmt.setInt(2, packSearchVO.getStartIndex());
-			
-			rs = stmt.executeQuery();
-			
-			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
-				pack = new PackVO();
-				
-				pack.setPackId(rs.getInt("PACK_ID"));
-				pack.setPackTitle(rs.getString("PACK_TITLE"));
-				pack.setViewCount(rs.getInt("VIEW_COUNT"));
-				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
-				pack.setName(rs.getString("NAME"));
-				pack.setImage_location(rs.getString("IMAGE_LOCATION"));
-				
-				packages.add(pack);
-			}
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
-			closeDB(conn, stmt, rs);
-		}
-		
-		return packages;
-		
-	}
 	
-	
-	
-}
+} // Class END

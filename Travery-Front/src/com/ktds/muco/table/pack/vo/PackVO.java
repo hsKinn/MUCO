@@ -1,5 +1,8 @@
 package com.ktds.muco.table.pack.vo;
 
+import java.util.List;
+
+import com.ktds.muco.table.hashtag.vo.HashTagVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
@@ -14,14 +17,24 @@ public class PackVO extends MemberVO {
 	private int viewCount;
 	private int likeCount;
 	private int isPublic;
-	private String image_location;
+	private String imageLocation;
+	
+	private List<HashTagVO> hashtagList;
 
-	public String getImage_location() {
-		return image_location;
+	public List<HashTagVO> getHashtagList() {
+		return hashtagList;
 	}
 
-	public void setImage_location(String image_location) {
-		this.image_location = image_location;
+	public void setHashtagList(List<HashTagVO> hashtagList) {
+		this.hashtagList = hashtagList;
+	}
+
+	public String getImageLocation() {
+		return imageLocation;
+	}
+
+	public void setImageLocation(String imageLocation) {
+		this.imageLocation = imageLocation;
 	}
 
 	public int getPackId() {

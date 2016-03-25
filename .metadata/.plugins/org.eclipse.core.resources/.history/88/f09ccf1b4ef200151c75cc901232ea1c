@@ -1,0 +1,11 @@
+package com.ktds.muco.table.hashtag.vo;
+
+public class HashTagVO {
+	
+	private int hashtagId;
+	private int packId;
+	
+	private String hashtagName;
+	
+	
+}

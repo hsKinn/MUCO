@@ -1,0 +1,14 @@
+package com.ktds.muco.table.hashtag.biz;
+
+import com.ktds.muco.table.hashtag.dao.HashTagDAO;
+
+public class HashTagBiz {
+	
+	private HashTagDAO hashtagDAO;
+	
+	public HashTagBiz() {
+		hashtagDAO = new HashTagDAO();
+	}
+	
+	
+}

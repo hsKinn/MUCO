@@ -1,0 +1,98 @@
+@CHARSET "UTF-8";
+
+body, input, div, span, p, a, td, tr, th, caption, lable, h1, h2, h3, h4, h5, h6, textarea, iframe, ul, ol, li, dd, dt, b, u, i, strong, pre, code, address, city, header, aside {
+	/* 웹 전용 검은색 */
+	color: #333333;
+	font-family: "tahoma", "나눔바름고딕", "돋움체";
+}
+
+img {
+	/* 이미지 주변 파란 줄 제거 */
+	border: none;
+}
+
+body {
+	background-color: #efefef;
+	margin: 0px;
+}
+
+div#header {
+	width: 100%;
+	background-color: #ffdddd;
+	float: left;
+}
+
+div#header img {
+	width: 95px;
+	height: 95px;
+	float: left;
+}
+
+div#headerFont {
+	padding-top: 34px;
+	float: left;
+	font-size: 25px;
+}
+
+div#topNavi {
+	padding-left: 20px;
+	padding-top: 15px;
+	padding-bottom: 35px;
+	background-color: #ffe1ef;
+}
+
+div#topNavi ul#topMenu {
+	list-style: none;
+	display: inline;
+}
+
+ul#topMenu li {
+	margin-left: 20px;
+	float: left;
+}
+
+ul#topMenu li:FIRST-CHILD {
+	margin-left: 0px;
+}
+
+div#leftMenu {
+	float: left;
+	width: 250px;
+	padding: 15px;
+	background-color: #FFFFFF;
+	margin-right: 10px;
+}
+
+div#leftMenu ul {
+	list-style: none;
+	display: inline;
+}
+
+div#leftMenu ul li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+div#leftMenu ul li:FIRST-CHILD {
+	margin-left: 0px;
+}
+
+div#content {
+	float: left;
+}
+
+div#content .c{
+   text-align: center;   
+}
+
+div#memberContent {
+	float: left;
+}
+
+div#memberContent .c{
+	text-align: center;  
+}
+
+div .clear {
+	clear: both;
+}

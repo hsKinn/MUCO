@@ -48,9 +48,7 @@
 					, HASH_TAG H
 			WHERE	P.PACK_ID = H.PACK_ID
 			AND		IS_PUBLIC = 1
-			AND		(
-						HASH_TAG_NAME LIKE '%' || ? || '%'
-					)
+			AND		HASH_TAG_NAME LIKE '%' || ? || '%'
 		</getAllPackageCountByHashTag>
 
 		<getAllPackageListByHashTag>
@@ -59,19 +57,19 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  PACK_ID
+			                     SELECT  P.PACK_ID
 			                     		 , PACK_TITLE
 			                             , VIEW_COUNT
 			                             , LIKE_COUNT
 			                             , M.NAME
-			                             , IMAGE_LOCATION
+			                             , SHARE_IMAGE_LOCATION
 			                     FROM    PACK P
 			                             , MEMBER M
+			                             , HASH_TAG H
 			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.PACK_ID = H.PACK_ID
 			                     AND	 P.EMAIL = M.EMAIL(+)
-			                     AND	 (
-			                     			HASH_TAG_NAME LIKE '%' || ? || '%'
-			                     		 )
+			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
 			                     ORDER   BY LIKE_COUNT DESC   
 		                     ) A
 		               WHERE   ROWNUM &lt;= ?   
@@ -96,7 +94,7 @@
 			                             , VIEW_COUNT
 			                             , LIKE_COUNT
 			                             , M.NAME
-			                             , IMAGE_LOCATION
+			                             , SHARE_IMAGE_LOCATION
 			                     FROM    PACK P
 			                             , MEMBER M
 			                     WHERE   IS_PUBLIC = 1
@@ -109,6 +107,19 @@
         </getAllPackageList>
         
 	</sharePack>
+	
+	<hashtag>
+		
+		<getHashTagOfPackage>
+			SELECT	HASH_TAG_ID
+					, HASH_TAG_NAME
+			FROM	HASH_TAG H
+					, PACK P
+			WHERE	P.PACK_ID = H.PACK_ID
+			AND		H.PACK_ID = ?
+		</getHashTagOfPackage>
+	
+	</hashtag>
 	
 	<packLike>
 	</packLike>
