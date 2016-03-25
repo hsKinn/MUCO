@@ -102,16 +102,15 @@
 				
 		           var map = $('#map1').vectorMap('get', 'mapObject');
 		           
-		           // countryList -> List<CountryVO>
+		           // countryList ->
 		           var countryList = ${ countryList };
 		           
 		           // 자신에게 맞는 나라 CSS 넣기
 		           for (var i = 0; int < countryList.size(); i++) {
 		        	   
-		        	   // Coun
-		        	   var newCountryVO = ${ countryList.get(i) };
+		        	   var newCountry = ${ countryList.get(i) };
 		        	   
-		        	   if( newCountryVO.countryName.equals( map.getRegionName(code) ) ){
+		        	   if( newCountryList.equals( map.getRegionName(code) ) ){
 		        		   
 		        		   $('#countries').append('<div id="selectedCountryId" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; color:${ countryVO.countryFontColor }; background-color: ${ countryVO.countryColor }; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
 		        		   $('#selectedCountryId').css("background-color", "${ newCountryList. }")
