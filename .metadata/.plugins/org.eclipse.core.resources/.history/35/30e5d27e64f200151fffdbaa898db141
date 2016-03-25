@@ -2,10 +2,11 @@
 <query>
 
 	<country>
-		<getCountryList>
+		<getCountryByCountryName>
 			SELECT	*
 			FROM	COUNTRY
-		</getCountryList>
+			WHERE	COUNTRY_NAME = ?
+		</getCountryByCountryName>
 	</country>
 	
 	<evaluation>

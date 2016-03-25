@@ -5,6 +5,7 @@
 		<getCountryList>
 			SELECT	*
 			FROM	COUNTRY
+			WHERE	COUNTRY_NAME = ?
 		</getCountryList>
 	</country>
 	

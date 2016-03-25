@@ -99,6 +99,11 @@
 				animate : true
 			},
 			onRegionClick: function(event, code) {
+		           var map = $("#map1").vectorMap('get', 'mapObject');
+		           $("#countries").append('<div id="selectedCountryId" style="background-color:#333333; color:#ffffff; text-align: center; font-weight: bold; width: 100px; margin-top: 10px; cursor: pointer; padding: 5px; float:left; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
+		    },
+			/*
+			onRegionClick: function(event, code) {
 				
 		           var map = $('#map1').vectorMap('get', 'mapObject');
 		           var countryList = ${ countryList };
@@ -115,6 +120,7 @@
 		        	   }
 				}
 		    },
+		    */
 			series : {
 				regions : [ {
 					scale : [ '#C8EEFF', '#0071A4' ],
@@ -310,7 +316,6 @@
 </script>
 
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		
 	});

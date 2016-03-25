@@ -49,6 +49,7 @@ public class HitTheRoadServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		List<CountryVO> countryList = countryBiz.getCountryList();
+		
 		request.setAttribute("countryList", countryList);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
