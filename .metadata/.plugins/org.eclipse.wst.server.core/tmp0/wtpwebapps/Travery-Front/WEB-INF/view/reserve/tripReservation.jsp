@@ -15,11 +15,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-
-	$("#tripReservationMenu").mouseout(function(){
-		$("#tripReservationMenu").css("color", "#ffffff");
-	});
-	$("#tripReservationMenu").css("color", "#ffffff");
 	
 	
 });
@@ -30,7 +25,10 @@ $(document).ready(function() {
 <!-- Trip Reservation -->
 <div id="tripReservationWrapper">
 	<form id="reservationForm">
+	
 	<b style="color:#ffffff; font-size: 37px; padding-left:33%;">TRIP RESERVATION</b>
+	
+	<!-- 출발,여행지 입력 -->
 	<div class="form-group">
 		
 	 	<label for="departure">출발지:
@@ -50,6 +48,7 @@ $(document).ready(function() {
 	
 	<hr>
 	
+	<!-- 교통 입력 -->
 	<div class="form-group">
 		
 	  	<label for="traffic">교통:
@@ -79,6 +78,7 @@ $(document).ready(function() {
 	
 	<hr>
 	
+	<!-- 숙소 입력 -->
 	<div class="form-group">
 	
 	  <label for="accommodations">숙소:
@@ -117,6 +117,7 @@ $(document).ready(function() {
 	
 	<hr>
 	
+	<!-- 렌트 입력 -->
 	<div class="form-group">
 	
 	  <label for="rentCar">렌트카:
@@ -145,6 +146,7 @@ $(document).ready(function() {
 	
 	<hr>
 	
+	<!-- 제출 -->
 	<div id="reserveSubmit" >
 	<button type="submit" class="btn btn-default" id="subminBtn" name="subminBtn">제출</button>
 	</div>

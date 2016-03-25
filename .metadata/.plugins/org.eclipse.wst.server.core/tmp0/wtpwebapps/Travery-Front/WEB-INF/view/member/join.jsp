@@ -46,7 +46,7 @@
 			form.submit();
 		} );
 		
-<<<<<<< HEAD
+
 		
 		$("#userEmail").blur(function(){
 				
@@ -85,8 +85,7 @@
 		
 		
 		
-=======
->>>>>>> origin/KGM
+
 	} );
 	
 </script>

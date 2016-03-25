@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+div.modal-content {
+	
+	width:1000px;
+	height:800px;
+	margin-left:-80px;
+	
+}

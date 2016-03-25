@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+div.modal-content, .modal-dialog modal-lg {
+	
+	width:1000px;
+	height:800px;
+	margin-left:-100px;
+	
+}
