@@ -156,7 +156,7 @@ $(document).ready(function() {
 <div class="well" id="personalInfoWrapper">
 <h1>Personal Info</h1>
 
-	<form id="personalInfoForm" method="post" action="/personalInfoAction" enctype="multipart/Form-data">
+	<form id="personalInfoForm" method="post" action="/personalInfoAction">
 	<table class="table" id="personalInfoTable">
 		
 		<!-- 사진 -->

@@ -156,7 +156,7 @@ $(document).ready(function() {
 <div class="well" id="personalInfoWrapper">
 <h1>Personal Info</h1>
 
-	<form id="personalInfoForm" method="post" action="/personalInfoAction">
+	<form id="personalInfoForm" method="post" action="/personalInfoAction" enctype="multipart/Form-data">
 	<table class="table" id="personalInfoTable">
 		
 		<!-- 사진 -->
@@ -176,6 +176,8 @@ $(document).ready(function() {
 			</td>
 			<td>
 				<span class="glyphicon glyphicon-camera" id="editMainImage"></span>
+				<br/>
+				<input type="file" id="file" name="file" />
 			</td>
 		</tr>
 		

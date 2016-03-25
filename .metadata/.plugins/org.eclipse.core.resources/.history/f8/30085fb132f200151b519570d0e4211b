@@ -52,18 +52,18 @@ public class PersonalInfoActionServlet extends HttpServlet {
 			response.sendRedirect(Root.get(this) + "/personalInfo");
 		}
 		
-//		//file (profile 등록)
-//		// 썸네일 생성
-//		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
-//		// file이 null이면 not upload , null이 아니면 upload! 		
-//		MultipartFile file = multipartRequest.getFile("file");
-////		File upFile = file.write("D:\\" + file.getFileName());
-//		if (file.getFileName().length() > 0 ) {
-//			//upFile.getPath();
-//			// file을 DB에 저장
-//			memberBiz.addFile(file, memberVO);
-//		}
-//		
+		//file (profile 등록)
+		// 썸네일 생성
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+		// file이 null이면 not upload , null이 아니면 upload! 		
+		MultipartFile file = multipartRequest.getFile("file");
+//		File upFile = file.write("D:\\" + file.getFileName());
+		if (file.getFileName().length() > 0 ) {
+			//upFile.getPath();
+			// file을 DB에 저장
+			fileBiz.addFile(file, articleId);
+		}
+		
 		//aJax (name 중복 체크)
 
 	
