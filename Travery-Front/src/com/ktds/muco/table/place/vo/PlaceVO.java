@@ -1,6 +1,6 @@
 package com.ktds.muco.table.place.vo;
 
-import com.ktds.muco.table.city.vo.CityVO;
+import com.ktds.muco.table.country.vo.CountryVO;
 
 /**
  * 여행지
@@ -14,7 +14,7 @@ import com.ktds.muco.table.city.vo.CityVO;
  * @author 김광민
  *
  */
-public class PlaceVO extends CityVO {
+public class PlaceVO extends CountryVO {
 
 	private int placeId;
 	private String placeName;

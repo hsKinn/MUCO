@@ -119,4 +119,24 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectedCountryServlet</display-name>
+    <servlet-name>SelectedCountryServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.country.web.SelectedCountryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectedCountryServlet</servlet-name>
+    <url-pattern>/selectedCountry</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitHitTheRoadServlet</display-name>
+    <servlet-name>InitHitTheRoadServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.InitHitTheRoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitHitTheRoadServlet</servlet-name>
+    <url-pattern>/initHitTheRoad</url-pattern>
+  </servlet-mapping>
 </web-app>
