@@ -46,17 +46,17 @@ public class PersonalInfoServlet extends HttpServlet {
 	
 		//1. 세션정보
 		HttpSession session = request.getSession();
-		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
+		MemberVO loginMemberVO = (MemberVO) session.getAttribute("_MEMBER_");
 		
 		// 2. 세션정보가 있는지 확인
 		// true : 세션 정보 있음 - 회원 정보 열람
-		if ( loginMember != null) {
-			request.setAttribute("email", loginMember.getEmail());
-			request.setAttribute("name", loginMember.getName());
-			request.setAttribute("password", loginMember.getPassword());
-			request.setAttribute("phoneNumber", loginMember.getPhoneNumber());
-			request.setAttribute("mainImageName", loginMember.getMainImageName());
-			request.setAttribute("mainImageLocation", loginMember.getMainImageLocation());
+		if ( loginMemberVO != null) {
+			request.setAttribute("email", loginMemberVO.getEmail());
+			request.setAttribute("name", loginMemberVO.getName());
+			request.setAttribute("password", loginMemberVO.getPassword());
+			request.setAttribute("phoneNumber", loginMemberVO.getPhoneNumber());
+			request.setAttribute("mainImageName", loginMemberVO.getMainImageName());
+			request.setAttribute("mainImageLocation", loginMemberVO.getMainImageLocation());
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/personalInfo.jsp");
 			rd.forward(request, response);

@@ -13,6 +13,11 @@
 <!-- Left Menu -->
 <jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
 
+<!-- 부트스트랩 -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -26,13 +31,12 @@ $(document).ready(function() {
 		cursor
 	});
 	
-	
 	// edit icon jquery 색상
-	$("#editProfile").hover(function(){
-		$("#editProfile").css("color", "#333333");
+	$("#editMainImage").hover(function(){
+		$("#editMainImage").css("color", "#333333");
 	});
-	$("#editProfile").mouseout(function(){
-		$("#editProfile").css("color", "#808080");
+	$("#editMainImage").mouseout(function(){
+		$("#editMainImage").css("color", "#808080");
 	});
 	
 	$("#editNameBtn").hover(function(){
@@ -67,6 +71,11 @@ $(document).ready(function() {
 		$("#nameForEdit").show();
 	});
 	
+	// email 수정불가
+	$("#email").click(function(){
+		alert("수정할 수 없습니다.")
+	});
+	
 	// password 수정 hide / show 
 	$(".editPasswordBtn").click(function(){
 		$("#password").hide();
@@ -74,7 +83,7 @@ $(document).ready(function() {
 	});
 	
 	// phonNumber 수정 hide / show 
-	$(".editPhonenumberBtn").click(function(){
+	$(".editphoneNumberBtn").click(function(){
 		$("#phoneNumber").hide();
 		$("#phoneNumberForEdit").show();
 	});
@@ -120,25 +129,27 @@ $(document).ready(function() {
 			);
 	});	
 	
-	// password modify (save / cancel)
+	// password 
 	// - cancel	
 	$("#cancelPassword").click(function() {
 		$("#passwordForEdit").hide();
 		$("#password").show();
 	});
 	
-	// phonenumber modify (save / cancel)
+	// phonenumber
 	// - cancel	
 	$("#cancelPhoneNumber").click(function() {
 		$("#phoneNumberForEdit").hide();
 		$("#phoneNumber").show();
 	});		
-	
-	
+		
 	// 최종 save 
+	
+	$('[data-toggle="popover"]').popover(); 
 	
 });
 </script>
+
 
 <!-- Personal Info -->
 
@@ -150,6 +161,7 @@ $(document).ready(function() {
 		
 		<!-- 사진 -->
 		<tr id="photo">
+			<td></td>
 			<th>Photo</th>
 			<td>
 				<c:if test="${ empty mainImageLocation }" >
@@ -162,25 +174,31 @@ $(document).ready(function() {
 					<img id="profile" class="img-circle" />
 				</c:if>
 			</td>
-			<td><span class="glyphicon glyphicon-pencil" id="editPhoneNumber"></span></td>
+			<td>
+				<span class="glyphicon glyphicon-camera" id="editMainImage"></span>
+			</td>
 		</tr>
 		
 		<!-- 이름 -->
 		<tr id="name">
+			<td></td>
 			<th>Username</th>
 			<td class="editNameBtn">${ name }</td>
 			<td><span class="glyphicon glyphicon-pencil editNameBtn" id="editNameBtn" ></span></td>
 		</tr>
 		<tr id="nameForEdit" >
+			<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
 			<th>Username</th>
 			<td colspan="2">
-				<input type="text" placeholder="Username" value="${name}"/> <br />
+				<input type="text" placeholder="Username" name="name" value="${name}"/> <br />
+				<span id="validationCheck"></span>
 				<span id="cancelName">Cancel</span>
 			</td>
 		</tr>	
 		
 		<!-- 이메일 -->
 		<tr id="email">
+			<td></td>
 			<th>Email</th>
 			<td colspan="2">${ email }</td>
 		</tr>
@@ -188,21 +206,23 @@ $(document).ready(function() {
 		
 		<!-- 비밀번호 -->
 		<tr id="password">
+			<td></td>
 			<th>Password</th>
 			<td class="editPasswordBtn"> ********</td>
 			<td><span class="glyphicon glyphicon-pencil editPasswordBtn" id="editPassword"></span></td>
 		</tr>
 		
 		<tr id="passwordForEdit">
+			<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
 			<th>Password</th>
 			<td colspan="2">
 				<input type="password" name="currentPassword" placeholder="Current Password" />
 				<br/>
 				<br/>
-				<input type="password" name="newPassword1" placeholder="New Password" />
+				<input type="password" name="newPassword" placeholder="New Password" />
 				<br/>
 				<br/>
-				<input type="password" name="newPassword2" placeholder="New Password check" />
+				<input type="password" name="newPasswordCheck" placeholder="New Password check" />
 				<br/>
 				<br/>
 				<span id="cancelPassword">Cancel</span>
@@ -211,22 +231,29 @@ $(document).ready(function() {
 		
 		<!-- 연락처 -->
 		<tr id="phoneNumber">
-			<th>Phonenumber</th>
-			<td class="editPhonenumberBtn">
-				<c:if test="${ empty phonenumber }">
+			<td>
+				<a href="#" data-toggle="popover" title="Phone Number?" data-content="여행 예약을 위해 필요한 항목">
+					<span class="glyphicon glyphicon-question-sign"></span>
+				</a>			
+			</td>
+			<th>phoneNumber</th>
+			<td class="editphoneNumberBtn">
+				<c:if test="${ empty phoneNumber }">
 					입력된 전화번호가 없습니다.
 				</c:if>
-				<c:if test="${ not empty phonenumber }">
+				<c:if test="${ not empty phoneNumber }">
 					${ phoneNumber }
 				</c:if>
 			</td>
-			<td><span class="glyphicon glyphicon-pencil editPhonenumberBtn" id="editPhoneNumber"></span></td>
+			<td><span class="glyphicon glyphicon-pencil editphoneNumberBtn" id="editPhoneNumber"></span></td>
 		</tr>
 		
 		<tr id="phoneNumberForEdit">
-			<th>Phonenumber</th>
+			<td>
+			</td>
+			<th>phoneNumber</th>
 			<td colspan="2">
-				<input type="text" name="phoneNumber" placeholder="Phonenumber" value="${ phoneNumber }"/> <br/> <br/>
+				<input type="text" name="phoneNumber" placeholder="phoneNumber" value="${ phoneNumber }"/> <br/> <br/>
 				<span id="cancelPhoneNumber">Cancel</span>
 			</td>
 		</tr>			
@@ -234,6 +261,7 @@ $(document).ready(function() {
 		
 		<tr>
 		<td colspan="3">
+			<br/>
 			<input type="submit" class="btn btn-default" value="save"></input>
 		</td>
 		</tr>
@@ -243,9 +271,5 @@ $(document).ready(function() {
 </div> <!-- personalInfoWrapper : close -->
 
 
-
-
-
-	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

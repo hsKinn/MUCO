@@ -7,8 +7,10 @@ table#personalInfoTable {
 }
 
 div#personalInfoWrapper {
-	background-color: yellow;
 	float: left;
+	background-color: #c3c3c3;
+	margin-left: 20%;
+	margin-top: 15px;
 }
 
 img#editImg {

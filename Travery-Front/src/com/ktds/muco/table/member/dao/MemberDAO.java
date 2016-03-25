@@ -57,6 +57,7 @@ public class MemberDAO {
 	 * 
 	 * @author 김광민
 	 * 
+	 * validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER")); @author 이기연 수정 
 	 */
 	public MemberVO getMemberByEmailAndPassword(MemberVO memberVO) {
 		
@@ -86,6 +87,8 @@ public class MemberDAO {
 				validMemberVO.setEmail(rs.getString("EMAIL"));
 				validMemberVO.setPassword(rs.getString("PASSWORD"));
 				validMemberVO.setName(rs.getString("NAME"));
+				// 이부분 추가 
+				validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
 				validMemberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
 				validMemberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
 				validMemberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
@@ -104,13 +107,13 @@ public class MemberDAO {
 	}
 	
 	/**
-	 * 회원 정보 수정
+	 *
+	 * 회원 이름 수정 
 	 * 
 	 * @author 이기연
 	 * 
 	 */
-	public void modifyPersonalInfo(MemberVO memberVO) {
-
+	public void updateName(MemberVO memberVO) {
 		loadOracleDriver();
 		
 		Connection conn = null;
@@ -119,11 +122,10 @@ public class MemberDAO {
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			
-			String query = XML.getNodeString("//query/member/modifyPersonalInfo/text()");
+			String query = XML.getNodeString("//query/member/updateName/text()");
 			stmt = conn.prepareStatement(query);
-			stmt.setString(1, memberVO.getEmail());
-			stmt.setString(2, memberVO.getPassword());
-			stmt.setString(3, memberVO.getName());
+			stmt.setString(1, memberVO.getName());
+			stmt.setString(2, memberVO.getEmail());
 			
 			stmt.executeUpdate();
 
@@ -133,9 +135,50 @@ public class MemberDAO {
 		}
 		finally {
 			closeDB(conn, stmt, null);	
+		}		
+	}
+	
+	/**
+	 * 회원 번호 수정
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void updatePhoneNumber(MemberVO memberVO) {
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/updatePhoneNumber/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getPhoneNumber());
+			stmt.setString(2, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
 		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
+	}
+	
+	/**
+	 * 회원 비밀번호 수정
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void updatePassword(MemberVO memberVO) {
 		
 	}
+	
 	
 	/**
 	 * 
