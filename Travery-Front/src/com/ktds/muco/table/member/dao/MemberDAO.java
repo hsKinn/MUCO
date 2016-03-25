@@ -104,36 +104,80 @@ public class MemberDAO {
 	}
 	
 	/**
-	 * 회원 정보 수정
+	 * 회원 이름 수정 
 	 * 
 	 * @author 이기연
 	 * 
 	 */
-	public void modifyPersonalInfo(MemberVO memberVO) {
-
-		loadOracleDriver();
+	public void updateName(MemberVO memberVO) {
+		int checkCount = 0;
 		
+		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
-		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
-			String query = XML.getNodeString("//query/member/modifyPersonalInfo/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setString(1, memberVO.getEmail());
-			stmt.setString(2, memberVO.getPassword());
-			stmt.setString(3, memberVO.getName());
-			
-			stmt.executeUpdate();
+		ResultSet rs = null;
 
-			
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/updateName/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, memberVO.getName());
+			stmt.setString(2, memberVO.getEmail());
+
+			checkCount = stmt.executeUpdate();
+
+			if (checkCount > 0) {
+				stmt.close();
+				System.out.println("회원 이름 업데이트 성공");
+			}
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}
+		} finally {
+			closeDB(conn, stmt, rs);
+		}		
+	}
+	
+	/**
+	 * 
+	 * 회원 번호 수정
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void updatePhoneNumber(MemberVO memberVO) {
+		int checkCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/updatePhoneNumber/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, memberVO.getPhoneNumber());
+			stmt.setString(2, memberVO.getEmail());
+
+			checkCount = stmt.executeUpdate();
+
+			if (checkCount > 0) {
+				stmt.close();
+				System.out.println("회원 번호 업데이트 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}	
 		
 	}
 	

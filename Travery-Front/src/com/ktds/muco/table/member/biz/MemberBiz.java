@@ -81,7 +81,7 @@ public class MemberBiz {
 	 * @author 이기연
 	 * 
 	 */
-	public boolean modifyPersonalInfo(HttpServletRequest request) {
+	public boolean updatePersonalInfo(HttpServletRequest request) {
 		
 		//1. 세션정보
 		HttpSession session = request.getSession();
@@ -95,16 +95,23 @@ public class MemberBiz {
 		String newPassword = request.getParameter("newPassword");
 		String phoneNumber = request.getParameter("phoneNumber");
 		
-		// origin info 와 비교 
-		
-		// insert new info 
-		memberVO.setName(name);
-		memberVO.setPassword(newPassword);
-		memberVO.setPhoneNumber(phoneNumber);
-		
-		
-		memberDAO.modifyPersonalInfo(memberVO);
-		
+		// name 비교
+		if ( !name.equals(memberVO.getName()) ) {
+			memberVO.setName(name);
+			memberDAO.updateName(memberVO);
+			return true;
+		} 
+		// password 비교 
+		else if ( !password.equals(memberVO.getPassword()) && newPassword.length() > 0 ) {
+			memberVO.setPassword(newPassword);
+			return true;
+		}
+		// phonenumber 비교
+		else if ( !phoneNumber.equals(memberVO.getPhoneNumber()) ) {
+			memberVO.setPhoneNumber(phoneNumber);
+			memberDAO.updatePhoneNumber(memberVO);
+			return true;
+		} 
 		
 		return false;
 	}

@@ -1,16 +1,19 @@
 @CHARSET "UTF-8";
 
 /* 이기연 */
+div#personalInfoWrapper {
+	float: left;
+	margin-left: 30%;
+	margin-top: 15px;
+}
+
 table#personalInfoTable {
 	border-spacing: 50px;
 	
 }
-
-div#personalInfoWrapper {
-	background-color: yellow;
-	float: left;
+h1 {
+	text-align: center;
 }
-
 img#editImg {
 	width: 10px;
 }

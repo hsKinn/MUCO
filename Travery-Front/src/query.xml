@@ -35,6 +35,16 @@
      		WHERE	EMAIL = ?
      		AND		PASSWORD = ?
      	</getMemberByIdAndPassword>
+     	<updateName>
+     		UPDATE	MEMBER
+     		SET		NAME = ?
+     		WHERE	EMAIL = ?
+     	</updateName>
+     	<updatePhoneNumber>
+     		UPDATE	MEMBER
+     		SET		PHONE_NUMBER = ?
+     		WHERE	EMAIL = ?     	
+     	</updatePhoneNumber>
 	</member>
 	
 	<pack>
