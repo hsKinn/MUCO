@@ -27,10 +27,6 @@ $(document).ready(function() {
 	});
 	$("#personalInfoMenu").css("color", "#ffffff");
 	
-	$("#name").mouseenter(function(){
-		cursor
-	});
-	
 	// edit icon jquery 색상
 	$("#editMainImage").hover(function(){
 		$("#editMainImage").css("color", "#333333");
@@ -64,6 +60,7 @@ $(document).ready(function() {
 	$("#nameForEdit").hide();
 	$("#passwordForEdit").hide();
 	$("#phoneNumberForEdit").hide();
+	$("#alertMsg").hide();
 	
 	// name 수정 hide / show 
 	$(".editNameBtn").click(function(){
@@ -96,12 +93,11 @@ $(document).ready(function() {
 		$("#name").show();
 	});
 	
-	 $("#name").blur(function(){
+	 $("#nameInput").blur(function(){
          
          $.post(
-               
-            "<c:url value="/memberEmailCheck" />"
-            , {"checkUserEmail" : $("#userEmail").val() }
+            "<c:url value="/nameCheck" />"
+            , {"name" : $("#nameInput").val() }
             , function(data){
                
                var jsonData = {};
@@ -113,13 +109,19 @@ $(document).ready(function() {
                }
                
                if ( jsonData.result ) {
-                  if ( jsonData.isExistMemberEmail ) {
-                     alert("존재하는 아이디입니다.");
-                     $("#userEmail").val("");
-                     $("#userEmail").focus();
+                  if ( jsonData.isExistName || $("#nameInput").val() == "" ) {
+	               	 $("#alertMsg").show();
+                     $("#nameInput").val("");
+                     $("#nameInput").focus();
+                     
+                     $("#nameIcon").css("color", "red");
+                     $("#submit").attr("disabled",true);
                   }
                   else {
-                     
+                	  $("#nameAlertMsg").hide();
+                	  $("#nameIcon").css("color", "darkblue");
+                	  
+                	  $("#submit").removeAttr("disabled");
                   }
                }
                else{
@@ -132,14 +134,25 @@ $(document).ready(function() {
       });
 
 	
-	
-	
 	// password 
 	// - cancel	
 	$("#cancelPassword").click(function() {
 		$("#passwordForEdit").hide();
 		$("#password").show();
 	});
+	// new password 2개 맞는지 체크하기 
+	 $("#newPasswordCheck").blur(function(){
+
+		 if ( $("#newPasswordCheck").val() == $("#newPassword").val() && $("#newPasswordCheck").val() != "" ) {
+			 $("#passwordAlertMsg").show();
+		 
+		 } else {
+			 $("#passwordAlertMsg").hide();
+		 }
+            
+      });
+	
+	
 	
 	// phonenumber
 	// - cancel	
@@ -167,118 +180,118 @@ $(document).ready(function() {
 <h1>Personal Info</h1>
 
 	<form id="personalInfoForm" method="post" action="/personalInfoAction" enctype="multipart/Form-data">
-	<table class="table" id="personalInfoTable">
-		
-		<!-- 사진 -->
-		<tr id="photo">
-			<td>
-				<a href="#" data-toggle="photo_popover" title="Photo?" data-content="자신의 프로필 사진">
-					<span class="glyphicon glyphicon-question-sign"></span>
-				</a>			
-			</td>
-			<th>Photo</th>
-			<td>
-				<c:if test="${ empty mainImageLocation }" >
-					<img id="profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+		<table class="table" id="personalInfoTable">
+			
+			<!-- 사진 -->
+			<tr id="photo">
+				<td>
+					<a href="#" data-toggle="photo_popover" title="Photo?" data-content="자신의 프로필 사진">
+						<span class="glyphicon glyphicon-question-sign"></span>
+					</a>			
+				</td>
+				<th>Photo</th>
+				<td>
+					<c:if test="${ empty mainImageLocation }" >
+						<img id="profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+						<br/>
+						<b>사진을 등록해주세요</b>
+					</c:if>
+					
+					<c:if test="${ not empty mainImageLocation }" >
+						<img id="profile" class="img-circle" />
+					</c:if>
+				</td>
+				<td>
+					<span class="glyphicon glyphicon-camera" id="editMainImage"></span>
 					<br/>
-					사진을 등록해주세요
-				</c:if>
-				
-				<c:if test="${ not empty mainImageLocation }" >
-					<img id="profile" class="img-circle" />
-				</c:if>
-			</td>
-			<td>
-				<span class="glyphicon glyphicon-camera" id="editMainImage"></span>
+					<input type="file" id="file" name="file" />
+				</td>
+			</tr>
+			
+			<!-- 이름 -->
+			<tr id="name">
+				<td></td>
+				<th>Username</th>
+				<td class="editNameBtn" style="cursor:auto;">${ name }</td>
+				<td><span class="glyphicon glyphicon-pencil editNameBtn" id="editNameBtn" ></span></td>
+			</tr>
+			<tr id="nameForEdit" >
+				<td><span id="nameIcon" class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
+				<th>Username</th>
+				<td colspan="2">
+					<input type="text" class="form-control" placeholder="Username" name="name" value="${name}" id="nameInput" >
+					<span id="nameAlertMsg" style="color:red;">사용할 수 없는 이름입니다.</span> <br/>
+					<button type="button" class="btn btn-default btn-sm" id="cancelName">Cancel</button>
+				</td>
+			</tr>	
+			
+			<!-- 이메일 -->
+			<tr id="email">
+				<td></td>
+				<th>Email</th>
+				<td colspan="2">${ email }</td>
+			</tr>
+			
+			
+			<!-- 비밀번호 -->
+			<tr id="password">
+				<td></td>
+				<th>Password</th>
+				<td class="editPasswordBtn" style="cursor:auto;"> ********</td>
+				<td><span class="glyphicon glyphicon-pencil editPasswordBtn" id="editPassword"></span></td>
+			</tr>
+			
+			<tr id="passwordForEdit">
+				<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
+				<th>Password</th>
+				<td colspan="2">
+					<input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="Current Password">
+					<input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password">
+					<input type="password" class="form-control" id="newPasswordCheck" name="newPasswordCheck" placeholder="New Password check">
+					<br/>
+					<span id="passwordAlertMsg" style="color:red;">입력하신 비밀번호가 일치하지 않습니다</span>
+					<br/>
+					<button type="button" class="btn btn-default btn-sm" id="cancelPassword">Cancel</button>
+				</td>
+			</tr>
+			
+			<!-- 연락처 -->
+			<tr id="phoneNumber">
+				<td>
+					<a href="#" data-toggle="popover" title="Phone Number?" data-content="여행 예약을 위해 필요한 항목">
+						<span class="glyphicon glyphicon-question-sign"></span>
+					</a>			
+				</td>
+				<th>PhoneNumber</th>
+				<td class="editphoneNumberBtn" style="cursor:auto;">
+					<c:if test="${ empty phoneNumber }">
+						입력된 전화번호가 없습니다.
+					</c:if>
+					<c:if test="${ not empty phoneNumber }">
+						${ phoneNumber }
+					</c:if>
+				</td>
+				<td><span class="glyphicon glyphicon-pencil editphoneNumberBtn" id="editPhoneNumber"></span></td>
+			</tr>
+			
+			<tr id="phoneNumberForEdit">
+				<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
+				<th>PhoneNumber</th>
+				<td colspan="2">
+					<input type="text" class="form-control" name="phoneNumber" placeholder="phoneNumber" value="${ phoneNumber }" >
+					<br/>
+					<button type="button" class="btn btn-default btn-sm" id="cancelPhoneNumber">Cancel</button>
+				</td>
+			</tr>			
+			
+			
+			<tr>
+			<td colspan="4">
 				<br/>
-				<input type="file" id="file" name="file" />
+				<input type="submit" id="submit" class="btn btn-default" value="save"></input>
 			</td>
-		</tr>
-		
-		<!-- 이름 -->
-		<tr id="name">
-			<td></td>
-			<th>Username</th>
-			<td class="editNameBtn">${ name }</td>
-			<td><span class="glyphicon glyphicon-pencil editNameBtn" id="editNameBtn" ></span></td>
-		</tr>
-		<tr id="nameForEdit" >
-			<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
-			<th>Username</th>
-			<td colspan="2">
-				<input type="text" class="form-control" placeholder="Username" name="name" value="${name}" >
-				<br />
-				<span id="validationCheck"></span>
-				<button type="button" class="btn btn-default btn-sm" id="cancelName">Cancel</button>
-			</td>
-		</tr>	
-		
-		<!-- 이메일 -->
-		<tr id="email">
-			<td></td>
-			<th>Email</th>
-			<td colspan="2">${ email }</td>
-		</tr>
-		
-		
-		<!-- 비밀번호 -->
-		<tr id="password">
-			<td></td>
-			<th>Password</th>
-			<td class="editPasswordBtn"> ********</td>
-			<td><span class="glyphicon glyphicon-pencil editPasswordBtn" id="editPassword"></span></td>
-		</tr>
-		
-		<tr id="passwordForEdit">
-			<td><span class="glyphicon glyphicon-ok-circle" style="color:darkblue;"></span></td>
-			<th>Password</th>
-			<td colspan="2">
-				<input type="password" class="form-control" name="currentPassword" placeholder="Current Password">
-				<input type="password" class="form-control" name="newPassword" placeholder="New Password">
-				<input type="password" class="form-control" name="newPasswordCheck" placeholder="New Password check">
-				<br/>
-				<button type="button" class="btn btn-default btn-sm" id="cancelPassword">Cancel</button>
-			</td>
-		</tr>
-		
-		<!-- 연락처 -->
-		<tr id="phoneNumber">
-			<td>
-				<a href="#" data-toggle="popover" title="Phone Number?" data-content="여행 예약을 위해 필요한 항목">
-					<span class="glyphicon glyphicon-question-sign"></span>
-				</a>			
-			</td>
-			<th>phoneNumber</th>
-			<td class="editphoneNumberBtn">
-				<c:if test="${ empty phoneNumber }">
-					입력된 전화번호가 없습니다.
-				</c:if>
-				<c:if test="${ not empty phoneNumber }">
-					${ phoneNumber }
-				</c:if>
-			</td>
-			<td><span class="glyphicon glyphicon-pencil editphoneNumberBtn" id="editPhoneNumber"></span></td>
-		</tr>
-		
-		<tr id="phoneNumberForEdit">
-			<td>
-			</td>
-			<th>phoneNumber</th>
-			<td colspan="2">
-				<input type="text" class="form-control" name="phoneNumber" placeholder="phoneNumber" value="${ phoneNumber }" >
-				<br/>
-				<button type="button" class="btn btn-default btn-sm" id="cancelPhoneNumber">Cancel</button>
-			</td>
-		</tr>			
-		
-		
-		<tr>
-		<td colspan="4">
-			<br/>
-			<input type="submit" class="btn btn-default" value="save"></input>
-		</td>
-		</tr>
-	</table>
+			</tr>
+		</table>
 	</form>
 	
 </div> <!-- personalInfoWrapper : close -->

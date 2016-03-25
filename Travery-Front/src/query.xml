@@ -45,6 +45,16 @@
      		SET		PHONE_NUMBER = ?
      		WHERE	EMAIL = ?     	
      	</updatePhoneNumber>
+     	<updatePassword>
+     		UPDATE	MEMBER
+     		SET		PASSWORD = ?
+     		WHERE	EMAIL = ?       	
+     	</updatePassword>
+     	<isExistName>
+     		SELECT	COUNT(NAME) AS COUNT
+     		FROM	MEMBER
+     		WHERE	NAME = ?
+     	</isExistName>
 	</member>
 	
 	<pack>

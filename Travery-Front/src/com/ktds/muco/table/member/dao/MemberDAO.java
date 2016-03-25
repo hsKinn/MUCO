@@ -176,9 +176,69 @@ public class MemberDAO {
 	 * 
 	 */
 	public void updatePassword(MemberVO memberVO) {
+		loadOracleDriver();
 		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/updatePassword/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getPassword());
+			stmt.setString(2, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
 	}
 	
+	/**
+	 * 이름 중복 체크
+	 * 0: 중복 X 
+	 * 1: 중복 O
+	 * 
+	 * @author 이기연
+	 * 
+	 * 
+	 */
+	public int isExistName(String name) {
+	
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/isExistName/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, name);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return  rs.getInt("COUNT");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+		return 0;
+	}
+
 	
 	/**
 	 * 
@@ -219,5 +279,8 @@ public class MemberDAO {
 			} catch (SQLException e) {}
 		}
 	}
+
+
+	
 
 }

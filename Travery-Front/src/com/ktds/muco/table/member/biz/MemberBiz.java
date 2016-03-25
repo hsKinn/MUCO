@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.member.dao.MemberDAO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.util.file.MultipartHttpServletRequest;
 
 /**
  * 
@@ -81,7 +82,8 @@ public class MemberBiz {
 	 * @author 이기연
 	 * 
 	 */
-	public boolean updatePersonalInfo(HttpServletRequest request) {
+	public boolean updatePersonalInfo(MultipartHttpServletRequest request) {
+		boolean updateCheck = false;
 		
 		//1. 세션정보
 		HttpSession session = request.getSession();
@@ -94,27 +96,44 @@ public class MemberBiz {
 		String password = request.getParameter("currentPassword");
 		String newPassword = request.getParameter("newPassword");
 		String phoneNumber = request.getParameter("phoneNumber");
+		System.out.println(name);
+		System.out.println(password);
+		System.out.println(phoneNumber);
 		
 		// name 비교
 		if ( !name.equals(memberVO.getName()) ) {
 			memberVO.setName(name);
 			memberDAO.updateName(memberVO);
-			return true;
+			updateCheck =  true;
 		} 
 		// password 비교 
-		else if ( !password.equals(memberVO.getPassword()) && newPassword.length() > 0 ) {
+		if ( !password.equals(memberVO.getPassword()) && newPassword.length() > 0 ) {
 			memberVO.setPassword(newPassword);
 			memberDAO.updatePassword(memberVO);
-			return true;
+			updateCheck = true;
 		}
 		// phonenumber 비교
-		else if ( !phoneNumber.equals(memberVO.getPhoneNumber()) ) {
+		if ( !phoneNumber.equals(memberVO.getPhoneNumber()) ) {
 			memberVO.setPhoneNumber(phoneNumber);
 			memberDAO.updatePhoneNumber(memberVO);
-			return true;
+			updateCheck = true;
 		} 
 		
-		return false;
+		return updateCheck;
+	}
+	
+	/**
+	 * 이름 중복 체크
+	 * 0: 중복 X 
+	 * 1: 중복 O
+	 * 
+	 * @author 이기연
+	 * 
+	 * 
+	 */
+	public boolean isExistName(String name) {
+
+		return memberDAO.isExistName(name) > 0;
 	}
 
 }

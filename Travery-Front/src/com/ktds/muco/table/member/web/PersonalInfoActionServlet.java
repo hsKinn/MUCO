@@ -42,8 +42,8 @@ public class PersonalInfoActionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// form POST
-		boolean editPresonalInfoSuccess = memberBiz.updatePersonalInfo(request);
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+		boolean editPresonalInfoSuccess = memberBiz.updatePersonalInfo(multipartRequest);
 		
 		if (editPresonalInfoSuccess) {
 			response.sendRedirect(Root.get(this) + "/personalInfo");
