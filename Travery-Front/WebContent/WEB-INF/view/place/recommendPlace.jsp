@@ -30,13 +30,24 @@
 		<input type="text" placeholder="# Search" />
 	</div>
 	<div id="inner_wrapper">
-	<div id="daily_part">daily recommends
+	<div id="daily_part">
+		<div class="tag"><img src="<c:url value="/resource/img/place/tag-image.png" />" /></div>daily recommends
+		
+		</div>
+	<div id="weekly_part">
+		<div class="tag"><img src="<c:url value="/resource/img/place/tag-image.png" />" /></div>
+	weekly recommends
 	</div>
-	<div id="weekly_part">weekly recommends</div>
-	<div id="monthly_part">monthly recommends</div>
+	<div id="monthly_part">
+		<div class="tag"><img src="<c:url value="/resource/img/place/tag-image.png" />" /></div>
+	monthly recommends
+	</div>
 	</div>
 	<div id="inner_wrapper2">
-	<div id="new_part">new recommends</div>
+	<div id="new_part">
+		<div class="tag"><img src="<c:url value="/resource/img/place/tag-image.png" />" /></div>
+	new recommends
+	</div>
 	</div>
 		<div id="btn-recommend">
 		<a href="/placeInfoControl" id="placeInfoControl">
@@ -44,6 +55,8 @@
 		</a>
 	</div>
 </div>
+
+
 
 
 

@@ -25,6 +25,11 @@ div#inner_wrapper2 {
 	background-color: orange;
 }
 
+div.tag img {
+	width: 30px;
+	height: 30px;
+}
+
 div#search_part {
 	margin-top: 50px;
 	margin-left: 20%;
@@ -72,7 +77,7 @@ div#btn-recommend {
 	width: 8%;
 	font-size: 30px;
 	margin-right: 6%;
-	background-color: black;
+	background-color: white;
 	float: right;
 	cursor: pointer;
 }

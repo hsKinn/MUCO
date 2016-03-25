@@ -129,4 +129,24 @@
     <servlet-name>PlaceInfoControlServlet</servlet-name>
     <url-pattern>/placeInfoControl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceInfoCreateServlet</display-name>
+    <servlet-name>PlaceInfoCreateServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceInfoCreateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceInfoCreateServlet</servlet-name>
+    <url-pattern>/placeInfoCreate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceInfoAddAddressServlet</display-name>
+    <servlet-name>PlaceInfoAddAddressServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceInfoAddAddressServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceInfoAddAddressServlet</servlet-name>
+    <url-pattern>/placeInfoAddAddress</url-pattern>
+  </servlet-mapping>
 </web-app>

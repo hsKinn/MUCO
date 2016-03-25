@@ -1,8 +1,0 @@
-@CHARSET "UTF-8";
-
-/* 김동규 */
-
-div#recommendPlace_Wrapper {
-	width: 100%;
-	height: 100%;	
-}

@@ -82,9 +82,10 @@
 
 
 
-
-
-	<div id="my_recommendPlaceTitle">내추천여행지</div>
+	<div id="my_recommendPlaceTitle">
+		<img src="<c:url value="/resource/img/place/tags-image.png" />" />
+		내추천여행지
+	</div>
 
 	<div id="inner_wrapper">
 		<div id="my_previousPlaceList">이미지 List정보 받아오기 checkbox/placeName/image</div>

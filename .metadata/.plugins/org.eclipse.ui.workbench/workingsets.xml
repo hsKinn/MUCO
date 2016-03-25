@@ -3,5 +3,8 @@
 <workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458782634605_1" label="travery" name="travery">
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Travery" type="4"/>
 </workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458868267124_2" label="admin" name="admin">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Article-Admin" type="4"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458698399822_0" label="Window Working Set" name="Aggregate for window 1458698399821"/>
 </workingSetManager>
