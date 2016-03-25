@@ -129,14 +129,4 @@
     <servlet-name>SelectedCountryServlet</servlet-name>
     <url-pattern>/selectedCountry</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>InitHitTheRoadServlet</display-name>
-    <servlet-name>InitHitTheRoadServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.place.web.InitHitTheRoadServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>InitHitTheRoadServlet</servlet-name>
-    <url-pattern>/initHitTheRoad</url-pattern>
-  </servlet-mapping>
 </web-app>

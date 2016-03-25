@@ -53,7 +53,8 @@
 <script src="<c:url value="/resource/js/proj.js" />"></script>
 <script src="<c:url value="/resource/js/map.js" />"></script>
 
-<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
+<script
+	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 
 <script>
 	jQuery.noConflict();
@@ -98,8 +99,21 @@
 				animate : true
 			},
 			onRegionClick: function(event, code) {
+				
 		           var map = $('#map1').vectorMap('get', 'mapObject');
-		           $('#countries').append('<span>' + map.getRegionName(code) + '</span>');
+		           var countryList = ${ countryList };
+		           
+		           // 자신에게 맞는 나라 CSS 넣기
+		           for (var i = 0; int < countryList.size(); i++) {
+		        	   
+		        	   var newCountry = ${ countryList.get(i) };
+		        	   
+		        	   if( newCountryList.equals( map.getRegionName(code) ) ){
+		        		   
+		        		   $('#countries').append('<div id="selectedCountryId" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; color:${ countryVO.countryFontColor }; background-color: ${ countryVO.countryColor }; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
+		        		   $('#selectedCountryId').css("background-color", "${ newCountryList. }")
+		        	   }
+				}
 		    },
 			series : {
 				regions : [ {
@@ -299,13 +313,6 @@
 
 	$(document).ready(function() {
 		
-		$(this).click(function() {
-			
-			var selectedCountryName = $("#countries").html();
-			alert(selectedCountryName);
-			location.href = "<c:url value='/selectedCountry?selectedCountryName=" + selectedCountryName + "' />";
-			
-		});
 	});
 </script>
 
@@ -313,33 +320,39 @@
 <div id="hitTheRoad">
 
 	<!-- 첫번째 열 -->
-	<div class="row" style="width: 100%; height: 85%; float: left; margin-left: 10px; margin-top: 10px;">
-		
+	<div class="row"
+		style="width: 100%; height: 85%; float: left; margin-left: 10px; margin-top: 10px;">
+
 		<!-- 나라 선택, 여행지 검색, 나의 패키지, 경로설정 -->
 		<div class="col-sm-10" style="height: 100%;">
-			<div class="container" style="height: 100%; width: 100%; float: left;">
-			
+			<div class="container"
+				style="height: 100%; width: 100%; float: left;">
+
 				<!-- 탭 -->
 				<ul class="nav nav-pills">
-					<li class="active"><a data-toggle="pill" href="#home">나라 선택</a></li>
+					<li class="active"><a data-toggle="pill" href="#home">나라
+							선택</a></li>
 					<li><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
 					<li><a data-toggle="pill" href="#menu2">나의 패키지</a></li>
 					<li><a data-toggle="pill" href="#menu3">경로 설정</a></li>
 				</ul>
 
-				<div class="tab-content" style="height: 90%; width: 100%; margin-top: 10px;">
+				<div class="tab-content"
+					style="height: 90%; width: 100%; margin-top: 10px;">
 
 					<!-- 나라 선택 -->
 					<div id="home" class="tab-pane fade in active">
-						<div id="map1" style="width: 1350px; height: 550px; background-color: red;"></div>
-						<button id="focus-multiple" style="background-color: #333333; color: #ffffff; padding: 3px; margin-top:2px;">한국과 일본</button>
-						<button id="focus-init" style="background-color: #333333; color: #ffffff; padding: 3px; margin-top:2px; margin-left: 2px;">세계지도 보기</button>
+						<div id="map1" style="width: 1350px; height: 550px;"></div>
+						<button id="focus-multiple"
+							style="background-color: #333333; color: #ffffff; padding: 3px; margin-top: 2px;">
+							한국과 일본</button>
+						<button id="focus-init"
+							style="background-color: #333333; color: #ffffff; padding: 3px; margin-top: 2px; margin-left: 2px;">
+							세계지도 보기</button>
 					</div>
 
 					<!-- 여행지 검색 -->
-					<div id="menu1" class="tab-pane fade">
-						
-					</div>
+					<div id="menu1" class="tab-pane fade"></div>
 
 					<!-- 나의 패키지 -->
 					<div id="menu2" class="tab-pane fade"></div>
@@ -349,52 +362,50 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- 선택된 나라 리스트 -->
 		<div class="col-sm-2" style="height: 100%;">
-			<c:set var="selectedCountryList" value="${ sessionScope._SELECTED_COUNTRY_.getSelectedCountryList() }" />
-			<c:if test="${ not empty selectedCountryList }">
-				<c:forEach items="${ selectedCountryList }" var="countryVO">
-					<div id="countries" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; color:${ countryVO.countryFontColor }; background-color: ${ countryVO.countryColor }; margin-left: 10px;">${ countryVO.countryName }</div>
-				</c:forEach>
-			</c:if>
+			<div id="countries" style="width: 100%; height: 100%;"></div>
 		</div>
 	</div>
-	
+
 	<!-- 두번째 열 -->
-	<div class="row" style="width: 100%; height: 30%; float: left; margin-left: 10px; margin-top: 10px;">
-		
+	<div class="row"
+		style="width: 100%; height: 30%; float: left; margin-left: 10px; margin-top: 10px;">
+
 		<!-- 여행지 임시 리스트 -->
-		<div class="col-sm-10" style="background-color: #333333; height: 100%;">
-		</div>
-		
+		<div class="col-sm-10"
+			style="background-color: #333333; height: 100%;"></div>
+
 		<!-- 기준 선택 -->
 		<div class="col-sm-2" style="height: 100%;">
-		
-				<!-- Drop Down : X 축 -->
-				<div class="dropdown" style="float:left;">
-					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X 축
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">Bright / Dark</a></li>
-						<li><a href="#">High Price / Low Price</a></li>
-						<li><a href="#">Active / Calm</a></li>
-					</ul>
-				</div>
-				
-				<!-- Drop Down : Y 축 -->
-				<div class="dropdown" style="float:left; margin-left: 20px;">
-					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y 축
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">Bright / Dark</a></li>
-						<li><a href="#">High Price / Low Price</a></li>
-						<li><a href="#">Active / Calm</a></li>
-					</ul>
-				</div>
-				
+
+			<!-- Drop Down : X 축 -->
+			<div class="dropdown" style="float: left;">
+				<button class="btn btn-default dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					X 축 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Bright / Dark</a></li>
+					<li><a href="#">High Price / Low Price</a></li>
+					<li><a href="#">Active / Calm</a></li>
+				</ul>
+			</div>
+
+			<!-- Drop Down : Y 축 -->
+			<div class="dropdown" style="float: left; margin-left: 20px;">
+				<button class="btn btn-default dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					Y 축 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Bright / Dark</a></li>
+					<li><a href="#">High Price / Low Price</a></li>
+					<li><a href="#">Active / Calm</a></li>
+				</ul>
+			</div>
+
 		</div>
 	</div>
 </div>

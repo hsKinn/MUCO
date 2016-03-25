@@ -54,7 +54,7 @@ $(document).ready(function() {
 
    <div id="leftMenu">
       <ul>
-         <li><a href="<c:url value="/initHitTheRoad"/>" id="hitTheRoadMenu"> HIT THE ROAD </a></li>
+         <li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu"> HIT THE ROAD </a></li>
          <li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY PACKAGE </a></li>
          <li><a href="<c:url value="/sharePack"/>" id="sharePackMenu"> SHARE PACKAGE </a></li>
          <li><a href="<c:url value="/recommendPlace"/>" id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
