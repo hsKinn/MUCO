@@ -57,6 +57,15 @@
 <script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 
  <script>
+ $(document).ready(function(){
+     
+     $(".tapMenu").click(function(){
+           $(".placeDetail").css({ "display" : "block" });
+        });
+        $(".active").click(function(){
+           $(".placeDetail").css({ "display" : "none" });
+        });
+        
     jQuery.noConflict();
     jQuery(function(){
       var $ = jQuery;
@@ -274,6 +283,7 @@
         }
       });
     })
+ });
   </script>
 
 <!-- Hit the road -->
@@ -329,6 +339,58 @@
 		
 		<!-- 여행지 임시 리스트 -->
 		<div class="col-sm-10" style="background-color: #333333; height: 100%;">
+			<!-- 여행지 상세보기 페이지 -->
+	        <div class="placeDetail" data-toggle="modal" data-target="#myModal">KOREA</div>
+	      
+	        <!-- Modal -->
+	        <div class="modal fade" id="myModal" role="dialog">
+	          <div class="modal-dialog modal-lg" >
+	            <div class="modal-content">
+	               <div class="divHeader">
+	                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	               </div>
+	               
+	               <div class="divBody">
+	                 
+	                 <div class="travelImage" >
+	                   <h4 class="modal-title">travel image</h4>
+	                 </div>
+	                 
+	                 <div class="travelExplain" >
+	                   <div class="modal-header">
+	                      <h2 class="modal-title">travelTitle</h4>
+	                   </div>
+	                   <div class="modal-header" >
+	                      <h4 class="modal-descript">travelDescript</h4>
+	                   </div>
+	                   <div class="modal-header" >
+	                      <h4 class="modal-point">travelPoint</h4>
+	                      <button type="button" class="btn btn-info btn-lg" >점수등록</button>
+	                   </div>
+	                   <div class="modal-header" >
+	                      <h4 class="modal-reply">travelReply</h4>
+	                      <div id="writeReply">
+	                         <div style="float:left; width:70%;">
+	                         <textarea id="description" name="description" style="width:500px; height:47px;"></textarea>
+	                         </div>
+	                         <div style="float:left;">
+	                         <button type="button" class="btn btn-info btn-lg" >댓글등록</button>
+	                         </div>
+	                      </div>
+	                   </div>
+	                 </div>
+	                 
+	              </div>
+	             <!--  <div class="modal-body">
+	                <p>This is a large modal.</p>
+	              </div> -->
+	              <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	              </div>
+	            </div>
+	          </div>
+	        </div>			
+		
 		</div>
 		
 		<!-- 기준 선택 -->

@@ -23,6 +23,7 @@
 <script type="text/javascript">
 
 	function readURL(input) {
+    
 	    if (input.files && input.files[0]) {
 	        var reader = new FileReader();
 	        reader.onload = function (e) {
@@ -164,10 +165,13 @@
 			var password = "${password}";
 			if ($("#currentPassword").val() == password) {
 				$("#currentPasswordAlertMsg").hide();
+				$("#passwordIcon").css("color", "darkblue");
 			} else {
 				$("#currentPasswordAlertMsg").show();
 				$("#currentPassword").val("");
 				$("#currentPassword").focus();
+				$("#passwordIcon").css("color", "red");
+				
 			}
 		});
 
@@ -237,23 +241,27 @@
 					</a>
 				</td>
 				<th>Photo</th>
-				<td>
+				<td style="text-align:center;">
 					<c:if test="${ empty mainImageLocation }">
-						<img id="default_profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+						<label>
+							<img id="blah" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+							<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none;" accept="image/*" required/>
+						</label>
 						<br />
 						<b>사진을 등록해주세요</b>
 					</c:if> 
 					<c:if test="${ not empty mainImageLocation }">
 						<img id="blah" class="img-circle"
-						 src="#" style="width:85px; height:85px;"/><br/>
+						 src="D:\edit.png" style="width:85px; height:85px;"/><br/>
 						사진이 등록되어 있습니다.
+						<a href="<c:url value= "/download?fileId=${file.fileId}&articleId=${article.articleId}" />">${file.fileName}</a>
 					</c:if>
 				</td>
 				<td>
 					<br /> 
 					<label>
 						<span class="glyphicon glyphicon-camera" id="editMainImage" style="cursor: point;"></span>
-						<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none"/>
+						<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none;" accept="image/*" required/>
 					</label>
 					<br/>
 				</td>
@@ -271,7 +279,7 @@
 				<td><span id="nameIcon" class="glyphicon glyphicon-ok-circle"
 					style="color: darkblue;"></span></td>
 				<th>Username</th>
-				<td colspan="2">
+				<td colspan="2" style="text-align: center;">
 					<input type="text" class="form-control"
 					placeholder="Username" name="name" value="${name}" id="nameInput">
 					<span id="nameAlertMsg" style="color: red;">사용할 수 없는 이름입니다.</span>
@@ -301,7 +309,7 @@
 				<td><span id="passwordIcon"
 					class="glyphicon glyphicon-ok-circle" style="color: darkblue;"></span></td>
 				<th>Password</th>
-				<td colspan="2">
+				<td colspan="2" style="text-align: center;">
 					<input type="password" class="form-control"	id="currentPassword" name="currentPassword"
 					placeholder="Current Password"> 
 					<input type="password"
@@ -341,15 +349,15 @@
 				<td><span class="glyphicon glyphicon-ok-circle"
 					style="color: darkblue;"></span></td>
 				<th>PhoneNumber</th>
-				<td colspan="2">
+				<td colspan="2" style="text-align: center;">
 					<input type="text" id="inputPhoneNumber" class="form-control" name="phoneNumber" placeholder="phoneNumber" value="${ phoneNumber }"> <br />
-					<button type="button" class="btn btn-default btn-sm" id="cancelPhoneNumber">Cancel</button>
+					<button type="button" class="btn btn-default btn-sm" id="cancelPhoneNumber" >Cancel</button>
 				</td>
 			</tr>
 
 
 			<tr>
-				<td colspan="4"><br /> 
+				<td colspan="4" style="text-align: center;"><br /> 
 					<input type="submit" id="submit" class="btn btn-default" value="save"></input>
 				</td>
 			</tr>

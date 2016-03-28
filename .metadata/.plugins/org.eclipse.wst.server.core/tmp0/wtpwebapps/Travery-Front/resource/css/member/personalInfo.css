@@ -3,6 +3,7 @@
 /* 이기연 */
 table#personalInfoTable {
 	border-spacing: 50px;
+	width: 600px;
 	
 }
 
@@ -11,6 +12,11 @@ div#personalInfoWrapper {
 	background-color: #c3c3c3;
 	margin-left: 20%;
 	margin-top: 15px;
+	padding-top: 80px;
+	border-top-right-radius: 30px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
 }
 
 img#editImg {
@@ -23,6 +29,7 @@ img#profile{
 
 td {
 	cursor: pointer;
+	text-align: left;
 }
 
 span.glyphicon {
@@ -41,6 +48,7 @@ input #file {
     filter: alpha(opacity=0);
 }
 
-input[type="file"] {
-    display: none;
+td img{
+	width:85px;
+	height:85px;
 }
