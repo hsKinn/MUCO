@@ -63,13 +63,13 @@
 
 		$('#focus-single').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
-				region : 'US',
+				region : 'AU',
 				animate : true
 			});
 		});
 		$('#focus-multiple').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
-				regions : [ 'KR', 'JP' ],
+				regions : [ 'AU', 'JP' ],
 				animate : true
 			});
 		});
@@ -99,28 +99,40 @@
 				animate : true
 			},
 			onRegionClick: function(event, code) {
-		           var map = $("#map1").vectorMap('get', 'mapObject');
-		           $("#countries").append('<div id="selectedCountryId" style="background-color:#333333; color:#ffffff; text-align: center; font-weight: bold; width: 100px; margin-top: 10px; cursor: pointer; padding: 5px; float:left; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
-		    },
-			/*
-			onRegionClick: function(event, code) {
 				
-		           var map = $('#map1').vectorMap('get', 'mapObject');
-		           var countryList = ${ countryList };
-		           
-		           // 자신에게 맞는 나라 CSS 넣기
-		           for (var i = 0; int < countryList.size(); i++) {
-		        	   
-		        	   var newCountry = ${ countryList.get(i) };
-		        	   
-		        	   if( newCountryList.equals( map.getRegionName(code) ) ){
-		        		   
-		        		   $('#countries').append('<div id="selectedCountryId" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; color:${ countryVO.countryFontColor }; background-color: ${ countryVO.countryColor }; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
-		        		   $('#selectedCountryId').css("background-color", "${ newCountryList. }")
-		        	   }
-				}
+				var map = $('#map1').vectorMap('get', 'mapObject');
+
+				$.post (
+						"<c:url value="/selectedCountry"/>"
+						, { "selectedCountryName" : map.getRegionName(code) }
+						, function(data) {
+							
+							var jsonData = {};
+							
+							try {
+								jsonData = JSON.parse(data);
+							}
+							catch(e) {
+								console.log(e);
+								jsonData.result = false;
+							}
+							
+							if ( jsonData.result ) {
+								
+								if( jsonData.isExistCountry ) {
+									
+									$('#countries').append('<div id= "' + map.getRegionName(code) + '" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
+								}
+								else{
+									alert("해당 나라에는 여행지 데이터가 없습니다.");
+								}
+							}
+							else {
+								alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+								location.href = "<c:url value="/"/>"
+							}
+						});
 		    },
-		    */
 			series : {
 				regions : [ {
 					scale : [ '#C8EEFF', '#0071A4' ],
@@ -309,7 +321,7 @@
 						"ZM" : 15.69,
 						"ZW" : 5.57
 					}
-				}]
+				} ]
 			}
 		});
 	})
@@ -317,7 +329,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
 	});
 </script>
 
@@ -342,12 +354,16 @@
 					<li><a data-toggle="pill" href="#menu3">경로 설정</a></li>
 				</ul>
 
+				<!-- 탭 내용 -->
 				<div class="tab-content"
 					style="height: 90%; width: 100%; margin-top: 10px;">
 
 					<!-- 나라 선택 -->
 					<div id="home" class="tab-pane fade in active">
+
+						<!-- 지도 -->
 						<div id="map1" style="width: 1350px; height: 550px;"></div>
+
 						<button id="focus-multiple"
 							style="background-color: #333333; color: #ffffff; padding: 3px; margin-top: 2px;">
 							한국과 일본</button>

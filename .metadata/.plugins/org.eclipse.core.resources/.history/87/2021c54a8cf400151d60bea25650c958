@@ -1,0 +1,13 @@
+package com.ktds.muco.table.selectedCountry.vo;
+
+/**
+ * 
+ * 선택된 나라 리스트
+ * 
+ * @author 김광민
+ *
+ */
+public class SelectedCountryVO {
+
+	private
+}
