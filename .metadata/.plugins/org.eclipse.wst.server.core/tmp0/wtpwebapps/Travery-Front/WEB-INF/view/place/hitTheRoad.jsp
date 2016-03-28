@@ -378,9 +378,9 @@
 		
 		<!-- 선택된 나라 리스트 -->
 		<div class="col-sm-2" style="background-color: #333333; height: 100%;">
-			<ul class="countries" style="color:#ffffff;">
+			<div class="countries" style="color:#ffffff;">
 				
-			</ul>
+			</div>
 		</div>
 	</div>
 	
