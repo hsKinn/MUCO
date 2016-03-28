@@ -39,50 +39,6 @@
 			}
 		}) ;
 		
-		$(".packLike").click( function() {
-			
-			
-			alert("${pack.packId}");
-			
-			var a = $(".packLike").data('packId');
-			
-			
-			$.post(
-					"/packLike"
-					, { "packId" : a } 
-					, function(data) {
-						
-						var jsonData3 = {};
-						
-						try {
-							jsonData3 = JSON.parse(data);
-						}
-						catch(e) {
-							jsonData3.result = false;							
-						}
-						
-						console.log(jsonData3);
-						
-						if ( jsonData3.result) {
-							// 하트를 넣음
-							var text = $(".packLike").text();
-							if ( jsonData3.isPackLike ) {
-								$(".packLike").text("♥");							
-							}
-							else {
-								$(".packLike").text("♡");	
-							}
-						}
-						else {
-							alert("세션 만료");
-							location.href = "/";
-						}
-						
-					}
-					
-			  );
-		});		
-	
 
 	});
 	
@@ -178,13 +134,12 @@
 						  </table>
 			        </div>
 			        <div class="modal-footer">
-			                  추천
 			          <c:choose>
 			          <c:when test="${ pack.isExistPackLike() }">
-			          	<span class="packLike" data-packId='${ pack.packId }' >♥</span>			          
+			          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Like ♥</span>			          
 			          </c:when>
 			          <c:otherwise>
-			          	<span class="packLike">♡</span>		
+			          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Not Like ♡</span>		
 			          </c:otherwise>
 			          </c:choose>
 			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -192,6 +147,44 @@
 		     	 </div>
 		    </div>
 		 </div>
+		 
+		 <script>
+			 $(".${pack.packId}packLike").click( function() {
+					
+					$.post(
+							"/packLike"
+							, { "packId" : "${pack.packId}" } 
+							, function(data) {
+								
+								var jsonData3 = {};
+								
+								try {
+									jsonData3 = JSON.parse(data);
+								}
+								catch(e) {
+									jsonData3.result = false;							
+								}
+								
+								console.log(jsonData3);
+								
+								if ( jsonData3.result) {
+									// 하트를 넣음
+									var text = $(".${pack.packId}packLike").text();
+									if ( jsonData3.isPackLike ) {
+										$(".${pack.packId}packLike").text("Like ♥");							
+									}
+									else {
+										$(".${pack.packId}packLike").text("Not Like ♡");	
+									}
+								}
+								else {
+									alert("세션 만료");
+									location.href = "/";
+								}
+							}
+					  );
+				});		
+		 </script>
   
 	</c:forEach>
 	

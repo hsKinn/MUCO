@@ -60,7 +60,11 @@
 			                     SELECT  DISTINCT P.PACK_ID
 			                     		 , PACK_TITLE
 			                             , VIEW_COUNT
-			                             , LIKE_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
 			                             , M.NAME
 			                             , SHARE_IMAGE_LOCATION
 			                     FROM    PACK P
@@ -86,7 +90,11 @@
 			                     SELECT  DISTINCT P.PACK_ID
 			                     		 , PACK_TITLE
 			                             , VIEW_COUNT
-			                             , LIKE_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
 			                             , M.NAME
 			                             , SHARE_IMAGE_LOCATION
 			                     FROM    PACK P
@@ -115,10 +123,14 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  PACK_ID
+			                     SELECT  P.PACK_ID
 			                     		 , PACK_TITLE
 			                             , VIEW_COUNT
-			                             , LIKE_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
 			                             , M.NAME
 			                             , SHARE_IMAGE_LOCATION
 			                     FROM    PACK P
@@ -138,10 +150,14 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  PACK_ID
+			                     SELECT  P.PACK_ID
 			                     		 , PACK_TITLE
 			                             , VIEW_COUNT
-			                             , LIKE_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
 			                             , M.NAME
 			                             , SHARE_IMAGE_LOCATION
 			                     FROM    PACK P
@@ -198,6 +214,12 @@
 			WHERE	PACK_ID = ?
 			AND		EMAIL = ?
 		</deletePackLike>		
+		
+		<countPackLike>
+            SELECT  COUNT(PACK_LIKE_ID)
+            FROM    PACK_LIKE
+            WHERE   PACK_ID = ?
+		</countPackLike>
 	
 	</packLike>
 	

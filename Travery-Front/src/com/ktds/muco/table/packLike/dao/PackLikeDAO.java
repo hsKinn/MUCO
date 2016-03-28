@@ -124,6 +124,42 @@ public class PackLikeDAO {
 	
 	
 	/**
+	 * Count Pack Like
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 */
+	public int countPackLike( int packId ) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/packLike/countPackLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+	} // countPackLike END	
+	
+	
+	/**
 	 * 
 	 * Load Oracle Driver
 	 * 

@@ -14,6 +14,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
 import com.ktds.muco.table.pack.vo.PackVO;
 import com.ktds.muco.table.packLike.biz.PackLikeBiz;
+import com.ktds.muco.table.packLike.dao.PackLikeDAO;
 import com.ktds.muco.table.packLike.vo.PackLikeVO;
 import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.util.xml.XML;
@@ -23,11 +24,13 @@ public class SharePackDAO {
 	private HashTagDAO hashtagDAO;
 	private PlaceDAO placeDAO;
 	private PackLikeBiz packLikeBiz;
+	private PackLikeDAO packLikeDAO;
 	
 	public SharePackDAO () {
 		hashtagDAO = new HashTagDAO();
 		placeDAO = new PlaceDAO();
 		packLikeBiz = new PackLikeBiz();
+		packLikeDAO = new PackLikeDAO();
 	}
 	
 	

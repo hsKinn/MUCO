@@ -42,20 +42,13 @@ public class PackLikeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
-			int packId = Integer.parseInt(request.getParameter("packId"));
-			System.out.println("팩 아디" + packId);
-		}
-		catch(NumberFormatException nfe) {
-			
-		}
-		
+		int packId = Integer.parseInt(request.getParameter("packId"));
 		
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");		
 		
 		PackLikeVO packLike = new PackLikeVO();
-		//packLike.setPackId(packId);
+		packLike.setPackId(packId);
 		packLike.setEmail(member.getEmail());
 		
 		packLikeBiz.insertOrDeletePackLike(packLike);

@@ -166,3 +166,8 @@ div#notFoundPack span#blue {
 	text-decoration: underline;
 }
 
+div.modal-footer span {
+	color: red;
+	font-size: 15px;
+}
+
