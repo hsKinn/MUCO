@@ -116,15 +116,15 @@
 					});
 </script>
 <script type="text/javascript">
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$('#blah').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
 
 <div id="placeInfoControl_Wrapper">
@@ -135,18 +135,21 @@
 	</div>
 
 	<div id="inner_wrapper">
-		<div id="allCheckBox">
-			<input type="checkbox" id="massiveSelectCheckBox" />
-		</div>
-		이미지 List정보 받아오기 checkbox/placeName/image
-		<div id="my_previousPlaceList">
+		<div id="allCheckBox"><input type="checkbox" id="massiveSelectCheckBox" /></div>
+						이미지 List정보 받아오기 checkbox/placeName/image
 			<form id="massiveDeleteForm">
-				<c:forEach items="${ placeInfo.placeInfoList }" var="placeInfo">
-					<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${ placeInfo.placeId }" />
-						${ placeInfo.placeName }
+				<c:forEach items="${ placeInfo.placeInfoList }" var="placeInfo">						
+					<div id="my_previousPlaceList">
+
+						<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${ placeInfo.placeId }" />
+						
+						<a href="<c:url value="/hit?placeId=${placeInfo.placeId}" />"> ${ placeInfo.placeName }</a> 
+						<c:if test="${placeInfo.fileCount gt 0 }"> 
+							[${placeInfo.fileCount} each files included]
+						</c:if>
+					</div>
 				</c:forEach>
 			</form>
-		</div>
 	</div>
 
 	<div id="placeInfoControler">
@@ -182,8 +185,8 @@
 			</div>
 
 			<div id="placeInfoCreate_imageUpload">
-				<input type="file" id="image" name="image" /> <img id="blah"
-					class="img-circle" src="#" style="width: 85px; height: 85px;" /><br />
+				<input type="file" id="image" name="image" />
+				<img id="blah" class="img-circle"  src="#" style="width:85px; height:85px;"/><br/>
 			</div>
 			<div id="placeInfoCreate_description">
 				<textarea id="description" name="description">${ placeInfo.description }</textarea>

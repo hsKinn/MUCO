@@ -62,20 +62,14 @@
 	
 	<place>
 		<placeInfoRecommendedList>
-<!-- 					SELECT  M.* 
-					        , G.GRADE_TITLE
-					        , AC.ACTOR_COUNT 
-					FROM    MOVIE M
-					        , GRADE G
-					        , (
-					            SELECT  MOVIE_ID
-					                    , COUNT(ACTOR_LIST_ID) ACTOR_COUNT
-					            FROM ACTOR_LIST
-					            GROUP BY MOVIE_ID
-					          ) AC
-					WHERE	M.GRADE_ID = G.GRADE_ID
-					AND		AC. MOVIE_ID(+) = M.MOVIE_ID
-					ORDER BY M.MOVIE_ID ASC -->
+			SELECT  P.PLACE_ID
+			        , PLACE_NAME
+			        , IMAGE_ID
+			FROM    PLACE P
+			        , MEMBER M
+			        , IMAGE I
+			WHERE   M.EMAIL = P.EMAIL
+			AND     P.PLACE_ID = I.PLACE_ID
 		</placeInfoRecommendedList>
 		<insertPlaceInfo>
 			INSERT	INTO	PLACE	(

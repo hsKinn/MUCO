@@ -43,6 +43,7 @@ public class PlaceDAO {
 				placeVO = new PlaceVO();
 				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.set
 				
 				listPlaceVO.add(placeVO);
 			}

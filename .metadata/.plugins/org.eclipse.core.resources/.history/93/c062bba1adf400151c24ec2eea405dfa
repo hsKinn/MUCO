@@ -43,9 +43,10 @@ public class PlaceDAO {
 				placeVO = new PlaceVO();
 				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+//				placeVO.set(rs.getString("START_DATE"));
 				
 				listPlaceVO.add(placeVO);
-			}
+			}	//	if	data is done finish.
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}

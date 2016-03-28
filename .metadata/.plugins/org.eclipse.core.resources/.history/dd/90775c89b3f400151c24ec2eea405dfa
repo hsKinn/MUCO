@@ -142,8 +142,17 @@
 		<div id="my_previousPlaceList">
 			<form id="massiveDeleteForm">
 				<c:forEach items="${ placeInfo.placeInfoList }" var="placeInfo">
-					<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${ placeInfo.placeId }" />
-						${ placeInfo.placeName }
+
+
+					<input type="checkbox" class="deletePlaceId" name="deletePlaceId"
+						value="${ placeInfo.placeId }" />
+
+					<a href="<c:url value="/hit?placeId=${placeInfo.placeId}" />">
+						${ placeInfo.placeName }</a>
+					<c:if test="${placeInfo.fileCount gt 0 }"> 
+							[${placeInfo.fileCount} each files included]
+						</c:if>
+
 				</c:forEach>
 			</form>
 		</div>
