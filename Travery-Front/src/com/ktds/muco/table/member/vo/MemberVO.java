@@ -151,8 +151,17 @@ public class MemberVO extends PlaceVO {
 	 * @param countryVO
 	 * @author 김광민
 	 */
-	public void addSelectedCountry( CountryVO countryVO ) {
-		this.selectedCountryList.add(countryVO);
+	public boolean addSelectedCountry( CountryVO countryVO ) {
+		
+		// 최대 20개 나라 선택 가능
+		if(selectedCountryList.size() < 20) {
+			
+			System.out.println(selectedCountryList.size());
+			
+			this.selectedCountryList.add(countryVO);
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -162,7 +171,7 @@ public class MemberVO extends PlaceVO {
 	 * @param countryVO
 	 * @author 김광민
 	 */
-	public void removeSelectedCountryByCountryName( String selectedCountryName ) {
+	public boolean removeSelectedCountryByCountryName( String selectedCountryName ) {
 		
 		int i = 0;
 		for (CountryVO newCountryVO : this.getSelectedCountryList()) {
@@ -170,9 +179,10 @@ public class MemberVO extends PlaceVO {
 			if( selectedCountryName.equals(newCountryVO.getCountryName())) {
 				
 				this.selectedCountryList.remove(i);
-				return;
+				return true;
 			}
 			i++;
 		}
+		return false;
 	}
 }

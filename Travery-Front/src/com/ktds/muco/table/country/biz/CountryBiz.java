@@ -43,15 +43,18 @@ public class CountryBiz {
 			
 			// 중복 체크
 			if( !memberVO.isExistCountryByCountryName(selectedCountryName) ) {
+				
 				// 존재하지 않으면 추가
-				memberVO.addSelectedCountry(countryVO);
-				session.setAttribute("_MEMBER_", memberVO);
-				return countryVO;
+				if ( memberVO.addSelectedCountry(countryVO) ) {
+					session.setAttribute("_MEMBER_", memberVO);
+					return countryVO;
+				}
 			}
 			else {
 				// 존재하면 제거
-				memberVO.removeSelectedCountryByCountryName(selectedCountryName);
-				session.setAttribute("_MEMBER_", memberVO);
+				if ( memberVO.removeSelectedCountryByCountryName(selectedCountryName) ) {
+					session.setAttribute("_MEMBER_", memberVO);
+				}
 			}
 		}
 

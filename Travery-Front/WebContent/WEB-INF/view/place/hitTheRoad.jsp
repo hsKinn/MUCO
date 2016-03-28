@@ -122,6 +122,7 @@
 								if( jsonData.isExistCountry ) {
 									
 									$('#countries').append('<div id= "' + map.getRegionName(code) + '" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
+									
 								}
 								else{
 									$('#' + map.getRegionName(code)).remove();
@@ -135,7 +136,8 @@
 		    },
 			series : {
 				regions : [ {
-					scale : [ '#C8EEFF', '#0071A4' ],
+					scale : [ ],
+					// scale : [ '#ffffff', '#ffffff' ],
 					normalizeFunction : 'polynomial',
 					values : {
 						"AF" : 16.63,
@@ -430,7 +432,7 @@
 					<li><a href="#">Active / Calm</a></li>
 				</ul>
 			</div>
-
+			
 		</div>
 	</div>
 </div>
