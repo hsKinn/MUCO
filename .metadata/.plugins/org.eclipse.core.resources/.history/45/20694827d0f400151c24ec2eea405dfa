@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -35,7 +34,7 @@ public class PlaceDAO {
 		loadOracleDriver();
 		
 		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "TRAVERY", "TRAVERY");
 			String query = XML.getNodeString("//query/place/placeInfoRecommendedList/text()");
 			stmt = conn.prepareStatement(query);
 			rs = stmt.executeQuery();
@@ -71,7 +70,7 @@ public class PlaceDAO {
 		PreparedStatement stmt = null;
 		
 		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "TRAVERY", "TRAVERY");
 
 			String query = XML.getNodeString("//query/place/insertPlaceInfo/text()");
 			stmt = conn.prepareStatement(query);
