@@ -1,6 +1,7 @@
 package com.ktds.muco.table.place.vo;
 
-import com.ktds.muco.table.city.vo.CityVO;
+import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
  * 여행지
@@ -8,13 +9,12 @@ import com.ktds.muco.table.city.vo.CityVO;
  * latitude : 위도
  * longitude : 경도
  * isNewPlace : 0 기존 / 1 신규
- * nickName : 여행지 최초 등록자 닉네임
- * ( 이메일(FK)로 하면 회원이 탈퇴하면 문제가 생기기 때문에 닉네임으로 )
+ * writer : 작성자 VO
  * 
  * @author 김광민
  *
  */
-public class PlaceVO extends CityVO {
+public class PlaceVO extends CountryVO {
 
 	private int placeId;
 	private String placeName;
@@ -26,7 +26,9 @@ public class PlaceVO extends CityVO {
 	private String description;
 	private int isNewPlace;
 	
-
+	// 작성자
+	private MemberVO writer;
+	
 	public int getPlaceId() {
 		return placeId;
 	}
@@ -99,5 +101,11 @@ public class PlaceVO extends CityVO {
 		this.isNewPlace = isNewPlace;
 	}
 
-	
+	public MemberVO getWriter() {
+		return writer;
+	}
+
+	public void setWriter(MemberVO writer) {
+		this.writer = writer;
+	}
 }

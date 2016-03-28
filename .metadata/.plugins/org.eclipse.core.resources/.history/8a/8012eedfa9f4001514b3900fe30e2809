@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+
+	<country>
+<<<<<<< HEAD
+		<getCountryList>
+			SELECT	*
+			FROM	COUNTRY
+			WHERE	COUNTRY_NAME = ?
+		</getCountryList>
+=======
+		<getCountryInfoByCountryName>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
+			FROM	COUNTRY
+			WHERE	COUNTRY_NAME = ?
+		</getCountryInfoByCountryName>
+>>>>>>> origin/KGM
+	</country>
+	
+	<evaluation>
+	</evaluation>
+	
+	<history>
+	</history>
+	
+	<image>
+	</image>
+	
+	<member>
+		<addNewMember>
+			INSERT INTO MEMBER (
+	                      			EMAIL
+	                       		 	, PASSWORD
+	                       			, NAME
+	                   			) 
+			VALUES              ( 
+	                        		?,
+	                        		?,
+	                        		?
+	                     		)
+     	</addNewMember>
+     	<getMemberEmailCheck>
+     		SELECT	COUNT(EMAIL)
+			FROM	MEMBER
+			WHERE	EMAIL = ?
+     	</getMemberEmailCheck>
+     	<getMemberByIdAndPassword>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     	</getMemberByIdAndPassword>
+	</member>
+	
+	<pack>
+	</pack>
+	
+	<packLike>
+	</packLike>
+	
+	<packReply>
+	</packReply>
+	
+	<place>
+	</place>
+	
+	<placeLike>
+	</placeLike>
+	
+	<placeReply>
+	</placeReply>
+	
+	<qna>
+	</qna>
+	
+	<rent>
+	</rent>
+	
+	<reportedMember>
+	</reportedMember>
+	
+	<reserve>
+	</reserve>
+	
+	<selectedCountry>
+	</selectedCountry>
+	
+	<standard>
+	</standard>
+	
+	<stay>
+	</stay>
+	
+	<transport>
+	</transport>
+	
+</query>
+
+
+
+
+

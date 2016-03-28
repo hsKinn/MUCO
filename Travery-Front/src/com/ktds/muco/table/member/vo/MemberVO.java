@@ -1,5 +1,9 @@
 package com.ktds.muco.table.member.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
@@ -8,6 +12,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * 
  * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
  * recentAccessDate 최근 접속 날짜
+ * selectedCountryList 사용자가 Hit the road에서 선택한 나라들
  * 
  * @author 김광민
  *
@@ -23,7 +28,24 @@ public class MemberVO extends PlaceVO {
 	private String mainImageLocation = "";
 	private String joinDate = "";
 	private String recentAccessDate = "";
-
+	
+	private List<CountryVO> selectedCountryList;
+	
+	public MemberVO(){
+		
+		email = "";
+		password = "";
+		name = "";
+		phoneNumber = "";
+		isAdmin = 0;
+		mainImageName = "";
+		mainImageLocation = "";
+		joinDate = "";
+		recentAccessDate = "";
+		
+		selectedCountryList = new ArrayList<CountryVO>();
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -94,5 +116,63 @@ public class MemberVO extends PlaceVO {
 
 	public void setRecentAccessDate(String recentAccessDate) {
 		this.recentAccessDate = recentAccessDate;
+	}
+
+	public List<CountryVO> getSelectedCountryList() {
+		return selectedCountryList;
+	}
+
+	public void setSelectedCountryList(List<CountryVO> selectedCountryList) {
+		this.selectedCountryList = selectedCountryList;
+	}
+	
+	/**
+	 * 
+	 * 중복 확인
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public boolean isExistCountryByCountryName( String selectedCountryName ) {
+		
+		for (CountryVO countryVO : this.getSelectedCountryList()) {
+			
+			if( selectedCountryName.equals(countryVO.getCountryName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	 * 리스트에 선택된 나라 추가
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public void addSelectedCountry( CountryVO countryVO ) {
+		this.selectedCountryList.add(countryVO);
+	}
+	
+	/**
+	 * 
+	 * 리스트에 선택된 나라 제거
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public void removeSelectedCountryByCountryName( String selectedCountryName ) {
+		
+		int i = 0;
+		for (CountryVO newCountryVO : this.getSelectedCountryList()) {
+			
+			if( selectedCountryName.equals(newCountryVO.getCountryName())) {
+				
+				this.selectedCountryList.remove(i);
+				return;
+			}
+			i++;
+		}
 	}
 }

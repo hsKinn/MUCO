@@ -129,12 +129,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CountryCheckServlet</display-name>
-    <servlet-name>CountryCheckServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.country.web.CountryCheckServlet</servlet-class>
+    <display-name>SelectedCountryServlet</display-name>
+    <servlet-name>SelectedCountryServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.country.web.SelectedCountryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CountryCheckServlet</servlet-name>
-    <url-pattern>/countryCheck</url-pattern>
+    <servlet-name>SelectedCountryServlet</servlet-name>
+    <url-pattern>/selectedCountry</url-pattern>
   </servlet-mapping>
 </web-app>

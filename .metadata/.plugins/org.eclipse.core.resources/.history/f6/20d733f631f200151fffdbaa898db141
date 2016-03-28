@@ -1,0 +1,55 @@
+package com.ktds.muco.table.country.web;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.util.root.Root;
+
+/**
+ * Servlet implementation class SelectedCountryServlet
+ */
+public class SelectedCountryServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SelectedCountryServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 선택된 나라를 세션에 추가
+		HttpSession session = request.getSession();
+		List<String> selectedCountryList = (List<String>) session.getAttribute("_SELECTED_COUNTRY_");
+		
+		String selectedCountry = request.getParameter("selectedCountry");
+		selectedCountryList.add(selectedCountry);
+	
+		response.sendRedirect(Root.get(this) + "/hitTheRoad");
+
+	}
+
+}

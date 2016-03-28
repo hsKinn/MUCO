@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <query>
 
-	<city>
-	</city>
-	
 	<country>
-		<getCountryList>
-			SELECT	*
+		<getCountryInfoByCountryName>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
 			FROM	COUNTRY
 			WHERE	COUNTRY_NAME = ?
-		</getCountryList>
+		</getCountryInfoByCountryName>
 	</country>
 	
 	<evaluation>
@@ -76,6 +74,9 @@
 	
 	<reserve>
 	</reserve>
+	
+	<selectedCountry>
+	</selectedCountry>
 	
 	<standard>
 	</standard>

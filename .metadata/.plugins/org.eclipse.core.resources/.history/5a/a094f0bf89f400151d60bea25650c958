@@ -1,0 +1,82 @@
+package com.ktds.muco.table.country.biz;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.country.dao.CountryDAO;
+import com.ktds.muco.table.country.vo.CountryVO;
+
+/**
+ * 
+ * Country DAO
+ * 
+ * @author 김광민
+ *
+ */
+public class CountryBiz {
+
+	CountryDAO countryDAO;
+
+	public CountryBiz() {
+		countryDAO = new CountryDAO();
+	}
+
+	/**
+	 * 모든 나라 정보 받기
+	 * 
+	 * @return
+	 * @author 김광민
+	 */
+	public List<CountryVO> getAllCountryList() {
+
+		return countryDAO.getAllCountryList();
+
+	}
+
+	/**
+	 * 
+	 * 해당 나라가 DB에 존재하는지 확인 후 있으면 해당 country info 반환
+	 * 
+	 * @param request
+	 * @return
+	 * @author 김광민
+	 */
+	public CountryVO getCountryInfoByCountryName(HttpServletRequest request) {
+
+		String selectedCountryName = request.getParameter("selectedCountryName");
+		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
+
+		System.out.println("Biz : " + selectedCountryName);
+		
+		if ( countryVO != null ) {
+
+			// 세션에 해당 나라 VO 추가
+			HttpSession session = request.getSession();
+			
+			@SuppressWarnings("unchecked")
+			List<CountryVO> countryList = (List<CountryVO>) session.getAttribute("_COUNTRY_LIST_");
+			
+			if( countryList != null ) {
+				// 해당 세션이 존재하면
+				countryList.add(countryVO);
+				session.setAttribute("_COUNTRY_LIST_", countryList);
+			}
+			else {
+				
+				System.out.println("세션 새롭게 추가");
+				
+				// 해당 세션이 없다면 새롭게 추가
+				countryList = new ArrayList<CountryVO>();
+				countryList.add(countryVO);
+				session.setAttribute("_COUNTRY_LIST_", countryList);
+			}
+			
+			return countryVO;
+		}
+
+		return null;
+	}
+}

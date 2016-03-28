@@ -1,0 +1,62 @@
+package com.ktds.muco.table.country.web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class SelectedCountryServlet
+ */
+public class SelectedCountryServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SelectedCountryServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 요청입니다.");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		// 받은 "나라리스트", "나라"를 받는다.
+		String[] selectedCountries = request.getParameterValues("selectedCountries");
+		String selectedCountry = request.getParameter("selectedCountry");
+		
+		selectedCountries[selectedCountries.length] = selectedCountry;
+		
+		StringBuffer json = new StringBuffer();
+		json.append("{");
+		json.append("\"result\" : true");
+		json.append(", \"selectedCountries\" : " + selectedCountries);
+		json.append("}");
+
+		// Print Writer
+		PrintWriter out = response.getWriter();
+		out.print(json.toString());
+		out.flush();
+		out.close();
+
+	}
+}
+	}
+
+}

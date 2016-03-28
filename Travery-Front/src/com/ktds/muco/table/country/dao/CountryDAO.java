@@ -12,55 +12,61 @@ import com.ktds.muco.util.xml.XML;
 
 /**
  * 
+ * Country DAO
+ * 
  * @author 김광민
  *
  */
 public class CountryDAO {
-	
-	
-	public CountryVO getCountryList(String checkCountry) {
+
+
+	/**
+	 * 
+	 * 나라명으로 나라 찾고 있으면 해당 나라 VO 반환
+	 * 
+	 * @param selectedCountryName
+	 * @return
+	 * @author 김광민
+	 */
+	public CountryVO getCountryInfoByCountryName(String selectedCountryName) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		CountryVO countryVO = null;
+
 		try {
+
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
-			String query = XML.getNodeString("//query/country/getCountryList/text()");
+
+			String query = XML.getNodeString("//query/country/getCountryInfoByCountryName/text()");
 			stmt = conn.prepareStatement(query);
-			stmt.setString(1, checkCountry);
-			
+
+			stmt.setString(1, selectedCountryName);
+
 			rs = stmt.executeQuery();
-			while(rs.next()) {
+
+			CountryVO countryVO = null;
+
+			if (rs.next()) {
+
 				countryVO = new CountryVO();
+
 				countryVO.setCountryId(rs.getInt("COUNTRY_ID"));
 				countryVO.setCountryName(rs.getString("COUNTRY_NAME"));
-				countryVO.setCountryColor(rs.getString("COUNTRY_COLOR"));
-				countryVO.setCountryFontColor(rs.getString("COUNTRY_FONT_COLOR"));
-				
-				
+
 			}
+
 			return countryVO;
-			
+
 		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(),e);
-		}
-		finally {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -75,7 +81,7 @@ public class CountryDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -84,23 +90,24 @@ public class CountryDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	}
-
-	
 
 }

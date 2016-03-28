@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/login.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/logout.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/join.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/country/country.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/footer.css"/>" />
 
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
@@ -49,7 +50,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="traveryIcon">
-				<a href="<c:url value="/hitTheRoad"/>">
+				<a href="<c:url value="/"/>">
 					<img src="<c:url value="/resource/img/common/traveryIcon.PNG"/>" alt="traveryIcon" />
 				</a>
 			</div>
