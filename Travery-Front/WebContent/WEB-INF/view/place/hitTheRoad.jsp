@@ -124,7 +124,7 @@
 									$('#countries').append('<div id= "' + map.getRegionName(code) + '" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
 								}
 								else{
-									alert("해당 나라에는 여행지 데이터가 없습니다.");
+									$('#' + map.getRegionName(code)).remove();
 								}
 							}
 							else {
@@ -329,7 +329,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		$('div#countries div').click(function(){
+			alert("hi");
+			console.log("hi");
+		});
 	});
 </script>
 
@@ -386,7 +389,8 @@
 
 		<!-- 선택된 나라 리스트 -->
 		<div class="col-sm-2" style="height: 100%;">
-			<div id="countries" style="width: 100%; height: 100%;"></div>
+			<div id="countries" style="width: 100%; height: 100%;">
+			</div>
 		</div>
 	</div>
 

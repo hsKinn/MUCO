@@ -128,6 +128,24 @@ public class MemberVO extends PlaceVO {
 	
 	/**
 	 * 
+	 * 중복 확인
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public boolean isExistCountryByCountryName( String selectedCountryName ) {
+		
+		for (CountryVO countryVO : this.getSelectedCountryList()) {
+			
+			if( selectedCountryName.equals(countryVO.getCountryName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 
 	 * 리스트에 선택된 나라 추가
 	 * 
 	 * @param countryVO
@@ -135,5 +153,26 @@ public class MemberVO extends PlaceVO {
 	 */
 	public void addSelectedCountry( CountryVO countryVO ) {
 		this.selectedCountryList.add(countryVO);
+	}
+	
+	/**
+	 * 
+	 * 리스트에 선택된 나라 제거
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public void removeSelectedCountryByCountryName( String selectedCountryName ) {
+		
+		int i = 0;
+		for (CountryVO newCountryVO : this.getSelectedCountryList()) {
+			
+			if( selectedCountryName.equals(newCountryVO.getCountryName())) {
+				
+				this.selectedCountryList.remove(i);
+				return;
+			}
+			i++;
+		}
 	}
 }

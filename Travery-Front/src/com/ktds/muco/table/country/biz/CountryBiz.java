@@ -35,17 +35,24 @@ public class CountryBiz {
 		String selectedCountryName = request.getParameter("selectedCountryName");
 		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
 
-		System.out.println("Biz : " + selectedCountryName);
-		
 		// 선택한 나라명과 일치하는 나라가 존재하면
 		if ( countryVO != null ) {
 			
 			HttpSession session = request.getSession();
 			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
-			memberVO.addSelectedCountry(countryVO);
-			session.setAttribute("_MEMBER_", memberVO);
 			
-			return countryVO;
+			// 중복 체크
+			if( !memberVO.isExistCountryByCountryName(selectedCountryName) ) {
+				// 존재하지 않으면 추가
+				memberVO.addSelectedCountry(countryVO);
+				session.setAttribute("_MEMBER_", memberVO);
+				return countryVO;
+			}
+			else {
+				// 존재하면 제거
+				memberVO.removeSelectedCountryByCountryName(selectedCountryName);
+				session.setAttribute("_MEMBER_", memberVO);
+			}
 		}
 
 		return null;
