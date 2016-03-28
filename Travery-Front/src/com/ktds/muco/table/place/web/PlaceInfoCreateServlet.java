@@ -2,11 +2,18 @@ package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.image.biz.ImageBiz;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.biz.PlaceBiz;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.util.file.MultipartFile;
+import com.ktds.muco.util.file.MultipartHttpServletRequest;
 
 /**
  * 
@@ -17,12 +24,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class PlaceInfoCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private PlaceBiz placeBiz;
+	private ImageBiz imageBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PlaceInfoCreateServlet() {
         super();
+        placeBiz = new PlaceBiz();
+        imageBiz= new ImageBiz();
     }
 
 	/**
@@ -36,8 +47,33 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoCreate.jsp");
-		rd.forward(request, response);
-	}
+//		HttpSession session = request.getSession();
+//		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+	
+		PlaceVO placeVO = new PlaceVO();
 
+		placeVO.setPlaceName(multipartRequest.getParameter("placeName"));
+		placeVO.setAddress(multipartRequest.getParameter("address"));
+		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
+		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
+		placeVO.setDescription(multipartRequest.getParameter("description"));
+//		placeVO.setWriter(member.getEmail());
+		MultipartFile image = multipartRequest.getFile("image");
+	
+		int placeId = placeBiz.placeInfoCreate(placeVO);
+			
+		if ( image.getFileSize() > 0) {
+			imageBiz.insertImageToss(multipartRequest, placeId);
+		}
+		try {
+			response.sendRedirect("/placeInfoControl");
+			}
+		catch ( RuntimeException re ) {
+			System.out.println(re.getMessage());
+			response.sendRedirect("/placeInfoControl?placeId=" + placeId);
+		}
+		return;
+	}
 }

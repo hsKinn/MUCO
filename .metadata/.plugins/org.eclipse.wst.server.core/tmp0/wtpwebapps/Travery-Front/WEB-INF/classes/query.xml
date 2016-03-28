@@ -14,6 +14,20 @@
 	</history>
 	
 	<image>
+		<insertImage>
+			INSERT	INTO	IMAGE	( 
+										IMAGE_ID
+										, PLACE_ID
+										, IMAGE_NAME
+										, IMAGE_LOCATION
+									)
+			VALUES 					(
+										IMAGE_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+									)
+		</insertImage>
 	</image>
 	
 	<member>
@@ -47,6 +61,44 @@
 	</packReply>
 	
 	<place>
+		<placeInfoRecommendedList>
+<!-- 					SELECT  M.* 
+					        , G.GRADE_TITLE
+					        , AC.ACTOR_COUNT 
+					FROM    MOVIE M
+					        , GRADE G
+					        , (
+					            SELECT  MOVIE_ID
+					                    , COUNT(ACTOR_LIST_ID) ACTOR_COUNT
+					            FROM ACTOR_LIST
+					            GROUP BY MOVIE_ID
+					          ) AC
+					WHERE	M.GRADE_ID = G.GRADE_ID
+					AND		AC. MOVIE_ID(+) = M.MOVIE_ID
+					ORDER BY M.MOVIE_ID ASC -->
+		</placeInfoRecommendedList>
+		<insertPlaceInfo>
+			INSERT	INTO	PLACE	(
+											PLACE_ID
+											, PLACE_NAME
+											, ADDRESS
+											, LATITUDE
+											, LONGITUDE
+											, DESCRIPTION
+										)
+			VALUES						(
+											PLACE_ID_SEQ.NEXTVAL
+											, ?
+											, ?
+											, ?
+											, ?
+											, ?
+										)
+		</insertPlaceInfo>
+		<getReturnPlaceId>
+			SELECT	PLACE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnPlaceId>
 	</place>
 	
 	<placeLike>

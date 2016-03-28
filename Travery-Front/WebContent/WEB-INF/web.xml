@@ -149,4 +149,14 @@
     <servlet-name>PlaceInfoAddAddressServlet</servlet-name>
     <url-pattern>/placeInfoAddAddress</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TestServlet</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
 </web-app>

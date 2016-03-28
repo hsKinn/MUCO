@@ -7,17 +7,25 @@ div#placeInfoControl_Wrapper {
 	height: 100%;
 	background-color : green;
 	float: left;
-	overflow: hidden;
 }
 div#inner_wrapper {
-	width: 88%;
+	width: 58%;
 	height : 65%;
 	margin-left: 6%;
 	float: left;
 		background-color: blue;
 }
+div#right_wrapper{
+	width: 20%;
+	height : 90%;
+	margin-left: 2%;
+	margin-right: 2%;
+	float: right;
+		background-color: orange;
+}
+
 div#placeInfoControler {
-	width: 88%;
+	width: 58%;
 	margin-left: 6%;
 	float: left;
 	font-size: 30px;
@@ -36,17 +44,19 @@ div#my_recommendPlaceTitle img {
 	height: 50px;
 }
 div#my_previousPlaceList {
-	width: 94%;
+	width: 15%;
+	height: 25%;
 	margin: 3%;
 	float: left;
 	font-size: 30px;
 	background-color: yellow;
 }
+
 div#btn-create {
 	width: 50px;
 	height: 50px;
 	margin: 3%;
-	margin-left: 82%;
+	margin-left: 80%;
 	float: left;
 	font-size: 30px;
 	background-color: yellow;
@@ -60,73 +70,94 @@ div#btn-delete {
 	background-color: yellow;
 }
 
-
-.snap-content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: auto;
-  height: auto;
-  z-index: 2;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  -webkit-transform: translate3d(0, 0, 0);
-     -moz-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  float: right;
+div#placeInfoCreate_main {
+	width: 40%;
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-bottom : 5%;
+	font-size: 30px;	
+	background-color : red;
+}
+div#placeInfoCreate_title {
+	width: 30%;
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-bottom : 5%;
+	font-size: 30px;	
+	background-color : yellow;
+	float: left;
+}
+div#placeInfoCreate_searchMap {
+	width: 80%;
+	height: 200px;
+	margin-left: 10%;
+	margin-bottom : 5%;
+	background-color : yellow;
+	float: left;
+}
+div#placeInfoCreate_searchMap img {
+	float: left;
+	margin-left:3%;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+div#placeInfoCreate_searchMap input {
+	float: left;
+	margin-left:3%;
+	width: 300px;
+	height: 40px;
 }
 
-.snap-drawers {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: auto;
-  height: auto;
-  float: right;
+div#placeInfoCreate_imageUpload {
+	width: 80%;
+	height: 300px;
+	margin-left: 10%;
+	margin-bottom : 5%;
+		background-color : blue;
+		float: left;
+}
+div#placeInfoCreate_imageUpload img {
+	float: left;
+	margin-left:3%;
+	width: 40px;
+	height: 40px;
+}
+div#placeInfoCreate_imageUpload input {
+	float: left;
+	margin-left:3%;
+	width: 300px;
+	height: 40px;
 }
 
-.snap-drawer {
-  position: absolute;
-  top: 0;
-  right: auto;
-  bottom: 0;
-  left: auto;
-  width: 265px;
-  height: auto;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  -webkit-transition: width 0.3s ease;
-     -moz-transition: width 0.3s ease;
-      -ms-transition: width 0.3s ease;
-       -o-transition: width 0.3s ease;
-          transition: width 0.3s ease;
-  float: right;
+div#placeInfoCreate_description {
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+	margin-bottom : 5%; 
+		background-color : pink;
+		float: left;
+}
+div#placeInfoCreate_description textarea {
+	font-size: 20px;
+	width: 350px;
+	height: 250px;
+	float: left;
+}
+div#placeInfoCreate_submitBtn {
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+	margin-top: 8%;
+	font-size: 30px;
+		background-color : orange;
+}
+div#placeInfoCreate_submitBtn img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
 }
 
-.snap-drawer-left {
-  left: 0;
-  z-index: 1;
-  float: right;
-}
 
-.snap-drawer-right {
-  right: 0;
-  z-index: 1;
-  float: right;
-}
 
-/* .snapjs-left .snap-drawer-right,
-.snapjs-right .snap-drawer-left {
-  display: none;
-} */
-
-.snapjs-expand-left .snap-drawer-left,
-.snapjs-expand-right .snap-drawer-right {
-  width: 100%;
-}

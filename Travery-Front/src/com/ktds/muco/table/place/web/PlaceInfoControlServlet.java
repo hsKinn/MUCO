@@ -1,12 +1,16 @@
 package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ktds.muco.table.place.biz.PlaceBiz;
+import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
  * 
@@ -17,12 +21,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class PlaceInfoControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private PlaceBiz placeBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PlaceInfoControlServlet() {
         super();
+        placeBiz = new PlaceBiz();
     }
 
 	/**
@@ -36,6 +42,10 @@ public class PlaceInfoControlServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<PlaceVO> listPlaceVO = placeBiz.placeInfoRecommendedList();
+		request.setAttribute("placeInfo", listPlaceVO);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");
 		rd.forward(request, response);
 	}

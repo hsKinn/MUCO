@@ -33,11 +33,11 @@ public class ImageDAO {
 		PreparedStatement stmt = null;
 
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "TRAVERY", "TRAVERY");
 			String query = XML.getNodeString("//query/image/insertImage/text()");
 			stmt = conn.prepareStatement(query);
-
-			stmt.setInt(1, imageVO.getImageId());
+			
+			stmt.setInt(1, imageVO.getPlaceId());
 			stmt.setString(2, imageVO.getImageName());
 			stmt.setString(3, imageVO.getImageLocation());
 
