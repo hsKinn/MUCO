@@ -42,9 +42,44 @@
 			form.attr("method", "post");
 			form.attr("action", "<c:url value="/doJoin"/>");
 			form.submit();
-		});
+		} );
+		
 
-	});
+		
+		$("#userEmail").blur(function(){
+				
+				$.post(
+						
+					"<c:url value="/memberEmailCheck" />"
+					, {"checkUserEmail" : $("#userEmail").val() }
+					, function(data){
+						
+						var jsonData = {};
+						
+						try {
+							jsonData = JSON.parse(data);
+						}
+						catch(e) {
+						}
+						
+						if ( jsonData.result ) {
+							if ( jsonData.isExistMemberEmail ) {
+								alert("존재하는 아이디입니다.");
+								$("#userEmail").val("");
+								$("#userEmail").focus();
+							}
+							else {
+								
+							}
+						}
+						else{
+							alert("세션을 종료합니다.");
+							location.href = "<c:url value="/" />";
+						}
+						
+					});
+			});
+	} );
 </script>
 
 <!-- Join -->

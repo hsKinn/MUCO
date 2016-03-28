@@ -1,11 +1,13 @@
 package com.ktds.muco.table.country.biz;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.country.dao.CountryDAO;
 import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+
 
 /**
  * 
@@ -15,8 +17,9 @@ import com.ktds.muco.table.member.vo.MemberVO;
  *
  */
 public class CountryBiz {
+	
 
-	CountryDAO countryDAO;
+	private CountryDAO countryDAO;
 
 	public CountryBiz() {
 		countryDAO = new CountryDAO();

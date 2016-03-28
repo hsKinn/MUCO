@@ -46,6 +46,11 @@
 	                        		?
 	                     		)
      	</addNewMember>
+     	<getMemberEmailCheck>
+     		SELECT	COUNT(EMAIL)
+			FROM	MEMBER
+			WHERE	EMAIL = ?
+     	</getMemberEmailCheck>
      	<getMemberByIdAndPassword>
      		SELECT	*
      		FROM	MEMBER

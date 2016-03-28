@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<qualifiedTypeNameHistroy/>
+=======
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="com.oracle.jrockit.jfr.RequestDelegate"/>
@@ -25,3 +28,4 @@
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 >>>>>>> origin/롯드2
 </qualifiedTypeNameHistroy>
+>>>>>>> origin/KGM

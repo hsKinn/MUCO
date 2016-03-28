@@ -160,10 +160,14 @@
 			<item value=""/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+<<<<<<< HEAD
 			<item value="C:\Users\206-001\Desktop\MUCO--.zip"/>
 			<item value="G:\금일하것\Travery.zip"/>
 			<item value="G:\160321.zip"/>
 			<item value="C:\Users\206-001\Desktop\.zip"/>
+=======
+			<item value="C:\Users\206-001\Desktop\Travery-Front.zip"/>
+>>>>>>> origin/YBH2
 		</list>
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">

@@ -47,8 +47,8 @@
 		$("#personalInfoMenu").mouseleave(function() {
 			$("#personalInfoMenu").css("color", "#959595");
 		});
-
 	});
+
 </script>
 <div id="leftMenu">
 	<ul>

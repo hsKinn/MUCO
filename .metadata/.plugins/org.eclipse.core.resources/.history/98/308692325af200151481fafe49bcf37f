@@ -1,0 +1,23 @@
+package com.ktds.muco.table.country.biz;
+
+import com.ktds.muco.table.country.dao.CountryDAO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class CountryBiz {
+	
+	private CountryDAO countryDAO;
+	
+	public CountryBiz() {
+		countryDAO = new CountryDAO();
+	}
+
+	public boolean getCountryList(String checkCountry) {
+		
+		return countryDAO.getCountryList(checkCountry);
+	}
+
+}

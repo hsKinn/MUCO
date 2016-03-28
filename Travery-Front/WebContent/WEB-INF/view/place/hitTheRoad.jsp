@@ -57,8 +57,10 @@
 	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 
 <script>
+	
 	jQuery.noConflict();
 	jQuery(function() {
+		
 		var $ = jQuery;
 
 		$('#focus-single').click(function() {
@@ -118,6 +120,7 @@
 									$('#countries').append('<div id= "' + map.getRegionName(code) + '" style="text-align: center; font-weight: bold; width: 200px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; margin-left: 10px;">'+ map.getRegionName(code) + '</div>');
 								} else {
 									$('#'+ map.getRegionName(code)).remove();
+
 								}
 							} else {
 								alert("세션이 만료되었습니다. 다시 로그인해주세요.");
@@ -131,7 +134,7 @@
 					scale : [],
 					// scale : [ '#ffffff', '#ffffff' ],
 					normalizeFunction : 'polynomial',
-					values : {
+					colors : {
 						"AF" : 16.63,
 						"AL" : 11.58,
 						"DZ" : 158.97,
@@ -161,7 +164,7 @@
 						"BI" : 1.47,
 						"KH" : 11.36,
 						"CM" : 21.88,
-						"CA" : 1563.66,
+						"CA" : '#333333',
 						"CV" : 1.57,
 						"CF" : 2.11,
 						"TD" : 7.59,
@@ -219,7 +222,7 @@
 						"KZ" : 129.76,
 						"KE" : 32.42,
 						"KI" : 0.15,
-						"KR" : 986.26,
+						"KR" : '#80ff00',
 						"KW" : 117.32,
 						"KG" : 4.44,
 						"LA" : 6.34,
@@ -318,7 +321,10 @@
 				}]
 			}
 		});
-	})
+	});
+
+
+
 </script>
 
 <script type="text/javascript">
@@ -356,8 +362,14 @@
 				$("#rightBottomDiv").fadeIn();
 				
 			});
-			
 		});
+			
+		$(".tapMenu").click(function(){
+	   		$(".placeDetail").css({ "display" : "block" });
+	  	});
+	   	$(".active").click(function(){
+	   	  	$(".placeDetail").css({ "display" : "none" });
+	   	});
 	});
 </script>
 
@@ -375,11 +387,13 @@
 
 				<!-- 탭 -->
 				<ul class="nav nav-pills">
+
 					<li class="active"><a data-toggle="pill" href="#home">나라
 							선택</a></li>
-					<li><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
-					<li><a data-toggle="pill" href="#menu2">나의 패키지</a></li>
-					<li><a data-toggle="pill" href="#menu3">경로 설정</a></li>
+					<li class="tapMenu"><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
+					<li class="tapMenu"><a data-toggle="pill" href="#menu2">나의 패키지</a></li>
+					<li class="tapMenu"><a data-toggle="pill" href="#menu3">경로 설정</a></li>
+
 				</ul>
 
 				<!-- 탭 내용 -->
@@ -445,6 +459,7 @@
 		</div>
 
 		<!-- 선택된 나라 리스트 -->
+
 		<div class="col-sm-2" style="height: 100%;">
 			<div id="countries" style="width: 100%; height: 100%;"></div>
 		</div>
@@ -455,8 +470,61 @@
 		style="width: 100%; height: 30%; float: left; margin-left: 10px; margin-top: 10px;">
 
 		<!-- 여행지 임시 리스트 -->
-		<div class="col-sm-10"
-			style="background-color: #333333; height: 100%;"></div>
+
+		<div class="col-sm-10" style="background-color: #333333; height: 100%;">
+		
+		<!-- 여행지 상세보기 페이지 -->
+		
+		  <div class="placeDetail" data-toggle="modal" data-target="#myModal">KOREA</div>
+		
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog modal-lg" >
+		      <div class="modal-content">
+		      	<div class="divHeader">
+		      		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		      	</div>
+		      	
+		      	<div class="divBody">
+			        
+			        <div class="travelImage" >
+			          <h4 class="modal-title">travel image</h4>
+			        </div>
+			        
+			        <div class="travelExplain" >
+			          <div class="modal-header">
+			          	<h2 class="modal-title">travelTitle</h2>
+			          </div>
+			          <div class="modal-header" style="height:50%;">
+			          	<h4 class="modal-title">travelDescript</h4>
+			          </div>
+			          <div class="modal-header" style="height:40%;">
+			          	<h4 class="modal-title">travelReply</h4>
+			          	<div id="writeReply">
+			          		<div style="float:left; width:70%;">
+			          		<textarea id="description" name="description" style="width:500px; height:47px;"></textarea>
+			          		</div>
+			          		<div style="float:left;">
+			          		<button type="button" class="btn btn-info btn-lg" >댓글등록</button>
+			          		</div>
+			          	</div>
+			          </div>
+			        </div>
+			        
+		        </div>
+		       <!--  <div class="modal-body">
+		          <p>This is a large modal.</p>
+		        </div> -->
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+			
+		
+		</div>
+		
 
 		<!-- 기준 선택 -->
 		<div class="col-sm-2" style="height: 100%;">
