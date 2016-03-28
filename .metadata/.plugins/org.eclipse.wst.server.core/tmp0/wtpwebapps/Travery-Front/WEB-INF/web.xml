@@ -39,7 +39,6 @@
     <servlet-name>DoJoinServlet</servlet-name>
     <url-pattern>/doJoin</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>MemberEmailCheckServlet</display-name>
     <servlet-name>MemberEmailCheckServlet</servlet-name>
@@ -48,8 +47,8 @@
   <servlet-mapping>
     <servlet-name>MemberEmailCheckServlet</servlet-name>
     <url-pattern>/memberEmailCheck</url-pattern>
-   </servlet-mapping> 
-   <servlet>
+  </servlet-mapping>
+  <servlet>
     <display-name>DoLoginServlet</display-name>
     <servlet-name>DoLoginServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.member.web.DoLoginServlet</servlet-class>
@@ -127,5 +126,15 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CountryCheckServlet</display-name>
+    <servlet-name>CountryCheckServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.country.web.CountryCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CountryCheckServlet</servlet-name>
+    <url-pattern>/countryCheck</url-pattern>
   </servlet-mapping>
 </web-app>

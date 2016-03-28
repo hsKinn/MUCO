@@ -9,6 +9,8 @@ public class CountryVO {
 
 	private int countryId;
 	private String countryName;
+	private String countryColor;
+	private String countryFontColor;
 	
 	public int getCountryId() {
 		return countryId;
@@ -22,4 +24,18 @@ public class CountryVO {
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
+	public String getCountryColor() {
+		return countryColor;
+	}
+	public void setCountryColor(String countryColor) {
+		this.countryColor = countryColor;
+	}
+	public String getCountryFontColor() {
+		return countryFontColor;
+	}
+	public void setCountryFontColor(String countryFontColor) {
+		this.countryFontColor = countryFontColor;
+	}
+	
+	
 }

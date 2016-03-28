@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+
+div.placeDetail {
+	color: #ffffff;
+	font-size: 50px;
+	width:200px;
+	height:200px;
+	background-color: #000000;
+}
+
+div.modal-content {
+	
+	width:1500px;
+	height:900px;
+	margin-left:-300px;
+	
+}
+
+div.divHeader{
+	height:30px;
+	background-color: #ececec;
+}
+
+div.modal-header {
+	width:50%;
+	height:80%;
+	background-color: #333333;
+	position:relative;
+	float:left;
+}
+
+div.modal-footer {
+	background-color: #ececec;
+}
