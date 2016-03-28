@@ -10,12 +10,31 @@
 1458721671942	Delete element
 1458721677810	Delete element
 <<<<<<< HEAD
+<<<<<<< HEAD
 1458797694505	Rename type 'PackListVO'
 1458797726433	Rename type 'SharePackListVO'
 1458797754169	Rename field 'packDAO'
+=======
+1458792235186	Rename resource 'recommend-Btn.png'
+1458792305201	Rename resource 'recommend-btn.png'
+1458794175933	Delete element
+1458795743897	Delete element
+>>>>>>> origin/KGM2
 =======
 1458794212377	Delete element
 1458794314695	Delete element
 1458795285960	Delete element
 1458796687133	Delete element
+<<<<<<< HEAD
 >>>>>>> origin/KGM
+=======
+<<<<<<< HEAD
+1458867310801	Delete element
+1458877022537	Delete element
+1458889887940	Delete element
+1458889908230	Delete element
+1458890310609	Delete element
+=======
+>>>>>>> origin/KGM
+>>>>>>> origin/롯드2
+>>>>>>> origin/KGM2

@@ -14,6 +14,7 @@ currentIPColor=224,224,255
 currentLineColor=224,224,255
 deletionIndicationColor=155,86,86
 eclipse.preferences.version=1
+<<<<<<< HEAD
 filteredSearchResultIndicationColor=255,223,153
 javaScriptOccurrenceIndicationColor=255,207,187
 lineNumberColor=175,191,207
@@ -21,6 +22,9 @@ lineNumberRuler=true
 matchingTagIndicationColor=255,207,187
 occurrenceIndicationColor=255,207,187
 org.eclipse.cdt.ui.occurrenceIndicationColor=255,207,187
+=======
+lineNumberRuler=true
+>>>>>>> origin/KGM2
 overviewRuler_migration=migrated_3.1
 printMarginColor=175,191,207
 pydevOccurrenceIndicationColor=255,207,187

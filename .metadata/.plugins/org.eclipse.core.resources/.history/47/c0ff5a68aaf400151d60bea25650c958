@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+
+div#Canada {
+	background-color: #333333;
+	color: #ffffff;
+}
+
+div#Canada span{
+	background-color: #333333;
+}
+
+div#Korea {
+	background-color: #80ff00;
+	color: #333333;
+}
+
+div#Greenland {
+	background-color: #ff00ff;
+	color: #333333;
+}

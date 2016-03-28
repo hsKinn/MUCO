@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.3+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 132654073.index
 4218940440.index
@@ -6,5 +7,15 @@ INDEX VERSION 1.3+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclipse
 1951512101.index
 354256644.index
 3051123884.index
+=======
+INDEX VERSION 1.3+C:\Users\206-001\workspace\MUCO\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3264988705.index
+2117559712.index
+112472087.index
+4170624141.index
+3916648080.index
+1017483640.index
+1951512101.index
+>>>>>>> origin/KGM2
 3479039357.index
 764598913.index

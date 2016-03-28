@@ -1,10 +1,9 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
-
 div#index {
 	margin-top: 15%;
-	margin-left:45%;
+	margin-left: 45%;
 }
 
 div#index a {
@@ -17,7 +16,7 @@ div#letsJoin {
 	width: 100px;
 	background-color: #333333;
 	padding: 10px;
-	float:left;
+	float: left;
 }
 
 div#letsLogIn {
@@ -26,5 +25,5 @@ div#letsLogIn {
 	width: 100px;
 	background-color: #333333;
 	padding: 10px;
-	float:left;
+	float: left;
 }

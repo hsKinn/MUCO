@@ -16,6 +16,7 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PackLikeDAO {
+<<<<<<< HEAD
 	
 	
 	/**
@@ -159,6 +160,9 @@ public class PackLikeDAO {
 	} // countPackLike END	
 	
 	
+=======
+
+>>>>>>> origin/KGM2
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -173,7 +177,7 @@ public class PackLikeDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -182,20 +186,23 @@ public class PackLikeDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	}
 

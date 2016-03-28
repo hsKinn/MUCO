@@ -39,7 +39,10 @@
 		<item value="org.eclipse.datatools.sqltools.doc.user:1.12.0.v201405281819-37D-7733L3D753L7BBF"/>
 		<item value="org.eclipse.draw2d:3.10.1.201508170204"/>
 		<item value="org.eclipse.egit.mylyn:4.2.0.201601211800-r"/>
+<<<<<<< HEAD
 		<item value="org.eclipse.egit.source:4.2.0.201601211800-r"/>
+=======
+>>>>>>> origin/KGM2
 		<item value="org.eclipse.egit:4.2.0.201601211800-r"/>
 		<item value="org.eclipse.emf.codegen.ecore.ui:2.11.1.v20160208-0841"/>
 		<item value="org.eclipse.emf.codegen.ecore:2.11.1.v20160208-0841"/>
@@ -161,7 +164,14 @@
 			<item value=""/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+<<<<<<< HEAD
 			<item value="C:\Users\206-001\Desktop\articleAdmin.zip"/>
+=======
+			<item value="C:\Users\206-001\Desktop\MUCO--.zip"/>
+			<item value="G:\금일하것\Travery.zip"/>
+			<item value="G:\160321.zip"/>
+			<item value="C:\Users\206-001\Desktop\.zip"/>
+>>>>>>> origin/KGM2
 		</list>
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
@@ -174,8 +184,13 @@
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 			<item value="500" key="DIALOG_HEIGHT"/>
+<<<<<<< HEAD
 			<item value="180" key="DIALOG_X_ORIGIN"/>
 			<item value="187" key="DIALOG_Y_ORIGIN"/>
+=======
+			<item value="164" key="DIALOG_X_ORIGIN"/>
+			<item value="207" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> origin/KGM2
 		</section>
 	</section>
 </section>
