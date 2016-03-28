@@ -2277,3 +2277,6 @@ Caused by: org.xml.sax.SAXParseExceptionpublicId: platform:/resource/Travery-Fro
 	at org.eclipse.jem.internal.util.emf.workbench.ProjectResourceSetImpl.demandLoad(ProjectResourceSetImpl.java:811)
 	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
 	... 67 more
+
+!ENTRY org.eclipse.core.resources 4 380 2016-03-28 16:34:57.089
+!MESSAGE The resource tree is locked for modifications.
