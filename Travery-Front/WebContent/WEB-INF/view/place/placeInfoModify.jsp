@@ -28,31 +28,21 @@
 	});
 </script>
 <script type="text/javascript">
-	
-	$(document).ready( function() {
-		
+	$(document).ready(function() {
+
 		$("#modifyBtn").click(function() {
 			var form = $("#modifyForm");
 			form.attr("method", "post");
 			form.attr("action", "<c:url value="/placeInfoModify"/>");
 			form.submit();
 		});
-		
-		
-		
-	
-		
-		
-		
+
 	});
-
-
 </script>
 <script type="text/javascript">
-
-	$(document).ready( function() {
+	$(document).ready(function() {
 		<c:if test="${ not empty article}">
-		$("#doModify").click( function() {
+		$("#doModify").click(function() {
 			var form = $("#writeForm");
 			form.attr("method", "post");
 			form.attr("action", "/doModify");
@@ -67,30 +57,34 @@
 
 
 
-	<div id="placeInfoModify_title">여행지 등록하기
-	
-		<input type="text" id="title" name="title" style="width: 250px;" value="${ article.title }" />
-	
+	<div id="placeInfoModify_title">
+		여행지 등록하기 <input type="text" id="title" name="title"
+			style="width: 250px;" value="${ article.title }" />
+
 	</div>
 
 	<form id="writeForm" enctype="multipart/form-data">
 
-	<div id="placeInfoModify_searchMap">[IMG] 주소받아오기창 연동 Google MAP API</div>
-	<div id="placeInfoModify_imageUpload">
-	[IMG] 파일경로 /하단 이미지보여주기 / 파일	업로드
-		<input type="file" id="file" name="file" />
-	</div>
-	
-	<div id="placeInfoModify_description">TEXTAREA SIZE HEIGHT 40%/
-		<textarea id="descript" name="descript" style="width:250px; height:150px;">${ article.descript }</textarea>	
-	
-	</div>
-	<div id="placeInfoModify_modifyBtn">SUBMIT [IMG5]
+		<div id="placeInfoModify_searchMap">[IMG] 주소받아오기창 연동 Google MAP
+			API</div>
+		<div id="placeInfoModify_imageUpload">
+			[IMG] 파일경로 /하단 이미지보여주기 / 파일 업로드 <input type="file" id="file"
+				name="file" />
+		</div>
+
+		<div id="placeInfoModify_description">
+			TEXTAREA SIZE HEIGHT 40%/
+			<textarea id="descript" name="descript"
+				style="width: 250px; height: 150px;">${ article.descript }</textarea>
+
+		</div>
+		<div id="placeInfoModify_modifyBtn">
+			SUBMIT [IMG5]
 			<c:if test="${ empty article }">
 				<input type="button" id="doWrite" value="submit" />
 			</c:if>
-	
-	</div>
+
+		</div>
 	</form>
 </div>
 
@@ -120,55 +114,31 @@
 
 
 
-	$(document).ready( function() {
-		$(".hide").hide();
-		
-				$(".writeReReply").click(
-						function() {
-							var table = $(this).parent().parent().parent();
-							console.log(table.text());
-							var groupId = table.children(":eq(1)").children(
-									":eq(0)").html();
-							var parentReplyId = table.children(":eq(1)")
-									.children(":eq(1)").html();
-							var depth = table.children(":eq(2)").children(
-									":eq(0)").html();
-							var orderNo = table.children(":eq(2)").children(
-									":eq(1)").html();
-							var replyId = table.children(":eq(3)").children(
-									":eq(0)").html();
+$(document).ready( function() { $(".hide").hide();
 
-							$("#depth").val(parseInt(depth) + 1);
-							$("#parentReplyId").val(replyId);
-							$("#groupId").val(groupId);
-							$("#orderNo").val(orderNo);
-							$("#replyId").val(replyId);
+$(".writeReReply").click( function() { var table =
+$(this).parent().parent().parent(); console.log(table.text()); var
+groupId = table.children(":eq(1)").children( ":eq(0)").html(); var
+parentReplyId = table.children(":eq(1)") .children(":eq(1)").html(); var
+depth = table.children(":eq(2)").children( ":eq(0)").html(); var orderNo
+= table.children(":eq(2)").children( ":eq(1)").html(); var replyId =
+table.children(":eq(3)").children( ":eq(0)").html();
 
-							var form = $("#formWrapper").html();
-							$("formWrapper").detach();
-
-							if (form == undefined) {
-								$(".formAppender").each(function(index, data) {
-									if (data.innerHTML != "") {
-										form = data.innerHTML;
-									}
-								});
-								$("formAppender").html("");
-							}
-
-							var formAppender = table.parent()
-									.children(":eq(1)");
-							formAppender.html(form);
-							formAppender.show();
-						});
-			});
+$("#depth").val(parseInt(depth) + 1); $("#parentReplyId").val(replyId);
+$("#groupId").val(groupId); $("#orderNo").val(orderNo);
+$("#replyId").val(replyId); var form = $("#formWrapper").html();
+$("formWrapper").detach(); if (form == undefined) {
+$(".formAppender").each(function(index, data) { if (data.innerHTML !=
+"") { form = data.innerHTML; } }); $("formAppender").html(""); } var
+formAppender = table.parent() .children(":eq(1)");
+formAppender.html(form); formAppender.show(); }); });
 </script>
 
 
 <div class="Reply">
 	<table border="1">
 		<tr align="center">
-			<th>글 제목 </th>
+			<th>글 제목</th>
 			<th>글쓴이의 ID(Member ID)</th>
 			<th>글 내용</th>
 		</tr>
@@ -209,11 +179,11 @@ ${ sessionScope._MEMBER_.password } ${ sessionScope._MEMBER_.email } --%>
 ${ loginId }
 
 <c:if test="${ loginId eq article.memberId }">
-	<a href="/delete?articleId=${ article.articleId }">
-	<input type="button" id="delete" value="delete" />
+	<a href="/delete?articleId=${ article.articleId }"> <input
+		type="button" id="delete" value="delete" />
 	</a>
-	<a href="/modify?articleId=${ article.articleId }">
-	<input type="button" id="modify" value="modify" />
+	<a href="/modify?articleId=${ article.articleId }"> <input
+		type="button" id="modify" value="modify" />
 	</a>
 </c:if>
 

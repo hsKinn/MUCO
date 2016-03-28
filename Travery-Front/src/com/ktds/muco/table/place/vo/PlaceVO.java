@@ -6,106 +6,103 @@ import com.ktds.muco.table.member.vo.MemberVO;
 /**
  * 여행지
  * 
- * latitude : 위도
- * longitude : 경도
- * isNewPlace : 0 기존 / 1 신규
- * writer : 작성자 VO
+ * latitude : 위도 longitude : 경도 isNewPlace : 0 기존 / 1 신규 writer : 작성자 VO
  * 
  * @author 김광민
  *
  */
 public class PlaceVO extends CountryVO {
 
-   private int placeId;
-   private String placeName;
-   private double latitude;
-   private double longitude;
-   private String address;
-   private int viewCount;
-   private int likeCount;
-   private String description;
-   private int isNewPlace;
-   
-   // 작성자
-   private MemberVO writer;
-   
-   public int getPlaceId() {
-      return placeId;
-   }
+	private int placeId;
+	private String placeName;
+	private double latitude;
+	private double longitude;
+	private String address;
+	private int viewCount;
+	private int likeCount;
+	private String description;
+	private int isNewPlace;
 
-   public void setPlaceId(int placeId) {
-      this.placeId = placeId;
-   }
+	// 작성자
+	private MemberVO writer;
 
-   public String getPlaceName() {
-      return placeName;
-   }
+	public int getPlaceId() {
+		return placeId;
+	}
 
-   public void setPlaceName(String placeName) {
-      this.placeName = placeName;
-   }
+	public void setPlaceId(int placeId) {
+		this.placeId = placeId;
+	}
 
-   public double getLatitude() {
-      return latitude;
-   }
+	public String getPlaceName() {
+		return placeName;
+	}
 
-   public void setLatitude(double latitude) {
-      this.latitude = latitude;
-   }
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
+	}
 
-   public double getLongitude() {
-      return longitude;
-   }
+	public double getLatitude() {
+		return latitude;
+	}
 
-   public void setLongitude(double longitude) {
-      this.longitude = longitude;
-   }
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
 
-   public String getAddress() {
-      return address;
-   }
+	public double getLongitude() {
+		return longitude;
+	}
 
-   public void setAddress(String address) {
-      this.address = address;
-   }
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 
-   public int getViewCount() {
-      return viewCount;
-   }
+	public String getAddress() {
+		return address;
+	}
 
-   public void setViewCount(int viewCount) {
-      this.viewCount = viewCount;
-   }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-   public int getLikeCount() {
-      return likeCount;
-   }
+	public int getViewCount() {
+		return viewCount;
+	}
 
-   public void setLikeCount(int likeCount) {
-      this.likeCount = likeCount;
-   }
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
 
-   public String getDescription() {
-      return description;
-   }
+	public int getLikeCount() {
+		return likeCount;
+	}
 
-   public void setDescription(String description) {
-      this.description = description;
-   }
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 
-   public int getIsNewPlace() {
-      return isNewPlace;
-   }
+	public String getDescription() {
+		return description;
+	}
 
-   public void setIsNewPlace(int isNewPlace) {
-      this.isNewPlace = isNewPlace;
-   }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-   public MemberVO getWriter() {
-      return writer;
-   }
+	public int getIsNewPlace() {
+		return isNewPlace;
+	}
 
-   public void setWriter(MemberVO writer) {
-      this.writer = writer;
-   }
+	public void setIsNewPlace(int isNewPlace) {
+		this.isNewPlace = isNewPlace;
+	}
+
+	public MemberVO getWriter() {
+		return writer;
+	}
+
+	public void setWriter(MemberVO writer) {
+		this.writer = writer;
+	}
 }

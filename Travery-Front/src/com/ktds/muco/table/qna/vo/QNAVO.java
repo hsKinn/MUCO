@@ -5,11 +5,8 @@ import com.ktds.muco.table.member.vo.MemberVO;
 /**
  * QNA
  * 
- * title : 질문 제목
- * description : 질문 내용
- * isAnswer : 답변이 달렸으면 1, 안달렸으면 0
- * answerDescription : 답변 내용
- * isFaq : 자주묻는 질문이면 1, 아니면 0
+ * title : 질문 제목 description : 질문 내용 isAnswer : 답변이 달렸으면 1, 안달렸으면 0
+ * answerDescription : 답변 내용 isFaq : 자주묻는 질문이면 1, 아니면 0
  * 
  * @author 김광민
  *

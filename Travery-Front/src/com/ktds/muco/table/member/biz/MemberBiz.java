@@ -70,7 +70,7 @@ public class MemberBiz {
 
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
+
 		return true;
 
 	}

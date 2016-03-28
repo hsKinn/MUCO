@@ -2,12 +2,34 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+		<item value="United" key="selection"/>
+=======
+		<item value="" key="selection"/>
+>>>>>>> origin/bjg3
+=======
 		<item value="dataForm" key="selection"/>
+>>>>>>> origin/롯드2
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
+<<<<<<< HEAD
+			<item value="United"/>
+			<item value="united"/>
+			<item value="init"/>
+			<item value="red"/>
+			<item value="selectedCounty"/>
+			<item value="us"/>
+			<item value="#"/>
+			<item value="ca"/>
+=======
+			<item value="filter"/>
+>>>>>>> origin/bjg3
+=======
 			<item value="dataform"/>
 			<item value="MapDataServlet"/>
 			<item value="PlaceInfoMap"/>
@@ -16,6 +38,7 @@
 			<item value="formWrapper"/>
 			<item value="textarea"/>
 			<item value="addNewPlaceForm"/>
+>>>>>>> origin/롯드2
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -15,29 +15,32 @@ import com.ktds.muco.util.file.MultipartHttpServletRequest;
 public class ImageBiz {
 
 	private ImageDAO imageDAO;
-	
-	public ImageBiz(){
+
+	public ImageBiz() {
 		imageDAO = new ImageDAO();
 	}
+
 	/**
 	 * 
 	 * @author insertImageToss 김동규
 	 *
 	 */
 	public void insertImageToss(MultipartHttpServletRequest request, int placeId) {
-		
+
 		MultipartFile image = request.getFile("image");
 		File upLoadImage = image.write("D:\\" + image.getFileName());
-			
-/*		if ( file.getFileName() != null && file.getFileName().length() > 0) {
-		}*/
-		
+
+		/*
+		 * if ( file.getFileName() != null && file.getFileName().length() > 0) {
+		 * }
+		 */
+
 		ImageVO imageVO = new ImageVO();
-		
+
 		imageVO.setImageId(placeId);
 		imageVO.setImageName(image.getFileName());
 		imageVO.setImageLocation(upLoadImage.getPath());
-		
+
 		imageDAO.insertImage(imageVO);
 	}
 }

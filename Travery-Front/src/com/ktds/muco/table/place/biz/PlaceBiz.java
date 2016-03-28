@@ -19,20 +19,19 @@ public class PlaceBiz {
 	private PlaceDAO placeDAO;
 
 	public PlaceBiz() {
-		placeDAO = new PlaceDAO(); 
+		placeDAO = new PlaceDAO();
 	}
 
-	public List<PlaceVO> placeInfoRecommendedList() {		
+	public List<PlaceVO> placeInfoRecommendedList() {
 		return placeDAO.placeInfoRecommendedList();
 	}
-	
+
 	public int placeInfoCreate(PlaceVO placeVO) {
-	
+
 		String Description = placeVO.getDescription();
 		Description = Description.replaceAll("\n", "<br/>");
 		placeVO.setDescription(Description);
-		return 	placeDAO.insertPlaceInfo(placeVO);
+		return placeDAO.insertPlaceInfo(placeVO);
 	}
-
 
 }

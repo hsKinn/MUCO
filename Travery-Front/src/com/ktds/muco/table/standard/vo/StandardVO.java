@@ -1,8 +1,7 @@
 package com.ktds.muco.table.standard.vo;
 
 /**
- * standardName 기준명
- * reverseStandardName 반대 기준명
+ * standardName 기준명 reverseStandardName 반대 기준명
  * 
  * 
  * @author 김광민

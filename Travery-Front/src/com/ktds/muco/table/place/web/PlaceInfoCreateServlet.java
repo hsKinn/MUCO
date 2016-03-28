@@ -26,32 +26,36 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PlaceBiz placeBiz;
 	private ImageBiz imageBiz;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PlaceInfoCreateServlet() {
-        super();
-        placeBiz = new PlaceBiz();
-        imageBiz= new ImageBiz();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PlaceInfoCreateServlet() {
+		super();
+		placeBiz = new PlaceBiz();
+		imageBiz = new ImageBiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// HttpSession session = request.getSession();
+		// MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
-	
+
 		PlaceVO placeVO = new PlaceVO();
 
 		placeVO.setPlaceName(multipartRequest.getParameter("placeName"));
@@ -59,18 +63,17 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
 		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
 		placeVO.setDescription(multipartRequest.getParameter("description"));
-//		placeVO.setWriter(member.getEmail());
+		// placeVO.setWriter(member.getEmail());
 		MultipartFile image = multipartRequest.getFile("image");
-	
+
 		int placeId = placeBiz.placeInfoCreate(placeVO);
-			
-		if ( image.getFileSize() > 0) {
+
+		if (image.getFileSize() > 0) {
 			imageBiz.insertImageToss(multipartRequest, placeId);
 		}
 		try {
 			response.sendRedirect("/placeInfoControl");
-			}
-		catch ( RuntimeException re ) {
+		} catch (RuntimeException re) {
 			System.out.println(re.getMessage());
 			response.sendRedirect("/placeInfoControl?placeId=" + placeId);
 		}

@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 
 /* 김동규 */
-
 div#recommendPlace_Wrapper {
 	width: 90%;
 	height: 100%;
@@ -11,10 +10,10 @@ div#recommendPlace_Wrapper {
 
 div#inner_wrapper {
 	width: 88%;
-	height : 50%;
+	height: 50%;
 	margin-left: 6%;
 	float: left;
-		background-color: blue;
+	background-color: blue;
 }
 
 div#inner_wrapper2 {
@@ -41,8 +40,8 @@ div#daily_part {
 	width: 25%;
 	margin-top: 3%;
 	margin-right: 3%;
-	margin-bottom : 3%;
-	float : left;
+	margin-bottom: 3%;
+	float: left;
 	font-size: 30px;
 	background-color: red;
 	margin-bottom: 3%;
@@ -66,8 +65,8 @@ div#monthly_part {
 
 div#new_part {
 	width: 100%;
-	margin-top : 3%;
-	margin-bottom : 3%;
+	margin-top: 3%;
+	margin-bottom: 3%;
 	font-size: 30px;
 	background-color: pink;
 	float: left;

@@ -1,0 +1,8 @@
+package com.ktds.muco.table.country.vo;
+
+import java.util.List;
+
+public class SelectedCountryVO {
+
+	private List<CountryVO> selectedCountryList;
+}

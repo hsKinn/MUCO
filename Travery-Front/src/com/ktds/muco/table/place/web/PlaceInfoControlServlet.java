@@ -22,30 +22,34 @@ import com.ktds.muco.table.place.vo.PlaceVO;
 public class PlaceInfoControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PlaceBiz placeBiz;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PlaceInfoControlServlet() {
-        super();
-        placeBiz = new PlaceBiz();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PlaceInfoControlServlet() {
+		super();
+		placeBiz = new PlaceBiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		List<PlaceVO> listPlaceVO = placeBiz.placeInfoRecommendedList();
 		request.setAttribute("placeInfo", listPlaceVO);
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");
 		rd.forward(request, response);
 	}
