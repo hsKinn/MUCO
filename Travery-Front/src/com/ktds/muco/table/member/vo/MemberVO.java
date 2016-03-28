@@ -151,8 +151,8 @@ public class MemberVO extends PlaceVO {
 	 */
 	public boolean addSelectedCountry(CountryVO countryVO) {
 
-		// 최대 20개 나라 선택 가능
-		if (selectedCountryList.size() < 20) {
+		// 최대 15개 나라 선택 가능
+		if (selectedCountryList.size() < 15) {
 
 			System.out.println(selectedCountryList.size());
 
