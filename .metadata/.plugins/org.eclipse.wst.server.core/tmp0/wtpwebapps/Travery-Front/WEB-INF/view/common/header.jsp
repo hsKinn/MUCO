@@ -69,7 +69,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
-<body>
+<body background="<c:url value="/resource/img/common/IndexImg.jpg"/>">
 	<div id="wrapper">
 		<div id="header">
 			<div id="traveryIcon">

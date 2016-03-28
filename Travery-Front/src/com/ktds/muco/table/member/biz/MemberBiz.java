@@ -96,24 +96,26 @@ public class MemberBiz {
 		MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
 		
 		// 파일 받아오기 위한 
-		MultipartFile file = request.getFile("file");
-		File upFile = file.write("D:\\" + file.getFileName());
-		
-		String fileName = file.getFileName();
-		String fileLocation = upFile.getPath(); 
-		
-		System.out.println(fileName);
-		System.out.println(fileLocation);
-		
-		// 파일 check & send to DAO
-		if (fileName.length() > 0 ) {
-			memberVO.setMainImageName(fileName);
-			memberVO.setMainImageLocation(fileLocation);
+		if ( request.getParameter("file").length() > 0 ) {
+			MultipartFile file = request.getFile("file");
+			File upFile = file.write("D:\\" + file.getFileName());
 			
-			memberDAO.addMainImage(memberVO);
-			System.out.println("등록한 프로필 사진: " + fileName);
-		}
+			String fileName = file.getFileName();
+			String fileLocation = upFile.getPath(); 
+			
+			System.out.println(fileName);
+			System.out.println(fileLocation);
 
+			// 파일 check & send to DAO
+			if (fileName.length() > 0 ) {
+				memberVO.setMainImageName(fileName);
+				memberVO.setMainImageLocation(fileLocation);
+				
+				memberDAO.addMainImage(memberVO);
+				System.out.println("등록한 프로필 사진: " + fileName);
+			}
+		}
+		
 		String name = request.getParameter("name");
 		String password = request.getParameter("currentPassword");
 		String newPassword = request.getParameter("newPassword");

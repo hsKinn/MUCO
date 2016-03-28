@@ -32,7 +32,7 @@ td {
 	text-align: left;
 }
 
-span.glyphicon {
+div#personalInfoWrapper span.glyphicon {
 	color: #808080;
 }
 

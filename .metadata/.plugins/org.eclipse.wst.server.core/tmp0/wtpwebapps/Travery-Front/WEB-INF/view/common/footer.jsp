@@ -6,7 +6,8 @@
 
 <!-- Footer -->
 <div class="clear"></div>
-<div id="footer">footer</div>
+
+<span id="footer">Copyright © TRAVERY Co.,Ltd. All Rights Reserved.</span>
 
 <!-- Close "#wrapper" -->
 </div>

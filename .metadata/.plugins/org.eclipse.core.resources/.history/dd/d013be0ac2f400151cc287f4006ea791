@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#index {
+	margin-top: 15%;
+	margin-left: 45%;
+}
+
+div#index a {
+	text-decoration: none;
+}
+
+div#letsJoin {
+	text-align: center;
+	width: 200px;
+	background-color: #333333;
+	padding: 10px;
+	float: left;
+	filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.3;
+}
+
+div#letsLogIn {
+	margin-top: 10px;
+	text-align: center;
+	width: 200px;
+	background-color: #333333;
+	padding: 10px;
+	float: left;
+	filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.3;
+}
+
