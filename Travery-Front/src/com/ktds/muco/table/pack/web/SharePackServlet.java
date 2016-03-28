@@ -14,7 +14,6 @@ import com.ktds.muco.table.pack.biz.SharePackBiz;
 import com.ktds.muco.table.pack.vo.PackListVO;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
 import com.ktds.muco.table.packLike.biz.PackLikeBiz;
-import com.ktds.muco.table.packLike.vo.PackLikeVO;
 
 /**
  * 
@@ -50,6 +49,14 @@ public class SharePackServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int sortOption = 1;
+		
+		try {
+			sortOption = Integer.parseInt(request.getParameter("sortOption"));
+		}
+		catch (NumberFormatException nfe) {
+		}
 		
 		int pageNo = 0;
 		PackSearchVO packSearchVO = new PackSearchVO();

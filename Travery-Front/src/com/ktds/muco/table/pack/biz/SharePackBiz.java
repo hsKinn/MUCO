@@ -62,7 +62,7 @@ public class SharePackBiz {
 		packList.setPaging(paging);
 		
 		return packList;
-	}
+	} // getAllPackageList END
 	
 	
 	/**
@@ -109,5 +109,22 @@ public class SharePackBiz {
 		packList.setPaging(paging);
 		
 		return packList;
-	}
-}
+	} // getAllPackageListOrderByDate END
+	
+	
+	/**
+	 * Hit the Count By Pack
+	 * 
+	 * @author 김현섭
+	 * 
+	 */
+	public boolean hitCountPack ( int packId ) {
+		
+		return sharePackDAO.hitCountPack(packId) > 0;
+		
+	} // hitCountPack END
+	
+	
+	
+	
+}	

@@ -64,8 +64,10 @@
   				<span class="caret"></span>
   			</button>
  			<ul class="dropdown-menu">
+			    <li><a href="/sharePack?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+			    <li><a href="/sharePack?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+			    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
 			    <li><a href="/recentSharePack">등록일 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
-			    <li><a href="/sharePack">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
   			</ul>
 		</div>
 	</div>
@@ -79,7 +81,10 @@
 	<c:forEach items="${ packages.packList }" var="pack">
 		<div class="sharePack"> 
 			<div class="packTop">
-				<span id="header" data-toggle="modal" data-target="#${ pack.packId }">${ pack.packTitle }</span>
+				<span class="header" data-toggle="modal" data-target="#${ pack.packId }">
+					${ pack.packTitle }
+					<span class="badge">View: ${ pack.viewCount }</span> 
+				</span>
 			</div>
 			
 			<div class="packHashTag">
@@ -165,8 +170,6 @@
 									jsonData3.result = false;							
 								}
 								
-								console.log(jsonData3);
-								
 								if ( jsonData3.result) {
 									// 하트를 넣음
 									var text = $(".${pack.packId}packLike").text();
@@ -183,7 +186,16 @@
 								}
 							}
 					  );
-				});		
+				});
+			 
+			  $(".header").click( function() {
+				 $.post(
+						"/hitCountPack"
+						, { "packId" : "${pack.packId}"}
+						, function(){
+						}
+				 );
+			  });
 		 </script>
   
 	</c:forEach>

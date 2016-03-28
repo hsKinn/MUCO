@@ -42,6 +42,12 @@
 	
 	<sharePack>
 	
+		<hitCountPack>
+			UPDATE	PACK
+			SET		VIEW_COUNT = VIEW_COUNT + 1
+			WHERE	PACK_ID = ?
+		</hitCountPack>
+	
 		<getAllPackageCountByHashTag>
 			SELECT  COUNT(P.PACK_ID)
 			FROM    PACK P
@@ -74,7 +80,8 @@
 			                     AND	 P.PACK_ID = H.PACK_ID
 			                     AND	 P.EMAIL = M.EMAIL(+)
 			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
-			                     ORDER   BY LIKE_COUNT DESC   
+			                     ORDER   BY LIKE_COUNT DESC
+			                     		 , VIEW_COUNT DESC   
 		                     ) A
 		               WHERE   ROWNUM &lt;= ?   
 	                )
@@ -138,6 +145,7 @@
 			                     WHERE   IS_PUBLIC = 1
 			                     AND	 P.EMAIL = M.EMAIL(+)
 			                     ORDER   BY LIKE_COUNT DESC   
+			                     		 , VIEW_COUNT DESC   			                     
 		                     ) A
 		               WHERE   ROWNUM &lt;= ?   
 	                )

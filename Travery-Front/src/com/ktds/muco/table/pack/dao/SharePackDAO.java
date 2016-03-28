@@ -369,6 +369,32 @@ public class SharePackDAO {
 	} // getAllPackageListOrderByDate END
 	
 	
+	public int hitCountPack ( int packId ) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/sharePack/hitCountPack/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+			
+			return stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}				
+		
+	}
+	
+	
 	/**
 	 * 
 	 * Load Oracle Driver
