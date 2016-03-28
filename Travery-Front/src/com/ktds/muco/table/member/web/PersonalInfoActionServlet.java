@@ -17,6 +17,7 @@ import com.ktds.muco.util.root.Root;
  * Servlet implementation class PersonalInfoActionServlet
  * 
  * @author 이기연
+ * 
  */
 public class PersonalInfoActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,9 +53,7 @@ public class PersonalInfoActionServlet extends HttpServlet {
 			response.sendRedirect(Root.get(this) + "/personalInfo");
 		}
 		
-//		//file (profile 등록)
-//		// 썸네일 생성
-//		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+		
 //		// file이 null이면 not upload , null이 아니면 upload! 		
 //		MultipartFile file = multipartRequest.getFile("file");
 ////		File upFile = file.write("D:\\" + file.getFileName());
@@ -63,8 +62,7 @@ public class PersonalInfoActionServlet extends HttpServlet {
 //			// file을 DB에 저장
 //			memberBiz.addFile(file, memberVO);
 //		}
-//		
-		//aJax (name 중복 체크)
+		
 
 	
 	}

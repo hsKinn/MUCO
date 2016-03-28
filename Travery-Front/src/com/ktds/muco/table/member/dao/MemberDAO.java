@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -239,6 +242,41 @@ public class MemberDAO {
 		return 0;
 	}
 
+	/**
+	 * 회원 프로필 이미지 등록
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void addMainImage(MemberVO memberVO) {
+	
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/addMainImage/text()");
+			
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getMainImageName());
+			stmt.setString(2, memberVO.getMainImageLocation());
+			stmt.setString(3, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
+		
+	}
+
 	
 	/**
 	 * 
@@ -280,7 +318,5 @@ public class MemberDAO {
 		}
 	}
 
-
-	
 
 }

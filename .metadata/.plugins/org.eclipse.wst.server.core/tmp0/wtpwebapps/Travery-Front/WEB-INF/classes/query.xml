@@ -55,6 +55,12 @@
      		FROM	MEMBER
      		WHERE	NAME = ?
      	</isExistName>
+     	<addMainImage>
+     		UPDATE	MEMBER 
+     		SET		MAIN_IMAGE_NAME = ?
+     				, MAIN_IMAGE_LOCATION = ?
+     		WHERE	EMAIL = ?
+     	</addMainImage>
 	</member>
 	
 	<pack>

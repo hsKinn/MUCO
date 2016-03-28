@@ -50,7 +50,7 @@ $(document).ready(function() {
 	<form id="loginForm">
 		<input type="text" tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" />
 		<input type="password" tabindex="2" id="userPw" name="userPw" placeholder=" Password" />
-		<input type="button" id="btnLogin" value="로그인" />
+		<input type="button" tabindex="3" id="btnLogin" value="로그인" />
  	</form>
 </div>
 	
