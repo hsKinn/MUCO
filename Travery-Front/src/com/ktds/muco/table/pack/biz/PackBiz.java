@@ -12,18 +12,17 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  *
  */
 public class PackBiz {
-	
-	
+
 	/**
 	 * @author 백지경
 	 */
 	private PackDAO packDAO;
-	
+
 	public PackBiz() {
 		packDAO = new PackDAO();
 	}
-	
-	public List<PackVO> getPackListByEmail(String email){
+
+	public List<PackVO> getPackListByEmail(String email) {
 		List<PackVO> packs = packDAO.getPackListByEmail(email);
 		return packs;
 	}
@@ -41,17 +40,15 @@ public class PackBiz {
 	public int deletePacks(String[] deletePackIds) {
 		int deleteCount = 0;
 		for (String deletePackId : deletePackIds) {
-			deleteCount=packDAO.deletePack(Integer.parseInt(deletePackId));
+			deleteCount = packDAO.deletePack(Integer.parseInt(deletePackId));
 		}
 		return deleteCount;
-		
+
 	}
 
 	public List<PlaceVO> getPlaceListByPackId(int packId) {
 		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
 		return places;
 	}
-	
-	
 
 }

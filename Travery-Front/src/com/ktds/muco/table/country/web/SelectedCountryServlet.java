@@ -50,16 +50,16 @@ public class SelectedCountryServlet extends HttpServlet {
 		// 선택된 이름의 나라가 있는지 확인 후 있으면 해당 Country Info를 가져온다.
 		CountryVO selectedCountryVO = countryBiz.getCountryInfoByCountryName(request);
 		boolean isExistCountry = false;
-		
-		if( selectedCountryVO != null) {
+
+		if (selectedCountryVO != null) {
 			isExistCountry = true;
 		}
-		
+
 		// JSON
 		StringBuffer json = new StringBuffer();
 		json.append("{");
 		json.append("\"result\" : true");
-		json.append(", \"isExistCountry\" : " + isExistCountry );
+		json.append(", \"isExistCountry\" : " + isExistCountry);
 		json.append("}");
 
 		// Print Writer
@@ -67,7 +67,7 @@ public class SelectedCountryServlet extends HttpServlet {
 		out.print(json.toString());
 		out.flush();
 		out.close();
-		
+
 		System.out.println(json.toString());
 	}
 }

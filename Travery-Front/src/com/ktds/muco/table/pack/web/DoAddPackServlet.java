@@ -23,21 +23,24 @@ public class DoAddPackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
 	private FileBiz fileBiz;
-	
+
 	public DoAddPackServlet() {
-        super();
-        packBiz = new PackBiz();
-        fileBiz = new FileBiz();
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		super();
+		packBiz = new PackBiz();
+		fileBiz = new FileBiz();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 
 		String title = multipartRequest.getParameter("title");
-		//String tag = multipartRequest.getParameter("tag");
+		// String tag = multipartRequest.getParameter("tag");
 		MultipartFile file = multipartRequest.getFile("file");
 
 		HttpSession session = request.getSession();
@@ -48,11 +51,10 @@ public class DoAddPackServlet extends HttpServlet {
 		newAddPack.setPackTitle(title);
 
 		int packId = packBiz.addPack(newAddPack);
-		
 
-		if (file != null && file.getFileName().length() >0) {
+		if (file != null && file.getFileName().length() > 0) {
 			// file이 null이면 파일을 업로드 안한것
-			File upFile = file.write("D:\\" + file.getFileName());			
+			File upFile = file.write("D:\\" + file.getFileName());
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 

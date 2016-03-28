@@ -54,7 +54,7 @@ public class XML {
 					Object result = expr.evaluate(doc, XPathConstants.NODESET);
 
 					NodeList nodes = (NodeList) result;
-					for (int i = 0; i < nodes.getLength(); ) {
+					for (int i = 0; i < nodes.getLength();) {
 						Node node = nodes.item(i);
 						return node.getNodeValue();
 					}

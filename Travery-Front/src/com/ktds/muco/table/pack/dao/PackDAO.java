@@ -230,7 +230,7 @@ public class PackDAO {
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packs;
 	}
 

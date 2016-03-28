@@ -6,13 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.ktds.muco.table.file.vo.FileVO;
 import com.ktds.muco.util.xml.XML;
-
-
 
 public class FileDAO {
 
@@ -26,15 +21,14 @@ public class FileDAO {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		int updateCount = 0;
 
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
 			String query = XML.getNodeString("//query/pack/uploadPackImgFile/text()");
 			stmt = conn.prepareStatement(query);
-			
-			
+
 			stmt.setString(1, file.getName());
 			stmt.setString(2, file.getPath());
 			stmt.setInt(3, packId);
@@ -48,9 +42,7 @@ public class FileDAO {
 		}
 		return updateCount;
 	}
-	
 
-	
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
 		if (rs != null) {
 			try {
@@ -79,6 +71,5 @@ public class FileDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-
 
 }

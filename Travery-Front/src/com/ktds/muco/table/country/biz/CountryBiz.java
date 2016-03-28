@@ -36,23 +36,22 @@ public class CountryBiz {
 		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
 
 		// 선택한 나라명과 일치하는 나라가 존재하면
-		if ( countryVO != null ) {
-			
+		if (countryVO != null) {
+
 			HttpSession session = request.getSession();
 			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
-			
+
 			// 중복 체크
-			if( !memberVO.isExistCountryByCountryName(selectedCountryName) ) {
-				
+			if (!memberVO.isExistCountryByCountryName(selectedCountryName)) {
+
 				// 존재하지 않으면 추가
-				if ( memberVO.addSelectedCountry(countryVO) ) {
+				if (memberVO.addSelectedCountry(countryVO)) {
 					session.setAttribute("_MEMBER_", memberVO);
 					return countryVO;
 				}
-			}
-			else {
+			} else {
 				// 존재하면 제거
-				if ( memberVO.removeSelectedCountryByCountryName(selectedCountryName) ) {
+				if (memberVO.removeSelectedCountryByCountryName(selectedCountryName)) {
 					session.setAttribute("_MEMBER_", memberVO);
 				}
 			}
