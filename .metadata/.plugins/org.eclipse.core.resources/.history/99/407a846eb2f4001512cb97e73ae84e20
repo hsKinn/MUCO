@@ -366,7 +366,7 @@
 	                   </div>
 	                   <div class="modal-header" >
 	                      <h4 class="modal-point">travelPoint</h4>
-	                      	<div class="checkPoint">
+	                      	<div>
 								<form method="post" action="demoform.asp">
 								  <label for="points">Points:</label>
 								  <input type="range" name="points" id="points" value="50" min="0" max="100">

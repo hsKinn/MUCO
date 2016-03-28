@@ -57,8 +57,9 @@
 <script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 
  <script>
+ 
  $(document).ready(function(){
-     
+	 
      $(".tapMenu").click(function(){
            $(".placeDetail").css({ "display" : "block" });
         });
@@ -358,14 +359,30 @@
 	                 
 	                 <div class="travelExplain" >
 	                   <div class="modal-header">
-	                      <h2 class="modal-title">travelTitle</h4>
+	                      <h2 class="modal-title">travelTitle</h2>
 	                   </div>
 	                   <div class="modal-header" >
 	                      <h4 class="modal-descript">travelDescript</h4>
 	                   </div>
 	                   <div class="modal-header" >
 	                      <h4 class="modal-point">travelPoint</h4>
-	                      <button type="button" class="btn btn-info btn-lg" >점수등록</button>
+	                      	<div class="checkPoint">
+								<form method="post" action="demoform.asp">
+								  <label for="points">Points:</label>
+								  <input type="range" name="points" id="points" value="50" min="0" max="100">
+								  
+								  <label for="points">Points:</label>
+								  <input type="range" name="points" id="points" value="50" min="0" max="100">
+								  
+								  <label for="points">Points:</label>
+								  <input type="range" name="points" id="points" value="50" min="0" max="100">
+								  
+								  <label for="points">Points:</label>
+								  <input type="range" name="points" id="points" value="50" min="0" max="100">
+								  
+								  <input type="submit" data-inline="true" value="Submit">
+								</form>
+							</div>
 	                   </div>
 	                   <div class="modal-header" >
 	                      <h4 class="modal-reply">travelReply</h4>
