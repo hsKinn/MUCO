@@ -1,5 +1,4 @@
 <!-- 이기연 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -240,19 +239,23 @@
 				<th>Photo</th>
 				<td>
 					<c:if test="${ empty mainImageLocation }">
-						<img id="profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
+						<img id="default_profile" class="img-circle" src="<c:url value="/resource/img/member/default-profile.png"/>" />
 						<br />
 						<b>사진을 등록해주세요</b>
 					</c:if> 
 					<c:if test="${ not empty mainImageLocation }">
-						<img id="profile" class="img-circle" src=""D:\\" + file.getFileName()"/>
+						<img id="blah" class="img-circle"
+						 src="#" style="width:85px; height:85px;"/><br/>
 						사진이 등록되어 있습니다.
 					</c:if>
 				</td>
 				<td>
-					<span class="glyphicon glyphicon-camera" id="editMainImage"></span>
 					<br /> 
-					<input type="file" id="file" name="file" />
+					<label>
+						<span class="glyphicon glyphicon-camera" id="editMainImage" style="cursor: point;"></span>
+						<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none"/>
+					</label>
+					<br/>
 				</td>
 			</tr>
 
@@ -354,10 +357,6 @@
 		
 		
 	</form>
-    <form id="form1" runat="server">
-        <input type='file' onchange="readURL(this);" />
-        <img class="img-circle" id="blah" src="#" alt="your image" style="width:85px; height:85px;"/>
-    </form>
     
 </div>
 <!-- personalInfoWrapper : close -->

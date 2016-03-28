@@ -156,6 +156,8 @@ public class MemberBiz {
 	            graphic.drawImage(buffer_original_image, 0, 0, thumbnail_width, thumbnail_height, null);
 	            ImageIO.write(buffer_thumbnail_image, "jpg", thumb_file_name);
 	            System.out.println("썸네일 생성완료");
+	            
+	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
