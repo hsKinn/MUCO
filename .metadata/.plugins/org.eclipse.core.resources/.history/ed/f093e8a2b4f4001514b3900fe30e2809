@@ -63,13 +63,26 @@
 		
 		var $ = jQuery;
 
+		$('#focus-single').click(function() {
+			$('#map1').vectorMap('set', 'focus', {
+				region : 'AU',
+				animate : true
+			});
+		});
 		$('#focus-multiple').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				regions : [ 'AU', 'JP' ],
 				animate : true
 			});
 		});
-
+		$('#focus-coords').click(function() {
+			$('#map1').vectorMap('set', 'focus', {
+				scale : 7,
+				lat : 35,
+				lng : 33,
+				animate : true
+			});
+		});
 		$('#focus-init').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				scale : 1,
@@ -129,8 +142,7 @@
 		    },
 			series : {
 				regions : [ {
-					attribute: 'fill',
-					scale : ['#7db9e8','#1155ba' ],
+					scale : [ ],
 					normalizeFunction : 'polynomial',
 					values : {
 						"AF" : 16.63,
@@ -162,7 +174,7 @@
 						"BI" : 1.47,
 						"KH" : 11.36,
 						"CM" : 21.88,
-						"CA" : '#333333',
+						CA : '#333333',
 						"CV" : 1.57,
 						"CF" : 2.11,
 						"TD" : 7.59,

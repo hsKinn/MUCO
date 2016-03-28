@@ -63,13 +63,26 @@
 		
 		var $ = jQuery;
 
+		$('#focus-single').click(function() {
+			$('#map1').vectorMap('set', 'focus', {
+				region : 'AU',
+				animate : true
+			});
+		});
 		$('#focus-multiple').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				regions : [ 'AU', 'JP' ],
 				animate : true
 			});
 		});
-
+		$('#focus-coords').click(function() {
+			$('#map1').vectorMap('set', 'focus', {
+				scale : 7,
+				lat : 35,
+				lng : 33,
+				animate : true
+			});
+		});
 		$('#focus-init').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				scale : 1,
@@ -370,7 +383,7 @@
 					<div id="home" class="tab-pane fade in active">
 
 						<!-- 지도 -->
-						<div id="map1" style="width: 1350px; height: 550px;"></div>
+						<div id="map1" style="width: 100%; height: 100%;"></div>
 
 						<button id="focus-multiple"
 							style="background-color: #333333; color: #ffffff; padding: 3px; margin-top: 2px;">

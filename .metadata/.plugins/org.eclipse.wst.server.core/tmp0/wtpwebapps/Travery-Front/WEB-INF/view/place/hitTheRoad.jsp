@@ -63,26 +63,13 @@
 		
 		var $ = jQuery;
 
-		$('#focus-single').click(function() {
-			$('#map1').vectorMap('set', 'focus', {
-				region : 'AU',
-				animate : true
-			});
-		});
 		$('#focus-multiple').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				regions : [ 'AU', 'JP' ],
 				animate : true
 			});
 		});
-		$('#focus-coords').click(function() {
-			$('#map1').vectorMap('set', 'focus', {
-				scale : 7,
-				lat : 35,
-				lng : 33,
-				animate : true
-			});
-		});
+
 		$('#focus-init').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				scale : 1,
@@ -126,7 +113,7 @@
 								if( jsonData.isExistCountry ) {
 									
 									$('#countries').append('<div id= "' + map.getRegionName(code) + '" style="text-align: center; font-weight: bold; width: 100px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; margin-left: 10px;">' + map.getRegionName(code) + '</div>');
-									
+									map.setSelectedRegions(code);
 									
 								}
 								else{
@@ -142,9 +129,10 @@
 		    },
 			series : {
 				regions : [ {
-					scale : [ ],
+					attribute: 'fill',
+					scale : ['#7db9e8','#1155ba' ],
 					normalizeFunction : 'polynomial',
-					colors : {
+					values : {
 						"AF" : 16.63,
 						"AL" : 11.58,
 						"DZ" : 158.97,
