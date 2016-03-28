@@ -141,12 +141,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ImageDownload</display-name>
-    <servlet-name>ImageDownload</servlet-name>
-    <servlet-class>com.ktds.muco.table.member.web.ImageDownload</servlet-class>
+    <display-name>ProfileImageDownload</display-name>
+    <servlet-name>ProfileImageDownload</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.ProfileImageDownload</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ImageDownload</servlet-name>
-    <url-pattern>/imageDownload</url-pattern>
+    <servlet-name>ProfileImageDownload</servlet-name>
+    <url-pattern>/profileImageDownload</url-pattern>
   </servlet-mapping>
 </web-app>

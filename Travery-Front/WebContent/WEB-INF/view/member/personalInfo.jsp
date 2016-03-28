@@ -22,6 +22,7 @@
 
 <script type="text/javascript">
 
+	// 사진 미리보기
 	function readURL(input) {
     
 	    if (input.files && input.files[0]) {
@@ -215,10 +216,11 @@
 
 		// 최종 save 
 
-		//popover
-		$('[data-toggle="popover"]').popover();
-		$('[data-toggle="photo_popover"]').popover();
-
+		// tool tips 
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip(); 
+		});		
+				
 		//validation check
 
 	});
@@ -236,7 +238,7 @@
 			<!-- 사진 -->
 			<tr id="photo">
 				<td>
-					<a href="#" data-toggle="photo_popover" title="Photo?" data-content="자신의 프로필 사진"> 
+					<a href="#" data-toggle="tooltip" title="자신의 사진을 등록해주세요!">
 					<span class="glyphicon glyphicon-question-sign"></span>
 					</a>
 				</td>
@@ -251,15 +253,14 @@
 						<b>사진을 등록해주세요</b>
 					</c:if> 
 					<c:if test="${ not empty mainImageLocation }">
-						<img id="blah" class="img-circle"
-						 src="/imageDownload" style="width:85px; height:85px;"/>
+						<img id="blah" class="img-circle" src="/profileImageDownload" style="width:85px; height:85px;" onclick="doImgPop('/profileImageDownload')"/>
 						 <br/>
 					</c:if>
 				</td>
 				<td>
 					<br /> 
 					<label>
-						<span class="glyphicon glyphicon-camera" id="editMainImage" style="cursor: point;"></span>
+						<span class="glyphicon glyphicon-camera" id="editMainImage" style="cursor: pointer;"></span>
 						<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none;" accept="image/*" required/>
 					</label>
 					<br/>
@@ -327,10 +328,11 @@
 
 			<!-- 연락처 -->
 			<tr id="phoneNumber">
-				<td><a href="#" data-toggle="popover" title="Phone Number?"
-					data-content="여행 예약을 위해 필요한 항목"> <span
-						class="glyphicon glyphicon-question-sign"></span>
-				</a></td>
+				<td>
+					<a href="#" data-toggle="tooltip" title="여행 예약을 하고 싶다면 필수!">
+						 <span class="glyphicon glyphicon-question-sign"></span>
+					</a>
+				</td>
 				<th>PhoneNumber</th>
 				<td class="editphoneNumberBtn" style="cursor: auto;">
 					<c:if test="${ empty phoneNumber }">
