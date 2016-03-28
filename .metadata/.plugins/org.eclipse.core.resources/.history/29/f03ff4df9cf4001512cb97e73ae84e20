@@ -139,4 +139,14 @@
     <servlet-name>NameCheckServlet</servlet-name>
     <url-pattern>/nameCheck</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProfileImgDownload</display-name>
+    <servlet-name>ProfileImgDownload</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.ProfileImgDownload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileImgDownload</servlet-name>
+    <url-pattern>/profileImgDownload</url-pattern>
+  </servlet-mapping>
 </web-app>
