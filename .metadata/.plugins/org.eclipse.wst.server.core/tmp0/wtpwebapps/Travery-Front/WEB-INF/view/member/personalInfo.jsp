@@ -252,9 +252,8 @@
 					</c:if> 
 					<c:if test="${ not empty mainImageLocation }">
 						<img id="blah" class="img-circle"
-						 src="D:\edit.png" style="width:85px; height:85px;"/><br/>
-						사진이 등록되어 있습니다.
-						<a href="<c:url value= "/download?fileId=${file.fileId}&articleId=${article.articleId}" />">${file.fileName}</a>
+						 src="/imageDownload" style="width:85px; height:85px;"/>
+						 <br/>
 					</c:if>
 				</td>
 				<td>

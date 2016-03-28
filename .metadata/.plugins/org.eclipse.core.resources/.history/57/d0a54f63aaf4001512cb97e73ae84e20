@@ -139,14 +139,4 @@
     <servlet-name>NameCheckServlet</servlet-name>
     <url-pattern>/nameCheck</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ImageDownload</display-name>
-    <servlet-name>ImageDownload</servlet-name>
-    <servlet-class>com.ktds.muco.table.member.web.ImageDownload</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ImageDownload</servlet-name>
-    <url-pattern>/imageDownload</url-pattern>
-  </servlet-mapping>
 </web-app>

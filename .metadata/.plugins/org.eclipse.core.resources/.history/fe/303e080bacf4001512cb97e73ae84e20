@@ -252,8 +252,7 @@
 					</c:if> 
 					<c:if test="${ not empty mainImageLocation }">
 						<img id="blah" class="img-circle"
-						 src="/imageDownload" style="width:85px; height:85px;"/>
-						 <br/>
+						 src="/imageDownload" style="width:85px; height:85px;"/><br/>
 					</c:if>
 				</td>
 				<td>
