@@ -1,0 +1,164 @@
+<!-- 김동규 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!-- Header -->
+<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+<script type="text/javascript" src="<c:url value="/resource/js/snap.js" />"></script>
+<!-- Log out -->
+<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
+
+<!-- Left Menu -->
+<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
+
+<!-- Recommend Place -->
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#recommendPlaceMenu").mouseout(function() {
+			$("#recommendPlaceMenu").css("color", "#ffffff");
+		});
+		$("#recommendPlaceMenu").css("color", "#ffffff");
+
+	});
+</script>
+<script type="text/javascript">
+	
+	$(document).ready( function() {
+		
+		$("#createBtn").click(function() {
+			var form = $("#createForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/placeInfoCreate"/>");
+			form.submit();
+		});
+		
+		$("#modifyBtn").click(function() {
+			var form = $("#modifyForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/placeInfoModify"/>");
+			form.submit();
+		});
+		
+		
+		
+		
+		$("#massiveSelectCheckBox").click( function() {
+			var isChecked = $(this).prop("checked");
+			$(".deletePlaceId").prop("checked", isChecked);
+		});
+		
+		$("#massiveDeleteBtn").click( function() {
+			var isChecked = false;
+			$(".deletePlaceId").each( function (index, data) {
+				if (data.checked) {
+					isChecked = data.checked;
+				}
+			});
+			if ( !isChecked ) {
+				alert("Choose The checkBoxes");
+				return;
+			}
+			if ( confirm("정말로 삭제 하시겠습니까?") ) {
+				var form = $("#massiveDeleteForm");
+				form.attr("method", "post");
+				form.attr("action", "<c:url value="/placeInfoMassiveDelete" />");
+				form.submit();
+			}
+		});
+		
+		var snapper = new Snap({
+			element: document.getElementById('content')
+		});
+		
+		var addEvent = function addEvent(element, eventName, func) {
+			if (element.addEventListener) {
+		    	return element.addEventListener(eventName, func, false);
+		    } else if (element.attachEvent) {
+		        return element.attachEvent("on" + eventName, func);
+		    }
+		};
+
+		addEvent(document.getElementById('open-left'), 'click', function(){
+			snapper.open('left');
+		});
+
+		/* Prevent Safari opening links when viewing as a Mobile App */
+		(function (a, b, c) {
+		    if(c in b && b[c]) {
+		        var d, e = a.location,
+		            f = /^(a|html)$/i;
+		        a.addEventListener("click", function (a) {
+		            d = a.target;
+		            while(!f.test(d.nodeName)) d = d.parentNode;
+		            "href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href)
+		        }, !1)
+		    }
+		})(document, window.navigator, "standalone");
+		
+		
+		
+		
+	});
+
+
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>       
+    
+<div id="#placeInfoControl_Wrapper">
+
+</div>
+<div id="my_recommendPlaceList"> 내추천여행지 </div>
+<div id=""></div>
+<div id="placeInfoControler"></div>
+
+
+        <div class="snap-drawers">
+            <div class="snap-drawer snap-drawer-left">
+                <div>
+                    <h3>Snap.js</h3>
+                    <div class="demo-social">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="Snap.js - A Library for creating beautiful mobile shelfs in Javascript" data-url="http://jakiestfu.github.com/Snap.js/" data-count="none" data-via="jakiestfu">Tweet</a>
+                        <a href="https://twitter.com/jakiestfu" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @jakiestfu</a>
+                        <iframe src="http://ghbtns.com/github-btn.html?user=jakiestfu&amp;repo=Snap.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+                    </div>
+                    <h4>Demos</h4>
+                    <ul>
+                        <li><a href="default.html">Default</a></li>
+                        <li><a href="noDrag.html">No Drag</a></li>
+                        <li><a href="dragElement.html">Drag Element</a></li>
+                        <li><a href="rightDisabled.html">Right Disabled</a></li>
+                        <li><a href="hyperextend.html">Hyperextension Disabled</a></li>
+                        <li><a href="skinnyThreshold.html">Skinny Threshold</a></li>
+                        <li><a href="toggles.html">Toggles</a></li>
+                        <li><a href="classNames.html">Class Names</a></li>
+                        <li><a href="expand.html">Expanding</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="ratchet/template.html">Ratchet</a></li>
+                    </ul>
+                    <div>
+                        <p>The Default demo shows basic Snap.js functionality</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non erat ac leo ultrices blandit sed vel risus. Pellentesque facilisis blandit auctor. Maecenas vestibulum vulputate tincidunt. Mauris nec quam libero. Fusce eget ligula non leo varius condimentum quis ac elit. Donec id urna ut neque semper ultrices. Proin ut suscipit felis. Nullam neque felis, ullamcorper scelerisque volutpat vel, vehicula vehicula neque. Aenean scelerisque elit ac erat sagittis ullamcorper.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="snap-drawer snap-drawer-right"></div>
+        </div>
+        
+        <div id="content" class="snap-content">
+            <div id="toolbar">
+                <a href="#" id="open-left"></a>
+                <h1>Default</h1>
+            </div>
+        </div>
+
+
+
+
+
+
+
+<!-- Footer -->
+<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

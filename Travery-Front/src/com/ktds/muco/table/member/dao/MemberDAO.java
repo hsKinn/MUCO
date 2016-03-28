@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -15,7 +18,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class MemberDAO {
-	
 
 	/**
 	 * 
@@ -25,41 +27,40 @@ public class MemberDAO {
 	 * 
 	 */
 	public void addNewMember(MemberVO memberVO) {
-		
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/addNewMember/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getEmail());
 			stmt.setString(2, memberVO.getPassword());
 			stmt.setString(3, memberVO.getName());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
-			closeDB(conn, stmt, null);	
+		} finally {
+			closeDB(conn, stmt, null);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * 로그인하기위해 해당 유저가 존재하는지 확인
 	 * 
 	 * @author 김광민
 	 * 
+	 * validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER")); @author 이기연 수정 
 	 */
 	public MemberVO getMemberByEmailAndPassword(MemberVO memberVO) {
-		
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -86,6 +87,8 @@ public class MemberDAO {
 				validMemberVO.setEmail(rs.getString("EMAIL"));
 				validMemberVO.setPassword(rs.getString("PASSWORD"));
 				validMemberVO.setName(rs.getString("NAME"));
+				// 이부분 추가 
+				validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
 				validMemberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
 				validMemberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
 				validMemberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
@@ -102,6 +105,175 @@ public class MemberDAO {
 			closeDB(conn, stmt, rs);
 		}
 	}
+
+	/**
+	 *
+	 * 회원 이름 수정 
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void updateName(MemberVO memberVO) {
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/updateName/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getName());
+			stmt.setString(2, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
+	}
+	
+	/**
+	 * 회원 번호 수정
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void updatePhoneNumber(MemberVO memberVO) {
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/updatePhoneNumber/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getPhoneNumber());
+			stmt.setString(2, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
+	}
+	
+	/**
+	 * 회원 비밀번호 수정
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void updatePassword(MemberVO memberVO) {
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/updatePassword/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getPassword());
+			stmt.setString(2, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
+	}
+	
+	/**
+	 * 이름 중복 체크
+	 * 0: 중복 X 
+	 * 1: 중복 O
+	 * 
+	 * @author 이기연
+	 * 
+	 * 
+	 */
+	public int isExistName(String name) {
+	
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/isExistName/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, name);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return  rs.getInt("COUNT");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+		return 0;
+	}
+
+	/**
+	 * 회원 프로필 이미지 등록
+	 * 
+	 * @author 이기연
+	 * 
+	 */
+	public void addMainImage(MemberVO memberVO) {
+	
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/member/addMainImage/text()");
+			
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberVO.getMainImageName());
+			stmt.setString(2, memberVO.getMainImageLocation());
+			stmt.setString(3, memberVO.getEmail());
+			
+			stmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);	
+		}		
+		
+	}
+
 	
 	/**
 	 * 
@@ -117,7 +289,7 @@ public class MemberDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -126,20 +298,25 @@ public class MemberDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	}
+
+
 }

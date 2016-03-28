@@ -1,0 +1,53 @@
+package com.ktds.muco.table.country.biz;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.ktds.muco.table.country.dao.CountryDAO;
+import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.table.selectedCountry.dao.SelectedCountryDAO;
+
+/**
+ * 
+ * Country DAO
+ * 
+ * @author 김광민
+ *
+ */
+public class CountryBiz {
+
+	CountryDAO countryDAO;
+	SelectedCountryDAO selectedCountryDAO;
+
+	public CountryBiz() {
+		countryDAO = new CountryDAO();
+		selectedCountryDAO = new SelectedCountryDAO();
+	}
+
+	/**
+	 * 
+	 * 해당 나라가 DB에 존재하는지 확인 후 있으면 해당 country info 반환
+	 * 
+	 * @param request
+	 * @return
+	 * @author 김광민
+	 */
+	public CountryVO getCountryInfoByCountryName(HttpServletRequest request) {
+
+		String selectedCountryName = request.getParameter("selectedCountryName");
+		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
+
+		System.out.println("Biz : " + selectedCountryName);
+		
+		// 선택한 나라명과 일치하는 나라가 존재하면
+		if ( countryVO != null ) {
+
+			// 해당 나라를 SelectedCountry에 입력
+			if( selectedCountryDAO.insertSelectedCounty() > 0 ) {
+				
+				return countryVO; 
+			}
+		}
+
+		return null;
+	}
+}

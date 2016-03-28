@@ -4,8 +4,7 @@ import com.ktds.muco.table.reserve.vo.ReserveVO;
 
 /**
  *
- * stayType 숙박 종류
- * stayClass 숙박 등급
+ * stayType 숙박 종류 stayClass 숙박 등급
  * 
  * @author 김광민
  *

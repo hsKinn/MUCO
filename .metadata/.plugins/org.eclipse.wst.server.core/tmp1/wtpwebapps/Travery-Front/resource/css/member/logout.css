@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
-
 div#logout {
 	margin-top: 60px;
 	margin-right: 10px;
@@ -12,4 +11,10 @@ div#logout {
 	height: 30px;;
 	color: #333333;
 	float: right;
+		
+	/* 이기연 */
+	border-top-right-radius: 30px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
 }

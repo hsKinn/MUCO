@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+
+/* 이기연 */
+table#personalInfoTable {
+	border-spacing: 50px;
+	
+}
+
+div#personalInfoWrapper {
+	float: left;
+	background-color: #c3c3c3;
+	margin-left: 20%;
+	margin-top: 15px;
+}
+
+img#editImg {
+	width: 10px;
+}
+
+img#profile{
+	width: 100px;
+}
+
+td {
+	cursor: pointer;
+}
+
+span.glyphicon {
+	color: #808080;
+}
+
+input #file {
+	color: red;
+}

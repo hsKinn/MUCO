@@ -19,6 +19,7 @@
 	<section name="NewWizardAction">
 		<item value="org.eclipse.jst.servlet.ui.internal.wizard.AddServletWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+<<<<<<< HEAD
 			<item value="org.eclipse.ui.Basic"/>
 			<item value="org.eclipse.wst.web.ui"/>
 		</list>
@@ -29,4 +30,10 @@
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
+=======
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.wst.web.ui"/>
+		</list>
+	</section>
+>>>>>>> origin/leina_1603251225
 </section>

@@ -24,6 +24,7 @@ import com.ktds.muco.table.packLike.biz.PackLikeBiz;
  */
 public class SharePackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
 	
 	private SharePackBiz sharePackBiz;
     private PackLikeBiz packLikeBiz;   
@@ -37,17 +38,30 @@ public class SharePackServlet extends HttpServlet {
         sharePackBiz = new SharePackBiz();
         packLikeBiz = new PackLikeBiz();
     }
+=======
+>>>>>>> origin/leina_1603251225
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SharePackServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
+<<<<<<< HEAD
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int sortOption = 1;
@@ -87,6 +101,10 @@ public class SharePackServlet extends HttpServlet {
 		request.setAttribute("packages", packages);
 		request.setAttribute("packSearchVO", packSearchVO);
 		
+=======
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+>>>>>>> origin/leina_1603251225
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/sharePack.jsp");
 		rd.forward(request, response);
 	}

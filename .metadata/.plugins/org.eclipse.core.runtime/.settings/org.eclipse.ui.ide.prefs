@@ -1,9 +1,18 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
+<<<<<<< HEAD
 >>>>>>>=origin/KGM
+=======
+>>>>>>>=origin/KGM2
+>>>>>>> origin/leina_1603251225
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1
+PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
+<<<<<<< HEAD
 platformState=1454299227096
+=======
+platformState=1457061677912
+>>>>>>> origin/leina_1603251225
 quickStart=false
 tipsAndTricks=true
