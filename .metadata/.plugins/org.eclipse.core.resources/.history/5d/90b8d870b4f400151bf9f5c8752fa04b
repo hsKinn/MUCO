@@ -1,0 +1,207 @@
+package com.ktds.muco.table.packLike.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.packLike.vo.PackLikeVO;
+import com.ktds.muco.util.xml.XML;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackLikeDAO {
+	
+	/**
+	 * Select Pack Like Count
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 * @return
+	 */
+	public int selectPackLikeCount( PackLikeVO packLike ) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packLike/selectPackLikeCount/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packLike.getPackId());
+			stmt.setString(2, packLike.getEmail());
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	} // selectPackLikeCount END
+	
+	
+	/**
+	 * Insert Pack Like
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 */
+	public void insertPackLike( PackLikeVO packLike ) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packLike/insertPackLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packLike.getPackId());
+			stmt.setString(2, packLike.getEmail());
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	} // insertPackLike END
+	
+	
+	/**
+	 * Delete Pack Like
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 */
+	public void deletePackLike( PackLikeVO packLike ) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packLike/deletePackLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packLike.getPackId());
+			stmt.setString(2, packLike.getEmail());
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	} // deletePackLike END	
+	
+	
+	/**
+	 * Count Pack Like
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 */
+	public int countPackLike( int packId ) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/packLike/countPackLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+	} // countPackLike END	
+	
+	
+=======
+
+>>>>>>> origin/KGM2
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+}

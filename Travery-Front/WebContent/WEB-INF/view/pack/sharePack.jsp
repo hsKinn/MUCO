@@ -16,7 +16,6 @@
 <!-- Share Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
-<<<<<<< HEAD
 		
 	   $("#initSearchBtn").click( function() {
 			  location.href = "<c:url value="/init" />"; 
@@ -38,7 +37,7 @@
 				
 				$("#searchBtn").click();
 			}
-		}) ;
+		});
 		
 
 	});
@@ -209,20 +208,6 @@
 	</c:if>
 </div>	
 
-	
-=======
-
-		$("#sharePackMenu").mouseout(function() {
-			$("#sharePackMenu").css("color", "#ffffff");
-		});
-		$("#sharePackMenu").css("color", "#ffffff");
-
-	});
-</script>
-
-Share Package
-
->>>>>>> origin/KGM2
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
 

@@ -1,8 +1,8 @@
 <!-- 김현섭 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
@@ -37,7 +37,7 @@
 				
 				$("#searchBtn").click();
 			}
-		}) ;
+		});
 		
 
 	});
@@ -208,7 +208,6 @@
 	</c:if>
 </div>	
 
-	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
 

@@ -18,20 +18,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PackDAO {
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-=======
 
 	/**
 	 * 
@@ -248,7 +234,6 @@ public class PackDAO {
 		return packs;
 	}
 
->>>>>>> origin/KGM2
 	/**
 	 * 
 	 * Load Oracle Driver

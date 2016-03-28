@@ -8,11 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-import com.ktds.muco.table.hashtag.vo.HashTagVO;
 import com.ktds.muco.table.member.dao.Const;
-=======
->>>>>>> origin/KGM2
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -22,7 +18,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PlaceDAO {
-<<<<<<< HEAD
 	
 	
 	/**
@@ -78,15 +73,6 @@ public class PlaceDAO {
 	} // getHashTagOfPackage END	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-=======
 	/**
 	 * 
 	 * placeInfoRecommendedList
@@ -175,7 +161,6 @@ public class PlaceDAO {
 
 	}
 
->>>>>>> origin/KGM2
 	/**
 	 * 
 	 * Load Oracle Driver

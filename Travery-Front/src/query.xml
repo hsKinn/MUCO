@@ -297,7 +297,6 @@
 	</packReply>
 	
 	<place>
-<<<<<<< HEAD
 		
 		<getPlaceInPackage>
 			SELECT	P.PLACE_ID
@@ -313,7 +312,6 @@
 			AND		P.COUNTRY_ID = C.COUNTRY_ID
 		</getPlaceInPackage>
 		
-=======
 		<placeInfoRecommendedList>
 <!-- 					SELECT  M.* 
 					        , G.GRADE_TITLE
@@ -352,7 +350,6 @@
 			SELECT	PLACE_ID_SEQ.CURRVAL
 			FROM	DUAL
 		</getReturnPlaceId>
->>>>>>> origin/KGM2
 	</place>
 	
 	<placeLike>

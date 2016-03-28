@@ -16,8 +16,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PackLikeDAO {
-<<<<<<< HEAD
-	
 	
 	/**
 	 * Select Pack Like Count
@@ -160,9 +158,6 @@ public class PackLikeDAO {
 	} // countPackLike END	
 	
 	
-=======
-
->>>>>>> origin/KGM2
 	/**
 	 * 
 	 * Load Oracle Driver

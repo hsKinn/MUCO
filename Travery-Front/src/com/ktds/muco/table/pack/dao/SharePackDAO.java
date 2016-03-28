@@ -24,13 +24,11 @@ public class SharePackDAO {
 	private HashTagDAO hashtagDAO;
 	private PlaceDAO placeDAO;
 	private PackLikeBiz packLikeBiz;
-	private PackLikeDAO packLikeDAO;
 	
 	public SharePackDAO () {
 		hashtagDAO = new HashTagDAO();
 		placeDAO = new PlaceDAO();
 		packLikeBiz = new PackLikeBiz();
-		packLikeDAO = new PackLikeDAO();
 	}
 	
 	
