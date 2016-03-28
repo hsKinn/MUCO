@@ -1,8 +1,0 @@
-@CHARSET "UTF-8";
-
-/* 김광민 */
-
-div#bodyWithoutHeader {
-	height:150%;
-	width:100%;
-}

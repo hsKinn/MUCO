@@ -67,7 +67,9 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		MultipartFile image = multipartRequest.getFile("image");
 
 		int placeId = placeBiz.placeInfoCreate(placeVO);
+		
 
+		
 		if (image.getFileSize() > 0) {
 			imageBiz.insertImageToss(multipartRequest, placeId);
 		}

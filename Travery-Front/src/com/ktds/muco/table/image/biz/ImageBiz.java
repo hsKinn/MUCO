@@ -2,8 +2,11 @@ package com.ktds.muco.table.image.biz;
 
 import java.io.File;
 
+import javax.servlet.http.HttpSession;
+
 import com.ktds.muco.table.image.dao.ImageDAO;
 import com.ktds.muco.table.image.vo.ImageVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.file.MultipartHttpServletRequest;
 
@@ -25,22 +28,26 @@ public class ImageBiz {
 	 * @author insertImageToss 김동규
 	 *
 	 */
-	public void insertImageToss(MultipartHttpServletRequest request, int placeId) {
-
+	public int insertImageToss(MultipartHttpServletRequest request, int placeId) {		
+		
+		
 		MultipartFile image = request.getFile("image");
 		File upLoadImage = image.write("D:\\" + image.getFileName());
-
+		
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		/*
 		 * if ( file.getFileName() != null && file.getFileName().length() > 0) {
 		 * }
 		 */
 
+		System.out.println(placeId);
 		ImageVO imageVO = new ImageVO();
 
 		imageVO.setImageId(placeId);
 		imageVO.setImageName(image.getFileName());
 		imageVO.setImageLocation(upLoadImage.getPath());
-
-		imageDAO.insertImage(imageVO);
+		imageVO.setEmail(member.getEmail());
+		return imageDAO.insertImage(imageVO);
 	}
 }

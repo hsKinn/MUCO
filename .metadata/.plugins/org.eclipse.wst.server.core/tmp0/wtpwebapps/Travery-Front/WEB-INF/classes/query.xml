@@ -20,14 +20,22 @@
 										, PLACE_ID
 										, IMAGE_NAME
 										, IMAGE_LOCATION
+										, EMAIL
+										, CRT_DT
 									)
 			VALUES 					(
 										IMAGE_ID_SEQ.NEXTVAL
 										, ?
 										, ?
 										, ?
+										, ?
+										, SYSDATE
 									)
 		</insertImage>
+		<getReturnImageId>
+			SELECT	IMAGE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnImageId>
 	</image>
 	
 	<member>

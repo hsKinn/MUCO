@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.muco.table.image.vo.ImageVO;
+import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -25,29 +26,47 @@ public class ImageDAO {
 	 * @author 김동규
 	 * 
 	 */
-	public void insertImage(ImageVO imageVO) {
-
+	public int insertImage(ImageVO imageVO) {
+		
+		int insertCount = 0;
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "TRAVERY", "TRAVERY");
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/image/insertImage/text()");
 			stmt = conn.prepareStatement(query);
-
+			System.out.println("placeId 출력 : "+imageVO.getPlaceId());
 			stmt.setInt(1, imageVO.getPlaceId());
 			stmt.setString(2, imageVO.getImageName());
 			stmt.setString(3, imageVO.getImageLocation());
+			stmt.setString(4, imageVO.getEmail());
 
-			stmt.executeUpdate();
+			insertCount = stmt.executeUpdate();
 
+			if (insertCount > 0) {
+				stmt.close();
+				query = XML.getNodeString("//query/image/getReturnImageId/text()");
+				stmt = conn.prepareStatement(query);
+
+				ResultSet rs = stmt.executeQuery();
+
+				int imageId = 0;
+
+				if (rs.next()) {
+					imageId = rs.getInt(1);
+				}
+				return imageId;
+			}
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			closeDB(conn, stmt, null);
 		}
+		return insertCount;
 	}
 
 	/**
@@ -68,7 +87,7 @@ public class ImageDAO {
 		ImageVO imageVO = null;
 
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/image/getImageListByPlaceId/text()");
 			stmt = conn.prepareStatement(query);
 
