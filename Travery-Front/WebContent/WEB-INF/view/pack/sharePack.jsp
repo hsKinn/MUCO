@@ -66,8 +66,7 @@
  			<ul class="dropdown-menu">
 			    <li><a href="/sharePack?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
 			    <li><a href="/sharePack?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-			    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-			    <li><a href="/recentSharePack">등록일 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+			    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
   			</ul>
 		</div>
 	</div>
@@ -83,7 +82,6 @@
 			<div class="packTop">
 				<span class="header" data-toggle="modal" data-target="#${ pack.packId }">
 					${ pack.packTitle }
-					<span class="badge">View: ${ pack.viewCount }</span> 
 				</span>
 			</div>
 			
@@ -98,7 +96,10 @@
 			</div>
 			
 			<div class="packFooter">
-				<div class="packWriterName">Writer: ${ pack.name }</div>
+				<div class="packWriterName">${ pack.name }</div>
+				<div class="packViewCount">
+					<span class="badge">${ pack.viewCount }</span> 
+				</div>
 				<div class="packLikeCount">
 					<span class="glyphicon glyphicon-heart"></span>
 					<span id="likeCount">${ pack.likeCount }</span>

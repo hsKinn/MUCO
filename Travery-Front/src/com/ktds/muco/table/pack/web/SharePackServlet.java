@@ -82,7 +82,7 @@ public class SharePackServlet extends HttpServlet {
 		
 		session.setAttribute("_SEARCH_", packSearchVO);
 		
-		PackListVO packages = sharePackBiz.getAllPackageList(packSearchVO, member);
+		PackListVO packages = sharePackBiz.getAllPackageList(packSearchVO, member, sortOption);
 		
 		request.setAttribute("packages", packages);
 		request.setAttribute("packSearchVO", packSearchVO);

@@ -87,6 +87,37 @@
 	                )
 		      WHERE RNUM >= ?      
         </getAllPackageListByHashTag>	
+
+		<getAllPackageListByHashTagOrderByView>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  DISTINCT P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                             , HASH_TAG H
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.PACK_ID = H.PACK_ID
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
+			                     ORDER   BY VIEW_COUNT DESC
+			                     		 , LIKE_COUNT DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?      
+        </getAllPackageListByHashTagOrderByView>	
         	
 		<getAllPackageListByHashTagOrderByDate>
 	         SELECT	*
@@ -151,6 +182,34 @@
 	                )
 		      WHERE RNUM >= ?          
         </getAllPackageList>
+        
+        <getAllPackageListOrderByView>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY VIEW_COUNT DESC   
+			                     		 , LIKE_COUNT DESC   			                     
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?               
+        </getAllPackageListOrderByView>
         
         <getAllPackageListOrderByDate>
 	         SELECT	*
