@@ -44,11 +44,12 @@ public class PlaceInfoControlServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		List<PlaceVO> listPlaceVO = placeBiz.placeInfoRecommendedList();
-		request.setAttribute("placeInfo", listPlaceVO);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+//		int placeId = Integer.parseInt(request.getParameter("placeId"));
+//		
+//		List<PlaceVO> listPlaceVO = placeBiz.placeInfoRecommendedList(placeId);
+//		request.setAttribute("placeInfo", listPlaceVO);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");
 		rd.forward(request, response);

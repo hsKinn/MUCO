@@ -79,9 +79,11 @@
 											, LATITUDE
 											, LONGITUDE
 											, DESCRIPTION
+											, EMAIL
 										)
 			VALUES						(
 											PLACE_ID_SEQ.NEXTVAL
+											, ?
 											, ?
 											, ?
 											, ?

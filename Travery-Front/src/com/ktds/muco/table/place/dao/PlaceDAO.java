@@ -24,7 +24,7 @@ public class PlaceDAO {
 	 * @author 김동규
 	 * 
 	 */
-	public List<PlaceVO> placeInfoRecommendedList() {
+	public List<PlaceVO> placeInfoRecommendedList(int placeId) {
 		List<PlaceVO> listPlaceVO = new ArrayList<PlaceVO>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -64,7 +64,7 @@ public class PlaceDAO {
 	 */	
 	public int insertPlaceInfo(PlaceVO placeVO) {
 
-		int placeId = 0;
+		int insertCount = 0;
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -80,20 +80,21 @@ public class PlaceDAO {
 			stmt.setDouble(3, placeVO.getLatitude());
 			stmt.setDouble(4, placeVO.getLongitude());
 			stmt.setString(5, placeVO.getDescription());
+			stmt.setString(6, placeVO.getWriter().getEmail());
 			
-			placeId = stmt.executeUpdate();
+			insertCount = stmt.executeUpdate();
 
-			if (placeId > 0) {
+			if (insertCount > 0) {
 				stmt.close();
 				query = XML.getNodeString("//query/place/getReturnPlaceId/text()");
 				stmt = conn.prepareStatement(query);
 
 				ResultSet rs = stmt.executeQuery();
 
-				
+				int placeId = 0;
 
 				if (rs.next()) {
-					placeId = rs.getInt(placeId);
+					placeId = rs.getInt(1);
 				}
 				return placeId;
 			}
@@ -103,7 +104,7 @@ public class PlaceDAO {
 		} finally {
 			closeDB(conn, stmt, null);
 		}
-		return placeId;
+		return insertCount;
 
 	}
 	

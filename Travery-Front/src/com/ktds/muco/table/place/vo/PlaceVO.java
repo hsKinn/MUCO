@@ -26,6 +26,14 @@ public class PlaceVO extends CountryVO {
 	// 작성자
 	private MemberVO writer;
 
+	public MemberVO getWriter() {
+		return writer;
+	}
+
+	public void setWriter(MemberVO writer) {
+		this.writer = writer;
+	}
+
 	public int getPlaceId() {
 		return placeId;
 	}
@@ -98,11 +106,4 @@ public class PlaceVO extends CountryVO {
 		this.isNewPlace = isNewPlace;
 	}
 
-	public MemberVO getWriter() {
-		return writer;
-	}
-
-	public void setWriter(MemberVO writer) {
-		this.writer = writer;
-	}
 }

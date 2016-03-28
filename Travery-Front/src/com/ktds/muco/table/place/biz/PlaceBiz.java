@@ -22,8 +22,9 @@ public class PlaceBiz {
 		placeDAO = new PlaceDAO();
 	}
 
-	public List<PlaceVO> placeInfoRecommendedList() {
-		return placeDAO.placeInfoRecommendedList();
+	public List<PlaceVO> placeInfoRecommendedList(int placeId) {
+		
+		return placeDAO.placeInfoRecommendedList(placeId);
 	}
 
 	public int placeInfoCreate(PlaceVO placeVO) {

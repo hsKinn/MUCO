@@ -26,94 +26,73 @@
 	});
 </script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+	$(document).ready( function() {
+/* 		$("#createBtn").click(function() {
+		 var form = $("#createForm");
+		 form.attr("method", "post");
+		 form.attr("action", "<c:url value="/placeInfoCreate"/>");
+		 form.submit();
+		 }); */
 
-						/* 		$("#createBtn").click(function() {
-						 var form = $("#createForm");
-						 form.attr("method", "post");
-						 form.attr("action", "<c:url value="/placeInfoCreate"/>");
-						 form.submit();
-						 }); */
+	<c:if test="${ empty placeInfo }">
+		$("#submitBtn").click( function() {
+			var form = $("#dataForm");
+			form.attr("method", "post");
+			form.attr("action",	"<c:url value="/placeInfoCreate"/>");
+			form.submit();
+		});
+	</c:if>
+	<c:if test="${ not empty placeInfo}">
+		$("#modifyBtn").click( function() {
+			var form = $("#dataForm");
+			form.attr("method", "post");
+			form.attr("action",	"<c:url value="/placeInfoModify" />");
+			form.submit();
+		});
+	</c:if>
 
-						<c:if test="${ empty placeInfo }">
-						$("#submitBtn")
-								.click(
-										function() {
-											var form = $("#dataForm");
-											form.attr("method", "post");
-											form
-													.attr("action",
-															"<c:url value="/placeInfoCreate"/>");
-											form.submit();
-										});
-						</c:if>
-						<c:if test="${ not empty placeInfo}">
-						$("#modifyBtn")
-								.click(
-										function() {
-											var form = $("#dataForm");
-											form.attr("method", "post");
-											form
-													.attr("action",
-															"<c:url value="/placeInfoModify" />");
-											form.submit();
-										});
-						</c:if>
+	$("#massiveSelectCheckBox").click(function() {
+		var isChecked = $(this).prop("checked");
+		$(".deletePlaceId").prop("checked", isChecked);
+	});
 
-						$("#massiveSelectCheckBox").click(function() {
-							var isChecked = $(this).prop("checked");
-							$(".deletePlaceId").prop("checked", isChecked);
-						});
-
-						$("#massiveDeleteBtn")
-								.click(
-										function() {
-											var isChecked = false;
-											$(".deletePlaceId")
-													.each(
-															function(index,
-																	data) {
-																if (data.checked) {
-																	isChecked = data.checked;
-																}
-															});
-											if (!isChecked) {
-												alert("삭제하실 추천리스트를 선택해주세요.");
-												return;
-											}
-											if (confirm("정말로 삭제 하시겠습니까?")) {
-												var form = $("#massiveDeleteForm");
-												form.attr("method", "post");
-												form
-														.attr("action",
-																"<c:url value="/placeInfoMassiveDelete" />");
-												form.submit();
-											}
-										});
-					});
+	$("#massiveDeleteBtn").click( function() {
+		var isChecked = false;
+		$(".deletePlaceId").each( function(index, data) {
+			if (data.checked) {
+				isChecked = data.checked;
+				}
+			});
+		if (!isChecked) {
+			alert("삭제하실 추천리스트를 선택해주세요.");
+			return;
+			}
+		if (confirm("정말로 삭제 하시겠습니까?")) {
+			var form = $("#massiveDeleteForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/placeInfoMassiveDelete" />");
+			form.submit();
+			}
+		
+		
+		
+		
+		
+		});
+	});
 </script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#mapBtn")
-								.click(
-										function openMap() {
-											url = "<c:url value="/placeInfoAddAddress"/>";
-											window
-													.open(
-															url,
-															"GoogleMapAPI",
-															"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800");
-										});
-						function Mapdata() {
-							GoogleMapAPI.document.dataform.lat;
-							GoogleMapAPI.document.dataform.lng;
-							GoogleMapAPI.document.dataform.address;
-						}
-					});
+	$(document).ready( function() {
+		$("#mapBtn").click( function openMap() {
+			url = "<c:url value="/placeInfoAddAddress"/>";
+			window.open( url, "GoogleMapAPI", "toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800");
+			});
+		function Mapdata() {
+			GoogleMapAPI.document.dataform.lat;
+			GoogleMapAPI.document.dataform.lng;
+			GoogleMapAPI.document.dataform.address;
+			}
+		});
 </script>
 <script type="text/javascript">
 	function readURL(input) {
@@ -141,7 +120,7 @@
 		이미지 List정보 받아오기 checkbox/placeName/image
 		<div id="my_previousPlaceList">
 			<form id="massiveDeleteForm">
-				<c:forEach items="${ placeInfo.placeInfoList }" var="placeInfo">
+				<c:forEach items="${ placeInfo }" var="placeInfo">
 					<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${ placeInfo.placeId }" />
 						${ placeInfo.placeName }
 				</c:forEach>
@@ -152,14 +131,12 @@
 	<div id="placeInfoControler">
 		<div id="btn-create">
 			<form id="createForm">
-				<img src="<c:url value="/resource/img/place/btn-create.png" />"
-					id="createBtn" style="cursor: pointer" />
+				<img src="<c:url value="/resource/img/place/btn-create.png" />" id="createBtn" style="cursor: pointer" />
 			</form>
 		</div>
 		<div id="btn-delete">
 			<form id="deleteForm">
-				<img src="<c:url value="/resource/img/place/btn-delete.png" />"
-					id="massiveDeleteBtn" style="cursor: pointer" />
+				<img src="<c:url value="/resource/img/place/btn-delete.png" />" id="massiveDeleteBtn" style="cursor: pointer" />
 			</form>
 		</div>
 	</div>
@@ -190,8 +167,7 @@
 			</div>
 			<div id="placeInfoCreate_submitBtn">
 				<c:if test="${ empty placeInfo }">
-					<img src="<c:url value="/resource/img/place/btn-submit.png" />"
-						id="submitBtn" />
+					<img src="<c:url value="/resource/img/place/btn-submit.png" />"	id="submitBtn" />
 				</c:if>
 			</div>
 			<div id="구현예정">

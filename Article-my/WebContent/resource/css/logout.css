@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+div#logout{
+	float: right;
+	padding-left: 5px;
+}
+
+/*  div#logout input {
+	margin: 10px;
+	float: right;
+}  */
+/* #loginForm * {
+	line-height: 10px;
+	line-height: -100px;
+} */
+#btnLogOut {
+	height: 25px;
+	float: right;
+	margin: 5px;
+/* 	float: left;	
+ 	padding: 0px; 
+ 	 */
+}
+
+div.clear {
+	clear: both;
+}
