@@ -48,6 +48,41 @@
 			FROM    PACK
 			WHERE   PACK_ID = ?
 		</getPackDataByPackId>
+		<addPack>
+			INSERT INTO PACK (
+			                            PACK_ID
+			                            , SHARE_IMAGE_NAME
+			                            , PACK_TITLE
+			                            , EMAIL
+			                            , SHARE_IMAGE_LOCATION
+			                        ) 
+				VALUES              ( PACK_ID_SEQ.NEXTVAL
+			                          ,0
+			                          ,?
+			                          ,?
+			                          ,0
+			                          )
+		</addPack>
+		<getLatesPackId>
+			SELECT	PACK_ID_SEQ.CURRVAL
+			FROM	PACK
+		</getLatesPackId>
+		<uploadPackImgFile>
+			UPDATE PACK
+			SET    SHARE_IMAGE_NAME     = ?
+			       , SHARE_IMAGE_LOCATION = ?
+			WHERE  PACK_ID              = ?
+		</uploadPackImgFile>
+		<deletePack>
+			DELETE	
+			FROM	PACK
+			WHERE	PACK_ID=?
+		</deletePack>
+		<getPlaceListByPackId>
+			SELECT  *
+			FROM    PACK_PLACE
+			WHERE   PACK_ID = ?
+		</getPlaceListByPackId>
 	</pack>
 	
 	<packLike>

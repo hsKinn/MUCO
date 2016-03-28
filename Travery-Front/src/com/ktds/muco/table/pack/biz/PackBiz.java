@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ktds.muco.table.pack.dao.PackDAO;
 import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
  * 
@@ -31,6 +32,25 @@ public class PackBiz {
 	public PackVO getPackDataByPackId(int packId) {
 		PackVO pack = packDAO.getPackDataByPackId(packId);
 		return pack;
+	}
+
+	public int addPack(PackVO newAddPack) {
+		int packId = packDAO.addPack(newAddPack);
+		return packId;
+	}
+
+	public int deletePacks(String[] deletePackIds) {
+		int deleteCount = 0;
+		for (String deletePackId : deletePackIds) {
+			deleteCount=packDAO.deletePack(Integer.parseInt(deletePackId));
+		}
+		return deleteCount;
+		
+	}
+
+	public List<PlaceVO> getPlaceListByPackId(int packId) {
+		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
+		return places;
 	}
 	
 	

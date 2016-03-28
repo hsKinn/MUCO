@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -53,6 +54,8 @@ public class PackDAO {
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setEmail(rs.getString("EMAIL"));
 				pack.setIsPublic(rs.getInt("IS_PUBLIC"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
+				pack.setShareImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
 
 				packs.add(pack);
 			}
@@ -65,6 +68,11 @@ public class PackDAO {
 		return packs;
 	}
 
+	/**
+	 * 
+	 * @param packId
+	 * @author 백지경
+	 */
 	public PackVO getPackDataByPackId(int packId) {
 		loadOracleDriver();
 
@@ -79,7 +87,7 @@ public class PackDAO {
 			String query = XML.getNodeString("//query/pack/getPackDataByPackId/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packId);
-
+			
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
@@ -89,7 +97,11 @@ public class PackDAO {
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setEmail(rs.getString("EMAIL"));
 				pack.setIsPublic(rs.getInt("IS_PUBLIC"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
+				pack.setShareImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				
 			}
+
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -98,7 +110,129 @@ public class PackDAO {
 		}
 		return pack;
 	}
+	
+	/**
+	 * 
+	 * @param newAddPack
+	 * @author 백지경
+	 */
+	public int addPack(PackVO newAddPack) {
+		int insertCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/addPack/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, newAddPack.getPackTitle());
+			stmt.setString(2, newAddPack.getEmail());
+		
+			insertCount = stmt.executeUpdate();
+			
+			if( insertCount > 0 ){
+				
+				stmt.close();
+				//close
+				String query1 = XML.getNodeString("//query/pack/getLatesPackId/text()");
+				stmt = conn.prepareStatement(query1);
+				
+				rs = stmt.executeQuery();
+				
+				int packId = 0;
+				
+				if ( rs.next() ) {
+					packId = rs.getInt(1);
+				}						
+				rs.close();
+				return packId;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return insertCount;
+	}
 
+	/**
+	 * 
+	 * @param packId
+	 * @author 백지경
+	 */
+	public int deletePack(int packId) {
+		int deleteCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/deletePack/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+
+			deleteCount = stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		return deleteCount;
+		
+	}
+	/**
+	 * 
+	 * @param packId
+	 * @author 백지경
+	 */
+	public List<PlaceVO> getPlaceListByPackId(int packId) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<PackVO> packs = new ArrayList<PackVO>();
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+
+			String query = XML.getNodeString("//query/pack/getPlaceListByPackId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+
+			rs = stmt.executeQuery();
+
+			PackVO pack = null;
+
+			while (rs.next()) {
+				pack = new PackVO();
+				pack.setPackId(rs.getInt("PACK_ID"));
+				pack.setPackTitle(rs.getString("PACK_TITLE"));
+				pack.setViewCount(rs.getInt("VIEW_COUNT"));
+				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
+				pack.setEmail(rs.getString("EMAIL"));
+				pack.setIsPublic(rs.getInt("IS_PUBLIC"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
+				pack.setShareImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+
+				packs.add(pack);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return packs;
+	}
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -141,5 +275,8 @@ public class PackDAO {
 			}
 		}
 	}
+
+
+
 
 }

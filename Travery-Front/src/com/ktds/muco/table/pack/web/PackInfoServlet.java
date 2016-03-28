@@ -39,22 +39,34 @@ public class PackInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int packId = Integer.parseInt(request.getParameter("packId"));
+		
+//		String packTitle = request.getParameter("packTitle");
+		
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
+		String packName = packVO.getPackTitle();
+		int isPublic = packVO.getIsPublic();
+		int viewCount = packVO.getViewCount();
+		int likeCount = packVO.getLikeCount();
+		String imageLocation = packVO.getShareImageLocation();
+		
+		String[] list = {"a","b","c"};
 		
 		StringBuffer json = new StringBuffer();
 		json.append("{");
 		json.append("\"result\" : true");
-		json.append(", \"isFavorite\" : " +isExistFavoriteData);
+		json.append(", \"title\" : \""+packName+"\"");
+		json.append(", \"isPublic\" : \""+isPublic+"\"");
+		json.append(", \"viewCount\" : \""+viewCount+"\"");
+		json.append(", \"likeCount\" : \""+likeCount+"\"");
+		json.append(", \"imageLocation\" : \""+imageLocation+"\"");
 		json.append("}");
 		
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toString());
 		out.flush();
 		out.close();
 		
-		request.setAttribute("packVO", packVO);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/myPack.jsp");
-		rd.forward(request, response);
 	}
 
 }

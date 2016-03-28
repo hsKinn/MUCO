@@ -14,6 +14,25 @@ public class PackVO extends MemberVO {
 	private int viewCount;
 	private int likeCount;
 	private int isPublic;
+	private String shareImageLocation;
+	private String shareImageName;
+
+	public String getShareImageLocation() {
+		return shareImageLocation;
+	}
+
+	public void setShareImageLocation(String shareImageLocation) {
+		this.shareImageLocation = shareImageLocation;
+	}
+
+
+	public String getShareImageName() {
+		return shareImageName;
+	}
+
+	public void setShareImageName(String shareImageName) {
+		this.shareImageName = shareImageName;
+	}
 
 	public int getPackId() {
 		return packId;
