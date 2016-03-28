@@ -4,9 +4,9 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="com.oracle.jrockit.jfr.RequestDelegate"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.dao.Const"/>
+<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.pack.vo.PackSearchVO"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.member.dao.Const"/>
 </qualifiedTypeNameHistroy>

@@ -57,7 +57,7 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  P.PACK_ID
+			                     SELECT  DISTINCT P.PACK_ID
 			                     		 , PACK_TITLE
 			                             , VIEW_COUNT
 			                             , LIKE_COUNT
@@ -75,7 +75,33 @@
 		               WHERE   ROWNUM &lt;= ?   
 	                )
 		      WHERE RNUM >= ?      
-        </getAllPackageListByHashTag>		
+        </getAllPackageListByHashTag>	
+        	
+		<getAllPackageListByHashTagOrderByDate>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  DISTINCT P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , LIKE_COUNT
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                             , HASH_TAG H
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.PACK_ID = H.PACK_ID
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
+			                     ORDER   BY P.PACK_ID DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?      
+        </getAllPackageListByHashTagOrderByDate>		
         
         <getAllPackageListCount>
 			SELECT  COUNT(PACK_ID)
@@ -106,6 +132,29 @@
 		      WHERE RNUM >= ?          
         </getAllPackageList>
         
+        <getAllPackageListOrderByDate>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , LIKE_COUNT
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY PACK_ID DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?          
+        </getAllPackageListOrderByDate>
+        
 	</sharePack>
 	
 	<hashtag>
@@ -122,12 +171,55 @@
 	</hashtag>
 	
 	<packLike>
+	
+		<selectPackLikeCount>
+			SELECT	COUNT(PACK_ID)
+			FROM	PACK_LIKE
+			WHERE	PACK_ID = ?
+			AND		EMAIL = ?
+		</selectPackLikeCount>
+		
+		<insertPackLike>
+			INSERT INTO PACK_LIKE	(
+									PACK_LIKE_ID
+									, PACK_ID
+									, EMAIL
+								) 
+			VALUES 				( 
+									PACK_LIKE_ID_SEQ.NEXTVAL
+									, ?
+									, ?
+								)
+		</insertPackLike>
+		
+		<deletePackLike>
+			DELETE
+			FROM	PACK_LIKE
+			WHERE	PACK_ID = ?
+			AND		EMAIL = ?
+		</deletePackLike>		
+	
 	</packLike>
 	
 	<packReply>
 	</packReply>
 	
 	<place>
+		
+		<getPlaceInPackage>
+			SELECT	P.PLACE_ID
+					, PLACE_NAME
+					, ADDRESS
+					, LIKE_COUNT
+					, COUNTRY_NAME
+			FROM	PLACE P
+					, PACK_PLACE PACKPLACE
+					, COUNTRY C
+			WHERE	PACKPLACE.PACK_ID = ?
+			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
+			AND		P.COUNTRY_ID = C.COUNTRY_ID
+		</getPlaceInPackage>
+		
 	</place>
 	
 	<placeLike>

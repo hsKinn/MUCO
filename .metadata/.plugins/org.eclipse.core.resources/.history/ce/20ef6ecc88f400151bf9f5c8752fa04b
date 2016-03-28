@@ -1,0 +1,54 @@
+package com.ktds.muco.table.packLike.biz;
+
+import com.ktds.muco.table.packLike.dao.PackLikeDAO;
+import com.ktds.muco.table.packLike.vo.PackLikeVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackLikeBiz {
+	
+	private PackLikeDAO packLikeDAO;
+	
+	public PackLikeBiz() {
+		packLikeDAO = new PackLikeDAO();
+	}
+	
+	
+	/**
+	 * Is Exist Pack Like
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 * @return
+	 */
+	public boolean isExistPackLike ( PackLikeVO packLike ) {
+		
+		return packLikeDAO.selectPackLikeCount(packLikeVO) > 0;
+		
+	} // isExistPackLike END
+	
+	
+	/**
+	 * Insert OR Delete Pack Like
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 */
+	public void insertOrDeletePackLike ( PackLikeVO packLike ) {
+		
+		if ( isExistPackLike(packLike) ) {
+			packLikeDAO.deletePackLike(packLike);
+		}
+		else {
+			packLikeDAO.insertPackLike(packLike);
+		}
+		
+	} // insertOrDeletePackLike END
+	
+	
+}

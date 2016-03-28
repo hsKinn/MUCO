@@ -1,0 +1,27 @@
+package com.ktds.muco.table.packLike.biz;
+
+import com.ktds.muco.table.packLike.dao.PackLikeDAO;
+import com.ktds.muco.table.packLike.vo.PackLikeVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackLikeBiz {
+	
+	private PackLikeDAO packLikeDAO;
+	
+	public PakcLikeBiz() {
+		packLikeDAO = new PackLikeDAO();
+	}
+	
+	public boolean isExistPackLike ( PackLikeVO packLikeVO ) {
+		
+		return packLikeDAO.selectPackLikeCount(packLikeVO) > 0;
+		
+	}
+	
+	
+	
+}

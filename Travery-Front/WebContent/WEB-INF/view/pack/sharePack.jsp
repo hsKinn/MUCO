@@ -16,7 +16,7 @@
 <!-- Share Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		
 	   $("#initSearchBtn").click( function() {
 			  location.href = "<c:url value="/init" />"; 
 		   });
@@ -39,6 +39,51 @@
 			}
 		}) ;
 		
+		$(".packLike").click( function() {
+			
+			
+			alert("${pack.packId}");
+			
+			var a = $(".packLike").data('packId');
+			
+			
+			$.post(
+					"/packLike"
+					, { "packId" : a } 
+					, function(data) {
+						
+						var jsonData3 = {};
+						
+						try {
+							jsonData3 = JSON.parse(data);
+						}
+						catch(e) {
+							jsonData3.result = false;							
+						}
+						
+						console.log(jsonData3);
+						
+						if ( jsonData3.result) {
+							// 하트를 넣음
+							var text = $(".packLike").text();
+							if ( jsonData3.isPackLike ) {
+								$(".packLike").text("♥");							
+							}
+							else {
+								$(".packLike").text("♡");	
+							}
+						}
+						else {
+							alert("세션 만료");
+							location.href = "/";
+						}
+						
+					}
+					
+			  );
+		});		
+	
+
 	});
 	
 </script>
@@ -63,8 +108,8 @@
   				<span class="caret"></span>
   			</button>
  			<ul class="dropdown-menu">
-			    <li><a href="#">등록일 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
-			    <li><a href="#">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span>(기본값)</a></li>
+			    <li><a href="/recentSharePack">등록일 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+			    <li><a href="/sharePack">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
   			</ul>
 		</div>
 	</div>
@@ -75,27 +120,79 @@
 </form>
 
 <div id="share-body">
-	<c:forEach items="${ packages.packList }" var="packages">
+	<c:forEach items="${ packages.packList }" var="pack">
 		<div class="sharePack"> 
 			<div class="packTop">
-				<span id="header">${ packages.packTitle }</span>
+				<span id="header" data-toggle="modal" data-target="#${ pack.packId }">${ pack.packTitle }</span>
 			</div>
 			
 			<div class="packHashTag">
-				<c:forEach items="${ packages.hashtagList }" var="hashtags">
+				<c:forEach items="${ pack.hashtagList }" var="hashtags">
 					<span id="hashtag">#${ hashtags.hashtagName }</span>
 				</c:forEach>
 			</div>
 			
 			<div class="packPhoto">
-				<img src="${ packages.imageLocation }" />
+				<img src="${ pack.imageLocation }" />
 			</div>
 			
-			<div class="packLikeCount">
-				<span class="glyphicon glyphicon-heart"></span>
-				<span id="likeCount">${ packages.likeCount } </span>
+			<div class="packFooter">
+				<div class="packWriterName">Writer: ${ pack.name }</div>
+				<div class="packLikeCount">
+					<span class="glyphicon glyphicon-heart"></span>
+					<span id="likeCount">${ pack.likeCount }</span>
+				</div>
 			</div>
 		</div>
+		
+		
+		<!-- Modal -->
+		<div class="modal fade" id="${ pack.packId }" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		    	<div class="modal-content">
+		        	<div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">
+			          		${ pack.packTitle } 
+			          		<span class="badge">view: ${ pack.viewCount }</span>
+			          </h4>
+			        </div>
+			        <div class="modal-body">
+						  <table class="table table-hover table-bordered table-condensed">
+						    <thead>
+						      <tr>
+						        <td width="130px">여행지 명</td>
+						        <td>주소</td>
+						        <td width="80px">추천수</td>
+						      </tr>
+						    </thead>
+						    <tbody>
+						    <c:forEach items="${ pack.placeList }" var="places">
+						      <tr>
+						        <td>${ places.placeName }</td>
+						        <th>${ places.address }</th>
+						        <td>${ places.likeCount }</td>
+						      </tr>
+						    </c:forEach>
+						  </table>
+			        </div>
+			        <div class="modal-footer">
+			                  추천
+			          <c:choose>
+			          <c:when test="${ pack.isExistPackLike() }">
+			          	<span class="packLike" data-packId='${ pack.packId }' >♥</span>			          
+			          </c:when>
+			          <c:otherwise>
+			          	<span class="packLike">♡</span>		
+			          </c:otherwise>
+			          </c:choose>
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+		     	 </div>
+		    </div>
+		 </div>
+  
 	</c:forEach>
 	
 	<c:if test="${ packages.paging.totalArticleCount == 0 }">
