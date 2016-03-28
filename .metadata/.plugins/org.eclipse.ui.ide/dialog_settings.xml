@@ -133,6 +133,7 @@
 		<item value="org.jboss.tools.m2e.wro4j.feature:1.1.0.201406251020"/>
 		<item value="org.polarion.eclipse.team.svn.connector.javahl18.win64:4.1.2.I20141224-1700"/>
 		<item value="org.polarion.eclipse.team.svn.connector.javahl18:4.1.3.I20150214-1700"/>
+		<item value="org.polarion.eclipse.team.svn.connector.svnkit18:4.1.3.I20150214-1700"/>
 		<item value="org.polarion.eclipse.team.svn.connector:4.1.3.I20150214-1700"/>
 		<item value="org.sonatype.m2e.buildhelper.feature:0.15.0.201207090124"/>
 		<item value="org.sonatype.m2e.egit.feature:0.14.0.201504071521"/>
@@ -152,35 +153,6 @@
 		<item value="org.springsource.sts.package:3.7.3.201602250940-RELEASE-e45"/>
 		<item value="org.springsource.sts:3.7.3.201602250940-RELEASE"/>
 	</list>
-<<<<<<< HEAD
-=======
-	<section name="ExternalProjectImportWizard">
-		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
-		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
-		<item value="true" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
-		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value=""/>
-		</list>
-		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
-			<item value="C:\Users\206-001\Desktop\MUCO--.zip"/>
-			<item value="G:\금일하것\Travery.zip"/>
-			<item value="G:\160321.zip"/>
-			<item value="C:\Users\206-001\Desktop\.zip"/>
-		</list>
+	<section name="SaveAsDialogSettings">
 	</section>
-	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
-		<item value="false" key="FilterByLocation"/>
-		<item value="true" key="ShowStatusLine"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode/&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
-		<item value="false" key="ShowDerived"/>
-		<section name="DialogBoundsSettings">
-			<item value="600" key="DIALOG_WIDTH"/>
-			<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
-			<item value="164" key="DIALOG_X_ORIGIN"/>
-			<item value="207" key="DIALOG_Y_ORIGIN"/>
-		</section>
-	</section>
->>>>>>> origin/KGM2
 </section>

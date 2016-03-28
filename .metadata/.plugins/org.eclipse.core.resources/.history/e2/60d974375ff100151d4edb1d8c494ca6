@@ -1,7 +1,0 @@
-@CHARSET "UTF-8";
-
-/* 이기연 */
-
-img#editImg {
-	width: 10px;
-}
