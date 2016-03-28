@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+/* 백지경 */
+
+
+div#packListdiv{
+	background-color:#9966ff;
+	float:left;
+	height:100%;
+	width:50%;
+	
+}
+div#placesOfPackListdiv{
+	float:left;
+	background-color:#bb99ff;
+	height:100%;
+	width:40%;
+}
+
+table#packListTable{
+	margin-top:30%;
+	margin-left:50px;
+}
+
+td#pack{
+	text-align: left;
+	font-family: 'Lucida Console','Ubuntu Condensed', "Noto Sans Korean";
+	font-size:30px;
+	color:#ffffff;
+}
+img#folderImg{
+	
+}

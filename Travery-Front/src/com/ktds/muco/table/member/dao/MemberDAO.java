@@ -18,7 +18,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class MemberDAO {
-	
 
 	/**
 	 * 
@@ -28,32 +27,30 @@ public class MemberDAO {
 	 * 
 	 */
 	public void addNewMember(MemberVO memberVO) {
-		
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/addNewMember/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getEmail());
 			stmt.setString(2, memberVO.getPassword());
 			stmt.setString(3, memberVO.getName());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
-			closeDB(conn, stmt, null);	
+		} finally {
+			closeDB(conn, stmt, null);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * 로그인하기위해 해당 유저가 존재하는지 확인
@@ -63,7 +60,7 @@ public class MemberDAO {
 	 * validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER")); @author 이기연 수정 
 	 */
 	public MemberVO getMemberByEmailAndPassword(MemberVO memberVO) {
-		
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -108,7 +105,7 @@ public class MemberDAO {
 			closeDB(conn, stmt, rs);
 		}
 	}
-	
+
 	/**
 	 *
 	 * 회원 이름 수정 
@@ -292,7 +289,7 @@ public class MemberDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -301,20 +298,23 @@ public class MemberDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	}
 

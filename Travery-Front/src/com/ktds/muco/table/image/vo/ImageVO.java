@@ -4,6 +4,8 @@ import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
  * 
+ * 여행지의 이미지
+ * 
  * @author 김광민
  *
  */
@@ -12,6 +14,15 @@ public class ImageVO extends MemberVO {
 	private int imageId;
 	private String imageName;
 	private String imageLocation;
+	private String createdDate;
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
 
 	public int getImageId() {
 		return imageId;

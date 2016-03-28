@@ -22,22 +22,25 @@ import com.ktds.muco.table.member.vo.MemberVO;
  */
 public class PersonalInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PersonalInfoServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PersonalInfoServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * 
 	 * @author 이기연
