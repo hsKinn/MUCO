@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+/* 백지경 */
+
+
+div#packListdiv{
+	background-color:#9966ff;
+	float:left;
+	height:100%;
+	width:40%;
+	
+}
+div#placesOfPackListdiv{
+	float:left;
+	background-color:#bb99ff;
+	height:100%;
+	width:40%;
+}
+
+table#packListTable{
+	font-family: 'Ubuntu Condensed', "Noto Sans Korean";
+	margin-top:30%;
+	font-size:30px;
+	font-color:#ffffff;
+}

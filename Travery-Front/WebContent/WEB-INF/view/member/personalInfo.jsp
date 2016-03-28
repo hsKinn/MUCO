@@ -16,6 +16,11 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
+	$("#personalInfoMenu").mouseout(function(){
+		$("#personalInfoMenu").css("color", "#ffffff");
+	});
+	$("#personalInfoMenu").css("color", "#ffffff");
+	
 });
 </script>
 

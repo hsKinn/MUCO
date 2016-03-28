@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+
+/* 백지경 */
+
+
+div#packListdiv{
+	background-color:#9966ff;
+	float:left;
+	height:100%;
+	width:40%;
+	
+}
+div#packListdiv2{
+	float:left;
+	background-color:#bb99ff;
+	height:100%;
+	width:40%;
+}
+div#placesOfPackListdiv{
+	text-align:center;
+	float:left;
+	background-color:#bb99ff;
+	height:100%;
+	width:100%;
+}
+
+table#packListTable{
+	margin-top:30%;
+	margin-left:30px;
+}
+td.pack{
+	text-align: left;
+}
+
+p#title{
+
+	font-family: 'Lucida Console','Ubuntu Condensed', "Noto Sans Korean";
+	font-size:20px;
+	padding:10px;
+	color:#ffffff;
+}
+span#packData_Title{
+	font-family: 'Lucida Console','Ubuntu Condensed', "Noto Sans Korean";
+	font-size:20px;
+	padding:10px;
+	color:#ffffff;
+}
+
+img#folderImg{
+	height:50px;
+	width:50px;
+}
+
+
+.custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
+    text-indent: -4em;
+}
+.custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
+    text-indent: 2em;
+}
+/* Custom widths are needed because the length of custom labels differs from
+   the length of the standard labels */
+.custom-size-flipswitch.ui-flipswitch {
+    width: 8.875em;
+}
+.custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
+    padding-left: 7em;
+    width: 1.875em;
+}

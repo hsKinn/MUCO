@@ -331,6 +331,12 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$("#hitTheRoadMenu").mouseout(function(){
+			$("#hitTheRoadMenu").css("color", "#ffffff");
+		});
+		$("#hitTheRoadMenu").css("color", "#ffffff");
+		
 		$('div#countries div').click(function(){
 			alert("hi");
 			console.log("hi");
