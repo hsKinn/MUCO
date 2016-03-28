@@ -1,0 +1,124 @@
+@CHARSET "UTF-8";
+
+/* 백지경 */
+
+
+div#packListdiv{
+	background-color:#9966ff;
+	float:left;
+	height:100%;
+	width:40%;
+	
+}
+div#packListdiv2{
+	float:left;
+	background-color:#bb99ff;
+	height:100%;
+	width:40%;
+}
+div#placesOfPackListdiv{
+	text-align:center;
+	float:left;
+	background-color:#bb99ff;
+	height:100%;
+	width:100%;
+	
+	margin-top:20%;
+}
+
+table#packListTable{
+	margin-top:30%;
+	margin-left:30px;
+}
+td.pack{
+	text-align: left;
+}
+
+p#title{
+
+	font-family: 'Lucida Console','Ubuntu Condensed', "Noto Sans Korean";
+	font-size:20px;
+	padding:10px;
+	color:#ffffff;
+}
+span#packData_Title{
+	font-family: 'Lucida Console','Ubuntu Condensed', "Noto Sans Korean";
+	font-size:20px;
+	padding:10px;
+	color:#ffffff;
+}
+span.glyphicon{
+	font-size:50px;
+	margin-top:230px;
+}
+
+img#folderImg{
+	height:50px;
+	width:50px;
+}
+img#packData_image{
+	height:5%;
+	width:50%;
+}
+
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

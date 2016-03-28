@@ -45,12 +45,17 @@ public class PackBiz {
 			deleteCount=packDAO.deletePack(Integer.parseInt(deletePackId));
 		}
 		return deleteCount;
-		
 	}
 
 	public List<PlaceVO> getPlaceListByPackId(int packId) {
 		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
 		return places;
+	}
+
+	public int deletePlaceOfPack(int placeId, int packId) {
+		int deletePlaceOfPackCount = 0;
+		deletePlaceOfPackCount = packDAO.deletePlaceOfPack(placeId, packId);
+		return deletePlaceOfPackCount;
 	}
 	
 	

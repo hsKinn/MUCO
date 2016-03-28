@@ -179,4 +179,24 @@
     <servlet-name>ShowPackPlaceServlet</servlet-name>
     <url-pattern>/showPackPlace</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DetailPackServlet</display-name>
+    <servlet-name>DetailPackServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.DetailPackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailPackServlet</servlet-name>
+    <url-pattern>/detailPack</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePlaceOfPackServlet</display-name>
+    <servlet-name>DeletePlaceOfPackServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.DeletePlaceOfPackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePlaceOfPackServlet</servlet-name>
+    <url-pattern>/deletePlaceOfPack</url-pattern>
+  </servlet-mapping>
 </web-app>

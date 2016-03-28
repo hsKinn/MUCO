@@ -47,11 +47,12 @@ public class ShowPackPlaceServlet extends HttpServlet {
 		String email=loginMember.getEmail();
 		
 		List<PackVO> packs = packBiz.getPackListByEmail(email);		
-		request.setAttribute("packs", packs);
-		
 		List<PlaceVO> places = packBiz.getPlaceListByPackId(packId);
 		
+		
+		request.setAttribute("packs", packs);
 		request.setAttribute("places", places);
+		request.setAttribute("packId", packId);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/showPackPlace.jsp");
 		rd.forward(request, response);
 		

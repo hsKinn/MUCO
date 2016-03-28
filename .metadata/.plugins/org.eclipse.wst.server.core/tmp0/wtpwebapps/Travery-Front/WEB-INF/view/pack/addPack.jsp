@@ -59,8 +59,7 @@ $(document).ready(function() {
 			</c:forEach>
 	</table>
 	
-	<a href="/addPack"><img src="/resource/img/pack/circledPlus.png" id="btnAdd" /></a>
-	<a href="/deletePack"><img src="/resource/img/pack/circledMinus.png" id="btnDelete" /></a>
+	<a href="/myPack"><span class="glyphicon glyphicon-ok-sign"></span></a>
 	
 	</div>
 	

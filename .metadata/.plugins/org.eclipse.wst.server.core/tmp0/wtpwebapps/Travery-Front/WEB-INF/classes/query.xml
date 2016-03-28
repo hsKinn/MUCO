@@ -79,10 +79,26 @@
 			WHERE	PACK_ID=?
 		</deletePack>
 		<getPlaceListByPackId>
-			SELECT  *
-			FROM    PACK_PLACE
-			WHERE   PACK_ID = ?
+			SELECT  P.PLACE_ID
+			        , PLACE_NAME
+			        , LATITUDE
+			        , LONGITUDE
+			        , ADDRESS
+			        , VIEW_COUNT
+			        , LIKE_COUNT
+			        , DESCRIPTION
+			        , IS_NEW_PLACE
+			FROM    PACK_PLACE PP
+			        , PLACE P
+			WHERE   PP.PLACE_ID = P.PLACE_ID
+			AND     PP.PACK_ID = ?
 		</getPlaceListByPackId>
+		<deletePlaceOfPack>
+			DELETE	
+			FROM	PACK_PLACE
+			WHERE	PLACE_ID=?
+			AND		PACK_ID=?
+		</deletePlaceOfPack>
 	</pack>
 	
 	<packLike>

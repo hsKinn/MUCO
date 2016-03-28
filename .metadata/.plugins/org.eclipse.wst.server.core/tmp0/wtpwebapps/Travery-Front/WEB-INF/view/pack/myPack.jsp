@@ -43,7 +43,7 @@ $(document).ready(function() {
 	
 					if ( jsonData.result ){
 						
-						$("#packData_Title").text(jsonData.title);
+						$("#packData_Title").val(jsonData.title);
 						$("#packData_IsPublic").text(jsonData.isPublic);						
 						$("#packData_image").attr("src",jsonData.imageLocation);
 											
@@ -82,23 +82,20 @@ $(document).ready(function() {
 			</c:forEach>
 	</table>
 	
-	<a href="/addPack"><img src="/resource/img/pack/circledPlus.png" id="btnAdd" /></a>
-	<a href="/deletePack"><img src="/resource/img/pack/circledMinus.png" id="btnDelete" /></a>
-	
+	<a href="/addPack"><span class="glyphicon glyphicon-plus-sign"></span></a>
+	<a href="/deletePack"><span class="glyphicon glyphicon-minus-sign"></span></a>	
+	<a href="/myPack"><span class="glyphicon glyphicon-ok-sign"></span></a>
 	</div>
 	<div id="packListdiv2">
 		<div id="placesOfPackListdiv">			
-			<span id="packData_Title"></span><br/>
-			<span id="packData_IsPublic"></span><br/>
- 공개
-			  <label class="switch">
-				  <input type="checkbox">
-				  <div class="slider round"></div>
-				</label>
-				<img id="packData_image" src="#" />
-
-
-			수정버튼
+			<img id="packData_image" src="#" /><br/><br/>
+			<input type="file" name="file" value="file"/>
+			<div class="form-group">
+			 <label for="packData_Title">Pack Title :</label>
+			<input type="text" class="form-control" id="packData_Title" style="width:50%;display: inline;"></span><br/>
+			</div>
+				 
+ 		<button type="button" class="btn btn-success">OK</button>
 		</div>	
 	</div>
 </body>

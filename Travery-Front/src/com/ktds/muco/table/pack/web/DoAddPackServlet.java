@@ -56,7 +56,7 @@ public class DoAddPackServlet extends HttpServlet {
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 
-		response.sendRedirect("/myPack");
+		response.sendRedirect("/detailPack");
 	}
 
 }
