@@ -16,8 +16,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PackLikeDAO {
-<<<<<<< HEAD
-	
 	
 	/**
 	 * Select Pack Like Count
@@ -158,11 +156,8 @@ public class PackLikeDAO {
 			closeDB(conn, stmt, rs);
 		}
 	} // countPackLike END	
-	
-	
-=======
 
->>>>>>> origin/leina_1603251225
+	
 	/**
 	 * 
 	 * Load Oracle Driver

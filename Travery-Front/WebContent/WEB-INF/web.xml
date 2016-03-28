@@ -121,7 +121,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
     <display-name>InitSearchServlet</display-name>
     <servlet-name>InitSearchServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.pack.web.InitSearchServlet</servlet-class>
@@ -169,7 +168,8 @@
     <servlet-name>HitCountPackServlet</servlet-name>
     <url-pattern>/hitCountPack</url-pattern>
   </servlet-mapping>
-=======
+    <servlet>
+    <description></description>
     <display-name>PersonalInfoActionServlet</display-name>
     <servlet-name>PersonalInfoActionServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.member.web.PersonalInfoActionServlet</servlet-class>
@@ -306,5 +306,4 @@
 		<servlet-name>TestServlet</servlet-name>
 		<url-pattern>/test</url-pattern>
 	</servlet-mapping>  
->>>>>>> origin/leina_1603251225
 </web-app>

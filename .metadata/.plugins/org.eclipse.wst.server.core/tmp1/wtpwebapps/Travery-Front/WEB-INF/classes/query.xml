@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <query>
 
-	<city>
-	</city>
-	
 	<country>
+		<getCountryInfoByCountryName>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
+			FROM	COUNTRY
+			WHERE	COUNTRY_NAME = ?
+		</getCountryInfoByCountryName>
 	</country>
 	
 	<evaluation>
@@ -14,6 +17,20 @@
 	</history>
 	
 	<image>
+		<insertImage>
+			INSERT	INTO	IMAGE	( 
+										IMAGE_ID
+										, PLACE_ID
+										, IMAGE_NAME
+										, IMAGE_LOCATION
+									)
+			VALUES 					(
+										IMAGE_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+									)
+		</insertImage>
 	</image>
 	
 	<member>
@@ -35,9 +52,80 @@
      		WHERE	EMAIL = ?
      		AND		PASSWORD = ?
      	</getMemberByIdAndPassword>
+     	<updateName>
+     		UPDATE	MEMBER
+     		SET		NAME = ?
+     		WHERE	EMAIL = ?
+     	</updateName>
+     	<updatePhoneNumber>
+     		UPDATE	MEMBER
+     		SET		PHONE_NUMBER = ?
+     		WHERE	EMAIL = ?     	
+     	</updatePhoneNumber>
+     	<updatePassword>
+     		UPDATE	MEMBER
+     		SET		PASSWORD = ?
+     		WHERE	EMAIL = ?       	
+     	</updatePassword>
+     	<isExistName>
+     		SELECT	COUNT(NAME) AS COUNT
+     		FROM	MEMBER
+     		WHERE	NAME = ?
+     	</isExistName>
+     	<addMainImage>
+     		UPDATE	MEMBER 
+     		SET		MAIN_IMAGE_NAME = ?
+     				, MAIN_IMAGE_LOCATION = ?
+     		WHERE	EMAIL = ?
+     	</addMainImage>
 	</member>
 	
 	<pack>
+		<getPackListByEmail>
+			SELECT  *
+			FROM    PACK
+			WHERE   EMAIL = ?
+		</getPackListByEmail>
+		<getPackDataByPackId>
+			SELECT  *
+			FROM    PACK
+			WHERE   PACK_ID = ?
+		</getPackDataByPackId>
+		<addPack>
+			INSERT INTO PACK (
+			                            PACK_ID
+			                            , SHARE_IMAGE_NAME
+			                            , PACK_TITLE
+			                            , EMAIL
+			                            , SHARE_IMAGE_LOCATION
+			                        ) 
+				VALUES              ( PACK_ID_SEQ.NEXTVAL
+			                          ,0
+			                          ,?
+			                          ,?
+			                          ,0
+			                          )
+		</addPack>
+		<getLatesPackId>
+			SELECT	PACK_ID_SEQ.CURRVAL
+			FROM	PACK
+		</getLatesPackId>
+		<uploadPackImgFile>
+			UPDATE PACK
+			SET    SHARE_IMAGE_NAME     = ?
+			       , SHARE_IMAGE_LOCATION = ?
+			WHERE  PACK_ID              = ?
+		</uploadPackImgFile>
+		<deletePack>
+			DELETE	
+			FROM	PACK
+			WHERE	PACK_ID=?
+		</deletePack>
+		<getPlaceListByPackId>
+			SELECT  *
+			FROM    PACK_PLACE
+			WHERE   PACK_ID = ?
+		</getPlaceListByPackId>
 	</pack>
 	
 	<sharePack>
@@ -309,6 +397,44 @@
 			AND		P.COUNTRY_ID = C.COUNTRY_ID
 		</getPlaceInPackage>
 		
+		<placeInfoRecommendedList>
+<!-- 					SELECT  M.* 
+					        , G.GRADE_TITLE
+					        , AC.ACTOR_COUNT 
+					FROM    MOVIE M
+					        , GRADE G
+					        , (
+					            SELECT  MOVIE_ID
+					                    , COUNT(ACTOR_LIST_ID) ACTOR_COUNT
+					            FROM ACTOR_LIST
+					            GROUP BY MOVIE_ID
+					          ) AC
+					WHERE	M.GRADE_ID = G.GRADE_ID
+					AND		AC. MOVIE_ID(+) = M.MOVIE_ID
+					ORDER BY M.MOVIE_ID ASC -->
+		</placeInfoRecommendedList>
+		<insertPlaceInfo>
+			INSERT	INTO	PLACE	(
+											PLACE_ID
+											, PLACE_NAME
+											, ADDRESS
+											, LATITUDE
+											, LONGITUDE
+											, DESCRIPTION
+										)
+			VALUES						(
+											PLACE_ID_SEQ.NEXTVAL
+											, ?
+											, ?
+											, ?
+											, ?
+											, ?
+										)
+		</insertPlaceInfo>
+		<getReturnPlaceId>
+			SELECT	PLACE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnPlaceId>
 	</place>
 	
 	<placeLike>
@@ -329,6 +455,9 @@
 	<reserve>
 	</reserve>
 	
+	<selectedCountry>
+	</selectedCountry>
+	
 	<standard>
 	</standard>
 	
@@ -339,8 +468,4 @@
 	</transport>
 	
 </query>
-
-
-
-
 

@@ -28,18 +28,6 @@
 			$("#personalInfoMenu").css("color", "#959595");
 		});
 
-<<<<<<< HEAD
-   <div id="leftMenu">
-      <ul>
-         <li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu"> HIT THE ROAD </a></li>
-         <li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY PACKAGE </a></li>
-         <li><a href="<c:url value="/init"/>" id="sharePackMenu"> SHARE PACKAGE </a></li>
-         <li><a href="<c:url value="/recommendPlace"/>" id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
-         <li><a href="<c:url value="/tripReservation"/>" id="tripReservationMenu"> TRIP RESERVATION </a></li>
-         <li><a href="<c:url value="/personalInfo"/>" id="personalInfoMenu"> PERSONAL INFO </a></li>
-      </ul>
-   </div>
-=======
 	});
 </script>
 <div id="leftMenu">
@@ -48,7 +36,7 @@
 				HIT THE ROAD </a></li>
 		<li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY
 				PACKAGE </a></li>
-		<li><a href="<c:url value="/sharePack"/>" id="sharePackMenu">
+		<li><a href="<c:url value="/init"/>" id="sharePackMenu">
 				SHARE PACKAGE </a></li>
 		<li><a href="<c:url value="/recommendPlace"/>"
 			id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
@@ -58,4 +46,3 @@
 			id="personalInfoMenu"> PERSONAL INFO </a></li>
 	</ul>
 </div>
->>>>>>> origin/leina_1603251225

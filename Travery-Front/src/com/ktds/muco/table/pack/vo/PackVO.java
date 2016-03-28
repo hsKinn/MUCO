@@ -19,8 +19,10 @@ public class PackVO extends MemberVO {
 	private int viewCount;
 	private int likeCount;
 	private int isPublic;
-<<<<<<< HEAD
 	private String imageLocation;
+	
+	private String shareImageLocation;
+	private String shareImageName;
 	
 	private boolean isExistPackLike;
 	
@@ -59,9 +61,8 @@ public class PackVO extends MemberVO {
 
 	public void setImageLocation(String imageLocation) {
 		this.imageLocation = imageLocation;
-=======
-	private String shareImageLocation;
-	private String shareImageName;
+	}
+
 
 	public String getShareImageLocation() {
 		return shareImageLocation;
@@ -77,7 +78,6 @@ public class PackVO extends MemberVO {
 
 	public void setShareImageName(String shareImageName) {
 		this.shareImageName = shareImageName;
->>>>>>> origin/leina_1603251225
 	}
 
 	public int getPackId() {

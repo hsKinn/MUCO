@@ -18,20 +18,6 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PackDAO {
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-=======
 
 	/**
 	 * 
@@ -248,7 +234,6 @@ public class PackDAO {
 		return packs;
 	}
 
->>>>>>> origin/leina_1603251225
 	/**
 	 * 
 	 * Load Oracle Driver

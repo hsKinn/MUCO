@@ -41,15 +41,6 @@ INDEX VERSION 1.127+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclip
 392419882.index
 246498896.index
 2947034401.index
-<<<<<<< HEAD
-=======
-212673794.index
-2181683745.index
-3309830863.index
-1772137307.index
-3985950586.index
-1332610715.index
->>>>>>> origin/leina_1603251225
 3880920677.index
 361061837.index
 3945379327.index
