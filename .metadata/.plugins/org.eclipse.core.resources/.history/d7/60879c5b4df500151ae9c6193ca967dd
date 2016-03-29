@@ -73,7 +73,7 @@
 		<h2>내 추천 여행지</h2>
 	</div>
 	<div class="container">
-		<div class="list-group" style="width: 150px;">
+		<div class="list-group" style="width: 15%;">
 			<a href="#" class="list-group-item list-group-item-success">First item</a>
 			<a href="#" class="list-group-item list-group-item-info">Second item</a>
 		</div>
@@ -117,7 +117,7 @@
 						<input type="hidden" id="lng" name="lng" placeholder="#longitude"
 							value="${placeInfo.longitude}" size="15" /> <img
 							src="<c:url value="/resource/img/place/btn-map.png" />"
-							id="mapBtn" onclick="openMap(this.form)" style="position: absolute;" />
+							id="mapBtn" onclick="openMap(this.form)" />
 					</div>
 				</div>
 			</div>

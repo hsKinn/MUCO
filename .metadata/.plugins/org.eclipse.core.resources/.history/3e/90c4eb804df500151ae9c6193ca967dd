@@ -117,7 +117,7 @@
 						<input type="hidden" id="lng" name="lng" placeholder="#longitude"
 							value="${placeInfo.longitude}" size="15" /> <img
 							src="<c:url value="/resource/img/place/btn-map.png" />"
-							id="mapBtn" onclick="openMap(this.form)" style="position: absolute;" />
+							id="mapBtn" onclick="openMap(this.form)" />
 					</div>
 				</div>
 			</div>

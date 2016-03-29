@@ -69,19 +69,18 @@
 
 
 <div class="jumbotron" style="width: 50%; height: 90%; float: left; margin-left: 4%; margin-top: 1%;">
-	<div id="title" style="margin: 3%;">
-		<h3>내 추천 여행지</h3>
+	<div id="title" style="margin-left: 2%; top: 0;">
+		<h2>내 추천 여행지</h2>
 	</div>
 	<div class="container">
-		<div class="list-group" style="width: 25%;">
-			<a href="#" class="list-group-item list-group-item-success">First
-				item</a> <a href="#" class="list-group-item list-group-item-info">Second
-				item</a>
+		<div class="list-group" style="width: 150px;">
+			<a href="#" class="list-group-item list-group-item-success">First item</a>
+			<a href="#" class="list-group-item list-group-item-info">Second item</a>
 		</div>
 	</div>
 	
-	<div style=" width:20%; float: right;">
-		<div id="btn-create" style="float: left;">
+	<div style=" width:20%; float: right; bottom: 0;">
+		<div id="btn-create" style="float: left; ">
 			<form id="createForm">
 				<img src="<c:url value="/resource/img/place/btn-create.png" />" id="createBtn" style="cursor: pointer" />
 			</form>
@@ -102,13 +101,13 @@
 
 		<div class="container">
 			<div style="margin-left: 13%;">
-				<h4>여행지 등록하기</h4>
+				<h2>여행지 등록하기</h2>
 			</div>
 			<div class="panel-group">
 				<div class="panel panel-default" style="width: 100%;">
 					<div class="panel-heading">
 						<input type="text" id="placeName" name="placeName"
-							placeholder="#여행지명" value="${placeInfo.placeName}" size="17" style="padding:0,0,0,0;" />
+							placeholder="#여행지명" value="${placeInfo.placeName}" style="padding:0,0,0,0; width: 100%;" />
 					</div>
 					<div class="panel-body">
 						<input type="text" id="address" name="address"
@@ -118,7 +117,7 @@
 						<input type="hidden" id="lng" name="lng" placeholder="#longitude"
 							value="${placeInfo.longitude}" size="15" /> <img
 							src="<c:url value="/resource/img/place/btn-map.png" />"
-							id="mapBtn" onclick="openMap(this.form)" />
+							id="mapBtn" onclick="openMap(this.form)" style="position: absolute;" />
 					</div>
 				</div>
 			</div>
@@ -139,9 +138,9 @@
 		</div>
 
 		<div class="container">
-			<div class="panel-group">
+			<div class="panel-group" >
 				<div class="panel panel-default" style="height: 100%; width: 100%;">
-					<div class="panel-heading">
+					<div class="panel-heading" style="height: 300px;">
 						<textarea id="description" name="description"
 							style="height: 100%; width: 100%;">${ placeInfo.description }</textarea>
 					</div>
