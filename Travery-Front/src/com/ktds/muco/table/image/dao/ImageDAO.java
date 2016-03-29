@@ -38,7 +38,7 @@ public class ImageDAO {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/image/insertImage/text()");
 			stmt = conn.prepareStatement(query);
-			System.out.println("placeId 출력 : "+imageVO.getPlaceId());
+			System.out.println("4. ImageDAO placeId 출력 : "+imageVO.getPlaceId());
 			stmt.setInt(1, imageVO.getPlaceId());
 			stmt.setString(2, imageVO.getImageName());
 			stmt.setString(3, imageVO.getImageLocation());

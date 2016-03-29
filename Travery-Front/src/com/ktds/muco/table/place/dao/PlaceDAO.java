@@ -27,36 +27,36 @@ public class PlaceDAO {
 	 * @author 김동규
 	 * 
 	 */
-	public PlaceListVO placeInfoRecommendedList(PlaceSearchVO placeSearchVO) {
-		List<PlaceVO> listPlaceVO = new ArrayList<PlaceVO>();
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		PlaceVO placeVO = null;
-		
-		loadOracleDriver();
-		
-		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			String query = XML.getNodeString("//query/place/placeInfoRecommendedList/text()");
-			stmt = conn.prepareStatement(query);
-			rs = stmt.executeQuery();
-			
-			while(rs.next()) {
-				placeVO = new PlaceVO();
-				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
-				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-				
-				listPlaceVO.add(placeVO);
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
-			closeDB(conn, stmt, rs);
-		}
-		return listPlaceVO;
-	}
+//	public PlaceListVO placeInfoRecommendedList(PlaceSearchVO placeSearchVO) {
+//		List<PlaceVO> listPlaceVO = new ArrayList<PlaceVO>();
+//		Connection conn = null;
+//		PreparedStatement stmt = null;
+//		ResultSet rs = null;
+//		PlaceVO placeVO = null;
+//		
+//		loadOracleDriver();
+//		
+//		try {
+//			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+//			String query = XML.getNodeString("//query/place/placeInfoRecommendedList/text()");
+//			stmt = conn.prepareStatement(query);
+//			rs = stmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				placeVO = new PlaceVO();
+//				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+//				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+//				
+//				listPlaceVO.add(placeVO);
+//			}
+//		} catch (SQLException e) {
+//			throw new RuntimeException(e.getMessage(), e);
+//		}
+//		finally {
+//			closeDB(conn, stmt, rs);
+//		}
+//		return listPlaceVO;
+//	}
 	
 	/**
 	 * 
@@ -65,7 +65,7 @@ public class PlaceDAO {
 	 * @author 김동규
 	 * 
 	 */	
-	public int insertPlaceInfo(PlaceVO placeVO) {
+	public PlaceVO insertPlaceInfo(PlaceVO placeVO) {
 
 		int insertCount = 0;
 		loadOracleDriver();
@@ -86,9 +86,9 @@ public class PlaceDAO {
 			stmt.setString(6, placeVO.getWriter().getEmail());
 			
 			insertCount = stmt.executeUpdate();
+			stmt.close();
 
 			if (insertCount > 0) {
-				stmt.close();
 				query = XML.getNodeString("//query/place/getReturnPlaceId/text()");
 				stmt = conn.prepareStatement(query);
 
@@ -98,17 +98,19 @@ public class PlaceDAO {
 
 				if (rs.next()) {
 					placeId = rs.getInt(1);
+					placeVO.setPlaceId(placeId);
 				}
-				return placeId;
+				return placeVO;
 			}
+			
+			return placeVO;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			closeDB(conn, stmt, null);
 		}
-		return insertCount;
-
+		
 	}
 	
 	/**

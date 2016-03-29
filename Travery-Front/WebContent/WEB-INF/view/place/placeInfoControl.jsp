@@ -181,12 +181,15 @@
 					<div class="panel-body">
 						<span class="glyphicon glyphicon-map-marker" id="mapBtn"
 							onclick="openMap(this.form)"
-							style="float: left; cursor: pointer;"></span> <input type="text"
+							style="float: left; cursor: pointer;"></span> 
+						<input type="text"
 							id="address" name="address" placeholder="#address"
 							value="${placeInfo.address}" size="12"
-							style="margin-left: 5%; float: left;" /> <input type="hidden"
+							style="margin-left: 5%; float: left;" /> 
+						<input type="hidden"
 							id="lat" name="lat" placeholder="#latitude"
-							value="${placeInfo.latitude}" size="12" /> <input type="hidden"
+							value="${placeInfo.latitude}" size="12" /> 
+						<input type="hidden"
 							id="lng" name="lng" placeholder="#longitude"
 							value="${placeInfo.longitude}" size="12" />
 					</div>
@@ -199,7 +202,8 @@
 				<div class="panel panel-default" style="width: 100%;">
 					<div class="panel-heading" style="font-size: 10px;">
 						<span class="glyphicon glyphicon-camera"
-							style="cursor: pointer; float: left;"></span> <input type="file"
+							style="cursor: pointer; float: left;"></span> 
+						<input type="file"
 							id="image" name="image" accept="image/*"
 							onchange="readURL(this);" required
 							style="float: left; margin-left: 2%;" />

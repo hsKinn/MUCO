@@ -67,9 +67,9 @@ public class PlaceInfoControlServlet extends HttpServlet {
 
 		session.setAttribute("_SEARCH_", placeSearchVO);
 						
-		PlaceListVO placeListVO = placeBiz.placeInfoRecommendedList(placeSearchVO);
+//		PlaceListVO placeListVO = placeBiz.placeInfoRecommendedList(placeSearchVO);
 		
-		request.setAttribute("placeInfo", placeListVO);
+//		request.setAttribute("placeInfo", placeListVO);s
 		request.setAttribute("placeSearchVO", placeSearchVO);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");

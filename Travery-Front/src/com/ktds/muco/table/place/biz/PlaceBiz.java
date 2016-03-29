@@ -23,12 +23,12 @@ public class PlaceBiz {
 		placeDAO = new PlaceDAO();
 	}
 
-	public List<PlaceVO> placeInfoRecommendedList(PlaceSearchVO placeSearchVO) {
-		
-		return placeDAO.placeInfoRecommendedList(placeSearchVO);
-	}
+//	public List<PlaceVO> placeInfoRecommendedList(PlaceSearchVO placeSearchVO) {
+//		
+//		return placeDAO.placeInfoRecommendedList(placeSearchVO);
+//	}
 
-	public int placeInfoCreate(PlaceVO placeVO) {
+	public PlaceVO placeInfoCreate(PlaceVO placeVO) {
 
 		String Description = placeVO.getDescription();
 		Description = Description.replaceAll("\n", "<br/>");
