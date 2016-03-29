@@ -129,7 +129,7 @@
 							
 							if (jsonData.result) {
 								if (jsonData.isExistCountry) {
-									$('#countries').append('<div id= "' + map.getRegionName(code) + '" style="text-align: center; font-weight: bold; width: 200px; margin-top: 10px;cursor: pointer; padding: 5px; float:left; margin-left: 10px;">'+ map.getRegionName(code) + '</div>');
+									$('#countries').append('<div class="selectedCountry" id= "' + map.getRegionName(code) + '">' + map.getRegionName(code) + '</div>');
 								} else {
 									$('#'+ map.getRegionName(code)).remove();
 
@@ -239,11 +239,11 @@
 <div id="hitTheRoad">
 
 	<!-- 첫번째 열 -->
-	<div class="row" style="width: 100%; height: 60%; margin-left: 10px; margin-top: 10px;">
+	<div id="firstRow" class="row">
 
 		<!-- 나라 선택, 여행지 검색, 나의 패키지, 경로설정 -->
 		<div class="col-sm-8" style="height: 100%;">
-			<div class="container" style="height: 100%; width: 100%; float: left;">
+			<div id="firstContainer" class="container">
 
 				<!-- 탭 -->
 				<ul class="nav nav-pills">
@@ -254,21 +254,16 @@
 				</ul>
 
 				<!-- 탭 내용 -->
-				<div class="tab-content"
-					style="height: 90%; width: 100%; margin-top: 10px;">
+				<div class="tab-content">
 
 					<!-- 나라 선택 탭 -->
-					<div id="home" class="tab-pane fade in active" style="width:100%; height:100%;">
+					<div id="home" class="tab-pane fade in active">
 
 						<!-- 지도 -->
 						<div id="map1" style="width: 100%; height: 95%;"></div>
 
-						<button id="focus-multiple"
-							style="background-color: #333333; color: #ffffff; padding: 3px; margin-top: 2px;">
-							한국과 일본</button>
-						<button id="focus-init"
-							style="background-color: #333333; color: #ffffff; padding: 3px; margin-top: 2px; margin-left: 2px;">
-							세계지도 보기</button>
+						<button id="focus-multiple" >한국과 일본</button>
+						<button id="focus-init" >세계지도 보기</button>
 					</div>
 
 					<!-- 여행지 검색 탭 -->
@@ -277,25 +272,25 @@
 					<c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
 					<c:set var="axisY2" value="${ sessionScope._MEMBER_.selectedStandardList.get(3) }" />
 					
-					<div id="menu1" class="tab-pane fade" style="width:100%; height:100%;">
+					<div id="menu1" class="tab-pane fade">
 						<div class="row">
 							<div class="col-sm-4"></div>
-							<div id="printAxisY1" class="col-sm-4" style="text-align: center; font-weight: bolder; font-size: large; color:#333333; padding-top: 20px; padding-bottom: 10px;">${ axisY1 }</div>
+							<div id="printAxisY1" class="col-sm-4">${ axisY1 }</div>
 							<div class="col-sm-4"></div>
 						</div>
 						<div class="row" style="height: 350px;">
-							<div id="printAxisX2" class="col-sm-2" style="height:100%; text-align: center; font-weight: bolder; font-size: large; padding-top: 16%; color:#333333; ">${ axisX2 }</div>
+							<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
 							
 							<!-- 점 찍는 곳 -->
-							<div class="col-sm-8" style=" height:100%; position:relative;">
+							<div id="dottedDiv" class="col-sm-8">
 								<div id="graphDiv"></div>
 							</div>
 							
-							<div id="printAxisX1" class="col-sm-2" style="height:100%; text-align: center; vertical-align: top; font-weight: bolder; font-size: large; padding-top: 16%; color:#333333; ">${ axisX1 }</div>
+							<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4"></div>
-							<div id="printAxisY2" class="col-sm-4" style="padding-top: 10px; text-align: center; font-weight: bolder; font-size: large; color:#333333; ">${ axisY2 }</div>
+							<div id="printAxisY2" class="col-sm-4">${ axisY2 }</div>
 							<div class="col-sm-4"></div>
 						</div>
 					</div>
@@ -310,18 +305,17 @@
 		</div>
 
 		<!-- 선택된 나라 리스트 -->
-
-		<div class="col-sm-2" style="height: 100%;" >
+		<div class="col-sm-1" style="height: 100%;" >
 			<div id="countries" style="width: 100%; height: 100%;"></div>
 		</div>
 	</div>
 
 	<!-- 두번째 열 -->
-	<div class="row" style="width: 100%; height: 25%; float: left; margin-left: 10px; margin-top: 30px;">
+	<div id="secondRowDiv" class="row">
 
 		<!-- 여행지 임시 리스트 -->
 
-		<div class="col-sm-8" style="background-color: #333333; height: 100%; padding-left: 10px; ">
+		<div id="tempPlaceList" class="col-sm-8">
 
 			<!-- 여행지 상세보기 페이지 -->
 
@@ -383,9 +377,10 @@
 					<li><a class="axisX">Active-Calm</a></li>
 				</ul>
 			</div>
-
+			<div class="clear"></div>
+			<br />
 			<!-- Drop Down : Y 축 -->
-			<div class="dropdown" style="float: left; margin-left: 20px;">
+			<div class="dropdown" style="float: left;">
 				<button class="btn btn-default dropdown-toggle" type="button"
 					data-toggle="dropdown">Y 축 <span class="caret"></span>
 				</button>
