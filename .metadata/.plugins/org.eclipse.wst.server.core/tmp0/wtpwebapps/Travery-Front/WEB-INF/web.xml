@@ -51,6 +51,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>MemberEmailCheckServlet</display-name>
+    <servlet-name>MemberEmailCheckServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.MemberEmailCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberEmailCheckServlet</servlet-name>
+    <url-pattern>/memberEmailCheck</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>HitTheRoadServlet</display-name>
     <servlet-name>HitTheRoadServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.place.web.HitTheRoadServlet</servlet-class>

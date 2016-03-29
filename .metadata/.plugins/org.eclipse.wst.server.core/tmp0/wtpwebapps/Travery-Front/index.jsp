@@ -15,7 +15,6 @@
 		$("#login").hide();
 		$("#goBack").hide();
 		
-		
 	    $("#letsJoin").click(function(){
 	    	 $("#letsJoin").animate({
 	             height: 'toggle'
@@ -81,7 +80,7 @@
 			form.attr("action", "<c:url value="/doJoin"/>");
 			form.submit();
 		});
-
+		
 	});
 </script>
 
@@ -107,7 +106,6 @@
 	
 	<div id="login">
 		<form id="loginForm">
-		
 			<input type="text" class="form-control"	tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" >
 			<input type="password" class="form-control"	tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 
 			<input type="button" id="btnLogin" value="로그인" />

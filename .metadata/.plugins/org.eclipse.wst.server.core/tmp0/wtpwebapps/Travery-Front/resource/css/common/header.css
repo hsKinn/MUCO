@@ -21,6 +21,10 @@ div#traveryIcon {
 	float: left;
 }
 
+div#traveryIcon span {
+	text-align: center;
+}
+
 div#traveryIcon img {
 	height: 100%;
 	width: 380px;

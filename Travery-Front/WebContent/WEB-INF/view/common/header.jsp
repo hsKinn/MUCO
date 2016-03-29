@@ -69,12 +69,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
-<body background="<c:url value="/resource/img/common/IndexImg.jpg"/>">
+<body>
 	<div id="wrapper">
 		<div id="header">
 			<div id="traveryIcon">
+				<span>
 				<a href="<c:url value="/"/>"> <img
 					src="<c:url value="/resource/img/common/traveryIcon.PNG"/>"
 					alt="traveryIcon" />
 				</a>
+				</span>
 			</div>
