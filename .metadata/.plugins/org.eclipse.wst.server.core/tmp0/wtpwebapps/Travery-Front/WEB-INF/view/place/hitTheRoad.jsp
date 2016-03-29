@@ -78,6 +78,7 @@
 				animate : true
 			});
 		});
+
 		$('#map1').vectorMap({
 			map : 'world_mill_en',
 			panOnDrag : true,
@@ -336,6 +337,7 @@
 	   	$(".active").click(function(){
 	   	  	$(".placeDetail").css({ "display" : "none" });
 	   	});
+
 	});
 </script>
 
@@ -395,9 +397,11 @@
 		<!-- 선택된 나라 리스트 -->
 
 		<div class="col-sm-2" style="height: 100%;">
+
 			<div id="countries" style="width: 100%; height: 100%;">
 
 			</div>
+
 		</div>
 	</div>
 

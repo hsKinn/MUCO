@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#footer {
+	background-color: #333333;
+	color: #ffffff;
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	padding: 10px;
+}
+
+div#terms, #copyright{
+	width:50%;
+	color:#ffffff;
+	float:left;
+}
+
+#terms a{
+	padding-left: 20%;
+	color:#ffffff;
+	
+}
+
+#terms a:hover {
+	
+}

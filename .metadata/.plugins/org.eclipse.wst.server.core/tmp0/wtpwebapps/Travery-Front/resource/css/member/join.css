@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 
 /* 유병훈 */
-
 div#join {
 	width: 250px;
 	height: 280px;
@@ -32,4 +31,3 @@ button#btnJoin {
 	color: #ffffff;
 	float: left;
 }
-

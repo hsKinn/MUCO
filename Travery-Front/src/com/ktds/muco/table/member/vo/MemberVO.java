@@ -11,14 +11,12 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * Member VO
  * 
  * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
- * recentAccessDate 최근 접속 날짜
- * selectedCountryList 사용자가 Hit the road에서 선택한 나라들
+ * recentAccessDate 최근 접속 날짜 selectedCountryList 사용자가 Hit the road에서 선택한 나라들
  * 
  * @author 김광민
  *
  */
 public class MemberVO extends PlaceVO {
-
 	private String email = "";
 	private String password = "";
 	private String name = "";
@@ -28,11 +26,11 @@ public class MemberVO extends PlaceVO {
 	private String mainImageLocation = "";
 	private String joinDate = "";
 	private String recentAccessDate = "";
-	
+
 	private List<CountryVO> selectedCountryList;
-	
-	public MemberVO(){
-		
+
+	public MemberVO() {
+
 		email = "";
 		password = "";
 		name = "";
@@ -42,10 +40,10 @@ public class MemberVO extends PlaceVO {
 		mainImageLocation = "";
 		joinDate = "";
 		recentAccessDate = "";
-		
+
 		selectedCountryList = new ArrayList<CountryVO>();
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -125,7 +123,7 @@ public class MemberVO extends PlaceVO {
 	public void setSelectedCountryList(List<CountryVO> selectedCountryList) {
 		this.selectedCountryList = selectedCountryList;
 	}
-	
+
 	/**
 	 * 
 	 * 중복 확인
@@ -133,17 +131,17 @@ public class MemberVO extends PlaceVO {
 	 * @param countryVO
 	 * @author 김광민
 	 */
-	public boolean isExistCountryByCountryName( String selectedCountryName ) {
-		
+	public boolean isExistCountryByCountryName(String selectedCountryName) {
+
 		for (CountryVO countryVO : this.getSelectedCountryList()) {
-			
-			if( selectedCountryName.equals(countryVO.getCountryName())) {
+
+			if (selectedCountryName.equals(countryVO.getCountryName())) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * 리스트에 선택된 나라 추가
@@ -151,10 +149,19 @@ public class MemberVO extends PlaceVO {
 	 * @param countryVO
 	 * @author 김광민
 	 */
-	public void addSelectedCountry( CountryVO countryVO ) {
-		this.selectedCountryList.add(countryVO);
+	public boolean addSelectedCountry(CountryVO countryVO) {
+
+		// 최대 20개 나라 선택 가능
+		if (selectedCountryList.size() < 20) {
+
+			System.out.println(selectedCountryList.size());
+
+			this.selectedCountryList.add(countryVO);
+			return true;
+		}
+		return false;
 	}
-	
+
 	/**
 	 * 
 	 * 리스트에 선택된 나라 제거
@@ -162,17 +169,18 @@ public class MemberVO extends PlaceVO {
 	 * @param countryVO
 	 * @author 김광민
 	 */
-	public void removeSelectedCountryByCountryName( String selectedCountryName ) {
-		
+	public boolean removeSelectedCountryByCountryName(String selectedCountryName) {
+
 		int i = 0;
 		for (CountryVO newCountryVO : this.getSelectedCountryList()) {
-			
-			if( selectedCountryName.equals(newCountryVO.getCountryName())) {
-				
+
+			if (selectedCountryName.equals(newCountryVO.getCountryName())) {
+
 				this.selectedCountryList.remove(i);
-				return;
+				return true;
 			}
 			i++;
 		}
+		return false;
 	}
 }

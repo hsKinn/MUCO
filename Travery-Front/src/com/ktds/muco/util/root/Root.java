@@ -11,7 +11,7 @@ public class Root {
 	 * @return String "/"
 	 */
 	public static String get(HttpServlet servlet) {
-		
+
 		return servlet.getServletContext().getContextPath();
 	}
 }

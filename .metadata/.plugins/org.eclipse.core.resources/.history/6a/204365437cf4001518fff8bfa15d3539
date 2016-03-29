@@ -1,0 +1,24 @@
+package com.ktds.jgbaek.file.biz;
+
+import java.io.File;
+
+import com.ktds.jgbaek.article.vo.ArticleVO;
+import com.ktds.jgbaek.file.dao.FileDAO;
+import com.ktds.jgbaek.util.MultipartHttpServletRequest.MultipartFile;
+
+public class FileBiz {
+	
+	private FileDAO fileDAO;
+	
+	public FileBiz() {
+		fileDAO = new FileDAO();
+	}
+
+	
+
+	public void uploadFile(int articleId, File file) {
+		fileDAO.uploadFile(articleId, file);
+		
+	}
+
+}

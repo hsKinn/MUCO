@@ -3,15 +3,13 @@ package com.ktds.muco.table.country.vo;
 /**
  * 나라
  * 
- * countryId : 나라 아이디
- * countryName : 나라 이름
- * countryColor : 나라 색깔
- * countryFontColor : 나라 폰트 색깔
+ * countryId : 나라 아이디 countryName : 나라 이름 countryColor : 나라 색깔 countryFontColor
+ * : 나라 폰트 색깔
  * 
  * @author 김광민
  *
  */
-public class CountryVO{
+public class CountryVO {
 
 	private int countryId;
 	private String countryName;

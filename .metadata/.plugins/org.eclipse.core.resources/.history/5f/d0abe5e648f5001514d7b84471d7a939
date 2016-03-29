@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#footer {
+	background-color: #333333;
+	color: #ffffff;
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	padding: 10px;
+}
+
+div#terms, #copyright{
+	width:50%;
+	color:#ffffff;
+	float:left;
+}
+
+div.termsAccess a {
+	color:#ffffff;
+}
+
+#terms .termsAccess{
+	padding-left: 20%;
+	color:#ffffff;
+	float:left;
+}
+
+#terms a:hover {
+	color:#4aa5ff;
+	text-decoration:none;
+}
+
+div.tab-content {
+	background-color:#e6e6e6;
+}
+
+div.row.content {
+	background-color:#e6e6e6;
+}
+
+div.col-sm-2.sidenav {
+	background-color:#e6e6e6;
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid #ccc;
+    width:50%; 
+    height:60%;
+    margin-left: 20px;
+    float: none;
+    margin:auto;
+}
+
+div.col-sm-8.text-left {
+	background-color:#e6e6e6;
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid #ccc;
+	margin:auto;
+	float:none;
+}
+
+dl.dl1, dl2{
+	background-color:#ffffff;
+	float:left;
+}
+
+
