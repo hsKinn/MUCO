@@ -31,14 +31,9 @@
 <!-- id="header" -->
 
 <script type="text/javascript">
+
 	$(document).ready(function() {
-		
-	
-		$("body").on("mousewheel", function (event) { 
-			alert("hi");
-			console.log(event.originalEvent.wheelDelta);
-		});
-		
+
 		$("#join").hide();
 		$("#login").hide();
 		$("#goBack").hide();
@@ -125,13 +120,17 @@
 
 <!-- Index -->
 <div id="imageSlider">
-	<li id="imageList">
-		<ul><img src="<c:url value="/resource/img/common/IndexImg.jpg"/>"/></ul>
-		<ul><img src="<c:url value="/resource/img/common/IndexImg2.jpg"/>"/></ul>
-		<ul><img src="<c:url value="/resource/img/common/IndexImg3.jpg"/>"/></ul>
-	</li>
+	<ul id="imageList">
+		<li id="1"> <img style="width:100%;" src="<c:url value="/resource/img/common/IndexImg.jpg"/>" /> </li>
+		<li id="2"> <img style="width:100%;" src="<c:url value="/resource/img/common/IndexImg2.jpg"/>"/> </li>
+		<li id="3"> <img style="width:100%;" src="<c:url value="/resource/img/common/IndexImg3.jpg"/>"/> </li>
+	</ul>
 </div>
-	
+
+<div id="welcomeMsg">
+	<h1>Start TRAVERY!</h1>
+</div>
+
 <div id="index">
 
 	<div id="join">
