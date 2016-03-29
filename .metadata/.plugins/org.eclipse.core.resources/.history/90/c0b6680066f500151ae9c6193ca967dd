@@ -68,12 +68,12 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO.setWriter(member);
 		MultipartFile image = multipartRequest.getFile("image");
 
-		 int placeId = placeBiz.placeInfoCreate(placeVO);
+		 boolean placeId = placeBiz.placeInfoCreate(placeVO);
 		
 
 		
 		if (image.getFileSize() > 0) {
-			imageBiz.insertImageToss(multipartRequest, placeId);
+			imageBiz.insertImageToss(multipartRequest, placeVO.getPlaceId());
 		}
 		try {
 			response.sendRedirect("/placeInfoControl");

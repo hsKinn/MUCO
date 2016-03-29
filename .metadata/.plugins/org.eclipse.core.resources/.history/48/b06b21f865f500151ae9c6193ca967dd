@@ -33,7 +33,7 @@ public class PlaceBiz {
 		String Description = placeVO.getDescription();
 		Description = Description.replaceAll("\n", "<br/>");
 		placeVO.setDescription(Description);
-		return placeDAO.insertPlaceInfo(placeVO);
+		return placeDAO.insertPlaceInfo(placeVO) > 0;
 	}
 
 }

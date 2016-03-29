@@ -47,7 +47,7 @@ public class PlaceInfoControlServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		/*PlaceSearchVO placeSearchVO = new PlaceSearchVO();
+		PlaceSearchVO placeSearchVO = new PlaceSearchVO();
 		HttpSession session = request.getSession();
 
 		try {
@@ -71,7 +71,7 @@ public class PlaceInfoControlServlet extends HttpServlet {
 		
 		request.setAttribute("placeInfo", placeListVO);
 		request.setAttribute("placeSearchVO", placeSearchVO);
-		*/
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");
 		rd.forward(request, response);				
 	}

@@ -41,8 +41,7 @@ public class ImageBiz {
 		 * }
 		 */
 
-		System.out.println("ImageBiz 파트 : " + placeId);
-		
+		System.out.println(placeId);
 		ImageVO imageVO = new ImageVO();
 
 		imageVO.setImageId(placeId);

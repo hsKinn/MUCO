@@ -68,7 +68,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO.setWriter(member);
 		MultipartFile image = multipartRequest.getFile("image");
 
-		 int placeId = placeBiz.placeInfoCreate(placeVO);
+		 int placeId = placeBiz.placeInfoCreate(placeId);
 		
 
 		

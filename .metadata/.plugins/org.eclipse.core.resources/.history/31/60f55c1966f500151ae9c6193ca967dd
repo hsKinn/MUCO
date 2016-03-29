@@ -86,8 +86,7 @@ public class PlaceDAO {
 			
 			insertCount = stmt.executeUpdate();
 
-			System.out.println("PlaceDAO 파트 :" + placeVO.getPlaceId());
-			
+			System.out.println(placeVO.getPlaceId());
 			if (insertCount > 0) {
 				stmt.close();
 				query = XML.getNodeString("//query/place/getReturnPlaceId/text()");

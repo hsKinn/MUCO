@@ -65,8 +65,6 @@ public class PlaceDAO {
 	 * 
 	 */	
 	public int insertPlaceInfo(PlaceVO placeVO) {
-
-		int insertCount = 0;
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -86,8 +84,6 @@ public class PlaceDAO {
 			
 			insertCount = stmt.executeUpdate();
 
-			System.out.println("PlaceDAO 파트 :" + placeVO.getPlaceId());
-			
 			if (insertCount > 0) {
 				stmt.close();
 				query = XML.getNodeString("//query/place/getReturnPlaceId/text()");
@@ -108,7 +104,6 @@ public class PlaceDAO {
 		} finally {
 			closeDB(conn, stmt, null);
 		}
-		return insertCount;
 	}
 	
 	/**

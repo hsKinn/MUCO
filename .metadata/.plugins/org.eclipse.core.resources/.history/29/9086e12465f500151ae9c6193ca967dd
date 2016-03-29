@@ -51,14 +51,12 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		PlaceVO placeVO = new PlaceVO();
-		
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 
+		PlaceVO placeVO = new PlaceVO();
 
 		placeVO.setPlaceName(multipartRequest.getParameter("placeName"));
 		placeVO.setAddress(multipartRequest.getParameter("address"));
@@ -68,7 +66,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO.setWriter(member);
 		MultipartFile image = multipartRequest.getFile("image");
 
-		 int placeId = placeBiz.placeInfoCreate(placeVO);
+		boolean placeId = placeBiz.placeInfoCreate(placeVO);
 		
 
 		

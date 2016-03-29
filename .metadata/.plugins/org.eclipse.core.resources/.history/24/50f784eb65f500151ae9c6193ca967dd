@@ -28,12 +28,12 @@ public class PlaceBiz {
 		return placeDAO.placeInfoRecommendedList(placeSearchVO);
 	}
 
-	public int placeInfoCreate(PlaceVO placeVO) {
+	public boolean placeInfoCreate(PlaceVO placeVO) {
 
 		String Description = placeVO.getDescription();
 		Description = Description.replaceAll("\n", "<br/>");
 		placeVO.setDescription(Description);
-		return placeDAO.insertPlaceInfo(placeVO);
+		return placeDAO.insertPlaceInfo(placeVO) > 0;
 	}
 
 }
