@@ -1,0 +1,238 @@
+@CHARSET "UTF-8";
+
+/* 김동규 */
+div#recommendPlace_Wrapper {
+	width: 80%;
+	height: 100%;
+	max-width: 1200px;
+	float: left;
+}
+
+div#inner_wrapper {
+	width: 90%;
+	height: 53%;
+	margin-left: 3%;
+	float: left;
+}
+
+div.tag img {
+	width: 30px;
+	height: 30px;
+}
+
+div#daily_wrapper {
+	width: 32%;
+	height: 100%;	
+	float: left;
+	border: 2px dotted #d0d0d0;	
+}
+
+div#daily_top {
+	width: 100%;
+	height: 7%;
+	float: left;
+	margin-top: 5px;
+	font-size: 20px;
+	text-align: center;
+}
+
+div#daily_content {
+	width: 100%;
+	height: 94%;
+	float: left;
+}
+
+div#weekly_wrapper {
+	width: 32%;
+	height: 100%;
+	float: left;
+	border: 2px dotted #d0d0d0;	
+	margin-left: 1.5%;
+}
+
+div#weekly_top {
+	width: 100%;
+	height: 7%;
+	float: left;
+	margin-top: 5px;	
+	font-size: 20px;	
+	text-align: center;	
+}
+
+div#weekly_content {
+	width: 100%;
+	height: 94%;
+	float: left;
+}
+
+div#monthly_wrapper {
+	width: 32%;
+	height: 100%;	
+	float: left;
+	border: 2px dotted #d0d0d0;	
+	margin-left: 1.5%;	
+}
+
+div#monthly_top {
+	width: 100%;
+	height: 7%;
+	float: left;
+	margin-top: 5px;	
+	font-size: 20px;
+	text-align: center;
+}
+
+div#monthly_content {
+	width: 100%;
+	height: 94%;
+	float: left;
+}
+
+div.content {
+	width: 49%;
+	height: 50%;
+	float: left;
+	margin: 1px;
+}
+
+div.content-top {
+	width: 100%;
+	height: 58%;
+	float: left;
+	
+}
+
+div.content-top img {
+	width: 99%;
+	height: 100%;
+}
+
+div.content-middle {
+	width: 100%;
+	height: 12%;
+	margin-top: 7px;
+	float: left;
+	text-align: center;
+	font-size: 13px;
+}
+
+div.content-bottom {
+	width: 100%;
+	height: 30%;
+	float: left;
+
+}
+
+div.bottom-top {
+	width: 100%;
+	height: 15%;
+	float: left;
+	font-size: 12px;
+	text-align: center;	
+	
+}
+
+div.bottom-first {
+	width: 25%;
+	height: 15%;
+	text-align: left;
+	float: left;	
+	font-size: 12px;		
+	
+}
+
+div.bottom-second {
+	width: 50%;
+	height: 15%;	
+	text-align: center;
+	float: left;	
+	font-size: 12px;		
+}
+
+div.bottom-third {
+	width: 25%;
+	height: 15%;	
+	text-align: right;
+	float: left;	
+	font-size: 12px;		
+}
+
+div#middle {
+	margin-top: 1.3%;
+	margin-left: 3%;
+	font-size: 15px;
+	width: 90%;
+	height: 4%;
+	float: left;
+}
+
+div#search_part {
+	float: left;
+	width: 86%;
+	height: 3%;
+}
+
+div#write_part {
+	float: right;
+	height: 3%;	
+}
+
+input#searchKeyword {
+	width: 220px;
+	height: 33px;
+}
+
+button.btn {
+	width: 90px;
+	margin-left: 5px;
+}
+
+button span {
+	height: 13px;
+	margin-right: 5px;
+}
+
+div#inner_wrapper2 {
+	width: 90%;
+	height: 26%;
+	margin-left: 3%;
+	float: left;
+}
+
+div#new_wrapper {
+	width: 100%;
+	height: 100%;	
+	float: left;
+}
+
+div#new_top {
+	width: 100%;
+	height: 6%;
+	float: left;
+	font-size: 20px;
+	text-align: center;
+}
+
+div#new_content {
+	width: 100%;
+	height: 100%;
+	float: left;
+}
+
+div.new-contents {
+	width: 25%;
+	height: 100%;
+	margin-top: 10px;
+	float: left;
+	background-color: red;
+}
+
+div#btn-recommend {
+	float: right;
+	width: 6%;
+	height: 90%;
+	font-size: 20px;
+	margin-right: 6%;
+	background-color: white;
+	cursor: pointer;
+}

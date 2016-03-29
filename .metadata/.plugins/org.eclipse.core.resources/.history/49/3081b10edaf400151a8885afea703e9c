@@ -1,0 +1,145 @@
+@CHARSET "UTF-8";
+
+/* 김동규 */
+div#recommendPlace_Wrapper {
+	width: 80%;
+	height: 100%;
+	max-width: 1200px;
+	float: left;
+}
+
+div#top {
+	margin-top: 1%;
+	margin-left: 3%;
+	font-size: 15px;
+	width: 90%;
+	height: 5%;
+}
+
+div#search_part {
+	float: left;
+	margin-top: 3px;
+	width: 86%;
+	height: 5%;
+}
+
+div#write_part {
+	float: right;
+	margin-top: 3px;
+	width: 14%;
+	height: 5%;	
+}
+
+input#searchKeyword {
+	width: 220px;
+	height: 33px;
+}
+
+button.btn {
+	width: 90px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+button span {
+	height: 13px;
+	margin-right: 5px;
+}
+
+div#inner_wrapper {
+	width: 90%;
+	height: 53%;
+	margin-left: 3%;
+	float: left;
+}
+
+div#inner_wrapper2 {
+	width: 90%;
+	height: 25%;
+	margin-left: 3%;
+	float: left;
+}
+
+div.tag img {
+	width: 30px;
+	height: 30px;
+}
+
+div#daily_wrapper {
+	width: 33.333%;
+	height: 100%;	
+	float: left;
+}
+
+div#daily_top {
+	width: 100%;
+	height: 6%;
+	float: left;
+	margin-top: 5px;
+	font-size: 20px;
+	text-align: center;
+}
+
+div#daily_content {
+	width: 100%;
+	height: 94
+}
+
+div#weekly_wrapper {
+	width: 33.333%;
+	height: 100%;
+	float: left;
+}
+
+div#weekly_top {
+	width: 100%;
+	height: 6%;
+	float: left;
+	margin-top: 5px;	
+	font-size: 20px;	
+	text-align: center;	
+}
+
+div#monthly_wrapper {
+	width: 33.333%;
+	height: 100%;	
+	float: left;
+}
+
+div#monthly_top {
+	width: 100%;
+	height: 6%;
+	float: left;
+	margin-top: 5px;	
+	font-size: 20px;
+	text-align: center;
+}
+
+div.content {
+	width: 50%;
+	height: 50%;
+	float: left;
+	background-color: red;
+	
+	
+	
+}
+
+div#new_wrapper {
+	width: 100%;
+	height: 100%;	
+	margin-bottom: 3%;
+	font-size: 20px;
+	background-color: pink;
+	float: left;
+}
+
+div#btn-recommend {
+	float: right;
+	width: 6%;
+	height: 90%;
+	font-size: 20px;
+	margin-right: 6%;
+	background-color: white;
+	cursor: pointer;
+}
