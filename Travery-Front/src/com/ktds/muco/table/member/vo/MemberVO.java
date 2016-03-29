@@ -13,6 +13,10 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
  * recentAccessDate 최근 접속 날짜 selectedCountryList 사용자가 Hit the road에서 선택한 나라들
  * 
+ * ---Selected Standard--- 0번 인덱스 : X축 왼쪽 기준 1번 인덱스 : X축 오른쪽 기준 2번 인덱스 : Y축 왼쪽
+ * 기준 3번 인덱스 : Y축 오른쪽 기준 ---------초기값--------- 0번 인덱스 : Dark 1번 인덱스 : Bright 2번
+ * 인덱스 : Calm 3번 인덱스 : Active
+ * 
  * @author 김광민
  *
  */
@@ -28,6 +32,7 @@ public class MemberVO extends PlaceVO {
 	private String recentAccessDate = "";
 
 	private List<CountryVO> selectedCountryList;
+	private List<String> selectedStandardList;
 
 	public MemberVO() {
 
@@ -42,6 +47,13 @@ public class MemberVO extends PlaceVO {
 		recentAccessDate = "";
 
 		selectedCountryList = new ArrayList<CountryVO>();
+
+		// 새로운 멤버 생성시 기준 초기값 설정
+		selectedStandardList = new ArrayList<String>();
+		selectedStandardList.add("Bright");
+		selectedStandardList.add("Dark");
+		selectedStandardList.add("Active");
+		selectedStandardList.add("Calm");
 	}
 
 	public String getEmail() {
@@ -124,6 +136,14 @@ public class MemberVO extends PlaceVO {
 		this.selectedCountryList = selectedCountryList;
 	}
 
+	public List<String> getSelectedStandardList() {
+		return selectedStandardList;
+	}
+
+	public void setSelectedStandardList(List<String> selectedStandardList) {
+		this.selectedStandardList = selectedStandardList;
+	}
+
 	/**
 	 * 
 	 * 중복 확인
@@ -172,7 +192,7 @@ public class MemberVO extends PlaceVO {
 	public boolean removeSelectedCountryByCountryName(String selectedCountryName) {
 
 		int i = 0;
-		for (CountryVO newCountryVO : this.getSelectedCountryList()) {
+		for (CountryVO newCountryVO : this.selectedCountryList) {
 
 			if (selectedCountryName.equals(newCountryVO.getCountryName())) {
 
@@ -182,5 +202,52 @@ public class MemberVO extends PlaceVO {
 			i++;
 		}
 		return false;
+	}
+	
+	/**
+	 * Hit the road에서 X축 기준 변경
+	 * 
+	 * @param x1
+	 * @param x2
+	 * @return
+	 */
+	public void setAxisX(String x1, String x2) {
+		
+		// 왼쪽
+		this.selectedStandardList.set(0, x1);
+		
+		// 오른쪽
+		this.selectedStandardList.set(1, x2);
+		
+		if(!selectedStandardList.isEmpty()) {
+			// 입력 됐는지 확인
+			for (String selectedStandard : selectedStandardList) {
+				System.out.println("selectedStandard in MemberVO : " + selectedStandard);
+			}
+		}
+
+	}
+	
+	/**
+	 * Hit the road에서 Y축 기준 변경
+	 * 
+	 * @param x1
+	 * @param x2
+	 * @return
+	 */
+	public void setAxisY(String y1, String y2) {
+		
+		// 아래
+		this.selectedStandardList.set(2, y1);
+		
+		// 위
+		this.selectedStandardList.set(3, y2);
+		
+		if(!selectedStandardList.isEmpty()) {
+			// 입력 됐는지 확인
+			for (String selectedStandard : selectedStandardList) {
+				System.out.println("selectedStandard in MemberVO : " + selectedStandard);
+			}
+		}
 	}
 }
