@@ -22,14 +22,16 @@ public class Paging {
 
 	private int pageNo;
 
-	public Paging() {
-		this.printArticle = 10;
-		this.printPage = 10;
-	}
-
-	public Paging(int printArticle, int printPage) {
+	/**
+	 * Paging 생성자
+	 * 
+	 * @param printArticle
+	 *            count
+	 * @author 김광민
+	 */
+	public Paging(int printArticle) {
 		this.printArticle = printArticle;
-		this.printPage = printPage;
+		this.printPage = 10;
 	}
 
 	public void setPageNumber(String pageNumber) {

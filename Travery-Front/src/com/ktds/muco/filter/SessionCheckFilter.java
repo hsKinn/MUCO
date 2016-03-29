@@ -102,12 +102,12 @@ public class SessionCheckFilter implements Filter {
 					return;
 				} else {
 
-					HistoryVO operHistVO = new HistoryVO();
-					operHistVO.setIp(req.getRemoteHost());
-					operHistVO.setEmail(member.getEmail());
-					operHistVO.setUrl(req.getRequestURI());
+					HistoryVO HistoryVO = new HistoryVO();
+					HistoryVO.setIp(req.getRemoteHost());
+					HistoryVO.setEmail(member.getEmail());
+					HistoryVO.setUrl(req.getRequestURI());
 
-					req.setAttribute("OperationHistoryVO", operHistVO);
+					req.setAttribute("OperationHistoryVO", HistoryVO);
 				}
 			}
 		}

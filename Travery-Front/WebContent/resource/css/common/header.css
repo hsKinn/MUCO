@@ -1,10 +1,9 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
-
 div#wrapper {
 	/* 사용자의 컴퓨터 해상도를 모른다. 그래서 비율을 적어야 한다. */
-	height:100%;
+	height: 100%;
 	width: 100%;
 	background-color: #e6e6e6;
 }

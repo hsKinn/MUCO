@@ -70,9 +70,67 @@ public class MemberBiz {
 
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
+
 		return true;
 
+	}
+	
+	/**
+	 * 회원Email 중복체크 biz
+	 * 
+	 * @param request
+	 * @author 유병훈
+	 */
+	public boolean getMemberEmailCheck(HttpServletRequest request) {
+
+		String userEmail = request.getParameter("checkUserEmail");
+		
+		return memberDAO.getMemberEmailCheck(userEmail) > 0;
+		
+	}
+
+	/**
+	 * 
+	 * 검색 기준 변경
+	 * 
+	 * Hit The Road 여행지 검색에서
+	 * 
+	 * @param request
+	 * @return
+	 * @author 김광민
+	 */
+	public String[] selectedStandard(HttpServletRequest request) {
+		
+		String selectedStandard = request.getParameter("selectedStandard");
+		String selectedStandardName = request.getParameter("selectedStandardName");
+
+		System.out.println("selectedStandard in Biz : " + selectedStandard);
+		System.out.println("selectedStandardName in Biz : " + selectedStandardName);
+
+		HttpSession session = request.getSession();
+		MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+
+		if (!selectedStandard.isEmpty() && !selectedStandardName.isEmpty() ) {
+			
+			String[] splitedStandardName = selectedStandardName.split("-");
+			
+			if(selectedStandard.equals("X")){
+				memberVO.setAxisX(splitedStandardName[0], splitedStandardName[1]);
+				
+				System.out.println("selectedStandardName 0 in Biz : " + splitedStandardName[0]);
+				System.out.println("selectedStandardName 1 in Biz : " + splitedStandardName[1]);
+			}
+			else{
+				memberVO.setAxisY(splitedStandardName[0], splitedStandardName[1]);
+				
+				System.out.println("selectedStandardName 0 in Biz : " + splitedStandardName[0]);
+				System.out.println("selectedStandardName 1 in Biz : " + splitedStandardName[1]);
+			}
+			session.setAttribute("_MEMBER_", memberVO);
+			
+			return splitedStandardName;
+		}
+		return null;
 	}
 
 }

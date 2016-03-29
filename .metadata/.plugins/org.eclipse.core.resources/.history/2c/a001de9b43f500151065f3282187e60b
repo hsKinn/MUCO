@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#hitTheRoad {
+	width: 500px;;
+	height: 80%;
+}

@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+/* 유병훈 */
+
+div#tripReservationWrapper input, select, option {
+	width:150px;
+}
