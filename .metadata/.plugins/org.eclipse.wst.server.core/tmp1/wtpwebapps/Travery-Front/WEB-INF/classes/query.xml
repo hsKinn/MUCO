@@ -379,6 +379,103 @@
 	</packLike>
 	
 	<packReply>
+	
+		<insertPackReply>
+			INSERT INTO PACK_REPLY (
+									   PACK_REPLY_ID
+									   , PACK_ID
+									   , EMAIL
+									   , DESCRIPTION
+									   , CRT_DT
+									   , GROUP_ID
+									   , PARENT_REPLY_ID
+									   , DEPTH
+									   , ORDER_NO
+									) 
+			VALUES 					( 
+										PACK_REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+										, PACK_REPLY_ID_SEQ.CURRVAL
+										, 0
+										, 0
+										, 0
+									)
+		</insertPackReply>
+		
+		<getPackReplyListByPackId>
+			SELECT	PACK_REPLY_ID
+					, PACK_ID
+					, M.NAME
+					, NAME
+					, DESCRIPTION
+					, CRT_DT
+					, GROUP_ID
+					, PARENT_REPLY_ID
+					, DEPTH
+					, ORDER_NO
+			FROM	PACK_REPLY PR
+					, MEMBER M
+			WHERE	PR.EMAIL = M.EMAIL
+			AND		PR.PACK_ID = ?
+			ORDER	BY GROUP_ID
+					, ORDER_NO
+		</getPackReplyListByPackId>
+		
+		<selectCountParentReplyId>
+			SELECT	COUNT(PACK_REPLY_ID)
+			FROM	PACK_REPLY
+			WHERE	PARENT_REPLY_ID = ?
+		</selectCountParentReplyId>
+		
+		<selectMaxOrderNoByParentReplyId>
+       	    SELECT	MAX(ORDER_NO)
+       		FROM	PACK_REPLY
+         	START   WITH PACK_REPLY_ID = ?
+         	CONNECT BY PRIOR PACK_REPLY_ID = PARENT_REPLY_ID
+         	ORDER   BY ORDER_NO DESC
+		</selectMaxOrderNoByParentReplyId>
+		
+		<selectLatestOrderNoByParentReplyId>
+			SELECT	ORDER_NO
+			FROM	PACK_REPLY
+			WHERE	PACK_REPLY_ID = ?
+		</selectLatestOrderNoByParentReplyId>
+
+		<updateOrderNoByGroupId>
+			UPDATE	PACK_REPLY
+			SET		ORDER_NO = ORDER_NO + 1
+			WHERE	ORDER_NO >= ?
+			AND		GROUP_ID = ?
+		</updateOrderNoByGroupId>		
+		
+		<insertReReply>
+			INSERT INTO PACK_REPLY	(
+									   PACK_REPLY_ID
+									   , PACK_ID
+									   , EMAIL
+									   , DESCRIPTION
+									   , CRT_DT
+									   , GROUP_ID
+									   , PARENT_REPLY_ID
+									   , DEPTH
+									   , ORDER_NO									   
+									) 
+				VALUES 				( 
+										PACK_REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+										, ?
+										, ?
+										, ?
+										, ?					
+									)
+		</insertReReply>
+		
 	</packReply>
 	
 	<place>
@@ -388,13 +485,10 @@
 					, PLACE_NAME
 					, ADDRESS
 					, LIKE_COUNT
-					, COUNTRY_NAME
 			FROM	PLACE P
 					, PACK_PLACE PACKPLACE
-					, COUNTRY C
 			WHERE	PACKPLACE.PACK_ID = ?
 			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
-			AND		P.COUNTRY_ID = C.COUNTRY_ID
 		</getPlaceInPackage>
 		
 		<placeInfoRecommendedList>

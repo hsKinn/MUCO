@@ -13,7 +13,6 @@ import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.SharePackBiz;
 import com.ktds.muco.table.pack.vo.PackListVO;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
-import com.ktds.muco.table.packLike.biz.PackLikeBiz;
 
 /**
  * 
@@ -26,7 +25,6 @@ public class SharePackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private SharePackBiz sharePackBiz;
-    private PackLikeBiz packLikeBiz;   
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,7 +33,6 @@ public class SharePackServlet extends HttpServlet {
         super();
         
         sharePackBiz = new SharePackBiz();
-        packLikeBiz = new PackLikeBiz();
     }
 
 	/**

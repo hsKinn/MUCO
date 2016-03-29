@@ -1,0 +1,293 @@
+package com.ktds.muco.table.packReply.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.packReply.vo.PackReplyVO;
+import com.ktds.muco.util.xml.XML;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackReplyDAO {
+	
+	public List<PackReplyVO> getReplyListByPackId ( int packId ) {
+
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/packReply/getPackReplyListByPackId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+			
+			rs = stmt.executeQuery();
+			
+			List<PackReplyVO> replyList = new ArrayList<PackReplyVO>();
+			
+			PackReplyVO packReply = null;
+			while ( rs.next() ) {
+				
+				packReply = new PackReplyVO();
+				packReply.setPackReplyId(rs.getInt("PACK_REPLY_ID"));
+				packReply.setEmail(rs.getString("EMAIL"));
+				packReply.setPackId(rs.getInt("PACK_ID"));
+				packReply.setDescription(rs.getString("DESCRIPTION"));
+				packReply.setCreatedDate(rs.getString("CRT_DT"));
+				packReply.setGroupId(rs.getInt("GROUP_ID"));
+				packReply.setParentReplyId(rs.getInt("PARENT_REPLY_ID"));
+				packReply.setDepth(rs.getInt("DEPTH"));
+				packReply.setOrderNo(rs.getInt("ORDER_NO"));
+				
+				replyList.add(packReply);
+			}
+			
+			if ( packReply == null ) {
+				return null;
+			}
+			
+			return replyList;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	
+	
+	/**
+	 * 댓글 작성 
+	 */
+	public int insertReply (PackReplyVO packReply) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packReply/insertReply/text()");
+			
+			if ( packReply.getParentReplyId() > 0 ) {
+				query = XML.getNodeString("//query/packReply/insertReReply/text()");
+			}
+			
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setInt(1, packReply.getPackId());
+			stmt.setString(2, packReply.getEmail());
+			stmt.setString(3, packReply.getDescription());
+			
+			if ( packReply.getParentReplyId() > 0 ) {
+				stmt.setInt(4, packReply.getGroupId());
+				stmt.setInt(5, packReply.getParentReplyId());
+				stmt.setInt(6, packReply.getDepth());
+				stmt.setInt(7, packReply.getOrderNo());
+			}
+			
+			int insertCount = stmt.executeUpdate();
+			
+			return insertCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	
+	/**
+	 * 부모 댓글 여부 
+	 */
+	public int selectCountParentReplyId(PackReplyVO packReply) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packReply/selectCountParentReplyId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packReply.getParentReplyId());
+			
+			rs = stmt.executeQuery();
+			rs.next();	
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	}
+	
+	
+	/**
+	 * 최대 오더 넘버 값 가져오기
+	 */
+	public int selectMaxOrderNoByParentReplyId(PackReplyVO packReply) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packReply/selectMaxOrderNoByParentReplyId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packReply.getPackReplyId());
+			
+			rs = stmt.executeQuery();
+			
+			if ( rs.next() ) {
+				return rs.getInt(1);
+			}
+			else {
+				return 0;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}		
+	}
+
+	
+	/**
+	 * 최신 오더 넘버 
+	 */
+	public int selectLatestOrderNoByParentReplyId(PackReplyVO packReply) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packReply/selectLatestOrderNoByParentReplyId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packReply.getParentReplyId());
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}			
+	}
+
+	
+	/**
+	 * 업데이트 오더 넘버
+	 */
+	public void updateOrderNoByGroupId(PackReplyVO packReply) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packReply/updateOrderNoByGroupId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packReply.getOrderNo());
+			stmt.setInt(2, packReply.getGroupId());
+			stmt.executeQuery();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	}	
+	
+	
+
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+}

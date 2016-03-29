@@ -1,0 +1,26 @@
+package com.ktds.muco.table.packReply.biz;
+
+import com.ktds.muco.table.packReply.vo.PackReplyVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackReplyBiz {
+
+	public boolean addNewReplyDepthOne(PackReplyVO packReply) {
+		
+		int orderNo = this.getNewOrderNo(packReply);
+		reply.setOrderNo(orderNo);
+		
+		// 일반 댓글 아닐 시
+		if ( orderNo > 0 ) {
+			replyDAO.updateOrderNoByGroupId(reply);
+		}
+
+		return replyDAO.insertReply(reply) > 0;
+		
+	}
+
+}

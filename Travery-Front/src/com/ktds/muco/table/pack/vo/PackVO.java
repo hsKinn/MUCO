@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ktds.muco.table.hashtag.vo.HashTagVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.packReply.vo.PackReplyVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
@@ -27,10 +28,18 @@ public class PackVO extends MemberVO {
 	private boolean isExistPackLike;
 	
 	private List<HashTagVO> hashtagList;
-	
 	private List<PlaceVO> placeList;
+	private List<PackReplyVO> replyList;
 	
 	
+	public List<PackReplyVO> getReplyList() {
+		return replyList;
+	}
+
+	public void setReplyList(List<PackReplyVO> replyList) {
+		this.replyList = replyList;
+	}
+
 	public boolean isExistPackLike() {
 		return isExistPackLike;
 	}

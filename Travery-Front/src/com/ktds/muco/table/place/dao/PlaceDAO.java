@@ -56,7 +56,6 @@ public class PlaceDAO {
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setAddress(rs.getString("ADDRESS"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
-				place.setCountryName(rs.getString("COUNTRY_NAME"));
 				
 				placeList.add(place);
 			}

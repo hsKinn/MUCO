@@ -17,28 +17,28 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-	   $("#initSearchBtn").click( function() {
-			  location.href = "<c:url value="/init" />"; 
-		   });
+		$(".hide").hide();		
+		
+		$("#initSearchBtn").click( function() {
+			location.href = "<c:url value="/init" />"; 
+		});
 		   
-	   $("#searchBtn").click( function() {
-		  
-		   if ( $("#searchKeyword").val() == "" ) {
-			   alert("검색어 입력");
-			   return;
-		   }
+		$("#searchBtn").click( function() {
+			if ( $("#searchKeyword").val() == "" ) {
+			 alert("검색어 입력");
+			 return;
+			}
 		   
-		   movePage('0');
-		   
-	   });		
+			movePage('0');
+		});		
 	   
 		$("#searchKeyword").keyup( function(e) {
 			if ( e.keyCode == 13 ) {
-				
 				$("#searchBtn").click();
 			}
 		}) ;
 		
+
 
 	});
 	
@@ -120,6 +120,7 @@
 				          		<span class="badge">view: ${ pack.viewCount }</span>
 				          </h4>
 				        </div>
+				        <!-- Modal Body -->
 				        <div class="modal-body">
 							  <table class="table table-hover table-bordered table-condensed">
 							    <thead>
@@ -139,65 +140,129 @@
 							    </c:forEach>
 							  </table>
 				        </div>
+				        <!-- Modal Footer -->
 				        <div class="modal-footer">
-				          <c:choose>
-				          <c:when test="${ pack.isExistPackLike() }">
-				          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Like ♥</span>			          
-				          </c:when>
-				          <c:otherwise>
-				          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Not Like ♡</span>		
-				          </c:otherwise>
-				          </c:choose>
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        	<!-- Modal Like -->
+				        	<div class="modal-like">
+						        <c:choose>
+						        <c:when test="${ pack.isExistPackLike() }">
+						        	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Like ♥</span>			          
+						        </c:when>
+						        <c:otherwise>
+						        	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Not Like ♡</span>		
+						        </c:otherwise>
+						        </c:choose>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          	</div>
+				          	<!-- Pack Reply -->
+				          	<div class="pack-reply">
+								<div class="formWrapper">
+									<form class="${pack.packId}writeReplyForm">
+										<table class="reply_table">
+											<tr>
+												<td class="reply_content">
+													<textarea class="${pack.packId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
+												</td>
+												<td class="reply_btn">
+													<button type="button" class="btn btn-info" id="writeBtn">
+											     		<span class="glyphicon glyphicon-pencil"></span>댓글 등록
+											   		</button>  													
+												</td>
+											</tr>
+										</table>
+										<input type="hidden" class="packId" name="packId" value="${ pack.packId }" />
+										<input type="hidden" class="depth" name="depth" value="0" />
+										<input type="hidden" class="parentReplyId" name="parentReplyId" value="0" />
+										<input type="hidden" class="groupId" name="groupId" value="0" />
+										<input type="hidden" class="orderNo" name="orderNo" value="0" />
+										<input type="hidden" class="packReplyId" name="packReplyId" value="0" />
+									</form>
+								</div>
+								
+								<div class="replybypack">
+									<c:forEach items="${ pack.replyList }" var="reply">
+										<div>
+										<table>
+											<tr>
+												<td class="reply-name">${ reply.name }</td>
+												<td>
+													${ reply.description }
+												</td>
+											</tr>
+										</table>
+										<div class="hide formAppender"></div>
+										</div>
+									</c:forEach>
+								</div>	
+															
+				          	</div>
 				        </div>
 			     	 </div>
 			    </div>
 			 </div>
 			 
-			 <script>
-				 $(".${pack.packId}packLike").click( function() {
-						
-						$.post(
-								"/packLike"
-								, { "packId" : "${pack.packId}" } 
-								, function(data) {
-									
-									var jsonData3 = {};
-									
-									try {
-										jsonData3 = JSON.parse(data);
-									}
-									catch(e) {
-										jsonData3.result = false;							
-									}
-									
-									if ( jsonData3.result) {
-										// 하트를 넣음
-										var text = $(".${pack.packId}packLike").text();
-										if ( jsonData3.isPackLike ) {
-											$(".${pack.packId}packLike").text("Like ♥");							
-										}
-										else {
-											$(".${pack.packId}packLike").text("Not Like ♡");	
-										}
+			 <script type="text/javascript">
+	    		// Reply
+				$(".${pack.packId}writeReplyBtn").click( function() {
+					
+					var description = $(".${pack.packId}description").val();
+					description = $.trim(description);
+					if ( description == "" ) {
+						alert("댓글을 입력해주세요");
+						$(".${pack.packId}description").focus();
+						return;
+					}
+					
+					var form = $(".${pack.packId}writeReplyForm");
+					
+					form.attr("method", "POST");
+					form.attr("action", "<c:url value="/doWritePackReply"/>");
+					form.submit();
+				});
+			 
+				$(".${pack.packId}packLike").click( function() {
+					
+					$.post(
+							"/packLike"
+							, { "packId" : "${pack.packId}" } 
+							, function(data) {
+								
+								var jsonData3 = {};
+								
+								try {
+									jsonData3 = JSON.parse(data);
+								}
+								catch(e) {
+									jsonData3.result = false;							
+								}
+								
+								if ( jsonData3.result) {
+									// 하트를 넣음
+									var text = $(".${pack.packId}packLike").text();
+									if ( jsonData3.isPackLike ) {
+										$(".${pack.packId}packLike").text("Like ♥");							
 									}
 									else {
-										alert("세션 만료");
-										location.href = "/";
+										$(".${pack.packId}packLike").text("Not Like ♡");	
 									}
 								}
-						  );
-					});
-				 
-				  $(".header").click( function() {
+								else {
+									alert("세션 만료");
+									location.href = "/";
+								}
+							}
+					  );
+				});
+				
+				 $(".header").click( function() {
 					 $.post(
 							"/hitCountPack"
 							, { "packId" : "${pack.packId}"}
 							, function(){
 							}
 					 );
-				  });
-			 </script>
+				 });
+				</script>
 	  
 		</c:forEach>
 		
