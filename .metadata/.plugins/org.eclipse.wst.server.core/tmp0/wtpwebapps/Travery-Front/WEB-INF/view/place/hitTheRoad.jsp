@@ -56,17 +56,17 @@
 
 <!-- jQplot -->
 <!-- JQ-PLOT의 기본 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jquery.jqplot.min.js"/>"/></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jquery.jqplot.min.js"/>"></script>
 <!-- High Lighter(마우스 접근시 데이터정보 표시) 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.highlighter.js"/>"/></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot.highlighter.js"/>"></script>
 <!-- 좌표에 관한 정보나 Zoom 기능 사용시 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.cursor.js"/>"/></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot.cursor.js"/>"></script>
 <!-- 축의 데이터의 Label Option을 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.canvasAxisLabelRenderer.js"/>"/></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot.canvasAxisLabelRenderer.js"/>"></script>
 <!-- 축의 데이터를 순서에 상관없이 자동정렬을 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.categoryAxisRenderer.js"/>"/></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot.categoryAxisRenderer.js"/>"></script>
 <!-- 축의 데이터 표현설정과 그래프위의 점의 Option을 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.canvasAxisTickRenderer.js"/>"/></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot.canvasAxisTickRenderer.js"/>"></script>
 
 <script>
 	jQuery.noConflict();
@@ -168,12 +168,10 @@
 	   	  	$(".placeDetail").css({ "display" : "none" });
 	   	});
 	   	
-	   	/*
 		//X,Y 쌍으로 배열의 형태로 차례대로 값을 넣습니다.
 		var line =[[1,3],[2,7],[3,9],[4,1],[5,4],[6,6],[7,8],[8,2],[9,5]];
 		//id가 graphDiv인 곳에 그래프로 나타낼 Line을 넣어 표현한다.
-		var plot = $.jqplot('graphDiv', [line]);
-		*/
+		var plot = $.jqplot('chartdiv', [line]);
 	   	
 		// X 축
 		$(".axisX").click(function(){
@@ -283,7 +281,7 @@
 							
 							<!-- 점 찍는 곳 -->
 							<div id="dottedDiv" class="col-sm-8">
-								<div id="graphDiv"></div>
+								<div id="chartdiv" style="height:400px;width:300px; "></div>
 							</div>
 							
 							<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>

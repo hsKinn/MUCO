@@ -50,19 +50,20 @@
 	});
 
 </script>
-<div id="leftMenu">
-	<ul>
-		<li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu">
-				HIT THE ROAD </a></li>
-		<li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY
-				PACKAGE </a></li>
-		<li><a href="<c:url value="/sharePack"/>" id="sharePackMenu">
-				SHARE PACKAGE </a></li>
-		<li><a href="<c:url value="/recommendPlace"/>"
-			id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
-		<li><a href="<c:url value="/tripReservation"/>"
-			id="tripReservationMenu"> TRIP RESERVATION </a></li>
-		<li><a href="<c:url value="/personalInfo"/>"
-			id="personalInfoMenu"> PERSONAL INFO </a></li>
-	</ul>
-</div>
+<div id="bodyWithoutHeader">
+	<div id="leftMenu">
+		<ul>
+			<li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu">
+					HIT THE ROAD </a></li>
+			<li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY
+					PACKAGE </a></li>
+			<li><a href="<c:url value="/sharePack"/>" id="sharePackMenu">
+					SHARE PACKAGE </a></li>
+			<li><a href="<c:url value="/recommendPlace"/>"
+				id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
+			<li><a href="<c:url value="/tripReservation"/>"
+				id="tripReservationMenu"> TRIP RESERVATION </a></li>
+			<li><a href="<c:url value="/personalInfo"/>"
+				id="personalInfoMenu"> PERSONAL INFO </a></li>
+		</ul>
+	</div>

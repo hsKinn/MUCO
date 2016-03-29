@@ -37,11 +37,10 @@
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 
 <!-- JQ-PLOT -->
-<link class="include" rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/jquery.jqplot.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/jquery.jqplot.css"/>" />
 
 <title>Travery</title>
-<!--  <script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script> -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
 
 <!-- Boot strap -->
