@@ -39,10 +39,7 @@
 		<item value="org.eclipse.datatools.sqltools.doc.user:1.12.0.v201405281819-37D-7733L3D753L7BBF"/>
 		<item value="org.eclipse.draw2d:3.10.1.201508170204"/>
 		<item value="org.eclipse.egit.mylyn:4.2.0.201601211800-r"/>
-<<<<<<< HEAD
 		<item value="org.eclipse.egit.source:4.2.0.201601211800-r"/>
-=======
->>>>>>> origin/leina_1603251225
 		<item value="org.eclipse.egit:4.2.0.201601211800-r"/>
 		<item value="org.eclipse.emf.codegen.ecore.ui:2.11.1.v20160208-0841"/>
 		<item value="org.eclipse.emf.codegen.ecore:2.11.1.v20160208-0841"/>
@@ -122,13 +119,8 @@
 		<item value="org.eclipse.team.svn.resource.ignore.rules.jdt:3.0.0.I20150529-1700"/>
 		<item value="org.eclipse.team.svn.revision.graph.sources:3.0.0.I20150529-1700"/>
 		<item value="org.eclipse.team.svn.revision.graph:3.0.0.I20150529-1700"/>
-<<<<<<< HEAD
 		<item value="org.eclipse.team.svn.sources:2.0.4.I20150123-1700"/>
 		<item value="org.eclipse.team.svn:2.0.4.I20150123-1700"/>
-=======
-		<item value="org.eclipse.team.svn.sources:3.0.4.I20160131-1700"/>
-		<item value="org.eclipse.team.svn:3.0.4.I20160131-1700"/>
->>>>>>> origin/leina_1603251225
 		<item value="org.eclipse.tm.terminal.control.feature:4.0.0.201506040610"/>
 		<item value="org.eclipse.tm.terminal.feature:4.0.0.201506040610"/>
 		<item value="org.eclipse.tm.terminal.view.feature:4.0.0.201506040610"/>
@@ -161,7 +153,6 @@
 		<item value="org.springsource.sts.package:3.7.3.201602250940-RELEASE-e45"/>
 		<item value="org.springsource.sts:3.7.3.201602250940-RELEASE"/>
 	</list>
-<<<<<<< HEAD
 	<section name="ExternalProjectImportWizard">
 		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
 		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
@@ -172,9 +163,6 @@
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value="C:\Users\206-001\Desktop\articleAdmin.zip"/>
 		</list>
-=======
-	<section name="SaveAsDialogSettings">
->>>>>>> origin/leina_1603251225
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>

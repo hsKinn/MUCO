@@ -45,170 +45,170 @@
 </script>
 
 <!-- Share Pack Content by hskim -->
-
-<form id="searchForm">
-<div id="share-top">
-	<div id="searchBox">
-			<input type="text" id="searchKeyword" name="searchKeyword" value="${packSearchVO.searchKeyword}" placeholder="   #Hash Tag"  />
-			<button type="button" class="btn btn-info" id="searchBtn">
-	      		<span class="glyphicon glyphicon-search"></span>검색
-	    	</button>
-			<button type="button" class="btn btn-info" id="initSearchBtn">
-	      		<span class="glyphicon glyphicon-repeat"></span>초기화
-	    	</button>
-	</div>
+<div id="share-wrapper">
+	<form id="searchForm">
+	<div id="share-top">
+		<div id="searchBox">
+				<input type="text" id="searchKeyword" name="searchKeyword" value="${packSearchVO.searchKeyword}" placeholder="   #Hash Tag"  />
+				<button type="button" class="btn btn-info" id="searchBtn">
+		      		<span class="glyphicon glyphicon-search"></span>검색
+		    	</button>
+				<button type="button" class="btn btn-info" id="initSearchBtn">
+		      		<span class="glyphicon glyphicon-repeat"></span>초기화
+		    	</button>
+		</div>
+		
+		<div id="sortBox"> 
+			<div class="dropdown">
+	 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+	  				<span class="caret"></span>
+	  			</button>
+	 			<ul class="dropdown-menu">
+				    <li><a href="/sharePack?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+				    <li><a href="/sharePack?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+				    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+	  			</ul>
+			</div>
+		</div>
+	    <div id="sharePage">
+	    	${ packages.paging.getPagingList("pageNo", "[@]", "[이전]", "[다음]", "searchForm") }
+	   </div>
+	</div>	
+	</form>
 	
-	<div id="sortBox"> 
-		<div class="dropdown">
- 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
-  				<span class="caret"></span>
-  			</button>
- 			<ul class="dropdown-menu">
-			    <li><a href="/sharePack?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-			    <li><a href="/sharePack?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-			    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
-  			</ul>
-		</div>
-	</div>
-    <div id="sharePage">
-    	${ packages.paging.getPagingList("pageNo", "[@]", "[이전]", "[다음]", "searchForm") }
-   </div>
-</div>	
-</form>
-
-<div id="share-body">
-	<c:forEach items="${ packages.packList }" var="pack">
-		<div class="sharePack"> 
-			<div class="packTop">
-				<span class="header" data-toggle="modal" data-target="#${ pack.packId }">
-					${ pack.packTitle }
-				</span>
-			</div>
-			
-			<div class="packHashTag">
-				<c:forEach items="${ pack.hashtagList }" var="hashtags">
-					<span id="hashtag">#${ hashtags.hashtagName }</span>
-				</c:forEach>
-			</div>
-			
-			<div class="packPhoto">
-				<img src="${ pack.imageLocation }" />
-			</div>
-			
-			<div class="packFooter">
-				<div class="packWriterName">${ pack.name }</div>
-				<div class="packViewCount">
-					<span class="badge">${ pack.viewCount }</span> 
+	<div id="share-body">
+		<c:forEach items="${ packages.packList }" var="pack">
+			<div class="sharePack"> 
+				<div class="packTop">
+					<span class="header" data-toggle="modal" data-target="#${ pack.packId }">
+						${ pack.packTitle }
+					</span>
 				</div>
-				<div class="packLikeCount">
-					<span class="glyphicon glyphicon-heart"></span>
-					<span id="likeCount">${ pack.likeCount }</span>
+				
+				<div class="packHashTag">
+					<c:forEach items="${ pack.hashtagList }" var="hashtags">
+						<span id="hashtag">#${ hashtags.hashtagName }</span>
+					</c:forEach>
+				</div>
+				
+				<div class="packPhoto">
+					<img src="${ pack.imageLocation }" class="img-rounded" />
+				</div>
+				
+				<div class="packFooter">
+					<div class="packWriterName">${ pack.name }</div>
+					<div class="packViewCount">
+						<span class="badge">View: ${ pack.viewCount }</span> 
+					</div>
+					<div class="packLikeCount">
+						<span class="glyphicon glyphicon-heart"></span>
+						<span id="likeCount">${ pack.likeCount }</span>
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		
-		<!-- Modal -->
-		<div class="modal fade" id="${ pack.packId }" role="dialog">
-		    <div class="modal-dialog">
-		      <!-- Modal content-->
-		    	<div class="modal-content">
-		        	<div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <h4 class="modal-title">
-			          		${ pack.packTitle } 
-			          		<span class="badge">view: ${ pack.viewCount }</span>
-			          </h4>
-			        </div>
-			        <div class="modal-body">
-						  <table class="table table-hover table-bordered table-condensed">
-						    <thead>
-						      <tr>
-						        <td width="130px">여행지 명</td>
-						        <td>주소</td>
-						        <td width="80px">추천수</td>
-						      </tr>
-						    </thead>
-						    <tbody>
-						    <c:forEach items="${ pack.placeList }" var="places">
-						      <tr>
-						        <td>${ places.placeName }</td>
-						        <th>${ places.address }</th>
-						        <td>${ places.likeCount }</td>
-						      </tr>
-						    </c:forEach>
-						  </table>
-			        </div>
-			        <div class="modal-footer">
-			          <c:choose>
-			          <c:when test="${ pack.isExistPackLike() }">
-			          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Like ♥</span>			          
-			          </c:when>
-			          <c:otherwise>
-			          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Not Like ♡</span>		
-			          </c:otherwise>
-			          </c:choose>
-			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        </div>
-		     	 </div>
-		    </div>
-		 </div>
-		 
-		 <script>
-			 $(".${pack.packId}packLike").click( function() {
-					
-					$.post(
-							"/packLike"
-							, { "packId" : "${pack.packId}" } 
-							, function(data) {
-								
-								var jsonData3 = {};
-								
-								try {
-									jsonData3 = JSON.parse(data);
-								}
-								catch(e) {
-									jsonData3.result = false;							
-								}
-								
-								if ( jsonData3.result) {
-									// 하트를 넣음
-									var text = $(".${pack.packId}packLike").text();
-									if ( jsonData3.isPackLike ) {
-										$(".${pack.packId}packLike").text("Like ♥");							
+			
+			
+			<!-- Modal -->
+			<div class="modal fade" id="${ pack.packId }" role="dialog">
+			    <div class="modal-dialog">
+			      <!-- Modal content-->
+			    	<div class="modal-content">
+			        	<div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">
+				          		${ pack.packTitle } 
+				          		<span class="badge">view: ${ pack.viewCount }</span>
+				          </h4>
+				        </div>
+				        <div class="modal-body">
+							  <table class="table table-hover table-bordered table-condensed">
+							    <thead>
+							      <tr>
+							        <td width="130px">여행지 명</td>
+							        <td>주소</td>
+							        <td width="80px">추천수</td>
+							      </tr>
+							    </thead>
+							    <tbody>
+							    <c:forEach items="${ pack.placeList }" var="places">
+							      <tr>
+							        <td>${ places.placeName }</td>
+							        <th>${ places.address }</th>
+							        <td>${ places.likeCount }</td>
+							      </tr>
+							    </c:forEach>
+							  </table>
+				        </div>
+				        <div class="modal-footer">
+				          <c:choose>
+				          <c:when test="${ pack.isExistPackLike() }">
+				          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Like ♥</span>			          
+				          </c:when>
+				          <c:otherwise>
+				          	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Not Like ♡</span>		
+				          </c:otherwise>
+				          </c:choose>
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+			     	 </div>
+			    </div>
+			 </div>
+			 
+			 <script>
+				 $(".${pack.packId}packLike").click( function() {
+						
+						$.post(
+								"/packLike"
+								, { "packId" : "${pack.packId}" } 
+								, function(data) {
+									
+									var jsonData3 = {};
+									
+									try {
+										jsonData3 = JSON.parse(data);
+									}
+									catch(e) {
+										jsonData3.result = false;							
+									}
+									
+									if ( jsonData3.result) {
+										// 하트를 넣음
+										var text = $(".${pack.packId}packLike").text();
+										if ( jsonData3.isPackLike ) {
+											$(".${pack.packId}packLike").text("Like ♥");							
+										}
+										else {
+											$(".${pack.packId}packLike").text("Not Like ♡");	
+										}
 									}
 									else {
-										$(".${pack.packId}packLike").text("Not Like ♡");	
+										alert("세션 만료");
+										location.href = "/";
 									}
 								}
-								else {
-									alert("세션 만료");
-									location.href = "/";
-								}
+						  );
+					});
+				 
+				  $(".header").click( function() {
+					 $.post(
+							"/hitCountPack"
+							, { "packId" : "${pack.packId}"}
+							, function(){
 							}
-					  );
-				});
-			 
-			  $(".header").click( function() {
-				 $.post(
-						"/hitCountPack"
-						, { "packId" : "${pack.packId}"}
-						, function(){
-						}
-				 );
-			  });
-		 </script>
-  
-	</c:forEach>
-	
-	<c:if test="${ packages.paging.totalArticleCount == 0 }">
-		<div id="notFoundPack">
-			<h3><span id="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가 존재하지 않습니다<br/><span id="red">초기화</span> 후 재 검색해주세요</h3>
-			
-		</div>
-	</c:if>
-</div>	
-
+					 );
+				  });
+			 </script>
+	  
+		</c:forEach>
+		
+		<c:if test="${ packages.paging.totalArticleCount == 0 }">
+			<div id="notFoundPack">
+				<h3><span id="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가 존재하지 않습니다<br/><span id="red">초기화</span> 후 재 검색해주세요</h3>
+				
+			</div>
+		</c:if>
+	</div>	
+</div>
 	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
