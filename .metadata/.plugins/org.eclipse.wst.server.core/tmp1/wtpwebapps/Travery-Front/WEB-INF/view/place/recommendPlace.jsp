@@ -33,20 +33,20 @@
 			<div id="daily_content">
 				<c:forEach var="i" begin="1" end="4">
 					<div class="content">
-						<div class="content-top">
+						<div class="content_top">
 							<img src="/resource/img/pack/basic${ i }.jpg" class="img-thumbnail" />
 						</div>					
-						<div class="content-middle">
+						<div class="content_middle">
 							일일 여행지 Title
 						</div>
-						<div class="content-bottom">
-							<div class="bottom-top">
+						<div class="content_bottom">
+							<div class="bottom_top">
 								Writer	
 							</div>
-							<div class="bottom-first">
+							<div class="bottom_first">
 								<span class="badge">${ i*21 }</span>
 							</div>
-							<div class="bottom-second">
+							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
 								<span id="likeCount">${ i*4 }</span>
 							</div>
@@ -64,20 +64,20 @@
 			<div id="weekly_content">
 				<c:forEach var="i" begin="1" end="4">
 					<div class="content">
-						<div class="content-top">
+						<div class="content_top">
 							<img src="/resource/img/pack/basic${ i }.jpg" class="img-thumbnail" />
 						</div>					
-						<div class="content-middle">
+						<div class="content_middle">
 							주간 여행지 Title
 						</div>
-						<div class="content-bottom">
-							<div class="bottom-top">
+						<div class="content_bottom">
+							<div class="bottom_top">
 								Writer	
 							</div>
-							<div class="bottom-first">
+							<div class="bottom_first">
 								<span class="badge">${ i*21 }</span>
 							</div>
-							<div class="bottom-second">
+							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
 								<span id="likeCount">${ i*4 }</span>
 							</div>
@@ -95,20 +95,20 @@
 			<div id="monthly_content">
 				<c:forEach var="i" begin="1" end="4">
 					<div class="content">
-						<div class="content-top">
+						<div class="content_top">
 							<img src="/resource/img/pack/basic${ i }.jpg" class="img-thumbnail" />
 						</div>					
-						<div class="content-middle">
+						<div class="content_middle">
 							월간 여행지 Title
 						</div>
-						<div class="content-bottom">
-							<div class="bottom-top">
+						<div class="content_bottom">
+							<div class="bottom_top">
 								Writer	
 							</div>
-							<div class="bottom-first">
+							<div class="bottom_first">
 								<span class="badge">${ i*21 }</span>
 							</div>
-							<div class="bottom-second">
+							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
 								<span id="likeCount">${ i*4 }</span>
 							</div>
@@ -137,34 +137,50 @@
 	</div>
 	
 	<div id="inner_wrapper2">
+		<div id="paging">
+			Paging
+		</div>
 		<div id="new_wrapper">
 			<div id="new_top">
-				New
+				<div id="top_name">New</div>
+				<div id="top_sort">
+					<div class="dropdown">
+			 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+			  				<span class="caret"></span>
+			  			</button>
+			 			<ul class="dropdown-menu">
+						    <li><a href="#">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+						    <li><a href="#">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+						    <li><a href="#">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+			  			</ul>
+			  		</div>
+		  		</div>
 			</div>
 
 			<div id="new_content">
 				<c:forEach var="i" begin="1" end="4">
-					<div class="new-contents">
-						<div class="content-top">
+					<div class="new_contents">
+						<div class="content_top">
 							<img src="/resource/img/pack/basic${ i }.jpg" />
 						</div>					
-						<div class="content-middle">
+						<div class="content_middle">
 							새로운 여행지 Title
 						</div>
-						<div class="content-bottom">
-							<div class="bottom-top">
+						<div class="content_bottom">
+							<div class="bottom_top">
 								Writer	
 							</div>
-							<div class="bottom-first">
+							<div class="bottom_first">
 								<span class="badge">${ i*21 }</span>
 							</div>
-							<div class="bottom-second">
+							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
 								<span id="likeCount">${ i*4 }</span>
 							</div>
 						</div>
 					</div>
 				</c:forEach>			
+
 			</div>
 		</div>
 	</div>
