@@ -14518,3 +14518,4 @@
 0:0:0:0:0:0:0:1 - - [29/Mar/2016:16:15:02 +0900] "GET /resource/js/jvectormap/map.js HTTP/1.1" 304 -
 0:0:0:0:0:0:0:1 - - [29/Mar/2016:16:15:02 +0900] "GET /resource/js/jvectormap/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 -
 0:0:0:0:0:0:0:1 - - [29/Mar/2016:16:15:02 +0900] "GET /resource/img/common/traveryIcon.PNG HTTP/1.1" 304 -
+127.0.0.1 - - [29/Mar/2016:16:19:01 +0900] "GET / HTTP/1.1" 200 8709
