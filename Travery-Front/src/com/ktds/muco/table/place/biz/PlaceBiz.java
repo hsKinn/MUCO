@@ -1,7 +1,6 @@
 package com.ktds.muco.table.place.biz;
 
-import java.util.List;
-
+import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
@@ -22,7 +21,7 @@ public class PlaceBiz {
 		placeDAO = new PlaceDAO();
 	}
 
-	public List<PlaceVO> placeInfoRecommendedList(PlaceVO placeVO) {
+	public ImageVO placeInfoRecommendedList(PlaceVO placeVO) {
 		
 		return placeDAO.placeInfoRecommendedList(placeVO);
 	}

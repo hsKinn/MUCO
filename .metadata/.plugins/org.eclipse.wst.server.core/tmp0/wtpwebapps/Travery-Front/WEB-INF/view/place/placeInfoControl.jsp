@@ -139,10 +139,11 @@
 		<div class="container">
 			<div class="list-group" style="width: 150px;">
 				<form id="massiveDeleteForm">
-					<a href="#" class="list-group-item list-group-item-success"><input
+					<a href="#" class="list-group-item list-group-item-success">
+					<input
 						type="checkbox" class="deletePlaceId" name="deletePlaceId"
-						value="${ placeInfo.placeId }" />${ placeInfo.placeName }</a> <a
-						href="#" class="list-group-item list-group-item-info"></a>
+						value="${ placeInfo.placeId }" />${ placeInfo.placeName }</a> 
+					<a href="#" class="list-group-item list-group-item-info"></a>
 				</form>
 			</div>
 		</div>

@@ -1,14 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
-<fullyQualifiedTypeName name="com.oracle.jrockit.jfr.RequestDelegate"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.country.vo.CountryVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

@@ -46,7 +46,18 @@ public class PlaceInfoControlServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// memberVO 
+
+		// memberVO에 따른 placeId 받고 
+		
+		// placeId에 맞는 ImageVO가 필요
+		
+		// ImageVO 얻고 > List로 받아오기 
+		
+		// List를 JSP로 넘겨 
+		
 		PlaceVO placeVO = new PlaceVO();
+		
 		List<PlaceVO> placeListVO = placeBiz.placeInfoRecommendedList(placeVO);
 		request.setAttribute("placeInfo", placeListVO);
 		
