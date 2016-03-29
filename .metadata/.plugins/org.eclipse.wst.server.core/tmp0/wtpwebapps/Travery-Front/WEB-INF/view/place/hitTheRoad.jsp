@@ -54,39 +54,7 @@
 
 <script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
-<!-- jQplot -->
-<!-- JQ-PLOT의 기본 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.barRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.BezierCurveRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.blockRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.bubbleRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasAxisLabelRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasAxisTickRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasOverlay.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasTextRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.categoryAxisRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.ciParser.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.cursor.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.dateAxisRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.donutRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.dragable.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.enhancedLegendRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.funnelRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.highlighter.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.json2.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.logAxisRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.mekkoAxisRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.mekkoRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.meterGaugeRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.mobile.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.ohlcRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pieRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pointLabels.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pyramidAxisRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pyramidGridRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pyramidRenderer.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.trendline.min.js" />"></script>
-
+<!-- 지도 출력 -->
 <script>
 	jQuery.noConflict();
 	jQuery(function() {
@@ -169,6 +137,7 @@
 	});
 </script>
 
+<!-- 기준 출력 -->
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -179,9 +148,11 @@
 			
 		$(".tapMenu").click(function(){
 	   		$(".placeDetail").css({ "display" : "block" });
+	   		$(".dropdown").css({ "display" : "block" });
 	  	});
 	   	$(".active").click(function(){
 	   	  	$(".placeDetail").css({ "display" : "none" });
+	   	  	$(".dropdown").css({ "display" : "none" });
 	   	});
 	   	
 		// X 축
@@ -241,13 +212,6 @@
 					}
 			);
 		});
-		
-		// 좌표
-		
-		//X,Y 쌍으로 배열의 형태로 차례대로 값을 넣습니다.
-		var line1 =[[1,3],[2,7],[3,9],[4,1],[5,4],[6,6],[7,8],[8,2],[9,5]];
-		//id가 graphDiv인 곳에 그래프로 나타낼 Line을 넣어 표현한다.
-		var plot1 = $.jqplot('chartdiv', [line1]);
 	});
 </script>
 
@@ -290,25 +254,20 @@
 					
 					<div id="menu1" class="tab-pane fade">
 						<div class="row">
-							<div class="col-sm-4"></div>
-							<div id="printAxisY1" class="col-sm-4">${ axisY1 }</div>
-							<div class="col-sm-4"></div>
+							<div id="printAxisY1">${ axisY1 }</div>
 						</div>
 						<div class="row" style="height: 350px;">
-							<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
+							<div id="printAxisX2" class="col-sm-1">${ axisX2 }</div>
 							
 							<!-- 점 찍는 곳 -->
-							<div id="dottedDiv" class="col-sm-8">
-								<div id="chartdiv" style="height:400px;width:300px; ">
-								</div>
+							<div id="dottedDiv" class="col-sm-10">
+								<div id="map2" style="width: 100%; height: 100%;"></div>
 							</div>
 							
-							<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
+							<div id="printAxisX1" class="col-sm-1">${ axisX1 }</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4"></div>
-							<div id="printAxisY2" class="col-sm-4">${ axisY2 }</div>
-							<div class="col-sm-4"></div>
+							<div id="printAxisY2">${ axisY2 }</div>
 						</div>
 					</div>
 
@@ -382,11 +341,11 @@
 		</div>
 
 		<!-- 기준 선택 -->
-		<div class="col-sm-2" style="height: 100%;">
+		<div id="selectStandardBtns" class="col-sm-2" style="height: 100%;">
 
 			<!-- Drop Down : X 축 -->
 			<div class="dropdown" style="float: left;">
-				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"> X 축
+				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X 축
 				<span class="caret"></span></button>
 				<ul class="dropdown-menu">
 					<li><a class="axisX">Bright-Dark</a></li>

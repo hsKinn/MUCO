@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="United" key="selection"/>
+		<item value="dottedDiv" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="dottedDiv"/>
+			<item value="#333333"/>
+			<item value="&#x09;&#x09;if (!memberVO.isExistCountryByCountryName(selectedCountryName)) {"/>
+			<item value="yellow"/>
 			<item value="United"/>
 			<item value="united"/>
 		</list>

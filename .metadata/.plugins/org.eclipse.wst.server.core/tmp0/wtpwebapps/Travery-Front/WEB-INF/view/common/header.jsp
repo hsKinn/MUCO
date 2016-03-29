@@ -36,18 +36,12 @@
 <!-- jVector Map -->
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 
-<!-- JQ-PLOT -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/jquery.jqplot.min.css"/>" />
-
 <title>Travery</title>
 <script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
 
 <!-- Boot strap -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<script src="<c:url value="/resource/js/jqplot/jquery.jqplot.min.js" />"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
