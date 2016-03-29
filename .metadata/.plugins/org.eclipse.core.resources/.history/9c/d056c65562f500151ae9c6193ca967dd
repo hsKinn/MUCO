@@ -65,6 +65,8 @@ public class PlaceDAO {
 	 * 
 	 */	
 	public int insertPlaceInfo(PlaceVO placeVO) {
+
+		int insertCount = 0;
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -104,6 +106,8 @@ public class PlaceDAO {
 		} finally {
 			closeDB(conn, stmt, null);
 		}
+		return insertCount;
+
 	}
 	
 	/**
