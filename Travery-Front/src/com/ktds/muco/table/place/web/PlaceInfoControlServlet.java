@@ -1,17 +1,16 @@
 package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.place.biz.PlaceBiz;
-import com.ktds.muco.table.place.vo.PlaceListVO;
-import com.ktds.muco.table.place.vo.PlaceSearchVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
  * 
@@ -46,31 +45,10 @@ public class PlaceInfoControlServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		PlaceSearchVO placeSearchVO = new PlaceSearchVO();
-		HttpSession session = request.getSession();
-
-		try {
-			placeSearchVO.setSearchKeyword( request.getParameter("searchKeyword") );
-			placeSearchVO.setSearchType(request.getParameter("searchType"));
-		}
-		catch(NumberFormatException nfe) {
-			
-			placeSearchVO = (PlaceSearchVO)session.getAttribute("_SEARCH_");
-			
-			if ( placeSearchVO == null) {
-				placeSearchVO = new PlaceSearchVO();
-				placeSearchVO.setSearchKeyword("");
-				placeSearchVO.setSearchType("1");
-			}	// 받아오는 값이 null 값이 기 때문에 해당 구문을 작성하여 셋팅한다.
-		}
-
-		session.setAttribute("_SEARCH_", placeSearchVO);
-						
-//		PlaceListVO placeListVO = placeBiz.placeInfoRecommendedList(placeSearchVO);
 		
-//		request.setAttribute("placeInfo", placeListVO);s
-		request.setAttribute("placeSearchVO", placeSearchVO);
+		PlaceVO placeVO = new PlaceVO();
+		List<PlaceVO> placeListVO = placeBiz.placeInfoRecommendedList(placeVO);
+		request.setAttribute("placeInfo", placeListVO);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");
 		rd.forward(request, response);				

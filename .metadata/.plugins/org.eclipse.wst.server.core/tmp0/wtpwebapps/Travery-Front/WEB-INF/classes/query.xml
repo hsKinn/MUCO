@@ -70,13 +70,11 @@
 	
 	<place>
 		<placeInfoRecommendedList>
-			SELECT  P.PLACE_ID
-			        , PLACE_NAME
-			        , IMAGE_ID
+			SELECT  PLACE_NAME
+			        , IMAGE_LOCATION
 			FROM    PLACE P
-			        , MEMBER M
 			        , IMAGE I
-			WHERE   M.EMAIL = P.EMAIL
+			WHERE   I.EMAIL = P.EMAIL
 			AND     P.PLACE_ID = I.PLACE_ID
 		</placeInfoRecommendedList>
 		<insertPlaceInfo>

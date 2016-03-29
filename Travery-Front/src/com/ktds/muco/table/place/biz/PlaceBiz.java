@@ -3,7 +3,6 @@ package com.ktds.muco.table.place.biz;
 import java.util.List;
 
 import com.ktds.muco.table.place.dao.PlaceDAO;
-import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
@@ -23,10 +22,10 @@ public class PlaceBiz {
 		placeDAO = new PlaceDAO();
 	}
 
-//	public List<PlaceVO> placeInfoRecommendedList(PlaceSearchVO placeSearchVO) {
-//		
-//		return placeDAO.placeInfoRecommendedList(placeSearchVO);
-//	}
+	public List<PlaceVO> placeInfoRecommendedList(PlaceVO placeVO) {
+		
+		return placeDAO.placeInfoRecommendedList(placeVO);
+	}
 
 	public PlaceVO placeInfoCreate(PlaceVO placeVO) {
 
