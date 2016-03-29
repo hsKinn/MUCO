@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.place.vo.PlaceListVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -25,7 +27,7 @@ public class PlaceDAO {
 	 * @author 김동규
 	 * 
 	 */
-	public List<PlaceVO> placeInfoRecommendedList(int placeId) {
+	public PlaceListVO placeInfoRecommendedList(PlaceSearchVO placeSearchVO) {
 		List<PlaceVO> listPlaceVO = new ArrayList<PlaceVO>();
 		Connection conn = null;
 		PreparedStatement stmt = null;

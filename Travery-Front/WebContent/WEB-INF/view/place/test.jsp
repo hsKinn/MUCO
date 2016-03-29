@@ -67,96 +67,41 @@
 
 
 
-
-<div class="jumbotron" style="width: 50%; height: 90%; float: left; margin-left: 4%; margin-top: 1%;">
-	<div id="title" style="margin-left: 2%; top: 0;">
-		<h2>내 추천 여행지</h2>
-	</div>
-	<div class="container">
-		<div class="list-group" style="width: 150px;">
-			<a href="#" class="list-group-item list-group-item-success">First item</a>
-			<a href="#" class="list-group-item list-group-item-info">Second item</a>
-		</div>
-	</div>
-	
-	<div style=" width:20%; float: right; bottom: 0;">
-		<div id="btn-create" style="float: left; ">
-			<form id="createForm">
-				<img src="<c:url value="/resource/img/place/btn-create.png" />" id="createBtn" style="cursor: pointer" />
-			</form>
-		</div>
-		<div id="btn-delete" style="margin-left:10%; float: left;">
-			<form id="deleteForm">
-				<img src="<c:url value="/resource/img/place/btn-delete.png" />" id="massiveDeleteBtn" style="cursor: pointer" />
-			</form>
-		</div>
-	</div>
-	
-
-</div>
-
-<div class="jumbotron"
-	style="width: 21%; height: 90%; float: left; margin-left: 2%; margin-top: 1%;">
-	<form id="dataForm" name="dataform" enctype="multipart/form-data">
-
+				<c:forEach var="i" begin="1" end="4">
+					<div class="content">
+						<div class="content-top">
+							<img src="/resource/img/pack/basic${ i }.jpg" />
+						</div>
+						<div class="content-middle">일일 여행지 Title</div>
+						<div class="content-bottom">
+							<div class="bottom-top">Writer</div>
+							<div class="bottom-first">
+								<span class="badge">${ i*21 }</span>
+							</div>
+							<div class="bottom-second">
+								<span class="glyphicon glyphicon-heart"></span> <span
+									id="likeCount">${ i*4 }</span>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				
+				
+				
+				
+				
+	<c:forEach items="${ placeInfo }" var="placeInfo">
 		<div class="container">
-			<div style="margin-left: 13%;">
-				<h2>여행지 등록하기</h2>
-			</div>
-			<div class="panel-group">
-				<div class="panel panel-default" style="width: 100%;">
-					<div class="panel-heading">
-						<input type="text" id="placeName" name="placeName"
-							placeholder="#여행지명" value="${placeInfo.placeName}" style="padding:0,0,0,0; width: 100%;" />
-					</div>
-					<div class="panel-body">
-						<input type="text" id="address" name="address"
-							placeholder="#address" value="${placeInfo.address}" size="12"
-							style="float: left;" /> <input type="hidden" id="lat" name="lat"
-							placeholder="#latitude" value="${placeInfo.latitude}" size="15" />
-						<input type="hidden" id="lng" name="lng" placeholder="#longitude"
-							value="${placeInfo.longitude}" size="15" /> <img
-							src="<c:url value="/resource/img/place/btn-map.png" />"
-							id="mapBtn" onclick="openMap(this.form)" style="position: absolute;" />
-					</div>
-				</div>
+			<div class="list-group" style="width: 150px;">
+				<form id="massiveDeleteForm">
+					<a href="#" class="list-group-item list-group-item-success"><input
+						type="checkbox" class="deletePlaceId" name="deletePlaceId"
+						value="${ placeInfo.placeId }" />${ placeInfo.placeName }</a> <a
+						href="#" class="list-group-item list-group-item-info"></a>
+				</form>
 			</div>
 		</div>
-
-		<div class="container">
-			<div class="panel-group">
-				<div class="panel panel-default" style="width: 100%;">
-					<div class="panel-heading" style="font-size: 10px;">
-						<input type="file" id="image" name="image" accept="image/*" onchange="readURL(this);" required />
-					</div>
-					<div class="panel-body">
-						<img id="blah" class="img-circle" src="#"
-							style="margin-left: 18%; width: 85px; height: 85px;" />
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="panel-group" >
-				<div class="panel panel-default" style="height: 100%; width: 100%;">
-					<div class="panel-heading" style="height: 300px;">
-						<textarea id="description" name="description"
-							style="height: 100%; width: 100%;">${ placeInfo.description }</textarea>
-					</div>
-					<div class="panel-body">
-						SUBMIT
-						<c:if test="${ empty placeInfo }">
-							<img src="<c:url value="/resource/img/place/btn-submit.png" />"
-								id="submitBtn" />
-						</c:if>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</form>
-</div>
+	</c:forEach>
 
 
 
