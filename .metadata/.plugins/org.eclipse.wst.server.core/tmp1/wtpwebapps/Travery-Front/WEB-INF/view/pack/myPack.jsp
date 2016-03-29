@@ -56,7 +56,14 @@
 		});
 
 		$(".switch").click(function() {
-			alert();
+			console.log("#abc")
+			
+		});
+		
+		$("#abc").click( function() {
+			var a = "checked";
+			
+			console.log(a);
 		});
 
 	});
@@ -85,7 +92,8 @@
 	<div id="packListdiv2">
 		<div id="placesOfPackListdiv">
 			<span id="packData_Title"></span><br /> <span id="packData_IsPublic"></span><br />
-			공개 <label class="switch"> <input type="checkbox">
+			공개 <label class="switch"> <input type="checkbox" id="abc" value="check">
+			<input type="checkbox" id="abc" value="check">
 				<div class="slider round"></div>
 			</label> <img id="packData_image" src="#" /> 수정버튼
 		</div>

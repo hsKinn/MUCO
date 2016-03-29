@@ -44,7 +44,7 @@
 								Writer	
 							</div>
 							<div class="bottom_first">
-								<span class="badge">${ i*21 }</span>
+								<span class="badge">View: ${ i*21 }</span>
 							</div>
 							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
@@ -75,7 +75,7 @@
 								Writer	
 							</div>
 							<div class="bottom_first">
-								<span class="badge">${ i*21 }</span>
+								<span class="badge">View: ${ i*21 }</span>
 							</div>
 							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
@@ -106,7 +106,7 @@
 								Writer	
 							</div>
 							<div class="bottom_first">
-								<span class="badge">${ i*21 }</span>
+								<span class="badge">View: ${ i*21 }</span>
 							</div>
 							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
