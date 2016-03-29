@@ -199,4 +199,14 @@
     <servlet-name>DeletePlaceOfPackServlet</servlet-name>
     <url-pattern>/deletePlaceOfPack</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoModifyPackServlet</display-name>
+    <servlet-name>DoModifyPackServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.DoModifyPackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoModifyPackServlet</servlet-name>
+    <url-pattern>/doModifyPack</url-pattern>
+  </servlet-mapping>
 </web-app>

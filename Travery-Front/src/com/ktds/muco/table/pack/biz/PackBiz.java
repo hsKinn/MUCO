@@ -57,6 +57,12 @@ public class PackBiz {
 		deletePlaceOfPackCount = packDAO.deletePlaceOfPack(placeId, packId);
 		return deletePlaceOfPackCount;
 	}
+
+	public int modifyPack(PackVO modifyPack) {
+		int modifyCount = 0;
+		modifyCount = packDAO.modifyPack(modifyPack);
+		return modifyCount;
+	}
 	
 	
 

@@ -22,13 +22,14 @@ $(document).ready(function() {
 	});
 	$("#myPackMenu").css("color", "#ffffff");
 	
+	
 	$(".pack").click(function(){
-		 $("#placesOfPackListdiv").fadeOut();
+		 $("#placesOfPackListdiv").hide();
 		 $("#placesOfPackListdiv").fadeIn("slow");	  
 		var packId = $(this).children(":eq(2)").val();
 		location.href ="/showPackPlace?packId="+packId;		
-	
 	});
+	
 	$(".submitLabel").click(function(){
 		
 		
@@ -40,34 +41,30 @@ $(document).ready(function() {
 	});
 	
 	
-	
-	$(".switch").click(function(){
-		alert();
-	});
 
 });
 </script>
 
 <body>
-	<div id="packListdiv">
-	<table id="packListTable" border="2">
-			<c:forEach items="${packs}" var="packs">
-			<tr>
-			  <td class="pack" >
-	
-			  	<img src="<c:url value="/resource/img/pack/folder.png"/>" id="folderImg" /> 
-			  	<p id="title"  style="display: inline; cursor: pointer;"> ${packs.packTitle} </p> 
-			  	<input type="hidden" id="packId" value="${packs.packId}"/>
-			  	 <span class="badge">10</span>
-			  </td>
-			</tr>
-			</c:forEach>
-	</table>
-	
-	
-	<a href="/detailPack"><span class="glyphicon glyphicon-cog"></span></a>
-	
+	<div id="wrapperdiv">
+		<div id="packListdiv">
+			<table id="packListTable" border="2">
+					<c:forEach items="${packs}" var="packs">
+					<tr>
+					  <td class="pack" >
+					  	<img src="<c:url value="/resource/img/pack/folder.png"/>" id="folderImg" /> 
+						<label id="title" for="packData_Title" style="font-size:20px; display: inline;">${packs.packTitle}</label>
+					  	<input type="hidden" id="packId" value="${packs.packId}"/>
+					  </td>
+					</tr>
+					</c:forEach>
+			</table>
+		</div>
+		<div id="buttondiv">
+			<a href="/detailPack"><span class="glyphicon glyphicon-cog"></span></a>
+		</div>
 	</div>
+	
 	<div id="packListdiv2">
 		<div id="placesOfPackListdiv">			
 			<table id="placeListTable" border="2">

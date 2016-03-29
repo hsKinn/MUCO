@@ -129,6 +129,7 @@ public class PackDAO {
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, newAddPack.getPackTitle());
 			stmt.setString(2, newAddPack.getEmail());
+			stmt.setInt(3, newAddPack.getIsPublic());
 		
 			insertCount = stmt.executeUpdate();
 			
@@ -256,6 +257,38 @@ public class PackDAO {
 		}
 		return deletePlaceOfPackCount;
 	}
+	
+	
+	public int modifyPack(PackVO modifyPack) {
+		int modifyCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		System.out.println("dao"+modifyPack.getPackTitle());
+		String title = modifyPack.getPackTitle();
+		int isPublic = modifyPack.getIsPublic();
+		int packId = modifyPack.getPackId();
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/modifyPack/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, title);
+			stmt.setInt(2, isPublic);
+			stmt.setInt(3, packId);
+		
+			modifyCount = stmt.executeUpdate();
+			
+			System.out.println("modyCount"+modifyCount);
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		return modifyCount;
+	}
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -298,6 +331,7 @@ public class PackDAO {
 			}
 		}
 	}
+
 
 
 

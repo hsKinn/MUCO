@@ -41,34 +41,32 @@ $(document).ready(function() {
 </script>
 
 <body>
-	<div id="packListdiv">
-	<table id="packListTable" border="2">
-			<c:forEach items="${ packs}" var="packs">
-			<tr>
-			  <td class="pack" >
+	<div id="wrapperdiv">
+		<div id="packListdiv">
+		<table id="packListTable" border="2">
+				<c:forEach items="${ packs}" var="packs">
+				<tr>
+				  <td class="pack" >
+			  		<img src="<c:url value="/resource/img/pack/folder.png"/>" id="folderImg" /> 
+					<label id="title" for="packData_Title" style="font-size:20px; display: inline;">${packs.packTitle}</label>
+				  	<input type="hidden" id="packId" value="${packs.packId}"/>
 	
-			  	<img src="<c:url value="/resource/img/pack/folder.png"/>" id="folderImg" /> 
-			  	<p id="title"  style="display: inline;"> ${packs.packTitle} </p> 
-			  	<input type="hidden" id="packId" value="${packs.packId}"/>
-			  	 <span class="badge">10</span>
-	
-
-			  </td>
-			
-			</tr>
-			</c:forEach>
-	</table>
-	
-	<a href="/myPack"><span class="glyphicon glyphicon-ok-sign"></span></a>
-	
+				  </td>
+				
+				</tr>
+				</c:forEach>
+		</table>
+		</div>
+		<div id="buttondiv">
+			<a href="/myPack"><span class="glyphicon glyphicon-ok-sign"></span></a>
+		</div>
 	</div>
 	
 	
 	
 	
 	<div id="packListdiv2">
-		<div id="addPackFormdiv">		
-			
+		<div id="addPackFormdiv" align="center";>		
 			<form id="addPack" enctype="multipart/form-data" role="form">			
 			  <div class="form-group">
 			    <label for="file"> My package Image : </label>
@@ -78,7 +76,13 @@ $(document).ready(function() {
 			    <label for="title">My package name : </label>
 			    <input type="text" class="form-control" id="title" name="title"/>
 			  </div>
-		
+				<div class="form-group">
+				<label for="packData_Title">Share :</label>
+				<label class="switch">
+				 <input type="checkbox" id="packData_IsPublic" name="packData_IsPublic" value="1"/>
+				 <div class="slider round"></div>
+				</label>
+				</div>
 			
 			  <button type="submit" class="btn btn-default">AddPackage</button>
 			

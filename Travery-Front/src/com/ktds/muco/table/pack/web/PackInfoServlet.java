@@ -40,13 +40,11 @@ public class PackInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int packId = Integer.parseInt(request.getParameter("packId"));
 		
-//		String packTitle = request.getParameter("packTitle");
-		
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
 		String packName = packVO.getPackTitle();
 		int isPublic = packVO.getIsPublic();
 		int viewCount = packVO.getViewCount();
-		int likeCount = packVO.getLikeCount();
+		int likeCount = packVO.getLikeCount();				
 		String imageLocation = packVO.getShareImageLocation();
 		
 		String[] list = {"a","b","c"};
@@ -59,6 +57,7 @@ public class PackInfoServlet extends HttpServlet {
 		json.append(", \"viewCount\" : \""+viewCount+"\"");
 		json.append(", \"likeCount\" : \""+likeCount+"\"");
 		json.append(", \"imageLocation\" : \""+imageLocation+"\"");
+		json.append(", \"packId\" : \""+packId+"\"");
 		json.append("}");
 		
 		response.setCharacterEncoding("UTF-8");
