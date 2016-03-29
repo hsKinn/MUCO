@@ -14,59 +14,78 @@
 <jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
 
 <!-- jVector Map -->
-<script src="<c:url value="/resource/js/jquery-jvectormap-2.0.3.min.js" />"></script>
-<script src="<c:url value="/resource/js/jquery-mousewheel.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-2.0.3.min.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/jquery-mousewheel.js" />"></script>
 
-<script src="<c:url value="/resource/js/abstract-element.js" />"></script>
-<script src="<c:url value="/resource/js/abstract-canvas-element.js" />"></script>
-<script src="<c:url value="/resource/js/abstract-shape-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/abstract-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/abstract-canvas-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/abstract-shape-element.js" />"></script>
 
-<script src="<c:url value="/resource/js/svg-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-group-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-canvas-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-shape-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-path-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-circle-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-image-element.js" />"></script>
-<script src="<c:url value="/resource/js/svg-text-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-group-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-canvas-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-shape-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-path-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-circle-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-image-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/svg-text-element.js" />"></script>
 
-<script src="<c:url value="/resource/js/vml-element.js" />"></script>
-<script src="<c:url value="/resource/js/vml-group-element.js" />"></script>
-<script src="<c:url value="/resource/js/vml-canvas-element.js" />"></script>
-<script src="<c:url value="/resource/js/vml-shape-element.js" />"></script>
-<script src="<c:url value="/resource/js/vml-path-element.js" />"></script>
-<script src="<c:url value="/resource/js/vml-circle-element.js" />"></script>
-<script src="<c:url value="/resource/js/vml-image-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-group-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-canvas-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-shape-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-path-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-circle-element.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vml-image-element.js" />"></script>
 
-<script src="<c:url value="/resource/js/map-object.js" />"></script>
-<script src="<c:url value="/resource/js/region.js" />"></script>
-<script src="<c:url value="/resource/js/marker.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/map-object.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/region.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/marker.js" />"></script>
 
-<script src="<c:url value="/resource/js/vector-canvas.js" />"></script>
-<script src="<c:url value="/resource/js/simple-scale.js" />"></script>
-<script src="<c:url value="/resource/js/ordinal-scale.js" />"></script>
-<script src="<c:url value="/resource/js/numeric-scale.js" />"></script>
-<script src="<c:url value="/resource/js/color-scale.js" />"></script>
-<script src="<c:url value="/resource/js/legend.js" />"></script>
-<script src="<c:url value="/resource/js/data-series.js" />"></script>
-<script src="<c:url value="/resource/js/proj.js" />"></script>
-<script src="<c:url value="/resource/js/map.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/vector-canvas.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/simple-scale.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/ordinal-scale.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/numeric-scale.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/color-scale.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/legend.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/data-series.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/proj.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/map.js" />"></script>
 
-<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
+<script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
 <!-- jQplot -->
 <!-- JQ-PLOT의 기본 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jquery.jqplot.min.js"/>"></script>
-<!-- High Lighter(마우스 접근시 데이터정보 표시) 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.highlighter.js"/>"></script>
-<!-- 좌표에 관한 정보나 Zoom 기능 사용시 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.cursor.js"/>"></script>
-<!-- 축의 데이터의 Label Option을 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.canvasAxisLabelRenderer.js"/>"></script>
-<!-- 축의 데이터를 순서에 상관없이 자동정렬을 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.categoryAxisRenderer.js"/>"></script>
-<!-- 축의 데이터 표현설정과 그래프위의 점의 Option을 설정 -->
-<script type="text/javascript" src="<c:url value="/resource/js/jqplot.canvasAxisTickRenderer.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.barRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.BezierCurveRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.blockRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.bubbleRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasAxisLabelRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasAxisTickRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasOverlay.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.canvasTextRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.categoryAxisRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.ciParser.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.cursor.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.dateAxisRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.donutRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.dragable.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.enhancedLegendRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.funnelRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.highlighter.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.json2.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.logAxisRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.mekkoAxisRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.mekkoRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.meterGaugeRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.mobile.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.ohlcRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pieRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pointLabels.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pyramidAxisRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pyramidGridRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.pyramidRenderer.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jqplot/jqplot.trendline.min.js" />"></script>
 
 <script>
 	jQuery.noConflict();
@@ -111,7 +130,6 @@
 				scale : 1,
 				animate : true
 			},
-			// 나라 클릭 이벤트
 			onRegionClick : function(event, code) {
 				var map = $('#map1').vectorMap('get', 'mapObject');
 				$.post(
@@ -132,7 +150,6 @@
 									$('#countries').append('<div class="selectedCountry" id= "' + map.getRegionName(code) + '">' + map.getRegionName(code) + '</div>');
 								} else {
 									$('#'+ map.getRegionName(code)).remove();
-
 								}
 							} else {
 								alert("세션이 만료되었습니다. 다시 로그인해주세요.");
@@ -144,7 +161,6 @@
 			series : {
 				regions : [ {
 					scale : [],
-					// scale : [ '#ffffff', '#ffffff' ],
 					normalizeFunction : 'polynomial'
 					
 				}]
@@ -167,11 +183,6 @@
 	   	$(".active").click(function(){
 	   	  	$(".placeDetail").css({ "display" : "none" });
 	   	});
-	   	
-		//X,Y 쌍으로 배열의 형태로 차례대로 값을 넣습니다.
-		var line =[[1,3],[2,7],[3,9],[4,1],[5,4],[6,6],[7,8],[8,2],[9,5]];
-		//id가 graphDiv인 곳에 그래프로 나타낼 Line을 넣어 표현한다.
-		var plot = $.jqplot('chartdiv', [line]);
 	   	
 		// X 축
 		$(".axisX").click(function(){
@@ -230,6 +241,13 @@
 					}
 			);
 		});
+		
+		// 좌표
+		
+		//X,Y 쌍으로 배열의 형태로 차례대로 값을 넣습니다.
+		var line1 =[[1,3],[2,7],[3,9],[4,1],[5,4],[6,6],[7,8],[8,2],[9,5]];
+		//id가 graphDiv인 곳에 그래프로 나타낼 Line을 넣어 표현한다.
+		var plot1 = $.jqplot('chartdiv', [line1]);
 	});
 </script>
 
@@ -281,7 +299,8 @@
 							
 							<!-- 점 찍는 곳 -->
 							<div id="dottedDiv" class="col-sm-8">
-								<div id="chartdiv" style="height:400px;width:300px; "></div>
+								<div id="chartdiv" style="height:400px;width:300px; ">
+								</div>
 							</div>
 							
 							<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
