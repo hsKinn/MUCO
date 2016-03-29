@@ -1,15 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Cookie[] cookies = request.getCookies();
+
+	String userId = "";
+	String userPassword = "";
+	String autoLogin = "";
+
+	if (cookies != null) {
+		// 존재하는 쿠키들을 하나씩 검사
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equals("userId")) {
+				// 아이디 쿠키 받아오기
+				userId = cookie.getValue();
+			} else if (cookie.getName().equals("userPassword")) {
+				// 비밀번호 쿠키 받아오기
+				userPassword = cookie.getValue();
+			} else if (cookie.getName().equals("autoLogin")) {
+				// 자동 로그인 쿠키 받아오기
+				autoLogin = cookie.getValue();
+			}
+		}
+	}
+%>
 
 <!-- Header -->
-<jsp:include page="./WEB-INF/view/common/header.jsp"></jsp:include>
+<jsp:include page="./WEB-INF/view/common/indexHeader.jsp"></jsp:include>
 </div>
 <!-- id="header" -->
 
-
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+	
+		$("body").on("mousewheel", function (event) { 
+			alert("hi");
+			console.log(event.originalEvent.wheelDelta);
+		});
 		
 		$("#join").hide();
 		$("#login").hide();
@@ -49,6 +77,8 @@
 			$("#goBack").hide();
 	    });
 
+	    
+	    // 회원 가입 
 		$("#btnJoin").click(function() {
 
 			var userEmail = $("#userEmail").val();
@@ -80,12 +110,28 @@
 			form.attr("action", "<c:url value="/doJoin"/>");
 			form.submit();
 		});
+	    
+	    // 로그인 
+		$("#btnLogin").click(function() {
+			var form = $("#loginForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/doLogin"/>")
+			form.submit();
+		});	    
 		
 	});
 </script>
 
 
 <!-- Index -->
+<div id="imageSlider">
+	<li id="imageList">
+		<ul><img src="<c:url value="/resource/img/common/IndexImg.jpg"/>"/></ul>
+		<ul><img src="<c:url value="/resource/img/common/IndexImg2.jpg"/>"/></ul>
+		<ul><img src="<c:url value="/resource/img/common/IndexImg3.jpg"/>"/></ul>
+	</li>
+</div>
+	
 <div id="index">
 
 	<div id="join">

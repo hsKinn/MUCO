@@ -18,11 +18,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/common/leftMenu.css"/>" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/login.css"/>" />
-<link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/member/logout.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/join.css"/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/country/country.css"/>" />
 <link rel="stylesheet" type="text/css"

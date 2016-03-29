@@ -153,7 +153,7 @@ public class MemberBiz {
 	 * 
 	 */
 	public boolean isExistName(String name) {
-
+		
 		return memberDAO.isExistName(name) > 0;
 	}
 
