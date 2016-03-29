@@ -127,10 +127,6 @@
 	</ul>
 </div>
 
-<div id="welcomeMsg">
-	<h1>Start TRAVERY!</h1>
-</div>
-
 <div id="index">
 
 	<div id="join">
