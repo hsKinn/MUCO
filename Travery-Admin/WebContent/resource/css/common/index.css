@@ -1,0 +1,110 @@
+@CHARSET "UTF-8";
+
+
+div#imageSlider {	
+	margin: 0;
+	padding: 0;
+	magin-top: 0;
+	position: absolute;
+	overflow: hidden;
+}	
+
+div#imageSlider ul#imageList li img{	
+	width: 100%;
+}
+
+/* 김광민 */
+div#index {
+	margin-top: 15%;
+	margin-left: 45%;
+	position: absolute;
+}
+
+
+div#index a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+div#letsJoin {
+	text-align: center;
+	width: 250px;
+	background-color: #626262;
+	padding: 10px;
+	float: left;
+}
+
+div#letsLogIn {
+	margin-top: 10px;
+	text-align: center;
+	width: 250px;
+	background-color: #333333;
+	padding: 10px;
+}
+
+
+/* 유병훈 */
+div#join {
+	width: 250px;
+}
+
+div#join input {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	height: 40px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+button#btnJoin {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	margin-left: 5px;
+	padding: 7px;
+	width: 80px;
+	background-color: #333333;
+	color: #ffffff;
+}
+
+/* Login */
+
+div#login {
+	width: 250px;
+}
+
+div#login input {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	height: 40px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+input#btnLogin {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	padding: 7px;
+	width: 80px;
+	background-color: #333333;
+	color: #ffffff;
+}
+
+button#btnSignUp {
+	font-family: "나눔바른고딕", "나눔 고딕";
+	font-size: 15px;
+	margin-right: 5px;
+	padding: 7px;
+	width: 80px;
+	background-color: #333333;
+	color: #ffffff;
+}
+
+#userId {
+	margin-right: 10px;
+}
+
+div#goBack {
+	width: 250px;
+	text-align: center;
+	font-size: 35px;
+}
