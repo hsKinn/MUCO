@@ -117,15 +117,15 @@
 		<div id="allCheckBox">
 			<input type="checkbox" id="massiveSelectCheckBox" />
 		</div>
-		이미지 List정보 받아오기 checkbox/placeName/image
-		<div id="my_previousPlaceList">
-			<form id="massiveDeleteForm">
-				<c:forEach items="${ placeInfo }" var="placeInfo">
+
+		<c:forEach items="${ placeInfo }" var="placeInfo">
+			<div id="my_previousPlaceList">	
+				<form id="massiveDeleteForm">
 					<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${ placeInfo.placeId }" />
-						${ placeInfo.placeName }
-				</c:forEach>
-			</form>
-		</div>
+					${ placeInfo.placeName }
+				</form>
+			</div>		
+		</c:forEach>	
 	</div>
 
 	<div id="placeInfoControler">
@@ -140,48 +140,6 @@
 			</form>
 		</div>
 	</div>
-
-	<div id="right_wrapper">
-		<div id="placeInfoCreate_main">여행지 등록하기</div>
-		<form id="dataForm" name="dataform" enctype="multipart/form-data">
-			<div id="placeInfoCreate_title">
-				<input type="text" id="placeName" name="placeName"
-					placeholder="여행지명을 작성해주세요." value="${placeInfo.placeName}" />
-			</div>
-			<div id="placeInfoCreate_searchMap">
-				<img src="<c:url value="/resource/img/place/btn-map.png" />"
-					id="mapBtn" onclick="openMap(this.form)" /> <input type="text"
-					id="address" name="address" placeholder="#address"
-					value="${placeInfo.address}" /> <input type="text" id="lat"
-					name="lat" placeholder="#latitude" value="${placeInfo.latitude}" />
-				<input type="text" id="lng" name="lng" placeholder="#longitude"
-					value="${placeInfo.longitude}" />
-			</div>
-
-			<div id="placeInfoCreate_imageUpload">
-				<input type="file" id="image" name="image" /> <img id="blah"
-					class="img-circle" src="#" style="width: 85px; height: 85px;" /><br />
-			</div>
-			<div id="placeInfoCreate_description">
-				<textarea id="description" name="description">${ placeInfo.description }</textarea>
-			</div>
-			<div id="placeInfoCreate_submitBtn">
-				<c:if test="${ empty placeInfo }">
-					<img src="<c:url value="/resource/img/place/btn-submit.png" />"	id="submitBtn" />
-				</c:if>
-			</div>
-			<div id="구현예정">
-				<c:if test="${ not empty article }">
-					<input type="hidden" name="articleId"
-						value="${ article.articleId }" />
-					<input type="button" id="doModify" value="modify" />
-					<input type="button" value="reset" />
-				</c:if>
-			</div>
-		</form>
-	</div>
-</div>
-
 
 
 
