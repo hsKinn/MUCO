@@ -361,15 +361,4 @@
 		<servlet-name>ProfileImageDownload</servlet-name>
 		<url-pattern>/profileImageDownload</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>PackLikeServlet</display-name>
-		<servlet-name>PackLikeServlet</servlet-name>
-		<servlet-class>com.ktds.muco.table.packLike.web.PackLikeServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>PackLikeServlet</servlet-name>
-		<url-pattern>/packLike</url-pattern>
-	</servlet-mapping>
-
 </web-app>
