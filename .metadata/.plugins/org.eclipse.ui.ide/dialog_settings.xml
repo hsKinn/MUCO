@@ -152,7 +152,6 @@
 		<item value="org.springsource.sts.package:3.7.2.201511261048-RELEASE-e45"/>
 		<item value="org.springsource.sts:3.7.2.201511261048-RELEASE"/>
 	</list>
-<<<<<<< HEAD
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>
 		<item value="true" key="ShowStatusLine"/>
@@ -166,17 +165,5 @@
 			<item value="668" key="DIALOG_X_ORIGIN"/>
 			<item value="195" key="DIALOG_Y_ORIGIN"/>
 		</section>
-=======
-	<section name="ExternalProjectImportWizard">
-		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
-		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
-		<item value="true" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
-		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value=""/>
-		</list>
-		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
-			<item value="C:\Users\206-001\Desktop\Travery-Front.zip"/>
-		</list>
->>>>>>> origin/YBH2
 	</section>
 </section>

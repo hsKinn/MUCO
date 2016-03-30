@@ -46,7 +46,7 @@ public class PackReplyDAO {
 				packReply.setPackReplyId(rs.getInt("PACK_REPLY_ID"));
 				packReply.setName(rs.getString("NAME"));
 				packReply.setPackId(rs.getInt("PACK_ID"));
-				packReply.setDescription(rs.getString("DESCRIPTION"));
+				packReply.setPackReplyDescription(rs.getString("DESCRIPTION"));
 				packReply.setCreatedDate(rs.getString("CRT_DT"));
 				packReply.setGroupId(rs.getInt("GROUP_ID"));
 				packReply.setParentReplyId(rs.getInt("PARENT_REPLY_ID"));
@@ -95,7 +95,7 @@ public class PackReplyDAO {
 			
 			stmt.setInt(1, packReply.getPackId());
 			stmt.setString(2, packReply.getEmail());
-			stmt.setString(3, packReply.getDescription());
+			stmt.setString(3, packReply.getPackReplyDescription());
 			
 			if ( packReply.getParentReplyId() > 0 ) {
 				stmt.setInt(4, packReply.getGroupId());

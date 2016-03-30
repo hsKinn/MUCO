@@ -12,15 +12,11 @@ import com.ktds.muco.table.pack.vo.PackVO;
 public class PackReplyVO extends PackVO {
 
 	private int packReplyId;
-<<<<<<< HEAD
 	private String packReplyDescription;
-=======
-	private String description;
 	private int groupId;
 	private int parentReplyId;
 	private int depth;
 	private int orderNo;
->>>>>>> origin/hskim3
 	private String createdDate;
 
 	public int getGroupId() {

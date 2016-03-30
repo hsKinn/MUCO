@@ -1,24 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<<<<<<< HEAD
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
-<fullyQualifiedTypeName name="com.oracle.jrockit.jfr.RequestDelegate"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-<fullyQualifiedTypeName name="java.sql.DriverManager"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.xml.XML"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.pack.vo.PackVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.file.MultipartHttpServletRequest"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.file.MultipartFile"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.file.biz.FileBiz"/>
-<fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.dao.Const"/>
 </qualifiedTypeNameHistroy>
->>>>>>> origin/bjg3
-=======
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-</qualifiedTypeNameHistroy>
->>>>>>> origin/YBH2

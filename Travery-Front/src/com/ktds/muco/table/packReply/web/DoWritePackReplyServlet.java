@@ -55,7 +55,7 @@ public class DoWritePackReplyServlet extends HttpServlet {
 		packReply.setParentReplyId(parentReplyId);
 		packReply.setGroupId(groupId);
 		packReply.setOrderNo(orderNo);
-		packReply.setDescription(description);
+		packReply.setPackReplyDescription(description);
 		packReply.setPackReplyId(packReplyId);
 	
 		HttpSession session = request.getSession();

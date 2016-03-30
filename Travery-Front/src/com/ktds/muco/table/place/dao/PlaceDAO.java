@@ -8,10 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-import com.ktds.muco.table.hashtag.vo.HashTagVO;
->>>>>>> origin/hskim3
 import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
@@ -23,8 +19,6 @@ import com.ktds.muco.util.xml.XML;
  */
 public class PlaceDAO {
 	
-<<<<<<< HEAD
-=======
 	/**
 	 * Get Place in Package
 	 * 
@@ -60,7 +54,6 @@ public class PlaceDAO {
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setAddress(rs.getString("ADDRESS"));
-				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				
 				placeList.add(place);
 			}
@@ -77,7 +70,6 @@ public class PlaceDAO {
 	} // getHashTagOfPackage END	
 	
 	
->>>>>>> origin/hskim3
 	/**
 	 * 
 	 * placeInfoRecommendedList
