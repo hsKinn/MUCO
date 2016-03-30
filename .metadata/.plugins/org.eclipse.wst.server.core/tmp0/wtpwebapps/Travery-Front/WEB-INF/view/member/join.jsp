@@ -42,6 +42,10 @@
 			form.attr("method", "post");
 			form.attr("action", "<c:url value="/doJoin"/>");
 			form.submit();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/YBH2
 		} );
 		
 
@@ -80,6 +84,11 @@
 					});
 			});
 	} );
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> origin/YBH2
 </script>
 
 <!-- Join -->

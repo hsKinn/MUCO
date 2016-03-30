@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
 		<item value="dottedDiv" key="selection"/>
+=======
+		<item value="$.jqplot" key="selection"/>
+>>>>>>> origin/YBH2
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 <<<<<<< HEAD
 			<item value="dottedDiv"/>
 			<item value="#333333"/>
@@ -22,15 +27,31 @@
 			<item value="myPack"/>
 			<item value="filter"/>
 >>>>>>> origin/bjg3
+=======
+			<item value="$.jqplot"/>
+			<item value="jqplot"/>
+			<item value=".tab"/>
+			<item value="tgl_cont"/>
+			<item value="Naver"/>
+			<item value="naver"/>
+			<item value="NAVER"/>
+			<item value="네이버"/>
+>>>>>>> origin/YBH2
 		</list>
 		<list key="replacehistory">
+			<item value="TRAVERY"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="261" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
+<<<<<<< HEAD
 		<item value="668" key="DIALOG_X_ORIGIN"/>
 		<item value="275" key="DIALOG_Y_ORIGIN"/>
+=======
+		<item value="1155" key="DIALOG_X_ORIGIN"/>
+		<item value="188" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> origin/YBH2
 	</section>
 </section>

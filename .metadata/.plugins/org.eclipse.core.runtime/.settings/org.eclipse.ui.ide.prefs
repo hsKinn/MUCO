@@ -1,5 +1,6 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
+<<<<<<< HEAD
 >>>>>>>=origin/YBH2
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1
@@ -10,5 +11,13 @@ SWITCH_PERSPECTIVE_ON_PROJECT_CREATION=never
 >>>>>>> origin/bjg3
 eclipse.preferences.version=1
 platformState=1454299362712
+=======
+>>>>>>>=origin/KGM2
+IMPORT_FILES_AND_FOLDERS_RELATIVE=true
+IMPORT_FILES_AND_FOLDERS_TYPE=23,1
+PROBLEMS_FILTERS_MIGRATE=true
+eclipse.preferences.version=1
+platformState=1454290167487
+>>>>>>> origin/YBH2
 quickStart=false
 tipsAndTricks=true

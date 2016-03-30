@@ -61,26 +61,13 @@
 		
 		var $ = jQuery;
 
-		$('#focus-single').click(function() {
-			$('#map1').vectorMap('set', 'focus', {
-				region : 'AU',
-				animate : true
-			});
-		});
 		$('#focus-multiple').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				regions : [ 'KR', 'JP' ],
 				animate : true
 			});
 		});
-		$('#focus-coords').click(function() {
-			$('#map1').vectorMap('set', 'focus', {
-				scale : 7,
-				lat : 35,
-				lng : 33,
-				animate : true
-			});
-		});
+
 		$('#focus-init').click(function() {
 			$('#map1').vectorMap('set', 'focus', {
 				scale : 1,
@@ -89,6 +76,7 @@
 				animate : true
 			});
 		});
+
 		$('#map1').vectorMap({
 			map : 'world_mill_en',
 			panOnDrag : true,
@@ -118,6 +106,7 @@
 									$('#countries').append('<div class="selectedCountry" id= "' + map.getRegionName(code) + '">' + map.getRegionName(code) + '</div>');
 								} else {
 									$('#'+ map.getRegionName(code)).remove();
+
 								}
 							} else {
 								alert("세션이 만료되었습니다. 다시 로그인해주세요.");
@@ -130,7 +119,6 @@
 				regions : [ {
 					scale : [],
 					normalizeFunction : 'polynomial'
-					
 				}]
 			}
 		});

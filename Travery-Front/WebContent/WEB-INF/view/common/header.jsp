@@ -49,8 +49,9 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="traveryIcon">
-				<a href="<c:url value="/"/>"> <img
-					src="<c:url value="/resource/img/common/traveryIcon.PNG"/>"
-					alt="traveryIcon" />
+
+				<a href="<c:url value="/"/>">
+					<img src="<c:url value="/resource/img/common/traveryIcon.PNG"/>" alt="traveryIcon" />
+
 				</a>
 			</div>

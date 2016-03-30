@@ -1,9 +1,16 @@
 package com.ktds.muco.table.qna.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.qna.vo.QNAVO;
+import com.ktds.muco.util.xml.XML;
 
 /**
  * 
@@ -11,6 +18,46 @@ import java.sql.SQLException;
  *
  */
 public class QNADAO {
+	
+	public List<QNAVO> getFAQList() {
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<QNAVO> faqList = new ArrayList<QNAVO>();
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/qna/getFAQList/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			QNAVO qnaVO = null;
+			while ( rs.next() ) {
+				qnaVO = new QNAVO();
+				
+				qnaVO.setQnaId(rs.getInt("QNA_ID"));
+				qnaVO.setQndDate(rs.getString("QNA_DT"));
+				qnaVO.setTitle(rs.getString("TITLE"));
+				qnaVO.setDescription(rs.getString("DESCRIPTION"));
+				
+				faqList.add(qnaVO);
+			}
+			
+			return faqList;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(),e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}	
+		
+	}
 
 	/**
 	 * 
@@ -54,4 +101,5 @@ public class QNADAO {
 			}
 		}
 	}
+
 }

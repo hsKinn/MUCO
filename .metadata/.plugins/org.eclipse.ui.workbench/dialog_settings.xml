@@ -19,8 +19,11 @@
 	<section name="NewWizardAction">
 		<item value="org.eclipse.jst.jsp.ui.internal.wizard.NewJSPWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+<<<<<<< HEAD
 			<item value="org.eclipse.jdt.ui.java"/>
 			<item value="org.eclipse.wst.jsdt.ui.java"/>
+=======
+>>>>>>> origin/YBH2
 			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
@@ -30,6 +33,9 @@
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
+<<<<<<< HEAD
 	<section name="ZipFileImportWizard">
 	</section>
+=======
+>>>>>>> origin/YBH2
 </section>

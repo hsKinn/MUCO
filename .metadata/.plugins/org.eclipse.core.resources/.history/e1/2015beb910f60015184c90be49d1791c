@@ -1,0 +1,24 @@
+package com.ktds.muco.table.qna.biz;
+
+import com.ktds.muco.table.qna.dao.QNADAO;
+import com.ktds.muco.table.qna.vo.QNAVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class QNABiz {
+	
+	private QNADAO qnaDAO;
+	
+	public QNABiz() {
+		qnaDAO = new QNADAO();
+	}
+
+	public QNAVO getFAQList() {
+		QNAVO qnaVO = qnaDAO.getFAQList();
+		return qnaVO;
+	}
+
+}

@@ -26,6 +26,8 @@
 </script>
 
 <div id="logout">로그아웃</div>
+<%-- <div id="accessMember">${member.email }님 접속 중</div> --%>
+
 
 <!-- Close "#header" -->
 </div>

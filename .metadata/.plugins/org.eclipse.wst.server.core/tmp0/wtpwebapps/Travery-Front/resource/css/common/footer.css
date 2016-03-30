@@ -1,6 +1,11 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
+
+div.clear {
+	clear:both;
+}
+
 div#footer {
 	background-color: #333333;
 	color: #ffffff;
@@ -9,4 +14,262 @@ div#footer {
 	width: 100%;
 	bottom: 0;
 	padding: 10px;
+	z-index:999;
 }
+
+div.collapse.navbar-collapse {
+	padding-left: 50px;
+}
+
+div#terms, #copyright{
+	width:50%;
+	color:#ffffff;
+	float:left;
+}
+
+div.termsAccess a {
+	color:#ffffff;
+}
+
+#terms .termsAccess{
+	padding-left: 20%;
+	color:#ffffff;
+	float:left;
+}
+
+#terms a:hover {
+	color:#4aa5ff;
+	text-decoration:none;
+}
+
+div.tab-content {
+	background-color:#e6e6e6;
+}
+
+div.row.content {
+	background-color:#e6e6e6;
+}
+
+div.col-sm-2.sidenav {
+	background-color:#e6e6e6;
+    width:55%; 
+    height:48%;
+    margin-left: 20px;
+    float: none;
+    margin:auto;
+   
+}
+
+div.col-sm-2.sidenav a{
+	text-decoration:none;
+	color: #797979;
+	
+}
+
+div.col-sm-2.sidenav a:hover{
+	color:#202020;
+}
+
+div.col-sm-8.text-left {
+	background-color:#e6e6e6;
+    width:55%;
+	margin:auto;
+	margin-top: 20px;
+	float:none;
+}
+
+div.col-sm-8.text-left a {
+	font-size:15px;
+	text-decoration:none;
+	color:#333333;
+}
+
+div.col-sm-8.text-left li, p {
+	color: #5f5f5f;
+}
+
+dl.dl1{
+	margin-top:20px;
+	margin-left:5%;
+	width:40%;
+	float:left;
+}
+
+dl.dl1 dt {
+	padding-top: 5px;
+	color: #333333;
+}
+
+dl.dl2 {
+	margin-top:20px;
+	width:40%;
+	float:right;
+}
+
+dl.dl2 dt {
+	padding-top: 5px;
+}
+
+.gotop{position:fixed; _position:absolute; left:51%; top:556px; width:960px; margin-left:-480px; text-align:right; clear:both}
+.gotop a{display:block; float:right; position:relative; right:-22px; padding:6px 1px 2px 1px; font:10px Verdana; color:#666; background:url(http://static.naver.net/rules/r8/bu_arrow3.gif) no-repeat 6px 2px}
+
+
+
+
+<!-- -->
+
+
+
+
+#content{clear:both;position:relative;width:960px;margin:0 auto;z-index:1}
+#content .mark_title{overflow:hidden;position:relative; width:960px; margin:0 auto; padding:3px 0 4px; border-bottom:1px solid #efefef}
+#content .mark_title h3{padding:0 0 10px}
+#content .mark_title .mk_act{position:absolute;top:17px;right:0}
+#content .mark_title .mk_act2{position:absolute;top:17px;right:210px}
+#content .mark_section0{overflow:hidden;width:900px;margin:0 auto;padding:62px 0 46px;border-bottom:1px solid #efefef}
+#content .mark_section1{overflow:hidden;width:900px;margin:0 auto;padding:63px 0 46px;border-bottom:1px solid #efefef}
+#content .mark_section2{overflow:hidden;width:900px;margin:0 auto;padding:63px 0 47px;border-bottom:1px solid #efefef}
+#content .mark_section3{overflow:hidden;width:900px;margin:0 auto;padding:63px 0 47px;border-bottom:1px solid #efefef}
+#content .mark_section4{overflow:hidden;width:900px;margin:0 auto;padding:63px 0 31px;*padding-bottom:79px}
+#content .info_area{overflow:hidden}
+#content .mark{float:left}
+#content .result{overflow:hidden;float:left}
+#content .result dt{font-size:0}
+#content .result dd{margin-bottom:12px;font-size:0}
+#content .mark_section3 .result dt+dd+dd{margin-bottom:6px}
+#content .easy{position:relative;margin:0 0 38px}
+#content .easy_lnk1{position:absolute;top:0;left:208px;width:327px;height:76px;background-color:#fff;opacity:0;filter:alpha(opacity=0)}
+#content .easy_lnk2{position:absolute;top:0;left:535px;width:343px;height:76px;background-color:#fff;opacity:0;filter:alpha(opacity=0)}
+
+#content .index{position:relative; padding:40px 40px 29px 40px; border-bottom:1px solid #e5e5e5; width:880px; _width /**/:960px}
+#content .index .print{position:absolute; top:34px; right:40px; clear:both}
+#content .index p{margin-bottom:20px}
+#content .index .dl{overflow:hidden; _height:1%}
+#content .index .dl dl{width:439px; overflow:hidden}
+#content .index .dl .dl1{float:left}
+#content .index .dl .dl2{float:right}
+#content .index .dl dt{width:48px; height:22px; float:left}
+#content .index .dl dd{width:391px; height:22px; float:right}
+#content .index .dl dd a{font-weight:bold; letter-spacing:-1px}
+#content .index h3{margin:0 0 20px 0; font:bold 14px 돋움, Dotum; letter-spacing:-1px; color:#333}
+#content .index .ol{overflow:hidden; _height:1%}
+#content .index .ol ol{float:left}
+#content .index .ol li{height:22px}
+#content .index .ol .first_letter{display:block; float:left; text-align:right; padding-right:8px}
+#content .index .ol .ol1{margin-right:213px}
+#content .index .ol .ol1 .first_letter{width:14px}
+#content .index .ol .ol2 .first_letter{width:18px}
+#content .index .ol a{font-weight:bold; letter-spacing:-1px}
+
+#content .section{padding:40px 40px 45px 40px}
+#content .section p,
+#content .section li{position:relative}
+#content .section .mt43{margin-top:43px}
+#content .section .mt20{margin-top:20px !important}
+#content .section .mt10{margin-top:10px}
+#content .section .mb0{margin-bottom:0}
+#content .section .pb3{padding-bottom:3px}
+
+#content .section .contact{margin:5px 0 23px 18px; padding:20px 30px 20px 0; background:#f7f7f7}
+#content .section .contact .line{border-left:1px solid #e5e5e5}
+#content .section .contact th{text-align:left; color:#333; padding:5px 0 9px 29px; letter-spacing:-1px;border:0}
+#content .section .contact td{padding:3px 0 3px 29px}
+
+#content .section .section_soc{overflow:hidden;padding:0 0 84px 23px;zoom:1}
+#content .section .section_soc li{display:inline;float:left;margin-right:20px}
+#content .section .section_soc li.last{margin-right:0}
+#content .section .section_soc li .lg{margin-bottom:17px}
+#content .section .section_soc li h5{height:26px}
+
+#content.privacy{padding-bottom:20px;font-size:13px;word-break:keep-all;}
+#content.privacy .sp{display:inline-block;overflow:hidden;background-image:url(http://static.naver.net/www/rules/sp_privacy.png);text-indent:-9999em}
+#content.privacy .title h2{margin-bottom:9px;font:bold 30px '나눔고딕',NanumGothic;color:#000;letter-spacing:-2px}
+#content.privacy .title h2 .ver{font:bold 16px '돋움',dotum;color:#333;letter-spacing:0}
+#content.privacy .title p{font:normal 13px '나눔고딕',NanumGothic;color:#808080;letter-spacing:-1px}
+#content.privacy .title .link{position:absolute;right:0;bottom:33px;font:normal 12px '나눔고딕',NanumGothic}
+#content.privacy .index{overflow:hidden;width:100%;padding:40px 0;border:0 none}
+#content.privacy .index h3{float:left;width:160px;height:150px;margin:0 40px;background-position:-10px -10px}
+#content.privacy .index > div{float:left;height:150px;padding-left:40px;border-left:1px solid #e5e5e5}
+#content.privacy .index > div > p,
+#content.privacy .index > div > a{display:block;overflow:hidden;margin:0}
+#content.privacy .index .i1{width:285px}
+#content.privacy .index .i1 p{width:195px;height:100px;background-position:-178px -10px}
+#content.privacy .index .i1 a{width:195px;height:50px;background-position:-178px -110px}
+#content.privacy .index .i2{}
+#content.privacy .index .i2 p{width:201px;height:100px;background-position:-381px -10px}
+#content.privacy .index .i2 a{width:201px;height:50px;background-position:-381px -110px}
+#content.privacy .section{padding:46px 40px 63px;border-top:1px solid #e5e5e5}
+#content.privacy .section h3,
+#content.privacy .section h4{margin-bottom:25px;font:normal 26px '나눔고딕',NanumGothic;color:#000;letter-spacing:-2px}
+#content.privacy .section p{margin:13px 0 0}
+#content.privacy .section table + p{margin-top:19px;}
+#content.privacy .section .btn_area + p,
+#content.privacy .section .contact + p{margin-top:19px;}
+#content.privacy .section table{margin-top:17px;font-size:12px;line-height:inherit}
+#content.privacy .section table th,
+#content.privacy .section table td{padding:5px 12px 3px;border:1px solid #ddd;text-align:left}
+#content.privacy .section table thead th{border-bottom:0 none;background-color:#f7f7f7;text-align:center}
+#content.privacy .section table tbody th{font-weight:normal}
+#content.privacy .section .shortcut{overflow:hidden;margin:30px 0 7px;padding:24px 27px 20px;border:3px solid #e5e5e5}
+#content.privacy .section .shortcut p{margin-top:0;}
+#content.privacy .section .shortcut ol{float:left;margin-top:16px;padding-top:18px;border-top:1px solid #f0f0f0}
+#content.privacy .section .shortcut ol.sc1{width:47%}
+#content.privacy .section .shortcut ol.sc2{width:53%}
+#content.privacy .section .shortcut ol li{margin-top:3px;font-size:15px}
+#content.privacy .section .shortcut ol li:first-child{margin-top:0;}
+#content.privacy .section .shortcut ol li i{display:inline-block;width:13px;margin-right:7px;text-align:right}
+#content.privacy .section .shortcut ol.sc1 li i{width:15px}
+#content.privacy .section .shortcut ol.sc2 li i{width:21px}
+#content.privacy .section .shortcut ol li a{font-weight:bold;color:#666;letter-spacing:-0.075em}
+#content.privacy .section .sec{margin-top:-4px}
+#content.privacy .section h4 + .sec{margin-top:-17px;}
+#content.privacy .section .sec > li{overflow:hidden;padding:23px 0 33px;font-size:13px;border-top:1px solid #f0f0f0}
+#content.privacy .section .sec > li.first{padding-top:0;border-top:0 none}
+#content.privacy .section .sec > li.last{padding-bottom:0;}
+#content.privacy .section .sec > li > p:first-child > strong,
+#content.privacy .section .b{display:inline-block;margin-bottom:1px;font-weight:bold;font-size:15px;line-height:1.5;letter-spacing:-0.075em}
+#content.privacy .section .bu{margin:13px 0 0;line-height:1.65}
+#content.privacy .section .bu i{overflow:hidden;position:absolute;top:8px;#top:5px;left:0;width:5px;height:1px;background:url(http://static.naver.net/www/rules/sp_privacy.png) -621px -10px}
+#content.privacy .section .bu > li{position:relative;margin-top:6px;padding-left:15px}
+#content.privacy .section .bu > dt{position:relative;margin-top:6px;padding-left:15px}
+#content.privacy .section .bu > dd{padding-left:15px}
+#content.privacy .section .contact{overflow:hidden;margin:17px 0 20px;padding:19px 0;border:1px solid #e1e1e1;background-color: #fafafa;}
+#content.privacy .section .contact dl{position:relative;float:left;width:50%;margin-left:-1px;border-left:1px solid #e1e1e1;}
+#content.privacy .section .contact dt,
+#content.privacy .section .contact dd{padding-left:22px;}
+#content.privacy .section .contact dt{margin-bottom:13px;font-weight: bold;}
+#content.privacy .section .contact dd.tel{position:absolute;top:35px;left:50%;}
+#content.privacy .section .contact dd.em{position:absolute;top:57px;left:50%;}
+#content.privacy .section .link{display:block;margin-top:18px;}
+#content.privacy .section .tgl_more{display:block;color:#666;text-decoration:none}
+#content.privacy .section .ico_tgl{display:inline-block;width:20px;height:20px;margin-left:5px;background-position:-591px -10px;vertical-align:-5px;#vertical-align:0}
+#content.privacy .section .ico_tgl.on{background-position:-591px -40px}
+#content.privacy .section .tgl_cont{display:none;margin:16px 0 7px;padding:20px 22px 17px;border:1px solid #e1e1e1;background-color:#fafafa}
+#content.privacy .section .tgl_cont dt{margin:20px 0 10px;font-weight:bold}
+#content.privacy .section .tgl_cont dt:first-child{margin-top:0}
+#content.privacy .section .btn_area{overflow:hidden;margin-top:4px;}
+#content.privacy .section .sec > li .btn_area{margin-bottom:7px;}
+#content.privacy .section p + .btn_area{margin-top:5px;}
+#content.privacy .section .btn_area a{float:left;height:44px;margin:12px 9px 0 0}
+#content.privacy .btn0_1{width:163px;background-position:-10px -170px}
+#content.privacy .btn0_2{width:176px;background-position:-183px -170px}
+#content.privacy .btn0_3{width:225px;background-position:-369px -170px}
+#content.privacy .btn1_1{width:421px;background-position:-10px -224px}
+#content.privacy .btn2_1{width:305px;background-position:-441px -224px}
+#content.privacy .btn2_2{width:332px;background-position:-10px -278px}
+#content.privacy .btn4_1{width:305px;background-position:-352px -278px}
+#content.privacy .btn4_2{clear:both;width:332px;background-position:-10px -332px}
+#content.privacy .btn4_3{width:409px;background-position:-352px -332px}
+#content.privacy .btn7_1{width:280px;background-position:-10px -386px}
+#content.privacy .btn7_2{width:243px;background-position:-300px -386px}
+#content.privacy .btn7_3{width:166px;background-position:-10px -440px}
+#content.privacy .btn7_4{width:143px;background-position:-186px -440px}
+
+
+
+
+<!-- -->
+
+
+
+

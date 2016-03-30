@@ -9,7 +9,17 @@
 
 <!-- Footer -->
 <div class="clear"></div>
-<div id="footer">footer</div>
+<div id="footer">
+	<div id="terms">
+		<div class="termsAccess"><a href="/termsAccess?menuNo=1">이용약관</a></div>
+		<div class="termsAccess"><a href="/termsAccess?menuNo=2">개인정보취급방침</a></div>
+		<div class="termsAccess"><a href="/termsAccess?menuNo=3">FAQ</a></div>
+	</div>
+	<div id="copyright">
+		Copyright © TRAVERY Co.,Ltd. All Rights Reserve
+	</div>
+
+</div>
 
 <!-- Close "#wrapper" -->
 </div>

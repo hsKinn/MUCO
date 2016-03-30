@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<qualifiedTypeNameHistroy/>
-=======
 <qualifiedTypeNameHistroy>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="com.oracle.jrockit.jfr.RequestDelegate"/>
@@ -20,3 +18,7 @@
 <fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
 </qualifiedTypeNameHistroy>
 >>>>>>> origin/bjg3
+=======
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+</qualifiedTypeNameHistroy>
+>>>>>>> origin/YBH2

@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#logout {
+	margin-top: 60px;
+	margin-right: 10px;
+	text-align: center;
+	background-color: #8b8b8b;
+	padding-top: 7px;
+	width: 80px;
+	height: 30px;
+	color: #333333;
+	float: right;
+	cursor: pointer;
+}
