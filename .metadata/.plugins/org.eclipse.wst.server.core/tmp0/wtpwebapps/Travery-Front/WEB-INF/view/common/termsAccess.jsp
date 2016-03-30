@@ -63,7 +63,15 @@
 <div class="tab-content" >
 
 	<!--  이용약관  -->
-	<div id="menu1" class="tab-pane fade in active" >    
+	<c:if test="${menuNo eq 1 }">
+		<div id="menu1" class="tab-pane fade in active" >
+	</c:if>
+	<c:if test="${menuNo eq 2 }">
+		<div id="menu1" class="tab-pane fade" >
+	</c:if>
+	<c:if test="${menuNo eq 3 }">
+		<div id="menu1" class="tab-pane fade" >
+	</c:if>
 	  <div class="row content" style="width:100%;">
 	  
 	    <div class="col-sm-2 sidenav">
@@ -442,7 +450,7 @@
 			<ol>
 			<li><span class="first_letter">①</span>이 약관은 2016년 4월 1일부터 적용됩니다. </li>
 			<div id="gotop" class="gotop">
-				<a href="javascript:scrollTo(0, 0);"><span style="font-size: 12px;">top</span></a>
+				<a href="javascript:scrollTo(0, 0);"><span style="font-size: 12px ;">top</span></a>
 			</div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>

@@ -1,7 +1,0 @@
-@CHARSET "UTF-8";
-
-/* 김광민 */
-
-div#footer {
-	background-color: #333333;
-}

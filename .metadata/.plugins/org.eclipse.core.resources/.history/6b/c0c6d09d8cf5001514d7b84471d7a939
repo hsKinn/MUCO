@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<c:if test="${menuNo eq 1 }">
+<div id="menu3" class="tab-pane fade">
+</c:if>
+<c:if test="${menuNo eq 2 }">
+<div id="menu3" class="tab-pane fade">
+</c:if>
+<c:if test="${menuNo eq 3 }">
+<div id="menu3" class="tab-pane fade in active">
+</c:if>
+
+
+
+<!-- container -->
+	<div id="container">
+	
+	    <!-- //ticker notice -->
+	    <div class="content_wrap main">
+    	    <div id="content">
+    	        <div class="m_section">
+    	            <h2><span class="blind">고객센터를 통해 궁금증을 해결하세요.</span></h2>
+    	            <!-- [D] 선택탭의 경우 li 요소에 클래스 on 적용 -->
+    	            
+    	            <div class="rep_area" >
+        	            <h3 class="blind">대표서비스</h3>
+        	            <ul class="lst_rep_servs">        	            
+        	            <li><a href="/support/service/main.nhn?serviceNo=532" onClick="clickcr(this, 'icn.id', '', '', event)" class="svs_ic">회원정보</a></li>
+        	            <li><a href="/support/service/main.nhn?serviceNo=2342" onClick="clickcr(this, 'icn.mail', '', '', event)" class="svs_ic2">메일</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=606" onClick="clickcr(this, 'icn.usrc', '', '', event)" class="svs_ic6">통합검색</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=639" onClick="clickcr(this, '', '', '', event)" class="svs_ic16">메모</a></li> <!-- 신규건 -->
+                        <li><a href="/support/service/main.nhn?serviceNo=803" onClick="clickcr(this, 'icn.nstore', '', '', event)" class="svs_ic15">N스토어</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=572" onClick="clickcr(this, 'icn.music', '', '', event)" class="svs_ic10">뮤직</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=800" onClick="clickcr(this, 'icn.movie', '', '', event)" class="svs_ic9">영화</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=702" onClick="clickcr(this, 'icn.book', '', '', event)" class="svs_ic11">책</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=607" onClick="clickcr(this, 'icn.register', '', '', event)" class="svs_ic20">마이비즈니스</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=768" onClick="clickcr(this, 'icn.map', '', '', event)" class="svs_ic8">지도</a></li>
+                        <li><a href="/support/service/main.nhn?serviceNo=635" onClick="clickcr(this, 'icn.calender', '', '', event)" class="svs_ic17">캘린더</a></li>
+                        
+                        </ul>
+    	            </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

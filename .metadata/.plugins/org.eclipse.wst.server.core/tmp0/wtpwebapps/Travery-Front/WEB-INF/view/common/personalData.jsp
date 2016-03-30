@@ -13,9 +13,15 @@
 
 <!-- 개인정보취급방침 페이지 -->
 
+<c:if test="${menuNo eq 1 }">
 <div id="menu2" class="tab-pane fade">
-
-
+</c:if>
+<c:if test="${menuNo eq 2 }">
+<div id="menu2" class="tab-pane fade in active">
+</c:if>
+<c:if test="${menuNo eq 3 }">
+<div id="menu2" class="tab-pane fade">
+</c:if>
 	<div id="content" class="privacy">
 
         <div class="section">

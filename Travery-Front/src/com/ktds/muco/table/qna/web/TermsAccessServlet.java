@@ -8,18 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ktds.muco.table.qna.biz.QNABiz;
+import com.ktds.muco.table.qna.vo.QNAListVO;
+
 /**
  * Servlet implementation class TermsAccessServlet
  */
 public class TermsAccessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private QNABiz qnaBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public TermsAccessServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        qnaBiz = new QNABiz();
     }
 
 	/**
@@ -36,7 +41,11 @@ public class TermsAccessServlet extends HttpServlet {
 		
 		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
 		
+//		QNAListVO faq = qnaBiz.getFAQList();
+
+		
 		request.setAttribute("menuNo", menuNo);
+//		request.setAttribute("faq", faq);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/common/termsAccess.jsp");
 		rd.forward(request, response);

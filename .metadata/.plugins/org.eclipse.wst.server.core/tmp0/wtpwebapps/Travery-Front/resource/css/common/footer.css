@@ -113,7 +113,13 @@ dl.dl2 dt {
 .gotop{position:fixed; _position:absolute; left:51%; top:556px; width:960px; margin-left:-480px; text-align:right; clear:both}
 .gotop a{display:block; float:right; position:relative; right:-22px; padding:6px 1px 2px 1px; font:10px Verdana; color:#666; background:url(http://static.naver.net/rules/r8/bu_arrow3.gif) no-repeat 6px 2px}
 
+
+
+
 <!-- -->
+
+
+
 
 #content{clear:both;position:relative;width:960px;margin:0 auto;z-index:1}
 #content .mark_title{overflow:hidden;position:relative; width:960px; margin:0 auto; padding:3px 0 4px; border-bottom:1px solid #efefef}
@@ -134,7 +140,6 @@ dl.dl2 dt {
 #content .easy{position:relative;margin:0 0 38px}
 #content .easy_lnk1{position:absolute;top:0;left:208px;width:327px;height:76px;background-color:#fff;opacity:0;filter:alpha(opacity=0)}
 #content .easy_lnk2{position:absolute;top:0;left:535px;width:343px;height:76px;background-color:#fff;opacity:0;filter:alpha(opacity=0)}
-
 
 #content .index{position:relative; padding:40px 40px 29px 40px; border-bottom:1px solid #e5e5e5; width:880px; _width /**/:960px}
 #content .index .print{position:absolute; top:34px; right:40px; clear:both}
@@ -175,8 +180,6 @@ dl.dl2 dt {
 #content .section .section_soc li.last{margin-right:0}
 #content .section .section_soc li .lg{margin-bottom:17px}
 #content .section .section_soc li h5{height:26px}
-
-
 
 #content.privacy{padding-bottom:20px;font-size:13px;word-break:keep-all;}
 #content.privacy .sp{display:inline-block;overflow:hidden;background-image:url(http://static.naver.net/www/rules/sp_privacy.png);text-indent:-9999em}
@@ -261,5 +264,12 @@ dl.dl2 dt {
 #content.privacy .btn7_2{width:243px;background-position:-300px -386px}
 #content.privacy .btn7_3{width:166px;background-position:-10px -440px}
 #content.privacy .btn7_4{width:143px;background-position:-186px -440px}
+
+
+
+
+<!-- -->
+
+
 
 

@@ -161,6 +161,14 @@
 	</placeReply>
 	
 	<qna>
+		<getFAQList>
+			SELECT	QNA_ID
+					, QNA_DT
+					, TITLE
+					, DESCRIPTION
+			FROM 	QNA
+			WHERE 	IS_FAQ = 1;
+		</getFAQList>
 	</qna>
 	
 	<rent>
