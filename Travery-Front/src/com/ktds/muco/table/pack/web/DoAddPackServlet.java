@@ -13,6 +13,7 @@ import com.ktds.muco.table.file.biz.FileBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.util.file.DownloadUtil;
 import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.file.MultipartHttpServletRequest;
 
@@ -42,23 +43,47 @@ public class DoAddPackServlet extends HttpServlet {
 		String title = multipartRequest.getParameter("title");
 		// String tag = multipartRequest.getParameter("tag");
 		MultipartFile file = multipartRequest.getFile("file");
-
+		String isPublic =(String)multipartRequest.getParameter("packData_IsPublic");
+		
+		int intIsPublic = 0;
+		
+		System.out.println("isPublic :" +isPublic );
+		if(isPublic != null && isPublic.equals("1")){
+			System.out.println("공유");
+			intIsPublic = 1;
+		}else{
+			System.out.println("비공유");
+		}
+		
 		HttpSession session = request.getSession();
 		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
 
 		PackVO newAddPack = new PackVO();
 		newAddPack.setEmail(loginMember.getEmail());
 		newAddPack.setPackTitle(title);
+		newAddPack.setIsPublic(intIsPublic);
 
 		int packId = packBiz.addPack(newAddPack);
 
+<<<<<<< HEAD
 		if (file != null && file.getFileName().length() > 0) {
 			// file이 null이면 파일을 업로드 안한것
 			File upFile = file.write("D:\\" + file.getFileName());
+=======
+		File upFile = null;
+		
+		if (file != null && file.getFileName().length() >0) {
+			// file이 null이면 파일을 업로드 안한것
+			upFile = file.write("D:\\" + file.getFileName());			
+			fileBiz.uploadPackImgFile(packId, upFile);
+		}else{
+			upFile = file.write("D:\\basic0.jpg");
+>>>>>>> origin/bjg3
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
+		
 
-		response.sendRedirect("/myPack");
+		response.sendRedirect("/detailPack");
 	}
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="SearchDialog.ScopePart">
+<<<<<<< HEAD
 		<item value="2" key="scope"/>
 		<list key="lastUsedWorkingSetNames">
 			<item value="admin"/>
@@ -8,17 +9,25 @@
 	</section>
 	<section name="">
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+=======
+		<item value="0" key="scope"/>
+>>>>>>> origin/bjg3
 	</section>
 	<section name="">
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
 	</section>
 	<section name="TextSearchPage">
+<<<<<<< HEAD
 		<item value="2" key="HISTORY_SIZE"/>
+=======
+		<item value="1" key="HISTORY_SIZE"/>
+>>>>>>> origin/bjg3
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="false" key="REG_EX_SEARCH"/>
 		<item value="false" key="WHOLE_WORD"/>
 		<item value="false" key="SEARCH_DERIVED"/>
 		<section name="EXTENSIONS">
+<<<<<<< HEAD
 			<item value="*.jsp" key="0"/>
 			<item value="*" key="1"/>
 		</section>
@@ -40,12 +49,24 @@
 			<item value="2" key="scope"/>
 			<item value="false" key="isWholeWord"/>
 			<item value="getInt(1);" key="textPattern"/>
+=======
+			<item value="*" key="0"/>
+		</section>
+		<section name="HISTORY0">
+			<item value="true" key="ignoreCase"/>
+			<item value="0" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="redirect" key="textPattern"/>
+>>>>>>> origin/bjg3
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
 			</list>
 			<list key="workingSets">
+<<<<<<< HEAD
 				<item value="travery"/>
+=======
+>>>>>>> origin/bjg3
 			</list>
 		</section>
 	</section>
@@ -83,7 +104,12 @@
 		<item value="977" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="436" key="DIALOG_HEIGHT"/>
+<<<<<<< HEAD
 		<item value="619" key="DIALOG_X_ORIGIN"/>
 		<item value="248" key="DIALOG_Y_ORIGIN"/>
+=======
+		<item value="449" key="DIALOG_X_ORIGIN"/>
+		<item value="258" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> origin/bjg3
 	</section>
 </section>

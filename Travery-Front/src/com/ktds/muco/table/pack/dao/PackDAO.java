@@ -128,7 +128,12 @@ public class PackDAO {
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, newAddPack.getPackTitle());
 			stmt.setString(2, newAddPack.getEmail());
+<<<<<<< HEAD
 
+=======
+			stmt.setInt(3, newAddPack.getIsPublic());
+		
+>>>>>>> origin/bjg3
 			insertCount = stmt.executeUpdate();
 
 			if (insertCount > 0) {
@@ -198,7 +203,11 @@ public class PackDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
+<<<<<<< HEAD
 		List<PlaceVO> packs = new ArrayList<PlaceVO>();
+=======
+		List<PlaceVO> places = new ArrayList<PlaceVO>();
+>>>>>>> origin/bjg3
 
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
@@ -209,20 +218,20 @@ public class PackDAO {
 
 			rs = stmt.executeQuery();
 
-			PackVO pack = null;
+			PlaceVO placeVO= null;
 
 			while (rs.next()) {
-				pack = new PackVO();
-				pack.setPackId(rs.getInt("PACK_ID"));
-				pack.setPackTitle(rs.getString("PACK_TITLE"));
-				pack.setViewCount(rs.getInt("VIEW_COUNT"));
-				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
-				pack.setEmail(rs.getString("EMAIL"));
-				pack.setIsPublic(rs.getInt("IS_PUBLIC"));
-				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
-				pack.setShareImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
-
-				packs.add(pack);
+				placeVO = new PlaceVO();
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getInt("LATITUDE"));
+				placeVO.setLongitude(rs.getInt("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				places.add(placeVO);
 			}
 
 		} catch (SQLException e) {
@@ -230,8 +239,68 @@ public class PackDAO {
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
+<<<<<<< HEAD
 
 		return packs;
+=======
+		return places;
+	}
+	public int deletePlaceOfPack(int placeId, int packId) {
+		int deletePlaceOfPackCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/deletePlaceOfPack/text()");
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setInt(1, placeId);
+			stmt.setInt(2, packId);
+
+			deletePlaceOfPackCount = stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		return deletePlaceOfPackCount;
+	}
+	
+	
+	public int modifyPack(PackVO modifyPack) {
+		int modifyCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		System.out.println("dao"+modifyPack.getPackTitle());
+		String title = modifyPack.getPackTitle();
+		int isPublic = modifyPack.getIsPublic();
+		int packId = modifyPack.getPackId();
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/modifyPack/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, title);
+			stmt.setInt(2, isPublic);
+			stmt.setInt(3, packId);
+		
+			modifyCount = stmt.executeUpdate();
+			
+			System.out.println("modyCount"+modifyCount);
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		return modifyCount;
+>>>>>>> origin/bjg3
 	}
 
 	/**
@@ -277,4 +346,12 @@ public class PackDAO {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> origin/bjg3
 }

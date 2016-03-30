@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+
+	<city>
+	</city>
+	
+	<country>
+	</country>
+	
+	<evaluation>
+	</evaluation>
+	
+	<history>
+	</history>
+	
+	<image>
+	</image>
+	
+	<member>
+		<addNewMember>
+			INSERT INTO MEMBER (
+	                      			EMAIL
+	                       		 	, PASSWORD
+	                       			, NAME
+	                   			) 
+			VALUES              ( 
+	                        		?,
+	                        		?,
+	                        		?
+	                     		)
+     	</addNewMember>
+     	<getMemberByIdAndPassword>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     	</getMemberByIdAndPassword>
+	</member>
+	
+	<pack>
+		<getPackListByEmail>
+			SELECT  *
+			FROM    PACK
+			WHERE   EMAIL = ?
+		</getPackListByEmail>
+		<getPackDataByPackId>
+			SELECT  *
+			FROM    PACK
+			WHERE   PACK_ID = ?
+		</getPackDataByPackId>
+		<addPack>
+			INSERT INTO PACK (
+			                            PACK_ID
+			                            , SHARE_IMAGE_NAME
+			                            , PACK_TITLE
+			                            , EMAIL
+			                            , SHARE_IMAGE_LOCATION
+			                        ) 
+				VALUES              ( PACK_ID_SEQ.NEXTVAL
+			                          ,0
+			                          ,?
+			                          ,?
+			                          ,0
+			                          )
+		</addPack>
+		<getLatesPackId>
+			SELECT	PACK_ID_SEQ.CURRVAL
+			FROM	PACK
+		</getLatesPackId>
+		<uploadPackImgFile>
+			UPDATE PACK
+			SET    SHARE_IMAGE_NAME     = ?
+			       , SHARE_IMAGE_LOCATION = ?
+			WHERE  PACK_ID              = ?
+		</uploadPackImgFile>
+		<deletePack>
+			DELETE	
+			FROM	PACK
+			WHERE	PACK_ID=?
+		</deletePack>
+		<getPlaceListByPackId>
+			SELECT  P.PLACE_ID
+			        , PLACE_NAME
+			        , LATITUDE
+			        , LONGITUDE
+			        , ADDRESS
+			        , VIEW_COUNT
+			        , LIKE_COUNT
+			        , DESCRIPTION
+			        , IS_NEW_PLACE
+			FROM    PACK_PLACE PP
+			        , PLACE P
+			WHERE   PP.PLACE_ID = P.PLACE_ID
+			AND     PP.PACK_ID = ?
+		</getPlaceListByPackId>
+		<deletePlaceOfPack>
+			DELETE	
+			FROM	PACK_PLACE
+			WHERE	PLACE_ID=?
+			AND		PACK_ID=?
+		</deletePlaceOfPack>
+		<modifyPack>
+			
+		</modifyPack>
+	</pack>
+	
+	<packLike>
+	</packLike>
+	
+	<packReply>
+	</packReply>
+	
+	<place>
+	</place>
+	
+	<placeLike>
+	</placeLike>
+	
+	<placeReply>
+	</placeReply>
+	
+	<qna>
+	</qna>
+	
+	<rent>
+	</rent>
+	
+	<reportedMember>
+	</reportedMember>
+	
+	<reserve>
+	</reserve>
+	
+	<standard>
+	</standard>
+	
+	<stay>
+	</stay>
+	
+	<transport>
+	</transport>
+	
+</query>
+
+
+
+
+

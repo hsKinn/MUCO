@@ -4,7 +4,10 @@
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1
 PROBLEMS_FILTERS_MIGRATE=true
+<<<<<<< HEAD
 SWITCH_PERSPECTIVE_ON_PROJECT_CREATION=never
+=======
+>>>>>>> origin/bjg3
 eclipse.preferences.version=1
 platformState=1454299362712
 quickStart=false

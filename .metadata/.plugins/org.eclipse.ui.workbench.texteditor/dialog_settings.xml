@@ -8,12 +8,20 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="dottedDiv"/>
 			<item value="#333333"/>
 			<item value="&#x09;&#x09;if (!memberVO.isExistCountryByCountryName(selectedCountryName)) {"/>
 			<item value="yellow"/>
 			<item value="United"/>
 			<item value="united"/>
+=======
+			<item value="share_image_id"/>
+			<item value="&lt;servlet-class&gt;"/>
+			<item value="doAdd"/>
+			<item value="myPack"/>
+			<item value="filter"/>
+>>>>>>> origin/bjg3
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -22,7 +30,7 @@
 		<item value="261" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="838" key="DIALOG_X_ORIGIN"/>
+		<item value="668" key="DIALOG_X_ORIGIN"/>
 		<item value="275" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
