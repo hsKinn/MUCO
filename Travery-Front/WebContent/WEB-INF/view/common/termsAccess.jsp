@@ -57,8 +57,6 @@
 </nav>
 
 
-
-
 <div class="tab-content" >
 
 	<!--  이용약관  -->
@@ -71,7 +69,7 @@
 	<c:if test="${menuNo eq 3 }">
 		<div id="menu1" class="tab-pane fade" >
 	</c:if>
-	  <div class="row content" style="width:100%;">
+	  <div class="row content" style="width:100%; height:100%;">
 	  
 	    <div class="col-sm-2 sidenav">
 	    <hr>

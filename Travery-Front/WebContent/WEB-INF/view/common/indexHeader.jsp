@@ -50,8 +50,8 @@
 
 </head>
 <body>
-	<div id="wrapper">
-		<div id="header">
+	<div id="indexHeaderWrapper">
+		<div id="indexHeaderContents">
 			<div id="traveryIcon">
 				<span>
 				<a href="<c:url value="/"/>"> <img

@@ -12,19 +12,24 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/index.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/header.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/leftMenu.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/login.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/logout.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/join.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/country/country.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/footer.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/termsAccess.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/personalData.css"/>" />
+
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/logout.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/personalInfo.css"/>" />
+
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/country/country.css"/>" />
 
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/placeDetail.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
+
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/pack/myPack.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/pack/sharePack.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
+
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/personalInfo.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/placeDetail.css"/>" />
+
 
 <!-- Boot strap -->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -54,8 +59,8 @@
 
 </head>
 <body>
-	<div id="wrapper">
-		<div id="header">
+	<div id="haederWrapper">
+		<div id="headerContents">
 			<div id="traveryIcon">
 				<a href="<c:url value="/"/>">
 					<img src="<c:url value="/resource/img/common/traveryIcon.PNG"/>" alt="traveryIcon" />
