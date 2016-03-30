@@ -1,0 +1,50 @@
+package com.ktds.muco.table.place.biz;
+
+import java.util.List;
+
+import com.ktds.muco.table.place.dao.PlaceDAO;
+import com.ktds.muco.table.place.vo.PlaceListVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PlaceBiz {
+	/**
+	 * 
+	 * @author 김동규
+	 *
+	 */
+	private PlaceDAO placeDAO;
+
+	public PlaceBiz() {
+		placeDAO = new PlaceDAO();
+	}
+
+	public List<PlaceVO> placeInfoRecommendedList() {
+		return placeDAO.placeInfoRecommendedList();
+	}
+
+	public int placeInfoCreate(PlaceVO placeVO) {
+
+		String Description = placeVO.getDescription();
+		Description = Description.replaceAll("\n", "<br/>");
+		placeVO.setDescription(Description);
+		return placeDAO.insertPlaceInfo(placeVO);
+	}
+	
+	/**
+	 * @author 이기연
+	 * @param placeSearchVO
+	 * @return
+	 */
+
+	public PlaceListVO getPlaceList(PlaceSearchVO placeSearchVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

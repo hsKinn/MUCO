@@ -1,0 +1,5 @@
+package com.ktds.muco.table.country.vo;
+
+public class SelectedCountryVO {
+
+}

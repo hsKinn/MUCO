@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+div#memberListWrapper {
+   text-align: center;
+   background-color: #8ebe5a;
+   height: 100%;
+   padding: 15px;	
+   float: left;
+   padding-top: 70px;	
+}
+
+div#memberListWrapper table#tableList {
+	background-color: white;
+	border :solid 2px;
+	text-align: center;
+	margin-left: 150px;
+	margin-top: 30px;
+	width: 900px;
+}
+
+div#memberListWrapper div#buttonCollection {
+	float: right;
+}
+
+table#tableList th {
+	background-color: #333333;
+	color: #ffffff;
+}	

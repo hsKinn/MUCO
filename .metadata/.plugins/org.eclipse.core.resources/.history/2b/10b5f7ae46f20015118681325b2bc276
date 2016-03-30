@@ -1,0 +1,51 @@
+package com.ktds.muco.table.place.web;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class MapDataServlet
+ */
+public class MapDataServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MapDataServlet() {
+        super();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
+		String latitude = request.getParameter("lat");
+		String longitude = request.getParameter("lng");
+		String address = request.getParameter("address");
+		request.setAttribute("lat", latitude);
+		request.setAttribute("lng", longitude);
+		request.setAttribute("address", address);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoCreate.jsp");
+		rd.forward(request, response);
+		
+		
+	}
+
+}

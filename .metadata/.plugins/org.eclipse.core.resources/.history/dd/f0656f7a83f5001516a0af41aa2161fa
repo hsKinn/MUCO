@@ -1,0 +1,11 @@
+package com.ktds.muco.table.place.vo;
+
+import java.util.List;
+
+import com.ktds.muco.util.web.Paging;
+
+public class PlaceListVO {
+
+	private List<PlaceVO> placeList;
+	private Paging paging;
+}

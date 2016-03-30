@@ -1,0 +1,76 @@
+package com.ktds.muco.table.qna.vo;
+
+import com.ktds.muco.table.member.vo.MemberVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class QNAVO extends MemberVO {
+
+	private int qnaId;
+	private String qndDate;
+	private String title;
+	private String description;
+	private int isAnswer;
+	private String answerDescription;
+	private int isFaq;
+
+	public int getQnaId() {
+		return qnaId;
+	}
+
+	public void setQnaId(int qnaId) {
+		this.qnaId = qnaId;
+	}
+
+	public String getQndDate() {
+		return qndDate;
+	}
+
+	public void setQndDate(String qndDate) {
+		this.qndDate = qndDate;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getIsAnswer() {
+		return isAnswer;
+	}
+
+	public void setIsAnswer(int isAnswer) {
+		this.isAnswer = isAnswer;
+	}
+
+	public String getAnswerDescription() {
+		return answerDescription;
+	}
+
+	public void setAnswerDescription(String answerDescription) {
+		this.answerDescription = answerDescription;
+	}
+
+	public int getIsFaq() {
+		return isFaq;
+	}
+
+	public void setIsFaq(int isFaq) {
+		this.isFaq = isFaq;
+	}
+
+}

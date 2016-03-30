@@ -1,0 +1,14 @@
+package com.ktds.muco.table.selectedCountry.vo;
+
+import com.ktds.muco.table.member.vo.MemberVO;
+
+/**
+ * 
+ * 선택된 나라 리스트
+ * 
+ * @author 김광민
+ *
+ */
+public class SelectedCountryVO extends MemberVO {
+
+}
