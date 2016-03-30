@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Place Detail</title>
+</head>
+<body>
+
+<div id="detailWrapper">
+	<table id="detailTable">
+		<tr>
+			<th>여행지ID</th>
+			<th>여행지명</th>
+			<th>주소</th>
+			<th>조회수</th>
+			<th>추천수</th>
+			<th>최조등록자 이름</th>
+			<th>도시ID</th>
+		</tr>
+
+		<tr>
+			<td>${placeDetail.placeId}</td>
+			<td>${placeDetail.placeName}</td>
+			<td>${placeDetail.address}</td>
+			<td>${placeDetail.viewCount}</td>
+			<td>${placeDetail.likeCount}</td>
+			<td>${placeDetail.email}최조등록자 이름</td>
+			<td>${placeDetail.email}도시ID</td>
+		</tr>
+
+		<tr>
+			<th colspan="7">여행지 설명</th>
+		</tr>
+
+		<tr>
+			<td id="articleDescript" colspan="7">${placeDetail.description}</td>
+		</tr>
+
+		<tr>
+			<th colspan="7">파일</th>
+		</tr>
+
+		<tr>
+			<c:forEach items="${article.fileList}" var="file">
+				<td colspan="6"><a
+					href="<c:url value= "/download?fileId=${file.fileId}&articleId=${article.articleId}" />">${file.fileName}</a>
+				</td>
+			</c:forEach>
+		</tr>
+	</table>
+
+	<!-- 목록보기 -->
+	<div id="buttonCollection">
+		<div id="listCollection">
+			<a href="<c:url value="/list" />"><img id="showListBtn"
+				src="<c:url value="/resource/img/showListBtn.png" />"
+				style="cursor: pointer; width: 100px;"></a>
+
+			<!-- 글 수정/삭제 -->
+			<c:set var="loginId" value="${sessionScope._MEMBER_.memberId}" />
+			<c:set var="isAdmin" value="${sessionScope._MEMBER_.isAdmin() }" />
+			<c:if test="${loginId eq article.memberId || isAdmin}">
+				<a href="<c:url value="/delete?articleId=${article.articleId}" />"><img
+					class="deleteBtn"
+					src="<c:url value="/resource/img/deleteDetailBtn.png" />"
+					width=" 100px"></a>
+				<a href="<c:url value="/modify?articleId=${article.articleId}" />"><img
+					class="modifyBtn"
+					src="<c:url value="/resource/img/modifyBtn.png" />" width=" 100px"></a>
+			</c:if>
+		</div>
+		<div id="listCollectionTwo">
+			<form id="increaseRecommendsForm">
+				<img id="increaseRecommends" src="<c:url value="/resource/img/likeBtn.png" />">
+				<img id="reportArticle" src="<c:url value="/resource/img/reportBtn.png" />">
+				<input type="hidden" name="articleId" value="${article.articleId}">
+			</form>
+		</div>
+	</div>
+</div>	
+
+
+</body>
+</html>

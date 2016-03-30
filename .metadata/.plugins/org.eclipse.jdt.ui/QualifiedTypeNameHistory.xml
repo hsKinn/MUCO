@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceListVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
+</qualifiedTypeNameHistroy>
