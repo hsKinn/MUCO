@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.qna.vo.QNASearchVO;
 import com.ktds.muco.table.qna.vo.QNAVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -19,7 +20,7 @@ import com.ktds.muco.util.xml.XML;
  */
 public class QNADAO {
 	
-	public List<QNAVO> getFAQList() {
+	public List<QNAVO> getFAQList(QNASearchVO searchVO) {
 		loadOracleDriver();
 		
 		Connection conn = null;
@@ -33,6 +34,8 @@ public class QNADAO {
 			
 			String query = XML.getNodeString("//query/qna/getFAQList/text()");
 			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, searchVO.getEndIndex());
+			stmt.setInt(2, searchVO.getStartIndex());
 			
 			rs = stmt.executeQuery();
 			
@@ -41,7 +44,6 @@ public class QNADAO {
 				qnaVO = new QNAVO();
 				
 				qnaVO.setQnaId(rs.getInt("QNA_ID"));
-				qnaVO.setQndDate(rs.getString("QNA_DT"));
 				qnaVO.setTitle(rs.getString("TITLE"));
 				qnaVO.setDescription(rs.getString("DESCRIPTION"));
 				

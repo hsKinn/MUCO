@@ -29,10 +29,17 @@ public class Paging {
 	 *            count
 	 * @author 김광민
 	 */
+	
+	public Paging() {
+		this.printArticle = 10;
+		this.printPage = 10;
+	}
+	
 	public Paging(int printArticle) {
 		this.printArticle = printArticle;
 		this.printPage = 10;
 	}
+
 
 	public void setPageNumber(String pageNumber) {
 		this.pageNo = 0;

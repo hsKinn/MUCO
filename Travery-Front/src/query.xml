@@ -162,12 +162,21 @@
 	
 	<qna>
 		<getFAQList>
-			SELECT	QNA_ID
-					, QNA_DT
-					, TITLE
-					, DESCRIPTION
-			FROM 	QNA
-			WHERE 	IS_FAQ = 1;
+			SELECT	*
+			FROM	(
+						SELECT 	ROWNUM AS RNUM
+								, F.*
+						FROM	(
+									SELECT	QNA_ID
+											, TITLE
+											, DESCRIPTION
+									FROM 	QNA
+									WHERE 	IS_FAQ = 1
+									ORDER BY QNA_ID
+								) F
+						WHERE	ROWNUM &lt;= ?
+					)
+			WHERE	RNUM >= ?					
 		</getFAQList>
 	</qna>
 	
