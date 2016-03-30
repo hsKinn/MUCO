@@ -85,7 +85,7 @@ $(document).ready(function() {
 				<tr>
 				  <td class="pack" >	
 				  	<img src="<c:url value="/resource/img/pack/folder.png"/>" id="folderImg" /> 
-					<label id="title" for="packData_Title" style="font-size:20px; display: inline;">${packs.packTitle}</label>
+					<label id="title" for="packData_Title" style="font-size:20px; cursor: pointer;display: inline;">${packs.packTitle}</label>
 				  	<input type="hidden" id="packId" value="${packs.packId}"/>
 				  </td>
 				</tr>
@@ -120,8 +120,8 @@ $(document).ready(function() {
 				</label>
 				</div>
 				<div class="form-group">
-				<label for="viewCount">View Count :</label>
 				<span id="packData_viewCount" name="packData_viewCount"></span>
+				<label for="viewCount">View</label>
 				</div>
 				<div class="form-group">
 				<label for="likeCount">Like Count :</label>

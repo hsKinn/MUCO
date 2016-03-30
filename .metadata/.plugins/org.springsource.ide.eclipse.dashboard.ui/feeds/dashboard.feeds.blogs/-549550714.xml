@@ -5,7 +5,31 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-29T13:12:00Z</updated>
+  <updated>2016-03-30T01:36:08Z</updated>
+  <entry>
+    <title>This Week in Spring - March 29th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/30/this-week-in-spring-march-29th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-03-30:2447</id>
+    <updated>2016-03-30T01:36:08Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installation of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m working with customers and trying to bring the Spring (and hoping for the according weather!) to hitherto snow-covered Denver, Colorado.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the momentum behind the sensation that&amp;rsquo;s sweeping the nation, Spring Cloud, continues as it picks up speed heading to Spring Cloud Brixton&amp;rsquo;s final release! The &lt;a href="https://spring.io/blog/2016/03/24/spring-cloud-brixton-rc1-is-now-available"&gt;first release candidate, Spring Cloud RC1, is now available&lt;/a&gt;! The new release has a &lt;em&gt;lot&lt;/em&gt; of new features - make sure to consult the &lt;code&gt;README&lt;/code&gt;!&lt;/li&gt;
+  &lt;li&gt;Joe Stein&amp;rsquo;s &lt;a href="https://spring.io/blog/2016/03/29/springone2gx-2015-replay-developing-real-time-data-pipelines-with-apache-kafka"&gt;&lt;em&gt;Developing Real-Time Data Pipelines with Apache Kafka&lt;/em&gt; from SpringOne2GX 2015 talk replay is now up&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Social lead Craig Walls&amp;rsquo; &lt;a href="https://spring.io/blog/2016/03/29/springone2gx-2015-replay-a-spring-developer-s-guide-to-social-integration"&gt;SpringOne2GX 2015 talk on developing social applications with Spring Social&lt;/a&gt; is now up&lt;/li&gt;
+  &lt;li&gt;Martin Lippert continues his epic series on the really &lt;a href="https://spring.io/blog/2016/03/29/the-spring-boot-dashboard-in-sts-part-5-working-with-launch-configurations"&gt;powerful integrations Spring Boot Dashboard in the Spring Tool Suite&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring messaging ninja and Spring Integration &lt;a href="https://spring.io/blog/2016/03/25/spring-amqp-1-6-0-milestone-2-and-1-5-5-available"&gt;lead Gary Russell has just announced Spring AMQP 1.6 M2 and 1.5.5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Security lead Rob Winch, never sleeping, has just released &lt;a href="https://spring.io/blog/2016/03/24/spring-security-4-1-0-rc1-released"&gt;the first release candidate of Spring Security 4.1.0&lt;/a&gt; &lt;em&gt;packed&lt;/em&gt; with new features!&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Stream lead Marius Bogoevici &lt;a href="https://spring.io/blog/2016/03/23/spring-cloud-stream-1-0-0-rc1-is-now-available"&gt;has just announced Spring Cloud Stream RC1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Statemachine lead Janne Valkealahti &lt;a href="https://spring.io/blog/2016/03/22/spring-statemachine-1-1-0-m2-released"&gt;just announced Spring Statemachine 1.1.0.M2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the Erlang Solutions blog has a really interesting post on a &lt;a href="https://www.erlang-solutions.com/blog/take-control-of-your-rabbitmq-queues.html?utm_campaign=RabbitMQblog&amp;utm_medium=ESL&amp;utm_source=Twitter"&gt;new feature in RabbitMQ 3.6.0 that load-balances the creation of new queues across a cluster&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I hope you&amp;rsquo;re following along with the exciting new stuff being added to Spring Boot 1.4! Go to the Spring Initializr and select Spring Boot 1.4 SNAPSHOT from version dropdown and then scroll down, for example, to the &lt;code&gt;NoSQL&lt;/code&gt; column where you&amp;rsquo;ll see new support for Couchbase and Neo4j!&lt;/li&gt;
+  &lt;li&gt;I really liked Biju Kunjummen&amp;rsquo;s blog on the Java Code Geeks &lt;a href="https://www.javacodegeeks.com/2016/03/single-page-angularjs-application-spring-boot-yeoman.html"&gt;on how to get a single page application up and running with Spring Boot and Yeoman&lt;/a&gt;, quickly with the &lt;code&gt;spring&lt;/code&gt; CLI tool and some JavaScript ecosystem tools&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>SpringOne2GX 2015 replay: Developing Real-Time Data Pipelines with Apache Kafka</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/29/springone2gx-2015-replay-developing-real-time-data-pipelines-with-apache-kafka" />
@@ -767,17 +791,5 @@ class UserController(val repo: UserRepository) {&#xD;
   &lt;li&gt;Monish Unni, formerly of ETrade, talking about distributed call tracing in his SpringOne2GX 2015 talk &lt;a href="http://spring.io/blog/2016/03/15/springone2gx-2015-replay-introducing-calltracing-tm-based-on-rabbitmq-spring-and-zipkin"&gt;Introducing CallTracing(tm), based on RabbitMQ, Spring and Zipkin&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Joseph Paulchell from CapitalOne plays with Analytics, CEP and Spring XD in his &lt;a href="http://spring.io/blog/2016/03/15/supercharging-operations-and-analytics-using-spring-xd-to-support-analytics-and-cep"&gt;SpringOne2GX 2015 replay&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay:  Isomorphic templating with Spring Boot, Nashorn and React</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/15/springone2gx-2015-replay-isomorphic-templating-with-spring-boot-nashorn-and-react" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-16:2425</id>
-    <updated>2016-03-15T13:33:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Sebastian Deleuze&lt;br/&gt;Web / JavaScript Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/isomorphic-templating-with-spring-boot-nashorn-and-react"&gt;http://www.slideshare.net/SpringCentral/isomorphic-templating-with-spring-boot-nashorn-and-react&lt;/a&gt;&lt;br/&gt;The first part of this talk introduces the upcoming Spring Framework 4.2 Script Templating support,&lt;br/&gt;showing how you can use Nashorn, Jython or JRuby to render templates with Javascript, Python or Ruyby based template engines. We will see how easy you can extend out of the box capabilities on the scripting side.&lt;br/&gt;Based on benchmarks, features available and code samples, we will see if this can be a production ready alternative to templating technologies usually used with Spring MVC like JSP, Velocity, FreeMarker or Thymeleaf.&lt;br/&gt;The second part of the talk will explain how to build an isomorphic application that performs the same templates rendering on client AND server based on Spring Boot, Nashorn and React, the the latest game changer Javascript library released by Facebook. The rendering of Javascript templates is performed initially on server-side thanks to a Spring MVC + Nashorn integration, then enriched on client side with a Server-Sent Events push mechanism.&lt;br/&gt;This kind of isomorphic templating + the disruptive innovation brought by React with his virtual DOM mechanism make it possible to build a new kind of applications : responsive, with a great UX while being accessible.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/cPxq66nXsf4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>
