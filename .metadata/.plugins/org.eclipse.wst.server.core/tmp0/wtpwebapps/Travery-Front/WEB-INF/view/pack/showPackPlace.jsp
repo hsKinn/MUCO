@@ -27,7 +27,8 @@ $(document).ready(function() {
 		 $("#placesOfPackListdiv").hide();
 		 $("#placesOfPackListdiv").fadeIn("slow");	  
 		var packId = $(this).children(":eq(2)").val();
-		location.href ="/showPackPlace?packId="+packId;		
+		location.href ="/showPackPlace?packId="+packId;	
+		$("/packId").val(packId);
 	});
 	
 	$(".submitLabel").click(function(){

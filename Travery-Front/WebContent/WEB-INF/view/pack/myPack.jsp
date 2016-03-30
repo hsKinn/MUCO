@@ -49,11 +49,9 @@ $(document).ready(function() {
 						$("#packData_Title").val(jsonData.title);
 						$("#packData_image").attr("src",jsonData.imageLocation);
 						if ( jsonData.isPublic==1){
-							 $("#packData_IsPublic").attr("checked",true);
+							$("#packData_IsPublic").attr("checked",true);
 						}
-						else{
-							 $("#packData_IsPublic").attr("checked",false);
-						}
+						else {$("#packData_IsPublic").attr("checked",false);}
 						$("#packData_likeCount").text(jsonData.likeCount);	
 						$("#packData_viewCount").text(jsonData.viewCount);							
 						$("#curpackId").val(jsonData.packId);						

@@ -47,7 +47,7 @@ public class PackInfoServlet extends HttpServlet {
 		int likeCount = packVO.getLikeCount();				
 		String imageLocation = packVO.getShareImageLocation();
 		
-		String[] list = {"a","b","c"};
+		System.out.println("isPublic : " + isPublic);
 		
 		StringBuffer json = new StringBuffer();
 		json.append("{");
