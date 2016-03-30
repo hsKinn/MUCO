@@ -65,11 +65,7 @@ public class DoAddPackServlet extends HttpServlet {
 
 		int packId = packBiz.addPack(newAddPack);
 
-<<<<<<< HEAD
-		if (file != null && file.getFileName().length() > 0) {
-			// file이 null이면 파일을 업로드 안한것
-			File upFile = file.write("D:\\" + file.getFileName());
-=======
+
 		File upFile = null;
 		
 		if (file != null && file.getFileName().length() >0) {
@@ -78,7 +74,6 @@ public class DoAddPackServlet extends HttpServlet {
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}else{
 			upFile = file.write("D:\\basic0.jpg");
->>>>>>> origin/bjg3
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 		

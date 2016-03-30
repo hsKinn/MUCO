@@ -55,13 +55,7 @@ public class MyPackServlet extends HttpServlet {
 		List<PackVO> packs = packBiz.getPackListByEmail(email);
 
 		request.setAttribute("packs", packs);
-<<<<<<< HEAD
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/myPack.jsp");
-		// RequestDispatcher rd =
-		// request.getRequestDispatcher("/WEB-INF/view/pack/showPackPlace.jsp");
-=======
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/showPackPlace.jsp");
->>>>>>> origin/bjg3
 		rd.forward(request, response);
 	}
 

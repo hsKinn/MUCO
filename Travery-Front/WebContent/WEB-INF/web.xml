@@ -188,26 +188,30 @@
     <servlet-name>ShowPackPlaceServlet</servlet-name>
     <url-pattern>/showPackPlace</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-<<<<<<< HEAD
     <display-name>PlaceInfoControlServlet</display-name>
     <servlet-name>PlaceInfoControlServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.place.web.PlaceInfoControlServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>PlaceInfoControlServlet</servlet-name>
     <url-pattern>/placeInfoControl</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>PlaceInfoCreateServlet</display-name>
     <servlet-name>PlaceInfoCreateServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.place.web.PlaceInfoCreateServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>PlaceInfoCreateServlet</servlet-name>
     <url-pattern>/placeInfoCreate</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>PlaceInfoAddAddressServlet</display-name>
@@ -228,6 +232,7 @@
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/test</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>SelectedStandardServelt</display-name>
@@ -238,8 +243,8 @@
     <servlet-name>SelectedStandardServelt</servlet-name>
     <url-pattern>/selectedStandard</url-pattern>
   </servlet-mapping>
-</web-app>
-=======
+  
+  <servlet>
     <description></description>
     <display-name>DetailPackServlet</display-name>
     <servlet-name>DetailPackServlet</servlet-name>
@@ -270,4 +275,3 @@
     <url-pattern>/doModifyPack</url-pattern>
   </servlet-mapping>
  </web-app>
->>>>>>> origin/bjg3

@@ -48,54 +48,29 @@
 </script>
 
 <body>
-<<<<<<< HEAD
-	<div id="packListdiv">
-		<table id="packListTable" border="2">
-			<form id="massiveDeleteForm">
-				<c:forEach items="${ packs}" var="packs">
-					<tr>
-						<td class="pack"><img
-							src="<c:url value="/resource/img/pack/folder.png"/>"
-							id="folderImg" /> <input type="checkbox" class="deletePackId"
-							name="deletePackId" value="${packs.packId }" />
-
-							<p id="title" style="display: inline;">${packs.packTitle}</p> <input
-							type="hidden" id="packId" value="${packs.packId}" /> <span
-							class="badge">10</span></td>
-
-					</tr>
-				</c:forEach>
-			</form>
-		</table>
-
-		<button type="submit" class="btn btn-danger">DeletePackage</button>
-=======
 	<div id="wrapperdiv">
 		<div id="packListdiv">
 			<table id="packListTable" border="2">
 				<form id="massiveDeleteForm">
-				<c:forEach items="${ packs}" var="packs">
-				<tr>
-				  	<td class="pack" >	
-					  	<img src="<c:url value="/resource/img/pack/folder.png"/>" id="folderImg" /> 
-						<input type="checkbox" class="deletePackId"
-								name = "deletePackId"
-								value ="${packs.packId }"/>
-						
-						<label id="title" for="packData_Title" style="font-size:20px; display: inline;">${packs.packTitle}</label>
-						<input type="hidden" id="packId" value="${packs.packId}"/>
-				  	</td>
-				</tr>
-				</c:forEach>
+					<c:forEach items="${ packs}" var="packs">
+						<tr>
+							<td class="pack"><img
+								src="<c:url value="/resource/img/pack/folder.png"/>"
+								id="folderImg" /> <input type="checkbox" class="deletePackId"
+								name="deletePackId" value="${packs.packId }" /> <label
+								id="title" for="packData_Title"
+								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
+								<input type="hidden" id="packId" value="${packs.packId}" /></td>
+						</tr>
+					</c:forEach>
 				</form>
 			</table>
 		</div>
 		<div id="buttondiv">
-			 <button type="submit" class="btn btn-danger">DeletePackage</button>
+			<button type="submit" class="btn btn-danger">DeletePackage</button>
 		</div>
->>>>>>> origin/bjg3
 	</div>
-	
+
 	<div id="packListdiv2">
 		<div id="placesOfPackListdiv"></div>
 	</div>

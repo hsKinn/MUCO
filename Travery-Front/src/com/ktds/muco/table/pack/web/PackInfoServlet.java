@@ -43,32 +43,13 @@ public class PackInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int packId = Integer.parseInt(request.getParameter("packId"));
-<<<<<<< HEAD
 
-		// String packTitle = request.getParameter("packTitle");
-
-=======
-		
->>>>>>> origin/bjg3
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
 		String packName = packVO.getPackTitle();
 		int isPublic = packVO.getIsPublic();
 		int viewCount = packVO.getViewCount();
 		int likeCount = packVO.getLikeCount();				
 		String imageLocation = packVO.getShareImageLocation();
-<<<<<<< HEAD
-
-		String[] list = { "a", "b", "c" };
-
-		StringBuffer json = new StringBuffer();
-		json.append("{");
-		json.append("\"result\" : true");
-		json.append(", \"title\" : \"" + packName + "\"");
-		json.append(", \"isPublic\" : \"" + isPublic + "\"");
-		json.append(", \"viewCount\" : \"" + viewCount + "\"");
-		json.append(", \"likeCount\" : \"" + likeCount + "\"");
-		json.append(", \"imageLocation\" : \"" + imageLocation + "\"");
-=======
 		
 		System.out.println("isPublic : " + isPublic);
 		
@@ -81,7 +62,6 @@ public class PackInfoServlet extends HttpServlet {
 		json.append(", \"likeCount\" : \""+likeCount+"\"");
 		json.append(", \"imageLocation\" : \""+imageLocation+"\"");
 		json.append(", \"packId\" : \""+packId+"\"");
->>>>>>> origin/bjg3
 		json.append("}");
 
 		response.setCharacterEncoding("UTF-8");

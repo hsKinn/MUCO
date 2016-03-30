@@ -45,17 +45,6 @@ public class ShowPackPlaceServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
-<<<<<<< HEAD
-		int packId = Integer.parseInt(request.getParameter("packId"));
-
-		String email = loginMember.getEmail();
-
-		List<PackVO> packs = packBiz.getPackListByEmail(email);
-		request.setAttribute("packs", packs);
-
-		List<PlaceVO> places = packBiz.getPlaceListByPackId(packId);
-
-=======
 		int packId = Integer.parseInt(request.getParameter("packId"));		
 		
 		String email=loginMember.getEmail();
@@ -65,7 +54,6 @@ public class ShowPackPlaceServlet extends HttpServlet {
 		
 		
 		request.setAttribute("packs", packs);
->>>>>>> origin/bjg3
 		request.setAttribute("places", places);
 		request.setAttribute("packId", packId);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/showPackPlace.jsp");

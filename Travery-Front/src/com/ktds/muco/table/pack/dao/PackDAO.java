@@ -128,12 +128,8 @@ public class PackDAO {
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, newAddPack.getPackTitle());
 			stmt.setString(2, newAddPack.getEmail());
-<<<<<<< HEAD
-
-=======
 			stmt.setInt(3, newAddPack.getIsPublic());
 		
->>>>>>> origin/bjg3
 			insertCount = stmt.executeUpdate();
 
 			if (insertCount > 0) {
@@ -203,11 +199,7 @@ public class PackDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-<<<<<<< HEAD
-		List<PlaceVO> packs = new ArrayList<PlaceVO>();
-=======
 		List<PlaceVO> places = new ArrayList<PlaceVO>();
->>>>>>> origin/bjg3
 
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
@@ -228,8 +220,7 @@ public class PackDAO {
 				placeVO.setLongitude(rs.getInt("LONGITUDE"));
 				placeVO.setAddress(rs.getString("ADDRESS"));
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
-				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
-				placeVO.setDescription(rs.getString("DESCRIPTION"));
+				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
 				places.add(placeVO);
 			}
@@ -239,10 +230,7 @@ public class PackDAO {
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
-<<<<<<< HEAD
-
-		return packs;
-=======
+		
 		return places;
 	}
 	public int deletePlaceOfPack(int placeId, int packId) {
@@ -300,7 +288,6 @@ public class PackDAO {
 			closeDB(conn, stmt, null);
 		}
 		return modifyCount;
->>>>>>> origin/bjg3
 	}
 
 	/**
@@ -345,13 +332,4 @@ public class PackDAO {
 			}
 		}
 	}
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
->>>>>>> origin/bjg3
 }

@@ -15,38 +15,32 @@
 
 <!-- My Package -->
 <script type="text/javascript">
+
 	$(document).ready(function() {
 
 		$("#myPackMenu").mouseout(function() {
 			$("#myPackMenu").css("color", "#ffffff");
 		});
 		$("#myPackMenu").css("color", "#ffffff");
-<<<<<<< HEAD
-=======
-	});
-	$("#myPackMenu").css("color", "#ffffff");
-	
-	
-	$(".pack").click(function(){
-		 $("#placesOfPackListdiv").hide();
-		 $("#placesOfPackListdiv").fadeIn("slow");	  
-		var packId = $(this).children(":eq(2)").val();
-		location.href ="/showPackPlace?packId="+packId;	
-		$("/packId").val(packId);
-	});
-	
-	$(".submitLabel").click(function(){
-		
-		
-		 var form = $(".deletePlaceOfPackForm");
-		 form.attr("method", "POST");
-         form.attr("action", "<c:url value="/deletePlaceOfPack"/>");
-         form.submit();
-	
-	});
-	
-	
->>>>>>> origin/bjg3
+
+		$("#myPackMenu").css("color", "#ffffff");
+
+		$(".pack").click(function() {
+			$("#placesOfPackListdiv").hide();
+			$("#placesOfPackListdiv").fadeIn("slow");
+			var packId = $(this).children(":eq(2)").val();
+			location.href = "/showPackPlace?packId=" + packId;
+			$("/packId").val(packId);
+		});
+
+		$(".submitLabel").click(function() {
+
+			var form = $(".deletePlaceOfPackForm");
+			form.attr("method", "POST");
+			form.attr("action", "<c:url value="/deletePlaceOfPack"/>");
+			form.submit();
+
+		});
 
 		$(".pack").click(function() {
 			$("#placesOfPackListdiv").fadeOut();
@@ -65,34 +59,6 @@
 </script>
 
 <body>
-<<<<<<< HEAD
-	<div id="packListdiv">
-		<table id="packListTable" border="2">
-			<c:forEach items="${ packs}" var="packs">
-				<tr>
-					<td class="pack"><img
-						src="<c:url value="/resource/img/pack/folder.png"/>"
-						id="folderImg" />
-						<p id="title" style="display: inline;">${packs.packTitle}</p> <input
-						type="hidden" id="packId" value="${packs.packId}" /> <span
-						class="badge">10</span></td>
-				</tr>
-			</c:forEach>
-		</table>
-
-		<a href="/addPack"><img src="/resource/img/pack/circledPlus.png"
-			id="btnAdd" /></a> <a href="/deletePack"><img
-			src="/resource/img/pack/circledMinus.png" id="btnDelete" /></a>
-
-	</div>
-	<div id="packListdiv2">
-		<div id="placesOfPackListdiv">
-			<span id="packData_Title"></span><br /> <span id="packData_IsPublic"></span><br />
-			공개 <label class="switch"> <input type="checkbox">
-				<div class="slider round"></div>
-			</label> <img id="packData_image" src="#" /> 수정버튼
-		</div>
-=======
 	<div id="wrapperdiv">
 		<div id="packListdiv">
 			<table id="packListTable" border="2">
@@ -133,7 +99,6 @@
 			</table>
 			
 		</div>	
->>>>>>> origin/bjg3
 	</div>
 </body>
 
