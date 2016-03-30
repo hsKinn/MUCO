@@ -135,18 +135,19 @@
 		<H2>내 추천 여행지</H2>
 		<input type="checkbox" id="massiveSelectCheckBox" />전체선택
 	</div>
-	<c:forEach items="${ placeInfo }" var="placeInfo">
-		<div class="container">
-			<div class="list-group" style="width: 150px;">
-				<form id="massiveDeleteForm">
-					<a href="#" class="list-group-item list-group-item-success"><input
-						type="checkbox" class="deletePlaceId" name="deletePlaceId"
-						value="${ placeInfo.placeId }" />${ placeInfo.placeName }</a> <a
-						href="#" class="list-group-item list-group-item-info"></a>
-				</form>
-			</div>
-		</div>
-	</c:forEach>
+	
+
+
+			<c:forEach items="${ placeInfo.placeList }" var="placeInfo">
+				<tr>
+					<td>${ placeInfo.placeName }</td>
+					<td>${ placeInfo.imageLocation }</td>
+				</tr>
+			</c:forEach>
+
+	
+	
+
 	<div style="width: 20%; float: right; margin-top: 70%; background-color: red; position: absolute;">
 		<div id="btn-create" style="float: left;">
 			<form id="createForm">

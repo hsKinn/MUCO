@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="image"/>
-			<item value="insertHistory"/>
-			<item value="date"/>
-			<item value="create"/>
-			<item value="insertPlaceInfo"/>
-			<item value="getDirectorsByMovieId"/>
-			<item value="btn"/>
-			<item value="/list"/>
+			<item value="getImageListByPlaceId"/>
+			<item value="getImageListByPlaceId]"/>
+			<item value="List"/>
+			<item value="getDetail"/>
+			<item value="placeInfoRecommendedList"/>
+			<item value="placename"/>
+			<item value="placeinfoname"/>
+			<item value="name"/>
 		</list>
 		<list key="replacehistory">
 		</list>

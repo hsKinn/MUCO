@@ -36,6 +36,13 @@
 			SELECT	IMAGE_ID_SEQ.CURRVAL
 			FROM	DUAL
 		</getReturnImageId>
+		<getImageLocationList>
+			SELECT  IMAGE_LOCATION
+            FROM    IMAGE I
+                    , PLACE P
+            WHERE   I.PLACE_ID = P.PLACE_ID
+            AND     I.EMAIL = ?
+		</getImageLocationList>
 	</image>
 	
 	<member>
@@ -69,14 +76,13 @@
 	</packReply>
 	
 	<place>
-		<placeInfoRecommendedList>
+		<getUserRecommendPlaceList>
 			SELECT  PLACE_NAME
-			        , IMAGE_LOCATION
 			FROM    PLACE P
 			        , IMAGE I
-			WHERE   I.EMAIL = P.EMAIL
-			AND     P.PLACE_ID = I.PLACE_ID
-		</placeInfoRecommendedList>
+			WHERE	P.PLACE_ID = I.PLACE_ID
+			AND		P.EMAIL = ?
+		</getUserRecommendPlaceList>
 		<insertPlaceInfo>
 			INSERT	INTO	PLACE	(
 											PLACE_ID

@@ -9,6 +9,10 @@
 <fullyQualifiedTypeName name="com.ktds.muco.table.country.vo.CountryVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceSearchVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceListVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.image.vo.ImageVO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

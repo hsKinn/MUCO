@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -20,55 +21,57 @@ import com.ktds.muco.util.xml.XML;
 public class PlaceDAO {
 	/**
 	 * 
-	 * placeInfoRecommendedList
+	 * getUserRecommendPlaceList
 	 * 
 	 * @author 김동규
 	 * 
 	 */
-	public List<PlaceVO> placeInfoRecommendedList(PlaceVO placeVO) {
-		List<PlaceVO> listPlaceVO = new ArrayList<PlaceVO>();
+
+	public List<PlaceVO> getUserRecommendPlaceList(MemberVO member) {
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		loadOracleDriver();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			String query = XML.getNodeString("//query/place/placeInfoRecommendedList/text()");
+			String query = XML.getNodeString("//query/place/getUserRecommendPlaceList/text()");
 			stmt = conn.prepareStatement(query);
+			stmt.setString(1, member.getEmail());
+
 			rs = stmt.executeQuery();
-			
-			while(rs.next()) {
+			PlaceVO placeVO = null;
+
+			while (rs.next()) {
 				placeVO = new PlaceVO();
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-				placeVO.set(rs.getString("IMAGE_LOCATION"));
-				
-				listPlaceVO.add(placeVO);
+				placeList.add(placeVO);
 			}
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		return listPlaceVO;
+		return placeList;
 	}
-	
+
 	/**
 	 * 
 	 * insertPlaceInfo
 	 * 
 	 * @author 김동규
 	 * 
-	 */	
+	 */
 	public PlaceVO insertPlaceInfo(PlaceVO placeVO) {
 
 		int insertCount = 0;
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
@@ -81,7 +84,7 @@ public class PlaceDAO {
 			stmt.setDouble(4, placeVO.getLongitude());
 			stmt.setString(5, placeVO.getDescription());
 			stmt.setString(6, placeVO.getWriter().getEmail());
-			
+
 			insertCount = stmt.executeUpdate();
 			stmt.close();
 
@@ -99,7 +102,7 @@ public class PlaceDAO {
 				}
 				return placeVO;
 			}
-			
+
 			return placeVO;
 
 		} catch (SQLException e) {
@@ -107,16 +110,16 @@ public class PlaceDAO {
 		} finally {
 			closeDB(conn, stmt, null);
 		}
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * Load Oracle Driver
 	 * 
 	 * @author 김광민
 	 * 
-	 */	
+	 */
 	private void loadOracleDriver() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -124,7 +127,7 @@ public class PlaceDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -133,20 +136,23 @@ public class PlaceDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	}
 }

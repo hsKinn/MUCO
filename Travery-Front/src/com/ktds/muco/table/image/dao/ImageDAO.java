@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -71,38 +72,32 @@ public class ImageDAO {
 
 	/**
 	 * 
-	 * getImageListByPlaceId
+	 * getImageLocationList
 	 * 
 	 * @author 김동규
 	 * 
 	 */
-
-	public List<ImageVO> getImageListByPlaceId(int PlaceId) {
-
+	public List<ImageVO> getImageLocationList(MemberVO member) {
+		
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List<ImageVO> imageList = new ArrayList<ImageVO>();
-		ImageVO imageVO = null;
 
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			String query = XML.getNodeString("//query/image/getImageListByPlaceId/text()");
+			String query = XML.getNodeString("//query/image/getImageLocationList/text()");
 			stmt = conn.prepareStatement(query);
 
-			stmt.setInt(1, PlaceId);
+			stmt.setString(1, member.getEmail());
 			rs = stmt.executeQuery();
+			ImageVO imageVO = null;
 
 			while (rs.next()) {
 				imageVO = new ImageVO();
-				imageVO.setImageId(rs.getInt("IMAGE_ID"));
-				imageVO.setImageName(rs.getString("IMAGE_NAME"));
 				imageVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
 				imageList.add(imageVO);
-			}
-			if (imageVO == null) {
-				return null;
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -154,5 +149,4 @@ public class ImageDAO {
 			}
 		}
 	}
-
 }

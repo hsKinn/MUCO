@@ -88,8 +88,22 @@
 				
 				
 				
+				after
+<c:forEach items="${ placeInfo.placeInfoList }" var="placeInfo">
+		<div class="container">
+			<div class="list-group" style="width: 150px;">
+				<form id="massiveDeleteForm">
+					<a href="#" class="list-group-item list-group-item-success">
+					${ placeInfo.placeName }</a> 
+					<a href="#" class="list-group-item list-group-item-info">${ placeInfo.imageLocation }</a>
+				</form>
+			</div>
+		</div>
+</c:forEach>
 				
 				
+				
+				before
 	<c:forEach items="${ placeInfo }" var="placeInfo">
 		<div class="container">
 			<div class="list-group" style="width: 150px;">

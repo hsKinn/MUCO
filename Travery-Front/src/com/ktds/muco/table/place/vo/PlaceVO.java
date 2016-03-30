@@ -1,6 +1,5 @@
 package com.ktds.muco.table.place.vo;
 
-import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
@@ -11,7 +10,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
  * @author 김광민
  *
  */
-public class PlaceVO extends CountryVO {
+public class PlaceVO  {
 
 	private int placeId;
 	private String placeName;
@@ -22,7 +21,7 @@ public class PlaceVO extends CountryVO {
 	private int likeCount;
 	private String description;
 	private int isNewPlace;
-
+	
 	// 작성자
 	private MemberVO writer;
 
@@ -105,5 +104,4 @@ public class PlaceVO extends CountryVO {
 	public void setIsNewPlace(int isNewPlace) {
 		this.isNewPlace = isNewPlace;
 	}
-
 }
