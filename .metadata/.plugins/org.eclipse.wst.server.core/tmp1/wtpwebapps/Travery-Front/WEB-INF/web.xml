@@ -316,14 +316,4 @@
     <servlet-name>DoWritePackReplyServlet</servlet-name>
     <url-pattern>/doWritePackReply</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>HitTheRoad2Servlet</display-name>
-    <servlet-name>HitTheRoad2Servlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.place.web.HitTheRoad2Servlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HitTheRoad2Servlet</servlet-name>
-    <url-pattern>/hitTheRoad2</url-pattern>
-  </servlet-mapping>
 </web-app>
