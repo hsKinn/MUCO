@@ -1,10 +1,10 @@
 package com.ktds.muco.table.hashtag.vo;
 
 public class HashTagVO {
-	
+
 	private int hashtagId;
 	private int packId;
-	
+
 	private String hashtagName;
 
 	public int getHashtagId() {
@@ -30,7 +30,5 @@ public class HashTagVO {
 	public void setHashtagName(String hashtagName) {
 		this.hashtagName = hashtagName;
 	}
-	
-	
-	
+
 }

@@ -12,12 +12,11 @@ import com.ktds.muco.util.web.Paging;
 
 public class SharePackBiz {
 	private SharePackDAO sharePackDAO;
-	
+
 	public SharePackBiz() {
 		sharePackDAO = new SharePackDAO();
 	}
 
-	
 	/**
 	 * Get All Package List
 	 * 
@@ -27,80 +26,68 @@ public class SharePackBiz {
 	 * @return
 	 */
 	public PackListVO getAllPackageList(PackSearchVO packSearchVO, MemberVO member, int sortOption) {
-		
+
 		int allPackageCount = 0;
 		int allPackageCountByHashTag = 0;
-		
+
 		Paging paging = new Paging(6);
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		// Count
-		if ( packSearchVO.getSearchKeyword().equals("") ) {
+		if (packSearchVO.getSearchKeyword().equals("")) {
 			allPackageCount = sharePackDAO.getAllPackageListCount(packSearchVO);
 			paging.setTotalArticleCount(allPackageCount);
-		}
-		else {
+		} else {
 			allPackageCountByHashTag = sharePackDAO.getAllPackageCountByHashTag(packSearchVO);
 			paging.setTotalArticleCount(allPackageCountByHashTag);
 		}
-		
-		paging.setPageNumber( packSearchVO.getPageNo() + "");
-		
-		packSearchVO.setStartIndex( paging.getStartArticleNumber());
-		packSearchVO.setEndIndex( paging.getEndArticleNumber() );
-		
+
+		paging.setPageNumber(packSearchVO.getPageNo() + "");
+
+		packSearchVO.setStartIndex(paging.getStartArticleNumber());
+		packSearchVO.setEndIndex(paging.getEndArticleNumber());
+
 		// Get List
-		/* 
-		 * Sort Option
-		 * 1 : Like Count DESC
-		 * 2 : View Count DESC
-		 * 3 : Create Date ASC
+		/*
+		 * Sort Option 1 : Like Count DESC 2 : View Count DESC 3 : Create Date
+		 * ASC
 		 * 
 		 */
-		if ( packSearchVO.getSearchKeyword().equals("") ) {
-			if ( sortOption == 1 ) {
+		if (packSearchVO.getSearchKeyword().equals("")) {
+			if (sortOption == 1) {
 				packages = sharePackDAO.getAllPackageList(packSearchVO, member);
-			}
-			else if ( sortOption == 2 ) {
+			} else if (sortOption == 2) {
 				packages = sharePackDAO.getAllPackageListOrderByView(packSearchVO, member);
-			}
-			else if ( sortOption == 3 ) {
+			} else if (sortOption == 3) {
 				packages = sharePackDAO.getAllPackageListOrderByDate(packSearchVO, member);
 			}
-		}
-		else {
-			if ( sortOption == 1 ) {
+		} else {
+			if (sortOption == 1) {
 				packages = sharePackDAO.getAllPackageListByHashTag(packSearchVO, member);
-			}
-			else if ( sortOption == 2 ) {
+			} else if (sortOption == 2) {
 				packages = sharePackDAO.getAllPackageListByHashTagOrderByView(packSearchVO, member);
-			}
-			else if ( sortOption == 3 ) {
+			} else if (sortOption == 3) {
 				packages = sharePackDAO.getAllPackageListByHashTagOrderByDate(packSearchVO, member);
-			}			
-		}		
-		
+			}
+		}
+
 		PackListVO packList = new PackListVO();
 		packList.setPackList(packages);
 		packList.setPaging(paging);
-		
+
 		return packList;
 	} // getAllPackageList END
-	
-	
+
 	/**
 	 * Hit the Count By Pack
 	 * 
 	 * @author 김현섭
 	 * 
 	 */
-	public boolean hitCountPack ( int packId ) {
-		
+	public boolean hitCountPack(int packId) {
+
 		return sharePackDAO.hitCountPack(packId) > 0;
-		
+
 	} // hitCountPack END
-	
-	
-	
-	
-}	
+
+}

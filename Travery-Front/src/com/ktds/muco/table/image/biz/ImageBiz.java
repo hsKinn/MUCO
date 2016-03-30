@@ -29,22 +29,22 @@ public class ImageBiz {
 	 * @author insertImageToss 김동규
 	 *
 	 */
-	public void insertImageToss(MultipartHttpServletRequest request, PlaceVO placeVO) {		
-		
+	public void insertImageToss(MultipartHttpServletRequest request, PlaceVO placeVO) {
+
 		ImageVO imageVO = new ImageVO();
 
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
-		
+
 		MultipartFile image = request.getFile("image");
 		File upLoadImage = image.write("D:\\" + image.getFileName());
-		
+
 		imageVO.setPlaceId(placeVO.getPlaceId());
 		imageVO.setImageName(image.getFileName());
 		imageVO.setImageLocation(upLoadImage.getPath());
 		imageVO.setEmail(member.getEmail());
 
 		imageDAO.insertImage(imageVO);
-		
+
 	}
 }

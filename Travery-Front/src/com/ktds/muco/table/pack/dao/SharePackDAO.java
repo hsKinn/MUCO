@@ -20,20 +20,19 @@ import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.util.xml.XML;
 
 public class SharePackDAO {
-	
+
 	private HashTagDAO hashtagDAO;
 	private PlaceDAO placeDAO;
 	private PackLikeBiz packLikeBiz;
 	private PackReplyDAO replyDAO;
-	
-	public SharePackDAO () {
+
+	public SharePackDAO() {
 		hashtagDAO = new HashTagDAO();
 		placeDAO = new PlaceDAO();
 		packLikeBiz = new PackLikeBiz();
 		replyDAO = new PackReplyDAO();
 	}
-	
-	
+
 	/**
 	 * Get Package Count By Hash Tag
 	 * 
@@ -42,39 +41,37 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public int getAllPackageCountByHashTag( PackSearchVO packSearchVO ) {
-		
+	public int getAllPackageCountByHashTag(PackSearchVO packSearchVO) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/sharePack/getAllPackageCountByHashTag/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, packSearchVO.getSearchKeyword());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			int articleCount = 0;
 			rs.next();
 			articleCount = rs.getInt(1);
-			
+
 			return articleCount;
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 	} // getAllPackageCountByHashTag END
 
-	
 	/**
 	 * Get Package List By Hash Tag Order By Like DESC
 	 * 
@@ -83,19 +80,19 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public List<PackVO> getAllPackageListByHashTag ( PackSearchVO packSearchVO, MemberVO member ) {
-		
+	public List<PackVO> getAllPackageListByHashTag(PackSearchVO packSearchVO, MemberVO member) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		PackLikeVO packLike = new PackLikeVO();
 		packLike.setEmail(member.getEmail());
-		
+
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/sharePack/getAllPackageListByHashTag/text()");
@@ -103,15 +100,15 @@ public class SharePackDAO {
 			stmt.setString(1, packSearchVO.getSearchKeyword());
 			stmt.setInt(2, packSearchVO.getEndIndex());
 			stmt.setInt(3, packSearchVO.getStartIndex());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				pack = new PackVO();
-				
+
 				pack.setPackId(rs.getInt("PACK_ID"));
 				pack.setPackTitle(rs.getString("PACK_TITLE"));
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
@@ -120,25 +117,22 @@ public class SharePackDAO {
 				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
-				
+
 				packLike.setPackId(pack.getPackId());
-				pack.setExistPackLike( packLikeBiz.isExistPackLike(packLike) );				
-				
+				pack.setExistPackLike(packLikeBiz.isExistPackLike(packLike));
+
 				packages.add(pack);
 			}
-			
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packages;
 	} // getAllPackageListByHashTag END
-	
-	
+
 	/**
 	 * Get Package List By Hash Tag Order By View DESC
 	 * 
@@ -147,19 +141,19 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public List<PackVO> getAllPackageListByHashTagOrderByView ( PackSearchVO packSearchVO, MemberVO member ) {
-		
+	public List<PackVO> getAllPackageListByHashTagOrderByView(PackSearchVO packSearchVO, MemberVO member) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		PackLikeVO packLike = new PackLikeVO();
 		packLike.setEmail(member.getEmail());
-		
+
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/sharePack/getAllPackageListByHashTag/text()");
@@ -167,15 +161,15 @@ public class SharePackDAO {
 			stmt.setString(1, packSearchVO.getSearchKeyword());
 			stmt.setInt(2, packSearchVO.getEndIndex());
 			stmt.setInt(3, packSearchVO.getStartIndex());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				pack = new PackVO();
-				
+
 				pack.setPackId(rs.getInt("PACK_ID"));
 				pack.setPackTitle(rs.getString("PACK_TITLE"));
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
@@ -184,25 +178,22 @@ public class SharePackDAO {
 				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
-				
+
 				packLike.setPackId(pack.getPackId());
-				pack.setExistPackLike( packLikeBiz.isExistPackLike(packLike) );				
-				
+				pack.setExistPackLike(packLikeBiz.isExistPackLike(packLike));
+
 				packages.add(pack);
 			}
-			
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packages;
 	} // getAllPackageListByHashTagOrderByView END
-	
-	
+
 	/**
 	 * Get Package List By Hash Tag Order By Create Date DESC
 	 * 
@@ -211,19 +202,19 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public List<PackVO> getAllPackageListByHashTagOrderByDate ( PackSearchVO packSearchVO, MemberVO member ) {
-		
+	public List<PackVO> getAllPackageListByHashTagOrderByDate(PackSearchVO packSearchVO, MemberVO member) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		PackLikeVO packLike = new PackLikeVO();
 		packLike.setEmail(member.getEmail());
-		
+
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/sharePack/getAllPackageListByHashTagOrderByDate/text()");
@@ -231,15 +222,15 @@ public class SharePackDAO {
 			stmt.setString(1, packSearchVO.getSearchKeyword());
 			stmt.setInt(2, packSearchVO.getEndIndex());
 			stmt.setInt(3, packSearchVO.getStartIndex());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				pack = new PackVO();
-				
+
 				pack.setPackId(rs.getInt("PACK_ID"));
 				pack.setPackTitle(rs.getString("PACK_TITLE"));
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
@@ -247,25 +238,22 @@ public class SharePackDAO {
 				pack.setName(rs.getString("NAME"));
 				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
-				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));				
-				
+				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
+
 				packLike.setPackId(pack.getPackId());
-				pack.setExistPackLike( packLikeBiz.isExistPackLike(packLike) );				
-				
+				pack.setExistPackLike(packLikeBiz.isExistPackLike(packLike));
+
 				packages.add(pack);
 			}
-			
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packages;
 	} // getAllPackageListByHashTagOrderByDate END
-
 
 	/**
 	 * Get All PackageList Count
@@ -275,38 +263,36 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public int getAllPackageListCount( PackSearchVO packSearchVO ) {
+	public int getAllPackageListCount(PackSearchVO packSearchVO) {
 
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/sharePack/getAllPackageListCount/text()");
 			stmt = conn.prepareStatement(query);
-			
+
 			rs = stmt.executeQuery();
-			
+
 			int articleCount = 0;
 			rs.next();
 			articleCount = rs.getInt(1);
-			
+
 			return articleCount;
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
-		}		
-		
-	} //getAllPackageListCount END
+		}
 
-	
+	} // getAllPackageListCount END
+
 	/**
 	 * Get All Package List Order By Like DESC
 	 * 
@@ -315,63 +301,62 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public List<PackVO> getAllPackageList( PackSearchVO packSearchVO, MemberVO member ) {
-		
+	public List<PackVO> getAllPackageList(PackSearchVO packSearchVO, MemberVO member) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		PackLikeVO packLike = new PackLikeVO();
 		packLike.setEmail(member.getEmail());
-		
+
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/sharePack/getAllPackageList/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packSearchVO.getEndIndex());
 			stmt.setInt(2, packSearchVO.getStartIndex());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				pack = new PackVO();
-				
+
 				pack.setPackId(rs.getInt("PACK_ID"));
 				pack.setPackTitle(rs.getString("PACK_TITLE"));
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));;
+				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				;
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
-				
+
 				packLike.setPackId(pack.getPackId());
-				pack.setExistPackLike( packLikeBiz.isExistPackLike(packLike) );
-				
+				pack.setExistPackLike(packLikeBiz.isExistPackLike(packLike));
+
 				pack.setReplyList(replyDAO.getReplyListByPackId(pack.getPackId()));
-				
+
 				packages.add(pack);
 			}
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packages;
-		
+
 	} // getAllPackageList END
-	
-	
+
 	/**
 	 * Get All Package List Order By View DESC
 	 * 
@@ -380,61 +365,60 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public List<PackVO> getAllPackageListOrderByView( PackSearchVO packSearchVO, MemberVO member ) {
-		
+	public List<PackVO> getAllPackageListOrderByView(PackSearchVO packSearchVO, MemberVO member) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		PackLikeVO packLike = new PackLikeVO();
 		packLike.setEmail(member.getEmail());
-		
+
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/sharePack/getAllPackageListOrderByView/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packSearchVO.getEndIndex());
 			stmt.setInt(2, packSearchVO.getStartIndex());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				pack = new PackVO();
-				
+
 				pack.setPackId(rs.getInt("PACK_ID"));
 				pack.setPackTitle(rs.getString("PACK_TITLE"));
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));;
+				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				;
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
-				
+
 				packLike.setPackId(pack.getPackId());
-				pack.setExistPackLike( packLikeBiz.isExistPackLike(packLike) );
-				
+				pack.setExistPackLike(packLikeBiz.isExistPackLike(packLike));
+
 				packages.add(pack);
 			}
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packages;
-		
+
 	} // getAllPackageListOrderByView END
-	
-	
+
 	/**
 	 * Get All Package List Order By Create Date DESC
 	 * 
@@ -443,61 +427,60 @@ public class SharePackDAO {
 	 * @param packSearchVO
 	 * @return
 	 */
-	public List<PackVO> getAllPackageListOrderByDate( PackSearchVO packSearchVO, MemberVO member ) {
-		
+	public List<PackVO> getAllPackageListOrderByDate(PackSearchVO packSearchVO, MemberVO member) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		PackLikeVO packLike = new PackLikeVO();
-		packLike.setEmail(member.getEmail());		
-		
+		packLike.setEmail(member.getEmail());
+
 		List<PackVO> packages = new ArrayList<PackVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/sharePack/getAllPackageListOrderByDate/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packSearchVO.getEndIndex());
 			stmt.setInt(2, packSearchVO.getStartIndex());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PackVO pack = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				pack = new PackVO();
-				
+
 				pack.setPackId(rs.getInt("PACK_ID"));
 				pack.setPackTitle(rs.getString("PACK_TITLE"));
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));;
+				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				;
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
-				
+
 				packLike.setPackId(pack.getPackId());
-				pack.setExistPackLike( packLikeBiz.isExistPackLike(packLike) );				
-				
+				pack.setExistPackLike(packLikeBiz.isExistPackLike(packLike));
+
 				packages.add(pack);
 			}
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return packages;
-		
+
 	} // getAllPackageListOrderByDate END
-	
-	
+
 	/**
 	 * Hit Count Pack
 	 * 
@@ -506,32 +489,30 @@ public class SharePackDAO {
 	 * @param packId
 	 * @return
 	 */
-	public int hitCountPack ( int packId ) {
-		
+	public int hitCountPack(int packId) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/sharePack/hitCountPack/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packId);
-			
+
 			return stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, null);
 		}
-		
+
 	} // hitCountPack END
-	
-	
+
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -546,7 +527,7 @@ public class SharePackDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	} // loadOracleDriver END
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -555,21 +536,24 @@ public class SharePackDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	} // closeDB END
-	
+
 } // Class END

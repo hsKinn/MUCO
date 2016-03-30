@@ -1,25 +1,22 @@
 @CHARSET "UTF-8";
 
 /* 이기연 */
-
 div#personalInfoWrapper {
 	width: 70%;
 	max-width: 1000px;
-	
 	background-color: #c3c3c3;
-	margin:0 auto;	
+	margin: 0 auto;
 	margin-top: 3%;
-	
 	border-top-right-radius: 30px;
 	border-top-left-radius: 30px;
 	border-bottom-right-radius: 30px;
 	border-bottom-left-radius: 30px;
 }
 
-div#personalInfoWrapper h1{
+div#personalInfoWrapper h1 {
 	text-align: center;
 	padding-top: 60px;
-}	
+}
 
 table#personalInfoTable {
 	border-spacing: 50px;
@@ -31,7 +28,7 @@ img#editImg {
 	width: 10px;
 }
 
-img#profile{
+img#profile {
 	width: 100px;
 }
 
@@ -45,18 +42,18 @@ div#personalInfoWrapper span.glyphicon {
 }
 
 input #file {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity = 0);
 }
 
-table#personalInfoTable td img{
-	width:85px;
-	height:85px;
+table#personalInfoTable td img {
+	width: 85px;
+	height: 85px;
 }

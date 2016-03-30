@@ -49,7 +49,7 @@ public class PackBiz {
 		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
 		return places;
 	}
-	
+
 	public int deletePlaceOfPack(int placeId, int packId) {
 		int deletePlaceOfPackCount = 0;
 		deletePlaceOfPackCount = packDAO.deletePlaceOfPack(placeId, packId);

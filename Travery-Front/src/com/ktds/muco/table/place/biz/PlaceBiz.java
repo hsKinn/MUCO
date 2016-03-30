@@ -22,12 +22,12 @@ public class PlaceBiz {
 
 	public PlaceBiz() {
 		placeDAO = new PlaceDAO();
-		
+
 		imageDAO = new ImageDAO();
 	}
 
 	public PlaceListVO getUserRecommendList(MemberVO member) {
-		
+
 		PlaceListVO placeListVO = new PlaceListVO();
 		placeListVO.setPlaceList(placeDAO.getUserRecommendPlaceList(member));
 		placeListVO.setImageList(imageDAO.getImageLocationList(member));

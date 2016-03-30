@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
+ * 
  * Servlet Filter implementation class SessionCheckFilter
  * 
  * @author 김광민
@@ -101,12 +102,6 @@ public class SessionCheckFilter implements Filter {
 					return;
 				} else {
 
-//					HistoryVO HistoryVO = new HistoryVO();
-//					HistoryVO.setIp(req.getRemoteHost());
-//					HistoryVO.setEmail(member.getEmail());
-//					HistoryVO.setUrl(req.getRequestURI());
-
-//					req.setAttribute("OperationHistoryVO", HistoryVO);
 				}
 			}
 		}

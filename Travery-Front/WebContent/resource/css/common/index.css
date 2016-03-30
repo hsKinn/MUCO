@@ -1,15 +1,14 @@
 @CHARSET "UTF-8";
 
-
-div#imageSlider {	
+div#imageSlider {
 	margin: 0;
 	padding: 0;
 	magin-top: 0;
 	position: absolute;
 	overflow: hidden;
-}	
+}
 
-div#imageSlider ul#imageList li img{	
+div#imageSlider ul#imageList li img {
 	width: 100%;
 }
 
@@ -19,7 +18,6 @@ div#index {
 	margin-left: 45%;
 	position: absolute;
 }
-
 
 div#index a {
 	text-decoration: none;
@@ -41,7 +39,6 @@ div#letsLogIn {
 	background-color: #333333;
 	padding: 10px;
 }
-
 
 /* 유병훈 */
 div#join {
@@ -67,7 +64,6 @@ button#btnJoin {
 }
 
 /* Login */
-
 div#login {
 	width: 250px;
 }

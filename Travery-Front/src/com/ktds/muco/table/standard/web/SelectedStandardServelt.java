@@ -16,46 +16,49 @@ import com.ktds.muco.table.member.biz.MemberBiz;
 public class SelectedStandardServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberBiz memberBiz;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SelectedStandardServelt() {
-        super();
-        memberBiz = new MemberBiz();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SelectedStandardServelt() {
+		super();
+		memberBiz = new MemberBiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String firstStandard;
 		String secondStandard;
 		boolean isChangedStandard;
-		
+
 		String[] selectedStandard = memberBiz.selectedStandard(request);
-		
+
 		if (selectedStandard != null) {
-			
+
 			firstStandard = selectedStandard[0];
 			secondStandard = selectedStandard[1];
 			isChangedStandard = true;
-		}
-		else {
-			
+		} else {
+
 			firstStandard = null;
 			secondStandard = null;
 			isChangedStandard = false;
 		}
-		
+
 		// JSON
 		StringBuffer json = new StringBuffer();
 		json.append("{");
@@ -72,7 +75,7 @@ public class SelectedStandardServelt extends HttpServlet {
 		out.close();
 
 		System.out.println(json.toString());
-				
+
 	}
 
 }

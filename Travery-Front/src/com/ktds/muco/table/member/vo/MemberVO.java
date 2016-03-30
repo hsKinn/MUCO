@@ -13,16 +13,9 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
  * recentAccessDate 최근 접속 날짜 selectedCountryList 사용자가 Hit the road에서 선택한 나라들
  * 
- * ---Selected Standard---
- * 0번 인덱스 : X축 오른쪽
- * 1번 인덱스 : X축 왼쪽
- * 2번 인덱스 : Y축 위
- * 3번 인덱스 : Y축 아래
- * ---------초기값---------
- * 0번 인덱스 : Bright
- * 1번 인덱스 : Dark
- * 2번 인덱스 : Active
- * 3번 인덱스 : Calm
+ * ---Selected Standard--- 0번 인덱스 : X축 오른쪽 1번 인덱스 : X축 왼쪽 2번 인덱스 : Y축 위 3번 인덱스 :
+ * Y축 아래 ---------초기값--------- 0번 인덱스 : Bright 1번 인덱스 : Dark 2번 인덱스 : Active 3번
+ * 인덱스 : Calm
  * 
  * @author 김광민
  *
@@ -152,7 +145,7 @@ public class MemberVO extends PlaceVO {
 	public void setSelectedStandardList(List<String> selectedStandardList) {
 		this.selectedStandardList = selectedStandardList;
 	}
-	
+
 	public List<PlaceVO> getSelectedPlaceList() {
 		return selectedPlaceList;
 	}
@@ -220,7 +213,7 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * 여행지 리스트에 선택된 여행지 추가
@@ -262,7 +255,7 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 선택된 X축 기준 변경
 	 * 
@@ -271,14 +264,14 @@ public class MemberVO extends PlaceVO {
 	 * @return
 	 */
 	public void setAxisX(String x1, String x2) {
-		
+
 		// 왼쪽
 		this.selectedStandardList.set(0, x1);
-		
+
 		// 오른쪽
 		this.selectedStandardList.set(1, x2);
-		
-		if(!selectedStandardList.isEmpty()) {
+
+		if (!selectedStandardList.isEmpty()) {
 			// 입력 됐는지 확인
 			for (String selectedStandard : selectedStandardList) {
 				System.out.println("selectedStandard in MemberVO : " + selectedStandard);
@@ -286,7 +279,7 @@ public class MemberVO extends PlaceVO {
 		}
 
 	}
-	
+
 	/**
 	 * 선택된 Y축 기준 변경
 	 * 
@@ -295,14 +288,14 @@ public class MemberVO extends PlaceVO {
 	 * @return
 	 */
 	public void setAxisY(String y1, String y2) {
-		
+
 		// 아래
 		this.selectedStandardList.set(2, y1);
-		
+
 		// 위
 		this.selectedStandardList.set(3, y2);
-		
-		if(!selectedStandardList.isEmpty()) {
+
+		if (!selectedStandardList.isEmpty()) {
 			// 입력 됐는지 확인
 			for (String selectedStandard : selectedStandardList) {
 				System.out.println("selectedStandard in MemberVO : " + selectedStandard);
@@ -310,4 +303,3 @@ public class MemberVO extends PlaceVO {
 		}
 	}
 }
-

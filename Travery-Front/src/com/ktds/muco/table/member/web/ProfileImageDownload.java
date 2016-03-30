@@ -18,34 +18,37 @@ import com.ktds.muco.util.file.DownloadUtil;
  */
 public class ProfileImageDownload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProfileImageDownload() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ProfileImageDownload() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//1. 세션정보
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 1. 세션정보
 		HttpSession session = request.getSession();
 		MemberVO loginMemberVO = (MemberVO) session.getAttribute("_MEMBER_");
-		
+
 		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\");
 		downloadUtil.download(request, response, loginMemberVO.getMainImageName(), loginMemberVO.getMainImageName());
-		
-		
+
 	}
 
 }

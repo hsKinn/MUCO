@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458782634605_1" label="travery" name="travery"/>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458868267124_2" label="admin" name="admin"/>
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458698399822_0" label="Window Working Set" name="Aggregate for window 1458698399821"/>
-<<<<<<< HEAD
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458778738114_1" label="Window Working Set" name="Aggregate for window 1458715138655"/>
-=======
->>>>>>> YBH3
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1459312741394_1" label="project" name="project">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Travery-Front" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1459312730809_0" label="Window Working Set" name="Aggregate for window 1459312730809"/>
 </workingSetManager>

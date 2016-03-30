@@ -19,7 +19,7 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PlaceDAO {
-	
+
 	/**
 	 * Get Place in Package
 	 * 
@@ -28,49 +28,47 @@ public class PlaceDAO {
 	 * @param packId
 	 * @return
 	 */
-	public List<PlaceVO> getPlaceInPackage ( int packId ) {
-		
+	public List<PlaceVO> getPlaceInPackage(int packId) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/place/getPlaceInPackage/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packId);
-			
+
 			rs = stmt.executeQuery();
-			
+
 			PlaceVO place = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				place = new PlaceVO();
-				
+
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setAddress(rs.getString("ADDRESS"));
-				
+
 				placeList.add(place);
 			}
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return placeList;
-		
-	} // getHashTagOfPackage END	
-	
-	
+
+	} // getHashTagOfPackage END
+
 	/**
 	 * 
 	 * getUserRecommendPlaceList
@@ -192,11 +190,11 @@ public class PlaceDAO {
 			rs = stmt.executeQuery();
 
 			PlaceVO placeVO = null;
-			
+
 			while (rs.next()) {
-				
+
 				placeVO = new PlaceVO();
-				
+
 				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
 				placeVO.setLatitude(rs.getDouble("LATITUDE"));
@@ -207,7 +205,7 @@ public class PlaceDAO {
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
 
 				placeList.add(placeVO);
-				
+
 			} // if data is done finish.
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -216,7 +214,7 @@ public class PlaceDAO {
 		}
 		return placeList;
 	}
-	
+
 	/**
 	 * 
 	 * Load Oracle Driver

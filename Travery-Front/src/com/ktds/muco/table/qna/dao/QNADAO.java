@@ -18,45 +18,44 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class QNADAO {
-	
+
 	public List<QNAVO> getFAQList() {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		List<QNAVO> faqList = new ArrayList<QNAVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/qna/getFAQList/text()");
 			stmt = conn.prepareStatement(query);
-			
+
 			rs = stmt.executeQuery();
-			
+
 			QNAVO qnaVO = null;
-			while ( rs.next() ) {
+			while (rs.next()) {
 				qnaVO = new QNAVO();
-				
+
 				qnaVO.setQnaId(rs.getInt("QNA_ID"));
 				qnaVO.setQndDate(rs.getString("QNA_DT"));
 				qnaVO.setTitle(rs.getString("TITLE"));
 				qnaVO.setDescription(rs.getString("DESCRIPTION"));
-				
+
 				faqList.add(qnaVO);
 			}
-			
+
 			return faqList;
-			
+
 		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(),e);
-		}
-		finally {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
 			closeDB(conn, stmt, rs);
-		}	
-		
+		}
+
 	}
 
 	/**

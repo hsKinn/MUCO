@@ -54,7 +54,8 @@ public class MemberDAO {
 	 * 
 	 * @author 김광민
 	 * 
-	 * validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER")); @author 이기연 수정 
+	 *         validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"))
+	 *         ; @author 이기연 수정
 	 */
 	public MemberVO getMemberByEmailAndPassword(MemberVO memberVO) {
 
@@ -84,7 +85,7 @@ public class MemberDAO {
 				validMemberVO.setEmail(rs.getString("EMAIL"));
 				validMemberVO.setPassword(rs.getString("PASSWORD"));
 				validMemberVO.setName(rs.getString("NAME"));
-				// 이부분 추가 
+				// 이부분 추가
 				validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
 				validMemberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
 				validMemberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
@@ -102,39 +103,37 @@ public class MemberDAO {
 			closeDB(conn, stmt, rs);
 		}
 	}
-	
+
 	/**
 	 *
-	 * 회원 이름 수정 
+	 * 회원 이름 수정
 	 * 
 	 * @author 이기연
 	 * 
 	 */
 	public void updateName(MemberVO memberVO) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/updateName/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getName());
 			stmt.setString(2, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
 	}
-	
+
 	/**
 	 * 회원 번호 수정
 	 * 
@@ -143,29 +142,27 @@ public class MemberDAO {
 	 */
 	public void updatePhoneNumber(MemberVO memberVO) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/updatePhoneNumber/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getPhoneNumber());
 			stmt.setString(2, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
 	}
-	
+
 	/**
 	 * 회원 비밀번호 수정
 	 * 
@@ -174,45 +171,41 @@ public class MemberDAO {
 	 */
 	public void updatePassword(MemberVO memberVO) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/updatePassword/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getPassword());
 			stmt.setString(2, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
 	}
-	
+
 	/**
-	 * 이름 중복 체크
-	 * 0: 중복 X 
-	 * 1: 중복 O
+	 * 이름 중복 체크 0: 중복 X 1: 중복 O
 	 * 
 	 * @author 이기연
 	 * 
 	 * 
 	 */
 	public int isExistName(String name) {
-	
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
@@ -224,7 +217,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				return  rs.getInt("COUNT");
+				return rs.getInt("COUNT");
 			}
 
 		} catch (SQLException e) {
@@ -232,7 +225,7 @@ public class MemberDAO {
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return 0;
 	}
 
@@ -243,32 +236,30 @@ public class MemberDAO {
 	 * 
 	 */
 	public void addMainImage(MemberVO memberVO) {
-	
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/addMainImage/text()");
-			
+
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getMainImageName());
 			stmt.setString(2, memberVO.getMainImageLocation());
 			stmt.setString(3, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
-		
+
 	}
 
 	/**
@@ -279,34 +270,33 @@ public class MemberDAO {
 	 * @author 유병훈
 	 */
 	public int getMemberEmailCheck(String userEmail) {
-		
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/getMemberEmailCheck/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, userEmail);
-			
+
 			rs = stmt.executeQuery();
 			rs.next();
-			
+
 			return rs.getInt(1);
-			
+
 		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(),e);
-		}
-		finally {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
 
 	}
-	
+
 	/**
 	 * Load Oracle Driver
 	 * 
@@ -348,6 +338,5 @@ public class MemberDAO {
 			}
 		}
 	}
-
 
 }

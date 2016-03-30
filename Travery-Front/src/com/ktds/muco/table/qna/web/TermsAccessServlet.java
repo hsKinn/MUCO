@@ -16,40 +16,43 @@ import com.ktds.muco.table.qna.vo.QNAListVO;
  */
 public class TermsAccessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private QNABiz qnaBiz;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TermsAccessServlet() {
-        super();
-        qnaBiz = new QNABiz();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public TermsAccessServlet() {
+		super();
+		qnaBiz = new QNABiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
-		
-//		QNAListVO faq = qnaBiz.getFAQList();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		
+		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
+
+		// QNAListVO faq = qnaBiz.getFAQList();
+
 		request.setAttribute("menuNo", menuNo);
-//		request.setAttribute("faq", faq);
-		
+		// request.setAttribute("faq", faq);
+
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/common/termsAccess.jsp");
 		rd.forward(request, response);
-		
+
 	}
 
 }

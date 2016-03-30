@@ -28,7 +28,7 @@ public class ImageDAO {
 	 * 
 	 */
 	public int insertImage(ImageVO imageVO) {
-		
+
 		int insertCount = 0;
 		loadOracleDriver();
 
@@ -61,7 +61,7 @@ public class ImageDAO {
 				}
 				return imageId;
 			}
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
@@ -78,7 +78,7 @@ public class ImageDAO {
 	 * 
 	 */
 	public List<ImageVO> getImageLocationList(MemberVO member) {
-		
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;

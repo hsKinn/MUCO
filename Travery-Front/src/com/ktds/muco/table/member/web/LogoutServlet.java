@@ -40,12 +40,13 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
 		MemberVO loginMemberVO = (MemberVO) session.getAttribute("_MEMBER_");
 		request.setAttribute("name", loginMemberVO.getName());
-		
+
 		boolean isLogoutSuccess = memberBiz.logout(request);
 
 		if (isLogoutSuccess) {

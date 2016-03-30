@@ -129,7 +129,7 @@ public class PackDAO {
 			stmt.setString(1, newAddPack.getPackTitle());
 			stmt.setString(2, newAddPack.getEmail());
 			stmt.setInt(3, newAddPack.getIsPublic());
-		
+
 			insertCount = stmt.executeUpdate();
 
 			if (insertCount > 0) {
@@ -210,7 +210,7 @@ public class PackDAO {
 
 			rs = stmt.executeQuery();
 
-			PlaceVO placeVO= null;
+			PlaceVO placeVO = null;
 
 			while (rs.next()) {
 				placeVO = new PlaceVO();
@@ -230,21 +230,22 @@ public class PackDAO {
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return places;
 	}
+
 	public int deletePlaceOfPack(int placeId, int packId) {
 		int deletePlaceOfPackCount = 0;
-		
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
 			String query = XML.getNodeString("//query/pack/deletePlaceOfPack/text()");
 			stmt = conn.prepareStatement(query);
-			
+
 			stmt.setInt(1, placeId);
 			stmt.setInt(2, packId);
 
@@ -257,20 +258,19 @@ public class PackDAO {
 		}
 		return deletePlaceOfPackCount;
 	}
-	
-	
+
 	public int modifyPack(PackVO modifyPack) {
 		int modifyCount = 0;
-		
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
-		System.out.println("dao"+modifyPack.getPackTitle());
+
+		System.out.println("dao" + modifyPack.getPackTitle());
 		String title = modifyPack.getPackTitle();
 		int isPublic = modifyPack.getIsPublic();
 		int packId = modifyPack.getPackId();
-		
+
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
 			String query = XML.getNodeString("//query/pack/modifyPack/text()");
@@ -278,10 +278,10 @@ public class PackDAO {
 			stmt.setString(1, title);
 			stmt.setInt(2, isPublic);
 			stmt.setInt(3, packId);
-		
+
 			modifyCount = stmt.executeUpdate();
-			
-			System.out.println("modyCount"+modifyCount);
+
+			System.out.println("modyCount" + modifyCount);
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {

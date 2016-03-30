@@ -11,9 +11,9 @@ import com.ktds.muco.table.qna.vo.QNAVO;
  *
  */
 public class QNABiz {
-	
+
 	private QNADAO qnaDAO;
-	
+
 	public QNABiz() {
 		qnaDAO = new QNADAO();
 	}

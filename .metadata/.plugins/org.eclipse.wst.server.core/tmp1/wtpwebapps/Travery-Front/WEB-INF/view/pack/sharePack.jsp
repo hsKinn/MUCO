@@ -131,7 +131,7 @@
 							      <tr>
 							        <td>${ places.placeName }</td>
 							        <th>${ places.address }</th>
-							        <td>${ places.likeCount }</td>
+							        <td>${ places.placeName }</td>
 							      </tr>
 							    </c:forEach>
 							  </table>
@@ -160,7 +160,7 @@
 													<textarea class="${pack.packId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
 												</td>
 												<td class="reply_btn">
-													<button type="button" class="btn btn-info" id="writeBtn">
+													<button type="button" class="btn btn-info" id="${pack.packId}writeReplyBtn">
 											     		<span class="glyphicon glyphicon-pencil"></span>댓글 등록
 											   		</button>  													
 												</td>
@@ -199,7 +199,7 @@
 			 
 			 <script>
 	    		// Reply
-				$(".${pack.packId}writeReplyBtn").click( function() {
+				$("#${pack.packId}writeReplyBtn").click( function() {
 					
 					var description = $(".${pack.packId}description").val();
 					description = $.trim(description);

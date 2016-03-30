@@ -13,7 +13,7 @@ import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.util.xml.XML;
 
 public class HashTagDAO {
-	
+
 	/**
 	 * Get HashTag of Package
 	 * 
@@ -22,48 +22,46 @@ public class HashTagDAO {
 	 * @param packId
 	 * @return
 	 */
-	public List<HashTagVO> getHashTagOfPackage ( int packId ) {
-		
+	public List<HashTagVO> getHashTagOfPackage(int packId) {
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		List<HashTagVO> hashtagList = new ArrayList<HashTagVO>();
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = XML.getNodeString("//query/hashtag/getHashTagOfPackage/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packId);
-			
+
 			rs = stmt.executeQuery();
-			
+
 			HashTagVO hashtag = null;
-			
-			while ( rs.next() ) {
-				
+
+			while (rs.next()) {
+
 				hashtag = new HashTagVO();
-				
+
 				hashtag.setHashtagId(rs.getInt("HASH_TAG_ID"));
 				hashtag.setHashtagName(rs.getString("HASH_TAG_NAME"));
-				
+
 				hashtagList.add(hashtag);
 			}
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		}
-		finally {
+		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return hashtagList;
-		
+
 	} // getHashTagOfPackage END
-	
-	
+
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -78,7 +76,7 @@ public class HashTagDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	} // loadOracleDriver END
-	
+
 	/**
 	 * 
 	 * Close DB
@@ -87,21 +85,24 @@ public class HashTagDAO {
 	 * 
 	 */
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if ( rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( stmt != null ) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-		if ( conn != null ) {
+		if (conn != null) {
 			try {
 				conn.close();
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	} // closeDB END
-	
+
 } // Class END

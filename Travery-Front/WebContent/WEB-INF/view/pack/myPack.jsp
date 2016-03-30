@@ -23,12 +23,10 @@
 		});
 		$("#myPackMenu").css("color", "#ffffff");
 
-		$("#myPackMenu").css("color", "#ffffff");
 
 		$("#placesOfPackListdiv").hide();
 
 		$(".pack").click(function() {
-			open = false;
 			$("#placesOfPackListdiv").hide();
 			$("#placesOfPackListdiv").fadeIn("slow");
 			var packId = $(this).children(":eq(2)").val();
@@ -62,7 +60,6 @@
 					location.href = "/"; */
 				}
 			});
-
 		});
 
 		$(".btn-success").click(function() {
@@ -73,49 +70,6 @@
 			form.submit();
 		});
 
-		$(".pack").click(function() {
-			$("#placesOfPackListdiv").fadeOut();
-			$("#placesOfPackListdiv").fadeIn("slow");
-
-			var packId = $(this).children(":eq(2)").val();
-
-			$.post("/packInfo", {
-				"packId" : packId
-			}, function(data) {
-
-				var jsonData = {};
-				try {
-					jsonData = JSON.parse(data);
-				} catch (e) {
-					jsonData.result = false;
-				}
-				console.log(jsonData);
-
-				if (jsonData.result) {
-
-					$("#packData_Title").text(jsonData.title);
-					$("#packData_IsPublic").text(jsonData.isPublic);
-					$("#packData_image").attr("src", jsonData.imageLocation);
-
-				} else {
-					/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-					location.href = "/"; */
-				}
-
-			});
-
-		});
-
-		$(".switch").click(function() {
-			console.log("#abc")
-			
-		});
-		
-		$("#abc").click( function() {
-			var a = "checked";
-			
-			console.log(a);
-		});
 	});
 </script>
 
