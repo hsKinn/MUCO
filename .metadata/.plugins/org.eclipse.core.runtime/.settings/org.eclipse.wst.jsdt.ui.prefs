@@ -1,6 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=origin/leina_1603251225
 eclipse.preferences.version=1
 fontPropagated=true
-<<<<<<< HEAD
 java_bracket=176,90,101
 java_comment_task_tag=41,95,148
 java_default=88,88,88
@@ -14,11 +16,8 @@ java_multi_line_comment=173,149,175
 java_operator=0,0,0
 java_single_line_comment=173,149,175
 java_string=49,126,204
-org.eclipse.jface.textfont=1|Monaco|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|0|3|2|1|2|Monaco;
-=======
-org.eclipse.jface.textfont=1|Monaco|11.25|0|WINDOWS|1|-15|0|0|0|400|0|0|0|0|3|2|1|49|Monaco;
+org.eclipse.jface.textfont=1|Monaco|11.25|0|WINDOWS|1|-15|0|0|0|400|0|0|0|0|3|2|1|2|Monaco;
 org.eclipse.wst.jsdt.internal.ui.navigator.layout=1
->>>>>>> origin/leina_1603251225
 org.eclipse.wst.jsdt.ui.editor.tab.width=
 org.eclipse.wst.jsdt.ui.formatterprofiles.version=11
 org.eclipse.wst.jsdt.ui.javadoclocations.migrated=true
