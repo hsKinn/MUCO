@@ -28,9 +28,9 @@ public class PlaceBiz {
 
 	public int placeInfoCreate(PlaceVO placeVO) {
 
-		String Description = placeVO.getDescription();
-		Description = Description.replaceAll("\n", "<br/>");
-		placeVO.setDescription(Description);
+		String placeDescription = placeVO.getPlaceDescription();
+		placeDescription = placeDescription.replaceAll("\n", "<br/>");
+		placeVO.setPlaceDescription(placeDescription);
 		return placeDAO.insertPlaceInfo(placeVO);
 	}
 

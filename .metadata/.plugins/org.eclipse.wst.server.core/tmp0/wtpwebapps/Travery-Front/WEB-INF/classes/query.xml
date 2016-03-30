@@ -114,6 +114,18 @@
 	</packReply>
 	
 	<place>
+		<getPlaceByCountryName>
+			SELECT	PLACE_ID
+					, PLACE_NAME
+					, LATITUDE
+					, LONGITUDE
+					, ADDRESS
+					, VIEW_COUNT
+					, DESCRIPTION
+					, IS_NEW_PLACE
+			FROM	PLACE
+			WHERE	COUNTRY_NAME = ?
+		</getPlaceByCountryName>
 		<placeInfoRecommendedList>
 <!-- 					SELECT  M.* 
 					        , G.GRADE_TITLE

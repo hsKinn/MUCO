@@ -228,7 +228,7 @@
 				<!-- 탭 -->
 				<ul class="nav nav-pills">
 					<li class="active"><a data-toggle="pill" href="#home">나라 선택</a></li>
-					<li class="tapMenu"><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
+					<li id="searchPlaces" class="tapMenu"><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
 					<li class="tapMenu"><a data-toggle="pill" href="#menu2">나의 패키지</a></li>
 					<li class="tapMenu"><a data-toggle="pill" href="#menu3">경로 설정</a></li>
 				</ul>

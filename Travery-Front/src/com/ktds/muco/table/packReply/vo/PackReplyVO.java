@@ -12,7 +12,7 @@ import com.ktds.muco.table.pack.vo.PackVO;
 public class PackReplyVO extends PackVO {
 
 	private int packReplyId;
-	private String description;
+	private String packReplyDescription;
 	private String createdDate;
 
 	public int getPackReplyId() {
@@ -23,12 +23,12 @@ public class PackReplyVO extends PackVO {
 		this.packReplyId = packReplyId;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getPackReplyDescription() {
+		return packReplyDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setPackReplyDescription(String packReplyDescription) {
+		this.packReplyDescription = packReplyDescription;
 	}
 
 	public String getCreatedDate() {

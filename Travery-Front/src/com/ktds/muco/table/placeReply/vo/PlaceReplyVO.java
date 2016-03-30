@@ -10,7 +10,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
 public class PlaceReplyVO extends MemberVO {
 
 	private int placeReplyId;
-	private String description;
+	private String placeReplyDescription;
 	private String createdDate;
 
 	public int getPlaceReplyId() {
@@ -21,12 +21,12 @@ public class PlaceReplyVO extends MemberVO {
 		this.placeReplyId = placeReplyId;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getPlaceReplyDescription() {
+		return placeReplyDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setPlaceReplyDescription(String placeReplyDescription) {
+		this.placeReplyDescription = placeReplyDescription;
 	}
 
 	public String getCreatedDate() {

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -17,6 +18,7 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PlaceDAO {
+	
 	/**
 	 * 
 	 * placeInfoRecommendedList
@@ -79,7 +81,7 @@ public class PlaceDAO {
 			stmt.setString(2, placeVO.getAddress());
 			stmt.setDouble(3, placeVO.getLatitude());
 			stmt.setDouble(4, placeVO.getLongitude());
-			stmt.setString(5, placeVO.getDescription());
+			stmt.setString(5, placeVO.getPlaceDescription());
 
 			placeId = stmt.executeUpdate();
 
@@ -105,6 +107,59 @@ public class PlaceDAO {
 
 	}
 
+	
+	/**
+	 * 
+	 * placeInfoRecommendedList
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	public List<PlaceVO> getPlaceByCountryName(String countryName) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getPlaceByCountryName/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, countryName);
+
+			rs = stmt.executeQuery();
+
+			PlaceVO placeVO = null;
+			
+			while (rs.next()) {
+				
+				placeVO = new PlaceVO();
+				
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getDouble("LATITUDE"));
+				placeVO.setLongitude(rs.getDouble("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+
+				placeList.add(placeVO);
+				
+			} // if data is done finish.
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return placeList;
+	}
+	
 	/**
 	 * 
 	 * Load Oracle Driver

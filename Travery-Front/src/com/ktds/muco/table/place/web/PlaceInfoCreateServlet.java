@@ -6,10 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.image.biz.ImageBiz;
-import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.file.MultipartFile;
@@ -62,7 +60,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO.setAddress(multipartRequest.getParameter("address"));
 		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
 		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
-		placeVO.setDescription(multipartRequest.getParameter("description"));
+		placeVO.setPlaceDescription(multipartRequest.getParameter("description"));
 		// placeVO.setWriter(member.getEmail());
 		MultipartFile image = multipartRequest.getFile("image");
 

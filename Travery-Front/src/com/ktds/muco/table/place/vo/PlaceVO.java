@@ -19,8 +19,7 @@ public class PlaceVO extends CountryVO {
 	private double longitude;
 	private String address;
 	private int viewCount;
-	private int likeCount;
-	private String description;
+	private String placeDescription;
 	private int isNewPlace;
 
 	// 작성자
@@ -74,20 +73,12 @@ public class PlaceVO extends CountryVO {
 		this.viewCount = viewCount;
 	}
 
-	public int getLikeCount() {
-		return likeCount;
+	public String getPlaceDescription() {
+		return placeDescription;
 	}
 
-	public void setLikeCount(int likeCount) {
-		this.likeCount = likeCount;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setPlaceDescription(String placeDescription) {
+		this.placeDescription = placeDescription;
 	}
 
 	public int getIsNewPlace() {

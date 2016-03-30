@@ -39,6 +39,7 @@ public class MemberVO extends PlaceVO {
 	private String recentAccessDate = "";
 
 	private List<CountryVO> selectedCountryList;
+	private List<PlaceVO> selectedPlaceList;
 	private List<String> selectedStandardList;
 
 	public MemberVO() {
@@ -150,10 +151,18 @@ public class MemberVO extends PlaceVO {
 	public void setSelectedStandardList(List<String> selectedStandardList) {
 		this.selectedStandardList = selectedStandardList;
 	}
+	
+	public List<PlaceVO> getSelectedPlaceList() {
+		return selectedPlaceList;
+	}
+
+	public void setSelectedPlaceList(List<PlaceVO> selectedPlaceList) {
+		this.selectedPlaceList = selectedPlaceList;
+	}
 
 	/**
 	 * 
-	 * 중복 확인
+	 * 선택된 나라 입력하기 전에 중복 체크
 	 * 
 	 * @param countryVO
 	 * @author 김광민
@@ -171,7 +180,7 @@ public class MemberVO extends PlaceVO {
 
 	/**
 	 * 
-	 * 리스트에 선택된 나라 추가
+	 * 나라 리스트에 선택된 나라 추가
 	 * 
 	 * @param countryVO
 	 * @author 김광민
@@ -191,7 +200,7 @@ public class MemberVO extends PlaceVO {
 
 	/**
 	 * 
-	 * 리스트에 선택된 나라 제거
+	 * 나라 리스트에 선택된 나라 제거
 	 * 
 	 * @param countryVO
 	 * @author 김광민
@@ -212,7 +221,49 @@ public class MemberVO extends PlaceVO {
 	}
 	
 	/**
-	 * Hit the road에서 X축 기준 변경
+	 * 
+	 * 여행지 리스트에 선택된 여행지 추가
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public boolean addSelectedPlace(PlaceVO placeVO) {
+
+		// 최대 15개 나라 선택 가능
+		if (selectedCountryList.size() < 10) {
+
+			System.out.println(selectedPlaceList.size());
+
+			this.selectedCountryList.add(placeVO);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 
+	 * 여행지 리스트에 선택된 여행지 제거
+	 * 
+	 * @param countryVO
+	 * @author 김광민
+	 */
+	public boolean removeSelectedPlaceByCountryName(String selectedCountryName) {
+
+		int i = 0;
+		for (PlaceVO newPlaceVO : this.selectedPlaceList) {
+
+			if (selectedCountryName.equals(newPlaceVO.getCountryName())) {
+
+				this.selectedPlaceList.remove(i);
+				return true;
+			}
+			i++;
+		}
+		return false;
+	}
+	
+	/**
+	 * 선택된 X축 기준 변경
 	 * 
 	 * @param x1
 	 * @param x2
@@ -236,7 +287,7 @@ public class MemberVO extends PlaceVO {
 	}
 	
 	/**
-	 * Hit the road에서 Y축 기준 변경
+	 * 선택된 Y축 기준 변경
 	 * 
 	 * @param x1
 	 * @param x2
