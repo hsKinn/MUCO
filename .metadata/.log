@@ -5735,3 +5735,6 @@ org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://do
 
 !ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-03-30 09:28:48.126
 !MESSAGE Project facet grails.app has not been defined. It is used in plugin org.eclipse.cft.server.branding.core.
+
+!ENTRY org.eclipse.ui 4 4 2016-03-30 09:50:04.514
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@2086f336)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@319f6039)}
