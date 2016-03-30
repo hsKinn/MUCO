@@ -130,11 +130,9 @@
 	   		</button>
    		 </div>
    		 <div id="write_part">
-			<a href="/placeInfoControl" id="placeInfoControl">
-				<button type="button" class="btn btn-info" id="writeBtn">
-					<span class="glyphicon glyphicon-pencil"></span>등록하기
-				</button>
-			</a>		 
+			<button type="button" class="btn btn-info" id="writeBtn">
+	     		<span class="glyphicon glyphicon-pencil"></span>등록하기
+	   		</button>   		 
    		 </div>
 	</div>
 	

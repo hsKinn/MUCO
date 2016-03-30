@@ -71,6 +71,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO = placeBiz.placeInfoCreate(placeVO);
 		// 세션생성
 		session.setAttribute("_PLACE_", placeVO);
+		System.out.println("1. Biz 후, placeID : " + placeVO.getPlaceId());
 		
 		if (image.getFileSize() > 0) {
 			imageBiz.insertImageToss(multipartRequest, placeVO);

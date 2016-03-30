@@ -39,10 +39,14 @@ public class ImageBiz {
 		MultipartFile image = request.getFile("image");
 		File upLoadImage = image.write("D:\\" + image.getFileName());
 		
+		System.out.println("2. imageBiz 로 넘기고 PlaceId:" + placeVO.getPlaceId());
+		
 		imageVO.setPlaceId(placeVO.getPlaceId());
 		imageVO.setImageName(image.getFileName());
 		imageVO.setImageLocation(upLoadImage.getPath());
 		imageVO.setEmail(member.getEmail());
+		
+		System.out.println("3. imageVO 로 넘기고 PlaceId:" + imageVO.getPlaceId());
 
 		imageDAO.insertImage(imageVO);
 		
