@@ -75,7 +75,7 @@ public class PlaceBiz {
 	 */
 	public PlaceVO showPlaceDetail(String placeId) {
 
-		PlaceVO placeVO = PlaceDAO.getPlaceDetailByPlaceId(placeId);
+		PlaceVO placeVO = placeDAO.getPlaceDetailByPlaceId(placeId);
 		
 		return placeVO;
 	}

@@ -60,7 +60,7 @@ $(document).ready(function () {
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">여행지<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">여행지 관리자 메뉴</li>
-                    <li><a href="#">Origin Place</a></li>
+                    <li><a href="<c:url value="/originPlaceList" />">Origin Place</a></li>
                     <li><a href="#">New Place</a></li>
                     <li><a href="#">New Place Front Page</a></li>
                     <li><a href="#">Reported Place</a></li>
@@ -128,7 +128,7 @@ $(document).ready(function () {
 				<th>조회수</th>
 				<th>추천수</th>
 				<th>설명</th>
-				<th>최조등록자 이름</th>
+				<th>최초등록자 이름</th>
 				<th>도시ID</th>
 			</tr>
 			
@@ -136,7 +136,7 @@ $(document).ready(function () {
 			<c:forEach items = "${places.placeList}" var = "place">
 			<tr>
 				<td>
-					<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${place.email}" />
+					<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${place.placeId}" />
 				</td>
 				<td>${place.placeId}</td>
 				<td><a href= "<c:url value="/originPlaceDetail?placeId=${place.placeId}" />" >${place.placeName}</a></td>
@@ -144,7 +144,7 @@ $(document).ready(function () {
 				<td>${place.viewCount}</td>
 				<td>${place.likeCount}</td>
 				<td>${place.description}</td>
-				<td>${place.email}</td>
+				<td>최초등록자 이름</td>
 				<td>도시ID</td>
 			</tr>
 			</c:forEach>

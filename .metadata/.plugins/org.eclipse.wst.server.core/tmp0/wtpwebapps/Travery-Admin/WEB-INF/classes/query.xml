@@ -178,6 +178,11 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllOriginPlaces>
+		<getPlaceDetailByPlaceId>
+			SELECT	*
+			FROM	PLACE
+			WHERE	PLACE_ID = ?
+		</getPlaceDetailByPlaceId>
 	</place>
 	
 	<placeLike>
@@ -192,8 +197,8 @@
 	<rent>
 	</rent>
 	
-	<reportedMember>
-	</reportedMember>
+	<reportedPlace>
+	</reportedPlace>
 	
 	<reserve>
 	</reserve>
