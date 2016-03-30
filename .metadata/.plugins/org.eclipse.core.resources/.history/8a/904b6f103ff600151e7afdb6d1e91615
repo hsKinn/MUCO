@@ -20,7 +20,7 @@
 		$("#sharePackMenu").mouseout(function() {
 			$("#sharePackMenu").css("color", "#ffffff");
 		});
-		$("#sharePackMenu").css("color", "#ffffff");
+		$("#hitTheRoadMenu").css("color", "#ffffff");
 		
 		$(".hide").hide();		
 		
