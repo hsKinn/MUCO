@@ -152,6 +152,10 @@
 		<item value="org.springsource.sts.package:3.7.2.201511261048-RELEASE-e45"/>
 		<item value="org.springsource.sts:3.7.2.201511261048-RELEASE"/>
 	</list>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="660" key="DIALOG_X_ORIGIN"/>
+		<item value="341" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>
 		<item value="true" key="ShowStatusLine"/>

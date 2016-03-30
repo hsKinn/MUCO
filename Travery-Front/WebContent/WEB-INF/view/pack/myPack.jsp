@@ -143,7 +143,6 @@
 	</div>
 
 	<div id="packListdiv2">
-<<<<<<< HEAD
 		<div id="placesOfPackListdiv" align="center">
 			<img id="packData_image" src="#" /><br />
 			<br />
@@ -174,16 +173,7 @@
 						id="packData_likeCount" name="packData_likeCount"></span>
 				</div>
 			</form>
-
 			<button type="button" class="btn btn-success">OK</button>
-=======
-		<div id="placesOfPackListdiv">
-			<span id="packData_Title"></span><br /> <span id="packData_IsPublic"></span><br />
-			공개 <label class="switch"> <input type="checkbox" id="abc" value="check">
-			<input type="checkbox" id="abc" value="check">
-				<div class="slider round"></div>
-			</label> <img id="packData_image" src="#" /> 수정버튼
->>>>>>> origin/hskim3
 		</div>
 	</div>
 </body>

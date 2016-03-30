@@ -145,7 +145,6 @@
 				</tr>
 			</c:forEach>
 
-<<<<<<< HEAD
 	<div id="inner_wrapper">
 		<div id="allCheckBox">
 			<input type="checkbox" id="massiveSelectCheckBox" />
@@ -165,10 +164,6 @@
 			</c:forEach>
 		</form>
 	</div>
-=======
-	
-	
->>>>>>> origin/롯드4
 
 	<div style="width: 20%; float: right; margin-top: 70%; background-color: red; position: absolute;">
 		<div id="btn-create" style="float: left;">
@@ -189,16 +184,9 @@
 <div class="jumbotron"
 	style="width: 21%; height: 90%; float: left; margin-left: 2%; margin-top: 1.5%;">
 	<form id="dataForm" name="dataform" enctype="multipart/form-data">
-
-<<<<<<< HEAD
-			<div id="placeInfoCreate_imageUpload">
-				<input type="file" id="image" name="image" /> <img id="blah"
-					class="img-circle" src="#" style="width: 85px; height: 85px;" /><br />
-=======
 		<div class="container">
 			<div style="margin-left: 13%;">
 				<h2>여행지 등록하기</h2>
->>>>>>> origin/롯드4
 			</div>
 			<div class="panel-group">
 				<div class="panel panel-default" style="width: 100%;">

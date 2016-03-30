@@ -102,7 +102,7 @@ public class MemberDAO {
 			closeDB(conn, stmt, rs);
 		}
 	}
-
+	
 	/**
 	 *
 	 * 회원 이름 수정 
@@ -271,7 +271,6 @@ public class MemberDAO {
 		
 	}
 
-	
 	/**
 	 * 
 	 * 회원Email 중복체크 DAO

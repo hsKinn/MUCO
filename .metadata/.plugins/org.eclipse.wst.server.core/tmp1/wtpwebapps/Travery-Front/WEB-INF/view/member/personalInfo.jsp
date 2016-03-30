@@ -21,7 +21,6 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-<<<<<<< HEAD
 
 	// 사진 미리보기
 	function readURL(input) {
@@ -39,16 +38,11 @@
 	$(document).ready(function() {
 
 		// menu에서 jquery 색상 
-=======
-	$(document).ready(function() {
-
->>>>>>> origin/롯드4
 		$("#personalInfoMenu").mouseout(function() {
 			$("#personalInfoMenu").css("color", "#ffffff");
 		});
 		$("#personalInfoMenu").css("color", "#ffffff");
 
-<<<<<<< HEAD
 		// edit icon jquery 색상
 		$("#editMainImage").hover(function() {
 			$("#editMainImage").css("color", "#333333");
@@ -230,8 +224,6 @@
 				
 		//validation check
 		
-=======
->>>>>>> origin/롯드4
 	});
 </script>
 
@@ -239,6 +231,7 @@
 <!-- Personal Info -->
 
 <div class="well" id="personalInfoWrapper" >
+					
 	<h1>Personal Info</h1>
 
 	<form id="personalInfoForm" method="post" action="/personalInfoAction" enctype="multipart/Form-data">
@@ -270,7 +263,7 @@
 					<br /> 
 					<label>
 						<span class="glyphicon glyphicon-camera" id="editMainImage" style="cursor: pointer;"></span>
-						<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none;" accept="image/*" required/>
+						<input type="file" id="file" name="file" onchange="readURL(this);" style="display:none;" accept="image/*" />
 					</label>
 					<br/>
 				</td>
@@ -291,7 +284,7 @@
 				<td colspan="2" style="text-align: center;">
 					<input type="text" class="form-control"
 					placeholder="Username" name="name" value="${name}" id="nameInput">
-					<span id="nameAlertMsg" style="color: red;">사용할 수 없는 이름입니다.</span>
+					<div id="nameAlertMsg" class="alert alert-danger" role="alert"><b>Oh snap!</b>사용할 수 없는 이름입니다.</div>
 					<br />
 					<button type="button" class="btn btn-default btn-sm"
 						id="cancelName">Cancel</button></td>
@@ -328,8 +321,8 @@
 					class="form-control" id="newPasswordCheck" name="newPasswordCheck"
 					placeholder="New Password check"> 
 					<br /> 
-					<span id="currentPasswordAlertMsg" style="color: red;">기존 비밀번호를 다시 입력하세요</span> 
-					<span id="newPasswordAlertMsg" style="color: red;">새 비밀번호가 일치하지 않습니다</span> 
+					<div id="currentPasswordAlertMsg" class="alert alert-danger" role="alert"><b style="color:red;">Oh snap! </b>기존 비밀번호를 다시 입력하세요</div>
+					<div id="newPasswordAlertMsg" class="alert alert-danger" role="alert"><b style="color:red;">Oh snap!</b>새 비밀번호가 일치하지 않습니다</div>
 					<br />
 					<button type="button" class="btn btn-default btn-sm" id="cancelPassword">Cancel</button>
 				</td>
@@ -380,9 +373,5 @@
 <!-- personalInfoWrapper : close -->
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/롯드4
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

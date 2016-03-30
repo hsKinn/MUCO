@@ -8,7 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/reset.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/index.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/header.css"/>" />
@@ -26,39 +25,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/personalInfo.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/placeDetail.css"/>" />
-=======
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/common/reset.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/common/index.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/common/header.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/common/leftMenu.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/login.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/logout.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/join.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/country/country.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/common/footer.css"/>" />
-
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/pack/myPack.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
->>>>>>> origin/롯드4
 
 <!-- Boot strap -->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -72,12 +38,7 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 <!-- jVector Map -->
-<<<<<<< HEAD
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
-=======
-<link rel="stylesheet" media="all"
-	href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
->>>>>>> origin/롯드4
 
 <title>Travery</title>
 <script type="text/javascript"
@@ -96,15 +57,8 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="traveryIcon">
-<<<<<<< HEAD
-
 				<a href="<c:url value="/"/>">
 					<img src="<c:url value="/resource/img/common/traveryIcon.PNG"/>" alt="traveryIcon" />
 
-=======
-				<a href="<c:url value="/"/>"> <img
-					src="<c:url value="/resource/img/common/traveryIcon.PNG"/>"
-					alt="traveryIcon" />
->>>>>>> origin/롯드4
 				</a>
 			</div>

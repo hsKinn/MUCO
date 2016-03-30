@@ -130,17 +130,11 @@
 	   		</button>
    		 </div>
    		 <div id="write_part">
-<<<<<<< HEAD
-			<button type="button" class="btn btn-info" id="writeBtn">
-	     		<span class="glyphicon glyphicon-pencil"></span>등록하기
-	   		</button>   		 
-=======
 			<a href="/placeInfoControl" id="placeInfoControl">
 				<button type="button" class="btn btn-info" id="writeBtn">
 					<span class="glyphicon glyphicon-pencil"></span>등록하기
 				</button>
 			</a>		 
->>>>>>> origin/롯드4
    		 </div>
 	</div>
 	

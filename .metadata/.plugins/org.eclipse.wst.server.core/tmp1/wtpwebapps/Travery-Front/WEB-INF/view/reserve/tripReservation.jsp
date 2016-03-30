@@ -14,17 +14,9 @@
 <jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
 
 <script type="text/javascript">
-<<<<<<< HEAD
-$(document).ready(function() {
-	
-	
-});
-
-=======
 	$(document).ready(function() {
 
 	});
->>>>>>> origin/롯드4
 </script>
 
 
@@ -163,9 +155,5 @@ $(document).ready(function() {
 </div>
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/롯드4
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

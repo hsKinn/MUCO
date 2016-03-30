@@ -6,18 +6,10 @@ import com.ktds.muco.table.member.vo.MemberVO;
 /**
  * 여행지
  * 
-<<<<<<< HEAD
-<<<<<<< HEAD
- * latitude : 위도
- * longitude : 경도
- * isNewPlace : 0 기존 / 1 신규
+ * latitude : 위도 
+ * longitude : 경도 
+ * isNewPlace : 0 기존 / 1 신규 
  * writer : 작성자 VO
-=======
- * latitude : 위도 longitude : 경도 isNewPlace : 0 기존 / 1 신규 writer : 작성자 VO
->>>>>>> origin/KGM2
-=======
- * latitude : 위도 longitude : 경도 isNewPlace : 0 기존 / 1 신규 writer : 작성자 VO
->>>>>>> origin/롯드4
  * 
  * @author 김광민
  *
@@ -32,7 +24,7 @@ public class PlaceVO extends CountryVO {
 	private int viewCount;
 	private String placeDescription;
 	private int isNewPlace;
-	
+
 	// 작성자
 	private MemberVO writer;
 

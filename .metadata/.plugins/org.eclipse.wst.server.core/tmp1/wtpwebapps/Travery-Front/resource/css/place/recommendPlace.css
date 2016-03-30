@@ -9,120 +9,11 @@ div#recommendPlace_Wrapper {
 }
 
 div#inner_wrapper {
-<<<<<<< HEAD
-	width: 99%;
-	height: 50%;
-	margin-left: 2%;
-	margin-top: 2px;
-	float: left;
-}
-
-div#daily_wrapper {
-	width: 32%;
-	height: 100%;	
-	float: left;
-	border: 2px dotted #d0d0d0;	
-	background-color: #d7d7d7;
-}
-
-div#daily_top {
-	width: 100%;
-	height: 7%;
-	float: left;
-	margin-top: 5px;
-	font-size: 20px;
-	text-align: center;
-}
-
-div#daily_content {
-	width: 100%;
-	height: 94%;
-	float: left;
-}
-
-div#weekly_wrapper {
-	width: 32%;
-	height: 100%;
-	float: left;
-	border: 2px dotted #d0d0d0;	
-	margin-left: 1.5%;
-	background-color: #d7d7d7;	
-}
-
-div#weekly_top {
-	width: 100%;
-	height: 7%;
-	float: left;
-	margin-top: 5px;	
-	font-size: 20px;	
-	text-align: center;	
-}
-
-div#weekly_content {
-	width: 100%;
-	height: 94%;
-	float: left;
-}
-
-div#monthly_wrapper {
-	width: 32%;
-	height: 100%;	
-	float: left;
-	border: 2px dotted #d0d0d0;	
-	margin-left: 1.5%;	
-	background-color: #d7d7d7;		
-}
-
-div#monthly_top {
-	width: 100%;
-	height: 7%;
-	float: left;
-	margin-top: 5px;	
-	font-size: 20px;
-	text-align: center;
-}
-
-div#monthly_content {
-	width: 100%;
-	height: 94%;
-	float: left;
-}
-
-div.content {
-	width: 47%;
-	height: 48.5%;
-	float: left;
-	margin-left: 2%;
-	border: 1px solid #d0d0d0;		
-}
-
-div.content_top {
-	width: 100%;
-	height: 57%;
-	float: left;
-	margin-top: 5px;
-	margin-left: 5px;
-}
-
-div.content_top img {
-	width: 95%;
-	height: 100%;
-}
-
-div.content_middle {
-	width: 100%;
-	height: 12%;
-	margin-top: 7px;
-	float: left;
-	text-align: center;
-	font-size: 13px;
-=======
 	width: 89.5%;
 	height: 53%;
 	margin-left: 3%;
 	margin-top: 2px;
 	float: left;
->>>>>>> origin/롯드4
 }
 
 div.content_bottom {
@@ -353,80 +244,6 @@ div#search_part {
 div#write_part {
 	float: right;
 	height: 3%;	
-<<<<<<< HEAD
-}
-
-input#searchKeyword {
-	width: 220px;
-	height: 33px;
-}
-
-button.btn {
-	width: 90px;
-	margin-left: 5px;
-}
-
-button span {
-	height: 13px;
-	margin-right: 5px;
-}
-
-div#inner_wrapper2 {
-	width: 97.5%;
-	height: 27%;
-	margin-left: 2%;
-	margin-top: 2px;
-	float: left;
-}
-
-div#paging {
-	width: 100%;
-	height: 7%;
-	float: left;
-	text-align: center;
-}
-
-div#new_wrapper {
-	border: 2px dotted #d0d0d0;		
-	background-color: #d7d7d7;		
-	margin-top: 5px;	
-	width: 100%;
-	height: 96%;	
-	float: left;
-}
-
-div#new_top {
-	width: 100%;
-	height: 13%;
-}
-
-div#top_name {
-	width: 80%;
-	float: left;
-	font-size: 20px;
-	text-align: center;	
-	margin-top: 5px;
-}
-
-div#top_sort {
-	width: 20%;
-	float: right;
-}
-
-div#new_content {
-	width: 100%;
-	height: 92%;
-	float: left;
-}
-
-div.new_contents {
-	width: 23%;
-	height: 87%;
-	float: left;
-	border: 1px solid #d0d0d0;		
-}
-
-=======
 }
 
 input#searchKeyword {
@@ -491,4 +308,3 @@ div#btn-recommend {
 	background-color: white;
 	cursor: pointer;
 }
->>>>>>> origin/롯드4

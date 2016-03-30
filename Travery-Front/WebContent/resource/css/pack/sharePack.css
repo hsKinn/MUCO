@@ -199,11 +199,7 @@ div#notFoundPack span#blue {
 	text-decoration: underline;
 }
 
-<<<<<<< HEAD
 div.modal-footer-share span {
-=======
-div.modal-footer span {
->>>>>>> origin/롯드4
 	color: red;
 	font-size: 15px;
 }
@@ -247,11 +243,7 @@ td.reply_btn span {
 	color: black;
 }
 
-<<<<<<< HEAD
 .reply_content textarea {
-=======
-textarea {
->>>>>>> origin/롯드4
 	width: 250px;
 	height: 18px;
 	wrap: off;
