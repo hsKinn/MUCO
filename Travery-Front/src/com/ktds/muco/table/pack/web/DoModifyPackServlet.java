@@ -75,7 +75,7 @@ public class DoModifyPackServlet extends HttpServlet {
 
 		if (file != null && file.getFileName().length() >0) {
 			// file이 null이면 파일을 업로드 안한것
-			File upFile = file.write("D:\\" + file.getFileName());			
+			File upFile = file.write("D:\\travery\\" + file.getFileName());			
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 

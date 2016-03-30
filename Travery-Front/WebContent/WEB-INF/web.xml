@@ -202,6 +202,16 @@
 		<url-pattern>/showPackPlace</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<description></description>
+		<display-name>ImageServlet</display-name>
+		<servlet-name>ImageServlet</servlet-name>
+		<servlet-class>com.ktds.muco.util.file.ImageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImageServlet</servlet-name>
+		<url-pattern>/image</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<display-name>PlaceInfoControlServlet</display-name>
 		<servlet-name>PlaceInfoControlServlet</servlet-name>
 		<servlet-class>com.ktds.muco.table.place.web.PlaceInfoControlServlet</servlet-class>

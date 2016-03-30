@@ -48,8 +48,8 @@
 </script>
 
 <body>
-	<div id="wrapperdiv">
-		<div id="packListdiv">
+	<div id="mypackWrapperdiv">
+		<div id="mypackListdiv">
 			<table id="packListTable" border="2">
 				<form id="massiveDeleteForm">
 					<c:forEach items="${ packs}" var="packs">
@@ -71,7 +71,7 @@
 		</div>
 	</div>
 
-	<div id="packListdiv2">
+	<div id="mypackListdiv">
 		<div id="placesOfPackListdiv"></div>
 	</div>
 </body>

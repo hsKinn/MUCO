@@ -16,30 +16,52 @@
 <!-- My Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		
+		var hashtag = {};
+		var count=0;
+		
 		$("#myPackMenu").mouseout(function() {
 			$("#myPackMenu").css("color", "#ffffff");
 		});
 		$("#myPackMenu").css("color", "#ffffff");
 
+		$("#addPackImg").hide();
+		$("#hashtagAddBtn").click(function() {
+			var tag = $("#hashTag").val();
+			hashtag[count]=tag;
+			count++;
+			$(".hashtagBox").append(" #"+tag);
+			$("#hashTag").val(null);
+		});
+
 		$(".btn-default").click(function() {
-			alert("click");
 			var form = $("#addPack");
 			form.attr("method", "post");
 			form.attr("action", "/doAddPack");
 			form.submit();
-		});
-
-		$(".switch").click(function() {
-			alert();
+			hashtag.submit();
 		});
 
 	});
 </script>
+<script type="text/javascript">
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			$("#addPackImg").show();
+
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#addPackImg').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+
 
 <body>
-	<div id="wrapperdiv">
-		<div id="packListdiv">
+	<div id="mypackWrapperdiv">
+		<div id="mypackListdiv">
 		<table id="packListTable" border="2">
 				<c:forEach items="${ packs}" var="packs">
 				<tr>
@@ -65,13 +87,20 @@
 	<div id="packListdiv2">
 		<div id="addPackFormdiv" align="center";>		
 			<form id="addPack" enctype="multipart/form-data" role="form">			
-			  <div class="form-group">
-			    <label for="file"> My package Image : </label>
-			   	<input type="file" id="file" name="file"/>
-			  </div>
+			 	<div class="form-group" align="center"; style="display: inline;"> 
+					<label for="file"> My package Image : </label> <br/>
+				</div>
+					<div class="form-group" align="center"; style="display: inline;"> 
+					<img id="addPackImg"
+						class="img-rounded" src="#"
+						style="width: 150px; height: 150px;" /><br/>
+				<br/><br/>
+				<input type="file"
+					id="image" name="image" accept="image/*" onchange="readURL(this); " /> 
+				</div><br/>
 			  <div class="form-group">
 			    <label for="title">My package name : </label>
-			    <input type="text" class="form-control" id="title" name="title"/>
+			    <input type="text" class="form-control" id="title" name="title" style="width:50%;display: inline;"/>
 			  </div>
 				<div class="form-group">
 				<label for="packData_Title">Share :</label>
@@ -80,8 +109,18 @@
 				 <div class="slider round"></div>
 				</label>
 				</div>
+				<div class="form-group">
+				<label for="packData_Title">Hash Tag :</label>
+				  <input type="text" class="form-control" id="hashTag" name="hashTag"style="width:30%;display: inline;"/>
+				  <button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button>
+				</div>
+				<div class="form-group">
+					<span class="hashtagBox"></span>
+				</div>
+				
 			
-			  <button type="submit" class="btn btn-default">AddPackage</button>
+			
+			  <button type="submit" class="btn btn-primary" style="width:130px;">AddPackage</button>
 			</form>
 		</div>
 	</div>

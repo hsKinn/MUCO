@@ -2,6 +2,7 @@ package com.ktds.muco.table.pack.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,6 @@ import com.ktds.muco.table.file.biz.FileBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
-import com.ktds.muco.util.file.DownloadUtil;
 import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.file.MultipartHttpServletRequest;
 
@@ -41,9 +41,13 @@ public class DoAddPackServlet extends HttpServlet {
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 
 		String title = multipartRequest.getParameter("title");
-		// String tag = multipartRequest.getParameter("tag");
-		MultipartFile file = multipartRequest.getFile("file");
+		MultipartFile file = multipartRequest.getFile("image");
 		String isPublic =(String)multipartRequest.getParameter("packData_IsPublic");
+		
+		if (request.getParameterValues("hashtag") != null){
+			String[] tags  = request.getParameterValues("hashtag");
+		}
+		PrintWriter out = response.getWriter();
 		
 		int intIsPublic = 0;
 		
@@ -70,7 +74,7 @@ public class DoAddPackServlet extends HttpServlet {
 		
 		if (file != null && file.getFileName().length() >0) {
 			// file이 null이면 파일을 업로드 안한것
-			upFile = file.write("D:\\" + file.getFileName());			
+			upFile = file.write("D:\\travery\\" + file.getFileName());			
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}else{
 			upFile = file.write("D:\\basic0.jpg");

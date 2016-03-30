@@ -46,7 +46,7 @@
 				if (jsonData.result) {
 
 					$("#packData_Title").val(jsonData.title);
-					$("#packData_image").attr("src", jsonData.imageLocation);
+					$("#packData_image").attr("src", "/image?imageName="+jsonData.imageName);
 					if (jsonData.isPublic == 1) {
 						$("#packData_IsPublic").attr("checked", true);
 					} else {
@@ -74,8 +74,8 @@
 </script>
 
 <body>
-	<div id="wrapperdiv">
-		<div id="packListdiv">
+	<div id="mypackWrapperdiv">
+		<div id="mypackListdiv">
 			<table id="packListTable" border="2">
 				<c:forEach items="${packs}" var="packs">
 					<tr>

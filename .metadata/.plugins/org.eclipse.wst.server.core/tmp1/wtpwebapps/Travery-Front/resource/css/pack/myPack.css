@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
 /* 백지경 */
-div#wrapperdiv {
+div#mypackWrapperdiv {
 	background-color: #f0f0f0;
 	float: left;
 	height: 100%;
-	width: 40%;
+	width: 400px;
 }
 
-div#packListdiv {
+div#mypackListdiv {
 	background-color: #f0f0f0;
 	float: left;
 	height: 80%;
@@ -22,13 +22,19 @@ div#buttondiv {
 	width: 100%;
 	margin-left: 10px;
 }
-
 div#packListdiv2 {
 	float: left;
 	background-color: #e8e8e8;
 	height: 100%;
 	width: 40%;
 }
+div#packListdiv2 {
+	float: left;
+	background-color: #e8e8e8;
+	height: 100%;
+	width: 40%;
+}
+
 
 div#placesOfPackListdiv {
 	align: center;
@@ -73,6 +79,9 @@ span#packData_Title {
 
 div.buttondiv span.glyphicon {
 	font-size: 30px;
+}
+div#packListdiv2 span.hashtagBox{
+	color:#3399ff;
 }
 
 img#folderImg {

@@ -59,7 +59,7 @@
 </script>
 
 <body>
-	<div id="wrapperdiv">
+	<div id="mypackWrapperdiv">
 		<div id="packListdiv">
 			<table id="packListTable" border="2">
 					<c:forEach items="${packs}" var="packs">
