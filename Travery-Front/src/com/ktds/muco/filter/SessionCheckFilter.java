@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
@@ -102,12 +101,12 @@ public class SessionCheckFilter implements Filter {
 					return;
 				} else {
 
-					HistoryVO HistoryVO = new HistoryVO();
-					HistoryVO.setIp(req.getRemoteHost());
-					HistoryVO.setEmail(member.getEmail());
-					HistoryVO.setUrl(req.getRequestURI());
+//					HistoryVO HistoryVO = new HistoryVO();
+//					HistoryVO.setIp(req.getRemoteHost());
+//					HistoryVO.setEmail(member.getEmail());
+//					HistoryVO.setUrl(req.getRequestURI());
 
-					req.setAttribute("OperationHistoryVO", HistoryVO);
+//					req.setAttribute("OperationHistoryVO", HistoryVO);
 				}
 			}
 		}

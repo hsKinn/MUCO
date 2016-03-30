@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.member.biz.MemberBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
@@ -40,18 +39,12 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-<<<<<<< HEAD
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		MemberVO loginMemberVO = (MemberVO) session.getAttribute("_MEMBER_");
 		request.setAttribute("name", loginMemberVO.getName());
 		
-=======
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
->>>>>>> origin/롯드4
 		boolean isLogoutSuccess = memberBiz.logout(request);
 
 		if (isLogoutSuccess) {

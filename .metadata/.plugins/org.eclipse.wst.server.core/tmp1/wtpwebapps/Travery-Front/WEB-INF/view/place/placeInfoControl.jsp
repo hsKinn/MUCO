@@ -29,7 +29,6 @@
 	$(document)
 			.ready(
 					function() {
-
 						/* 		$("#createBtn").click(function() {
 						 var form = $("#createForm");
 						 form.attr("method", "post");
@@ -91,6 +90,7 @@
 																"<c:url value="/placeInfoMassiveDelete" />");
 												form.submit();
 											}
+
 										});
 					});
 </script>
@@ -126,14 +126,26 @@
 		}
 	}
 </script>
-
-<div id="placeInfoControl_Wrapper">
-
-	<div id="my_recommendPlaceTitle">
-		<img src="<c:url value="/resource/img/place/tags-image.png" />" />
-		내추천여행지
+<div class="jumbotron"
+	style="width: 50%; height: 90%; float: left; margin-left: 4%; margin-top: 1.5%;">
+	<div id="title"
+		style="margin-left: 2%; top: 0; width: 100%; height: 10%;">
+		<span class="glyphicon glyphicon-tags"
+			style="margin-right: 3%; float: left;"></span>
+		<H2>내 추천 여행지</H2>
+		<input type="checkbox" id="massiveSelectCheckBox" />전체선택
 	</div>
+	
 
+
+			<c:forEach items="${ placeInfo.placeList }" var="placeInfo">
+				<tr>
+					<td>${ placeInfo.placeName }</td>
+					<td>${ placeInfo.imageLocation }</td>
+				</tr>
+			</c:forEach>
+
+<<<<<<< HEAD
 	<div id="inner_wrapper">
 		<div id="allCheckBox">
 			<input type="checkbox" id="massiveSelectCheckBox" />
@@ -153,65 +165,106 @@
 			</c:forEach>
 		</form>
 	</div>
+=======
+	
+	
+>>>>>>> origin/롯드4
 
-	<div id="placeInfoControler">
-		<div id="btn-create">
+	<div style="width: 20%; float: right; margin-top: 70%; background-color: red; position: absolute;">
+		<div id="btn-create" style="float: left;">
 			<form id="createForm">
-				<img src="<c:url value="/resource/img/place/btn-create.png" />"
-					id="createBtn" style="cursor: pointer" />
+				<span class="glyphicon glyphicon-pencil" id="createBtn"
+					style="cursor: pointer; position: absolute;"></span>
 			</form>
 		</div>
-		<div id="btn-delete">
+		<div id="btn-delete" style="margin-left: 10%; float: left;">
 			<form id="deleteForm">
-				<img src="<c:url value="/resource/img/place/btn-delete.png" />"
-					id="massiveDeleteBtn" style="cursor: pointer" />
+				<span class="glyphicon glyphicon-trash" id="massiveDeleteBtn"
+					style="cursor: pointer"></span>
 			</form>
 		</div>
-	</div>
-
-	<div id="right_wrapper">
-		<div id="placeInfoCreate_main">여행지 등록하기</div>
-		<form id="dataForm" name="dataform" enctype="multipart/form-data">
-			<div id="placeInfoCreate_title">
-				<input type="text" id="placeName" name="placeName"
-					placeholder="여행지명을 작성해주세요." value="${placeInfo.placeName}" />
-			</div>
-			<div id="placeInfoCreate_searchMap">
-				<img src="<c:url value="/resource/img/place/btn-map.png" />"
-					id="mapBtn" onclick="openMap(this.form)" /> <input type="text"
-					id="address" name="address" placeholder="#address"
-					value="${placeInfo.address}" /> <input type="text" id="lat"
-					name="lat" placeholder="#latitude" value="${placeInfo.latitude}" />
-				<input type="text" id="lng" name="lng" placeholder="#longitude"
-					value="${placeInfo.longitude}" />
-			</div>
-
-			<div id="placeInfoCreate_imageUpload">
-				<input type="file" id="image" name="image" /> <img id="blah"
-					class="img-circle" src="#" style="width: 85px; height: 85px;" /><br />
-			</div>
-			<div id="placeInfoCreate_description">
-				<textarea id="description" name="description">${ placeInfo.description }</textarea>
-			</div>
-			<div id="placeInfoCreate_submitBtn">
-				<c:if test="${ empty placeInfo }">
-					<img src="<c:url value="/resource/img/place/btn-submit.png" />"
-						id="submitBtn" />
-				</c:if>
-			</div>
-			<div id="구현예정">
-				<c:if test="${ not empty article }">
-					<input type="hidden" name="articleId"
-						value="${ article.articleId }" />
-					<input type="button" id="doModify" value="modify" />
-					<input type="button" value="reset" />
-				</c:if>
-			</div>
-		</form>
 	</div>
 </div>
 
+<div class="jumbotron"
+	style="width: 21%; height: 90%; float: left; margin-left: 2%; margin-top: 1.5%;">
+	<form id="dataForm" name="dataform" enctype="multipart/form-data">
 
+<<<<<<< HEAD
+			<div id="placeInfoCreate_imageUpload">
+				<input type="file" id="image" name="image" /> <img id="blah"
+					class="img-circle" src="#" style="width: 85px; height: 85px;" /><br />
+=======
+		<div class="container">
+			<div style="margin-left: 13%;">
+				<h2>여행지 등록하기</h2>
+>>>>>>> origin/롯드4
+			</div>
+			<div class="panel-group">
+				<div class="panel panel-default" style="width: 100%;">
+					<div class="panel-heading">
+						<input type="text" id="placeName" name="placeName"
+							placeholder="#여행지명" value="${placeInfo.placeName}"
+							style="padding: 0, 0, 0, 0; width: 100%;" />
+					</div>
+					<div class="panel-body">
+						<span class="glyphicon glyphicon-map-marker" id="mapBtn"
+							onclick="openMap(this.form)"
+							style="float: left; cursor: pointer;"></span> 
+						<input type="text"
+							id="address" name="address" placeholder="#address"
+							value="${placeInfo.address}" size="12"
+							style="margin-left: 5%; float: left;" /> 
+						<input type="hidden"
+							id="lat" name="lat" placeholder="#latitude"
+							value="${placeInfo.latitude}" size="12" /> 
+						<input type="hidden"
+							id="lng" name="lng" placeholder="#longitude"
+							value="${placeInfo.longitude}" size="12" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-default" style="width: 100%;">
+					<div class="panel-heading" style="font-size: 10px;">
+						<span class="glyphicon glyphicon-camera"
+							style="cursor: pointer; float: left;"></span> 
+						<input type="file"
+							id="image" name="image" accept="image/*"
+							onchange="readURL(this);" required
+							style="float: left; margin-left: 2%;" />
+					</div>
+					<div class="panel-body">
+						<img id="blah" class="img-circle" src="#"
+							style="margin-left: 25%; width: 150px; height: 150px;" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="panel-group">
+				<div class="panel panel-default" style="height: 100%; width: 100%;">
+					<div class="panel-heading" style="height: 250px;">
+						<textarea id="description" name="description"
+							style="height: 100%; width: 100%;">${ placeInfo.description }</textarea>
+					</div>
+					<div class="panel-body">
+						SUBMIT
+						<c:if test="${ empty placeInfo }">
+							<span class="glyphicon glyphicon-send" id="submitBtn"
+								style="cursor: pointer"></span>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
 
 
 <!-- Footer -->

@@ -22,22 +22,7 @@ public class PlaceBiz {
 
 	public PlaceBiz() {
 		placeDAO = new PlaceDAO();
-<<<<<<< HEAD
-	}
-
-	public List<PlaceVO> placeInfoRecommendedList() {
-		return placeDAO.placeInfoRecommendedList();
-	}
-
-	public int placeInfoCreate(PlaceVO placeVO) {
-
-		String placeDescription = placeVO.getPlaceDescription();
-		placeDescription = placeDescription.replaceAll("\n", "<br/>");
-		placeVO.setPlaceDescription(placeDescription);
-		return placeDAO.insertPlaceInfo(placeVO);
-	}
-
-=======
+		
 		imageDAO = new ImageDAO();
 	}
 
@@ -51,10 +36,9 @@ public class PlaceBiz {
 
 	public PlaceVO placeInfoCreate(PlaceVO placeVO) {
 
-		String Description = placeVO.getDescription();
+		String Description = placeVO.getPlaceDescription();
 		Description = Description.replaceAll("\n", "<br/>");
-		placeVO.setDescription(Description);
+		placeVO.setPlaceDescription(Description);
 		return placeDAO.insertPlaceInfo(placeVO);
 	}
->>>>>>> origin/롯드4
 }

@@ -1,6 +1,7 @@
 package com.ktds.muco.table.packLike.biz;
 
 import com.ktds.muco.table.packLike.dao.PackLikeDAO;
+import com.ktds.muco.table.packLike.vo.PackLikeVO;
 
 /**
  * 

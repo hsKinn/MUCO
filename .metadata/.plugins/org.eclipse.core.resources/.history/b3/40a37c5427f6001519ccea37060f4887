@@ -1,0 +1,20 @@
+package com.ktds.muco.table.packLike.vo;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackLikeVO extends PackVO {
+
+	private int packLikeId;
+
+	public int getPackLikeId() {
+		return packLikeId;
+	}
+
+	public void setPackLikeId(int packLikeId) {
+		this.packLikeId = packLikeId;
+	}
+	
+}

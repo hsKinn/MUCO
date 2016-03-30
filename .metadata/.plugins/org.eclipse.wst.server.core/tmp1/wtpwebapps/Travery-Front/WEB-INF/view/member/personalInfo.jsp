@@ -21,6 +21,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+<<<<<<< HEAD
 
 	// 사진 미리보기
 	function readURL(input) {
@@ -38,11 +39,16 @@
 	$(document).ready(function() {
 
 		// menu에서 jquery 색상 
+=======
+	$(document).ready(function() {
+
+>>>>>>> origin/롯드4
 		$("#personalInfoMenu").mouseout(function() {
 			$("#personalInfoMenu").css("color", "#ffffff");
 		});
 		$("#personalInfoMenu").css("color", "#ffffff");
 
+<<<<<<< HEAD
 		// edit icon jquery 색상
 		$("#editMainImage").hover(function() {
 			$("#editMainImage").css("color", "#333333");
@@ -224,6 +230,8 @@
 				
 		//validation check
 		
+=======
+>>>>>>> origin/롯드4
 	});
 </script>
 
@@ -372,5 +380,9 @@
 <!-- personalInfoWrapper : close -->
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/롯드4
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

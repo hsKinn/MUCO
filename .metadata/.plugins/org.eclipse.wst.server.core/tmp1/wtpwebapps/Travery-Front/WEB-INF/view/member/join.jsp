@@ -43,6 +43,7 @@
 			form.attr("action", "<c:url value="/doJoin"/>");
 			form.submit();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> origin/YBH2
@@ -89,6 +90,11 @@
 	
 
 >>>>>>> origin/YBH2
+=======
+		});
+
+	});
+>>>>>>> origin/롯드4
 </script>
 
 <!-- Join -->

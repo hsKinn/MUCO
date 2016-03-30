@@ -45,14 +45,6 @@ public class PlaceInfoControlServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-<<<<<<< HEAD
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		List<PlaceVO> listPlaceVO = placeBiz.placeInfoRecommendedList();
-		request.setAttribute("placeInfo", listPlaceVO);
-
-=======
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
@@ -62,7 +54,6 @@ public class PlaceInfoControlServlet extends HttpServlet {
 		
 		request.setAttribute("placeList", placeListVO);
 		
->>>>>>> origin/롯드4
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeInfoControl.jsp");
 		rd.forward(request, response);				
 	}

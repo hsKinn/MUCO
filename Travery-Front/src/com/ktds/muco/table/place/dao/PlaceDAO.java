@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.muco.table.member.dao.Const;
-<<<<<<< HEAD
-=======
 import com.ktds.muco.table.member.vo.MemberVO;
->>>>>>> origin/롯드4
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -87,10 +84,6 @@ public class PlaceDAO {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-<<<<<<< HEAD
-		PlaceVO placeVO = null;
-=======
->>>>>>> origin/롯드4
 
 		loadOracleDriver();
 
@@ -101,24 +94,14 @@ public class PlaceDAO {
 			stmt.setString(1, member.getEmail());
 
 			rs = stmt.executeQuery();
-<<<<<<< HEAD
-=======
 			PlaceVO placeVO = null;
->>>>>>> origin/롯드4
 
 			while (rs.next()) {
 				placeVO = new PlaceVO();
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-<<<<<<< HEAD
-				// placeVO.set(rs.getString("START_DATE"));
-
-				listPlaceVO.add(placeVO);
-			} // if data is done finish.
-=======
 				placeList.add(placeVO);
 			}
 
->>>>>>> origin/롯드4
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
@@ -134,11 +117,7 @@ public class PlaceDAO {
 	 * @author 김동규
 	 * 
 	 */
-<<<<<<< HEAD
-	public int insertPlaceInfo(PlaceVO placeVO) {
-=======
 	public PlaceVO insertPlaceInfo(PlaceVO placeVO) {
->>>>>>> origin/롯드4
 
 		int insertCount = 0;
 		loadOracleDriver();
@@ -155,14 +134,8 @@ public class PlaceDAO {
 			stmt.setString(2, placeVO.getAddress());
 			stmt.setDouble(3, placeVO.getLatitude());
 			stmt.setDouble(4, placeVO.getLongitude());
-<<<<<<< HEAD
 			stmt.setString(5, placeVO.getPlaceDescription());
-
-			placeId = stmt.executeUpdate();
-=======
-			stmt.setString(5, placeVO.getDescription());
 			stmt.setString(6, placeVO.getWriter().getEmail());
->>>>>>> origin/롯드4
 
 			insertCount = stmt.executeUpdate();
 			stmt.close();
@@ -173,11 +146,8 @@ public class PlaceDAO {
 
 				ResultSet rs = stmt.executeQuery();
 
-<<<<<<< HEAD
-=======
 				int placeId = 0;
 
->>>>>>> origin/롯드4
 				if (rs.next()) {
 					placeId = rs.getInt(1);
 					placeVO.setPlaceId(placeId);
@@ -195,8 +165,6 @@ public class PlaceDAO {
 
 	}
 
-<<<<<<< HEAD
-	
 	/**
 	 * 
 	 * placeInfoRecommendedList
@@ -249,8 +217,6 @@ public class PlaceDAO {
 		return placeList;
 	}
 	
-=======
->>>>>>> origin/롯드4
 	/**
 	 * 
 	 * Load Oracle Driver

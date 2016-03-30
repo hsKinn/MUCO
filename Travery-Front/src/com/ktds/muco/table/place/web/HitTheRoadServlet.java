@@ -41,7 +41,6 @@ public class HitTheRoadServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-<<<<<<< HEAD
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -51,14 +50,8 @@ public class HitTheRoadServlet extends HttpServlet {
 		
 		request.setAttribute("member", member);
 		
-=======
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
->>>>>>> origin/롯드4
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);
 
 	}
-
 }

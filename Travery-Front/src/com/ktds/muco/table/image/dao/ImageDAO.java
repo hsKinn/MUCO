@@ -77,23 +77,13 @@ public class ImageDAO {
 	 * @author 김동규
 	 * 
 	 */
-<<<<<<< HEAD
-
-	public List<ImageVO> getImageListByPlaceId(int PlaceId) {
-
-=======
 	public List<ImageVO> getImageLocationList(MemberVO member) {
 		
->>>>>>> origin/롯드4
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List<ImageVO> imageList = new ArrayList<ImageVO>();
-<<<<<<< HEAD
-		ImageVO imageVO = null;
-=======
->>>>>>> origin/롯드4
 
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
@@ -102,22 +92,13 @@ public class ImageDAO {
 
 			stmt.setString(1, member.getEmail());
 			rs = stmt.executeQuery();
-<<<<<<< HEAD
-=======
 			ImageVO imageVO = null;
->>>>>>> origin/롯드4
 
 			while (rs.next()) {
 				imageVO = new ImageVO();
 				imageVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
 				imageList.add(imageVO);
 			}
-<<<<<<< HEAD
-			if (imageVO == null) {
-				return null;
-			}
-=======
->>>>>>> origin/롯드4
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {

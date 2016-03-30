@@ -6,10 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.ktds.muco.table.member.vo.MemberVO;
-import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -106,7 +103,6 @@ public class MemberDAO {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 *
 	 * 회원 이름 수정 
@@ -201,8 +197,6 @@ public class MemberDAO {
 		}		
 	}
 	
-=======
->>>>>>> origin/롯드4
 	/**
 	 * 이름 중복 체크
 	 * 0: 중복 X 

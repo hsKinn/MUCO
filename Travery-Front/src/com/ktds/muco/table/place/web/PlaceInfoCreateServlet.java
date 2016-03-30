@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ktds.muco.table.image.biz.ImageBiz;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.file.MultipartFile;
@@ -49,49 +50,29 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-<<<<<<< HEAD
-		// HttpSession session = request.getSession();
-		// MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 
-		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
-
-		PlaceVO placeVO = new PlaceVO();
-=======
-		
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
->>>>>>> origin/롯드4
 
 		PlaceVO placeVO = new PlaceVO();
 		placeVO.setPlaceName(multipartRequest.getParameter("placeName"));
 		placeVO.setAddress(multipartRequest.getParameter("address"));
 		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
 		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
-<<<<<<< HEAD
 		placeVO.setPlaceDescription(multipartRequest.getParameter("description"));
-		// placeVO.setWriter(member.getEmail());
-		MultipartFile image = multipartRequest.getFile("image");
-
-		int placeId = placeBiz.placeInfoCreate(placeVO);
-
-		if (image.getFileSize() > 0) {
-			imageBiz.insertImageToss(multipartRequest, placeId);
-=======
-		placeVO.setDescription(multipartRequest.getParameter("description"));
 		placeVO.setWriter(member);
-		
+
 		MultipartFile image = multipartRequest.getFile("image");
 
-		//다시 갱신
+		// 다시 갱신
 		placeVO = placeBiz.placeInfoCreate(placeVO);
 		// 세션생성
 		session.setAttribute("_PLACE_", placeVO);
-		
+
 		if (image.getFileSize() > 0) {
 			imageBiz.insertImageToss(multipartRequest, placeVO);
->>>>>>> origin/롯드4
 		}
 		try {
 			response.sendRedirect("/placeInfoControl");

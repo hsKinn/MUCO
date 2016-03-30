@@ -23,14 +23,29 @@
 										, PLACE_ID
 										, IMAGE_NAME
 										, IMAGE_LOCATION
+										, EMAIL
+										, CRT_DT
 									)
 			VALUES 					(
 										IMAGE_ID_SEQ.NEXTVAL
 										, ?
 										, ?
 										, ?
+										, ?
+										, SYSDATE
 									)
 		</insertImage>
+		<getReturnImageId>
+			SELECT	IMAGE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnImageId>
+		<getImageLocationList>
+			SELECT  IMAGE_LOCATION
+            FROM    IMAGE I
+                    , PLACE P
+            WHERE   I.PLACE_ID = P.PLACE_ID
+            AND     I.EMAIL = ?
+		</getImageLocationList>
 	</image>
 	
 	<member>
@@ -548,6 +563,13 @@
 					AND		AC. MOVIE_ID(+) = M.MOVIE_ID
 					ORDER BY M.MOVIE_ID ASC -->
 		</placeInfoRecommendedList>
+		<getUserRecommendPlaceList>
+			SELECT  PLACE_NAME
+			FROM    PLACE P
+			        , IMAGE I
+			WHERE	P.PLACE_ID = I.PLACE_ID
+			AND		P.EMAIL = ?
+		</getUserRecommendPlaceList>
 		<insertPlaceInfo>
 			INSERT	INTO	PLACE	(
 											PLACE_ID
@@ -556,9 +578,11 @@
 											, LATITUDE
 											, LONGITUDE
 											, DESCRIPTION
+											, EMAIL
 										)
 			VALUES						(
 											PLACE_ID_SEQ.NEXTVAL
+											, ?
 											, ?
 											, ?
 											, ?
