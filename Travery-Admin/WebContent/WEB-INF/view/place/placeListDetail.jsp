@@ -132,7 +132,7 @@ $(document).ready(function () {
 						</tr>
 				
 						<tr>
-							<td colspan="6">
+							<td colspan="7">
 								여행지 이미지 넣기! here! 
 							</td>
 						</tr>
