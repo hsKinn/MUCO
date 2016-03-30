@@ -8,26 +8,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		// 마우스 대면 글씨 흰색으로
-		$("#hitTheRoadMenu").mouseenter(function() {
-			$("#hitTheRoadMenu").css("color", "#ffffff");
-		});
-		$("#myPackMenu").mouseenter(function() {
-			$("#myPackMenu").css("color", "#ffffff");
-		});
-		$("#sharePackMenu").mouseenter(function() {
-			$("#sharePackMenu").css("color", "#ffffff");
-		});
-		$("#recommendPlaceMenu").mouseenter(function() {
-			$("#recommendPlaceMenu").css("color", "#ffffff");
-		});
-		$("#tripReservationMenu").mouseenter(function() {
-			$("#tripReservationMenu").css("color", "#ffffff");
-		});
-		$("#personalInfoMenu").mouseenter(function() {
-			$("#personalInfoMenu").css("color", "#ffffff");
-		});
-
 		// 마우스 떼면 다시 원래 색으로
 		$("#hitTheRoadMenu").mouseleave(function() {
 			$("#hitTheRoadMenu").css("color", "#959595");
@@ -50,6 +30,7 @@
 	});
 
 </script>
+<<<<<<< HEAD
 <div id="bodyWithoutHeader">
 	<div id="leftMenu">
 		<ul>
@@ -67,3 +48,21 @@
 				id="personalInfoMenu"> PERSONAL INFO </a></li>
 		</ul>
 	</div>
+=======
+<div id="leftMenu">
+	<ul>
+		<li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu">
+				HIT THE ROAD </a></li>
+		<li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY
+				PACKAGE </a></li>
+		<li><a href="<c:url value="/init"/>" id="sharePackMenu">
+				SHARE PACKAGE </a></li>
+		<li><a href="<c:url value="/recommendPlace"/>"
+			id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
+		<li><a href="<c:url value="/tripReservation"/>"
+			id="tripReservationMenu"> TRIP RESERVATION </a></li>
+		<li><a href="<c:url value="/personalInfo"/>"
+			id="personalInfoMenu"> PERSONAL INFO </a></li>
+	</ul>
+</div>
+>>>>>>> origin/hskim3

@@ -1,8 +1,0 @@
-package com.ktds.muco.table.place.web;
-
-public class Snippet {
-	public static void main(String[] args) {
-		transportData
-	}
-}
-

@@ -28,6 +28,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  *
  */
 public class MemberVO extends PlaceVO {
+
 	private String email = "";
 	private String password = "";
 	private String name = "";
@@ -309,3 +310,4 @@ public class MemberVO extends PlaceVO {
 		}
 	}
 }
+

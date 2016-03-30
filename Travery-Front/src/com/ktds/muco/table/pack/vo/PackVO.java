@@ -1,6 +1,11 @@
 package com.ktds.muco.table.pack.vo;
 
+import java.util.List;
+
+import com.ktds.muco.table.hashtag.vo.HashTagVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.packReply.vo.PackReplyVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
  * 
@@ -11,11 +16,62 @@ public class PackVO extends MemberVO {
 
 	private int packId;
 	private String packTitle;
+
 	private int viewCount;
 	private int likeCount;
 	private int isPublic;
+	private String imageLocation;
+	
 	private String shareImageLocation;
 	private String shareImageName;
+	
+	private boolean isExistPackLike;
+	
+	private List<HashTagVO> hashtagList;
+	private List<PlaceVO> placeList;
+	private List<PackReplyVO> replyList;
+	
+	
+	public List<PackReplyVO> getReplyList() {
+		return replyList;
+	}
+
+	public void setReplyList(List<PackReplyVO> replyList) {
+		this.replyList = replyList;
+	}
+
+	public boolean isExistPackLike() {
+		return isExistPackLike;
+	}
+
+	public void setExistPackLike(boolean isExistPackLike) {
+		this.isExistPackLike = isExistPackLike;
+	}
+
+	public List<PlaceVO> getPlaceList() {
+		return placeList;
+	}
+	
+	public void setPlaceList(List<PlaceVO> placeList) {
+		this.placeList = placeList;
+	}
+
+	public List<HashTagVO> getHashtagList() {
+		return hashtagList;
+	}
+
+	public void setHashtagList(List<HashTagVO> hashtagList) {
+		this.hashtagList = hashtagList;
+	}
+
+	public String getImageLocation() {
+		return imageLocation;
+	}
+
+	public void setImageLocation(String imageLocation) {
+		this.imageLocation = imageLocation;
+	}
+
 
 	public String getShareImageLocation() {
 		return shareImageLocation;

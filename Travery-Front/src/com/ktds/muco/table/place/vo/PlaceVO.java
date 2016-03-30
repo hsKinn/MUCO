@@ -6,7 +6,14 @@ import com.ktds.muco.table.member.vo.MemberVO;
 /**
  * 여행지
  * 
+<<<<<<< HEAD
+ * latitude : 위도
+ * longitude : 경도
+ * isNewPlace : 0 기존 / 1 신규
+ * writer : 작성자 VO
+=======
  * latitude : 위도 longitude : 경도 isNewPlace : 0 기존 / 1 신규 writer : 작성자 VO
+>>>>>>> origin/KGM2
  * 
  * @author 김광민
  *
