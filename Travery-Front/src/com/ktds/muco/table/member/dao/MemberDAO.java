@@ -106,6 +106,7 @@ public class MemberDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * 회원 이름 수정 
@@ -200,6 +201,8 @@ public class MemberDAO {
 		}		
 	}
 	
+=======
+>>>>>>> origin/롯드4
 	/**
 	 * 이름 중복 체크
 	 * 0: 중복 X 

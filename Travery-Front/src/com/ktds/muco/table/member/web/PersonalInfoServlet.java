@@ -25,6 +25,7 @@ public class PersonalInfoServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#HttpServlet()
+<<<<<<< HEAD
 	 */
 	public PersonalInfoServlet() {
 		super();
@@ -34,12 +35,24 @@ public class PersonalInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+=======
+	 */
+	public PersonalInfoServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+>>>>>>> origin/롯드4
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * 
 	 * @author 이기연
@@ -71,6 +84,15 @@ public class PersonalInfoServlet extends HttpServlet {
 		else {
 			response.sendRedirect("/");
 		}
+=======
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/personalInfo.jsp");
+		rd.forward(request, response);
+>>>>>>> origin/롯드4
 	}
 
 }

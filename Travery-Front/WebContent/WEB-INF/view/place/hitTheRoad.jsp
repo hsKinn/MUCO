@@ -133,7 +133,7 @@
 			$("#hitTheRoadMenu").css("color", "#ffffff");
 		});
 		$("#hitTheRoadMenu").css("color", "#ffffff");
-			
+
 		$(".tapMenu").click(function(){
 	   		$(".placeDetail").css({ "display" : "block" });
 	   		$(".dropdown").css({ "display" : "block" });
@@ -223,7 +223,6 @@
 
 				<!-- 탭 내용 -->
 				<div class="tab-content">
-
 					<!-- 나라 선택 탭 -->
 					<div id="home" class="tab-pane fade in active">
 
@@ -258,7 +257,6 @@
 							<div id="printAxisY2">${ axisY2 }</div>
 						</div>
 					</div>
-
 					<!-- 나의 패키지 탭 -->
 					<div id="menu2" class="tab-pane fade"></div>
 
@@ -354,7 +352,6 @@
 					<li><a class="axisY">Active-Calm</a></li>
 				</ul>
 			</div>
-
 		</div>
 	</div>
 </div>

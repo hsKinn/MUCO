@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
+<<<<<<< HEAD
 div#bodyWithoutHeader {
 	width:1900px;
 	height:850px;;
@@ -8,6 +9,8 @@ div#bodyWithoutHeader {
 	position: absolute;
 }
 
+=======
+>>>>>>> origin/롯드4
 div#leftMenu {
 	height: 100%;
 	padding: 20px;

@@ -49,17 +49,27 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+<<<<<<< HEAD
 		// HttpSession session = request.getSession();
 		// MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 
 		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
 
 		PlaceVO placeVO = new PlaceVO();
+=======
+		
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+>>>>>>> origin/롯드4
+
+		PlaceVO placeVO = new PlaceVO();
 		placeVO.setPlaceName(multipartRequest.getParameter("placeName"));
 		placeVO.setAddress(multipartRequest.getParameter("address"));
 		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
 		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
+<<<<<<< HEAD
 		placeVO.setPlaceDescription(multipartRequest.getParameter("description"));
 		// placeVO.setWriter(member.getEmail());
 		MultipartFile image = multipartRequest.getFile("image");
@@ -68,12 +78,26 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 
 		if (image.getFileSize() > 0) {
 			imageBiz.insertImageToss(multipartRequest, placeId);
+=======
+		placeVO.setDescription(multipartRequest.getParameter("description"));
+		placeVO.setWriter(member);
+		
+		MultipartFile image = multipartRequest.getFile("image");
+
+		//다시 갱신
+		placeVO = placeBiz.placeInfoCreate(placeVO);
+		// 세션생성
+		session.setAttribute("_PLACE_", placeVO);
+		
+		if (image.getFileSize() > 0) {
+			imageBiz.insertImageToss(multipartRequest, placeVO);
+>>>>>>> origin/롯드4
 		}
 		try {
 			response.sendRedirect("/placeInfoControl");
 		} catch (RuntimeException re) {
 			System.out.println(re.getMessage());
-			response.sendRedirect("/placeInfoControl?placeId=" + placeId);
+			response.sendRedirect("/placeInfoControl?placeId=" + placeVO.getPlaceId());
 		}
 		return;
 	}

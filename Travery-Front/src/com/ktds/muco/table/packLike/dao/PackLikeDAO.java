@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.ktds.muco.table.member.dao.Const;
-import com.ktds.muco.table.packLike.vo.PackLikeVO;
 import com.ktds.muco.util.xml.XML;
 
 /**

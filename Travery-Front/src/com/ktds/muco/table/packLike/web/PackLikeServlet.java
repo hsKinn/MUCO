@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.packLike.biz.PackLikeBiz;
-import com.ktds.muco.table.packLike.vo.PackLikeVO;
 
 /**
  * Servlet implementation class PackLikeServlet

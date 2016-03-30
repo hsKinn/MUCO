@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.muco.table.member.dao.Const;
+<<<<<<< HEAD
+=======
+import com.ktds.muco.table.member.vo.MemberVO;
+>>>>>>> origin/롯드4
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
@@ -72,40 +76,55 @@ public class PlaceDAO {
 	
 	/**
 	 * 
-	 * placeInfoRecommendedList
+	 * getUserRecommendPlaceList
 	 * 
 	 * @author 김동규
 	 * 
 	 */
-	public List<PlaceVO> placeInfoRecommendedList() {
-		List<PlaceVO> listPlaceVO = new ArrayList<PlaceVO>();
+
+	public List<PlaceVO> getUserRecommendPlaceList(MemberVO member) {
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+<<<<<<< HEAD
 		PlaceVO placeVO = null;
+=======
+>>>>>>> origin/롯드4
 
 		loadOracleDriver();
 
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "TRAVERY", "TRAVERY");
-			String query = XML.getNodeString("//query/place/placeInfoRecommendedList/text()");
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getUserRecommendPlaceList/text()");
 			stmt = conn.prepareStatement(query);
+			stmt.setString(1, member.getEmail());
+
 			rs = stmt.executeQuery();
+<<<<<<< HEAD
+=======
+			PlaceVO placeVO = null;
+>>>>>>> origin/롯드4
 
 			while (rs.next()) {
 				placeVO = new PlaceVO();
-				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+<<<<<<< HEAD
 				// placeVO.set(rs.getString("START_DATE"));
 
 				listPlaceVO.add(placeVO);
 			} // if data is done finish.
+=======
+				placeList.add(placeVO);
+			}
+
+>>>>>>> origin/롯드4
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		return listPlaceVO;
+		return placeList;
 	}
 
 	/**
@@ -115,15 +134,19 @@ public class PlaceDAO {
 	 * @author 김동규
 	 * 
 	 */
+<<<<<<< HEAD
 	public int insertPlaceInfo(PlaceVO placeVO) {
+=======
+	public PlaceVO insertPlaceInfo(PlaceVO placeVO) {
+>>>>>>> origin/롯드4
 
-		int placeId = 0;
+		int insertCount = 0;
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "TRAVERY", "TRAVERY");
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
 			String query = XML.getNodeString("//query/place/insertPlaceInfo/text()");
 			stmt = conn.prepareStatement(query);
@@ -132,32 +155,47 @@ public class PlaceDAO {
 			stmt.setString(2, placeVO.getAddress());
 			stmt.setDouble(3, placeVO.getLatitude());
 			stmt.setDouble(4, placeVO.getLongitude());
+<<<<<<< HEAD
 			stmt.setString(5, placeVO.getPlaceDescription());
 
 			placeId = stmt.executeUpdate();
+=======
+			stmt.setString(5, placeVO.getDescription());
+			stmt.setString(6, placeVO.getWriter().getEmail());
+>>>>>>> origin/롯드4
 
-			if (placeId > 0) {
-				stmt.close();
+			insertCount = stmt.executeUpdate();
+			stmt.close();
+
+			if (insertCount > 0) {
 				query = XML.getNodeString("//query/place/getReturnPlaceId/text()");
 				stmt = conn.prepareStatement(query);
 
 				ResultSet rs = stmt.executeQuery();
 
+<<<<<<< HEAD
+=======
+				int placeId = 0;
+
+>>>>>>> origin/롯드4
 				if (rs.next()) {
-					placeId = rs.getInt(placeId);
+					placeId = rs.getInt(1);
+					placeVO.setPlaceId(placeId);
 				}
-				return placeId;
+				return placeVO;
 			}
+
+			return placeVO;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			closeDB(conn, stmt, null);
 		}
-		return placeId;
 
 	}
 
+<<<<<<< HEAD
 	
 	/**
 	 * 
@@ -211,6 +249,8 @@ public class PlaceDAO {
 		return placeList;
 	}
 	
+=======
+>>>>>>> origin/롯드4
 	/**
 	 * 
 	 * Load Oracle Driver

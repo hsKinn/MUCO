@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+<<<<<<< HEAD
 /* 김동규 */
 div#placeInfoControl_Wrapper {
 	width: 90%;
@@ -172,3 +173,6 @@ div#placeInfoCreate_submitBtn img {
 	height: 40px;
 	cursor: pointer;
 }
+=======
+/* 김동규 */
+>>>>>>> origin/롯드4

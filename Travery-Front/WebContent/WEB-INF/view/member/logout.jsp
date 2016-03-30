@@ -26,8 +26,11 @@
 </script>
 
 <div id="logout">로그아웃</div>
+<<<<<<< HEAD
 <%-- <div id="accessMember">${member.email }님 접속 중</div> --%>
 
+=======
+>>>>>>> origin/롯드4
 
 <!-- Close "#header" -->
 </div>
