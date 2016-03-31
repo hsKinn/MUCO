@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+/* 유병훈 */
+
+div#tripReservationWrapper label {
+	color: #ffffff;
+}
+
+div#tripReservationWrapper input {
+	width: 200px;
+}
+
+div#reserveSubmit {
+	margin-top: 2%;
+	margin-left: 45%;
+}

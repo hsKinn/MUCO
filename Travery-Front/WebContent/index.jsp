@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/indexHeader.jsp"></jsp:include>
 
@@ -11,6 +12,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 <script src="<c:url value="/resource/js/scripts.js" />"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 

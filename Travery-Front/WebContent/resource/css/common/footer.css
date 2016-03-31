@@ -1,40 +1,4 @@
 @CHARSET "UTF-8";
 
-/* 김광민 */
-div#footerWrapper {
-	background-color: #333333;
-	color: #ffffff;
-	text-align: center;
-	position: fixed;
-	width: 100%;
-	bottom: 0;
-	padding: 10px;
-	z-index: 999;
-}
-
-div.collapse.navbar-collapse {
-	padding-left: 50px;
-}
-
-div#footerTerms, div#copyright {
-	width: 50%;
-	color: #ffffff;
-	float: left;
-}
-
-div#footerTerms div.termsAccess a {
-	color: #ffffff;
-}
-
-div#footerTerms div.termsAccess {
-	padding-left: 20%;
-	color: #ffffff;
-	float: left;
-}
-
-div#footerTerms a:hover {
-	color: #4aa5ff;
-	text-decoration: none;
-}
-
+/* 이기연 */
 

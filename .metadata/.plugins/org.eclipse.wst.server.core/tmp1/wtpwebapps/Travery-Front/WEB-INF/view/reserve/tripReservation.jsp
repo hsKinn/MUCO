@@ -16,20 +16,18 @@
 
 <section class="bg-primary" id="one">
 	<div class="container">
+
 		<!-- Trip Reservation -->
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h2 class="margin-top-0 wow fadeIn">TRIP RESERVATION</h2>
 			<hr class="primary">
 			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
 		</div>
-		
-		<div id="tripReservationWrapper">
+		<div id="reserveContents">
+			<!-- 내용 -->
 			<form id="reservationForm">
-
-
 				<!-- 출발,여행지 입력 -->
 				<div class="form-group">
-
 					<label for="departure">출발지: <input type="text"
 						class="form-control" id="departure" />
 					</label> <img src="/resource/img/reserve/arrow.png" style="height: 20px;" />
@@ -41,14 +39,11 @@
 							<option>my list</option>
 					</select>
 					</label>
-
 				</div>
-
 				<hr>
 
 				<!-- 교통 입력 -->
 				<div class="form-group">
-
 					<label for="traffic">교통: <input type="text"
 						disabled="disabled" value="비행기" class="form-control" id="traffic" />
 					</label> <label for="grade">등급: <select class="form-control"
@@ -63,14 +58,11 @@
 					</label> <label for="traPerson">인원: <input type="number"
 						class="form-control" id="traPerson" value="1" />
 					</label>
-
 				</div>
-
 				<hr>
 
 				<!-- 숙소 입력 -->
 				<div class="form-group">
-
 					<label for="accommodations">숙소: <select
 						class="form-control" id="accommodations" style="width: 200px;">
 							<option>호텔</option>
@@ -94,14 +86,12 @@
 					</label> <label for="accPerson">인원: <input type="number"
 						class="form-control" id="accPerson" value="1" />
 					</label>
-
 				</div>
 
 				<hr>
 
 				<!-- 렌트 입력 -->
 				<div class="form-group">
-
 					<label for="rentCar">렌트카: <select class="form-control"
 						id="rentCar" style="width: 200px;">
 							<option>대형</option>
@@ -117,9 +107,7 @@
 					</label> <label for="rentPerson">인원: <input type="number"
 						class="form-control" id="rentPerson" value="1" />
 					</label>
-
 				</div>
-
 				<hr>
 
 				<!-- 제출 -->
@@ -127,11 +115,8 @@
 					<button type="submit" class="btn btn-default" id="subminBtn"
 						name="subminBtn">제출</button>
 				</div>
-
 			</form>
-
 		</div>
-
 	</div>
 </section>
 <!-- Footer -->
