@@ -53,8 +53,10 @@
 <div id="leftMenuWrapper">
 	<div id="leftMenuContents">
 		<ul>
-			<li><a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu">
-					HIT THE ROAD </a></li>
+			<li>
+			<a href="<c:url value="/hitTheRoad"/>" id="hitTheRoadMenu">
+					HIT THE ROAD </a>
+			</li>
 			<li><a href="<c:url value="/myPack"/>" id="myPackMenu"> MY
 					PACKAGE </a></li>
 			<li><a href="<c:url value="/init"/>" id="sharePackMenu">

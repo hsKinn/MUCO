@@ -7,12 +7,6 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
-<!-- Log out -->
-<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
-
-<!-- Left Menu -->
-<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
-
 <!-- Share Package -->
 <script type="text/javascript">
 	$(document).ready(function() {

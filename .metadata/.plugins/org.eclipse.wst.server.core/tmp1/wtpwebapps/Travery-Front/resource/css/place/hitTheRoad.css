@@ -55,7 +55,7 @@ div#printAxisY1 {
 	text-align: center;
 	font-weight: bolder;
 	font-size: large;
-	color: #333333;
+	color: #ffffff;
 	padding-top: 20px;
 }
 
@@ -65,7 +65,7 @@ div#printAxisX2 {
 	font-weight: bolder;
 	font-size: large;
 	padding-top: 16%;
-	color: #333333;
+	color: #ffffff;
 }
 
 div#printAxisX1 {
@@ -74,7 +74,7 @@ div#printAxisX1 {
 	font-weight: bolder;
 	font-size: large;
 	padding-top: 16%;
-	color: #333333;
+	color: #ffffff;
 }
 
 div#dottedDiv {
@@ -86,7 +86,7 @@ div#printAxisY2 {
 	text-align: center;
 	font-weight: bolder;
 	font-size: large;
-	color: #333333;
+	color: #ffffff;
 }
 
 div#secondRowDiv {

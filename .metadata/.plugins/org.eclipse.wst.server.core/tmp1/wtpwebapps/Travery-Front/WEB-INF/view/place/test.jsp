@@ -7,13 +7,6 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
-<!-- Log out -->
-<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
-
-<!-- Left Menu -->
-<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
-
-
 <script type="text/javascript">
 	function readURL(input) {
 
