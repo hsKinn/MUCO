@@ -382,6 +382,18 @@
 			WHERE	P.PACK_ID = H.PACK_ID
 			AND		H.PACK_ID = ?
 		</getHashTagOfPackage>
+		
+		<addHashTagInPack>
+			INSERT INTO HASH_TAG (
+			                        HASH_TAG_ID
+			                        , PACK_ID
+			                        , HASH_TAG_NAME
+			                     ) 
+			VALUES               ( HASH_TAG_ID_SEQ.NEXTVAL
+			                        ,?
+			                        ,?
+			                     )
+		</addHashTagInPack>
 	
 	</hashtag>
 	
@@ -419,6 +431,8 @@
             FROM    PACK_LIKE
             WHERE   PACK_ID = ?
 		</countPackLike>
+	
+		
 	
 	</packLike>
 	

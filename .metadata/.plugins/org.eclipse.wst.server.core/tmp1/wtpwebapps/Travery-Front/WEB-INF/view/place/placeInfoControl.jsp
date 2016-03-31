@@ -223,7 +223,7 @@
 						<input type="file"
 							id="image" name="image" accept="image/*"
 							onchange="readURL(this);" required
-							style="float: left; margin-left: 2%;" />
+							style="float: left; margin-left: 2%;" multiple />
 					</div>
 					<div class="panel-body">
 						<img id="blah" class="img-circle" src="#"

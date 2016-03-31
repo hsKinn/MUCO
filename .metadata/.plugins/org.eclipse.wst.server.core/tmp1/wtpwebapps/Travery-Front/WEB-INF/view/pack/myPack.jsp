@@ -55,11 +55,20 @@
 					$("#packData_likeCount").text(jsonData.likeCount);
 					$("#packData_viewCount").text(jsonData.viewCount);
 					$("#curpackId").val(jsonData.packId);
+					$(".hashtagBox").text(jsonData.hashtags);
+					$("#texthashtag").val(jsonData.hashtags);
 				} else {
 					/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
 					location.href = "/"; */
 				}
 			});
+		});
+		$("#hashtagAddBtn").click(function() {
+			var tag = $("#hashTag").val();
+			var tags = $("#texthashtag").val();
+			$(".hashtagBox").append(" #"+tag);
+			$("#texthashtag").val(tags+" "+tag);
+			$("#hashTag").val(null);
 		});
 
 		$(".btn-success").click(function() {
@@ -125,6 +134,13 @@
 				<div class="form-group">
 					<label for="likeCount">Like Count :</label> <span
 						id="packData_likeCount" name="packData_likeCount"></span>
+				</div>
+				<div class="form-group">
+				<label for="texthashtag">Hash Tag :</label>
+				<input type="hidden" name="texthashtag" id="texthashtag"/>
+				  <input type="text" class="form-control" id="hashTag" name="hashTag"style="width:30%;display: inline;"/>
+				  <button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button></br>				
+				  <span class="hashtagBox" name="hashtagBox"></span>
 				</div>
 			</form>
 			<button type="button" class="btn btn-success">OK</button>

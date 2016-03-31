@@ -17,29 +17,27 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		var hashtag = {};
-		var count=0;
-		
 		$("#myPackMenu").mouseout(function() {
 			$("#myPackMenu").css("color", "#ffffff");
 		});
 		$("#myPackMenu").css("color", "#ffffff");
 
 		$("#addPackImg").hide();
+		
 		$("#hashtagAddBtn").click(function() {
 			var tag = $("#hashTag").val();
-			hashtag[count]=tag;
-			count++;
+			var tags = $("#texthashtag").val();
 			$(".hashtagBox").append(" #"+tag);
+			$("#texthashtag").val(tags+" "+tag);
 			$("#hashTag").val(null);
 		});
 
-		$(".btn-default").click(function() {
+		$(".btn-primary").click(function() {
 			var form = $("#addPack");
+			alert(form.hashtagBox);
 			form.attr("method", "post");
 			form.attr("action", "/doAddPack");
 			form.submit();
-			hashtag.submit();
 		});
 
 	});
@@ -110,12 +108,11 @@
 				</label>
 				</div>
 				<div class="form-group">
-				<label for="packData_Title">Hash Tag :</label>
+				<label for="texthashtag">Hash Tag :</label>
+				<input type="hidden" name="texthashtag" id="texthashtag"/>
 				  <input type="text" class="form-control" id="hashTag" name="hashTag"style="width:30%;display: inline;"/>
-				  <button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button>
-				</div>
-				<div class="form-group">
-					<span class="hashtagBox"></span>
+				  <button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button></br>				
+				  <span class="hashtagBox" ></span>
 				</div>
 				
 			

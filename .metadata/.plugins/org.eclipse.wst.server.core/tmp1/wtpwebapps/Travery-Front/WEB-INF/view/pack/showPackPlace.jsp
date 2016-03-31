@@ -84,7 +84,8 @@
 			<c:forEach items="${places}" var="places">
 			<tr width="200px">
 			  <td class="place" >
-			  	<p id="title"  style="display: inline;"> ${places.placeName}</p> 
+			  	<p id="title" data-toggle="modal" data-target="#${places.placeId}" style="display: inline;cursor: pointer;"> ${places.placeName}</p> 
+			  	<input type="hidden" class="placeId" name="placeId" value="${places.placeId}"/>
 			  	<form class="deletePlaceOfPackForm" style="display: inline;">
 					<label class="submitLabel" >
 					  	<span class="glyphicon glyphicon-remove" style="font-size:20px; cursor: pointer;"></span>
@@ -95,11 +96,36 @@
 			 	</form>
 			  </td>
 			</tr>
+			
+			<div id="${places.placeId}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">${places.placeName}</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+			
 			</c:forEach>
 			</table>
 			
 		</div>	
+		
+		
+		
 	</div>
+
 </body>
 
 

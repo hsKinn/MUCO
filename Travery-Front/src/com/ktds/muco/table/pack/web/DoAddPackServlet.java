@@ -43,14 +43,25 @@ public class DoAddPackServlet extends HttpServlet {
 		String title = multipartRequest.getParameter("title");
 		MultipartFile file = multipartRequest.getFile("image");
 		String isPublic =(String)multipartRequest.getParameter("packData_IsPublic");
+		String hashtags = multipartRequest.getParameter("texthashtag");
 		
-		if (request.getParameterValues("hashtag") != null){
-			String[] tags  = request.getParameterValues("hashtag");
-		}
-		PrintWriter out = response.getWriter();
+		System.out.println("tag:"+hashtags);
+
+
+		//		String[] tags =null;
+//		if (request.getParameterValues("hashtag") != null){
+//			tags  = request.getParameterValues("hashtag");
+//		}
+//		for (String tag : tags) {
+//			System.out.println(tag);
+//		}
 		
+		/*loginMember 처리부*/
+		HttpSession session = request.getSession();
+		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		/*isPublic 처리부*/
 		int intIsPublic = 0;
-		
 		System.out.println("isPublic :" +isPublic );
 		if(isPublic != null && isPublic.equals("1")){
 			System.out.println("공유");
@@ -59,19 +70,15 @@ public class DoAddPackServlet extends HttpServlet {
 			System.out.println("비공유");
 		}
 		
-		HttpSession session = request.getSession();
-		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
-
+		/*new package 생성부*/
 		PackVO newAddPack = new PackVO();
 		newAddPack.setEmail(loginMember.getEmail());
 		newAddPack.setPackTitle(title);
 		newAddPack.setIsPublic(intIsPublic);
-
 		int packId = packBiz.addPack(newAddPack);
 
-
-		File upFile = null;
-		
+		/*file 처리부*/
+		File upFile = null;		
 		if (file != null && file.getFileName().length() >0) {
 			// file이 null이면 파일을 업로드 안한것
 			upFile = file.write("D:\\travery\\" + file.getFileName());			
@@ -81,7 +88,11 @@ public class DoAddPackServlet extends HttpServlet {
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 		
-
+		/*hashTag 처리부*/
+		if ( hashtags != null && hashtags.length()>0 ){
+			int addHashTagCount = 0;
+			addHashTagCount = packBiz.addHashTagInPack(packId, hashtags);
+		}
 		response.sendRedirect("/detailPack");
 	}
 
