@@ -7,9 +7,6 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
-<!-- CSS -->
-<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/myPack.css"/>" />
-
 <!-- My Package -->
 <script type="text/javascript">
 	$(document).ready(function() {

@@ -42,7 +42,7 @@
 <!-- CSS -->
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
-<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/myPack.css"/>" />
+
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/country/country.css"/>" />
@@ -53,89 +53,6 @@
 <script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
 
 </head>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		$("#join").hide();
-		$("#login").hide();
-
-		$("#letsJoin").click(function() {
-			$("#letsJoin").animate({
-				height : 'toggle'
-			});
-			$("#join").animate({
-				height : 'toggle'
-			});
-
-			$("#letsLogIn").hide();
-			$("#login").hide();
-			$("#goBack").show();
-		});
-
-		$("#letsLogIn").click(function() {
-			$("#letsLogIn").animate({
-				height : 'toggle'
-			});
-			$("#login").animate({
-				height : 'toggle'
-			});
-
-			$("#letsJoin").hide();
-			$("#join").hide();
-			$("#goBack").show();
-		});
-
-		$("#goBack").click(function() {
-			$("#join").hide();
-			$("#login").hide();
-			$("#letsJoin").show();
-			$("#letsLogIn").show();
-			$("#goBack").hide();
-		});
-
-		// 회원 가입 
-		$("#btnJoin").click(function() {
-
-			var userEmail = $("#userEmail").val();
-			userEmail = $.trim(userEmail);
-			if (userEmail == "") {
-				alert("이메일을 입력하세요!");
-				$("#userEmail").focus();
-				return;
-			}
-
-			var userPassword = $("#userPassword").val();
-			userPassword = $.trim(userPassword);
-			if (userPassword == "") {
-				alert("비밀번호를 입력하세요!");
-				$("#userPassword").focus();
-				return;
-			}
-
-			var userName = $("#userName").val();
-			userName = $.trim(userName);
-			if (userName == "") {
-				alert("닉네임을 입력하세요!");
-				$("#userName").focus();
-				return;
-			}
-
-			var form = $("#joinForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/doJoin"/>");
-			form.submit();
-		});
-
-		// 로그인 
-		$("#btnLogin").click(function() {
-			var form = $("#loginForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/doLogin"/>")
-			form.submit();
-		});
-
-	});
-</script>
 
 <body>
 	<nav id="topNav" class="navbar navbar-default navbar-fixed-top">

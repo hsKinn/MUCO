@@ -42,14 +42,6 @@
 <!-- Share Pack Content by hskim -->
 <section class="bg-primary" id="one">
 	<div class="container">
-		<!-- 제목 -->
-		<div class="col-lg-8 col-lg-offset-2 text-center">
-			<h2 class="margin-top-0 wow fadeIn">RECOMMEND PLACE</h2>
-			<hr class="primary">
-			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
-		</div>
-
-		<!-- 내용 -->
 		<div id="share-wrapper">
 			<form id="searchForm">
 				<div id="share-top">
@@ -287,7 +279,8 @@
 					<div id="notFoundPack">
 						<h3>
 							<span id="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가
-							존재하지 않습니다<br /> <span id="red">초기화</span> 후 재 검색해주세요
+							존재하지 않습니다<br />
+							<span id="red">초기화</span> 후 재 검색해주세요
 						</h3>
 
 					</div>
