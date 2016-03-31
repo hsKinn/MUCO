@@ -23,12 +23,10 @@
 		});
 		$("#myPackMenu").css("color", "#ffffff");
 
-		$("#myPackMenu").css("color", "#ffffff");
 
 		$("#placesOfPackListdiv").hide();
 
 		$(".pack").click(function() {
-			open = false;
 			$("#placesOfPackListdiv").hide();
 			$("#placesOfPackListdiv").fadeIn("slow");
 			var packId = $(this).children(":eq(2)").val();
@@ -62,7 +60,6 @@
 					location.href = "/"; */
 				}
 			});
-
 		});
 
 		$(".btn-success").click(function() {
@@ -73,49 +70,6 @@
 			form.submit();
 		});
 
-		$(".pack").click(function() {
-			$("#placesOfPackListdiv").fadeOut();
-			$("#placesOfPackListdiv").fadeIn("slow");
-
-			var packId = $(this).children(":eq(2)").val();
-
-			$.post("/packInfo", {
-				"packId" : packId
-			}, function(data) {
-
-				var jsonData = {};
-				try {
-					jsonData = JSON.parse(data);
-				} catch (e) {
-					jsonData.result = false;
-				}
-				console.log(jsonData);
-
-				if (jsonData.result) {
-
-					$("#packData_Title").text(jsonData.title);
-					$("#packData_IsPublic").text(jsonData.isPublic);
-					$("#packData_image").attr("src", jsonData.imageLocation);
-
-				} else {
-					/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-					location.href = "/"; */
-				}
-
-			});
-
-		});
-
-		$(".switch").click(function() {
-			console.log("#abc")
-			
-		});
-		
-		$("#abc").click( function() {
-			var a = "checked";
-			
-			console.log(a);
-		});
 	});
 </script>
 
@@ -143,7 +97,6 @@
 	</div>
 
 	<div id="packListdiv2">
-<<<<<<< HEAD
 		<div id="placesOfPackListdiv" align="center">
 			<img id="packData_image" src="#" /><br />
 			<br />
@@ -174,16 +127,7 @@
 						id="packData_likeCount" name="packData_likeCount"></span>
 				</div>
 			</form>
-
 			<button type="button" class="btn btn-success">OK</button>
-=======
-		<div id="placesOfPackListdiv">
-			<span id="packData_Title"></span><br /> <span id="packData_IsPublic"></span><br />
-			공개 <label class="switch"> <input type="checkbox" id="abc" value="check">
-			<input type="checkbox" id="abc" value="check">
-				<div class="slider round"></div>
-			</label> <img id="packData_image" src="#" /> 수정버튼
->>>>>>> origin/hskim3
 		</div>
 	</div>
 </body>

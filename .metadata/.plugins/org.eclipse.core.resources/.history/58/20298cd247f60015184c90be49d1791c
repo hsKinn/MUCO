@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+div#faqWrapper {
+	width:70%;
+	height:60%;
+	background-color: #ffffff; 
+	margin:auto;
+}
+
+div#tabMenu {
+	width:25%;
+	height:100%; 
+	background-color: #eeeeee;
+	float:left;
+}
+
+hr#hrLine {
+	float:left;
+	color:red; 
+	background-color:#7f7f7f; 
+	height:90%; 
+	border:none;
+}
+
+div#faqContent {
+	font-family: "나눔바른고딕";
+	width:74.85%; 
+	height:100%; 
+	background-color: #eeeeee; 
+	float:left;
+}

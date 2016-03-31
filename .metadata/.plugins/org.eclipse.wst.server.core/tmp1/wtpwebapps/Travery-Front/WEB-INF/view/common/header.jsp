@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/footer.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/termsAccess.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/personalData.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/faq.css"/>" />
 
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/logout.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/member/personalInfo.css"/>" />

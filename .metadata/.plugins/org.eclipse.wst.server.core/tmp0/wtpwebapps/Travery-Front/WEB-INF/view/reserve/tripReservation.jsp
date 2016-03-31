@@ -14,11 +14,9 @@
 <jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
 
 <script type="text/javascript">
-$(document).ready(function() {
-	
-	
-});
+	$(document).ready(function() {
 
+	});
 </script>
 
 

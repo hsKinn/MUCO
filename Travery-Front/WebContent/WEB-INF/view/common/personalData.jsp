@@ -289,7 +289,7 @@
         </div>
     </div>
 	<div id="gotop" class="gotop">
-	<a href="javascript:scrollTo(0, 0);">top</a>
+	<a href="javascript:scrollTo(0, 0);"><img src="<c:url value="/resource/img/common/topIcon.png" />" style="width:20px; height:20px;" ></a>
 </div>
 
 

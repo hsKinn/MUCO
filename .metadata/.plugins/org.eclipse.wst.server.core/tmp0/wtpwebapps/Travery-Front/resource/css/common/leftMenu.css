@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
-div#bodyWithoutHeader {
-	width:1900px;
-	height:850px;;
-	float:left;
+div#leftMenuWrapper {
+	width: 1900px;
+	height: 1000px;;
+	float: left;
 	position: absolute;
 }
 
-div#leftMenu {
+div#leftMenuContents {
 	height: 100%;
 	padding: 20px;
 	background-color: #333333;
@@ -17,11 +17,11 @@ div#leftMenu {
 	float: left;
 }
 
-div#leftMenu ul li {
+div#leftMenuContents ul li {
 	margin-top: 50px;
 }
 
-div#leftMenu ul li a {
+div#leftMenuContents ul li a {
 	margin-top: 50px;
 	color: #959595;
 	text-decoration: none;

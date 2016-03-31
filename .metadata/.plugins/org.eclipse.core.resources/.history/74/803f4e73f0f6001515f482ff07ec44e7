@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+div#faqWrapper {
+	width:70%;
+	height:100%;
+	background-color: #ffffff; 
+	margin:auto;
+}
+
+div#tabMenu {
+	width:25%;
+	height:100%; 
+	background-color: #eeeeee;
+	float:left;
+}
+
+hr#hrLine {
+	float:left;
+	color:red; 
+	background-color:#7f7f7f; 
+	height:90%; 
+	border:none;
+}
+
+div#faqContent {
+	width:74.85%; 
+	height:100%;
+	background-color: #eeeeee; 
+	float:left;
+}
+div.faqLists {
+	
+	width:60%;
+	height:30%;
+	margin-left:10%;
+	margin-top: 7%;
+	
+	background-color:#f3f3f3;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #a3a8bc;
+    
+    
+}

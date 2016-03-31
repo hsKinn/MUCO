@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 
 /* 김현섭 */
-
 div#share-wrapper {
 	float: left;
 	width: 80%;
@@ -20,7 +19,6 @@ div#share-top #searchBox {
 	width: 60%;
 	margin-top: 1%;
 	margin-left: 3%;
-
 }
 
 input#searchKeyword {
@@ -58,7 +56,7 @@ div#sortBox button.btn {
 div#sharePage {
 	float: left;
 	width: 100%;
-	height: 2%;	
+	height: 2%;
 	margin-top: 3px;
 	text-align: center;
 }
@@ -73,11 +71,11 @@ div#share-body {
 div.sharePack {
 	float: left;
 	width: 30%;
-	height: 40%;	
+	height: 40%;
 	margin-top: 1%;
 	margin-left: 2.5%;
 	border: 2px dotted #d0d0d0;
-	background-color: #d7d7d7;		
+	background-color: #d7d7d7;
 }
 
 div.packTop {
@@ -99,7 +97,7 @@ div.packHashTag {
 	float: left;
 	width: 100%;
 	height: 15%;
-	overFlow-y: auto;	
+	overFlow-y: auto;
 }
 
 div.packHashTag span#hashtag {
@@ -111,7 +109,7 @@ div.packHashTag span#hashtag {
 div.packPhoto {
 	float: left;
 	width: 100%;
-	height: 70%;	
+	height: 70%;
 	margin-left: 6px;
 }
 
@@ -123,7 +121,7 @@ div.packPhoto img {
 div.packFooter {
 	float: left;
 	width: 100%;
-	height: 10%;	
+	height: 10%;
 }
 
 div.packWriterName {
@@ -145,7 +143,6 @@ div.packViewCount span.badge {
 	font-size: 11px;
 	margin-bottom: 7px;
 }
-
 
 div.packLikeCount {
 	float: left;
@@ -199,7 +196,7 @@ div#notFoundPack span#blue {
 	text-decoration: underline;
 }
 
-div.modal-footer span {
+div.modal-footer-share span {
 	color: red;
 	font-size: 15px;
 }
@@ -243,10 +240,8 @@ td.reply_btn span {
 	color: black;
 }
 
-textarea {
+.reply_content textarea {
 	width: 250px;
 	height: 18px;
 	wrap: off;
 }
-
-

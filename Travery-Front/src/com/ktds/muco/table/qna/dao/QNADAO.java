@@ -41,9 +41,11 @@ public class QNADAO {
 				qnaVO = new QNAVO();
 
 				qnaVO.setQnaId(rs.getInt("QNA_ID"));
-				qnaVO.setQndDate(rs.getString("QNA_DT"));
+				qnaVO.setEmail(rs.getString("EMAIL"));
+				qnaVO.setQnaDate(rs.getString("QNA_DT"));
 				qnaVO.setTitle(rs.getString("TITLE"));
 				qnaVO.setDescription(rs.getString("DESCRIPTION"));
+				qnaVO.setIsFaq(rs.getInt("IS_FAQ"));
 
 				faqList.add(qnaVO);
 			}

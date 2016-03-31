@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+div#faqWrapper {
+	width:70%;
+	height:50%;
+	background-color: #ffffff; 
+	margin:auto;
+}
+
+div#tabMenu {
+	width:25%;
+	background-color: #eeeeee;
+	float:left;
+}
+
+hr#hrLine {
+	float:left;
+	color:red; 
+	background-color:#7f7f7f; 
+	height:100%; 
+	border:thin;
+}

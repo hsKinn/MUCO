@@ -320,4 +320,55 @@
 		<servlet-name>DoWritePackReplyServlet</servlet-name>
 		<url-pattern>/doWritePackReply</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>HitCountPackServlet</display-name>
+		<servlet-name>HitCountPackServlet</servlet-name>
+		<servlet-class>com.ktds.muco.table.pack.web.HitCountPackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HitCountPackServlet</servlet-name>
+		<url-pattern>/hitCountPack</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>PersonalInfoActionServlet</display-name>
+		<servlet-name>PersonalInfoActionServlet</servlet-name>
+		<servlet-class>com.ktds.muco.table.member.web.PersonalInfoActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersonalInfoActionServlet</servlet-name>
+		<url-pattern>/personalInfoAction</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>NameCheckServlet</display-name>
+		<servlet-name>NameCheckServlet</servlet-name>
+		<servlet-class>com.ktds.muco.table.member.web.NameCheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NameCheckServlet</servlet-name>
+		<url-pattern>/nameCheck</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ProfileImageDownload</display-name>
+		<servlet-name>ProfileImageDownload</servlet-name>
+		<servlet-class>com.ktds.muco.table.member.web.ProfileImageDownload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfileImageDownload</servlet-name>
+		<url-pattern>/profileImageDownload</url-pattern>
+	</servlet-mapping>
+	<servlet>
+     <description></description>
+     <display-name>PackLikeServlet</display-name>
+     <servlet-name>PackLikeServlet</servlet-name>
+     <servlet-class>com.ktds.muco.table.packLike.web.PackLikeServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>PackLikeServlet</servlet-name>
+     <url-pattern>/packLike</url-pattern>
+   </servlet-mapping>
 </web-app>
