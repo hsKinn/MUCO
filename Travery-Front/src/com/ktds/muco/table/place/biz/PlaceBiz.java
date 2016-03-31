@@ -1,10 +1,14 @@
 package com.ktds.muco.table.place.biz;
 
+import java.util.List;
+
 import com.ktds.muco.table.image.dao.ImageDAO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceListVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.util.web.Paging;
 
 /**
  * 
@@ -22,10 +26,65 @@ public class PlaceBiz {
 
 	public PlaceBiz() {
 		placeDAO = new PlaceDAO();
-
 		imageDAO = new ImageDAO();
 	}
+	/**
+	 * getAllRecommendPlaceList
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeSearchVO
+	 * @return
+	 */
+	public PlaceListVO getAllRecommendPlaceList(PlaceSearchVO placeSearchVO, MemberVO member, int sortOption) {
+		
+		int allPlaceCount = 0;
+		List<PlaceVO> placeList = null;
+		Paging paging = new Paging(4);
+		
+		
+			allPlaceCount = placeDAO.getAllPlaceCount(placeSearchVO);
+			paging.setTotalArticleCount(allPlaceCount);
+		
+		paging.setPageNumber(placeSearchVO.getPageNo() + ""); 
+		placeSearchVO.setStartIndex( paging.getStartArticleNumber() );
+		placeSearchVO.setEndIndex( paging.getEndArticleNumber() );
+		// Get List
+		/*
+		 * Sort Option 1 : Like Count DESC 2 : View Count DESC 3 : Create Date
+		 * ASC
+		 * 
+		 */
+			
+			if (sortOption == 1) {
+				placeList = placeDAO.getAllPlaceList(placeSearchVO, member);
+			} else if (sortOption == 2) {
+				placeList = placeDAO.getAllPlaceListOrderByView(placeSearchVO, member);
+			} else if (sortOption == 3) {
+				placeList = placeDAO.getAllPlaceListOrderByDate(placeSearchVO, member);
+			}
+	
+		PlaceListVO placeListVO = new PlaceListVO();
+		placeListVO.setPlaceList(placeList);
+		placeListVO.setPaging(paging);
+		
+		return placeListVO;
+	} 	
+	
+	/**
+	 * viewCountRecommendPlace
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param int placeId
+	 * @return 
+	 */
+	public boolean viewCountRecommendPlace(int placeId) {
 
+		return placeDAO.viewCountRecommendPlace(placeId) > 0;
+
+	} 
+	
 	public PlaceListVO getUserRecommendList(MemberVO member) {
 
 		PlaceListVO placeListVO = new PlaceListVO();

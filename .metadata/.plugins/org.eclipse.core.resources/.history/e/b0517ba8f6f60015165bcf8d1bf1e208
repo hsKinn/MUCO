@@ -1,0 +1,40 @@
+package com.ktds.muco.table.placeLike.biz;
+
+import com.ktds.muco.table.placeLike.dao.PlaceLikeDAO;
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
+
+public class PlaceLikeBiz {
+
+	private PlaceLikeDAO placeLikeDAO;
+	
+	public PlaceLikeBiz() {
+		placeLikeDAO = new PlaceLikeDAO();
+	}
+	/**
+	 * insertOrDeletePlaceLike
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeLikeVO
+	 */
+	public void insertOrDeletePlaceLike(PlaceLikeVO placeLikeVO) {
+		if ( isExistPlaceLike(placeLikeVO) ) {
+			placeLikeDAO.deletePackLike(placeLikeVO);
+		}
+		else {
+			placeLikeDAO.insertPackLike(placeLikeVO);
+		}
+	}
+	/**
+	 * isExistPlaceLike
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeLikeVO
+	 * @return
+	 */
+	public boolean isExistPlaceLike(PlaceLikeVO placeLikeVO) {
+		return placeLikeDAO.selectPackLikeCount(placeLikeVO) > 0;
+	}
+
+}

@@ -14,6 +14,7 @@ import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.file.MultipartHttpServletRequest;
+import com.ktds.muco.util.root.Root;
 
 /**
  * 
@@ -79,7 +80,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 			response.sendRedirect("/placeInfoControl");
 		} catch (RuntimeException re) {
 			System.out.println(re.getMessage());
-			response.sendRedirect("/placeInfoControl?placeId=" + placeVO.getPlaceId());
+			response.sendRedirect(Root.get(this) + "/placeInfoControl?placeId=" + placeVO.getPlaceId());
 		}
 		return;
 	}

@@ -1,0 +1,19 @@
+package com.ktds.muco.table.placeLike.vo;
+
+/**
+ * 
+ * @author 김동규
+ *
+ */
+public class PlaceLikeVO {
+
+	private int placeLikeId;
+
+	public int getPlaceLikeId() {
+		return placeLikeId;
+	}
+
+	public void setPlaceLikeId(int placeLikeId) {
+		this.placeLikeId = placeLikeId;
+	}
+}

@@ -1,0 +1,91 @@
+package com.ktds.muco.table.placeReply.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.ktds.muco.table.placeReply.vo.PlaceReplyVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PlaceReplyDAO {
+
+	
+	
+	
+	public int selectPlaceCountParentReplyId(PlaceReplyVO placeReply) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int selectPlaceMaxOrderNoByParentReplyId(PlaceReplyVO placeReply) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int selectPlaceLatestOrderNoByParentReplyId(PlaceReplyVO placeReply) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertPlaceReply(PlaceReplyVO placeReply) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void updatePlaceOrderNoByGroupId(PlaceReplyVO placeReply) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	
+	
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+}

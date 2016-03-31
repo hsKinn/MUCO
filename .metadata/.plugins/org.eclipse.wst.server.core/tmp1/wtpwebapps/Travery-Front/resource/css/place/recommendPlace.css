@@ -175,8 +175,21 @@ div#middle {
 
 	font-size: 15px;
 	width: 97.5%;
-	height: 4%;
+	height: 5.5%;
 	float: left;
+}
+
+div#sortBox {
+	float: right;
+	margin-top: 1%;
+	margin-right: 3%;
+	width: 120px;
+}
+
+div#sortBox button.btn {
+	width: 100%;
+	height: 36px;
+	margin-bottom: 4px;
 }
 
 div#search_part {
@@ -207,7 +220,7 @@ div#recommendPlace_Wrapper button span {
 
 div#inner_wrapper2 {
 	width: 97.5%;
-	height: 27%;
+	height: 24%;
 	margin-left: 2%;
 	margin-top: 2px;
 	float: left;
@@ -215,7 +228,7 @@ div#inner_wrapper2 {
 
 div#paging {
 	width: 100%;
-	height: 7%;
+	height: 10%;
 	float: left;
 	text-align: center;
 }
@@ -225,7 +238,7 @@ div#new_wrapper {
 	background-color: #d7d7d7;		
 	margin-top: 5px;	
 	width: 100%;
-	height: 96%;	
+	height: 95%;	
 	float: left;
 }
 
@@ -233,6 +246,8 @@ div#new_top {
 	width: 100%;
 	height: 13%;
 }
+
+
 
 div#top_name {
 	width: 80%;

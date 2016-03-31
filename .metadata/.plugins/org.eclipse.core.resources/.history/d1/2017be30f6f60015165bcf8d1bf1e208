@@ -1,0 +1,17 @@
+package com.ktds.muco.table.placeLike.biz;
+
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
+
+public class PlaceLikeBiz {
+
+	public void insertOrDeletePackLike(PlaceLikeVO placeLikeVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isExistPackLike(PlaceLikeVO placeLikeVO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

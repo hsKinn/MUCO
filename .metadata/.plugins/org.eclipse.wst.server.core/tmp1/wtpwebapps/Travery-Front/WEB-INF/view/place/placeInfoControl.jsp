@@ -112,6 +112,7 @@
 							GoogleMapAPI.document.dataform.lat;
 							GoogleMapAPI.document.dataform.lng;
 							GoogleMapAPI.document.dataform.address;
+							GoogleMapAPI.document.dataform.country;
 						}
 					});
 </script>
@@ -165,7 +166,7 @@
 		</form>
 	</div>
 
-	<div style="width: 20%; float: right; margin-top: 70%; background-color: red; position: absolute;">
+	<div style="width: 20%; float: right; margin-top: 30%; background-color: red;">
 		<div id="btn-create" style="float: left;">
 			<form id="createForm">
 				<span class="glyphicon glyphicon-pencil" id="createBtn"
@@ -203,12 +204,15 @@
 							id="address" name="address" placeholder="#address"
 							value="${placeInfo.address}" size="12"
 							style="margin-left: 5%; float: left;" /> 
-						<input type="hidden"
+						<input type="text"
 							id="lat" name="lat" placeholder="#latitude"
 							value="${placeInfo.latitude}" size="12" /> 
-						<input type="hidden"
+						<input type="text"
 							id="lng" name="lng" placeholder="#longitude"
 							value="${placeInfo.longitude}" size="12" />
+						<input type="text"
+							id="country" name="country" placeholder="#country"
+							value="${placeInfo.countryId}" size="12" />
 					</div>
 				</div>
 			</div>

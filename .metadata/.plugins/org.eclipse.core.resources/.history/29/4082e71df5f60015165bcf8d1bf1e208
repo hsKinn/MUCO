@@ -1,0 +1,5 @@
+package com.ktds.muco.table.placeLike.vo;
+
+public class PlaceLikeVO {
+
+}

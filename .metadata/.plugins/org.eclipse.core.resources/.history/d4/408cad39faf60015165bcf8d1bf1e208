@@ -1,0 +1,22 @@
+package com.ktds.muco.table.placeReply.biz;
+/**
+ * 
+ * @author 김동규
+ *
+ */
+public class PlaceReplyBiz {
+
+	private PlaceReplyDAO placeReplyDAO;
+	
+	public PlaceReplyBiz() {
+		placeReplyDAO = new PlaceReplyDAO();
+	}
+	/**
+	 * Add New Reply
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param packReply
+	 * @return
+	 */
+}

@@ -17,6 +17,7 @@
 			window.opener.dataform.lat.value = $("#lat").val();
 			window.opener.dataform.lng.value = $("#lng").val();
 			window.opener.dataform.address.value = $("#address").val();
+			window.opener.dataform.country.value = $("#country").val();
 			self.close();
 		});
 	});
@@ -117,6 +118,8 @@
 																			.val(
 																					results[0].geometry.location
 																							.lng());
+																	$('#country').val(results[0].address_components[4].long_name);
+																	
 																} else {
 																	alert("Geocoder Failed Due to : "
 																			+ status);
@@ -227,6 +230,7 @@
 											}
 										}); // addListener를 통한 결과 값을 위도 정보를 text형태로 #lng에 출력해주는 부분
 
+					});
 						$("#address")
 								.focusout(
 										function() {
@@ -275,7 +279,45 @@
 																});
 											}
 										}); // addListener를 통한 결과 값을 위도 정보를 text형태로 #address에 출력해주는 부분
-					});
+										
+						$("#country")
+								.focusout(
+										function() {
+											var country = $(this).val();
+											if (country != '') {
+												geocoder
+														.geocode(
+																{
+																	'country' : country
+																},
+																function(
+																		results,
+																		status) {
+																	if (status == google.maps.GeocoderStatus.OK) {
+																		$('#country').val(results[0].address_components[4].long_name);
+																		map.setCenter(results[0].geometry.location);
+																		if (!marker) {
+																			marker = new google.maps.Marker(
+																					{
+																						position : results[0].geometry.location,
+																						map : map
+																					});
+																		} else {
+																			marker
+																					.setMap(null);
+																			marker = new google.maps.Marker(
+																					{
+																						position : results[0].geometry.location,
+																						map : map
+																					});
+																		}
+																	} else {
+																		alert("Geocoder Failed Due To : "
+																				+ status);
+																	}
+																});
+											}
+										}); // addListener를 통한 결과 값을 위도 정보를 text형태로 #address에 출력해주는 부분
 </script>
 </head>
 <body>
@@ -297,6 +339,10 @@
 			<tr>
 				<th width="100">주소</th>
 				<td><input type="text" id="address" name="address" size="50" /></td>
+			</tr>
+			<tr>
+				<th width="100">나라명</th>
+				<td><input type="text" id="country" name="country" size="50" /></td>
 			</tr>
 		</table>
 		<div style="float: right;">

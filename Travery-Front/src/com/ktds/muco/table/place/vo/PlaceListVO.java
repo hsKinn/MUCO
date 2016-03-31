@@ -12,7 +12,7 @@ import com.ktds.muco.util.web.Paging;
  * @author 김동규
  *
  */
-public class PlaceListVO {
+public class PlaceListVO{
 
 	private List<ImageVO> imageList;
 	private List<PlaceVO> placeList;

@@ -1,0 +1,65 @@
+package com.ktds.muco.table.placeReply.biz;
+
+import com.ktds.muco.table.placeReply.dao.PlaceReplyDAO;
+import com.ktds.muco.table.placeReply.vo.PlaceReplyVO;
+
+/**
+ * 
+ * @author 김동규
+ *
+ */
+public class PlaceReplyBiz {
+
+	private PlaceReplyDAO placeReplyDAO;
+	
+	public PlaceReplyBiz() {
+		placeReplyDAO = new PlaceReplyDAO();
+	}
+	/**
+	 * addNewPlaceReplyDepthOne
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeReply
+	 * @return
+	 */
+
+	public boolean addNewPlaceReplyDepthOne(PlaceReplyVO placeReply) {
+		int orderNo = this.getNewOrderNo(packReply);
+		packReply.setOrderNo(orderNo);
+		
+		// 일반 댓글 아닐 시
+		if ( orderNo > 0 ) {
+			packReplyDAO.updateOrderNoByGroupId(packReply);
+		}
+
+		return packReplyDAO.insertReply(packReply) > 0;
+		
+	}
+	/**
+	 * getNewPlaceOrderNo
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeReply
+	 * @return
+	 */
+	public int getNewPlaceOrderNo(PlaceReplyVO placeReply) {
+		if ( packReplyDAO.selectCountParentReplyId(packReply) > 0 ) {
+			// 존재할 경우
+			int newOrderNo = packReplyDAO.selectMaxOrderNoByParentReplyId(packReply);
+			return newOrderNo + 1;
+		}
+		else {
+			// 일반 댓글이나 첫 번째 대댓글인 경우
+			// depth나 replyParentId로 일반 댓글이나 대댓글인 경우를 구분
+			
+			if ( packReply.getParentReplyId() != 0 ) {
+				int newOrderNo = packReplyDAO.selectLatestOrderNoByParentReplyId(packReply);
+				return newOrderNo + 1;
+			}
+		}
+			
+		return 0;
+	}
+}

@@ -1,0 +1,37 @@
+package com.ktds.muco.table.placeLike.biz;
+
+import com.ktds.muco.table.placeLike.dao.PlaceLikeDAO;
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
+
+public class PlaceLikeBiz {
+
+	private PlaceLikeDAO placeLikeDAO;
+	
+	public PlaceLikeBiz() {
+		placeLikeDAO = new PlaceLikeDAO();
+	}
+	/**
+	 * insertOrDeletePackLike
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packLike
+	 */
+	public void insertOrDeletePackLike(PlaceLikeVO placeLikeVO) {
+		// TODO Auto-generated method stub
+		
+	}
+	/**
+	 * isExistPackLike
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param packLike
+	 * @return
+	 */
+	public boolean isExistPackLike(PlaceLikeVO placeLikeVO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,131 @@
+package com.ktds.muco.table.place.biz;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.biz.Paging;
+import com.ktds.muco.table.image.dao.ImageDAO;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.dao.PlaceDAO;
+import com.ktds.muco.table.place.vo.PlaceListVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.vo.PackListVO;
+import com.ktds.muco.vo.PackVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PlaceBiz {
+	/**
+	 * 
+	 * @author 김동규
+	 *
+	 */
+	private PlaceDAO placeDAO;
+	private ImageDAO imageDAO;
+
+	public PlaceBiz() {
+		placeDAO = new PlaceDAO();
+
+		imageDAO = new ImageDAO();
+	}
+	/**
+	 * getAllRecommendPlaceList
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeSearchVO
+	 * @return
+	 */
+	public PlaceListVO getAllRecommendPlaceList(PlaceSearchVO placeSearchVO, MemberVO member, int sortOption) {
+		
+		int allPackageCount = 0;
+		int allPackageCountByHashTag = 0;
+
+		Paging paging = new Paging(6);
+		List<PackVO> packages = new ArrayList<PackVO>();
+
+		// Count
+		if (packSearchVO.getSearchKeyword().equals("")) {
+			allPackageCount = sharePackDAO.getAllPackageListCount(packSearchVO);
+			paging.setTotalArticleCount(allPackageCount);
+		} else {
+			allPackageCountByHashTag = sharePackDAO.getAllPackageCountByHashTag(packSearchVO);
+			paging.setTotalArticleCount(allPackageCountByHashTag);
+		}
+
+		paging.setPageNumber(packSearchVO.getPageNo() + "");
+
+		packSearchVO.setStartIndex(paging.getStartArticleNumber());
+		packSearchVO.setEndIndex(paging.getEndArticleNumber());
+
+		// Get List
+		/*
+		 * Sort Option 1 : Like Count DESC 2 : View Count DESC 3 : Create Date
+		 * ASC
+		 * 
+		 */
+		if (packSearchVO.getSearchKeyword().equals("")) {
+			if (sortOption == 1) {
+				packages = sharePackDAO.getAllPackageList(packSearchVO, member);
+			} else if (sortOption == 2) {
+				packages = sharePackDAO.getAllPackageListOrderByView(packSearchVO, member);
+			} else if (sortOption == 3) {
+				packages = sharePackDAO.getAllPackageListOrderByDate(packSearchVO, member);
+			}
+		} else {
+			if (sortOption == 1) {
+				packages = sharePackDAO.getAllPackageListByHashTag(packSearchVO, member);
+			} else if (sortOption == 2) {
+				packages = sharePackDAO.getAllPackageListByHashTagOrderByView(packSearchVO, member);
+			} else if (sortOption == 3) {
+				packages = sharePackDAO.getAllPackageListByHashTagOrderByDate(packSearchVO, member);
+			}
+		}
+
+		PackListVO packList = new PackListVO();
+		packList.setPackList(packages);
+		packList.setPaging(paging);
+
+		return packList;
+	} 	
+	
+	/**
+	 * hitCountRecommendPlace
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param int placeId
+	 * @return 
+	 */
+	public boolean hitCountRecommendPlace(int packId) {
+
+		return sharePackDAO.hitCountPack(packId) > 0;
+
+	} 
+	
+	
+	
+	
+	
+	
+	
+	public PlaceListVO getUserRecommendList(MemberVO member) {
+
+		PlaceListVO placeListVO = new PlaceListVO();
+		placeListVO.setPlaceList(placeDAO.getUserRecommendPlaceList(member));
+		placeListVO.setImageList(imageDAO.getImageLocationList(member));
+		return placeListVO;
+	}
+
+	public PlaceVO placeInfoCreate(PlaceVO placeVO) {
+
+		String Description = placeVO.getPlaceDescription();
+		Description = Description.replaceAll("\n", "<br/>");
+		placeVO.setPlaceDescription(Description);
+		return placeDAO.insertPlaceInfo(placeVO);
+	}
+}

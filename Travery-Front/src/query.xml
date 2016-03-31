@@ -546,6 +546,104 @@
 			WHERE	PACKPLACE.PACK_ID = ?
 			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
 		</getPlaceInPackage>
+		<getAllPlaceCount>
+			SELECT  COUNT(PLACE_ID)
+			FROM    PLACE
+			WHERE	IS_NEW_PLACE = 1
+		</getAllPlaceCount>
+
+
+		<getAllPlaceList>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PLACE_ID
+			                     		 , PLACE_NAME
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PLACE_LIKE_ID)
+                                                FROM    PLACE_LIKE
+                                                WHERE   PLACE_ID = P.PLACE_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , I.IMAGE_LOCATION
+			                     FROM    PLACE P
+			                             , MEMBER M
+			                             , IMAGE I
+			                     WHERE   IS_NEW_PLACE = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+								AND		P.PLACE_ID = I.PLACE_ID(+)
+			                     ORDER   BY LIKE_COUNT DESC   
+			                     		 , VIEW_COUNT DESC   			                     
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ? 
+		</getAllPlaceList>
+		<getAllPlaceListOrderByView>
+			 SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PLACE_ID
+			                     		 , PLACE_NAME
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PLACE_LIKE_ID)
+                                                FROM    PLACE_LIKE
+                                                WHERE   PLACE_ID = P.PLACE_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , I.IMAGE_LOCATION
+			                     FROM    PLACE P
+			                             , MEMBER M
+			                             , IMAGE I 
+			                     WHERE   IS_NEW_PLACE = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY VIEW_COUNT DESC   
+			                     		 , LIKE_COUNT DESC   			                     
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ? 
+		
+		</getAllPlaceListOrderByView>
+		<getAllPlaceListOrderByDate>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PLACE_ID
+			                     		 , PLACE_NAME
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PLACE_LIKE_ID)
+                                                FROM    PLACE_LIKE
+                                                WHERE   PLACE_ID = P.PLACE_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , I.IMAGE_LOCATION
+			                     FROM    PLACE P
+			                             , MEMBER M
+			                             , IMAGE I
+			                     WHERE   IS_NEW_PLACE = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY PLACE_ID DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ? 		
+		</getAllPlaceListOrderByDate>
+
+        
+
+
+
+
 		
 		<placeInfoRecommendedList>
 <!-- 					SELECT  M.* 
@@ -594,12 +692,136 @@
 			SELECT	PLACE_ID_SEQ.CURRVAL
 			FROM	DUAL
 		</getReturnPlaceId>
+		<viewCountRecommendPlace>
+			UPDATE  PLACE
+			SET     VIEW_COUNT = ( VIEW_COUNT + 1 )
+			WHERE   PLACE_ID = ?
+			AND		EMAIL != ?
+		</viewCountRecommendPlace>
 	</place>
 	
 	<placeLike>
+		<selectPlaceLikeCount>
+			SELECT	COUNT(PLACE_ID)
+			FROM	PLACE_LIKE
+			WHERE	PLACE_ID = ?
+			AND		EMAIL = ?
+		</selectPlaceLikeCount>
+		<insertPlaceLike>
+			INSERT INTO PLACE_LIKE	(
+									PLACE_LIKE_ID
+									, PLACE_ID
+									, EMAIL
+								) 
+			VALUES 				( 
+									PLACE_LIKE_ID_SEQ.NEXTVAL
+									, ?
+									, ?
+								)
+		</insertPlaceLike>
+		<deletePlaceLike>
+			DELETE
+			FROM	PLACE_LIKE
+			WHERE	PLACE_ID = ?
+			AND		EMAIL = ?
+		</deletePlaceLike>		
+		<countPlaceLike>
+            SELECT  COUNT(PLACE_LIKE_ID)
+            FROM    PLACE_LIKE
+            WHERE   PLACE_ID = ?
+		</countPlaceLike>
 	</placeLike>
 	
 	<placeReply>
+			<insertPlaceReply>
+			INSERT INTO PLACE_REPLY (
+									   PLACE_REPLY_ID
+									   , PLACE_ID
+									   , EMAIL
+									   , DESCRIPTION
+									   , CRT_DT
+									   , GROUP_ID
+									   , PARENT_REPLY_ID
+									   , DEPTH
+									   , ORDER_NO
+									) 
+			VALUES 					( 
+										PLACE_REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+										, PLACE_REPLY_ID_SEQ.CURRVAL
+										, 0
+										, 0
+										, 0
+									)
+		</insertPlaceReply>
+		<insertPlaceReReply>
+			INSERT INTO PLACE_REPLY	(
+									   PLACE_REPLY_ID
+									   , PLACE_ID
+									   , EMAIL
+									   , DESCRIPTION
+									   , CRT_DT
+									   , GROUP_ID
+									   , PARENT_REPLY_ID
+									   , DEPTH
+									   , ORDER_NO									   
+									) 
+				VALUES 				( 
+										PLACE_REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+										, ?
+										, ?
+										, ?
+										, ?					
+									)
+		</insertPlaceReReply>
+		<getReplyListByplaceId>
+			SELECT	PLACE_REPLY_ID
+					, PLACE_ID
+					, M.NAME
+					, NAME
+					, DESCRIPTION
+					, CRT_DT
+					, GROUP_ID
+					, PARENT_REPLY_ID
+					, DEPTH
+					, ORDER_NO
+			FROM	PLACE_REPLY PR
+					, MEMBER M
+			WHERE	PR.EMAIL = M.EMAIL
+			AND		PR.PLACE_ID = ?
+			ORDER	BY GROUP_ID
+					, ORDER_NO
+		</getReplyListByplaceId>
+		<selectPlaceCountParentReplyId>
+			SELECT	COUNT(PLACE_REPLY_ID)
+			FROM	PLACE_REPLY
+			WHERE	PARENT_REPLY_ID = ?
+		</selectPlaceCountParentReplyId>
+		<selectPlaceMaxOrderNoByParentReplyId>
+       	    SELECT	MAX(ORDER_NO)
+       		FROM	PLACE_REPLY
+         	START   WITH PLACE_REPLY_ID = ?
+         	CONNECT BY PRIOR PLACE_REPLY_ID = PARENT_REPLY_ID
+         	ORDER   BY ORDER_NO DESC
+		</selectPlaceMaxOrderNoByParentReplyId>
+		<selectLatestOrderNoByParentReplyId>
+			SELECT	ORDER_NO
+			FROM	PLACE_REPLY
+			WHERE	PLACE_REPLY_ID = ?
+		</selectLatestOrderNoByParentReplyId>
+		<updateOrderNoByGroupId>
+			UPDATE	PACK_REPLY
+			SET		ORDER_NO = ORDER_NO + 1
+			WHERE	ORDER_NO >= ?
+			AND		GROUP_ID = ?
+		</updateOrderNoByGroupId>
 	</placeReply>
 	
 	<qna>
