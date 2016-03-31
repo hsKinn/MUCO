@@ -196,8 +196,7 @@
 											<div class="${ selectedPlace.countryId }" style="
 												font-weight: bolder;
 												font-size: x-large;
-												margin-left: "${ selectedPlace.avgActiveCalmScore }";
-												margin-top: "${ selectedPlace.avgActiveCalmScore }";>
+												margin-left: "${ selectedPlace.avgActiveCalmScore }";>
 												${ selectedPlace.placeName }
 											</div>
 										</c:forEach>
