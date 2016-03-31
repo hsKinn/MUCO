@@ -11,6 +11,7 @@ import java.util.List;
 import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.table.placeLike.dao.PlaceLikeDAO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -19,6 +20,12 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PlaceDAO {
+	
+	private PlaceLikeDAO placeLikeDAO;
+	
+	public PlaceDAO() {
+		placeLikeDAO = new PlaceLikeDAO();
+	}
 
 	/**
 	 * Get Place in Package
@@ -67,8 +74,173 @@ public class PlaceDAO {
 
 		return placeList;
 
-	} // getHashTagOfPackage END
+	} // getPlaceInPackage END
+	
+	
+	/**
+	 * Get Place List By Daily Recommend Place
+	 * 
+	 * @author 김현섭
+	 * 
+	 */
+	public List<PlaceVO> getPlaceListByDaily () {
+		
 
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<PlaceVO> dailyList = new ArrayList<PlaceVO>();
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/place/getPlaceListByDaily/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			PlaceVO place = null;
+
+			while (rs.next()) {
+
+				place = new PlaceVO();
+
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setAddress(rs.getString("ADDRESS"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setAvgLikeCount(rs.getInt("DAILY_LIKE"));
+				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				//TODO 무드 별 평균값 가져와야함
+				
+				System.out.println("플래 아디" + place.getPlaceName());
+				
+				dailyList.add(place);
+			}
+			
+			return dailyList;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	} // getPlaceListByDaily END
+	
+	
+	/**
+	 * Get Place List By Weekly Recommend Place
+	 * 
+	 * @author 김현섭
+	 * 
+	 */
+	public List<PlaceVO> getPlaceListByWeekly () {
+		
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<PlaceVO> weeklyList = new ArrayList<PlaceVO>();
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/place/getPlaceListByWeekly/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			PlaceVO place = null;
+			
+			while (rs.next()) {
+				
+				place = new PlaceVO();
+				
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setAddress(rs.getString("ADDRESS"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setAvgLikeCount(rs.getInt("WEEKLY_LIKE"));				
+				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				//TODO 무드 별 평균값 가져와야함
+				
+				weeklyList.add(place);
+			}
+			
+			return weeklyList;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	} // getPlaceListByWeekly END
+	
+	
+	/**
+	 * Get Place List By Monthly Recommend Place
+	 * 
+	 * @author 김현섭
+	 * 
+	 */
+	public List<PlaceVO> getPlaceListByMonthly () {
+		
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<PlaceVO> monthlyList = new ArrayList<PlaceVO>();
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/place/getPlaceListByMonthly/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			PlaceVO place = null;
+			
+			while (rs.next()) {
+				
+				place = new PlaceVO();
+				
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setAddress(rs.getString("ADDRESS"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setAvgLikeCount(rs.getInt("MONTHLY_LIKE"));				
+				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				//TODO 무드 별 평균값 가져와야함
+				
+				monthlyList.add(place);
+			}
+			
+			return monthlyList;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	} // getPlaceListByMonthly END
+	
+	
 	/**
 	 * 
 	 * getUserRecommendPlaceList
@@ -78,6 +250,7 @@ public class PlaceDAO {
 	 */
 
 	public List<PlaceVO> getUserRecommendPlaceList(MemberVO member) {
+		
 		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
 		Connection conn = null;
 		PreparedStatement stmt = null;

@@ -5,6 +5,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceListVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.table.place.vo.RecommendPlaceListVO;
 
 /**
  * 
@@ -25,6 +26,27 @@ public class PlaceBiz {
 
 		imageDAO = new ImageDAO();
 	}
+	
+	
+	/**
+	 * Get Top Recommend Place List
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @return
+	 */
+	public RecommendPlaceListVO getTopRecommendPlace () {
+		
+		RecommendPlaceListVO recommendPlaceList = new RecommendPlaceListVO();
+		
+		recommendPlaceList.setDailyList(placeDAO.getPlaceListByDaily());
+		recommendPlaceList.setWeeklyList(placeDAO.getPlaceListByWeekly());
+		recommendPlaceList.setMonthlyList(placeDAO.getPlaceListByMonthly());
+		
+		return recommendPlaceList;
+		
+	} // getTopRecommendPlace END
+	
 
 	public PlaceListVO getUserRecommendList(MemberVO member) {
 

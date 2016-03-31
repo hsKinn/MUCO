@@ -1,0 +1,13 @@
+package com.ktds.muco.table.place.vo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecommendPlaceListVO {
+
+	private List<PlaceVO> dailyList = new ArrayList<PlaceVO>();
+	
+	private List<PlaceVO> weeklyList = new ArrayList<PlaceVO>();
+	
+	private List<PlaceVO> monthlyList = new ArrayList<PlaceVO>();
+}

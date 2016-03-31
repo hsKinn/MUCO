@@ -31,24 +31,24 @@
 			</div>
 			
 			<div id="daily_content">
-				<c:forEach var="i" begin="1" end="4">
+				<c:forEach items="${ recommendPlaceList.dailyList }" var="daily" >
 					<div class="content">
 						<div class="content_top">
-							<img src="/resource/img/pack/basic${ i }.jpg" class="img-thumbnail" />
+							<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 						</div>					
 						<div class="content_middle">
-							일일 여행지 Title
+							${ daily.placeName }
 						</div>
 						<div class="content_bottom">
 							<div class="bottom_top">
-								Writer	
+								 일일 추천수 : ${ daily.avgLikeCount }	
 							</div>
 							<div class="bottom_first">
-								<span class="badge">View: ${ i*21 }</span>
+								<span class="badge">View: ${ daily.viewCount }</span>
 							</div>
 							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
-								<span id="likeCount">${ i*4 }</span>
+								<span id="likeCount">${ daily.likeCount }</span>
 							</div>
 						</div>
 					</div>
@@ -62,28 +62,28 @@
 			</div>
 
 			<div id="weekly_content">
-				<c:forEach var="i" begin="1" end="4">
+				<c:forEach items="${ recommendPlaceList.weeklyList }" var="weekly" >
 					<div class="content">
 						<div class="content_top">
-							<img src="/resource/img/pack/basic${ i }.jpg" class="img-thumbnail" />
+							<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 						</div>					
 						<div class="content_middle">
-							주간 여행지 Title
+							${ weekly.placeName }
 						</div>
 						<div class="content_bottom">
 							<div class="bottom_top">
-								Writer	
+								 주간 추천수 : ${ weekly.avgLikeCount }	
 							</div>
 							<div class="bottom_first">
-								<span class="badge">View: ${ i*21 }</span>
+								<span class="badge">View: ${ weekly.viewCount }</span>
 							</div>
 							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
-								<span id="likeCount">${ i*4 }</span>
+								<span id="likeCount">${ weekly.likeCount }</span>
 							</div>
 						</div>
 					</div>
-				</c:forEach>			
+				</c:forEach>				
 			</div>
 		</div>
 		
@@ -93,28 +93,28 @@
 			</div>
 
 			<div id="monthly_content">
-				<c:forEach var="i" begin="1" end="4">
+				<c:forEach items="${ recommendPlaceList.monthlyList }" var="monthly" >
 					<div class="content">
 						<div class="content_top">
-							<img src="/resource/img/pack/basic${ i }.jpg" class="img-thumbnail" />
+							<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 						</div>					
 						<div class="content_middle">
-							월간 여행지 Title
+							${ monthly.placeName }
 						</div>
 						<div class="content_bottom">
 							<div class="bottom_top">
-								Writer	
+								 월간 추천수 : ${ monthly.avgLikeCount }		
 							</div>
 							<div class="bottom_first">
-								<span class="badge">View: ${ i*21 }</span>
+								<span class="badge">View: ${ monthly.viewCount }</span>
 							</div>
 							<div class="bottom_second">
 								<span class="glyphicon glyphicon-heart"></span>
-								<span id="likeCount">${ i*4 }</span>
+								<span id="likeCount">${ monthly.likeCount }</span>
 							</div>
 						</div>
 					</div>
-				</c:forEach>			
+				</c:forEach>				
 			</div>			
 		</div>
 	</div>

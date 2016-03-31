@@ -1,9 +1,13 @@
 package com.ktds.muco.table.placeLike.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.util.xml.XML;
 
 /**
  * 
@@ -11,7 +15,8 @@ import java.sql.SQLException;
  *
  */
 public class PlaceLikeDAO {
-
+	
+	
 	/**
 	 * 
 	 * Load Oracle Driver

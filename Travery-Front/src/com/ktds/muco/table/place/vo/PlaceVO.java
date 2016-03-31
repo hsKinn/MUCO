@@ -22,11 +22,34 @@ public class PlaceVO extends CountryVO {
 	private double longitude;
 	private String address;
 	private int viewCount;
+	private int likeCount;
 	private String placeDescription;
 	private int isNewPlace;
+	
+	private int avgLikeCount;
 
 	// 작성자
 	private MemberVO writer;
+	
+	
+	
+	
+
+	public int getAvgLikeCount() {
+		return avgLikeCount;
+	}
+
+	public void setAvgLikeCount(int avgLikeCount) {
+		this.avgLikeCount = avgLikeCount;
+	}
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 
 	public int getPlaceId() {
 		return placeId;

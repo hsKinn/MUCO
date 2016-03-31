@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ktds.muco.table.place.biz.PlaceBiz;
+import com.ktds.muco.table.place.vo.RecommendPlaceListVO;
+
 /**
  * 
  * Servlet implementation class RecommendPlaceServlet
@@ -17,12 +20,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RecommendPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private PlaceBiz placeBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public RecommendPlaceServlet() {
 		super();
+		
+		placeBiz = new PlaceBiz();
 	}
 
 	/**
@@ -66,6 +73,12 @@ public class RecommendPlaceServlet extends HttpServlet {
 		request.setAttribute("placeInfo", placeListVO);
 		request.setAttribute("placeSearchVO", placeSearchVO);
 		*/
+		
+		RecommendPlaceListVO recommendPlaceList = placeBiz.getTopRecommendPlace();
+		
+		
+		request.setAttribute("recommendPlaceList", recommendPlaceList);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/recommendPlace.jsp");
 		rd.forward(request, response);

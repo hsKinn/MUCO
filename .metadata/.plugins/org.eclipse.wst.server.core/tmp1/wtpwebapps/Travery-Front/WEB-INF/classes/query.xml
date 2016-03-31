@@ -529,6 +529,109 @@
 	</packReply>
 	
 	<place>
+		
+		<getPlaceListByDaily>
+			 SELECT P.PLACE_ID
+			        , P.PLACE_NAME
+			        , P.ADDRESS
+			        , P.VIEW_COUNT
+			        ,   (
+			                SELECT  COUNT(PLACE_LIKE_ID)
+			                FROM    PLACE_LIKE
+			                WHERE   PLACE_ID = P.PLACE_ID
+			            ) LIKE_COUNT	
+			        ,   (
+                            SELECT COUNT(PLACE_LIKE_ID) LIKE_C
+                            FROM    PLACE_LIKE
+                            WHERE   PLACE_LIKE_CRT_DT >= ( SYSDATE - 30 )
+                            AND     PLACE_ID = P.PLACE_ID
+                            GROUP   BY PLACE_ID
+                         ) DAILY_LIKE				                    
+			        , P.DESCRIPTION
+			 FROM   PLACE P
+			 WHERE  P.PLACE_ID IN  (
+			                            SELECT  PLACE_ID
+			                            FROM    (
+			                                        SELECT PLACE_ID
+			                                               , COUNT(PLACE_LIKE_ID) LIKE_C
+			                                        FROM    PLACE_LIKE
+			                                        WHERE   PLACE_LIKE_CRT_DT >= ( SYSDATE - 1 )
+			                                        GROUP   BY PLACE_ID
+			                                        ORDER   BY LIKE_C DESC
+			                                    )
+			                            WHERE   ROWNUM &lt;= 4
+			                        )		  
+			ORDER	BY DAILY_LIKE DESC                     	
+		</getPlaceListByDaily>
+		
+		<getPlaceListByWeekly>
+			 SELECT P.PLACE_ID
+			        , P.PLACE_NAME
+			        , P.ADDRESS
+			        , P.VIEW_COUNT
+			        ,   (
+			                SELECT  COUNT(PLACE_LIKE_ID)
+			                FROM    PLACE_LIKE
+			                WHERE   PLACE_ID = P.PLACE_ID
+			            ) LIKE_COUNT
+			        ,   (
+                            SELECT COUNT(PLACE_LIKE_ID) LIKE_C
+                            FROM    PLACE_LIKE
+                            WHERE   PLACE_LIKE_CRT_DT >= ( SYSDATE - 30 )
+                            AND     PLACE_ID = P.PLACE_ID
+                            GROUP   BY PLACE_ID
+                         ) WEEKLY_LIKE	        			            	        
+			        , P.DESCRIPTION
+			 FROM   PLACE P
+			 WHERE  P.PLACE_ID IN  (
+			                            SELECT  PLACE_ID
+			                            FROM    (
+			                                        SELECT PLACE_ID
+			                                               , COUNT(PLACE_LIKE_ID) LIKE_C
+			                                        FROM    PLACE_LIKE
+			                                        WHERE   PLACE_LIKE_CRT_DT >= ( SYSDATE - 7 )
+			                                        GROUP   BY PLACE_ID
+			                                        ORDER   BY LIKE_C DESC
+			                                    )
+			                            WHERE   ROWNUM &lt;= 4
+			                        )	
+			ORDER	BY WEEKLY_LIKE DESC   			                        
+		</getPlaceListByWeekly>
+		
+		<getPlaceListByMonthly>
+			 SELECT P.PLACE_ID
+			        , P.PLACE_NAME
+			        , P.ADDRESS
+			        , P.VIEW_COUNT
+			        ,   (
+			                SELECT  COUNT(PLACE_LIKE_ID)
+			                FROM    PLACE_LIKE
+			                WHERE   PLACE_ID = P.PLACE_ID
+			            ) LIKE_COUNT	
+			        ,   (
+                            SELECT COUNT(PLACE_LIKE_ID) LIKE_C
+                            FROM    PLACE_LIKE
+                            WHERE   PLACE_LIKE_CRT_DT >= ( SYSDATE - 30 )
+                            AND     PLACE_ID = P.PLACE_ID
+                            GROUP   BY PLACE_ID
+                         ) MONTHLY_LIKE	        
+			        , P.DESCRIPTION
+			 FROM   PLACE P
+			 WHERE  P.PLACE_ID IN  (
+			                            SELECT  PLACE_ID
+			                            FROM    (
+			                                        SELECT PLACE_ID
+			                                               , COUNT(PLACE_LIKE_ID) LIKE_C
+			                                        FROM    PLACE_LIKE
+			                                        WHERE   PLACE_LIKE_CRT_DT >= ( SYSDATE - 30 )
+			                                        GROUP   BY PLACE_ID
+			                                        ORDER   BY LIKE_C DESC
+			                                    )
+			                            WHERE   ROWNUM &lt;= 4
+			                        )	
+			ORDER	BY MONTHLY_LIKE DESC  			                        
+		</getPlaceListByMonthly>
+		
 		<getPlaceByCountryName>
 			SELECT	PLACE_ID
 					, PLACE_NAME
@@ -603,6 +706,13 @@
 	</place>
 	
 	<placeLike>
+		
+		<getPlaceLikeCountByPlaceId>
+			SELECT	COUNT(PLACE_LIKE_ID)
+			FROM	PLACE_LIKE
+			WHERE	PLACE_ID = ?
+		</getPlaceLikeCountByPlaceId>
+		
 	</placeLike>
 	
 	<placeReply>

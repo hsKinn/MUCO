@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="DeletePackReply" key="selection"/>
+		<item value="getPlaceListByDaily" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="getPlaceListByDaily"/>
+			<item value="selectPackLikeCount"/>
+			<item value="placelike"/>
+			<item value="&lt;place&gt;"/>
+			<item value="place"/>
 			<item value="deletePackReply"/>
-			<item value="packReplyId"/>
-			<item value="getPackReplyListByPackId"/>
-			<item value="loginEmail"/>
-			<item value="replyWrittenReply"/>
-			<item value="reply_content"/>
-			<item value="formWrapper"/>
-			<item value="pack-reply"/>
+			<item value="test"/>
+			<item value="Test"/>
 		</list>
 		<list key="replacehistory">
 			<item value="likeCount"/>
