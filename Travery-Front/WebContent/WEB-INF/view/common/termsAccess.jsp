@@ -5,7 +5,15 @@
 
 <script type="text/javascript">
 
-	
+	$(document).ready(function(){
+	    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+	        localStorage.setItem('activeTab', $(e.target).attr('href'));
+	    });
+	    var activeTab = localStorage.getItem('activeTab');
+	    if(activeTab){
+	        $('[href="' + activeTab + '"]').tab('show');
+	    }
+	});
 
 </script>
 
@@ -30,23 +38,23 @@
       </button>
     </div>
     
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="collapse navbar-collapse" >
      
-      <ul class="nav navbar-nav" >
+      <ul class="nav navbar-nav" id="myNavbar">
       	<c:if test="${menuNo eq 1 }">
-	        <li class="active"><a data-toggle="pill" href="#menu1">이용약관</a></li>
-	        <li ><a data-toggle="pill" href="#menu2">개인정보취급방침</a></li>
-	        <li><a data-toggle="pill" href="#menu3">FAQ</a></li>
+	        <li class="active"><a data-toggle="tab" href="#menu1">이용약관</a></li>
+	        <li ><a data-toggle="tab" href="#menu2">개인정보취급방침</a></li>
+	        <li><a data-toggle="tab" href="#menu3">FAQ</a></li>
       	</c:if>
       	<c:if test="${menuNo eq 2 }">
-	        <li><a data-toggle="pill" href="#menu1">이용약관</a></li>
-	        <li class="active"><a data-toggle="pill" href="#menu2">개인정보취급방침</a></li>
-	        <li><a data-toggle="pill" href="#menu3">FAQ</a></li>
+	        <li><a data-toggle="tab" href="#menu1">이용약관</a></li>
+	        <li class="active"><a data-toggle="tab" href="#menu2">개인정보취급방침</a></li>
+	        <li><a data-toggle="tab" href="#menu3">FAQ</a></li>
       	</c:if>
       	<c:if test="${menuNo eq 3 }">
-	        <li><a data-toggle="pill" href="#menu1">이용약관</a></li>
-	        <li><a data-toggle="pill" href="#menu2">개인정보취급방침</a></li>
-	        <li class="active"><a data-toggle="pill" href="#menu3">FAQ</a></li>
+	        <li><a data-toggle="tab" href="#menu1">이용약관</a></li>
+	        <li><a data-toggle="tab" href="#menu2">개인정보취급방침</a></li>
+	        <li class="active"><a data-toggle="tab" href="#menu3">FAQ</a></li>
       	</c:if>
        
       </ul>

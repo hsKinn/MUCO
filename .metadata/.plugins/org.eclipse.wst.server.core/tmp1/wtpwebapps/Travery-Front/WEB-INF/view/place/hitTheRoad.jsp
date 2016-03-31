@@ -123,12 +123,24 @@
 			}
 		});
 	});
+	
+	
+	
+	
 </script>
 
 <!-- 기준 출력 -->
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		
+	    $('a[data-toggle="pill"]').on('click', function(e) {
+	        localStorage.setItem('activeTab', $(e.target).attr('href'));
+	    });
+	    var activeTab = localStorage.getItem('activeTab');
+	    if(activeTab){
+	        $('[href="' + activeTab + '"]').tab('show');
+	    }
+		
 		$("#hitTheRoadMenu").mouseout(function() {
 			$("#hitTheRoadMenu").css("color", "#ffffff");
 		});
