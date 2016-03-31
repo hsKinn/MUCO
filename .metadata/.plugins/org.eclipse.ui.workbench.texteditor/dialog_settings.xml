@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getSel" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="getsel"/>
-			<item value="&lt;place"/>
-			<item value="getPlaceByCountryId"/>
-			<item value="getPlaceByCountryName"/>
-			<item value="disp"/>
-			<item value="top_name"/>
-			<item value="terms"/>
-			<item value="footer"/>
+			<item value="#9c27b0"/>
+			<item value="primary"/>
+			<item value="origin"/>
+			<item value="header"/>
+			<item value="head"/>
+			<item value="glyphicon"/>
+			<item value="doWritePackReply"/>
+			<item value="doWritePackReply\"/>
 		</list>
 		<list key="replacehistory">
+			<item value="#4B5874"/>
 			<item value="likeCount"/>
 		</list>
 	</section>
@@ -25,7 +26,7 @@
 		<item value="261" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="699" key="DIALOG_X_ORIGIN"/>
-		<item value="435" key="DIALOG_Y_ORIGIN"/>
+		<item value="910" key="DIALOG_X_ORIGIN"/>
+		<item value="195" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
