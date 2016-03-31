@@ -75,6 +75,8 @@
 			form.attr("action", "<c:url value="/doLogin"/>")
 			form.submit();
 		});
+		
+		
 
 	});
 </script>
@@ -111,7 +113,7 @@
                     <div class="clear"></div>
 					<div id="index">
 					
-						<div id="join">
+						<div id="join" style="margin:auto;">
 							<form id="joinForm">
 							
 								<input type="text" class="form-control"	tabindex="1" id="userEmail" name="userEmail"
@@ -129,7 +131,7 @@
 						</div>
 						
 						
-						<div id="login">
+						<div id="login" style="margin:auto;">
 							<form id="loginForm">
 								<input type="text" class="form-control"	tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" >
 								<input type="password" class="form-control"	tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 

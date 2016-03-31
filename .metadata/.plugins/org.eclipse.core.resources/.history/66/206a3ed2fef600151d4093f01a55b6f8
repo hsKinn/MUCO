@@ -391,7 +391,7 @@
 			</div>
 		</div>
 	</div>
-</section>	
+</section>
 
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

@@ -224,7 +224,7 @@
 	});
 </script>
 
-<section class="bg-primary" id="one">
+
 	<div class="container">
 		<!-- Hit the road -->
 		<div id="hitTheRoad">
@@ -391,7 +391,7 @@
 			</div>
 		</div>
 	</div>
-</section>	
+
 
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

@@ -254,7 +254,7 @@
 							<div id="home" class="tab-pane fade in active">
 
 								<!-- 지도 -->
-								<div id="map1" style="width: 100%; height: 95%;"></div>
+								<div id="map1" style="width: 1400px; height: 600px;"></div>
 
 								<button id="focus-multiple">한국과 일본</button>
 								<button id="focus-init">세계지도 보기</button>

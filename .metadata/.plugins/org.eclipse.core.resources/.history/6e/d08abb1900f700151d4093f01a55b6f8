@@ -14,8 +14,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		$("#join").hide();
-		$("#login").hide();
+		
+		
 
 		$("#letsJoin").click(function() {
 			$("#login").hide();
