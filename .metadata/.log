@@ -45,3 +45,19 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-03-31 15:16:56.115
 !MESSAGE Project facet grails.app has not been defined. It is used in plugin org.eclipse.cft.server.branding.core.
+
+!ENTRY org.eclipse.wst.jsdt.core 4 4 2016-03-31 15:40:32.155
+!MESSAGE Background Indexer Crash Recovery
+!STACK 0
+java.lang.NegativeArraySizeException
+	at org.eclipse.wst.jsdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:38)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:621)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:444)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:436)
+	at org.eclipse.wst.jsdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:528)
+	at org.eclipse.wst.jsdt.internal.core.index.Index.save(Index.java:197)
+	at org.eclipse.wst.jsdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:679)
+	at org.eclipse.wst.jsdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:721)
+	at org.eclipse.wst.jsdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:475)
+	at org.eclipse.wst.jsdt.internal.core.search.processing.JobManager.run(JobManager.java:376)
+	at java.lang.Thread.run(Unknown Source)

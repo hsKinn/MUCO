@@ -8,10 +8,8 @@
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
 <!-- Boot Script -->
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <!-- My Package -->
 <script type="text/javascript">
@@ -68,7 +66,7 @@
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
 			<div id="packListdiv">
-				<table id="packListTable" border="2">
+				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>
 							<td class="pack"><img
@@ -87,13 +85,11 @@
 
 		<div id="packListdiv2">
 			<div id="placesOfPackListdiv">
-				<table id="placeListTable" border="2">
+				<table id="placeListTable" >
 					<c:forEach items="${places}" var="places">
 						<tr width="200px">
 							<td class="place">
-								<p id="title" data-toggle="modal"
-									data-target="#${places.placeId}"
-									style="display: inline; cursor: pointer;">
+								<p id="title" style="display: inline; cursor: pointer;">
 									${places.placeName}</p> <input type="hidden" class="placeId"
 								name="placeId" value="${places.placeId}" />
 								<form class="deletePlaceOfPackForm" style="display: inline;">
@@ -108,30 +104,10 @@
 								</form>
 							</td>
 						</tr>
-
-						<div id="${places.placeId}" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-
-								<!-- Modal content-->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">${places.placeName}</h4>
-									</div>
-									<div class="modal-body">
-										<p>Some text in the modal.</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
+<!-- Modal-->
 					</c:forEach>
 				</table>
+				
 			</div>
 		</div>
 	</div>

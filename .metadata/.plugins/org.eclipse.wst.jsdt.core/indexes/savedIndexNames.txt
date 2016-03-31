@@ -1,14 +1,8 @@
-INDEX VERSION 1.3+C:\Users\206-001\workspace\MUCO\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3916648080.index
-1017483640.index
-2489438012.index
-3264988705.index
-221875234.index
-112472087.index
-1406518508.index
-2478619198.index
-2117559712.index
+INDEX VERSION 1.3+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 3479039357.index
+3051123884.index
+764598913.index
+354256644.index
+4218940440.index
 1951512101.index
-4192649549.index
-4170624141.index
+132654073.index
