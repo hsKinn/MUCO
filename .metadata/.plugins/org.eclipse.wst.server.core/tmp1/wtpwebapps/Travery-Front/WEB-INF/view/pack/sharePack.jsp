@@ -46,6 +46,8 @@
 </script>
 
 <!-- Share Pack Content by hskim -->
+<c:set var="loginEmail" value="${ sessionScope._MEMBER_.email }" />
+
 <div id="share-wrapper">
 	<form id="searchForm">
 	<div id="share-top">
@@ -147,10 +149,10 @@
 				        	<div class="modal-like">
 						        <c:choose>
 						        <c:when test="${ pack.isExistPackLike() }">
-						        	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Like ♥</span>			          
+						        	<span class="${pack.packId}packLike">Like ♥</span>			          
 						        </c:when>
 						        <c:otherwise>
-						        	<span class="${pack.packId}packLike" data-packId='${ pack.packId }'>Not Like ♡</span>		
+						        	<span class="${pack.packId}packLike">Not Like ♡</span>		
 						        </c:otherwise>
 						        </c:choose>
 						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -180,15 +182,24 @@
 									</form>
 								</div>
 								
+
+								
 								<div class="replybypack">
 									<c:forEach items="${ pack.replyList }" var="reply">
 										<div>
 										<table>
-											<tr>
-												<td class="reply-name">${ reply.name }</td>
-												<td>
+											<tr class="replyTR">
+												<td class="replyWriterName">${ reply.name }</td>
+												<td class="replyWrittenReply">
 													${ reply.packReplyDescription }
 												</td>
+												<c:if test="${ reply.email eq loginEmail }">
+													<td class="deleteReply">
+												        <a href="/deletePackReply?packReplyId=${ reply.packReplyId }">
+												          <span class="glyphicon glyphicon-remove"></span>
+												        </a>
+													</td>
+												</c:if>
 											</tr>
 										</table>
 										<div class="hide formAppender"></div>

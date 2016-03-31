@@ -195,7 +195,7 @@ input#searchKeyword {
 	height: 33px;
 }
 
-button.btn {
+div#recommendPlace_Wrapper button.btn {
 	width: 90px;
 	margin-left: 5px;
 }

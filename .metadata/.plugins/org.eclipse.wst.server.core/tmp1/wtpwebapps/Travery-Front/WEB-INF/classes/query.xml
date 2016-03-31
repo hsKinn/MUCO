@@ -452,8 +452,8 @@
 		<getPackReplyListByPackId>
 			SELECT	PACK_REPLY_ID
 					, PACK_ID
-					, M.NAME
 					, NAME
+					, PR.EMAIL
 					, DESCRIPTION
 					, CRT_DT
 					, GROUP_ID
@@ -519,6 +519,12 @@
 										, ?					
 									)
 		</insertReReply>
+		
+		<deletePackReply>
+			DELETE
+			FROM	PACK_REPLY
+			WHERE	PACK_REPLY_ID = ?
+		</deletePackReply>
 		
 	</packReply>
 	

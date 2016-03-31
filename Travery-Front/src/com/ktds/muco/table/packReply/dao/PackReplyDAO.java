@@ -19,6 +19,14 @@ import com.ktds.muco.util.xml.XML;
  */
 public class PackReplyDAO {
 	
+	/**
+	 * Get ReplyList By Pack ID
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packId
+	 * @return
+	 */
 	public List<PackReplyVO> getReplyListByPackId ( int packId ) {
 
 		loadOracleDriver();
@@ -44,8 +52,9 @@ public class PackReplyDAO {
 				
 				packReply = new PackReplyVO();
 				packReply.setPackReplyId(rs.getInt("PACK_REPLY_ID"));
-				packReply.setName(rs.getString("NAME"));
 				packReply.setPackId(rs.getInt("PACK_ID"));
+				packReply.setEmail(rs.getString("EMAIL"));;
+				packReply.setName(rs.getString("NAME"));
 				packReply.setPackReplyDescription(rs.getString("DESCRIPTION"));
 				packReply.setCreatedDate(rs.getString("CRT_DT"));
 				packReply.setGroupId(rs.getInt("GROUP_ID"));
@@ -68,8 +77,40 @@ public class PackReplyDAO {
 		finally {
 			closeDB(conn, stmt, rs);
 		}
-	}
+	} // getReplyListByPackId END
 	
+	
+	/**
+	 * Delete Pack Reply
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packReplyId
+	 * @return
+	 */
+	public int deletePackReply(int packReplyId) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/packReply/deletePackReply/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packReplyId);
+
+			return stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	} // deletePackReply END
 	
 	
 	/**
@@ -246,7 +287,6 @@ public class PackReplyDAO {
 	}	
 	
 	
-
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -289,5 +329,6 @@ public class PackReplyDAO {
 			}
 		}
 	}
+
 
 }

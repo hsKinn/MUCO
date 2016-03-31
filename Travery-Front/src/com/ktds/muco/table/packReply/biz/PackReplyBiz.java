@@ -67,4 +67,16 @@ public class PackReplyBiz {
 		return 0;
 	} // getNewOrderNo end
 
+
+	public boolean deletePackReply(int packReplyId) {
+		
+		if ( packReplyDAO.deletePackReply(packReplyId) > 0 ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+
 }

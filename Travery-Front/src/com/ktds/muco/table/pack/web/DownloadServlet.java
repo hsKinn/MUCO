@@ -26,6 +26,7 @@ public class DownloadServlet extends HttpServlet {
 		this.doPost(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String imageName = request.getParameter("imageName");
 		
 		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\");

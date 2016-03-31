@@ -26,13 +26,13 @@ input#searchKeyword {
 	height: 33px;
 }
 
-button.btn {
+div#share-top button.btn {
 	width: 75px;
 	margin-left: 5px;
 	margin-bottom: 4px;
 }
 
-button span {
+div#share-wrapper button span {
 	height: 13px;
 	margin-right: 5px;
 }
@@ -211,24 +211,8 @@ div.pack-reply {
 	float: left;
 }
 
-div.replybypack {
-	width: 100%;
-	height: 80px;
-	overFlow: auto;
-}
-
 div.pack-reply table {
-	align: center;
 	width: 60%;
-}
-
-td.reply-name {
-	text-align: left;
-	width: 55px;
-}
-
-span.writeReReply {
-	cursor: pointer;
 }
 
 div.formWrapper {
@@ -236,12 +220,35 @@ div.formWrapper {
 	width: 100%;
 }
 
-td.reply_btn span {
-	color: black;
-}
-
-.reply_content textarea {
+td.reply_content textarea {
 	width: 250px;
 	height: 18px;
 	wrap: off;
+	margin-right: 10px;
+	maxlength: 20;
+}
+
+div.replybypack {
+	width: 100%;
+	height: 80px;
+	overFlow-y: auto;
+}
+
+div.replybypack table {
+	width: 550px;
+}
+
+td.replyWriterName {
+	text-align: left;
+	width: 10%;
+	word-break: break-all;	
+}
+
+td.replyWrittenReply {
+	text-align: left;
+	word-break: break-all;
+}
+
+td.deleteReply {
+	width: 5%;
 }

@@ -111,7 +111,7 @@
 																					results[0].formatted_address);
 																	$('#lat')
 																			.val(
-																					results[0].geometry.location
+																					results[0].geometry.locality
 																							.lat());
 																	$('#lng')
 																			.val(
