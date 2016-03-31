@@ -57,7 +57,6 @@ div#printAxisY1 {
 	font-size: large;
 	color: #333333;
 	padding-top: 20px;
-	background: #ffffff;
 }
 
 div#printAxisX2 {
@@ -67,7 +66,6 @@ div#printAxisX2 {
 	font-size: large;
 	padding-top: 16%;
 	color: #333333;
-	background: #ffffff;
 }
 
 div#printAxisX1 {
@@ -77,7 +75,6 @@ div#printAxisX1 {
 	font-size: large;
 	padding-top: 16%;
 	color: #333333;
-	background: #ffffff;
 }
 
 div#dottedDiv {
@@ -90,7 +87,6 @@ div#printAxisY2 {
 	font-weight: bolder;
 	font-size: large;
 	color: #333333;
-	background: #ffffff;
 }
 
 div#secondRowDiv {
@@ -117,6 +113,6 @@ div.selectedCountry {
 	margin-left: 1px;
 }
 
-div.dropdown {
+div.dropdown, div.placeDetail {
 	display: none;
 }

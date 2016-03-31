@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import com.ktds.muco.table.country.dao.CountryDAO;
 import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.dao.PlaceDAO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
  * 
@@ -17,9 +19,11 @@ import com.ktds.muco.table.member.vo.MemberVO;
 public class CountryBiz {
 
 	private CountryDAO countryDAO;
+	private PlaceDAO placeDAO;
 
 	public CountryBiz() {
 		countryDAO = new CountryDAO();
+		placeDAO = new PlaceDAO();
 	}
 
 	/**
@@ -33,8 +37,13 @@ public class CountryBiz {
 	public CountryVO getCountryInfoByCountryName(HttpServletRequest request) {
 
 		String selectedCountryName = request.getParameter("selectedCountryName");
+		
+		// CountryVO 에 나라정보 등록
 		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
-
+		
+		// CountryVO 에 여행지 리스트 등록
+		countryVO.setPlaceList( placeDAO.getPlaceListByCountryId(countryVO.getCountryId() ));
+		
 		// 선택한 나라명과 일치하는 나라가 존재하면
 		if (countryVO != null) {
 
@@ -47,6 +56,21 @@ public class CountryBiz {
 				// 존재하지 않으면 추가
 				if (memberVO.addSelectedCountry(countryVO)) {
 					session.setAttribute("_MEMBER_", memberVO);
+
+					System.out.println();
+					System.out.println("---- 여행지의 기준들에 대한 평균 받아와지는지 체크 ----");
+					System.out.println();
+					for (CountryVO checkCountry : memberVO.getSelectedCountryList()) {
+						for (PlaceVO checkPlace : checkCountry.getPlaceList()) {
+							System.out.println( "여행지 " + checkPlace.getPlaceName() + "의 Active 평균 : " +  checkPlace.getAvgActiveCalmScore());
+							System.out.println( "여행지 " + checkPlace.getPlaceName() + "의 Bright 평균 : " +  checkPlace.getAvgBrightDarkScore());
+							System.out.println( "여행지 " + checkPlace.getPlaceName() + "의 HightPrice 평균 : " +  checkPlace.getAvgHighPriceLowPriceScore());
+						}
+					}
+					System.out.println();
+					System.out.println("-----------------------------------------------");
+					System.out.println();
+					
 					return countryVO;
 				}
 			} else {
@@ -56,7 +80,6 @@ public class CountryBiz {
 				}
 			}
 		}
-
 		return null;
 	}
 }

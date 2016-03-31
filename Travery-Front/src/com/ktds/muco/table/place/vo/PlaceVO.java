@@ -24,6 +24,11 @@ public class PlaceVO extends CountryVO {
 	private int viewCount;
 	private String placeDescription;
 	private int isNewPlace;
+	
+	// 기준에 대한 평균값
+	private double avgBrightDarkScore;
+	private double avgHighPriceLowPriceScore;
+	private double avgActiveCalmScore;
 
 	// 작성자
 	private MemberVO writer;
@@ -98,5 +103,29 @@ public class PlaceVO extends CountryVO {
 
 	public void setWriter(MemberVO writer) {
 		this.writer = writer;
+	}
+	
+	public double getAvgBrightDarkScore() {
+		return avgBrightDarkScore;
+	}
+
+	public void setAvgBrightDarkScore(double avgBrightDarkScore) {
+		this.avgBrightDarkScore = avgBrightDarkScore;
+	}
+
+	public double getAvgHighPriceLowPriceScore() {
+		return avgHighPriceLowPriceScore;
+	}
+
+	public void setAvgHighPriceLowPriceScore(double avgHighPriceLowPriceScore) {
+		this.avgHighPriceLowPriceScore = avgHighPriceLowPriceScore;
+	}
+
+	public double getAvgActiveCalmScore() {
+		return avgActiveCalmScore;
+	}
+
+	public void setAvgActiveCalmScore(double avgActiveCalmScore) {
+		this.avgActiveCalmScore = avgActiveCalmScore;
 	}
 }

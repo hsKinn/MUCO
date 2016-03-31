@@ -60,6 +60,7 @@ public class SelectedCountryServlet extends HttpServlet {
 		json.append("{");
 		json.append("\"result\" : true");
 		json.append(", \"isExistCountry\" : " + isExistCountry);
+		
 		json.append("}");
 
 		// Print Writer
@@ -68,6 +69,6 @@ public class SelectedCountryServlet extends HttpServlet {
 		out.flush();
 		out.close();
 
-		System.out.println(json.toString());
+		System.out.println("json 결과 : " + json.toString());
 	}
 }

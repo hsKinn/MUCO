@@ -172,7 +172,7 @@
 		</modifyPack>
 	</pack>
 	
-<sharePack>
+	<sharePack>
 	
 		<hitCountPack>
 			UPDATE	PACK
@@ -523,18 +523,48 @@
 	</packReply>
 	
 	<place>
-		<getPlaceByCountryName>
-			SELECT	PLACE_ID
-					, PLACE_NAME
-					, LATITUDE
-					, LONGITUDE
-					, ADDRESS
-					, VIEW_COUNT
-					, DESCRIPTION
-					, IS_NEW_PLACE
-			FROM	PLACE
-			WHERE	COUNTRY_NAME = ?
-		</getPlaceByCountryName>
+		<getPlaceListByCountryId>
+			SELECT  P1.PLACE_ID
+			        , PLACE_NAME
+			        , LATITUDE
+			        , LONGITUDE
+			        , ADDRESS
+			        , VIEW_COUNT
+			        , DESCRIPTION
+			        , IS_NEW_PLACE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STD_NAME LIKE 'Active'
+			                                        )
+			            ) AVG_ACTIVE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STD_NAME LIKE 'Bright'
+			                                        )
+			            ) AVG_BRIGHT_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STD_NAME LIKE 'HighPrice'
+			                                        )
+			            ) AVG_HIGH_PRICE_SCORE
+			FROM	PLACE P1
+			WHERE	COUNTRY_ID = ?
+		</getPlaceListByCountryId>
 		
 		<getPlaceInPackage>
 			SELECT	P.PLACE_ID

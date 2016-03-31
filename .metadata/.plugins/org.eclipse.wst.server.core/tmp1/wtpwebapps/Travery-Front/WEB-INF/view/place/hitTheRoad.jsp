@@ -192,6 +192,7 @@
 							if (jsonData.isChangedStandard) {
 								$("#printAxisY1").text( jsonData.firstStandard );
 								$("#printAxisY2").text( jsonData.secondStandard );
+								
 							}
 						} else {
 							alert("세션이 만료되었습니다. 다시 로그인해주세요.");
@@ -246,10 +247,8 @@
 						<div class="row" style="height: 350px;">
 							<div id="printAxisX2" class="col-sm-1">${ axisX2 }</div>
 							
-							<!-- 점 찍는 곳 -->
-							<div id="dottedDiv" class="col-sm-10">
-								<div id="map2" style="width: 100%; height: 100%;"></div>
-							</div>
+							<!-- ★★★★★★★★★★★★★★★★ 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
+							<div id="dottedDiv" class="col-sm-10"></div>
 							
 							<div id="printAxisX1" class="col-sm-1">${ axisX1 }</div>
 						</div>
@@ -268,7 +267,8 @@
 
 		<!-- 선택된 나라 리스트 -->
 		<div class="col-sm-1" style="height: 100%;" >
-			<div id="countries" style="width: 100%; height: 100%;"></div>
+			<div id="countries" style="width: 100%; height: 100%;">
+			</div>
 		</div>
 	</div>
 

@@ -1,5 +1,10 @@
 package com.ktds.muco.table.country.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.place.vo.PlaceVO;
+
 /**
  * 나라
  * 
@@ -13,6 +18,21 @@ public class CountryVO {
 
 	private int countryId;
 	private String countryName;
+
+	// 해당 나라에 속한 여행지 리스트
+	private List<PlaceVO> placeList;
+
+	public CountryVO() {
+		placeList = new ArrayList<PlaceVO>();
+	}
+
+	public List<PlaceVO> getPlaceList() {
+		return placeList;
+	}
+
+	public void setPlaceList(List<PlaceVO> placeList) {
+		this.placeList = placeList;
+	}
 
 	public int getCountryId() {
 		return countryId;
