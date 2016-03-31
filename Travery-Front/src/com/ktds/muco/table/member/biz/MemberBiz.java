@@ -197,4 +197,39 @@ public class MemberBiz {
 		return memberDAO.isExistName(name) > 0;
 	}
 
+	/**
+	 * 세션의 선택된 나라 리스트 제거
+	 * 
+	 * @param request
+	 * @return
+	 * @author 김광민
+	 */
+	public boolean removeAllSelectedCountries(HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		if( memberVO != null ){
+			
+			if( memberVO.getSelectedCountryList() != null ){
+				
+				if (memberVO.removeAllSelectedCountries() ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -264,4 +264,20 @@ public class MemberVO extends PlaceVO {
 			}
 		}
 	}
+
+	/**
+	 * 선택된 나라 리스트 지우기
+	 * 
+	 * @return
+	 * @author 김광민
+	 */
+	public boolean removeAllSelectedCountries() {
+		
+		this.selectedCountryList.clear();
+		
+		if ( this.selectedCountryList.isEmpty() ) {
+			return true;
+		}
+		return false;
+	}
 }

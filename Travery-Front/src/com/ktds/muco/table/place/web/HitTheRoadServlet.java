@@ -72,9 +72,13 @@ public class HitTheRoadServlet extends HttpServlet {
 		}
 		
 		String errorCode = request.getParameter("errorCode");
-		
 		if( errorCode != null ) {
 			request.setAttribute("removeCountryName", errorCode);
+		}
+		
+		boolean isSuccessRemoveCountries = Boolean.parseBoolean(request.getParameter("isSuccessRemoveCountries"));
+		if( isSuccessRemoveCountries ) {
+			request.setAttribute("isSuccessRemoveCountries", isSuccessRemoveCountries);
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
@@ -82,3 +86,11 @@ public class HitTheRoadServlet extends HttpServlet {
 
 	}
 }
+
+
+
+
+
+
+
+

@@ -32,7 +32,7 @@ button.btn {
 	margin-bottom: 4px;
 }
 
-button span {
+div#share-wrapper button span {
 	height: 13px;
 	margin-right: 5px;
 }

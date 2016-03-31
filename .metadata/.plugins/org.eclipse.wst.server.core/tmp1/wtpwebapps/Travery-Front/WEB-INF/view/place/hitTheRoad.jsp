@@ -1,11 +1,13 @@
 <!-- 김광민 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+
+<!-- CSS  -->
+<link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
 
 <!-- Boot Script -->
 <script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -128,6 +130,20 @@
 	   	  	$(".dropdown").css({ "display" : "none" });
 	   	});
 	   	
+	   	// 나라 선택 초기화
+	   	$("#removeAllCountries").click(function(){
+	   		
+			<c:if test=" not empty ${ selectedCountryList }">
+			<c:set value="${ selectedCountryList }" var="selectedCountryList" />
+			for ( var selectedCountry in selectedCountryList) {
+				<c:set value="${ selectedCountry.countryName }" var="selectedCountryName" />
+				$('#'+ selectedCountryName).remove();
+			}
+			</c:if>
+			
+			location.href = "/removeAllSelectedCountries";
+	   		
+	   	});
 	   	
 	   	/* 2. 나라 검색 탭 */
 	   	
@@ -182,6 +198,7 @@
 		
 								<button id="focus-multiple" >KR and JP</button>
 								<button id="focus-init" >World Map</button>
+								<button id="removeAllCountries" style="background-color: #333333; color:#ffffff;">Remove All Countries</button>
 							</div>
 		
 							<!-- 여행지 검색 탭 -->
@@ -203,8 +220,7 @@
 											<div class="${ selectedPlace.countryId }" style="
 												font-weight: bolder;
 												font-size: x-large;
-												margin-left: "${ selectedPlace.avgActiveCalmScore }";>
-												${ selectedPlace.placeName }
+												font-color: red;">.
 											</div>
 										</c:forEach>
 									</div>
