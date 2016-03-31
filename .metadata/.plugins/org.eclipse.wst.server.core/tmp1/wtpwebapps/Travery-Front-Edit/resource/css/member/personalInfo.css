@@ -1,18 +1,6 @@
 @CHARSET "UTF-8";
 
 /* 이기연 */
-div#personalInfoWrapper {
-	width: 70%;
-	max-width: 1000px;
-	background-color: #c3c3c3;
-	margin: 0 auto;
-	margin-top: 3%;
-	border-top-right-radius: 30px;
-	border-top-left-radius: 30px;
-	border-bottom-right-radius: 30px;
-	border-bottom-left-radius: 30px;
-}
-
 div#personalInfoWrapper h1 {
 	text-align: center;
 	padding-top: 60px;

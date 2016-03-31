@@ -45,11 +45,25 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/styles.css"/>" />
 
+<!-- CSS -->
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/myPack.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/country/country.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
+
 <!-- Boot strap -->
 
 <!-- jVector Map -->
-<link rel="stylesheet" media="all"
-	href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
+<link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 	
 <!--scripts loaded here from cdn for performance -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
