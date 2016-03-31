@@ -286,7 +286,7 @@
 		
 					<!-- Drop Down : X 축 -->
 					<div class="dropdown" style="float: left;">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X Axis
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
 							<li><a class="axisX">Bright-Dark</a></li>
@@ -298,8 +298,8 @@
 					<br />
 					<!-- Drop Down : Y 축 -->
 					<div class="dropdown" style="float: left;">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
-						<span class="caret"></span>
+						<button class="btn btn-default dropdown-toggle" type="button"
+							data-toggle="dropdown">Y Axis <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
 							<li><a class="axisY">Bright-Dark</a></li>

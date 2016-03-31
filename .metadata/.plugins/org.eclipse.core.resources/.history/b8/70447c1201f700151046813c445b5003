@@ -159,10 +159,10 @@
 		
 						<!-- 탭 -->
 						<ul class="nav nav-pills">
-							<li class="active"><a data-toggle="pill" href="#home">Select Country</a></li>
-							<li id="searchPlaces" class="tapMenu"><a data-toggle="pill" href="#menu1">Search Places</a></li>
-							<li class="tapMenu"><a data-toggle="pill" href="#menu2">My packages</a></li>
-							<li class="tapMenu"><a data-toggle="pill" href="#menu3"></a></li>
+							<li class="active"><a data-toggle="pill" href="#home">나라 선택</a></li>
+							<li id="searchPlaces" class="tapMenu"><a data-toggle="pill" href="#menu1">여행지 검색</a></li>
+							<li class="tapMenu"><a data-toggle="pill" href="#menu2">나의 패키지</a></li>
+							<li class="tapMenu"><a data-toggle="pill" href="#menu3">경로 설정</a></li>
 						</ul>
 		
 						<!-- 탭 내용 -->
@@ -286,7 +286,7 @@
 		
 					<!-- Drop Down : X 축 -->
 					<div class="dropdown" style="float: left;">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X 축
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
 							<li><a class="axisX">Bright-Dark</a></li>
@@ -298,8 +298,8 @@
 					<br />
 					<!-- Drop Down : Y 축 -->
 					<div class="dropdown" style="float: left;">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
-						<span class="caret"></span>
+						<button class="btn btn-default dropdown-toggle" type="button"
+							data-toggle="dropdown">Y 축 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
 							<li><a class="axisY">Bright-Dark</a></li>

@@ -371,4 +371,14 @@
 		<servlet-name>PackLikeServlet</servlet-name>
 		<url-pattern>/packLike</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description />
+		<display-name>ContactUsServlet</display-name>
+		<servlet-name>ContactUsServlet</servlet-name>
+		<servlet-class>com.ktds.muco.table.qna.web.ContactUsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ContactUsServlet</servlet-name>
+		<url-pattern>/contactUs</url-pattern>
+	</servlet-mapping>
 </web-app>
