@@ -1,12 +1,17 @@
 <!--  유병훈  -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
+<!-- CSS -->
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/footer/termsAccess.css"/>" />
+
+<!-- Boot Script -->
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript">
-	
 </script>
 
 <section class="bg-primary" id="one">
@@ -16,15 +21,7 @@
 		<div class="tab-content">
 
 			<!--  이용약관  -->
-			<c:if test="${menuNo eq 1 }">
-				<div id="menu1" class="tab-pane fade in active">
-			</c:if>
-			<c:if test="${menuNo eq 2 }">
-				<div id="menu1" class="tab-pane fade">
-			</c:if>
-			<c:if test="${menuNo eq 3 }">
-				<div id="menu1" class="tab-pane fade">
-			</c:if>
+			
 			<div class="row content" style="width: 100%; height: 100%;">
 
 				<div class="col-sm-2 sidenav">
@@ -551,17 +548,11 @@
 			</div>
 		</div>
 
-		<!--  개인정보취급방침  -->
-
-		<jsp:include page="/WEB-INF/view/common/personalData.jsp"></jsp:include>
-
-		<!--  FAQ  -->
-
-		<jsp:include page="/WEB-INF/view/common/faq.jsp"></jsp:include>
+		
 
 
 	</div>
-	</div>
+	
 	<!-- /#termsAccessWrapper -->
 </section>
 

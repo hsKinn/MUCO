@@ -7,7 +7,6 @@ div.tab-content {
 }
 
 div.row.content {
-	background-color: #e6e6e6;
 }
 
 div.col-sm-2.sidenav {

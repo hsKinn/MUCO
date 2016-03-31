@@ -49,10 +49,22 @@ public class TermsAccessServlet extends HttpServlet {
 		List<QNAVO> faqs = qnaBiz.getFAQList();
 
 		request.setAttribute("menuNo", menuNo);
-		request.setAttribute("faqs", faqs);
-
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/common/termsAccess.jsp");
-		rd.forward(request, response);
+		
+		
+		if ( menuNo == 1 ) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/footer/termsAccess.jsp");
+			rd.forward(request, response);
+		}
+		else if( menuNo == 2 ) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/footer/privacy.jsp");
+			rd.forward(request, response);
+		}
+		else if( menuNo == 3 ) {
+			request.setAttribute("faqs", faqs);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/footer/faq.jsp");
+			rd.forward(request, response);
+		}
+		
 
 	}
 
