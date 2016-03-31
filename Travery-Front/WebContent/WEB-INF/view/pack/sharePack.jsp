@@ -40,6 +40,8 @@
 </script>
 
 <!-- Share Pack Content by hskim -->
+<section class="bg-primary" id="one">
+	<div class="container">
 <div id="share-wrapper">
 	<form id="searchForm">
 	<div id="share-top">
@@ -269,6 +271,8 @@
 		</c:if>
 	</div>	
 </div>
+</div>
+</section>
 	
 <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

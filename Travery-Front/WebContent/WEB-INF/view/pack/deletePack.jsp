@@ -41,34 +41,36 @@
 	});
 </script>
 
-<body>
-	<div id="wrapperdiv">
-		<div id="packListdiv">
-			<table id="packListTable" border="2">
-				<form id="massiveDeleteForm">
-					<c:forEach items="${ packs}" var="packs">
-						<tr>
-							<td class="pack"><img
-								src="<c:url value="/resource/img/pack/folder.png"/>"
-								id="folderImg" /> <input type="checkbox" class="deletePackId"
-								name="deletePackId" value="${packs.packId }" /> <label
-								id="title" for="packData_Title"
-								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
-								<input type="hidden" id="packId" value="${packs.packId}" /></td>
-						</tr>
-					</c:forEach>
-				</form>
-			</table>
+<section class="bg-primary" id="one">
+	<div class="container">
+		<div id="mypackWrapperdiv">
+			<div id="mypackListdiv">
+				<table id="packListTable" border="2">
+					<form id="massiveDeleteForm">
+						<c:forEach items="${ packs}" var="packs">
+							<tr>
+								<td class="pack"><img
+									src="<c:url value="/resource/img/pack/folder.png"/>"
+									id="folderImg" /> <input type="checkbox" class="deletePackId"
+									name="deletePackId" value="${packs.packId }" /> <label
+									id="title" for="packData_Title"
+									style="font-size: 20px; display: inline;">${packs.packTitle}</label>
+									<input type="hidden" id="packId" value="${packs.packId}" /></td>
+							</tr>
+						</c:forEach>
+					</form>
+				</table>
+			</div>
+			<div id="buttondiv">
+				<button type="submit" class="btn btn-danger">DeletePackage</button>
+			</div>
 		</div>
-		<div id="buttondiv">
-			<button type="submit" class="btn btn-danger">DeletePackage</button>
-		</div>
-	</div>
 
-	<div id="packListdiv2">
-		<div id="placesOfPackListdiv"></div>
+		<div id="mypackListdiv">
+			<div id="placesOfPackListdiv"></div>
+		</div>
 	</div>
-</body>
+</section>
 
 
 <!-- Footer -->
