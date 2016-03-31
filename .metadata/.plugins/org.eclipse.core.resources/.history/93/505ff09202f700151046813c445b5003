@@ -14,7 +14,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
 public class QNAVO extends MemberVO {
 
 	private int qnaId;
-	private String qnaDate;
+	private String qndDate;
 	private String title;
 	private String description;
 	private int isAnswer;
@@ -29,12 +29,12 @@ public class QNAVO extends MemberVO {
 		this.qnaId = qnaId;
 	}
 
-	public String getQnaDate() {
-		return qnaDate;
+	public String getQndDate() {
+		return qndDate;
 	}
 
-	public void setQnaDate(String qnaDate) {
-		this.qnaDate = qnaDate;
+	public void setQndDate(String qndDate) {
+		this.qndDate = qndDate;
 	}
 
 	public String getTitle() {

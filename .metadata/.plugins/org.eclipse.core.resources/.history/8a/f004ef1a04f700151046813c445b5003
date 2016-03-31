@@ -40,7 +40,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/styles.css"/>" />
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/common/faq.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/member/faq.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/myPack.css"/>" />

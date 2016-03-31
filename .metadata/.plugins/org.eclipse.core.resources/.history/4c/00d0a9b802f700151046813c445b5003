@@ -635,13 +635,11 @@
 	<qna>
 		<getFAQList>
 			SELECT	QNA_ID
-					,EMAIL
 					, QNA_DT
 					, TITLE
 					, DESCRIPTION
-					, IS_FAQ
 			FROM 	QNA
-			WHERE 	IS_FAQ != 0
+			WHERE 	IS_FAQ = 1;
 		</getFAQList>
 	</qna>
 	
