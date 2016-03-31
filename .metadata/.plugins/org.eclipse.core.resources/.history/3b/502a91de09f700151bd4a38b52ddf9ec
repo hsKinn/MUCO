@@ -121,7 +121,7 @@
 								<input type="text" class="form-control"	tabindex="1" id="userName" name="userName" placeholder="Nick name" >
 								<br/>	
 								<label>
-									<a class="btn btn-primary btn-xl page-scroll">Let's Join!</a>
+									<a class="btn btn-primary btn-xl page-scroll">Get Started</a>
 									<input type="button" id="btnJoin" value="Signup" style="display:none;"/>
 								</label>
 								
@@ -135,7 +135,7 @@
 								<input type="password" class="form-control"	tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 
 								<br/>
 								<label>
-									<a class="btn btn-primary btn-xl page-scroll">Let's fun!</a>
+									<a class="btn btn-primary btn-xl page-scroll">Get Started</a>
 									<input type="button" id="btnLogin" value="Login" style="display:none;" />
 								</label>								
 								

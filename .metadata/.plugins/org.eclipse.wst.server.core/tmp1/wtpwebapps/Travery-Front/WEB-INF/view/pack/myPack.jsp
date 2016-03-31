@@ -91,14 +91,7 @@
 
 <section class="bg-primary">
 	<div class="container">
-		<!-- 제목 -->
-		<div class="col-lg-8 col-lg-offset-2 text-center">
-			<h2 class="margin-top-0 wow fadeIn">MY PACKAGE</h2>
-			<hr class="primary">
-			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
-		</div>
 
-		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
 				<table id="packListTable" border="2">

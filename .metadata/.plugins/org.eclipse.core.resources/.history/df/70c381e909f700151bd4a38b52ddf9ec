@@ -135,7 +135,7 @@
 								<input type="password" class="form-control"	tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 
 								<br/>
 								<label>
-									<a class="btn btn-primary btn-xl page-scroll">Let's fun!</a>
+									<a class="btn btn-primary btn-xl page-scroll">Enter!</a>
 									<input type="button" id="btnLogin" value="Login" style="display:none;" />
 								</label>								
 								

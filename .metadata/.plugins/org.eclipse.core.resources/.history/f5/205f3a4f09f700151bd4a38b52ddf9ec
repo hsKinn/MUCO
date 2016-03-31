@@ -21,12 +21,12 @@ div#share-top #searchBox {
 	margin-left: 3%;
 }
 
-div#share-wrapper input#searchKeyword {
+input#searchKeyword {
 	width: 220px;
 	height: 33px;
 }
 
-div#share-wrapper button.btn {
+button.btn {
 	width: 75px;
 	margin-left: 5px;
 	margin-bottom: 4px;

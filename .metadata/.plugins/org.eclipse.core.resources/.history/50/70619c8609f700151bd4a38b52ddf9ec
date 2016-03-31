@@ -22,7 +22,7 @@ table#personalInfoTable {
 	border-spacing: 50px;
 	width: 80%;
 	margin: 0 auto;
-	vertical-align: middle;
+	height: 20px;
 }
 
 img#editImg {
@@ -42,7 +42,7 @@ div#personalInfoWrapper span.glyphicon {
 	color: #808080;
 }
 
-div#personalInfoWrapper input #file {
+input #file {
 	position: absolute;
 	top: 0;
 	right: 0;

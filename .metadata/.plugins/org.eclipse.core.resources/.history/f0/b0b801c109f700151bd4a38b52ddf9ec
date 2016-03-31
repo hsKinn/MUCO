@@ -42,7 +42,7 @@ div#personalInfoWrapper span.glyphicon {
 	color: #808080;
 }
 
-div#personalInfoWrapper input #file {
+input #file {
 	position: absolute;
 	top: 0;
 	right: 0;
