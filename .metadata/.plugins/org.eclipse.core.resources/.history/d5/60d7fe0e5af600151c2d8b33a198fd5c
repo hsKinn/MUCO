@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+div#headerWrapper{
+	/* 사용자의 컴퓨터 해상도를 모른다. 그래서 비율을 적어야 한다. #e6e6e6 */
+	height: 100%;
+	width: 100%;
+	background-color: #e6e6e6;
+	
+}
+
+div#headerContents {
+	background-color: red;
+	width:100%;
+}
+
+
+/* 로그아웃 */
+div#logout {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #8b8b8b;
+	width: 100px;
+	color: #333333;
+		
+	/* 이기연 */
+	border-top-right-radius: 30px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+}

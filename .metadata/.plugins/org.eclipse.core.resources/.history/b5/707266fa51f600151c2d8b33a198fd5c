@@ -1,0 +1,123 @@
+<!-- 김광민 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css"  href="<c:url value="/resource/css/common/reset.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/common/index.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/common/header.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/common/leftMenu.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/common/footer.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/myPack.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/country/country.css"/>" />
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
+
+<!-- Boot strap -->
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet"	href="http://www.w3schools.com/lib/w3-theme-teal.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jVector Map -->
+<link rel="stylesheet" media="all"	href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
+
+<title>Travery</title>
+<script type="text/javascript"	src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
+<script type="text/javascript"	src="<c:url value="/resource/js/json2.js" />"></script>
+
+<!-- Boot strap -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+</head>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+</script>
+
+<body>
+	<div id="headerWrapper">
+		<div id="headerContents">
+<div class="navbar-wrapper">
+    <div class="container-fluid">
+        <nav class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Logo</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#" class="">Home</a></li>
+                        <li class=" dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departments <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class=" dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Departments</a>
+                                </li>
+                                <li><a href="#">Add New</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Add New</a></li>
+                        <li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Managers <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">View Managers</a></li>
+                                <li><a href="#">Add New</a></li>
+                            </ul>
+                        </li>
+                        <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">View Staff</a></li>
+                                <li><a href="#">Add New</a></li>
+                                <li><a href="#">Bulk Upload</a></li>
+                            </ul>
+                        </li>
+                        <li class=" down"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HR <span class="caret"></span></a>
+                            <ul class="dropdown-menu	">
+                                <li><a href="#">Change Time Entry</a></li>
+                                <li><a href="#">Report</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">My Profile</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="<c:url value="/logout" />">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+		</div>
