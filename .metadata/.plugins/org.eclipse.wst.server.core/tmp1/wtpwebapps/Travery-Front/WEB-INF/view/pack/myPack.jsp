@@ -8,80 +8,97 @@
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
 <!-- Boot Script -->
-<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <!-- My Package -->
 <script type="text/javascript">
+	$(document).ready(
+			function() {
 
-	$(document).ready(function() {
+				$("#myPackMenu").mouseout(function() {
+					$("#myPackMenu").css("color", "#ffffff");
+				});
+				$("#myPackMenu").css("color", "#ffffff");
 
-		$("#myPackMenu").mouseout(function() {
-			$("#myPackMenu").css("color", "#ffffff");
-		});
-		$("#myPackMenu").css("color", "#ffffff");
+				$("#placesOfPackListdiv").hide();
 
+				$(".pack").click(
+						function() {
+							$("#placesOfPackListdiv").hide();
+							$("#placesOfPackListdiv").fadeIn("slow");
+							var packId = $(this).children(":eq(2)").val();
 
-		$("#placesOfPackListdiv").hide();
+							$.post("/packInfo", {
+								"packId" : packId
+							}, function(data) {
 
-		$(".pack").click(function() {
-			$("#placesOfPackListdiv").hide();
-			$("#placesOfPackListdiv").fadeIn("slow");
-			var packId = $(this).children(":eq(2)").val();
+								var jsonData = {};
+								try {
+									jsonData = JSON.parse(data);
+								} catch (e) {
+									jsonData.result = false;
+								}
+								console.log(jsonData);
 
-			$.post("/packInfo", {
-				"packId" : packId
-			}, function(data) {
+								if (jsonData.result) {
 
-				var jsonData = {};
-				try {
-					jsonData = JSON.parse(data);
-				} catch (e) {
-					jsonData.result = false;
-				}
-				console.log(jsonData);
+									$("#packData_Title").val(jsonData.title);
+									$("#packData_image").attr(
+											"src",
+											"/image?imageName="
+													+ jsonData.imageName);
+									if (jsonData.isPublic == 1) {
+										$("#packData_IsPublic").attr("checked",
+												true);
+									} else {
+										$("#packData_IsPublic").attr("checked",
+												false);
+									}
+									$("#packData_likeCount").text(
+											jsonData.likeCount);
+									$("#packData_viewCount").text(
+											jsonData.viewCount);
+									$("#curpackId").val(jsonData.packId);
+									$(".hashtagBox").text(jsonData.hashtags);
+									$("#texthashtag").val(jsonData.hashtags);
+								} else {
+									/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+									location.href = "/"; */
+								}
+							});
+						});
+				$("#hashtagAddBtn").click(function() {
+					var tag = $("#hashTag").val();
+					var tags = $("#texthashtag").val();
+					$(".hashtagBox").append(" #" + tag);
+					$("#texthashtag").val(tags + " " + tag);
+					$("#hashTag").val(null);
+				});
 
-				if (jsonData.result) {
+				$(".btn-success").click(function() {
+					var form = $("#modifyForm");
+					var isPublic = $("#packData_IsPublic").is(":checked");
+					form.attr("method", "post");
+					form.attr("action", "/doModifyPack");
+					form.submit();
+				});
 
-					$("#packData_Title").val(jsonData.title);
-					$("#packData_image").attr("src", "/image?imageName="+jsonData.imageName);
-					if (jsonData.isPublic == 1) {
-						$("#packData_IsPublic").attr("checked", true);
-					} else {
-						$("#packData_IsPublic").attr("checked", false);
-					}
-					$("#packData_likeCount").text(jsonData.likeCount);
-					$("#packData_viewCount").text(jsonData.viewCount);
-					$("#curpackId").val(jsonData.packId);
-					$(".hashtagBox").text(jsonData.hashtags);
-					$("#texthashtag").val(jsonData.hashtags);
-				} else {
-					/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-					location.href = "/"; */
-				}
 			});
-		});
-		$("#hashtagAddBtn").click(function() {
-			var tag = $("#hashTag").val();
-			var tags = $("#texthashtag").val();
-			$(".hashtagBox").append(" #"+tag);
-			$("#texthashtag").val(tags+" "+tag);
-			$("#hashTag").val(null);
-		});
-
-		$(".btn-success").click(function() {
-			var form = $("#modifyForm");
-			var isPublic = $("#packData_IsPublic").is(":checked");
-			form.attr("method", "post");
-			form.attr("action", "/doModifyPack");
-			form.submit();
-		});
-
-	});
 </script>
 
-<section class="bg-primary" id="one">
+<section class="bg-primary">
 	<div class="container">
+		<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">MY PACKAGE</h2>
+			<hr class="primary">
+			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
+		</div>
+
+		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
 				<table id="packListTable" border="2">

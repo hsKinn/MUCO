@@ -147,7 +147,14 @@
 
 <section class="bg-primary" id="one">
 	<div class="container">
+		<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">HIT THE ROAD</h2>
+			<hr class="primary">
+			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
+		</div>
 
+		<!-- 내용 -->
 		<div id="hitTheRoad">
 		
 			<!-- 첫번째 열 -->
