@@ -13,8 +13,6 @@ div#mypackListdiv {
 	float: left;
 	height: 80%;
 	width: 100%;
-	
-	border-radius: 20px;
 }
 
 div#buttondiv {

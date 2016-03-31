@@ -45,7 +45,7 @@
 	<div class="container">
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
-				<table id="packListTable" border="2">
+				<table id="packListTable">
 					<form id="massiveDeleteForm">
 						<c:forEach items="${ packs}" var="packs">
 							<tr>
@@ -65,11 +65,6 @@
 				<button type="submit" class="btn btn-danger">DeletePackage</button>
 			</div>
 		</div>
-
-		<div id="mypackListdiv">
-			<div id="placesOfPackListdiv"></div>
-		</div>
-	</div>
 </section>
 
 

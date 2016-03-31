@@ -40,7 +40,7 @@ div#packListdiv2 {
 div#placesOfPackListdiv {
 	align: center;
 	float: left;
-	background-color: #333333;
+	background-color: #8000ff;
 	height: 100%;
 	width: 100%;
 	margin-top: 5%;

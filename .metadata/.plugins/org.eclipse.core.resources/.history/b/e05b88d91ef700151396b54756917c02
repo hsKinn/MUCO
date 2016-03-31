@@ -155,7 +155,7 @@ div.packLikeCount span#likeCount {
 	color: red;
 }
 
-div#share-wrapper span.glyphicon-heart {
+span.glyphicon-heart {
 	color: red;
 	width: 10px;
 	height: 13px;
@@ -163,20 +163,20 @@ div#share-wrapper span.glyphicon-heart {
 	margin-bottom: 1px;
 }
 
-div#share-wrapper span.modal-title-writer {
+span.modal-title-writer {
 	text-align: right;
 }
 
-div#share-wrapper div.modal-body {
+div.modal-body {
 	overFlow-y: auto;
 	max-height: 250px;
 }
 
-div#share-wrapper div.modal-body td {
+div.modal-body td {
 	text-align: center;
 }
 
-div#share-wrapper tr.modal-table-top {
+tr.modal-table-top {
 	font-size: 20px;
 }
 
@@ -196,33 +196,33 @@ div#notFoundPack span#blue {
 	text-decoration: underline;
 }
 
-div#share-wrapper div.modal-footer-share span {
+div.modal-footer-share span {
 	color: red;
 	font-size: 15px;
 }
 
-div#share-wrapper div.modal-like {
+div.modal-like {
 	width: 100%;
 	float: left;
 }
 
-div#share-wrapper div.pack-reply {
+div.pack-reply {
 	width: 100%;
 	float: left;
 }
 
-div#share-wrapper div.replybypack {
+div.replybypack {
 	width: 100%;
 	height: 80px;
 	overFlow: auto;
 }
 
-div#share-wrapper div.pack-reply table {
+div.pack-reply table {
 	align: center;
 	width: 60%;
 }
 
-div#share-wrapper td.reply-name {
+td.reply-name {
 	text-align: left;
 	width: 55px;
 }

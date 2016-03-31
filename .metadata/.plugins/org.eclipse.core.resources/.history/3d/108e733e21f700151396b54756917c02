@@ -54,7 +54,7 @@
 	<div class="container">
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
-				<table id="packListTable">
+				<table id="packListTable" border="2">
 					<c:forEach items="${ packs}" var="packs">
 						<tr>
 							<td class="pack"><img

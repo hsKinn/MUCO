@@ -65,7 +65,7 @@
 
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
-			<div id="mypackListdiv">
+			<div id="packListdiv">
 				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>
@@ -140,10 +140,8 @@
 									</div>
 									
 									<div class="modal-footer">
-									
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal">Close</button>
-											
 									</div>
 								</div>
 							</div>

@@ -65,7 +65,7 @@
 
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
-			<div id="mypackListdiv">
+			<div id="packListdiv">
 				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>

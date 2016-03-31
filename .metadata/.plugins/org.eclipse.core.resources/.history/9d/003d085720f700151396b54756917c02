@@ -9,12 +9,10 @@ div#mypackWrapperdiv {
 }
 
 div#mypackListdiv {
-	background-color: #696969;
+	background-color: #333333;
 	float: left;
 	height: 80%;
 	width: 100%;
-	
-	border-radius: 20px;
 }
 
 div#buttondiv {
@@ -56,7 +54,8 @@ div#addPackFormdiv {
 }
 
 table#packListTable {
-	margin: 30px;
+	margin-top: 10%;
+	margin-left: 30px;
 }
 
 td.pack {

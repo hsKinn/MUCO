@@ -65,7 +65,7 @@
 
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
-			<div id="packListdiv">
+			<div id="mypackListdiv">
 				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>
@@ -89,7 +89,8 @@
 					<c:forEach items="${places}" var="places">
 						<tr width="200px">
 							<td class="place">
-								<p id="title" style="display: inline; cursor: pointer;">
+								<p id="title" data-toggle="modal"
+								data-target="#${ places.placeId}"style="display: inline; cursor: pointer;">
 									${places.placeName}</p> <input type="hidden" class="placeId"
 								name="placeId" value="${places.placeId}" />
 								<form class="deletePlaceOfPackForm" style="display: inline;">
@@ -105,6 +106,48 @@
 							</td>
 						</tr>
 <!-- Modal-->
+						<div id="${places.placeId}" class="modal fade" role="dialog">
+							<div class="modal-dialog" >
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h1 class="modal-title">${places.placeName}</h1>
+										<h4 class="modal-title">${places.address}</h4>
+										<p>${places.viewCount} view</p>
+									</div>
+									
+									<div class="modal-body"  style="height:700px;">
+										<div id="placemodalLeft" style="width:50%; height:100%; background-color:red; float:left;">
+											사진
+										</div>
+										<div id="placemodalRight" style="width:50%; height:100%; background-color:green; float:left;">
+											<p>${places.placeDescription}</p>
+											<div id="placemodalMood" style="width:100%; height:30%; background-color:yellow; float:left;">
+												<p>mood</p>
+											</div>
+											<div id="placemodalReply" style="display: inline;">
+												<input type="text" class="form-control" id="placemodalReply" name="placemodalReply"
+												style="width: 80%; display: inline;" />
+												<button type="button" id="placemodalReplyBtn" >push</button>
+											</div>
+											<div id="placemodalReplyList">
+												<p>작성자</p> <p> 내용</p>
+											</div>	
+										</div>
+									</div>
+									
+									<div class="modal-footer">
+									
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+											
+									</div>
+								</div>
+							</div>
+						</div>
 					</c:forEach>
 				</table>
 				

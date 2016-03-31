@@ -14,7 +14,10 @@ div#mypackListdiv {
 	height: 80%;
 	width: 100%;
 	
-	border-radius: 20px;
+	border-radius: 25px;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
 }
 
 div#buttondiv {

@@ -32,7 +32,7 @@ div#packListdiv2 {
 }
 div#packListdiv2 {
 	float: left;
-	background-color: #333333;
+	background-color: #808040;
 	height: 100%;
 	width: 40%;
 }
