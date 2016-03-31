@@ -88,32 +88,7 @@
 			},
 			onRegionClick : function(event, code) {
 				var map = $('#map1').vectorMap('get', 'mapObject');
-				$.post(
-						"<c:url value="/selectedCountry"/>"
-						, { "selectedCountryName" : map.getRegionName(code) }
-						, function(data) {
-							var jsonData = {};
-							try {
-								jsonData = JSON.parse(data);
-							}
-							catch (e) {
-									console.log(e);
-									jsonData.result = false;
-							}
-							
-							if (jsonData.result) {
-								if (jsonData.isExistCountry) {
-									$('#countries').append('<div class="selectedCountry" id= "' + map.getRegionName(code) + '">' + map.getRegionName(code) + '</div>');
-								} else {
-									$('#'+ map.getRegionName(code)).remove();
-
-								}
-							} else {
-								alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-								location.href = "<c:url value="/"/>"
-							}
-						}
-				);
+				location.href = "/selectedCountry?selectedCountryName=" + map.getRegionName(code);
 			},
 			series : {
 				regions : [ {
@@ -127,13 +102,28 @@
 
 <!-- 기준 출력 -->
 <script type="text/javascript">
+
 	$(document).ready(function() {
 
+		/* 0. 기본 값 */
+		
+		// 왼쪽 사이드바 메뉴 선택시
 		$("#hitTheRoadMenu").mouseout(function() {
 			$("#hitTheRoadMenu").css("color", "#ffffff");
 		});
 		$("#hitTheRoadMenu").css("color", "#ffffff");
+		
+		// 새로고침 해도 현재 탭 유지
+		
+		/* 1. 나라 선택 탭 */
+		
+		// 오른쪽 나라 리스트에서 나라 지울때
+		<c:if test=" not empty ${ removeCountryName }">
+		<c:set value="${ removeCountryName }" var="removeCountryName" />
+			$('#'+ removeCountryName).remove();
+		</c:if>
 
+		// 지도 검색창에서 여행지, 기준 안뜨게
 		$(".tapMenu").click(function(){
 	   		$(".placeDetail").css({ "display" : "block" });
 	   		$(".dropdown").css({ "display" : "block" });
@@ -143,63 +133,17 @@
 	   	  	$(".dropdown").css({ "display" : "none" });
 	   	});
 	   	
-		// X 축
+	   	
+	   	/* 2. 나라 검색 탭 */
+	   	
+		// X축 변경
 		$(".axisX").click(function(){
-			
-			$.post(
-					"<c:url value="/selectedStandard"/>"
-					, { "selectedStandard" : "X", "selectedStandardName" : $(this).text() }
-					, function(data) {
-						var jsonData = {};
-						try {
-							jsonData = JSON.parse(data);
-						}
-						catch (e) {
-								console.log(e);
-								jsonData.result = false;
-						}
-						
-						if (jsonData.result) {
-							if (jsonData.isChangedStandard) {
-								$("#printAxisX1").text( jsonData.firstStandard );
-								$("#printAxisX2").text( jsonData.secondStandard );
-							}
-						} else {
-							alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-							location.href = "<c:url value="/"/>"
-						}
-					}
-			);
+			location.href = "/selectedStandard?selectedStandard=X&selectedStandardName=" + $(this).text();
 		});
 	
-		// Y 축
+		// Y축 변경
 		$(".axisY").click(function(){
-			
-			$.post(
-					"<c:url value="/selectedStandard"/>"
-					, { "selectedStandard" : "Y", "selectedStandardName" : $(this).text() }
-					, function(data) {
-						var jsonData = {};
-						try {
-							jsonData = JSON.parse(data);
-						}
-						catch (e) {
-								console.log(e);
-								jsonData.result = false;
-						}
-						
-						if (jsonData.result) {
-							if (jsonData.isChangedStandard) {
-								$("#printAxisY1").text( jsonData.firstStandard );
-								$("#printAxisY2").text( jsonData.secondStandard );
-								
-							}
-						} else {
-							alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-							location.href = "<c:url value="/"/>"
-						}
-					}
-			);
+			location.href = "/selectedStandard?selectedStandard=Y&selectedStandardName=" + $(this).text();
 		});
 	});
 </script>
@@ -248,7 +192,16 @@
 							<div id="printAxisX2" class="col-sm-1">${ axisX2 }</div>
 							
 							<!-- ★★★★★★★★★★★★★★★★ 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
-							<div id="dottedDiv" class="col-sm-10"></div>
+							<div id="dottedDiv" class="col-sm-10">
+								<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
+									<div class="${ selectedPlace.countryId }" style="
+										font-weight: bolder;
+										font-size: x-large;
+										margin-left: "${ selectedPlace.avgActiveCalmScore }";>
+										${ selectedPlace.placeName }
+									</div>
+								</c:forEach>
+							</div>
 							
 							<div id="printAxisX1" class="col-sm-1">${ axisX1 }</div>
 						</div>
@@ -268,6 +221,9 @@
 		<!-- 선택된 나라 리스트 -->
 		<div class="col-sm-1" style="height: 100%;" >
 			<div id="countries" style="width: 100%; height: 100%;">
+				<c:forEach items="${ selectedCountryList }" var="selectedCountry">
+					<div class="selectedCountry" id="' + ${ selectedCountry.countryName } + '">${ selectedCountry.countryName }</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

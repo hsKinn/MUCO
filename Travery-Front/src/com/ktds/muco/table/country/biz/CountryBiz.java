@@ -1,5 +1,7 @@
 package com.ktds.muco.table.country.biz;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,15 +36,27 @@ public class CountryBiz {
 	 * @return
 	 * @author 김광민
 	 */
-	public CountryVO getCountryInfoByCountryName(HttpServletRequest request) {
+	public boolean getCountryInfoByCountryName(HttpServletRequest request) {
 
 		String selectedCountryName = request.getParameter("selectedCountryName");
 		
 		// CountryVO 에 나라정보 등록
 		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
 		
-		// CountryVO 에 여행지 리스트 등록
-		countryVO.setPlaceList( placeDAO.getPlaceListByCountryId(countryVO.getCountryId() ));
+		if(countryVO != null) {
+			
+			int countryId = 0;
+			countryId = countryVO.getCountryId();
+			
+			// CountryVO 에 여행지 리스트 등록
+			if( countryId != 0 ) {
+				List<PlaceVO> placeList = placeDAO.getPlaceListByCountryId(countryId);
+				if(placeList != null) {
+					countryVO.setPlaceList(placeList);
+				}
+			}
+		}
+			
 		
 		// 선택한 나라명과 일치하는 나라가 존재하면
 		if (countryVO != null) {
@@ -52,26 +66,10 @@ public class CountryBiz {
 
 			// 중복 체크
 			if (!memberVO.isExistCountryByCountryName(selectedCountryName)) {
-
 				// 존재하지 않으면 추가
 				if (memberVO.addSelectedCountry(countryVO)) {
 					session.setAttribute("_MEMBER_", memberVO);
-
-					System.out.println();
-					System.out.println("---- 여행지의 기준들에 대한 평균 받아와지는지 체크 ----");
-					System.out.println();
-					for (CountryVO checkCountry : memberVO.getSelectedCountryList()) {
-						for (PlaceVO checkPlace : checkCountry.getPlaceList()) {
-							System.out.println( "여행지 " + checkPlace.getPlaceName() + "의 Active 평균 : " +  checkPlace.getAvgActiveCalmScore());
-							System.out.println( "여행지 " + checkPlace.getPlaceName() + "의 Bright 평균 : " +  checkPlace.getAvgBrightDarkScore());
-							System.out.println( "여행지 " + checkPlace.getPlaceName() + "의 HightPrice 평균 : " +  checkPlace.getAvgHighPriceLowPriceScore());
-						}
-					}
-					System.out.println();
-					System.out.println("-----------------------------------------------");
-					System.out.println();
-					
-					return countryVO;
+					return true;
 				}
 			} else {
 				// 존재하면 제거
@@ -80,6 +78,6 @@ public class CountryBiz {
 				}
 			}
 		}
-		return null;
+		return false;
 	}
 }
