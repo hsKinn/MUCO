@@ -41,7 +41,6 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/common/faq.css"/>" />
-<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/myPack.css"/>" />
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
@@ -139,7 +138,7 @@
 </script>
 
 <body>
-	<nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+	<nav id="topNav" class="navbar navbar-default navbar-fixed-top" data-spy="affix">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
