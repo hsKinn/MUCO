@@ -135,13 +135,13 @@ div#countryNameIsKorea {
 
 /* Russia */
 div#countryNameIsRussia {
-	background-color: #ffff4d;
+	background-color: #ffff00;
 	color: #333333;
 }
 
 /* China */
 div#countryNameIsChina {
-	background-color: #9797ff;
+	background-color: #ff0080;
 	color: #333333;
 }
 
@@ -156,11 +156,11 @@ a.countryIdIs6 {
 
 /* Russia */
 a.countryIdIs11 {
-	color: #ffff4d;
+	color: #ffff00;
 }
 
 /* China */
 a.countryIdIs12 {
-	color: #9797ff;
+	color: #ff0080;
 }
 

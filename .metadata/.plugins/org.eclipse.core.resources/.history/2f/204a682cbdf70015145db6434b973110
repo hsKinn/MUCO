@@ -122,26 +122,19 @@ div.selectedCountry {
 /* 나라 색깔 */
 
 /* Korea */
-
-div.selectedCountry {
-	background-color: #ffffff;
-	color: #333333;
-}
-
 div#countryNameIsKorea {
-	background-color: #fa3851;
+	background-color: #ffffff;
 	color: #333333;
 }
 
 /* Russia */
 div#countryNameIsRussia {
-	background-color: #ffff4d;
-	color: #333333;
+	background-color: #ffff00;
 }
 
 /* China */
 div#countryNameIsChina {
-	background-color: #9797ff;
+	background-color: #ff0080;
 	color: #333333;
 }
 
@@ -151,16 +144,16 @@ div#countryNameIsChina {
 
 /* Korea */
 a.countryIdIs6 {
-	color: #fa3851;
+	color: #ffffff;
 }
 
 /* Russia */
 a.countryIdIs11 {
-	color: #ffff4d;
+	color: #ffff00;
 }
 
 /* China */
 a.countryIdIs12 {
-	color: #9797ff;
+	color: #ff0080;
 }
 

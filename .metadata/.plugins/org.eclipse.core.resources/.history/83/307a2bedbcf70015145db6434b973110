@@ -274,7 +274,7 @@
 				<div class="col-sm-1" style="height: 100%;" >
 					<div id="countries" style="width: 100%; height: 100%;">
 						<c:forEach items="${ selectedCountryList }" var="selectedCountry">
-							<div style="border-radius:6px;" class="selectedCountry" id="countryNameIs${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
+							<div style="background-color: red; border: dashed;" class="selectedCountry" id="countryNameIs${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
 						</c:forEach>
 					</div>
 				</div>
