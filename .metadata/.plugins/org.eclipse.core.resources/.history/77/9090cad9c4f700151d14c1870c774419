@@ -1,0 +1,101 @@
+package com.ktds.muco.table.place.biz;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.table.image.dao.ImageDAO;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.dao.PlaceDAO;
+import com.ktds.muco.table.place.vo.PlaceListVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PlaceBiz {
+	/**
+	 * 
+	 * @author 김동규
+	 *
+	 */
+	private PlaceDAO placeDAO;
+	private ImageDAO imageDAO;
+
+	public PlaceBiz() {
+		placeDAO = new PlaceDAO();
+
+		imageDAO = new ImageDAO();
+	}
+
+	public PlaceListVO getUserRecommendList(MemberVO member) {
+
+		PlaceListVO placeListVO = new PlaceListVO();
+		placeListVO.setPlaceList(placeDAO.getUserRecommendPlaceList(member));
+		placeListVO.setImageList(imageDAO.getImageLocationList(member));
+		return placeListVO;
+	}
+
+	public PlaceVO placeInfoCreate(PlaceVO placeVO) {
+
+		String Description = placeVO.getPlaceDescription();
+		Description = Description.replaceAll("\n", "<br/>");
+		placeVO.setPlaceDescription(Description);
+		return placeDAO.insertPlaceInfo(placeVO);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 * @author 유병훈
+	 */
+	public boolean addTempSelectedPlaceByPlaceId(HttpServletRequest request){
+		
+		int selectedPlaceId = Integer.parseInt(request.getParameter("selectedPlaceId"));
+		
+		// CountryVO 에 나라정보 등록
+		CountryVO countryVO = countryDAO.getCountryInfoByCountryName(selectedCountryName);
+		
+		if(countryVO != null) {
+			
+			int countryId = 0;
+			countryId = countryVO.getCountryId();
+			
+			// CountryVO 에 여행지 리스트 등록
+			if( countryId != 0 ) {
+				List<PlaceVO> placeList = placeDAO.getPlaceListByCountryId(countryId);
+				if(placeList != null) {
+					countryVO.setPlaceList(placeList);
+				}
+			}
+		}
+			
+		
+		// 선택한 나라명과 일치하는 나라가 존재하면
+		if (countryVO != null) {
+
+			HttpSession session = request.getSession();
+			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+
+			// 중복 체크
+			if (!memberVO.isExistCountryByCountryName(selectedCountryName)) {
+				// 존재하지 않으면 추가
+				if (memberVO.addSelectedCountry(countryVO)) {
+					session.setAttribute("_MEMBER_", memberVO);
+					return true;
+				}
+			} else {
+				// 존재하면 제거
+				if (memberVO.removeSelectedCountryByCountryName(selectedCountryName)) {
+					session.setAttribute("_MEMBER_", memberVO);
+				}
+			}
+		}
+		return false;
+		
+	}
+}

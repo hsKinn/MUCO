@@ -121,7 +121,7 @@
        });
        var activeTab = localStorage.getItem('activeTab');
        if(activeTab){
-           $('[href="' + activeTab + '"]').tab('show');
+           $('#hitTheRoadTabs a[href="' + activeTab + '"]').tab('show');
        }
 		
 		// 새로고침 해도 현재 탭 유지
@@ -180,6 +180,21 @@
 		</c:if>
 		
 		$('[data-toggle="tooltip"]').tooltip();
+		
+		$("#dottedDiv > a").click(function(){
+			var select = $(this);
+		    var id = select.attr('id');
+		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
+		});
+		
+		$("#dottedDiv > a").mouseenter(function(){
+			$(this).css("font-size","x-large");
+			
+		});
+		$("#dottedDiv > a").mouseleave(function(){
+			$(this).css("font-size","x-small");
+		});
+		
 	});
 </script>
 
@@ -207,15 +222,15 @@
 						<!-- 탭 -->
 						<ul id="hitTheRoadTabs" class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#home">Country</a></li>
-							<li id="searchPlaces" class="tapMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
+							<li id="searchPlaces" ><a data-toggle="tab" href="#menu1">Mood</a></li>
+							<li ><a data-toggle="tab" href="#menu2">My package</a></li>
+							<li ><a data-toggle="tab" href="#menu3">Route</a></li>
 						</ul>
 		
 						<!-- 탭 내용 -->
 						<div class="tab-content">
 							<!-- 나라 선택 탭 -->
-							<div id="home" class="tab-pane fade in active">
+							<div id="home" class="tab-pane in active">
 		
 								<!-- 지도 -->
 								<div id="map1" style="width: 100%; height: 95%;"></div>
@@ -226,7 +241,7 @@
 							</div>
 		
 							<!-- 여행지 검색 탭 -->
-							<div id="menu1" class="tab-pane fade">
+							<div id="menu1" class="tab-pane">
 								<div class="row">
 									<div id="printAxisY1">${ axisY1 }</div>
 								</div>
@@ -234,7 +249,7 @@
 									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
 									
 									<!-- ★★★★★★★★★★★★★★★★ 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
-									<div id="dottedDiv" class="col-sm-8" style="padding:0;">
+									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
 										<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
 											<c:set value="${ selectedPlace.placeId }" var="placeId" />
 											<c:set value="${ selectedPlace.placeName }" var="placeName" />
@@ -242,16 +257,16 @@
 											<a
 											id="placeIdIs${ placeId }"
 											class="countryIdIs${ countryId }" 
-											href="#"
 											data-toggle="tooltip"
 											title="${ placeName }"
 											style="
 												font-weight: bolder;
 												font-size:x-small;
 												text-decoration: none;
-												position: absolute;"
+												position: absolute;
+												cursor: pointer;"
 											>●
-											</a>		
+											</a>
 										</c:forEach>
 									</div>
 									
@@ -288,29 +303,41 @@
 				<div id="tempPlaceList" class="col-sm-8">
 		
 					<!-- 여행지 상세보기 페이지 -->
-		
-					<div class="placeDetail" data-toggle="modal" data-target="#myModal">KOREA</div>
-		
+					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
+						<div class="tempSelectedPlace" id="' + ${ tempSelectedPlace.placeName } + '" 
+						style="float:left;
+								width:15%;
+								height:150px;
+								background-color: #5e5e5e;
+								text-align: center;
+								margin-left:20px;
+								margin-top:20px;" 
+						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+							${ tempSelectedPlace.placeName }
+						</div>
+									
 					<!-- Modal -->
-					<div class="modal fade" id="myModal" role="dialog">
+					
+					<div class="modal fade" id="${ tempSelectedPlace.placeId }" role="dialog" >
+					
 						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="divHeader">
+							<div class="modal-content" style="width: 1500px;height: 900px;margin-left: -300px;">
+								<div class="divHeader" style="height: 30px;background-color: #333333;">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 								</div>
 		
-								<div class="divBody">
+								<div class="divBody" style="width: 100%;height: 90%;">
 		
-									<div class="travelImage">
+									<div class="travelImage" style="width: 50%;height: 100%;background-color: #c8c8c8;float: left;">
 										<h4 class="modal-title">travel image</h4>
 									</div>
 		
-									<div class="travelExplain">
+									<div class="travelExplain" style="width: 50%;height: 100%;background-color: #c8c8c8;float: left;">
 										<div class="modal-header">
-											<h2 class="modal-title">travelTitle</h2>
+											<h2 class="modal-title">${ tempSelectedPlace.placeName }</h2>
 										</div>
 										<div class="modal-header" style="height: 50%;">
-											<h4 class="modal-title">travelDescript</h4>
+											<h4 class="modal-title">${ tempSelectedPlace.placeDescription }</h4>
 										</div>
 										<div class="modal-header" style="height: 40%;">
 											<h4 class="modal-title">travelReply</h4>
@@ -326,13 +353,18 @@
 										</div>
 									</div>
 								</div>
-								<div class="modal-footer">
+								<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
+					
 				</div>
+		
+		
+		
 		
 				<!-- 기준 선택 -->
 				<div id="selectStandardBtns" class="col-sm-2" style="height: 100%;">

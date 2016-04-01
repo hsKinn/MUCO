@@ -45,9 +45,9 @@ public class MemberVO extends PlaceVO {
 	private String recentAccessDate = "";
 
 	private List<CountryVO> selectedCountryList;
+	private List<PlaceVO> tempSelectedPlaceList;
 	private List<String> selectedStandardList;
 	
-
 	public MemberVO() {
 
 		email = "";
@@ -61,6 +61,7 @@ public class MemberVO extends PlaceVO {
 		recentAccessDate = "";
 
 		selectedCountryList = new ArrayList<CountryVO>();
+		tempSelectedPlaceList = new ArrayList<PlaceVO>();
 		
 		// 기준 초기값 설정
 		selectedStandardList = new ArrayList<String>();
@@ -158,6 +159,14 @@ public class MemberVO extends PlaceVO {
 		this.selectedStandardList = selectedStandardList;
 	}
 
+	public List<PlaceVO> getTempSelectedPlaceList() {
+		return tempSelectedPlaceList;
+	}
+
+	public void setTempSelectedPlaceList(List<PlaceVO> tempSelectedPlaceList) {
+		this.tempSelectedPlaceList = tempSelectedPlaceList;
+	}
+	
 	/**
 	 * 
 	 * 선택된 나라 입력하기 전에 중복 체크
@@ -280,4 +289,67 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
+	
+	
+	/**
+	 * 
+	 * 선택된 여행지 입력하기 전에 중복 체크
+	 * 
+	 * @param placeVO
+	 * @author 유병훈
+	 */
+	public boolean isExistPlaceByPlaceId(int selectedPlaceId) {
+
+		for (PlaceVO placeVO: this.getTempSelectedPlaceList()) {
+
+			if ( selectedPlaceId == placeVO.getPlaceId() ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	/**
+	 * 
+	 * 여행지 리스트에 선택된 여행지 추가
+	 * 
+	 * @param placeVO
+	 * @author 유병훈
+	 */
+	public boolean addSelectedPlace(PlaceVO placeVO) {
+
+		// 최대 15개 나라 선택 가능
+		if (tempSelectedPlaceList.size() < 10) {
+
+			System.out.println(tempSelectedPlaceList.size());
+
+			this.tempSelectedPlaceList.add(placeVO);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	 * 여행지 리스트에 선택된 여행지 제거
+	 * 
+	 * @param placeVO
+	 * @author 유병훈
+	 */
+	public boolean removeSelectedPlaceByPlaceId(int selectedPlaceId) {
+
+		int i = 0;
+		for (PlaceVO placeVO : this.tempSelectedPlaceList) {
+
+			if (selectedPlaceId == placeVO.getPlaceId()) {
+
+				this.tempSelectedPlaceList.remove(i);
+				return true;
+			}
+			i++;
+		}
+		return false;
+	}
+	
 }
