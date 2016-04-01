@@ -4,8 +4,8 @@ svg {
 }
 
 .jvectormap-container {
-	width: 100%;
-	height: 100%;
+	width: 974px;
+	height: 435px;
 	position: relative;
 	overflow: hidden;
 	touch-action: none;

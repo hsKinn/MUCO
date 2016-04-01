@@ -283,6 +283,8 @@
 				}]
 			}
 		});
+		
+		
 	});
 </script>
 
@@ -304,10 +306,18 @@
            localStorage.setItem('activeTab', $(e.target).attr('href'));
        });
        var activeTab = localStorage.getItem('activeTab');
+       
+       if ( activeTab == undefined || activeTab == "" ) {
+    	   activeTab = "#home";
+       }
+       
+       $(activeTab).addClass("in");
+       $(activeTab).addClass("active");
+       
        if(activeTab){
            $('[href="' + activeTab + '"]').tab('show');
        }
-		
+       
 		// 새로고침 해도 현재 탭 유지
 		
 		/* 1. 나라 선택 탭 */
@@ -389,16 +399,17 @@
 		
 						<!-- 탭 -->
 						<ul id="hitTheRoadTabs" class="nav nav-tabs">
-							<li class="active"><a data-toggle="tab" href="#home">Country</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
+							
+							<li class="tabMenu"><a data-toggle="tab" href="#home">Country</a></li>
+							<li class="tabMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
+							<li class="tabMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
+							<li class="tabMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
 						</ul>
 		
 						<!-- 탭 내용 -->
 						<div class="tab-content">
 							<!-- 나라 선택 탭 -->
-							<div id="home" class="tab-pane fade in active">
+							<div id="home" class="tab-pane fade">
 		
 								<!-- 지도 -->
 								<div id="map1" style="width: 100%; height: 95%;"></div>
