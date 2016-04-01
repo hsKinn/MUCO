@@ -84,7 +84,7 @@ public class DoAddPackServlet extends HttpServlet {
 			upFile = file.write("D:\\travery\\" + file.getFileName());			
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}else{
-			upFile = file.write("D:\\basic0.jpg");
+			upFile = file.write("D:\\travery\\basic1.jpg");
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 		
@@ -93,7 +93,7 @@ public class DoAddPackServlet extends HttpServlet {
 			int addHashTagCount = 0;
 			addHashTagCount = packBiz.addHashTagInPack(packId, hashtags);
 		}
-		response.sendRedirect("/detailPack");
+		response.sendRedirect("/addPack");
 	}
 
 }

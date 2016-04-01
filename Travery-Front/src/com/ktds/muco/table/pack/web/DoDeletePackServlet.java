@@ -35,7 +35,7 @@ public class DoDeletePackServlet extends HttpServlet {
 
 		int deleteCount = 0;
 		deleteCount = packBiz.deletePacks(deletePackIds);
-		response.sendRedirect(Root.get(this) + "/myPack");
+		response.sendRedirect(Root.get(this) + "/detailPack");
 	}
 
 }

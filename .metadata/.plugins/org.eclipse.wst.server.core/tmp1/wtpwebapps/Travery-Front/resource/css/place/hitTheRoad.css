@@ -117,6 +117,27 @@ div.selectedCountry {
 	margin-left: 1px;
 }
 
+
+
+/* 나라 색깔 */
+
+/* Korea */
+a.countryIdIs6 {
+	color: #ffffff;
+}
+
+/* Russia */
+a.countryIdIs11 {
+	color: #ffff00;
+}
+
+/* China */
+a.countryIdIs12 {
+	color: #ff0080;
+}
+
+
+
 /* 여행지 점 색깔 */
 
 /* Korea */

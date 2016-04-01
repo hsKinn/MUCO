@@ -78,12 +78,21 @@
 					$("#hashTag").val(null);
 				});
 
-				$(".btn-success").click(function() {
+				$("#modifyOkBtn").click(function() {
 					var form = $("#modifyForm");
 					var isPublic = $("#packData_IsPublic").is(":checked");
 					form.attr("method", "post");
 					form.attr("action", "/doModifyPack");
 					form.submit();
+				});
+				$("#wantAddBtn").click(function(){
+					location.href="/addPack";
+				});
+				$("#wantRemoveBtn").click(function(){
+					location.href="/deletePack";
+				});
+				$("#wantOkBtn").click(function(){
+					location.href="/myPack";
 				});
 
 			});
@@ -101,23 +110,26 @@
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
-				<table id="packListTable" border="2">
+				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>
-							<td class="pack"><img
-								src="<c:url value="/resource/img/pack/folder.png"/>"
-								id="folderImg" /> <label id="title" for="packData_Title"
-								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
-								<input type="hidden" id="packId" value="${packs.packId}" /></td>
+							<td class="pack">
+								<span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
+								<p id="title">${packs.packTitle}</p>
+								<input type="hidden" id="packId" value="${packs.packId}" />
+							</td>
+							
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div id="buttondiv">
-				<a href="/addPack"><span class="glyphicon glyphicon-plus-sign"></span></a>
-				<a href="/deletePack"><span
-					class="glyphicon glyphicon-minus-sign"></span></a> <a href="/myPack"><span
-					class="glyphicon glyphicon-ok-sign"></span></a>
+				 <button type="button" class="btn btn-primary btn-sm" id="wantAddBtn" style="width:80px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-plus" style="font-size: 15px;"></span>add</button>
+				  <button type="button" class="btn btn-primary btn-sm" id="wantRemoveBtn" style="width:100px;font-size: 15px;">
+				 <span class="	glyphicon glyphicon-remove" style="font-size: 15px;"></span>remove</button>
+				  <button type="button" class="btn btn-primary btn-sm" id="wantOkBtn" style="width:80px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span>okay</button>
 			</div>
 		</div>
 
@@ -143,12 +155,11 @@
 						</label>
 					</div>
 					<div class="form-group">
-						<label for="viewCount">View Count :</label> <span
-							id="packData_viewCount" name="packData_viewCount"></span>
-					</div>
-					<div class="form-group">
-						<label for="likeCount">Like Count :</label> <span
-							id="packData_likeCount" name="packData_likeCount"></span>
+						 <span id="packData_viewCount" name="packData_viewCount"></span>
+						<label for="viewCount" >  <b>View  | </b> </label>
+					
+						<span id="packData_likeCount" name="packData_likeCount"></span>
+						<label for="likeCount" >  <b>Like</b></label>
 					</div>
 					<div class="form-group">
 						<label for="texthashtag">Hash Tag :</label> <input type="hidden"
@@ -159,7 +170,7 @@
 						</br> <span class="hashtagBox" name="hashtagBox"></span>
 					</div>
 				</form>
-				<button type="button" class="btn btn-success">OK</button>
+				<button type="button" class="btn btn-success" id="modifyOkBtn" >Modify</button>
 			</div>
 		</div>
 	</div>

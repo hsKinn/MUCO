@@ -8,10 +8,8 @@
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
 <!-- Boot Script -->
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <!-- My Package -->
 <script type="text/javascript">
@@ -50,9 +48,9 @@
 
 		});
 
-		$(".switch").click(function() {
-			alert();
-		});
+			$("#wantModifyBtn").click(function(){
+				location.href="/detailPack";
+			});
 
 	});
 </script>
@@ -67,33 +65,31 @@
 
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
-			<div id="packListdiv">
-				<table id="packListTable" border="2">
+			<div id="mypackListdiv">
+				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>
-							<td class="pack"><img
-								src="<c:url value="/resource/img/pack/folder.png"/>"
-								id="folderImg" /> <label id="title" for="packData_Title"
-								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
+							<td class="pack"><span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
+								<p id="title">${packs.packTitle}</p>
 								<input type="hidden" id="packId" value="${packs.packId}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div id="buttondiv">
-				<a href="/detailPack"><span class="glyphicon glyphicon-cog"></span></a>
+				 <button type="button" class="btn btn-primary btn-sm" id="wantModifyBtn" style="width:100px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-wrench" style="font-size: 15px;"></span>modify</button>
 			</div>
 		</div>
 
 		<div id="packListdiv2">
 			<div id="placesOfPackListdiv">
-				<table id="placeListTable" border="2">
+				<table id="placeListTable" >
 					<c:forEach items="${places}" var="places">
 						<tr width="200px">
 							<td class="place">
 								<p id="title" data-toggle="modal"
-									data-target="#${places.placeId}"
-									style="display: inline; cursor: pointer;">
+								data-target="#${ places.placeId}"style="display: inline; cursor: pointer;">
 									${places.placeName}</p> <input type="hidden" class="placeId"
 								name="placeId" value="${places.placeId}" />
 								<form class="deletePlaceOfPackForm" style="display: inline;">
@@ -108,30 +104,52 @@
 								</form>
 							</td>
 						</tr>
-
+<!-- Modal-->
 						<div id="${places.placeId}" class="modal fade" role="dialog">
-							<div class="modal-dialog">
+							<div class="modal-dialog" >
 
 								<!-- Modal content-->
 								<div class="modal-content">
+									
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">${places.placeName}</h4>
+										<h1 class="modal-title">${places.placeName}</h1>
+										<h4 class="modal-title">${places.address}</h4>
+										<p>${places.viewCount} view</p>
 									</div>
-									<div class="modal-body">
-										<p>Some text in the modal.</p>
+									
+									<div class="modal-body"  style="height:700px;">
+										<div id="placemodalLeft" style="width:50%; height:100%; background-color:red; float:left;">
+											사진
+										</div>
+										<div id="placemodalRight" style="width:50%; height:100%; background-color:green; float:left;">
+											<p>${places.placeDescription}</p>
+											<div id="placemodalMood" style="width:100%; height:30%; background-color:yellow; float:left;">
+												<p>mood</p>
+											</div>
+											<div id="placemodalReply" style="display: inline;">
+												<input type="text" class="form-control" id="placemodalReply" name="placemodalReply"
+												style="width: 80%; display: inline;" />
+												<button type="button" id="placemodalReplyBtn" >push</button>
+											</div>
+											<div id="placemodalReplyList">
+												<p>작성자</p> <p> 내용</p>
+											</div>	
+										</div>
 									</div>
+									
 									<div class="modal-footer">
+									
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal">Close</button>
+											
 									</div>
 								</div>
-
 							</div>
 						</div>
-
 					</c:forEach>
 				</table>
+				
 			</div>
 		</div>
 	</div>
