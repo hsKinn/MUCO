@@ -12,6 +12,16 @@ html,
 body {
     width: 100%;
     height: 100%;
+    
+    /* 스크롤 커스텀 */
+    scrollbar-highlight-color:#FFFFFF; 
+scrollbar-3dlight-color:#B58E63; 
+scrollbar-face-color:#F2ECE6; 
+scrollbar-shadow-color:#B58E63; 
+scrollbar-darkshadow-color:white; 
+scrollbar-track-color:#FFFFFF; 
+scrollbar-arrow-color:#B58E63;
+
 }
 
 body {
@@ -591,3 +601,4 @@ button#btnSignUp {
 	margin-right: 10px;
 }
 
+/* */

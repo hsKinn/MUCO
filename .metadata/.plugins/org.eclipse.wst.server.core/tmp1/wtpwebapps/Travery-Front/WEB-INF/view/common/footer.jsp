@@ -29,17 +29,6 @@
 					<li><a href="<c:url value="/termsAccess?menuNo=3"/>">Q&amp;A</a></li>
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-3 column">
-				<h4>3 section</h4>
-			</div>
-			<div class="col-xs-12 col-sm-3 text-right">
-				<h4>4 section</h4>
-				<ul class="list-inline">
-					<li>1 &nbsp;</li>
-					<li>2 &nbsp;</li>
-					<li>3</li>
-				</ul>
-			</div>
 		</div>
 		<br /> <span class="pull-right text-muted small"><a href="#">Travel
 				with Travery</a> ©2016 Travery</span>

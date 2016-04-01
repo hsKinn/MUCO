@@ -20,9 +20,22 @@ div#personalInfoWrapper h1 {
 
 table#personalInfoTable {
 	border-spacing: 50px;
-	width: 80%;
+	width: 700px;
 	margin: 0 auto;
 	vertical-align: middle;
+}
+
+table#personalInfoTable.personalInfo1 {
+	width: 10px;
+}
+table#personalInfoTable.personalInfo2 {
+	width: 50px;
+}
+table#personalInfoTable.personalInfo3 {
+	width: 150px;
+}
+table#personalInfoTable.personalInfo4 {
+	width: 10px;
 }
 
 img#editImg {

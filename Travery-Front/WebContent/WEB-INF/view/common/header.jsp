@@ -52,6 +52,8 @@
 	src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript"
 	src="<c:url value="/resource/js/json2.js" />"></script>
+<script src="<c:url value="/resource/js/jquery.scrollTo.min.js" />"></script>
+<script src="<c:url value="/resource/js/jquery.nicescroll.js" />"></script>
 
 <!-- 새로운 시도 -->
 <!-- Google Webfonts -->
