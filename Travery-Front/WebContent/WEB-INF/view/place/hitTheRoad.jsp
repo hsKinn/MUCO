@@ -51,6 +51,11 @@
 <script src="<c:url value="/resource/js/jvectormap/map.js" />"></script>
 <script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
+<c:set var="axisX1" value="${ sessionScope._MEMBER_.selectedStandardList.get(0) }" />
+<c:set var="axisX2" value="${ sessionScope._MEMBER_.selectedStandardList.get(1) }" />
+<c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
+<c:set var="axisY2" value="${ sessionScope._MEMBER_.selectedStandardList.get(3) }" />
+
 <!-- 지도 출력 -->
 <script>
 	jQuery.noConflict();
@@ -110,6 +115,15 @@
 		});
 		$("#hitTheRoadMenu").css("color", "#ffffff");
 		
+		// 탭 유지
+		$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+           localStorage.setItem('activeTab', $(e.target).attr('href'));
+       });
+       var activeTab = localStorage.getItem('activeTab');
+       if(activeTab){
+           $('[href="' + activeTab + '"]').tab('show');
+       }
+		
 		// 새로고침 해도 현재 탭 유지
 		
 		/* 1. 나라 선택 탭 */
@@ -119,30 +133,10 @@
 		<c:set value="${ removeCountryName }" var="removeCountryName" />
 			$('#'+ removeCountryName).remove();
 		</c:if>
-
-		// 지도 검색창에서 여행지, 기준 안뜨게
-		$(".tapMenu").click(function(){
-	   		$(".placeDetail").css({ "display" : "block" });
-	   		$(".dropdown").css({ "display" : "block" });
-	  	});
-	   	$(".active").click(function(){
-	   	  	$(".placeDetail").css({ "display" : "none" });
-	   	  	$(".dropdown").css({ "display" : "none" });
-	   	});
-	   	
+  	
 	   	// 나라 선택 초기화
 	   	$("#removeAllCountries").click(function(){
-	   		
-			<c:if test=" not empty ${ selectedCountryList }">
-			<c:set value="${ selectedCountryList }" var="selectedCountryList" />
-			for ( var selectedCountry in selectedCountryList) {
-				<c:set value="${ selectedCountry.countryName }" var="selectedCountryName" />
-				$('#'+ selectedCountryName).remove();
-			}
-			</c:if>
-			
 			location.href = "/removeAllSelectedCountries";
-	   		
 	   	});
 	   	
 	   	/* 2. 나라 검색 탭 */
@@ -156,6 +150,36 @@
 		$(".axisY").click(function(){
 			location.href = "/selectedStandard?selectedStandard=Y&selectedStandardName=" + $(this).text();
 		});
+		
+		// 점들의 위치 설정
+							
+		<c:if test="${ not empty selectedAllPlaceList }">
+			<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
+			
+				<c:if test="${ axisX1 eq 'Bright'}">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgBrightDarkScore * 6.5}px"});
+				</c:if>
+				<c:if test="${ axisX1 eq 'Active' }">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgActiveCalmScore * 6.5 }px"});
+				</c:if>
+				<c:if test="${ axisX1 eq 'HighPrice' }">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgHighPriceLowPriceScore * 6.5 }px"});
+				</c:if>
+				
+				<c:if test="${ axisY1 eq 'Bright'}">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgBrightDarkScore * 3.25) }px"});
+				</c:if>
+				<c:if test="${ axisY1 eq 'Active' }">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgActiveCalmScore * 3.25) }px"});
+				</c:if>
+				<c:if test="${ axisY1 eq 'HighPrice' }">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgHighPriceLowPriceScore * 3.25) }px"});
+				</c:if>
+				
+			</c:forEach>
+		</c:if>
+		
+		$('[data-toggle="tooltip"]').tooltip();
 	});
 </script>
 
@@ -181,11 +205,11 @@
 					<div id="firstContainer" class="container">
 		
 						<!-- 탭 -->
-						<ul class="nav nav-pills">
-							<li class="active"><a data-toggle="pill" href="#home">Select Country</a></li>
-							<li id="searchPlaces" class="tapMenu"><a data-toggle="pill" href="#menu1">Search Places</a></li>
-							<li class="tapMenu"><a data-toggle="pill" href="#menu2">My packages</a></li>
-							<li class="tapMenu"><a data-toggle="pill" href="#menu3"></a></li>
+						<ul id="hitTheRoadTabs" class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#home">Country</a></li>
+							<li id="searchPlaces" class="tapMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
+							<li class="tapMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
+							<li class="tapMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
 						</ul>
 		
 						<!-- 탭 내용 -->
@@ -202,30 +226,36 @@
 							</div>
 		
 							<!-- 여행지 검색 탭 -->
-							<c:set var="axisX1" value="${ sessionScope._MEMBER_.selectedStandardList.get(0) }" />
-							<c:set var="axisX2" value="${ sessionScope._MEMBER_.selectedStandardList.get(1) }" />
-							<c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
-							<c:set var="axisY2" value="${ sessionScope._MEMBER_.selectedStandardList.get(3) }" />
-							
 							<div id="menu1" class="tab-pane fade">
 								<div class="row">
 									<div id="printAxisY1">${ axisY1 }</div>
 								</div>
-								<div class="row" style="height: 350px;">
-									<div id="printAxisX2" class="col-sm-1">${ axisX2 }</div>
+								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
+									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
 									
 									<!-- ★★★★★★★★★★★★★★★★ 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
-									<div id="dottedDiv" class="col-sm-10">
+									<div id="dottedDiv" class="col-sm-8" style="padding:0;">
 										<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
-											<div class="${ selectedPlace.countryId }" style="
+											<c:set value="${ selectedPlace.placeId }" var="placeId" />
+											<c:set value="${ selectedPlace.placeName }" var="placeName" />
+											<c:set value="${ selectedPlace.countryId }" var="countryId" />
+											<a
+											id="placeIdIs${ placeId }"
+											class="countryIdIs${ countryId }" 
+											href="#"
+											data-toggle="tooltip"
+											title="${ placeName }"
+											style="
 												font-weight: bolder;
-												font-size: x-large;
-												font-color: red;">.
-											</div>
+												font-size:x-small;
+												text-decoration: none;
+												position: absolute;"
+											>●
+											</a>		
 										</c:forEach>
 									</div>
 									
-									<div id="printAxisX1" class="col-sm-1">${ axisX1 }</div>
+									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
 								</div>
 								<div class="row">
 									<div id="printAxisY2">${ axisY2 }</div>
@@ -308,7 +338,7 @@
 				<div id="selectStandardBtns" class="col-sm-2" style="height: 100%;">
 		
 					<!-- Drop Down : X 축 -->
-					<div class="dropdown" style="float: left;">
+					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
@@ -317,10 +347,9 @@
 							<li><a class="axisX">Active-Calm</a></li>
 						</ul>
 					</div>
-					<div class="clear"></div>
 					<br />
 					<!-- Drop Down : Y 축 -->
-					<div class="dropdown" style="float: left;">
+					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
 						<span class="caret"></span>
 						</button>

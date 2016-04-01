@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+
+	<country>
+		<getCountryInfoByCountryName>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
+			FROM	COUNTRY
+			WHERE	COUNTRY_NAME = ?
+		</getCountryInfoByCountryName>
+	</country>
+	
+	<evaluation>
+	</evaluation>
+	
+	<history>
+	</history>
+	
+	<image>
+		<insertImage>
+			INSERT	INTO	IMAGE	( 
+										IMAGE_ID
+										, PLACE_ID
+										, IMAGE_NAME
+										, IMAGE_LOCATION
+										, EMAIL
+										, CRT_DT
+									)
+			VALUES 					(
+										IMAGE_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+									)
+		</insertImage>
+		<getReturnImageId>
+			SELECT	IMAGE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnImageId>
+		<getImageLocationList>
+			SELECT  IMAGE_LOCATION
+            FROM    IMAGE I
+                    , PLACE P
+            WHERE   I.PLACE_ID = P.PLACE_ID
+            AND     I.EMAIL = ?
+		</getImageLocationList>
+	</image>
+	
+	<member>
+		<addNewMember>
+			INSERT INTO MEMBER (
+	                      			EMAIL
+	                       		 	, PASSWORD
+	                       			, NAME
+	                   			) 
+			VALUES              ( 
+	                        		?,
+	                        		?,
+	                        		?
+	                     		)
+     	</addNewMember>
+     	<getMemberEmailCheck>
+     		SELECT	COUNT(EMAIL)
+			FROM	MEMBER
+			WHERE	EMAIL = ?
+     	</getMemberEmailCheck>
+     	<getMemberByIdAndPassword>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     	</getMemberByIdAndPassword>
+     	<updateName>
+     		UPDATE	MEMBER
+     		SET		NAME = ?
+     		WHERE	EMAIL = ?
+     	</updateName>
+     	<updatePhoneNumber>
+     		UPDATE	MEMBER
+     		SET		PHONE_NUMBER = ?
+     		WHERE	EMAIL = ?     	
+     	</updatePhoneNumber>
+     	<updatePassword>
+     		UPDATE	MEMBER
+     		SET		PASSWORD = ?
+     		WHERE	EMAIL = ?       	
+     	</updatePassword>
+     	<isExistName>
+     		SELECT	COUNT(NAME) AS COUNT
+     		FROM	MEMBER
+     		WHERE	NAME = ?
+     	</isExistName>
+     	<addMainImage>
+     		UPDATE	MEMBER 
+     		SET		MAIN_IMAGE_NAME = ?
+     				, MAIN_IMAGE_LOCATION = ?
+     		WHERE	EMAIL = ?
+     	</addMainImage>
+	</member>
+	
+	<pack>
+		<getPackListByEmail>
+			SELECT  *
+			FROM    PACK
+			WHERE   EMAIL = ?
+		</getPackListByEmail>
+		<getPackDataByPackId>
+			SELECT  *
+			FROM    PACK
+			WHERE   PACK_ID = ?
+		</getPackDataByPackId>
+		<addPack>
+			INSERT INTO PACK (
+			                            PACK_ID
+			                            , SHARE_IMAGE_NAME
+			                            , PACK_TITLE
+			                            , EMAIL
+			                            , SHARE_IMAGE_LOCATION
+			                            , IS_PUBLIC
+			                        ) 
+				VALUES              ( PACK_ID_SEQ.NEXTVAL
+			                          ,0
+			                          ,?
+			                          ,?
+			                          ,0
+			                          ,?
+			                          )
+		</addPack>
+		<getLatesPackId>
+			SELECT	PACK_ID_SEQ.CURRVAL
+			FROM	PACK
+		</getLatesPackId>
+		<uploadPackImgFile>
+			UPDATE PACK
+			SET    SHARE_IMAGE_NAME     = ?
+			       , SHARE_IMAGE_LOCATION = ?
+			WHERE  PACK_ID              = ?
+		</uploadPackImgFile>
+		<deletePack>
+			DELETE	
+			FROM	PACK
+			WHERE	PACK_ID=?
+		</deletePack>
+		<getPlaceListByPackId>
+			SELECT  P.PLACE_ID
+			        , PLACE_NAME
+			        , LATITUDE
+			        , LONGITUDE
+			        , ADDRESS
+			        , VIEW_COUNT
+			        , LIKE_COUNT
+			        , DESCRIPTION
+			        , IS_NEW_PLACE
+			FROM    PACK_PLACE PP
+			        , PLACE P
+			WHERE   PP.PLACE_ID = P.PLACE_ID
+			AND     PP.PACK_ID = ?
+		</getPlaceListByPackId>
+		<deletePlaceOfPack>
+			DELETE	
+			FROM	PACK_PLACE
+			WHERE	PLACE_ID=?
+			AND		PACK_ID=?
+		</deletePlaceOfPack>
+		<modifyPack>
+			UPDATE PACK
+			SET		PACK_TITLE          = ?
+					, IS_PUBLIC			= ?
+			WHERE	PACK_ID             = ?
+		</modifyPack>
+	</pack>
+	
+	<sharePack>
+	
+		<hitCountPack>
+			UPDATE	PACK
+			SET		VIEW_COUNT = VIEW_COUNT + 1
+			WHERE	PACK_ID = ?
+		</hitCountPack>
+	
+		<getAllPackageCountByHashTag>
+			SELECT  COUNT(P.PACK_ID)
+			FROM    PACK P
+					, HASH_TAG H
+			WHERE	P.PACK_ID = H.PACK_ID
+			AND		IS_PUBLIC = 1
+			AND		HASH_TAG_NAME LIKE '%' || ? || '%'
+		</getAllPackageCountByHashTag>
+
+		<getAllPackageListByHashTag>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  DISTINCT P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                             , HASH_TAG H
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.PACK_ID = H.PACK_ID
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
+			                     ORDER   BY LIKE_COUNT DESC
+			                     		 , VIEW_COUNT DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?      
+        </getAllPackageListByHashTag>	
+
+		<getAllPackageListByHashTagOrderByView>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  DISTINCT P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                             , HASH_TAG H
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.PACK_ID = H.PACK_ID
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
+			                     ORDER   BY VIEW_COUNT DESC
+			                     		 , LIKE_COUNT DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?      
+        </getAllPackageListByHashTagOrderByView>	
+        	
+		<getAllPackageListByHashTagOrderByDate>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  DISTINCT P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                             , HASH_TAG H
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.PACK_ID = H.PACK_ID
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     AND	 HASH_TAG_NAME LIKE '%' || ? || '%'
+			                     ORDER   BY P.PACK_ID DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?      
+        </getAllPackageListByHashTagOrderByDate>		
+        
+        <getAllPackageListCount>
+			SELECT  COUNT(PACK_ID)
+			FROM    PACK
+			WHERE	IS_PUBLIC = 1			
+        </getAllPackageListCount>
+        
+        <getAllPackageList>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY LIKE_COUNT DESC   
+			                     		 , VIEW_COUNT DESC   			                     
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?          
+        </getAllPackageList>
+        
+        <getAllPackageListOrderByView>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY VIEW_COUNT DESC   
+			                     		 , LIKE_COUNT DESC   			                     
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?               
+        </getAllPackageListOrderByView>
+        
+        <getAllPackageListOrderByDate>
+	         SELECT	*
+	         FROM   (
+		               SELECT  ROWNUM AS RNUM
+		                     , A.*
+		               FROM    (
+			                     SELECT  P.PACK_ID
+			                     		 , PACK_TITLE
+			                             , VIEW_COUNT
+			                             , (
+                                                SELECT  COUNT(PACK_LIKE_ID)
+                                                FROM    PACK_LIKE
+                                                WHERE   PACK_ID = P.PACK_ID
+                                            ) LIKE_COUNT			                             
+			                             , M.NAME
+			                             , SHARE_IMAGE_LOCATION
+			                     FROM    PACK P
+			                             , MEMBER M
+			                     WHERE   IS_PUBLIC = 1
+			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     ORDER   BY PACK_ID DESC   
+		                     ) A
+		               WHERE   ROWNUM &lt;= ?   
+	                )
+		      WHERE RNUM >= ?          
+        </getAllPackageListOrderByDate>
+        
+	</sharePack>
+	
+	<hashtag>
+		
+		<getHashTagOfPackage>
+			SELECT	HASH_TAG_ID
+					, HASH_TAG_NAME
+			FROM	HASH_TAG H
+					, PACK P
+			WHERE	P.PACK_ID = H.PACK_ID
+			AND		H.PACK_ID = ?
+		</getHashTagOfPackage>
+		
+		<addHashTagInPack>
+			INSERT INTO HASH_TAG (
+			                        HASH_TAG_ID
+			                        , PACK_ID
+			                        , HASH_TAG_NAME
+			                     ) 
+			VALUES               ( HASH_TAG_ID_SEQ.NEXTVAL
+			                        ,?
+			                        ,?
+			                     )
+		</addHashTagInPack>
+	
+	</hashtag>
+	
+	<packLike>
+	
+		<selectPackLikeCount>
+			SELECT	COUNT(PACK_ID)
+			FROM	PACK_LIKE
+			WHERE	PACK_ID = ?
+			AND		EMAIL = ?
+		</selectPackLikeCount>
+		
+		<insertPackLike>
+			INSERT INTO PACK_LIKE	(
+									PACK_LIKE_ID
+									, PACK_ID
+									, EMAIL
+								) 
+			VALUES 				( 
+									PACK_LIKE_ID_SEQ.NEXTVAL
+									, ?
+									, ?
+								)
+		</insertPackLike>
+		
+		<deletePackLike>
+			DELETE
+			FROM	PACK_LIKE
+			WHERE	PACK_ID = ?
+			AND		EMAIL = ?
+		</deletePackLike>		
+		
+		<countPackLike>
+            SELECT  COUNT(PACK_LIKE_ID)
+            FROM    PACK_LIKE
+            WHERE   PACK_ID = ?
+		</countPackLike>
+	
+	</packLike>
+	
+	<packReply>
+	
+		<insertPackReply>
+			INSERT INTO PACK_REPLY (
+									   PACK_REPLY_ID
+									   , PACK_ID
+									   , EMAIL
+									   , DESCRIPTION
+									   , CRT_DT
+									   , GROUP_ID
+									   , PARENT_REPLY_ID
+									   , DEPTH
+									   , ORDER_NO
+									) 
+			VALUES 					( 
+										PACK_REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+										, PACK_REPLY_ID_SEQ.CURRVAL
+										, 0
+										, 0
+										, 0
+									)
+		</insertPackReply>
+		
+		<getPackReplyListByPackId>
+			SELECT	PACK_REPLY_ID
+					, PACK_ID
+					, M.NAME
+					, NAME
+					, DESCRIPTION
+					, CRT_DT
+					, GROUP_ID
+					, PARENT_REPLY_ID
+					, DEPTH
+					, ORDER_NO
+			FROM	PACK_REPLY PR
+					, MEMBER M
+			WHERE	PR.EMAIL = M.EMAIL
+			AND		PR.PACK_ID = ?
+			ORDER	BY GROUP_ID
+					, ORDER_NO
+		</getPackReplyListByPackId>
+		
+		<selectCountParentReplyId>
+			SELECT	COUNT(PACK_REPLY_ID)
+			FROM	PACK_REPLY
+			WHERE	PARENT_REPLY_ID = ?
+		</selectCountParentReplyId>
+		
+		<selectMaxOrderNoByParentReplyId>
+       	    SELECT	MAX(ORDER_NO)
+       		FROM	PACK_REPLY
+         	START   WITH PACK_REPLY_ID = ?
+         	CONNECT BY PRIOR PACK_REPLY_ID = PARENT_REPLY_ID
+         	ORDER   BY ORDER_NO DESC
+		</selectMaxOrderNoByParentReplyId>
+		
+		<selectLatestOrderNoByParentReplyId>
+			SELECT	ORDER_NO
+			FROM	PACK_REPLY
+			WHERE	PACK_REPLY_ID = ?
+		</selectLatestOrderNoByParentReplyId>
+
+		<updateOrderNoByGroupId>
+			UPDATE	PACK_REPLY
+			SET		ORDER_NO = ORDER_NO + 1
+			WHERE	ORDER_NO >= ?
+			AND		GROUP_ID = ?
+		</updateOrderNoByGroupId>		
+		
+		<insertReReply>
+			INSERT INTO PACK_REPLY	(
+									   PACK_REPLY_ID
+									   , PACK_ID
+									   , EMAIL
+									   , DESCRIPTION
+									   , CRT_DT
+									   , GROUP_ID
+									   , PARENT_REPLY_ID
+									   , DEPTH
+									   , ORDER_NO									   
+									) 
+				VALUES 				( 
+										PACK_REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, SYSDATE
+										, ?
+										, ?
+										, ?
+										, ?					
+									)
+		</insertReReply>
+		
+	</packReply>
+	
+	<place>
+		<getPlaceListByCountryId>
+			SELECT  P1.PLACE_ID
+			        , PLACE_NAME
+			        , LATITUDE
+			        , LONGITUDE
+			        , ADDRESS
+			        , VIEW_COUNT
+			        , DESCRIPTION
+			        , IS_NEW_PLACE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STD_NAME LIKE 'Active'
+			                                        )
+			            ) AVG_ACTIVE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STD_NAME LIKE 'Bright'
+			                                        )
+			            ) AVG_BRIGHT_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STD_NAME LIKE 'HighPrice'
+			                                        )
+			            ) AVG_HIGH_PRICE_SCORE
+			FROM	PLACE P1
+			WHERE	COUNTRY_ID = ?
+		</getPlaceListByCountryId>
+		
+		<getPlaceInPackage>
+			SELECT	P.PLACE_ID
+					, PLACE_NAME
+					, ADDRESS
+					, LIKE_COUNT
+			FROM	PLACE P
+					, PACK_PLACE PACKPLACE
+			WHERE	PACKPLACE.PACK_ID = ?
+			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
+		</getPlaceInPackage>
+		
+		<placeInfoRecommendedList>
+<!-- 					SELECT  M.* 
+					        , G.GRADE_TITLE
+					        , AC.ACTOR_COUNT 
+					FROM    MOVIE M
+					        , GRADE G
+					        , (
+					            SELECT  MOVIE_ID
+					                    , COUNT(ACTOR_LIST_ID) ACTOR_COUNT
+					            FROM ACTOR_LIST
+					            GROUP BY MOVIE_ID
+					          ) AC
+					WHERE	M.GRADE_ID = G.GRADE_ID
+					AND		AC. MOVIE_ID(+) = M.MOVIE_ID
+					ORDER BY M.MOVIE_ID ASC -->
+		</placeInfoRecommendedList>
+		<getUserRecommendPlaceList>
+			SELECT  PLACE_NAME
+			FROM    PLACE P
+			        , IMAGE I
+			WHERE	P.PLACE_ID = I.PLACE_ID
+			AND		P.EMAIL = ?
+		</getUserRecommendPlaceList>
+		<insertPlaceInfo>
+			INSERT	INTO	PLACE	(
+											PLACE_ID
+											, PLACE_NAME
+											, ADDRESS
+											, LATITUDE
+											, LONGITUDE
+											, DESCRIPTION
+											, EMAIL
+										)
+			VALUES						(
+											PLACE_ID_SEQ.NEXTVAL
+											, ?
+											, ?
+											, ?
+											, ?
+											, ?
+											, ?
+										)
+		</insertPlaceInfo>
+		<getReturnPlaceId>
+			SELECT	PLACE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnPlaceId>
+	</place>
+	
+	<placeLike>
+	</placeLike>
+	
+	<placeReply>
+	</placeReply>
+	
+	<qna>
+		<getFAQList>
+			SELECT	QNA_ID
+					,EMAIL
+					, QNA_DT
+					, TITLE
+					, DESCRIPTION
+					, IS_FAQ
+			FROM 	QNA
+			WHERE 	IS_FAQ != 0
+		</getFAQList>
+	</qna>
+	
+	<rent>
+	</rent>
+	
+	<reportedMember>
+	</reportedMember>
+	
+	<reserve>
+	</reserve>
+	
+	<selectedCountry>
+	</selectedCountry>
+	
+	<standard>
+	</standard>
+	
+	<stay>
+	</stay>
+	
+	<transport>
+	</transport>
+	
+</query>
+

@@ -205,6 +205,7 @@ public class PlaceDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
 				
 				// 각 기준에 대한 평균값 입력
 				placeVO.setAvgActiveCalmScore( rs.getDouble("AVG_ACTIVE_SCORE") );

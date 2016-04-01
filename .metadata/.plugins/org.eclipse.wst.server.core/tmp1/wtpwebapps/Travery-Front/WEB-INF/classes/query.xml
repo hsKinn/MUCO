@@ -544,6 +544,7 @@
 			        , VIEW_COUNT
 			        , DESCRIPTION
 			        , IS_NEW_PLACE
+			        , COUNTRY_ID
 			        ,   (
 			                SELECT  AVG(E.SCORE)
 			                FROM    EVALUATION E
@@ -551,7 +552,7 @@
 			                AND     STANDARD_ID =   (
 			                                            SELECT  STANDARD_ID
 			                                            FROM    STANDARD
-			                                            WHERE   STD_NAME LIKE 'Active'
+			                                            WHERE   STANDARD_ID = 3
 			                                        )
 			            ) AVG_ACTIVE_SCORE
 			        ,   (
@@ -561,7 +562,7 @@
 			                AND     STANDARD_ID =   (
 			                                            SELECT  STANDARD_ID
 			                                            FROM    STANDARD
-			                                            WHERE   STD_NAME LIKE 'Bright'
+			                                            WHERE   STANDARD_ID = 1
 			                                        )
 			            ) AVG_BRIGHT_SCORE
 			        ,   (
@@ -571,7 +572,7 @@
 			                AND     STANDARD_ID =   (
 			                                            SELECT  STANDARD_ID
 			                                            FROM    STANDARD
-			                                            WHERE   STD_NAME LIKE 'HighPrice'
+			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE
 			FROM	PLACE P1

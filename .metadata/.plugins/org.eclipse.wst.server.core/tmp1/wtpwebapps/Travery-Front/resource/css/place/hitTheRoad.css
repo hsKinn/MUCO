@@ -1,6 +1,10 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
+ul#hitTheRoadTabs li a {
+	font-size: 13pt;
+}
+
 div#hitTheRoad {
 	width: 1550px;
 	height: 850px;
@@ -113,6 +117,20 @@ div.selectedCountry {
 	margin-left: 1px;
 }
 
-div.dropdown, div.placeDetail {
-	display: none;
+/* 여행지 점 색깔 */
+
+/* Korea */
+a.countryIdIs6 {
+	color: #ffffff;
 }
+
+/* Russia */
+a.countryIdIs11 {
+	color: #ffff00;
+}
+
+/* China */
+a.countryIdIs12 {
+	color: #ff0080;
+}
+
