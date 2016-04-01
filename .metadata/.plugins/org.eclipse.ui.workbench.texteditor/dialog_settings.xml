@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="dottedDiv" key="selection"/>
+		<item value="deletePlaceOfPackForm" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="deletePlaceOfPackForm"/>
 			<item value="dottedDiv"/>
 			<item value="&quot;dottedDiv&quot;"/>
 			<item value="&lt;pack"/>
@@ -15,7 +16,6 @@
 			<item value="&lt;mypa"/>
 			<item value="&lt;hasht"/>
 			<item value="&lt;hash"/>
-			<item value="hash"/>
 		</list>
 		<list key="replacehistory">
 			<item value="likeCount"/>

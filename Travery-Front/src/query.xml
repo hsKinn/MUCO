@@ -40,12 +40,19 @@
 			FROM	DUAL
 		</getReturnImageId>
 		<getImageLocationList>
-			SELECT  IMAGE_LOCATION
-            FROM    IMAGE I
-                    , PLACE P
-            WHERE   I.PLACE_ID = P.PLACE_ID
-            AND     I.EMAIL = ?
+			SELECT  IMAGE_ID
+					, IMAGE_NAME
+					, IMAGE_LOCATION
+					, EMAIL
+					, CRT_DT
+			FROM    IMAGE
+			WHERE   PLACE_ID=?
 		</getImageLocationList>
+		<getImageVOListByPlaceId>
+		SELECT  *
+		FROM    IMAGE
+		WHERE   PLACE_ID= ? 
+		</getImageVOListByPlaceId>
 	</image>
 	
 	<member>

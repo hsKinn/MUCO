@@ -84,27 +84,39 @@
 
 		<div id="packListdiv2">
 			<div id="placesOfPackListdiv">
-				<table id="placeListTable" >
 					<c:forEach items="${places}" var="places">
-						<tr width="200px">
-							<td class="place">
-								<p id="title" data-toggle="modal"
-								data-target="#${ places.placeId}"style="display: inline; cursor: pointer;">
-									${places.placeName}</p> <input type="hidden" class="placeId"
-								name="placeId" value="${places.placeId}" />
-								<form class="deletePlaceOfPackForm" style="display: inline;">
-									<label class="submitLabel"> <span
+							
+								<div class="placeInfodiv">
+								<div id="placeRemovediv">
+								
+								</div>
+									<div id="placeImgdiv">
+									
+										<form class="deletePlaceOfPackForm" style="position:absolute; text-align:right; z-index:5;">
+										<label class="submitLabel" style="z-index: 5;"> <span
 										class="glyphicon glyphicon-remove"
-										style="font-size: 20px; cursor: pointer;"></span> <input
+										style="font-size: 20px; cursor: pointer;display: inline;"></span> <input
 										type="hidden" class="placeId" name="placeId"
 										value="${places.placeId}" /> <input type="hidden"
 										class="packId" name="packId" value="${packId}" /> <input
 										type="submit" style="display: none" />
-									</label>
-								</form>
-							</td>
-						</tr>
-<!-- Modal-->
+										</label>
+										</form>
+										
+										<img src="/image?imageName=${places.images[0].imageName}" class="placeImg"/>
+								
+								</div>
+									<div id="placeNamediv">
+									<p id="title" data-toggle="modal"
+									data-target="#${ places.placeId}"style="display: inline; cursor: pointer;color:black;">
+										${places.placeName}</p></div>
+								<input type="hidden" class="placeId"
+								name="placeId" value="${places.placeId}" />
+								
+								</div>
+
+<!-- Modal--> 
+
 						<div id="${places.placeId}" class="modal fade" role="dialog">
 							<div class="modal-dialog" >
 
@@ -148,8 +160,7 @@
 							</div>
 						</div>
 					</c:forEach>
-				</table>
-				
+			
 			</div>
 		</div>
 	</div>
