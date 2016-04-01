@@ -61,7 +61,40 @@ public class HashTagDAO {
 		return hashtagList;
 
 	} // getHashTagOfPackage END
+	
+	/**
+	 * @author 백지경
+	 * @param tag
+	 * @return
+	 */
+	public int addHashTagInPack(HashTagVO tag) {
+		int insertCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		System.out.println(tag.getPackId()+" "+tag.getHashtagName());
 
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/hashtag/addHashTagInPack/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, tag.getPackId());
+			stmt.setString(2, tag.getHashtagName());
+			
+			stmt.executeUpdate();
+
+			return insertCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -104,5 +137,6 @@ public class HashTagDAO {
 			}
 		}
 	} // closeDB END
+
 
 } // Class END

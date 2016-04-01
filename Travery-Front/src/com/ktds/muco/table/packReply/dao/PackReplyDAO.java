@@ -54,8 +54,8 @@ public class PackReplyDAO {
 				packReply = new PackReplyVO();
 				packReply.setPackReplyId(rs.getInt("PACK_REPLY_ID"));
 				packReply.setPackId(rs.getInt("PACK_ID"));
-				packReply.setEmail(rs.getString("EMAIL"));;
 				packReply.setName(rs.getString("NAME"));
+				packReply.setEmail(rs.getString("EMAIL"));
 				packReply.setPackReplyDescription(rs.getString("DESCRIPTION"));
 				packReply.setCreatedDate(rs.getString("CRT_DT"));
 				packReply.setGroupId(rs.getInt("GROUP_ID"));

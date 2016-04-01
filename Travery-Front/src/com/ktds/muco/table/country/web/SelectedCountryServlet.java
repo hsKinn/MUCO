@@ -1,7 +1,6 @@
 package com.ktds.muco.table.country.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ktds.muco.table.country.biz.CountryBiz;
-import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.util.root.Root;
 
 /**
  * 
@@ -36,7 +35,6 @@ public class SelectedCountryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 요청입니다.");
 		doPost(request, response);
 	}
 
@@ -48,26 +46,28 @@ public class SelectedCountryServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 선택된 이름의 나라가 있는지 확인 후 있으면 해당 Country Info를 가져온다.
-		CountryVO selectedCountryVO = countryBiz.getCountryInfoByCountryName(request);
-		boolean isExistCountry = false;
-
-		if (selectedCountryVO != null) {
-			isExistCountry = true;
+		boolean isSuccess = countryBiz.getCountryInfoByCountryName(request);
+		
+		if( isSuccess ) {
+			// 해당 여행지가 DB에 있으면
+			response.sendRedirect(Root.get(this) + "/hitTheRoad");
 		}
-
-		// JSON
-		StringBuffer json = new StringBuffer();
-		json.append("{");
-		json.append("\"result\" : true");
-		json.append(", \"isExistCountry\" : " + isExistCountry);
-		json.append("}");
-
-		// Print Writer
-		PrintWriter out = response.getWriter();
-		out.print(json.toString());
-		out.flush();
-		out.close();
-
-		System.out.println(json.toString());
+		else {
+			// 해당 여행지가 DB에 없거나 이미 선택 되어있다면
+			// 나라명을 errorCode로 보낸다.
+			String selectedCountryName = request.getParameter("selectedCountryName");
+			response.sendRedirect(Root.get(this) + "/hitTheRoad?errorCode=" + selectedCountryName);
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

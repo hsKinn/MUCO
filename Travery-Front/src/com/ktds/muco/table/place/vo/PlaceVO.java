@@ -28,18 +28,30 @@ public class PlaceVO extends CountryVO {
 	private int likeCount;
 	private String placeDescription;
 	private int isNewPlace;
-	
 	private int avgLikeCount;
-
-	private String imageLocation;
+	
 	private boolean isExistPlaceLike;
 	private List<PlaceReplyVO> placeReplyList;
-	private String name;
 	
+	// 기준에 대한 평균값
+	private double avgBrightDarkScore;
+	private double avgHighPriceLowPriceScore;
+	private double avgActiveCalmScore;
+
+	// 작성자
 	private MemberVO writer;
 	
+	private String name;
+	private String imageLocation;	
 	
 	
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 
 	public String getImageLocation() {
 		return imageLocation;
@@ -47,22 +59,6 @@ public class PlaceVO extends CountryVO {
 
 	public void setImageLocation(String imageLocation) {
 		this.imageLocation = imageLocation;
-	}
-
-	public boolean isExistPlaceLike() {
-		return isExistPlaceLike;
-	}
-
-	public void setExistPlaceLike(boolean isExistPlaceLike) {
-		this.isExistPlaceLike = isExistPlaceLike;
-	}
-
-	public List<PlaceReplyVO> getPlaceReplyList() {
-		return placeReplyList;
-	}
-
-	public void setPlaceReplyList(List<PlaceReplyVO> placeReplyList) {
-		this.placeReplyList = placeReplyList;
 	}
 
 	public String getName() {
@@ -81,12 +77,20 @@ public class PlaceVO extends CountryVO {
 		this.avgLikeCount = avgLikeCount;
 	}
 
-	public int getLikeCount() {
-		return likeCount;
+	public boolean isExistPlaceLike() {
+		return isExistPlaceLike;
 	}
 
-	public void setLikeCount(int likeCount) {
-		this.likeCount = likeCount;
+	public void setExistPlaceLike(boolean isExistPlaceLike) {
+		this.isExistPlaceLike = isExistPlaceLike;
+	}
+
+	public List<PlaceReplyVO> getPlaceReplyList() {
+		return placeReplyList;
+	}
+
+	public void setPlaceReplyList(List<PlaceReplyVO> placeReplyList) {
+		this.placeReplyList = placeReplyList;
 	}
 
 	public int getPlaceId() {
@@ -159,5 +163,29 @@ public class PlaceVO extends CountryVO {
 
 	public void setWriter(MemberVO writer) {
 		this.writer = writer;
+	}
+	
+	public double getAvgBrightDarkScore() {
+		return avgBrightDarkScore;
+	}
+
+	public void setAvgBrightDarkScore(double avgBrightDarkScore) {
+		this.avgBrightDarkScore = avgBrightDarkScore;
+	}
+
+	public double getAvgHighPriceLowPriceScore() {
+		return avgHighPriceLowPriceScore;
+	}
+
+	public void setAvgHighPriceLowPriceScore(double avgHighPriceLowPriceScore) {
+		this.avgHighPriceLowPriceScore = avgHighPriceLowPriceScore;
+	}
+
+	public double getAvgActiveCalmScore() {
+		return avgActiveCalmScore;
+	}
+
+	public void setAvgActiveCalmScore(double avgActiveCalmScore) {
+		this.avgActiveCalmScore = avgActiveCalmScore;
 	}
 }

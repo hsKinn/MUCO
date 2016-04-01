@@ -49,7 +49,9 @@ public class PackInfoServlet extends HttpServlet {
 		int isPublic = packVO.getIsPublic();
 		int viewCount = packVO.getViewCount();
 		int likeCount = packVO.getLikeCount();				
-		String imageLocation = packVO.getShareImageLocation();
+		String imageName = packVO.getShareImageName();
+		
+		String hashtags = packBiz.getHashTagsByPackId(packId);
 		
 		System.out.println("isPublic : " + isPublic);
 		
@@ -60,8 +62,9 @@ public class PackInfoServlet extends HttpServlet {
 		json.append(", \"isPublic\" : \""+isPublic+"\"");
 		json.append(", \"viewCount\" : \""+viewCount+"\"");
 		json.append(", \"likeCount\" : \""+likeCount+"\"");
-		json.append(", \"imageLocation\" : \""+imageLocation+"\"");
+		json.append(", \"imageName\" : \""+imageName+"\"");
 		json.append(", \"packId\" : \""+packId+"\"");
+		json.append(", \"hashtags\" : \""+hashtags+"\"");
 		json.append("}");
 
 		response.setCharacterEncoding("UTF-8");

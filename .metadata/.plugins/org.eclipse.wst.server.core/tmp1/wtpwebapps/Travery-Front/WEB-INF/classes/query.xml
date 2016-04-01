@@ -181,7 +181,7 @@
 		</hitCountPack>
 	
 		<getAllPackageCountByHashTag>
-			SELECT  COUNT(P.PACK_ID)
+			SELECT  COUNT(DISTINCT P.PACK_ID)
 			FROM    PACK P
 					, HASH_TAG H
 			WHERE	P.PACK_ID = H.PACK_ID
@@ -453,7 +453,7 @@
 			SELECT	PACK_REPLY_ID
 					, PACK_ID
 					, NAME
-					, PR.EMAIL
+					, M.EMAIL
 					, DESCRIPTION
 					, CRT_DT
 					, GROUP_ID
@@ -529,6 +529,50 @@
 	</packReply>
 	
 	<place>
+	
+		<getPlaceListByCountryId>
+			SELECT  P1.PLACE_ID
+			        , PLACE_NAME
+			        , LATITUDE
+			        , LONGITUDE
+			        , ADDRESS
+			        , VIEW_COUNT
+			        , DESCRIPTION
+			        , IS_NEW_PLACE
+			        , COUNTRY_ID
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 3
+			                                        )
+			            ) AVG_ACTIVE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 1
+			                                        )
+			            ) AVG_BRIGHT_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 2
+			                                        )
+			            ) AVG_HIGH_PRICE_SCORE
+			FROM	PLACE P1
+			WHERE	COUNTRY_ID = ?
+		</getPlaceListByCountryId>
 		
 		<getPlaceByCountryName>
 			SELECT	PLACE_ID

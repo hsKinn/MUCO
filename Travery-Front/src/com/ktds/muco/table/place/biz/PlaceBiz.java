@@ -65,7 +65,7 @@ public class PlaceBiz {
 		Paging paging = new Paging(4);
 		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
 		
-		if ( placeSearchVO.getSearchKeyword().equals("") ) {
+		if ( placeSearchVO.getSearchKeyword().isEmpty() ) {
 			allPlaceCount = placeDAO.getAllPlaceCount(placeSearchVO);
 			paging.setTotalArticleCount(allPlaceCount);
 		} 
@@ -85,7 +85,7 @@ public class PlaceBiz {
 		 * ASC
 		 * 
 		 */
-		if ( placeSearchVO.getSearchKeyword().equals("") ) {
+		if ( placeSearchVO.getSearchKeyword().isEmpty() ) {
 			if (sortOption == 1) {
 				placeList = placeDAO.getAllPlaceList(placeSearchVO, member);
 			} 

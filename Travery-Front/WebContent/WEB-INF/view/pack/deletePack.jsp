@@ -7,12 +7,6 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
-<!-- Log out -->
-<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
-
-<!-- Left Menu -->
-<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
-
 <!-- My Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -43,38 +37,46 @@
 				form.submit();
 			}
 		});
+				
+				$(".btn-primary").click(function(){
+					location.href="/detailPack";
+				});
 
 	});
 </script>
-
-<body>
-	<div id="wrapperdiv">
-		<div id="packListdiv">
-			<table id="packListTable" border="2">
-				<form id="massiveDeleteForm">
-					<c:forEach items="${ packs}" var="packs">
-						<tr>
-							<td class="pack"><img
-								src="<c:url value="/resource/img/pack/folder.png"/>"
-								id="folderImg" /> <input type="checkbox" class="deletePackId"
-								name="deletePackId" value="${packs.packId }" /> <label
-								id="title" for="packData_Title"
-								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
-								<input type="hidden" id="packId" value="${packs.packId}" /></td>
-						</tr>
-					</c:forEach>
-				</form>
-			</table>
+<section class="bg-primary" >
+	<div class="container">
+		<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">MY PACKAGE</h2>
+			<hr class="primary">
+			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
 		</div>
-		<div id="buttondiv">
-			<button type="submit" class="btn btn-danger">DeletePackage</button>
-		</div>
-	</div>
 
-	<div id="packListdiv2">
-		<div id="placesOfPackListdiv"></div>
-	</div>
-</body>
+		<div id="mypackWrapperdiv">
+			<div id="mypackListdiv">
+				<table id="packListTable">
+					<form id="massiveDeleteForm">
+						<c:forEach items="${ packs}" var="packs">
+							<tr>
+								<td class="pack">
+								<input type="checkbox" class="deletePackId"
+									name="deletePackId" value="${packs.packId }" />
+								<p id="title">${packs.packTitle}</p>
+								</td>
+							</tr>
+						</c:forEach>
+					</form>
+				</table>
+			</div>
+			<div id="buttondiv">
+				 <button type="button" class="btn btn-danger btn-sm"style="width:120px;font-size: 15px;">
+         		 <span class="glyphicon glyphicon-remove" style="font-size: 15px;"></span> Remove</button>
+				 <button type="button" class="btn btn-primary btn-sm"style="width:120px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span>Okay</button>
+			</div>
+		</div>
+</section>
 
 
 <!-- Footer -->

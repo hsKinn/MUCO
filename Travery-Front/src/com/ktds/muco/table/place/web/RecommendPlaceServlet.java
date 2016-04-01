@@ -68,7 +68,7 @@ public class RecommendPlaceServlet extends HttpServlet {
 		try {
 			pageNo = Integer.parseInt(request.getParameter("pageNo"));
 			placeSearchVO.setPageNo(pageNo);
-			placeSearchVO.setSearchKeyword(request.getParameter("searchKeyword"));
+			placeSearchVO.setSearchKeyword(request.getParameter("searchPlaceKeyword"));
 
 		}
 		catch(NumberFormatException nfe) {

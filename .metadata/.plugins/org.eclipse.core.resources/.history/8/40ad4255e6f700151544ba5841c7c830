@@ -1,0 +1,260 @@
+@CHARSET "UTF-8";
+
+/* 김현섭 */
+div#share-wrapper {
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+div#share-top {
+	float: left;
+	width: 100%;
+	height: 5%;
+}
+
+div#share-top #searchBox {
+	float: left;
+	width: 60%;
+	margin-top: 1%;
+	margin-left: 3%;
+}
+
+div#searchBox input {
+	color: black;
+}
+
+input#searchKeyword {
+	width: 220px;
+	height: 33px;
+}
+
+div#share-top button.btn {
+	width: 80px;
+	margin-left: 5px;
+	margin-bottom: 4px;
+}
+
+div#share-wrapper button span {
+	height: 13px;
+	margin-right: 5px;
+}
+
+div#share-top #sortBox {
+	float: right;
+	margin-top: 1%;
+	margin-right: 3%;
+}
+
+div#sortBox {
+	width: 120px;
+}
+
+div#sortBox button.btn {
+	width: 100%;
+	height: 36px;
+	margin-bottom: 4px;
+}
+
+div#sharePage {
+	float: left;
+	width: 100%;
+	height: 2%;
+	margin-top: 3px;
+	text-align: center;
+}
+
+div#share-body {
+	float: left;
+	width: 100%;
+	max-width: 1200px;
+	height: 90%;
+}
+
+div.sharePack {
+	float: left;
+	width: 30%;
+	height: 100%;
+	margin-top: 1%;
+	margin-left: 2.5%;
+	border: 3pxx groove #5b5b5b;
+}
+
+div.packTop {
+	float: left;
+	width: 100%;
+	height: 5%;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 4px;
+}
+
+div.packTop span.header {
+	font-size: 16px;
+	cursor: pointer;
+}
+
+div.packHashTag {
+	float: left;
+	width: 100%;
+	height: 50px;
+	overFlow-y: auto;
+}
+
+div.packHashTag span#hashtag {
+	color: #3399ff;
+	font-size: 12px;
+	margin: 5px;
+}
+
+div.packPhoto {
+	float: left;
+	width: 100%;
+	height: 120px;
+	border: 0px;
+}
+
+div.packPhoto img {
+	width: 100%;
+	height: 100%;
+}
+
+div.packFooter {
+	float: left;
+	width: 100%;
+}
+
+div.packWriterName {
+	float: left;
+	width: 22%;
+	height: 20px;
+	overFlow-x: auto;
+	text-align: left;
+	margin-top: 3.5px;
+	margin-left: 3px;
+	font-size: 13px;
+}
+
+div.packViewCount {
+	float: left;
+	width: 50%;
+	margin-top: 3px;
+	text-align: center;
+}
+
+div.packViewCount span.badge {
+	font-size: 11px;
+	margin-bottom: 7px;
+}
+
+div.packLikeCount {
+	float: left;
+	width: 25%;
+	text-align: right;
+}
+
+
+span.glyphicon-heart {
+	color: red;
+	width: 10px;
+	height: 14px;
+	margin-right: 3px;
+	margin-top: 6px;
+}
+
+span.likeCount {
+	font-size: 15px;
+	color: red;
+	margin-top: 6px;
+}
+
+span.modal-title-writer {
+	text-align: right;
+}
+
+div.modal-body {
+	overFlow-y: auto;
+	max-height: 250px;
+}
+
+div.modal-body td {
+	text-align: center;
+}
+
+tr.modal-table-top {
+	font-size: 20px;
+}
+
+div#notFoundPack {
+	text-align: center;
+	margin-top: 10%;
+}
+
+div#notFoundPack span#red {
+	color: red;
+	font-size: 24px;
+}
+
+div#notFoundPack span#blue {
+	color: #3399ff;
+	font-size: 25px;
+	text-decoration: underline;
+}
+
+div.modal-footer-share span {
+	color: red;
+	font-size: 15px;
+}
+
+div.modal-like {
+	width: 100%;
+	float: left;
+}
+
+div.pack-reply {
+	width: 100%;
+	float: left;
+}
+
+div.pack-reply table {
+	width: 60%;
+}
+
+div.formWrapper {
+	float: left;
+	width: 100%;
+}
+
+td.reply_content textarea {
+	width: 250px;
+	height: 40px;
+	wrap: off;
+	margin-right: 10px;
+	maxlength: 20;
+	color: black;
+}
+
+div.replybypack {
+	width: 100%;
+	height: 80px;
+	overFlow-y: auto;
+}
+
+div.replybypack table {
+	width: 550px;
+}
+
+td.replyWriterName {
+	text-align: left;
+	width: 10%;
+	word-break: break-all;	
+}
+
+td.replyWrittenReply {
+	text-align: left;
+	word-break: break-all;
+}
+
+td.deleteReply {
+	width: 5%;
+}

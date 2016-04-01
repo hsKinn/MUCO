@@ -1,6 +1,10 @@
 @CHARSET "UTF-8";
 
 /* 김광민 */
+ul#hitTheRoadTabs li a {
+	font-size: 13pt;
+}
+
 div#hitTheRoad {
 	width: 1550px;
 	height: 850px;
@@ -55,9 +59,8 @@ div#printAxisY1 {
 	text-align: center;
 	font-weight: bolder;
 	font-size: large;
-	color: #333333;
+	color: #ffffff;
 	padding-top: 20px;
-	background: #ffffff;
 }
 
 div#printAxisX2 {
@@ -66,8 +69,7 @@ div#printAxisX2 {
 	font-weight: bolder;
 	font-size: large;
 	padding-top: 16%;
-	color: #333333;
-	background: #ffffff;
+	color: #ffffff;
 }
 
 div#printAxisX1 {
@@ -76,8 +78,7 @@ div#printAxisX1 {
 	font-weight: bolder;
 	font-size: large;
 	padding-top: 16%;
-	color: #333333;
-	background: #ffffff;
+	color: #ffffff;
 }
 
 div#dottedDiv {
@@ -89,8 +90,7 @@ div#printAxisY2 {
 	text-align: center;
 	font-weight: bolder;
 	font-size: large;
-	color: #333333;
-	background: #ffffff;
+	color: #ffffff;
 }
 
 div#secondRowDiv {
@@ -117,6 +117,50 @@ div.selectedCountry {
 	margin-left: 1px;
 }
 
-div#hitTheRoad div.dropdown {
-	display: none;
+
+
+/* 나라 색깔 */
+
+/* Korea */
+
+div.selectedCountry {
+	background-color: #ffffff;
+	color: #333333;
 }
+
+div#countryNameIsKorea {
+	background-color: #fa3851;
+	color: #333333;
+}
+
+/* Russia */
+div#countryNameIsRussia {
+	background-color: #ffff4d;
+	color: #333333;
+}
+
+/* China */
+div#countryNameIsChina {
+	background-color: #9797ff;
+	color: #333333;
+}
+
+
+
+/* 여행지 점 색깔 */
+
+/* Korea */
+a.countryIdIs6 {
+	color: #fa3851;
+}
+
+/* Russia */
+a.countryIdIs11 {
+	color: #ffff4d;
+}
+
+/* China */
+a.countryIdIs12 {
+	color: #9797ff;
+}
+

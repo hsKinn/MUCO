@@ -2,9 +2,8 @@
 
 /* 김동규 */
 div#recommendPlace_Wrapper {
-	width: 80%;
+	width: 100%;
 	height: 100%;
-	max-width: 1200px;
 	float: left;
 }
 
@@ -20,8 +19,7 @@ div#daily_wrapper {
 	width: 32%;
 	height: 100%;	
 	float: left;
-	border: 2px dotted #d0d0d0;	
-	background-color: #d7d7d7;
+	border: 3px Groove #5b5b5b;
 }
 
 div#daily_top {
@@ -43,9 +41,8 @@ div#weekly_wrapper {
 	width: 32%;
 	height: 100%;
 	float: left;
-	border: 2px dotted #d0d0d0;	
+	border: 3px Groove #5b5b5b;
 	margin-left: 1.5%;
-	background-color: #d7d7d7;	
 }
 
 div#weekly_top {
@@ -67,9 +64,8 @@ div#monthly_wrapper {
 	width: 32%;
 	height: 100%;	
 	float: left;
-	border: 2px dotted #d0d0d0;	
+	border: 3px Groove #5b5b5b;
 	margin-left: 1.5%;	
-	background-color: #d7d7d7;		
 }
 
 div#monthly_top {
@@ -92,19 +88,17 @@ div.content {
 	height: 48.5%;
 	float: left;
 	margin-left: 2%;
-	border: 1px solid #d0d0d0;		
 }
 
 div.content_top {
 	width: 100%;
-	height: 57%;
+	height: 120px;
 	float: left;
 	margin-top: 5px;
-	margin-left: 5px;
 }
 
 div.content_top img {
-	width: 95%;
+	width: 100%;
 	height: 100%;
 }
 
@@ -187,9 +181,10 @@ div#write_part {
 	float: right;
 }
 
-input#searchKeyword {
+input#searchPlaceKeyword {
 	width: 220px;
 	height: 33px;
+	color: black;
 }
 
 div#recommendPlace_Wrapper button.btn {
@@ -217,8 +212,7 @@ div#paging {
 }
 
 div#new_wrapper {
-	border: 2px dotted #d0d0d0;		
-	background-color: #d7d7d7;		
+	border: 3px Groove #5b5b5b;
 	margin-top: 5px;	
 	width: 100%;
 	height: 96%;	
@@ -252,7 +246,6 @@ div.new_contents {
 	width: 25%;
 	height: 87%;
 	float: left;
-	border: 1px solid #d0d0d0;		
 }
 
 div.place-reply {
@@ -270,12 +263,23 @@ td.reply_content textarea {
 	wrap: off;
 	margin-right: 10px;
 	maxlength: 20;
+	color: black;
 }
 
 div.replybyplace {
 	width: 100%;
 	height: 80px;
 	overFlow-y: auto;
+}
+
+div.modal-like {
+	width: 100%;
+	float: left;
+}
+
+div.modal-like span {
+	color: red;
+	font-size: 18px;
 }
 
 div.replybyplace table {

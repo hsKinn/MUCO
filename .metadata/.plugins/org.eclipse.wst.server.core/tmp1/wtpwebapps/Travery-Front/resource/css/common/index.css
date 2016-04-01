@@ -1,22 +1,9 @@
 @CHARSET "UTF-8";
 
-div#imageSlider {
-	margin: 0;
-	padding: 0;
-	magin-top: 0;
-	position: absolute;
-	overflow: hidden;
-}
-
-div#imageSlider ul#imageList li img {
-	width: 100%;
-}
-
 /* 김광민 */
 div#index {
 	margin-top: 15%;
 	margin-left: 45%;
-	position: absolute;
 }
 
 div#index a {
@@ -24,7 +11,7 @@ div#index a {
 	color: #ffffff;
 }
 
-div#letsJoin {
+div.letsJoin {
 	text-align: center;
 	width: 250px;
 	background-color: #626262;
@@ -32,7 +19,7 @@ div#letsJoin {
 	float: left;
 }
 
-div#letsLogIn {
+div.letsLogIn {
 	margin-top: 10px;
 	text-align: center;
 	width: 250px;
@@ -41,11 +28,11 @@ div#letsLogIn {
 }
 
 /* 유병훈 */
-div#join {
+div.join {
 	width: 250px;
 }
 
-div#join input {
+div.join input {
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	height: 40px;
@@ -53,7 +40,7 @@ div#join input {
 	margin-top: 10px;
 }
 
-button#btnJoin {
+button.btnJoin {
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	margin-left: 5px;
@@ -64,11 +51,11 @@ button#btnJoin {
 }
 
 /* Login */
-div#login {
+div.login {
 	width: 250px;
 }
 
-div#login input {
+div.login input {
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	height: 40px;
@@ -76,7 +63,7 @@ div#login input {
 	margin-top: 10px;
 }
 
-input#btnLogin {
+input.btnLogin {
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	padding: 7px;
@@ -85,7 +72,7 @@ input#btnLogin {
 	color: #ffffff;
 }
 
-button#btnSignUp {
+button.btnSignUp {
 	font-family: "나눔바른고딕", "나눔 고딕";
 	font-size: 15px;
 	margin-right: 5px;
@@ -99,7 +86,7 @@ button#btnSignUp {
 	margin-right: 10px;
 }
 
-div#goBack {
+div.goBack {
 	width: 250px;
 	text-align: center;
 	font-size: 35px;

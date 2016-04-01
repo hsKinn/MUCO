@@ -7,130 +7,174 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
-<!-- Log out -->
-<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
-
-<!-- Left Menu -->
-<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
+<!-- Boot Script -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <!-- My Package -->
 <script type="text/javascript">
+	$(document).ready(
+			function() {
 
-	$(document).ready(function() {
+				$("#myPackMenu").mouseout(function() {
+					$("#myPackMenu").css("color", "#ffffff");
+				});
+				$("#myPackMenu").css("color", "#ffffff");
 
-		$("#myPackMenu").mouseout(function() {
-			$("#myPackMenu").css("color", "#ffffff");
-		});
-		$("#myPackMenu").css("color", "#ffffff");
+				$("#placesOfPackListdiv").hide();
 
+				$(".pack").click(
+						function() {
+							$("#placesOfPackListdiv").hide();
+							$("#placesOfPackListdiv").fadeIn("slow");
+							var packId = $(this).children(":eq(2)").val();
 
-		$("#placesOfPackListdiv").hide();
+							$.post("/packInfo", {
+								"packId" : packId
+							}, function(data) {
 
-		$(".pack").click(function() {
-			$("#placesOfPackListdiv").hide();
-			$("#placesOfPackListdiv").fadeIn("slow");
-			var packId = $(this).children(":eq(2)").val();
+								var jsonData = {};
+								try {
+									jsonData = JSON.parse(data);
+								} catch (e) {
+									jsonData.result = false;
+								}
+								console.log(jsonData);
 
-			$.post("/packInfo", {
-				"packId" : packId
-			}, function(data) {
+								if (jsonData.result) {
 
-				var jsonData = {};
-				try {
-					jsonData = JSON.parse(data);
-				} catch (e) {
-					jsonData.result = false;
-				}
-				console.log(jsonData);
+									$("#packData_Title").val(jsonData.title);
+									$("#packData_image").attr(
+											"src",
+											"/image?imageName="
+													+ jsonData.imageName);
+									if (jsonData.isPublic == 1) {
+										$("#packData_IsPublic").attr("checked",
+												true);
+									} else {
+										$("#packData_IsPublic").attr("checked",
+												false);
+									}
+									$("#packData_likeCount").text(
+											jsonData.likeCount);
+									$("#packData_viewCount").text(
+											jsonData.viewCount);
+									$("#curpackId").val(jsonData.packId);
+									$(".hashtagBox").text(jsonData.hashtags);
+									$("#texthashtag").val(jsonData.hashtags);
+								} else {
+									/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+									location.href = "/"; */
+								}
+							});
+						});
+				$("#hashtagAddBtn").click(function() {
+					var tag = $("#hashTag").val();
+					var tags = $("#texthashtag").val();
+					$(".hashtagBox").append(" #" + tag);
+					$("#texthashtag").val(tags + " " + tag);
+					$("#hashTag").val(null);
+				});
 
-				if (jsonData.result) {
+				$("#modifyOkBtn").click(function() {
+					var form = $("#modifyForm");
+					var isPublic = $("#packData_IsPublic").is(":checked");
+					form.attr("method", "post");
+					form.attr("action", "/doModifyPack");
+					form.submit();
+				});
+				$("#wantAddBtn").click(function(){
+					location.href="/addPack";
+				});
+				$("#wantRemoveBtn").click(function(){
+					location.href="/deletePack";
+				});
+				$("#wantOkBtn").click(function(){
+					location.href="/myPack";
+				});
 
-					$("#packData_Title").val(jsonData.title);
-					$("#packData_image").attr("src", jsonData.imageLocation);
-					if (jsonData.isPublic == 1) {
-						$("#packData_IsPublic").attr("checked", true);
-					} else {
-						$("#packData_IsPublic").attr("checked", false);
-					}
-					$("#packData_likeCount").text(jsonData.likeCount);
-					$("#packData_viewCount").text(jsonData.viewCount);
-					$("#curpackId").val(jsonData.packId);
-				} else {
-					/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-					location.href = "/"; */
-				}
 			});
-		});
-
-		$(".btn-success").click(function() {
-			var form = $("#modifyForm");
-			var isPublic = $("#packData_IsPublic").is(":checked");
-			form.attr("method", "post");
-			form.attr("action", "/doModifyPack");
-			form.submit();
-		});
-
-	});
 </script>
 
-<body>
-	<div id="wrapperdiv">
-		<div id="packListdiv">
-			<table id="packListTable" border="2">
-				<c:forEach items="${packs}" var="packs">
-					<tr>
-						<td class="pack"><img
-							src="<c:url value="/resource/img/pack/folder.png"/>"
-							id="folderImg" /> <label id="title" for="packData_Title"
-							style="font-size: 20px; display: inline;">${packs.packTitle}</label>
-							<input type="hidden" id="packId" value="${packs.packId}" /></td>
-					</tr>
-				</c:forEach>
-			</table>
+<section class="bg-primary">
+	<div class="container">
+		<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">MY PACKAGE</h2>
+			<hr class="primary">
+			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
 		</div>
-		<div id="buttondiv">
-			<a href="/addPack"><span class="glyphicon glyphicon-plus-sign"></span></a>
-			<a href="/deletePack"><span
-				class="glyphicon glyphicon-minus-sign"></span></a> <a href="/myPack"><span
-				class="glyphicon glyphicon-ok-sign"></span></a>
-		</div>
-	</div>
 
-	<div id="packListdiv2">
-		<div id="placesOfPackListdiv" align="center">
-			<img id="packData_image" src="#" /><br />
-			<br />
-			<form id="modifyForm" enctype="multipart/form-data">
-				<div class="form-group" align="center">
-					<input type="file" name="file" value="file" />
-				</div>
-				<div class="form-group">
-					<label for="packData_Title">Pack Title :</label> <input type="text"
-						class="form-control" id="packData_Title" name="packData_Title"
-						style="width: 50%; display: inline;"></span><br /> <input
-						type="hidden" id="curpackId" name="curpackId" /> <input
-						type="submit" style="display: none" />
-				</div>
-				<div class="form-group">
-					<label for="packData_Title">Share :</label> <label class="switch">
-						<input type="checkbox" id="packData_IsPublic"
-						name="packData_IsPublic" value="1" />
-						<div class="slider round"></div>
-					</label>
-				</div>
-				<div class="form-group">
-					<label for="viewCount">View Count :</label> <span
-						id="packData_viewCount" name="packData_viewCount"></span>
-				</div>
-				<div class="form-group">
-					<label for="likeCount">Like Count :</label> <span
-						id="packData_likeCount" name="packData_likeCount"></span>
-				</div>
-			</form>
-			<button type="button" class="btn btn-success">OK</button>
+		<!-- 내용 -->
+		<div id="mypackWrapperdiv">
+			<div id="mypackListdiv">
+				<table id="packListTable" >
+					<c:forEach items="${packs}" var="packs">
+						<tr>
+							<td class="pack">
+								<span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
+								<p id="title">${packs.packTitle}</p>
+								<input type="hidden" id="packId" value="${packs.packId}" />
+							</td>
+							
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div id="buttondiv">
+				 <button type="button" class="btn btn-primary btn-sm" id="wantAddBtn" style="width:80px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-plus" style="font-size: 15px;"></span>add</button>
+				  <button type="button" class="btn btn-primary btn-sm" id="wantRemoveBtn" style="width:100px;font-size: 15px;">
+				 <span class="	glyphicon glyphicon-remove" style="font-size: 15px;"></span>remove</button>
+				  <button type="button" class="btn btn-primary btn-sm" id="wantOkBtn" style="width:80px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span>okay</button>
+			</div>
+		</div>
+
+		<div id="packListdiv2">
+			<div id="placesOfPackListdiv" align="center">
+				<img id="packData_image" src="#" /><br /> <br />
+				<form id="modifyForm" enctype="multipart/form-data">
+					<div class="form-group" align="center">
+						<input type="file" name="file" value="file" />
+					</div>
+					<div class="form-group">
+						<label for="packData_Title">Pack Title :</label> <input
+							type="text" class="form-control" id="packData_Title"
+							name="packData_Title" style="width: 50%; display: inline;"></span><br />
+						<input type="hidden" id="curpackId" name="curpackId" /> <input
+							type="submit" style="display: none" />
+					</div>
+					<div class="form-group">
+						<label for="packData_Title">Share :</label> <label class="switch">
+							<input type="checkbox" id="packData_IsPublic"
+							name="packData_IsPublic" value="1" />
+							<div class="slider round"></div>
+						</label>
+					</div>
+					<div class="form-group">
+						 <span id="packData_viewCount" name="packData_viewCount"></span>
+						<label for="viewCount" >  <b>View  | </b> </label>
+					
+						<span id="packData_likeCount" name="packData_likeCount"></span>
+						<label for="likeCount" >  <b>Like</b></label>
+					</div>
+					<div class="form-group">
+						<label for="texthashtag">Hash Tag :</label> <input type="hidden"
+							name="texthashtag" id="texthashtag" /> <input type="text"
+							class="form-control" id="hashTag" name="hashTag"
+							style="width: 30%; display: inline;" />
+						<button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button>
+						</br> <span class="hashtagBox" name="hashtagBox"></span>
+					</div>
+				</form>
+				<button type="button" class="btn btn-success" id="modifyOkBtn" >Modify</button>
+			</div>
 		</div>
 	</div>
-</body>
+</section>
 
 
 <!-- Footer -->

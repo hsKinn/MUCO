@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1459312741394_1" label="project" name="project">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Travery-Front" type="4"/>
-</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1459312741394_1" label="project" name="project"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1459312730809_0" label="Window Working Set" name="Aggregate for window 1459312730809"/>
 </workingSetManager>

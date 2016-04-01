@@ -1,0 +1,302 @@
+<!-- 김현섭 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- Header -->
+<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+
+<!-- Log out -->
+<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
+
+<!-- Left Menu -->
+<jsp:include page="/WEB-INF/view/common/leftMenu.jsp"></jsp:include>
+
+<!-- Share Package -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#sharePackMenu").mouseout(function() {
+			$("#sharePackMenu").css("color", "#ffffff");
+		});
+		$("#sharePackMenu").css("color", "#ffffff");
+		
+		$(".hide").hide();		
+		
+		$("#initSearchBtn").click( function() {
+			location.href = "<c:url value="/init" />"; 
+		});
+		   
+		$("#searchBtn").click( function() {
+			if ( $("#searchKeyword").val() == "" ) {
+			 alert("검색어 입력");
+			 return;
+			}
+		   
+			movePage('0');
+		});		
+	   
+		$("#searchKeyword").keyup( function(e) {
+			if ( e.keyCode == 13 ) {
+				$("#searchBtn").click();
+			}
+		}) ;
+		
+		$(".header").click( function () {
+			
+			$("#myModal").modal();
+			
+			var packId = $(event.relatedTarget)
+			var seletedPackId = document.getElementsByName(packId);
+			
+			alert();
+			
+		});
+		
+	});
+</script>
+
+<!-- Share Pack Content by hskim -->
+<c:set var="loginEmail" value="${ sessionScope._MEMBER_.email }" />
+
+<div id="share-wrapper">
+	<form id="searchForm">
+	<div id="share-top">
+		<div id="searchBox">
+				<input type="text" id="searchKeyword" name="searchKeyword" value="${packSearchVO.searchKeyword}" placeholder="   #Hash Tag"  />
+				<button type="button" class="btn btn-info" id="searchBtn">
+		      		<span class="glyphicon glyphicon-search"></span>검색
+		    	</button>
+				<button type="button" class="btn btn-info" id="initSearchBtn">
+		      		<span class="glyphicon glyphicon-repeat"></span>초기화
+		    	</button>
+		</div>
+		
+		<div id="sortBox"> 
+			<div class="dropdown">
+	 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+	  				<span class="caret"></span>
+	  			</button>
+	 			<ul class="dropdown-menu">
+				    <li><a href="/sharePack?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+				    <li><a href="/sharePack?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+				    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+	  			</ul>
+			</div>
+		</div>
+	    <div id="sharePage">
+	    	${ packages.paging.getPagingList("pageNo", "[@]", "[이전]", "[다음]", "searchForm") }
+	   </div>
+	</div>	
+	</form>
+	
+	<div id="share-body">
+		<c:forEach items="${ packages.packList }" var="pack">
+			<div class="sharePack"> 
+				<div class="packTop">
+					<span class="header" data-packId="${ pack.packId }">
+						${ pack.packTitle }
+					</span>
+				</div>
+				
+				<div class="packHashTag">
+					<c:forEach items="${ pack.hashtagList }" var="hashtags">
+						<span id="hashtag">#${ hashtags.hashtagName }</span>
+					</c:forEach>
+				</div>
+				
+				<div class="packPhoto">
+					<img src="${ pack.imageLocation }" class="img-rounded" />
+				</div>
+				
+				<div class="packFooter">
+					<div class="packWriterName">${ pack.name }</div>
+					<div class="packViewCount">
+						<span class="badge">View: ${ pack.viewCount }</span> 
+					</div>
+					<div class="packLikeCount">
+						<span class="glyphicon glyphicon-heart"></span>
+						<span id="likeCount">${ pack.likeCount }</span>
+					</div>
+				</div>
+			</div>
+			
+									</c:forEach>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			      <!-- Modal content-->
+			    	<div class="modal-content">
+			        	<div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">
+				          		${ pack.packTitle } 
+				          		<span class="badge">view: ${ pack.viewCount }</span>
+				          </h4>
+				        </div>
+				        <!-- Modal Body -->
+				        <div class="modal-body">
+							  <table class="table table-hover table-bordered table-condensed">
+							    <thead>
+							      <tr>
+							        <td width="130px">여행지 명</td>
+							        <td>주소</td>
+							        <td width="80px">추천수</td>
+							      </tr>
+							    </thead>
+							    <tbody>
+							    <c:forEach items="${ pack.placeList }" var="places">
+							      <tr>
+							        <td>${ places.placeName }</td>
+							        <th>${ places.address }</th>
+							        <td>${ places.placeName }</td>
+							      </tr>
+							    </c:forEach>
+							  </table>
+				        </div>
+				        <!-- Modal Footer -->
+				        <div class="modal-footer">
+				        	<!-- Modal Like -->
+				        	<div class="modal-like">
+						        <c:choose>
+						        <c:when test="${ pack.isExistPackLike() }">
+						        	<span class="${pack.packId}packLike">Like ♥</span>			          
+						        </c:when>
+						        <c:otherwise>
+						        	<span class="${pack.packId}packLike">Not Like ♡</span>		
+						        </c:otherwise>
+						        </c:choose>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          	</div>
+				          	<!-- Pack Reply -->
+				          	<div class="pack-reply">
+								<div class="formWrapper">
+									<form class="${pack.packId}writeReplyForm">
+										<table class="reply_table">
+											<tr>
+												<td class="reply_content">
+													<textarea class="${pack.packId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
+												</td>
+												<td class="reply_btn">
+													<button type="button" class="btn btn-info" id="${pack.packId}writeReplyBtn">
+											     		<span class="glyphicon glyphicon-pencil"></span>댓글 등록
+											   		</button>  													
+												</td>
+											</tr>
+										</table>
+										<input type="hidden" class="packId" name="packId" value="${ pack.packId }" />
+										<input type="hidden" class="depth" name="depth" value="0" />
+										<input type="hidden" class="parentReplyId" name="parentReplyId" value="0" />
+										<input type="hidden" class="groupId" name="groupId" value="0" />
+										<input type="hidden" class="orderNo" name="orderNo" value="0" />
+										<input type="hidden" class="packReplyId" name="packReplyId" value="0" />
+									</form>
+								</div>
+								
+								<div class="replybypack">
+									<c:forEach items="${ pack.replyList }" var="reply">
+										<div>
+										<table>
+											<tr class="replyTR">
+												<td class="replyWriterName">${ reply.name }</td>
+												<td class="replyWrittenReply">
+													${ reply.packReplyDescription }
+												</td>
+												<c:if test="${ reply.email eq loginEmail }">
+													<td class="deleteReply">
+												        <a href="/deletePackReply?packReplyId=${ reply.packReplyId }">
+												          <span class="glyphicon glyphicon-remove"></span>
+												        </a>
+													</td>
+												</c:if>
+											</tr>
+										</table>
+										<div class="hide formAppender"></div>
+										</div>
+								</div>	
+															
+				          	</div>
+				        </div>
+			     	 </div>
+			    </div>
+			 </div>
+			 
+			 <script>
+	    		// Reply
+				$("#${pack.packId}writeReplyBtn").click( function() {
+					
+					var description = $(".${pack.packId}description").val();
+					description = $.trim(description);
+					if ( description == "" ) {
+						alert("댓글을 입력해주세요");
+						$(".${pack.packId}description").focus();
+						return;
+					}
+					
+					var form = $(".${pack.packId}writeReplyForm");
+					
+					form.attr("method", "POST");
+					form.attr("action", "<c:url value="/doWritePackReply"/>");
+					form.submit();
+				});
+			 
+				$(".${pack.packId}packLike").click( function() {
+					
+					$.post(
+							"/packLike"
+							, { "packId" : "${pack.packId}" } 
+							, function(data) {
+								
+								var jsonData3 = {};
+								
+								try {
+									jsonData3 = JSON.parse(data);
+								}
+								catch(e) {
+									jsonData3.result = false;							
+								}
+								
+								if ( jsonData3.result) {
+									// 하트를 넣음
+									var text = $(".${pack.packId}packLike").text();
+									if ( jsonData3.isPackLike ) {
+										$(".${pack.packId}packLike").text("Like ♥");							
+									}
+									else {
+										$(".${pack.packId}packLike").text("Not Like ♡");	
+									}
+								}
+								else {
+									alert("세션 만료");
+									location.href = "/";
+								}
+							}
+					  );
+				});
+				
+				 $(".header").click( function() {
+					 $.post(
+							"/hitCountPack"
+							, { "packId" : "${pack.packId}"}
+							, function(){
+							}
+					 );
+				 });
+				</script>
+	  
+		</c:forEach>
+		
+		<c:if test="${ packages.paging.totalArticleCount == 0 }">
+			<div id="notFoundPack">
+				<h3><span id="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가 존재하지 않습니다<br/><span id="red">초기화</span> 후 재 검색해주세요</h3>
+				
+			</div>
+		</c:if>
+	</div>	
+</div>
+	
+<!-- Footer -->
+<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
+

@@ -235,7 +235,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>TestServlet</servlet-name>
-    <url-pattern>/testPlace</url-pattern>
+    <url-pattern>/test</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -368,6 +368,36 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>ContactUsServlet</display-name>
+    <servlet-name>ContactUsServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.qna.web.ContactUsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContactUsServlet</servlet-name>
+    <url-pattern>/contactUs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImageServlet</display-name>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>com.ktds.muco.util.file.ImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/image</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveAllSelectedCountriesServlet</display-name>
+    <servlet-name>RemoveAllSelectedCountriesServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.country.web.RemoveAllSelectedCountriesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveAllSelectedCountriesServlet</servlet-name>
+    <url-pattern>/removeAllSelectedCountries</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>DeletePackReplyServlet</display-name>
     <servlet-name>DeletePackReplyServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.packReply.web.DeletePackReplyServlet</servlet-class>
@@ -375,26 +405,6 @@
   <servlet-mapping>
     <servlet-name>DeletePackReplyServlet</servlet-name>
     <url-pattern>/deletePackReply</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>PlaceInfoInitSearchServlet</display-name>
-    <servlet-name>PlaceInfoInitSearchServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.place.web.PlaceInfoInitSearchServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PlaceInfoInitSearchServlet</servlet-name>
-    <url-pattern>/placeInfoInit</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>PlaceLikeServlet</display-name>
-    <servlet-name>PlaceLikeServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.placeLike.web.PlaceLikeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PlaceLikeServlet</servlet-name>
-    <url-pattern>/placeLike</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -408,6 +418,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>DeletePlaceReplyServlet</display-name>
+    <servlet-name>DeletePlaceReplyServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.placeReply.web.DeletePlaceReplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePlaceReplyServlet</servlet-name>
+    <url-pattern>/deletePlaceReply</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>DoWritePlaceReplyServlet</display-name>
     <servlet-name>DoWritePlaceReplyServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.placeReply.web.DoWritePlaceReplyServlet</servlet-class>
@@ -418,12 +438,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DeletePlaceReplyServlet</display-name>
-    <servlet-name>DeletePlaceReplyServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.placeReply.web.DeletePlaceReplyServlet</servlet-class>
+    <display-name>PlaceLikeServlet</display-name>
+    <servlet-name>PlaceLikeServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.placeLike.web.PlaceLikeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeletePlaceReplyServlet</servlet-name>
-    <url-pattern>/deletePlaceReply</url-pattern>
+    <servlet-name>PlaceLikeServlet</servlet-name>
+    <url-pattern>/placeLike</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceInfoInitServlet</display-name>
+    <servlet-name>PlaceInfoInitServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceInfoInitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceInfoInitServlet</servlet-name>
+    <url-pattern>/placeInfoInit</url-pattern>
   </servlet-mapping>
 </web-app>

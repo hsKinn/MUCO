@@ -1,6 +1,7 @@
 package com.ktds.muco.table.qna.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ktds.muco.table.qna.biz.QNABiz;
-import com.ktds.muco.table.qna.vo.QNAListVO;
+import com.ktds.muco.table.qna.vo.QNAVO;
 
 /**
  * Servlet implementation class TermsAccessServlet
@@ -45,10 +46,10 @@ public class TermsAccessServlet extends HttpServlet {
 
 		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
 
-		// QNAListVO faq = qnaBiz.getFAQList();
+		List<QNAVO> faqs = qnaBiz.getFAQList();
 
 		request.setAttribute("menuNo", menuNo);
-		// request.setAttribute("faq", faq);
+		request.setAttribute("faqs", faqs);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/common/termsAccess.jsp");
 		rd.forward(request, response);

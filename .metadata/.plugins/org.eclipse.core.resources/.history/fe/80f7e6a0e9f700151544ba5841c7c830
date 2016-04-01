@@ -1,0 +1,297 @@
+@CHARSET "UTF-8";
+
+/* 김동규 */
+div#recommendPlace_Wrapper {
+	width: 100%;
+	height: 100%;
+	float: left;
+}
+
+div#inner_wrapper {
+	width: 99%;
+	height: 50%;
+	margin-left: 2%;
+	margin-top: 2px;
+	float: left;
+}
+
+div#daily_wrapper {
+	width: 32%;
+	height: 100%;	
+	float: left;
+	border: 3px Groove #5b5b5b;
+}
+
+div#daily_top {
+	width: 100%;
+	height: 7%;
+	float: left;
+	margin-top: 5px;
+	font-size: 20px;
+	text-align: center;
+}
+
+div#daily_content {
+	width: 100%;
+	height: 94%;
+	float: left;
+}
+
+div#weekly_wrapper {
+	width: 32%;
+	height: 100%;
+	float: left;
+	border: 3px Groove #5b5b5b;
+	margin-left: 1.5%;
+}
+
+div#weekly_top {
+	width: 100%;
+	height: 7%;
+	float: left;
+	margin-top: 5px;	
+	font-size: 20px;	
+	text-align: center;	
+}
+
+div#weekly_content {
+	width: 100%;
+	height: 94%;
+	float: left;
+}
+
+div#monthly_wrapper {
+	width: 32%;
+	height: 100%;	
+	float: left;
+	border: 3px Groove #5b5b5b;
+	margin-left: 1.5%;	
+}
+
+div#monthly_top {
+	width: 100%;
+	height: 7%;
+	float: left;
+	margin-top: 5px;	
+	font-size: 20px;
+	text-align: center;
+}
+
+div#monthly_content {
+	width: 100%;
+	height: 94%;
+	float: left;
+}
+
+div.content {
+	width: 47%;
+	height: 48.5%;
+	float: left;
+	margin-left: 2%;
+}
+
+div.content_top {
+	width: 100%;
+	height: 120px;
+	float: left;
+	margin-top: 5px;
+}
+
+div.content_top img {
+	width: 100%;
+	height: 100%;
+}
+
+div.content_middle {
+	width: 100%;
+	height: 8%;
+	margin-top: 4px;
+	float: left;
+	text-align: center;
+	font-size: 13px;
+}
+
+div.content_bottom {
+	width: 100%;
+	height: 30%;
+	float: left;
+
+}
+
+div.bottom_top {
+	width: 100%;
+	height: 5%;
+	float: left;
+	font-size: 13px;
+	text-align: center;	
+	margin-bottom: 15px;
+	
+}
+
+div.bottom_first {
+	width: 47%;
+	height: 14%;
+	text-align: left;
+	float: left;	
+	font-size: 12px;	
+	margin-top: 11px;
+	margin-left: 5px;
+}
+
+
+div.bottom_second {
+	width: 45%;
+	height: 14%;	
+	text-align: right;
+	float: left;	
+	font-size: 12px;	
+	margin-top: 10px;	
+	margin-right: 2px;
+}
+
+span#likeCount {
+	font-size: 15px;
+	color: red;
+}
+
+span.glyphicon-heart {
+	color: red;
+	width: 10px;
+	height: 13px;
+	margin-right: 7px;
+	margin-bottom: 1px;
+}
+
+
+div#middle {
+	margin-top: 1.3%;
+	margin-left: 2%;
+
+	font-size: 15px;
+	width: 97.5%;
+	height: 5.5%;
+	float: left;
+}
+
+div#search_part {
+	float: left;
+}
+
+div#write_part {
+	float: right;
+}
+
+input#searchKeyword {
+	width: 220px;
+	height: 33px;
+	color: black;
+}
+
+div#recommendPlace_Wrapper button.btn {
+	width: 90px;
+	margin-left: 5px;
+}
+
+div#recommendPlace_Wrapper button span {
+	height: 13px;
+	margin-right: 5px;
+}
+
+div#inner_wrapper2 {
+	width: 97.5%;
+	height: 22%;
+	margin-left: 2%;
+	margin-top: 1px;
+	float: left;
+}
+
+div#paging {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
+div#new_wrapper {
+	border: 3px Groove #5b5b5b;
+	margin-top: 5px;	
+	width: 100%;
+	height: 96%;	
+	float: left;
+}
+
+div#new_top {
+	width: 100%;
+	height: 13%;
+}
+
+div#top_name {
+	width: 100%;
+	float: left;
+	font-size: 20px;
+	text-align: center;	
+	margin-top: 5px;
+}
+
+div#top_sort {
+	float: right;
+}
+
+div#new_content {
+	width: 100%;
+	height: 92%;
+	float: left;
+}
+
+div.new_contents {
+	width: 25%;
+	height: 87%;
+	float: left;
+}
+
+div.place-reply {
+	width: 100%;
+	float: left;
+}
+
+div.place-reply table {
+	width: 60%;
+}
+
+td.reply_content textarea {
+	width: 250px;
+	height: 18px;
+	wrap: off;
+	margin-right: 10px;
+	maxlength: 20;
+	color: black;
+}
+
+div.replybyplace {
+	width: 100%;
+	height: 80px;
+	overFlow-y: auto;
+}
+
+div.modal-like {
+	width: 100%;
+	float: left;
+}
+
+div.replybyplace table {
+	width: 550px;
+}
+
+td.replybyplaceWriterName {
+	text-align: left;
+	width: 10%;
+	word-break: break-all;	
+}
+
+td.replybyplaceWrittenReply {
+	text-align: left;
+	word-break: break-all;
+}
+
+td.deleteReplybyplace {
+	width: 5%;
+}

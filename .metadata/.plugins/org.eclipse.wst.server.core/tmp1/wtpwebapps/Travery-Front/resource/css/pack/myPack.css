@@ -1,31 +1,41 @@
 @CHARSET "UTF-8";
 
 /* 백지경 */
-div#wrapperdiv {
-	background-color: #f0f0f0;
+div#mypackWrapperdiv {
+	background-color: #333333;
 	float: left;
 	height: 100%;
-	width: 40%;
+	width: 400px;
 }
 
-div#packListdiv {
-	background-color: #f0f0f0;
+div#mypackListdiv {
+	background-color: #696969;
 	float: left;
 	height: 80%;
 	width: 100%;
+	
+	border-radius: 20px;
 }
 
 div#buttondiv {
-	background-color: #f0f0f0;
+	background-color: #333333;
 	float: left;
 	height: 20%;
 	width: 100%;
 	margin-left: 10px;
+	margin-top: 10px;
 }
 
 div#packListdiv2 {
 	float: left;
-	background-color: #e8e8e8;
+	background-color: #333333;
+	height: 100%;
+	width: 40%;
+	margin-left:30px;
+}
+div#packListdiv2 {
+	float: left;
+	background-color: #333333;
 	height: 100%;
 	width: 40%;
 }
@@ -33,7 +43,7 @@ div#packListdiv2 {
 div#placesOfPackListdiv {
 	align: center;
 	float: left;
-	background-color: #e8e8e8;
+	background-color: #333333;
 	height: 100%;
 	width: 100%;
 	margin-top: 5%;
@@ -42,15 +52,14 @@ div#placesOfPackListdiv {
 div#addPackFormdiv {
 	align: center;
 	float: left;
-	background-color: #e8e8e8;
+	background-color: #333333;
 	height: 100%;
 	width: 100%;
 	margin: 5%;
 }
 
 table#packListTable {
-	margin-top: 10%;
-	margin-left: 30px;
+	margin: 30px;
 }
 
 td.pack {
@@ -61,34 +70,31 @@ p#title {
 	font-family: 'Lucida Console', 'Ubuntu Condensed', "Noto Sans Korean";
 	font-size: 20px;
 	padding: 10px;
-	color: #4d4d4d;
+	color: #e1e1e1;
+	display: inline;
 }
 
 span#packData_Title {
 	font-family: 'Lucida Console', 'Ubuntu Condensed', "Noto Sans Korean";
 	font-size: 20px;
 	padding: 10px;
-	color: #4d4d4d;
+	color: #dbdbdb;
 }
 
-div.buttondiv span.glyphicon {
+div#buttondiv span.glyphicon {
+	
 	font-size: 30px;
 }
-
-img#folderImg {
-	height: 50px;
-	margin-right: 5px;
+div#packListdiv2 span.hashtagBox{
+	color:#3399ff;
 }
+
 
 img#packData_image {
 	height: 20%;
 	width: 50%;
 }
 
-img#folderImg {
-	height: 50px;
-	width: 50px;
-}
 
 /* The switch - the box around the slider */
 .switch {
