@@ -1,7 +1,7 @@
 <!--  이기연  -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/indexHeader.jsp"></jsp:include>
 
@@ -12,71 +12,71 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 <script src="<c:url value="/resource/js/scripts.js" />"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+   $(document).ready(function() {
 
-		$("#join").hide();
-		$("#login").hide();
+      $("#join").hide();
+      $("#login").hide();
 
-		$("#letsJoin").click(function() {
-			$("#login").hide();
-			
-			$("#join").animate({
-				height : 'toggle'
-			});
+      $("#letsJoin").click(function() {
+         $("#login").hide();
+         
+         $("#join").animate({
+            height : 'toggle'
+         });
 
-		});
+      });
 
-		$("#letsLogIn").click(function() {
-			$("#join").hide();
+      $("#letsLogIn").click(function() {
+         $("#join").hide();
 
-			$("#login").animate({
-				height : 'toggle'
-			});
+         $("#login").animate({
+            height : 'toggle'
+         });
 
-		});
+      });
 
-		// 회원 가입 
-		$("#btnJoin").click(function() {
+      // 회원 가입 
+      $("#btnJoin").click(function() {
 
-			var userEmail = $("#userEmail").val();
-			userEmail = $.trim(userEmail);
-			if (userEmail == "") {
-				alert("이메일을 입력하세요!");
-				$("#userEmail").focus();
-				return;
-			}
+         var userEmail = $("#userEmail").val();
+         userEmail = $.trim(userEmail);
+         if (userEmail == "") {
+            alert("이메일을 입력하세요!");
+            $("#userEmail").focus();
+            return;
+         }
 
-			var userPassword = $("#userPassword").val();
-			userPassword = $.trim(userPassword);
-			if (userPassword == "") {
-				alert("비밀번호를 입력하세요!");
-				$("#userPassword").focus();
-				return;
-			}
+         var userPassword = $("#userPassword").val();
+         userPassword = $.trim(userPassword);
+         if (userPassword == "") {
+            alert("비밀번호를 입력하세요!");
+            $("#userPassword").focus();
+            return;
+         }
 
-			var userName = $("#userName").val();
-			userName = $.trim(userName);
-			if (userName == "") {
-				alert("닉네임을 입력하세요!");
-				$("#userName").focus();
-				return;
-			}
+         var userName = $("#userName").val();
+         userName = $.trim(userName);
+         if (userName == "") {
+            alert("닉네임을 입력하세요!");
+            $("#userName").focus();
+            return;
+         }
 
-			var form = $("#joinForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/doJoin"/>");
-			form.submit();
-		});
+         var form = $("#joinForm");
+         form.attr("method", "post");
+         form.attr("action", "<c:url value="/doJoin"/>");
+         form.submit();
+      });
 
-		// 로그인 
-		$("#btnLogin").click(function() {
-			var form = $("#loginForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/doLogin"/>")
-			form.submit();
-		});
+      // 로그인 
+      $("#btnLogin").click(function() {
+         var form = $("#loginForm");
+         form.attr("method", "post");
+         form.attr("action", "<c:url value="/doLogin"/>")
+         form.submit();
+      });
 
-	});
+   });
 </script>
 
     
@@ -109,42 +109,42 @@
                     <a id="letsLogIn" class="btn btn-default btn-xl page-scroll">Login</a>
                     
                     <div class="clear"></div>
-					<div id="index">
-					
-						<div id="join" style="margin:auto;">
-							<form id="joinForm">
-							
-								<input type="text" class="form-control"	tabindex="1" id="userEmail" name="userEmail"
-									placeholder="Email" >
-								<input type="password" class="form-control"	tabindex="2" id="userPassword"
-									name="userPassword" placeholder="Password" > 			
-								<input type="text" class="form-control"	tabindex="1" id="userName" name="userName" placeholder="Nick name" >
-								<br/>	
-								<label>
-									<a class="btn btn-primary btn-xl page-scroll">Get Started</a>
-									<input type="button" id="btnJoin" value="Signup" style="display:none;"/>
-								</label>
-								
-							</form>
-						</div>
-						
-						
-						<div id="login" style="margin:auto;">
-							<form id="loginForm">
-								<input type="text" class="form-control"	tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" >
-								<input type="password" class="form-control"	tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 
-								<br/>
-								<label>
-									<a class="btn btn-primary btn-xl page-scroll">Get Started</a>
-									<input type="button" id="btnLogin" value="Login" style="display:none;" />
-								</label>								
-								
-							</form>
-						</div>	
-					
-					</div>
+               <div id="index">
+               
+                  <div id="join" style="margin:auto;">
+                     <form id="joinForm">
+                     
+                        <input type="text" class="form-control"   tabindex="1" id="userEmail" name="userEmail"
+                           placeholder="Email" >
+                        <input type="password" class="form-control"   tabindex="2" id="userPassword"
+                           name="userPassword" placeholder="Password" >          
+                        <input type="text" class="form-control"   tabindex="1" id="userName" name="userName" placeholder="Nick name" >
+                        <br/>   
+                        <label>
+                           <a class="btn btn-primary btn-xl page-scroll">Let's Join!</a>
+                           <input type="button" id="btnJoin" value="Signup" style="display:none;"/>
+                        </label>
+                        
+                     </form>
+                  </div>
+                  
+                  
+                  <div id="login" style="margin:auto;">
+                     <form id="loginForm">
+                        <input type="text" class="form-control"   tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" >
+                        <input type="password" class="form-control"   tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 
+                        <br/>
+                        <label>
+                           <a class="btn btn-primary btn-xl page-scroll">Let's fun!</a>
+                           <input type="button" id="btnLogin" value="Login" style="display:none;" />
+                        </label>                        
+                        
+                     </form>
+                  </div>   
+               
+               </div>
        
-	
+   
                     
                 </div>
             </div>
@@ -163,23 +163,23 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-android-laptop wow fadeIn" data-wow-delay=".3s"></i>
-                        <h3>Responsive</h3>
-                        <p class="text-muted">Your site looks good everywhere</p>
+                        <i class="icon-lg glyphicon glyphicon-phone wow fadeIn" data-wow-delay=".3s"></i>
+                        <h3>Travery SNS</h3>
+                        <p class="text-muted">Share your travel place with everybody</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-social-sass wow fadeInUp" data-wow-delay=".2s"></i>
-                        <h3>Customizable</h3>
-                        <p class="text-muted">Easy to theme and customize with SASS</p>
+                        <i class="icon-lg glyphicon glyphicon-globe wow fadeInUp" data-wow-delay=".2s"></i>
+                        <h3>Search</h3>
+                        <p class="text-muted">Easy to search travel place with visualization searching tool</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-ios-star-outline wow fadeIn" data-wow-delay=".3s"></i>
-                        <h3>Consistent</h3>
-                        <p class="text-muted">A mature, well-tested, stable codebase</p>
+                        <i class="icon-lg glyphicon glyphicon-calendar wow fadeIn" data-wow-delay=".3s"></i>
+                        <h3>Reservation</h3>
+                        <p class="text-muted">Reserve the hotel, air plane, etc...</p>
                     </div>
                 </div>
             </div>
@@ -275,20 +275,20 @@
                     <div class="row">
                         <h6 class="wide-space text-center">TRAVERY IS DEVELOPED BY THESE AWESOME GUYS!</h6>
                         <div class="col-sm-3 col-xs-6 text-center">
-                        	<img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
-                        	<i>기연</i>
+                           <img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
+                           <i>기연</i>
                         </div>
                         <div class="col-sm-3 col-xs-6 text-center">
-                        	<img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
-                        	<i>기연</i>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 text-center">
-                            <img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
-                        	<i>기연</i>
+                           <img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
+                           <i>기연</i>
                         </div>
                         <div class="col-sm-3 col-xs-6 text-center">
                             <img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
-                        	<i>기연</i>
+                           <i>기연</i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <img id="blah" class="img-circle" src="<c:url value="/resource/img/common/leina.jpg"/>" style="width:100px;"/>
+                           <i>기연</i>
                         </div>
                     </div>
                 </div>
