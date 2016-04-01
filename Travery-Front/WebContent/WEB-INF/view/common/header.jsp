@@ -190,13 +190,25 @@
 						id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
 					<li><a href="<c:url value="/tripReservation"/>"
 						id="tripReservationMenu"> TRIP RESERVATION </a></li>
-					<li><a href="<c:url value="/personalInfo"/>"
-						id="personalInfoMenu"> PERSONAL INFO </a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a class="page-scroll" data-toggle="modal"
-						title="A free Bootstrap video landing theme" href="#aboutModal">Login</a>
+						<a href="<c:url value="/personalInfo"/>" id="dropdownMenu1" data-toggle="dropdown" 
+							aria-expanded="true"> PERSONAL INFO <span class="caret"></span> </a>
+
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li>
+								<a> 
+									OOO님 안녕하세요 :)  <br/>
+									여기에 프로필 사진을 빡 <br/>
+									<br/>
+								</a> 
+							</li>
+							<li><a href="<c:url value="/personalInfo"/>" >Setting</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Log out</a></li>
+						</ul> 
+						
 					</li>
 				</ul>
 			</div>

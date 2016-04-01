@@ -5,7 +5,40 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-30T18:35:00Z</updated>
+  <updated>2016-03-31T13:30:55Z</updated>
+  <entry>
+    <title>Spring LDAP 2.1.0.RC1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/31/spring-ldap-2-1-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-03-31:2449</id>
+    <updated>2016-03-31T13:30:55Z</updated>
+    <content type="html">&lt;p&gt;I¡¯m pleased to announce the release of Spring LDAP 2.1.0.RC1. The highlights of this release include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/380"&gt;#380&lt;/a&gt; - Support for Spring Data Hopper&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/384"&gt;#384&lt;/a&gt; - Early support for Spring IO Platform 2.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/351"&gt;#351&lt;/a&gt; - Support for commons-pool2&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/370"&gt;#370&lt;/a&gt; - Support property placeholders in XML Namespace&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/392"&gt;#392&lt;/a&gt; - Document Testing Support&lt;/li&gt;
+  &lt;li&gt;Migrated from JIRA to &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;GitHub Issues&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Added &lt;a href="https://gitter.im/spring-projects/spring-ldap"&gt;Gitter Chat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For complete details of 2.1 refer to the &lt;a href="https://github.com/spring-projects/spring-ldap/issues?q=milestone%3A2.1.0.RC1"&gt;changelog&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#contributions" class="anchor" name="contributions"&gt;&lt;/a&gt;Contributions&lt;/h1&gt;
+&lt;p&gt;Without the community we couldn&amp;rsquo;t be the successful project we are today. I&amp;rsquo;d like to thank everyone that created issues &amp;amp; provided feedback. A special thanks to the following people who provided pull requests for this release:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/377"&gt;#377&lt;/a&gt; - Fix DirContextAdapter when adding Name attributes Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/379"&gt;#379&lt;/a&gt; - LDAP-338: support property placeholders in XML Namespace Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/383"&gt;#383&lt;/a&gt; - Update to Sonarqube Plugin Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/388"&gt;#388&lt;/a&gt; - Support integer property placeholders for pool and pool2 Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/390"&gt;#390&lt;/a&gt; - Upgrade to Spring Data Hopper Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/392"&gt;#392&lt;/a&gt; - Add documentation for Testing Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/394"&gt;#394&lt;/a&gt; - Upgrade to Gradle 2.12 Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h1&gt;&lt;a href="#feedback-please" class="anchor" name="feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h1&gt;
+&lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-ldap"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt; or Joe (our latest full time Spring Security team member) &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt; on Twitter.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ldap/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ldap/docs/2.1.0.RC1/reference/"&gt;Reference&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;Issues&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Webinar Replay: Up and Running with Spring Boot in NetBeans IDE</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/30/webinar-replay-up-and-running-with-spring-boot-in-netbeans-ide" />
@@ -758,23 +791,5 @@ class UserController(val repo: UserRepository) {&#xD;
 &lt;p&gt;If you are interested in attending &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; make sure you register before the early bird discount ends to save big!&lt;/p&gt;&#xD;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC1/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session 1.1.1 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/17/spring-session-1-1-1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2016-03-17:2429</id>
-    <updated>2016-03-17T12:45:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.1.1.RELEASE. The release can be found in Maven Central.&lt;/p&gt;&lt;h2&gt;&lt;a href="#change-log" class="anchor" name="change-log"&gt;&lt;/a&gt;Change Log&lt;/h2&gt;
-&lt;p&gt;This release includes a number of minor fixes and upgrade is recommended for anyone currently using Spring Session. You can find details of the fixes in the &lt;a href="https://github.com/spring-projects/spring-session/issues?q=milestone%3A1.1.1"&gt;changelog&lt;/a&gt;&lt;/p&gt;
-&lt;div class="callout"&gt;&#xD;
-&lt;div class="callout-title"&gt;Upcoming Conferences&lt;/div&gt;&#xD;
-&lt;p&gt;Make sure to register for &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where you can learn about the latest and greatest Spring has to offer.&lt;/p&gt;&#xD;
-&lt;p&gt;If you are interested in attending &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; make sure you register before the early bird discount ends to save big!&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.1.1.RELEASE/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
   </entry>
 </feed>

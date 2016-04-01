@@ -1,7 +1,7 @@
 <!--  이기연  -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/indexHeader.jsp"></jsp:include>
 
@@ -163,23 +163,23 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-android-laptop wow fadeIn" data-wow-delay=".3s"></i>
-                        <h3>Responsive</h3>
-                        <p class="text-muted">Your site looks good everywhere</p>
+                        <i class="icon-lg glyphicon glyphicon-phone wow fadeIn" data-wow-delay=".3s"></i>
+                        <h3>Travery SNS</h3>
+                        <p class="text-muted">Share your travel place with everybody</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-social-sass wow fadeInUp" data-wow-delay=".2s"></i>
-                        <h3>Customizable</h3>
-                        <p class="text-muted">Easy to theme and customize with SASS</p>
+                        <i class="icon-lg glyphicon glyphicon-globe wow fadeInUp" data-wow-delay=".2s"></i>
+                        <h3>Search</h3>
+                        <p class="text-muted">Easy to search travel place with visualization searching tool</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-ios-star-outline wow fadeIn" data-wow-delay=".3s"></i>
-                        <h3>Consistent</h3>
-                        <p class="text-muted">A mature, well-tested, stable codebase</p>
+                        <i class="icon-lg glyphicon glyphicon-calendar wow fadeIn" data-wow-delay=".3s"></i>
+                        <h3>Reservation</h3>
+                        <p class="text-muted">Reserve the hotel, air plane, etc...</p>
                     </div>
                 </div>
             </div>
