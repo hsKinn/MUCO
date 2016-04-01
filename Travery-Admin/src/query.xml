@@ -78,6 +78,23 @@
      				, MAIN_IMAGE_LOCATION = ?
      		WHERE	EMAIL = ?
      	</addMainImage>
+     	<getAllMemberCount>
+			SELECT	COUNT(EMAIL)
+			FROM	MEMBER     	
+     	</getAllMemberCount>
+     	<getAllMembers>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembers>
 	</member>
 	
 	<pack>
@@ -172,17 +189,55 @@
 						FROM	(
 									SELECT  *
 									FROM    PLACE
+									WHERE	IS_NEW_PLACE != 1
 									ORDER   BY PLACE_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
 					)	
 			WHERE	RNUM >= ?			
 		</getAllOriginPlaces>
+		<getAllNewPlaceCount>
+			SELECT	COUNT(PLACE_ID)
+			FROM	PLACE
+			WHERE	IS_NEW_PLACE = 1			
+		</getAllNewPlaceCount>
+		<getAllNewPlaces>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = 1
+									ORDER   BY PLACE_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllNewPlaces>
 		<getPlaceDetailByPlaceId>
 			SELECT	*
 			FROM	PLACE
 			WHERE	PLACE_ID = ?
 		</getPlaceDetailByPlaceId>
+		<getAllReportedPlaceCount>
+			SELECT	COUNT(REPORT_ID)
+			FROM	REPORTED_PLACE			
+		</getAllReportedPlaceCount>
+		<getAllReportedPlaces>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    REPORTED_PLACE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllReportedPlaces>
 	</place>
 	
 	<placeLike>

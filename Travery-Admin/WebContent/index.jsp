@@ -73,12 +73,6 @@
 
 
 <!-- Index -->
-<div id="imageSlider">
-	<ul id="imageList">
-		<li id="1"> <img style="width:100%;" src="<c:url value="/resource/img/common/IndexImg.jpg"/>" /> </li>
-	</ul>
-</div>
-
 <div id="index">
 
 	<div id="login">

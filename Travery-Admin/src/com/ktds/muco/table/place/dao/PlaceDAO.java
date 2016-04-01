@@ -166,6 +166,64 @@ public class PlaceDAO {
 		return places;
 		
 	}
+	
+	/** 
+	 * @author 이기연
+	 * @return
+	 */
+	public List<PlaceVO> getAllNewPlaces(PlaceSearchVO placeSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<PlaceVO> places = new ArrayList<PlaceVO>();
+
+		try {
+
+			PlaceVO placeVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/place/getAllNewPlaces/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeSearchVO.getEndIndex());
+			stmt.setInt(2, placeSearchVO.getStartIndex());
+					
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				placeVO = new PlaceVO();
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getInt("LATITUDE"));
+				placeVO.setLongitude(rs.getInt("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				String email = rs.getString("EMAIL");
+				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
+				
+				MemberVO member = new MemberVO();
+				
+				member.setEmail(email);
+				placeVO.setWriter(member);
+				
+				places.add(placeVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return places;
+	}
 
 	/** 
 	 * 
@@ -202,6 +260,42 @@ public class PlaceDAO {
 			closeDB(conn, stmt, rs);
 		}
 		
+	}
+	
+	/** 
+	 * 
+	 * 모든 New Place 총 개수 출력
+	 * @author 이기연
+	 * @return
+	 */
+	public int getAllNewPlaceCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/getAllNewPlaceCount/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+			
+			if ( rs.next() ) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
 	}
 	
 	/**
@@ -259,7 +353,101 @@ public class PlaceDAO {
 		}
 	
 	}
+	
+	/**
+	 * @author 이기연
+	 * reported place count 받기
+	 * @return
+	 */
+	public int getAllReportedPlaceCount() {
+		loadOracleDriver();
 
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/getAllReportedPlaceCount/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+			
+			if ( rs.next() ) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	/**
+	 * @author reported 된 모든 place 불러오기
+	 * @param placeSearchVO
+	 * @return
+	 */
+	public List<PlaceVO> getAllReportedPlaces(PlaceSearchVO placeSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<PlaceVO> places = new ArrayList<PlaceVO>();
+
+		try {
+
+			PlaceVO placeVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/place/getAllReportedPlaces/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeSearchVO.getEndIndex());
+			stmt.setInt(2, placeSearchVO.getStartIndex());
+					
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				placeVO = new PlaceVO();
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getInt("LATITUDE"));
+				placeVO.setLongitude(rs.getInt("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				String email = rs.getString("EMAIL");
+				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
+				
+				MemberVO member = new MemberVO();
+				
+				member.setEmail(email);
+				placeVO.setWriter(member);
+				
+				places.add(placeVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return places;
+		
+	}
 	
 	
 	/**
@@ -304,5 +492,6 @@ public class PlaceDAO {
 			}
 		}
 	}
+
 
 }

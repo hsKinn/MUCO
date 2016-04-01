@@ -42,7 +42,7 @@ public class OriginPlaceListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int pageNO = 0;
-
+		
 		try {
 			pageNO = Integer.parseInt(request.getParameter("pageNO"));
 		} catch (NumberFormatException nfe) {
@@ -55,7 +55,7 @@ public class OriginPlaceListServlet extends HttpServlet {
 		
 		request.setAttribute("places", placeListVO);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/originPlaceList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeList.jsp");
 		rd.forward(request, response);
 	}
 

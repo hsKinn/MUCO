@@ -289,12 +289,32 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>OriginPlaceDetailServlet</display-name>
-    <servlet-name>OriginPlaceDetailServlet</servlet-name>
-    <servlet-class>com.ktds.muco.table.place.web.OriginPlaceDetailServlet</servlet-class>
+    <display-name>PlaceDetailServlet</display-name>
+    <servlet-name>PlaceDetailServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceDetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>OriginPlaceDetailServlet</servlet-name>
-    <url-pattern>/originPlaceDetail</url-pattern>
+    <servlet-name>PlaceDetailServlet</servlet-name>
+    <url-pattern>/placeDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReportedPlaceListServlet</display-name>
+    <servlet-name>ReportedPlaceListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reportedPlace.web.ReportedPlaceListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportedPlaceListServlet</servlet-name>
+    <url-pattern>/reportedPlaceList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberListServlet</display-name>
+    <servlet-name>MemberListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.MemberListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberListServlet</servlet-name>
+    <url-pattern>/memberList</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.ktds.muco.table.member.vo.MemberSearchVO;
 import com.ktds.muco.table.member.vo.MemberVO;
-import com.ktds.muco.util.file.MultipartFile;
+import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -316,6 +317,95 @@ public class MemberDAO {
 			} catch (SQLException e) {
 			}
 		}
+	}
+
+	/**
+	 * @author 이기연 
+	 * memberCount 받아오기
+	 * @return
+	 */
+	public int getAllMemberCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/getAllMemberCount/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+			
+			if ( rs.next() ) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * @author 이기연
+	 * 모든 memberList 받아오기
+	 * @param memberSearchVO
+	 * @return
+	 */
+	public List<MemberVO> getAllMembers(MemberSearchVO memberSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<MemberVO> members = new ArrayList<MemberVO>();
+
+		try {
+
+			MemberVO memberVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/member/getAllMembers/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, memberSearchVO.getEndIndex());
+			stmt.setInt(2, memberSearchVO.getStartIndex());
+					
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				memberVO = new MemberVO();
+
+				memberVO.setEmail(rs.getString("EMAIL"));
+				memberVO.setPassword(rs.getString("PASSWORD"));
+				memberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
+				memberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
+				memberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
+				memberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
+				memberVO.setName(rs.getString("NAME"));
+				memberVO.setJoinDate(rs.getString("JOIN_DT"));
+				memberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+				
+				members.add(memberVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return members;
 	}
 
 

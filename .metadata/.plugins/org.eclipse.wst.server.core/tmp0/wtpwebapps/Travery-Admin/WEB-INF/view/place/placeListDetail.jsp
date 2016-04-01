@@ -64,16 +64,13 @@ $(document).ready(function () {
                     <li><a href="<c:url value="/originPlaceList" />">Origin Place</a></li>
                     <li><a href="#">New Place</a></li>
                     <li><a href="#">New Place Front Page</a></li>
-                    <li><a href="#">Reported Place</a></li>
-                    <li><a href="#">Place Mood Manage</a></li>
+                    <li><a href="<c:url value="/reportedPlaceList" />">Reported Place</a></li>
                   </ul>
                 </li>
                 <li>
                     <a href="#">패키지</a>
                 </li>
-                <li>
-                    <a href="#">멤버</a>
-                </li>
+                <li><a href="<c:url value="/memberList" />">멤버</a></li>
                 <li>
                     <a href="#">예약</a>
                 </li>
@@ -97,6 +94,22 @@ $(document).ready(function () {
             
             <!-- Origin Place Contents -->
             <div class="container">
+            
+				<!-- 회원 버튼 -->
+				<div id="buttonCollection">
+					<span id="massiveDeleteBtn" style="cursor: pointer">
+						<button type="button" class="btn btn-default">Delete</button>
+					</span>
+					
+					<span id="massiveBlockBtn" style="cursor: pointer">
+						<button type="button" class="btn btn-default">Report</button>
+					</span> 
+					
+					<a href="#">
+						<button type="button" class="btn btn-default">Edit</button>
+					</a>
+				</div>
+				            
 				<div id="detailWrapper">
 					<table id="detailTable">
 						<tr>
@@ -115,8 +128,8 @@ $(document).ready(function () {
 							<td>${placeDetail.address}</td>
 							<td>${placeDetail.viewCount}</td>
 							<td>${placeDetail.likeCount}</td>
-							<td>최초등록자 이름</td>
-							<td>도시ID</td>
+							<td>${registerMember.name}</td>
+							<td>${placeDetail.countryId}</td>
 						</tr>
 				
 						<tr>
@@ -132,8 +145,17 @@ $(document).ready(function () {
 						</tr>
 				
 						<tr>
-							<td colspan="6">
+							<td colspan="7">
 								여행지 이미지 넣기! here! 
+							</td>
+						</tr>
+
+						<tr>
+							<th colspan="7">여행지 Mood</th>
+						</tr>
+						<tr>
+							<td colspan="7">
+								여행지 Mood
 							</td>
 						</tr>
 					</table>
