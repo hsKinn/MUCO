@@ -65,7 +65,7 @@
 						<li><a href="#">New Place Front Page</a></li>
 						<li><a href="<c:url value="/reportedPlaceList" />">Reported Place</a></li>
 					</ul></li>
-				<li><a href="#">패키지</a></li>
+				<li><a href="<c:url value="/packList" />">패키지</a></li>
 				<li><a href="<c:url value="/memberList" />">멤버</a></li>
 				<li><a href="#">예약</a></li>
 				<li><a href="#">QnA</a></li>

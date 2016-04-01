@@ -169,7 +169,7 @@ public class MemberBiz {
 		// 1. 전체 게시글의 수
 		int allPlaceCount = memberDAO.getAllMemberCount();
 		// 1-1. 기본으로 페이지를 만들어준다. 
-		Paging paging = new Paging(10);
+		Paging paging = new Paging(20);
 		paging.setTotalArticleCount(allPlaceCount);
 		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
 		paging.setPageNumber(memberSearchVO.getPageNO()+"");

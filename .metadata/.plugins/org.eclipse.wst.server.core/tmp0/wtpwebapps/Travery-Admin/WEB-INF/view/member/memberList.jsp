@@ -16,34 +16,63 @@
 <script
 	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false;
+$(document).ready( function() {
+	var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false; trigger.click(function() {
+		hamburger_cross();
+	});
 
-						trigger.click(function() {
-							hamburger_cross();
-						});
+	function hamburger_cross() {
 
-						function hamburger_cross() {
+		if (isClosed == true) {
+			overlay.hide();
+			trigger.removeClass('is-open');
+			trigger.addClass('is-closed');
+			isClosed = false;
+		} else {
+			overlay.show();
+			trigger.removeClass('is-closed');
+			trigger.addClass('is-open');
+			isClosed = true;
+		}
+	}
 
-							if (isClosed == true) {
-								overlay.hide();
-								trigger.removeClass('is-open');
-								trigger.addClass('is-closed');
-								isClosed = false;
-							} else {
-								overlay.show();
-								trigger.removeClass('is-closed');
-								trigger.addClass('is-open');
-								isClosed = true;
-							}
-						}
-
-						$('[data-toggle="offcanvas"]').click(function() {
-							$('#wrapper').toggleClass('toggled');
-						});
-					});
+	$('[data-toggle="offcanvas"]').click(function() {
+		$('#wrapper').toggleClass('toggled');
+	});
+	
+	$("#massiveSelectCheckBox").click( function() {
+		var isChecked = $(this).prop("checked");
+		//일괄체크 되도록 하는 것 
+		$(".deleteArticleId").prop("checked", isChecked);
+	});
+	
+	$("#massiveDeleteBtn").click( function() {
+		var isChecked = false;
+		
+		$(".deleteArticleId").each( function (index, data) {
+			if (data.checked) {
+				isChecked = data.checked;
+			}
+			
+		});
+		
+		// 삭제할 대상을 정하지 않았으면 alert뜨기 
+		if( !isChecked ) {
+			alert("삭제할 대상을 선택하세요");
+		}
+		
+		// 사용자의 confirm 받기 
+		if( confirm("정말 삭제하시겠습니까?") ) {
+			// 지우는 로직 넣기 
+			var form = $("#massiveDeleteForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/massiveDelete" />");
+			form.submit();
+		}
+		
+	});
+	
+});
 </script>
 <body>
 
@@ -63,10 +92,11 @@
 								Place</a></li>
 						<li><a href="<c:url value="/newPlaceList" />">New Place</a></li>
 						<li><a href="#">New Place Front Page</a></li>
-						<li><a href="<c:url value="/reportedPlaceList" />">Reported Place</a></li>
+						<li><a href="<c:url value="/reportedPlaceList" />">Reported
+								Place</a></li>
 					</ul></li>
-				<li><a href="#">패키지</a></li>
-				<li><a href="#">멤버</a></li>
+				<li><a href="<c:url value="/packList" />">패키지</a></li>
+				<li><a href="<c:url value="/memberList" />">멤버</a></li>
 				<li><a href="#">예약</a></li>
 				<li><a href="#">QnA</a></li>
 				<li><a href="#">History</a></li>
@@ -87,7 +117,8 @@
 
 
 				<!-- 총 회원 수 보여주기  -->
-				총 <b style="color: red">${members.paging.totalArticleCount}</b>명 있습니다.
+				총 <b style="color: red">${members.paging.totalArticleCount}</b>명
+				있습니다.
 
 				<!-- 회원 버튼 -->
 				<div id="buttonCollection">
@@ -117,11 +148,10 @@
 						<form id="massiveDeleteForm">
 							<c:forEach items="${members.memberList}" var="member">
 								<tr>
-									<td>
-										<input type="checkbox" class="deleteMemberId"
+									<td><input type="checkbox" class="deleteMemberId"
 										name="deleteMemberId" value="${member.email}" /></td>
-									<td>
-										<a href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
+									<td><a
+										href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
 									<td>${member.password}</a></td>
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>

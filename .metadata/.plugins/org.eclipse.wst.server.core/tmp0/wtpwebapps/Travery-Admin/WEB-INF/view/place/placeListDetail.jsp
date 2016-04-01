@@ -67,9 +67,7 @@ $(document).ready(function () {
                     <li><a href="<c:url value="/reportedPlaceList" />">Reported Place</a></li>
                   </ul>
                 </li>
-                <li>
-                    <a href="#">패키지</a>
-                </li>
+                <li><a href="<c:url value="/packList" />">패키지</a></li>
                 <li><a href="<c:url value="/memberList" />">멤버</a></li>
                 <li>
                     <a href="#">예약</a>
@@ -97,17 +95,22 @@ $(document).ready(function () {
             
 				<!-- 회원 버튼 -->
 				<div id="buttonCollection">
-					<span id="massiveDeleteBtn" style="cursor: pointer">
+					<a href="#">
+						<button type="button" class="btn btn-default">Edit</button>
+					</a>
+					<a href="<c:url value="/placeDelete?placeId=${placeDetail.placeId}" />">
 						<button type="button" class="btn btn-default">Delete</button>
-					</span>
-					
+					</a>
+									
 					<span id="massiveBlockBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">Report</button>
 					</span> 
 					
-					<a href="#">
-						<button type="button" class="btn btn-default">Edit</button>
-					</a>
+					<span id="massiveBlockBtn" style="cursor: pointer">
+						<button type="button" class="btn btn-default">Go Origin!</button>
+					</span> 
+
+					
 				</div>
 				            
 				<div id="detailWrapper">

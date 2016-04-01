@@ -3,7 +3,10 @@
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceListVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.dao.PlaceDAO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.biz.MemberBiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.pack.biz.PackBiz"/>
 </qualifiedTypeNameHistroy>

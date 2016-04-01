@@ -143,6 +143,24 @@
 			FROM    PACK_PLACE
 			WHERE   PACK_ID = ?
 		</getPlaceListByPackId>
+		<getAllPackage>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY PACK_ID
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackage>
+		<getPackListCount>
+			SELECT 	COUNT(PACK_ID)
+			FROM    PACK		
+		</getPackListCount>
 	</pack>
 	
 	<packLike>
@@ -238,6 +256,11 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllReportedPlaces>
+		<deletePlace>
+			DELETE	
+			FROM	PLACE
+			WHERE	PLACE_ID = ?					
+		</deletePlace>
 	</place>
 	
 	<placeLike>

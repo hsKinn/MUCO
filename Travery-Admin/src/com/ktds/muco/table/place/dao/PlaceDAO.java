@@ -492,6 +492,42 @@ public class PlaceDAO {
 			}
 		}
 	}
+		
+	/**
+	 * place 삭제
+	 * @author 이기연
+	 * @param placeId
+	 */
+	public void deletePlace(int placeId) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/deletePlace/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setInt(1, placeId);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("place 삭제 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}		
+	}
 
 
 }

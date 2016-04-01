@@ -142,5 +142,14 @@ public class PlaceBiz {
 		return originPlaceList;		
 	}
 
+	/**
+	 * @author 이기연 
+	 * place 삭제
+	 * @param placeId
+	 */
+	public void detelePlace(int placeId) {
+		placeDAO.deletePlace(placeId);
+	}
+
 
 }

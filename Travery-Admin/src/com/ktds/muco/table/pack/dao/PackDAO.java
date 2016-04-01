@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.pack.vo.PackSearchVO;
 import com.ktds.muco.table.pack.vo.PackVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
@@ -235,6 +238,94 @@ public class PackDAO {
 	}
 
 	/**
+	 * 모든 패키지 받아오는 method
+	 * @author 이기연
+	 * @param packSearchVO
+	 * @return
+	 */
+	public List<PackVO> getAllPackage(PackSearchVO packSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<PackVO> packs = new ArrayList<PackVO>();
+
+		try {
+
+			PackVO packVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/pack/getAllPackage/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packSearchVO.getEndIndex());
+			stmt.setInt(2, packSearchVO.getStartIndex());
+					
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				packVO = new PackVO();
+				
+				packVO.setPackId(rs.getInt("PACK_ID"));
+				packVO.setPackTitle(rs.getString("PACK_TITLE"));
+				packVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				packVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				packVO.setEmail(rs.getString("EMAIL"));
+				packVO.setIsPublic(rs.getInt("IS_PUBLIC"));
+				packVO.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
+				packVO.setShareImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				
+				packs.add(packVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return packs;
+	}
+	
+	/**
+	 * package count 받아오는 method
+	 * @author 이기연
+	 * @return
+	 */
+	public int getPackListCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/pack/getPackListCount/text()");
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+			
+			if ( rs.next() ) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}	
+	}
+	
+	/**
 	 * 
 	 * Load Oracle Driver
 	 * 
@@ -276,5 +367,9 @@ public class PackDAO {
 			}
 		}
 	}
+
+
+
+
 
 }
