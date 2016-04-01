@@ -1,7 +1,10 @@
 package com.ktds.muco.table.place.vo;
 
+import java.util.List;
+
 import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.placeReply.vo.PlaceReplyVO;
 
 /**
  * 여행지
@@ -28,12 +31,47 @@ public class PlaceVO extends CountryVO {
 	
 	private int avgLikeCount;
 
-	// 작성자
+	private String imageLocation;
+	private boolean isExistPlaceLike;
+	private List<PlaceReplyVO> placeReplyList;
+	private String name;
+	
 	private MemberVO writer;
 	
 	
 	
-	
+
+	public String getImageLocation() {
+		return imageLocation;
+	}
+
+	public void setImageLocation(String imageLocation) {
+		this.imageLocation = imageLocation;
+	}
+
+	public boolean isExistPlaceLike() {
+		return isExistPlaceLike;
+	}
+
+	public void setExistPlaceLike(boolean isExistPlaceLike) {
+		this.isExistPlaceLike = isExistPlaceLike;
+	}
+
+	public List<PlaceReplyVO> getPlaceReplyList() {
+		return placeReplyList;
+	}
+
+	public void setPlaceReplyList(List<PlaceReplyVO> placeReplyList) {
+		this.placeReplyList = placeReplyList;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getAvgLikeCount() {
 		return avgLikeCount;

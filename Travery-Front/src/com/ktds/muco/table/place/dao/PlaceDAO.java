@@ -10,8 +10,11 @@ import java.util.List;
 
 import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
-import com.ktds.muco.table.placeLike.dao.PlaceLikeDAO;
+import com.ktds.muco.table.placeLike.biz.PlaceLikeBiz;
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
+import com.ktds.muco.table.placeReply.dao.PlaceReplyDAO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -21,12 +24,15 @@ import com.ktds.muco.util.xml.XML;
  */
 public class PlaceDAO {
 	
-	private PlaceLikeDAO placeLikeDAO;
+	private PlaceReplyDAO placeReplyDAO;
+	private PlaceLikeBiz placeLikeBiz;
 	
 	public PlaceDAO() {
-		placeLikeDAO = new PlaceLikeDAO();
+		placeReplyDAO = new PlaceReplyDAO();
+		placeLikeBiz = new PlaceLikeBiz();
 	}
 
+	
 	/**
 	 * Get Place in Package
 	 * 
@@ -83,7 +89,7 @@ public class PlaceDAO {
 	 * @author 김현섭
 	 * 
 	 */
-	public List<PlaceVO> getPlaceListByDaily () {
+	public List<PlaceVO> getPlaceListByDaily ( MemberVO member ) {
 		
 
 		loadOracleDriver();
@@ -93,6 +99,9 @@ public class PlaceDAO {
 		ResultSet rs = null;
 
 		List<PlaceVO> dailyList = new ArrayList<PlaceVO>();
+		
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
 
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
@@ -117,7 +126,10 @@ public class PlaceDAO {
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
 				//TODO 무드 별 평균값 가져와야함
 				
-				System.out.println("플래 아디" + place.getPlaceName());
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+				
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(place.getPlaceId()));				
 				
 				dailyList.add(place);
 			}
@@ -139,7 +151,7 @@ public class PlaceDAO {
 	 * @author 김현섭
 	 * 
 	 */
-	public List<PlaceVO> getPlaceListByWeekly () {
+	public List<PlaceVO> getPlaceListByWeekly ( MemberVO member ) {
 		
 		
 		loadOracleDriver();
@@ -149,6 +161,9 @@ public class PlaceDAO {
 		ResultSet rs = null;
 		
 		List<PlaceVO> weeklyList = new ArrayList<PlaceVO>();
+		
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
 		
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
@@ -173,6 +188,11 @@ public class PlaceDAO {
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
 				//TODO 무드 별 평균값 가져와야함
 				
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+				
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(place.getPlaceId()));						
+				
 				weeklyList.add(place);
 			}
 			
@@ -193,7 +213,7 @@ public class PlaceDAO {
 	 * @author 김현섭
 	 * 
 	 */
-	public List<PlaceVO> getPlaceListByMonthly () {
+	public List<PlaceVO> getPlaceListByMonthly ( MemberVO member ) {
 		
 		
 		loadOracleDriver();
@@ -203,6 +223,9 @@ public class PlaceDAO {
 		ResultSet rs = null;
 		
 		List<PlaceVO> monthlyList = new ArrayList<PlaceVO>();
+		
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
 		
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
@@ -226,6 +249,11 @@ public class PlaceDAO {
 				place.setAvgLikeCount(rs.getInt("MONTHLY_LIKE"));				
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
 				//TODO 무드 별 평균값 가져와야함
+				
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+				
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(place.getPlaceId()));						
 				
 				monthlyList.add(place);
 			}
@@ -281,6 +309,7 @@ public class PlaceDAO {
 		return placeList;
 	}
 
+	
 	/**
 	 * 
 	 * insertPlaceInfo
@@ -336,6 +365,232 @@ public class PlaceDAO {
 
 	}
 
+	
+	/**
+	 * viewCountRecommendPlace
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeId
+	 * @return
+	 */
+	public int viewCountRecommendPlace(int placeId) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/viewCountRecommendPlace/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeId);
+
+			return stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	
+	/**
+	 * getAllPlaceList
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeSearchVO / memberVO
+	 * @return
+	 */
+	public List<PlaceVO> getAllPlaceList(PlaceSearchVO placeSearchVO, MemberVO memberVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(memberVO);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getAllPlaceList/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeSearchVO.getEndIndex());
+			stmt.setInt(2, placeSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			PlaceVO placeVO = null;
+
+			while (rs.next()) {
+
+				placeVO = new PlaceVO();
+
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setName(rs.getString("NAME"));
+				placeVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
+								
+				placeLikeVO.setPlaceId(placeVO.getPlaceId());
+				placeVO.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+				
+				placeVO.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeVO.getPlaceId()));
+
+				placeList.add(placeVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return placeList;
+	}
+	
+	
+	public int getAllPlaceCount(PlaceSearchVO placeSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/getAllPlaceCount/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+			rs.next();
+			placeCount = rs.getInt(1);
+
+			return placeCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	
+	public List<PlaceVO> getAllPlaceListOrderByView(PlaceSearchVO placeSearchVO, MemberVO memberVO) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(memberVO);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getAllPlaceListOrderByView/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeSearchVO.getEndIndex());
+			stmt.setInt(2, placeSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			PlaceVO placeVO = null;
+
+			while (rs.next()) {
+
+
+				placeVO = new PlaceVO();
+
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setName(rs.getString("NAME"));
+				placeVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				
+				placeLikeVO.setPlaceId(placeVO.getPlaceId());
+				placeVO.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+				
+				placeVO.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeVO.getPlaceId()));
+
+				placeList.add(placeVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return placeList;
+	}
+
+	
+	public List<PlaceVO> getAllPlaceListOrderByDate(PlaceSearchVO placeSearchVO, MemberVO memberVO) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(memberVO);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+		
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getAllPlaceListOrderByDate/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeSearchVO.getEndIndex());
+			stmt.setInt(2, placeSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			PlaceVO placeVO = null;
+
+			while (rs.next()) {
+
+				placeVO = new PlaceVO();
+
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setName(rs.getString("NAME"));
+				placeVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				
+				placeLikeVO.setPlaceId(placeVO.getPlaceId());
+				placeVO.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+
+				placeVO.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeVO.getPlaceId()));
+
+				placeList.add(placeVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return placeList;
+	}
+	
+	
 	/**
 	 * 
 	 * placeInfoRecommendedList
@@ -388,6 +643,236 @@ public class PlaceDAO {
 		return placeList;
 	}
 
+	
+	/**
+	 * Get Place Count By Place Name
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeSearchVO
+	 * @return
+	 */
+	public int getPlaceCountByPlaceName( PlaceSearchVO placeSearchVO ) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/getPlaceCountByPlaceName/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, placeSearchVO.getSearchKeyword());
+
+			rs = stmt.executeQuery();
+
+			int articleCount = 0;
+			rs.next();
+			articleCount = rs.getInt(1);
+
+			return articleCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	} // getPlaceCountByPlaceName END
+	
+	
+	/**
+	 * Get Place List By Place Name Order By Like Count
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeSearchVO
+	 * @param member
+	 * @return
+	 */
+	public List<PlaceVO> getPlaceListByPlaceName(PlaceSearchVO placeSearchVO, MemberVO member) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getPlaceListByPlaceName/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, placeSearchVO.getSearchKeyword());
+			stmt.setInt(2, placeSearchVO.getEndIndex());
+			stmt.setInt(3, placeSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			PlaceVO place = null;
+
+			while (rs.next()) {
+
+				place = new PlaceVO();
+
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setName(rs.getString("NAME"));
+				place.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(place.getPlaceId()));
+
+				placeList.add(place);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return placeList;
+		
+	} // getPlaceListByPlaceName END
+	
+	
+	/**
+	 * Get Place List By Place Name Order By View Count
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeSearchVO
+	 * @param member
+	 * @return
+	 */
+	public List<PlaceVO> getPlaceListByPlaceNameOrderByView(PlaceSearchVO placeSearchVO, MemberVO member) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getPlaceListByPlaceNameOrderByView/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, placeSearchVO.getSearchKeyword());
+			stmt.setInt(2, placeSearchVO.getEndIndex());
+			stmt.setInt(3, placeSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			PlaceVO place = null;
+
+			while (rs.next()) {
+
+				place = new PlaceVO();
+
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setName(rs.getString("NAME"));
+				place.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(place.getPlaceId()));
+
+				placeList.add(place);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return placeList;
+		
+	} // getPlaceListByPlaceNameOrderByView END
+	
+	
+	/**
+	 * Get Place List By Place Name Order By Date
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeSearchVO
+	 * @param member
+	 * @return
+	 */
+	public List<PlaceVO> getPlaceListByPlaceNameOrderByDate(PlaceSearchVO placeSearchVO, MemberVO member) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getPlaceListByPlaceNameOrderByDate/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, placeSearchVO.getSearchKeyword());
+			stmt.setInt(2, placeSearchVO.getEndIndex());
+			stmt.setInt(3, placeSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			PlaceVO place = null;
+
+			while (rs.next()) {
+
+				place = new PlaceVO();
+
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setName(rs.getString("NAME"));
+				place.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(place.getPlaceId()));
+
+				placeList.add(place);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return placeList;
+		
+	} // getPlaceListByPlaceNameOrderByDate END
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -430,4 +915,5 @@ public class PlaceDAO {
 			}
 		}
 	}
+	
 }

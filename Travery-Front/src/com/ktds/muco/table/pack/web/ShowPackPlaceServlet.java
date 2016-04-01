@@ -25,7 +25,6 @@ public class ShowPackPlaceServlet extends HttpServlet {
 	public ShowPackPlaceServlet() {
 		super();
 		packBiz = new PackBiz();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

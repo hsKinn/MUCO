@@ -67,7 +67,15 @@ public class PackReplyBiz {
 		return 0;
 	} // getNewOrderNo end
 
-
+	
+	/**
+	 * Delete Pack Reply 
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param packReplyId
+	 * @return
+	 */
 	public boolean deletePackReply(int packReplyId) {
 		
 		if ( packReplyDAO.deletePackReply(packReplyId) > 0 ) {
@@ -76,7 +84,6 @@ public class PackReplyBiz {
 		else {
 			return false;
 		}
-		
-	}
+	} // deletePackReply END
 
 }

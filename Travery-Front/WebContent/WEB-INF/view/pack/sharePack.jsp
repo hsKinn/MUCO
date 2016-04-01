@@ -182,8 +182,6 @@
 									</form>
 								</div>
 								
-
-								
 								<div class="replybypack">
 									<c:forEach items="${ pack.replyList }" var="reply">
 										<div>

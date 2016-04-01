@@ -19,6 +19,7 @@ import com.ktds.muco.util.xml.XML;
  */
 public class PackReplyDAO {
 	
+	
 	/**
 	 * Get ReplyList By Pack ID
 	 * 
@@ -114,7 +115,12 @@ public class PackReplyDAO {
 	
 	
 	/**
-	 * 댓글 작성 
+	 * 대댓글 작성
+	 * 
+	 * @author 김현섭
+	 * 
+	 * TODO 미완성
+	 * 
 	 */
 	public int insertReply (PackReplyVO packReply) {
 		
@@ -155,11 +161,15 @@ public class PackReplyDAO {
 		finally {
 			closeDB(conn, stmt, null);
 		}
-	}
+	} // insertReply END
 	
 	
 	/**
 	 * 부모 댓글 여부 
+	 * 
+	 * @author 김현섭
+	 * 
+	 * TODO 미완성
 	 */
 	public int selectCountParentReplyId(PackReplyVO packReply) {
 		
@@ -188,11 +198,15 @@ public class PackReplyDAO {
 			closeDB(conn, stmt, rs);
 		}
 		
-	}
+	} // selectCountParentReplyId END
 	
 	
 	/**
 	 * 최대 오더 넘버 값 가져오기
+	 * 
+	 * @author 김현섭
+	 * 
+	 * TODO 미완성
 	 */
 	public int selectMaxOrderNoByParentReplyId(PackReplyVO packReply) {
 		
@@ -224,11 +238,15 @@ public class PackReplyDAO {
 		finally {
 			closeDB(conn, stmt, rs);
 		}		
-	}
+	} // selectMaxOrderNoByParentReplyId END
 
 	
 	/**
-	 * 최신 오더 넘버 
+	 * 최신 오더 넘버
+	 * 
+	 *  @author 김현섭
+	 *  
+	 *  TODO 미완성
 	 */
 	public int selectLatestOrderNoByParentReplyId(PackReplyVO packReply) {
 		
@@ -256,11 +274,15 @@ public class PackReplyDAO {
 		finally {
 			closeDB(conn, stmt, rs);
 		}			
-	}
+	} // selectLatestOrderNoByParentReplyId END
 
 	
 	/**
 	 * 업데이트 오더 넘버
+	 * 
+	 * @author 김현섭
+	 * 
+	 * TODO 미완성
 	 */
 	public void updateOrderNoByGroupId(PackReplyVO packReply) {
 		
@@ -284,7 +306,7 @@ public class PackReplyDAO {
 		finally {
 			closeDB(conn, stmt, null);
 		}
-	}	
+	} // updateOrderNoByGroupId END	
 	
 	
 	/**
@@ -302,6 +324,7 @@ public class PackReplyDAO {
 		}
 	}
 
+	
 	/**
 	 * 
 	 * Close DB
@@ -329,6 +352,5 @@ public class PackReplyDAO {
 			}
 		}
 	}
-
 
 }

@@ -378,12 +378,52 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Test</display-name>
-    <servlet-name>Test</servlet-name>
-    <servlet-class>com.ktds.muco.Test</servlet-class>
+    <display-name>PlaceInfoInitSearchServlet</display-name>
+    <servlet-name>PlaceInfoInitSearchServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceInfoInitSearchServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Test</servlet-name>
-    <url-pattern>/test</url-pattern>
+    <servlet-name>PlaceInfoInitSearchServlet</servlet-name>
+    <url-pattern>/placeInfoInit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceLikeServlet</display-name>
+    <servlet-name>PlaceLikeServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.placeLike.web.PlaceLikeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceLikeServlet</servlet-name>
+    <url-pattern>/placeLike</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewCountRecommendPlaceServlet</display-name>
+    <servlet-name>ViewCountRecommendPlaceServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.ViewCountRecommendPlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCountRecommendPlaceServlet</servlet-name>
+    <url-pattern>/viewCountRecommendPlace</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoWritePlaceReplyServlet</display-name>
+    <servlet-name>DoWritePlaceReplyServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.placeReply.web.DoWritePlaceReplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoWritePlaceReplyServlet</servlet-name>
+    <url-pattern>/doWritePlaceReply</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePlaceReplyServlet</display-name>
+    <servlet-name>DeletePlaceReplyServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.placeReply.web.DeletePlaceReplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePlaceReplyServlet</servlet-name>
+    <url-pattern>/deletePlaceReply</url-pattern>
   </servlet-mapping>
 </web-app>

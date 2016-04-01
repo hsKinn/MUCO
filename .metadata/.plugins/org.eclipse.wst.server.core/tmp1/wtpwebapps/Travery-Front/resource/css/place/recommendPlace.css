@@ -110,8 +110,8 @@ div.content_top img {
 
 div.content_middle {
 	width: 100%;
-	height: 12%;
-	margin-top: 7px;
+	height: 8%;
+	margin-top: 4px;
 	float: left;
 	text-align: center;
 	font-size: 13px;
@@ -175,19 +175,16 @@ div#middle {
 
 	font-size: 15px;
 	width: 97.5%;
-	height: 4%;
+	height: 5.5%;
 	float: left;
 }
 
 div#search_part {
 	float: left;
-	width: 86%;
-	height: 3%;
 }
 
 div#write_part {
 	float: right;
-	height: 3%;	
 }
 
 input#searchKeyword {
@@ -207,15 +204,14 @@ div#recommendPlace_Wrapper button span {
 
 div#inner_wrapper2 {
 	width: 97.5%;
-	height: 27%;
+	height: 22%;
 	margin-left: 2%;
-	margin-top: 2px;
+	margin-top: 1px;
 	float: left;
 }
 
 div#paging {
 	width: 100%;
-	height: 7%;
 	float: left;
 	text-align: center;
 }
@@ -235,7 +231,7 @@ div#new_top {
 }
 
 div#top_name {
-	width: 80%;
+	width: 100%;
 	float: left;
 	font-size: 20px;
 	text-align: center;	
@@ -243,7 +239,6 @@ div#top_name {
 }
 
 div#top_sort {
-	width: 20%;
 	float: right;
 }
 
@@ -254,8 +249,50 @@ div#new_content {
 }
 
 div.new_contents {
-	width: 23%;
+	width: 25%;
 	height: 87%;
 	float: left;
 	border: 1px solid #d0d0d0;		
+}
+
+div.place-reply {
+	width: 100%;
+	float: left;
+}
+
+div.place-reply table {
+	width: 60%;
+}
+
+td.reply_content textarea {
+	width: 250px;
+	height: 18px;
+	wrap: off;
+	margin-right: 10px;
+	maxlength: 20;
+}
+
+div.replybyplace {
+	width: 100%;
+	height: 80px;
+	overFlow-y: auto;
+}
+
+div.replybyplace table {
+	width: 550px;
+}
+
+td.replybyplaceWriterName {
+	text-align: left;
+	width: 10%;
+	word-break: break-all;	
+}
+
+td.replybyplaceWrittenReply {
+	text-align: left;
+	word-break: break-all;
+}
+
+td.deleteReplybyplace {
+	width: 5%;
 }

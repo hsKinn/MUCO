@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -15,6 +16,148 @@ import com.ktds.muco.util.xml.XML;
  *
  */
 public class PlaceLikeDAO {
+	
+	
+	/**
+	 * selectPlaceLikeCount
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeLikeVO
+	 * @return
+	 */
+	public int selectPlaceLikeCount(PlaceLikeVO placeLikeVO) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/placeLike/selectPlaceLikeCount/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeLikeVO.getPlaceId());
+			stmt.setString(2, placeLikeVO.getWriter().getEmail());
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	
+	/**
+	 * insertPlaceLike
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeLikeVO
+	 * @return
+	 */
+	public void insertPlaceLike(PlaceLikeVO placeLikeVO) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/placeLike/insertPlaceLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeLikeVO.getPlaceId());
+			stmt.setString(2, placeLikeVO.getWriter().getEmail());
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	
+	/**
+	 * deletePlaceLike
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param placeLikeVO
+	 * @return
+	 */
+	public void deletePlaceLike(PlaceLikeVO placeLikeVO) {
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/placeLike/deletePlaceLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeLikeVO.getPlaceId());
+			stmt.setString(2, placeLikeVO.getWriter().getEmail());
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	
+	/**
+	 * Count Place Like By Place ID
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeId
+	 * @return
+	 */
+	public int countPlaceLike(int placeId) {
+		
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/placeLike/countPlaceLike/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeId);
+			
+			rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+	} // countPlaceLike END
 	
 	
 	/**
@@ -32,6 +175,7 @@ public class PlaceLikeDAO {
 		}
 	}
 
+	
 	/**
 	 * 
 	 * Close DB
@@ -59,5 +203,5 @@ public class PlaceLikeDAO {
 			}
 		}
 	}
-
+	
 }

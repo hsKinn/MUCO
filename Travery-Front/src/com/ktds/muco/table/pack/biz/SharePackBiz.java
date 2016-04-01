@@ -17,6 +17,7 @@ public class SharePackBiz {
 		sharePackDAO = new SharePackDAO();
 	}
 
+	
 	/**
 	 * Get All Package List
 	 * 
@@ -37,7 +38,8 @@ public class SharePackBiz {
 		if (packSearchVO.getSearchKeyword().equals("")) {
 			allPackageCount = sharePackDAO.getAllPackageListCount(packSearchVO);
 			paging.setTotalArticleCount(allPackageCount);
-		} else {
+		} 
+		else {
 			allPackageCountByHashTag = sharePackDAO.getAllPackageCountByHashTag(packSearchVO);
 			paging.setTotalArticleCount(allPackageCountByHashTag);
 		}
@@ -56,17 +58,21 @@ public class SharePackBiz {
 		if (packSearchVO.getSearchKeyword().equals("")) {
 			if (sortOption == 1) {
 				packages = sharePackDAO.getAllPackageList(packSearchVO, member);
-			} else if (sortOption == 2) {
+			} 
+			else if (sortOption == 2) {
 				packages = sharePackDAO.getAllPackageListOrderByView(packSearchVO, member);
-			} else if (sortOption == 3) {
+			} 
+			else if (sortOption == 3) {
 				packages = sharePackDAO.getAllPackageListOrderByDate(packSearchVO, member);
 			}
 		} else {
 			if (sortOption == 1) {
 				packages = sharePackDAO.getAllPackageListByHashTag(packSearchVO, member);
-			} else if (sortOption == 2) {
+			} 
+			else if (sortOption == 2) {
 				packages = sharePackDAO.getAllPackageListByHashTagOrderByView(packSearchVO, member);
-			} else if (sortOption == 3) {
+			} 
+			else if (sortOption == 3) {
 				packages = sharePackDAO.getAllPackageListByHashTagOrderByDate(packSearchVO, member);
 			}
 		}
@@ -77,6 +83,7 @@ public class SharePackBiz {
 
 		return packList;
 	} // getAllPackageList END
+	
 
 	/**
 	 * Hit the Count By Pack

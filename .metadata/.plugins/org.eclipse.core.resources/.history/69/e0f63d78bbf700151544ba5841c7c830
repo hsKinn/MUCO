@@ -1,0 +1,72 @@
+package com.ktds.muco.table.placeLike.web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.placeLike.biz.PlaceLikeBiz;
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
+
+/**
+ * Servlet implementation class PlaceLikeServlet
+ */
+public class PlaceLikeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private PlaceLikeBiz placeLikeBiz;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PlaceLikeServlet() {
+		super();
+		placeLikeBiz = new PlaceLikeBiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 접근");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int placeId = Integer.parseInt(request.getParameter("placeId"));
+
+		HttpSession session = request.getSession();
+		MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setPlaceId(placeId);
+		placeLikeVO.setWriter(memberVO);
+		
+		System.out.println("aaaaaaaaaa" + placeLikeVO.getWriter().getName());
+		
+		placeLikeBiz.insertOrDeletePlaceLike(placeLikeVO);
+		boolean isExistPlaceLike = placeLikeBiz.isExistPlaceLike(placeLikeVO);
+
+		StringBuffer json = new StringBuffer();
+
+		json.append("{");
+		json.append("\"result\" : true");
+		json.append(", \"isplaceLike\" : " + isExistPlaceLike);
+		json.append("}");
+
+		PrintWriter out = response.getWriter();
+		out.print(json.toString());
+		out.flush();
+		out.close();
+	}
+}
