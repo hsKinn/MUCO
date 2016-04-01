@@ -320,6 +320,8 @@
        
 		// 새로고침 해도 현재 탭 유지
 		
+		
+		
 		/* 1. 나라 선택 탭 */
 		
 		// 오른쪽 나라 리스트에서 나라 지울때
@@ -332,6 +334,8 @@
 	   	$("#removeAllCountries").click(function(){
 			location.href = "/removeAllSelectedCountries";
 	   	});
+	   	
+	   	
 	   	
 	   	/* 2. 나라 검색 탭 */
 	   	
@@ -372,20 +376,22 @@
 			</c:forEach>
 		</c:if>
 		
+		// 점에 마우스 대면 크게
+		$("#dottedDiv > a").mouseenter(function(){
+			$(this).css("font-size","x-large");	
+		});
+		$("#dottedDiv > a").mouseleave(function(){
+			$(this).css("font-size","x-small");
+		});
+		
+		// 점에 마우스 대면 여행지명 표시
 		$('[data-toggle="tooltip"]').tooltip();
 		
+		// 점 클릭하면 아래 임시 리스트에 Div 생성
 		$("#dottedDiv > a").click(function(){
 			var select = $(this);
 		    var id = select.attr('id');
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
-		});
-		
-		$("#dottedDiv > a").mouseenter(function(){
-			$(this).css("font-size","x-large");
-			
-		});
-		$("#dottedDiv > a").mouseleave(function(){
-			$(this).css("font-size","x-small");
 		});
 		
 	});
@@ -414,29 +420,16 @@
 		
 						<!-- 탭 -->
 						<ul id="hitTheRoadTabs" class="nav nav-tabs">
-<<<<<<< HEAD
-							
 							<li class="tabMenu"><a data-toggle="tab" href="#home">Country</a></li>
 							<li class="tabMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
 							<li class="tabMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
 							<li class="tabMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
-=======
-							<li class="active"><a data-toggle="tab" href="#home">Country</a></li>
-							<li id="searchPlaces" ><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li ><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li ><a data-toggle="tab" href="#menu3">Route</a></li>
->>>>>>> origin/YBH7
 						</ul>
 		
 						<!-- 탭 내용 -->
 						<div class="tab-content">
 							<!-- 나라 선택 탭 -->
-<<<<<<< HEAD
 							<div id="home" class="tab-pane fade">
-=======
-							<div id="home" class="tab-pane in active">
->>>>>>> origin/YBH7
-		
 								<!-- 지도 -->
 								<div id="map1" style="width: 100%; height: 95%;"></div>
 		

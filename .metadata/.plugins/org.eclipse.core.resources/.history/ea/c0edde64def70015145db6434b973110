@@ -320,8 +320,6 @@
        
 		// 새로고침 해도 현재 탭 유지
 		
-		
-		
 		/* 1. 나라 선택 탭 */
 		
 		// 오른쪽 나라 리스트에서 나라 지울때
@@ -334,8 +332,6 @@
 	   	$("#removeAllCountries").click(function(){
 			location.href = "/removeAllSelectedCountries";
 	   	});
-	   	
-	   	
 	   	
 	   	/* 2. 나라 검색 탭 */
 	   	
