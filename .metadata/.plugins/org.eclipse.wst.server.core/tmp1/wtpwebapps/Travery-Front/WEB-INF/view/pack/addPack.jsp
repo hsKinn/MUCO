@@ -26,12 +26,14 @@
 			$("#hashTag").val(null);
 		});
 
-		$(".btn-primary").click(function() {
+		$(".btn-success").click(function() {
 			var form = $("#addPack");
-			alert(form.hashtagBox);
 			form.attr("method", "post");
 			form.attr("action", "/doAddPack");
 			form.submit();
+		});
+		$(".btn-primary").click(function(){
+			location.href="/detailPack";
 		});
 
 	});
@@ -49,25 +51,30 @@
 		}
 	}
 </script>
-
-<section class="bg-primary" id="one">
+<section class="bg-primary" >
 	<div class="container">
+		<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">MY PACKAGE</h2>
+			<hr class="primary">
+			<p>손 쉽게 여행 예약을 할 수 있는 기능</p>
+		</div>
+
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
 				<table id="packListTable">
 					<c:forEach items="${ packs}" var="packs">
 						<tr>
-							<td class="pack"><img
-								src="<c:url value="/resource/img/pack/folder.png"/>"
-								id="folderImg" /> <label id="title" for="packData_Title"
-								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
+							<td class="pack"><span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
+								<p id="title">${packs.packTitle}</p>
 								<input type="hidden" id="packId" value="${packs.packId}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div id="buttondiv">
-				<a href="/myPack"><span class="glyphicon glyphicon-ok-sign"></span></a>
+				 <button type="button" class="btn btn-primary btn-sm"style="width:120px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span>Okay</button>
 			</div>
 		</div>
 
@@ -105,7 +112,7 @@
 						</br> <span class="hashtagBox"></span>
 					</div>
 
-					<button type="submit" class="btn btn-primary" style="width: 130px;">AddPackage</button>
+					<button type="submit" class="btn btn-success" style="width: 130px;">AddPackage</button>
 				</form>
 			</div>
 		</div>

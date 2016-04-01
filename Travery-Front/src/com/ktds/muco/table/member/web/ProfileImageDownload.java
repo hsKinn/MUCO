@@ -46,7 +46,7 @@ public class ProfileImageDownload extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO loginMemberVO = (MemberVO) session.getAttribute("_MEMBER_");
 
-		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\");
+		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\travery\\");
 		downloadUtil.download(request, response, loginMemberVO.getMainImageName(), loginMemberVO.getMainImageName());
 
 	}

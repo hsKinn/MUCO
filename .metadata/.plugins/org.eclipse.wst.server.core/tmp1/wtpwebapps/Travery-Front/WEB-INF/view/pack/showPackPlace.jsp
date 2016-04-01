@@ -48,9 +48,9 @@
 
 		});
 
-		$(".switch").click(function() {
-			alert();
-		});
+			$("#wantModifyBtn").click(function(){
+				location.href="/detailPack";
+			});
 
 	});
 </script>
@@ -69,17 +69,16 @@
 				<table id="packListTable" >
 					<c:forEach items="${packs}" var="packs">
 						<tr>
-							<td class="pack"><img
-								src="<c:url value="/resource/img/pack/folder.png"/>"
-								id="folderImg" /> <label id="title" for="packData_Title"
-								style="font-size: 20px; display: inline;">${packs.packTitle}</label>
+							<td class="pack"><span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
+								<p id="title">${packs.packTitle}</p>
 								<input type="hidden" id="packId" value="${packs.packId}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div id="buttondiv">
-				<a href="/detailPack"><span class="glyphicon glyphicon-cog"></span></a>
+				 <button type="button" class="btn btn-primary btn-sm" id="wantModifyBtn" style="width:100px;font-size: 15px;">
+				 <span class="glyphicon glyphicon-wrench" style="font-size: 15px;"></span>modify</button>
 			</div>
 		</div>
 
