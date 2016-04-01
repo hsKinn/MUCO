@@ -117,6 +117,9 @@ div.selectedCountry {
 	margin-left: 1px;
 }
 
+div#showPackagesDiv {
+	display: none;
+}
 
 
 /* 나라 색깔 */

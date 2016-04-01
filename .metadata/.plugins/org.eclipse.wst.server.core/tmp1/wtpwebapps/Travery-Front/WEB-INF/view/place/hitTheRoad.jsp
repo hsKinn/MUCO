@@ -318,10 +318,10 @@
            $('#hitTheRoadTabs a[href="' + activeTab + '"]').tab('show');
        }
        
-		// 새로고침 해도 현재 탭 유지
-		
-		
-		
+       // 탭 1 ~ 2 나라 리스트 출력
+       
+       // 탭 3 ~ 4 패키지 리스트 출력
+       
 		/* 1. 나라 선택 탭 */
 		
 		// 오른쪽 나라 리스트에서 나라 지울때
@@ -376,14 +376,6 @@
 			</c:forEach>
 		</c:if>
 		
-		// 점에 마우스 대면 크게
-		$("#dottedDiv > a").mouseenter(function(){
-			$(this).css("font-size","x-large");	
-		});
-		$("#dottedDiv > a").mouseleave(function(){
-			$(this).css("font-size","x-small");
-		});
-		
 		// 점에 마우스 대면 여행지명 표시
 		$('[data-toggle="tooltip"]').tooltip();
 		
@@ -395,6 +387,21 @@
 		});
 		
 	});
+	
+	// 새로고침 해도 현재 탭 유지
+	function zoomin(id) {
+		var a = document.getElementById(id);
+		a.style.marginLeft = (parseInt(a.style.marginLeft) - 5) + "px"; 
+		a.style.marginTop = (parseInt(a.style.marginTop) - 15) + "px"; 
+		a.style.fontSize = "30px";
+	}
+	
+	function zoomout(id) {
+		var a = document.getElementById(id);
+		a.style.marginLeft = (parseInt(a.style.marginLeft) + 5) + "px"; 
+		a.style.marginTop = (parseInt(a.style.marginTop) + 15) + "px"; 
+		a.style.fontSize = "x-small";
+	}
 </script>
 
 <!-- Hit the road -->
@@ -420,10 +427,10 @@
 		
 						<!-- 탭 -->
 						<ul id="hitTheRoadTabs" class="nav nav-tabs">
-							<li class="tabMenu"><a data-toggle="tab" href="#home">Country</a></li>
-							<li class="tabMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li class="tabMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li class="tabMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
+							<li class="tabMenu1"><a data-toggle="tab" href="#home">Country</a></li>
+							<li class="tabMenu1"><a data-toggle="tab" href="#menu1">Mood</a></li>
+							<li class="tabMenu2"><a data-toggle="tab" href="#menu2">My package</a></li>
+							<li class="tabMenu2"><a data-toggle="tab" href="#menu3">Route</a></li>
 						</ul>
 		
 						<!-- 탭 내용 -->
@@ -435,7 +442,7 @@
 		
 								<button id="focus-multiple" >KR and JP</button>
 								<button id="focus-init" >World Map</button>
-								<button id="removeAllCountries" style="background-color: #333333; color:#ffffff;">Remove All Countries</button>
+								<button id="removeAllCountries" style="background-color: #333333; color:#ffffff; height:29px;;">Remove All Countries</button>
 							</div>
 		
 							<!-- 여행지 검색 탭 -->
@@ -457,6 +464,8 @@
 											class="countryIdIs${ countryId }" 
 											data-toggle="tooltip"
 											title="${ placeName }"
+											onmouseover="zoomin('placeIdIs${ placeId }')"
+											onmouseout="zoomout('placeIdIs${ placeId }')"
 											style="
 												font-weight: bolder;
 												font-size:x-small;
@@ -484,10 +493,17 @@
 				</div>
 		
 				<!-- 선택된 나라 리스트 -->
-				<div class="col-sm-1" style="height: 100%;" >
+				<div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
 					<div id="countries" style="width: 100%; height: 100%;">
 						<c:forEach items="${ selectedCountryList }" var="selectedCountry">
 							<div style="border-radius:6px;" class="selectedCountry" id="countryNameIs${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
+						</c:forEach>
+					</div>
+				</div>
+				<div id="showPackagesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
+					<div id="countries" style="width: 100%; height: 100%;">
+						<c:forEach items="${ loginUserPackList }" var="loginUserPack">
+							<div style="border-radius:6px;" class="loginUserPack" id="packNameIs${ loginUserPack.packName }">${ loginUserPack.packName }</div>
 						</c:forEach>
 					</div>
 				</div>
