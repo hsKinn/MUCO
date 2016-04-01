@@ -637,6 +637,23 @@
 			SELECT	PLACE_ID_SEQ.CURRVAL
 			FROM	DUAL
 		</getReturnPlaceId>
+		
+		<addTempSelectedPlaceByPlaceId>
+			SELECT	PLACE_ID
+					, PLACE_NAME
+					, LATITUDE
+					, LONGITUDE
+					, ADDRESS
+					, VIEW_COUNT
+					, LIKE_COUNT
+					, DESCRIPTION
+					, IS_NEW_PLACE
+					, EMAIL
+					, COUNTRY_ID
+			FROM PLACE
+			WHERE PLACE_ID = ?
+		</addTempSelectedPlaceByPlaceId>
+			
 	</place>
 	
 	<placeLike>

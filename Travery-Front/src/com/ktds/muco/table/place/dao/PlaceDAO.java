@@ -222,6 +222,63 @@ public class PlaceDAO {
 		}
 		return placeList;
 	}
+	
+	/**
+	 * 여행지 리스트 가져오기
+	 * 
+	 * By Place ID
+	 * 
+	 * @param placeId
+	 * @return
+	 * @author 유병훈
+	 */
+	public PlaceVO addTempSelectedPlaceByPlaceId(int selectedPlaceId) {
+		
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/addTempSelectedPlaceByPlaceId/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setInt(1, selectedPlaceId);
+
+			rs = stmt.executeQuery();
+
+			PlaceVO placeVO = null;
+
+			if (rs.next()) {
+
+				placeVO = new PlaceVO();
+
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getDouble("LATITUDE"));
+				placeVO.setLongitude(rs.getDouble("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				
+
+			}
+
+			return placeVO;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	
 
 	/**
 	 * 
@@ -265,4 +322,6 @@ public class PlaceDAO {
 			}
 		}
 	}
+
+	
 }

@@ -69,6 +69,13 @@ public class HitTheRoadServlet extends HttpServlet {
 				}
 				request.setAttribute("selectedAllPlaceList", selectedAllPlaceList);
 			}
+			
+			// 여행지 리스트가 존재하면
+			if( !memberVO.getTempSelectedPlaceList().isEmpty() ) {
+				List<PlaceVO> tempSelectedPlaceList = memberVO.getTempSelectedPlaceList();
+				request.setAttribute("tempSelectedPlaceList", tempSelectedPlaceList);	
+			}
+			
 		}
 		
 		String errorCode = request.getParameter("errorCode");
@@ -76,11 +83,24 @@ public class HitTheRoadServlet extends HttpServlet {
 			request.setAttribute("removeCountryName", errorCode);
 		}
 		
+		if (request.getParameter("selectedPlaceId") != null ) {
+			
+			int errorCodeSecond = 0;
+			
+			try {
+				errorCodeSecond = Integer.parseInt(request.getParameter("selectedPlaceId"));
+			} catch (NumberFormatException nfe) {}
+			
+			if( errorCodeSecond != 0 ) {
+				request.setAttribute("removePlaceId", errorCodeSecond);
+			}
+		}
+		
 		boolean isSuccessRemoveCountries = Boolean.parseBoolean(request.getParameter("isSuccessRemoveCountries"));
 		if( isSuccessRemoveCountries ) {
 			request.setAttribute("isSuccessRemoveCountries", isSuccessRemoveCountries);
 		}
-
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);
 
