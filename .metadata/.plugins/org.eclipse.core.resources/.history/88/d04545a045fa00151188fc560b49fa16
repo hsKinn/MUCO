@@ -1,0 +1,117 @@
+<!-- 김현섭 -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!-- Header -->
+<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+
+<!-- Boot Script -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	
+<link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/place/detailPlace.css"/>" />
+
+<!-- Share Package -->
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+</script>
+
+<!-- Detail Place Content by hskim -->
+<section class="bg-primary" id="one">
+	<div class="container">
+
+		<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">Detail Place Page</h2>
+			<hr class="primary">
+			<p>Place의 상세 정보를 확인하세요</p>
+		</div>
+		
+		<div id="detail-Wrapper">
+			
+			<div id="detail-LeftWrapper">
+				
+				<div id="photo-Top">
+					대표 이미지
+					<img src="#" />
+				</div>
+				
+				<div id="photo-Bottom">
+					<c:forEach var="i" begin="1" end="12">
+						<div class="photos">
+							<img src="#" />
+						</div>
+					</c:forEach>
+				</div>
+				
+				
+			</div>
+			
+			<div id="detail-RightWrapper">
+				<div id="info-Top">
+					<div id="place-Title">
+						국가명 ${ place.countryName }, 여행지명 ${ place.placeName } 
+					</div>
+					<div id="place-LikeCount">
+						♥ 42 ${ place.likeCount }
+					</div>
+				</div>
+				
+				<div id="info-Middle">
+					<div id="place-Description">
+						<textarea>여행지에 대한 설명입니다${ place.placeDescription }</textarea>
+					</div>
+				</div>
+				
+				<div id="info-Vote">
+					<div id="vote-Top">
+						투표하기
+					</div>
+					<div id="placeVote">
+						<table>
+							<tr>
+								<td>Bright</td>
+								<td>
+									<input type="range" class="btn btn-primary" min="1" max="100" value="88">
+								</td>
+								<td>Dark</td>
+							</tr>
+							<tr>
+								<td>HightPrice</td>
+								<td>
+									<input type="range" min="1" max="100" value="27">
+								</td>
+								<td>LowPrice</td>
+							</tr>
+							<tr>
+								<td>Active</td>
+								<td>
+									<input type="range" min="1" max="100" value="50">
+								</td>
+								<td>Calm</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				<div id="info-Bottom">
+					댓글				
+				</div>
+			
+			</div>
+			
+		
+		</div>
+
+	</div>
+</section>
+
+<!-- Footer -->
+<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
+

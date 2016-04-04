@@ -383,7 +383,13 @@
 									});
 								</script>
 		
-						</c:forEach>			
+						</c:forEach>		
+						
+						<c:if test="${ placeList.paging.totalArticleCount == 0 }">
+						<div class="notFoundPack">
+							<h3><span class="blue">${placeSearch.searchKeyword}</span>로 검색된 여행지가 존재하지 않습니다<br/><span class="red">초기화</span> 후 재 검색해주세요</h3>
+						</div>
+						</c:if>	
 		
 						</div>
 					</div>

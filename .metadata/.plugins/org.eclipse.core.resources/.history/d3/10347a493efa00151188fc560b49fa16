@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+
+div#detail-Wrapper {
+	width: 100%;
+	height: 700px;
+	float: left;
+
+}
+
+div#detail-LeftWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: blue;		
+}
+
+div#photo-Top {
+	width: 100%;
+	height: 50%;
+	float: left;
+	background-color: gray;		
+}
+
+
+div#photo-Top img {
+	width: 100%;
+	height: 100%;
+}
+
+div#photo-Bottom {
+	width: 100%;
+	height: 50%;
+	float: left;
+	background-color: gray;	
+	overFlow-y: auto;	
+}
+
+div.photos {
+	width: 20%;
+	height: 20%;
+	float: left;
+	background-color: gray;	
+}
+
+
+
+
+
+div#detail-RightWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+}

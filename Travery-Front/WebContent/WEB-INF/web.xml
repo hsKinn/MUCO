@@ -475,4 +475,14 @@
     <servlet-name>AddMyPackByPlaceServlet</servlet-name>
     <url-pattern>/addMyPackByPlace</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DetailPlaceServlet</display-name>
+    <servlet-name>DetailPlaceServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.DetailPlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailPlaceServlet</servlet-name>
+    <url-pattern>/detailPlace</url-pattern>
+  </servlet-mapping>
 </web-app>

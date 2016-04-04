@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+div#detail-Wrapper {
+	width: 100%;
+	height: 700px;
+	float: left;
+
+}
+
+div#detail-LeftWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: blue;		
+}
+
+div#photo-Top {
+	width: 99%;
+	height: 50%;
+	float: left;
+	background-color: gray;		
+}
+
+div#photo-Top img {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+div#detail-RightWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+}

@@ -287,8 +287,8 @@
 				</c:forEach>
 				
 				<c:if test="${ packages.paging.totalArticleCount == 0 }">
-					<div id="notFoundPack">
-						<h3><span id="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가 존재하지 않습니다<br/><span id="red">초기화</span> 후 재 검색해주세요</h3>
+					<div class="notFoundPack">
+						<h3><span class="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가 존재하지 않습니다<br/><span class="red">초기화</span> 후 재 검색해주세요</h3>
 						
 					</div>
 				</c:if>

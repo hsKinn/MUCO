@@ -979,14 +979,19 @@
 		</getPlaceInPackage>
 		
 		<getUserRecommendPlaceList>
-			SELECT  PLACE_ID
+			SELECT  P.PLACE_ID
 					, PLACE_NAME
 					, LATITUDE
 					, LONGITUDE
 					, ADDRESS
 					, VIEW_COUNT
+                    , (
+                        SELECT  COUNT(PLACE_LIKE_ID)
+                        FROM    PLACE_LIKE
+                        WHERE   PLACE_ID = P.PLACE_ID
+                      ) LIKE_COUNT					
 					, DESCRIPTION
-			FROM    PLACE
+			FROM    PLACE P
 			WHERE	EMAIL = ?
 		</getUserRecommendPlaceList>
 		
@@ -1037,6 +1042,30 @@
 			FROM PLACE
 			WHERE PLACE_ID = ?
 		</addTempSelectedPlaceByPlaceId>
+		
+		<getDetailPlaceInfo>
+			SELECT	P.PLACE_ID
+					, PLACE_NAME
+					, LATITUDE
+					, LONGITUDE
+					, ADDRESS
+					, VIEW_COUNT
+                    , (
+                        SELECT  COUNT(PLACE_LIKE_ID)
+                        FROM    PLACE_LIKE
+                        WHERE   PLACE_ID = P.PLACE_ID
+                      ) LIKE_COUNT
+					, DESCRIPTION
+					, M.EMAIL
+					, NAME
+					, COUNTRY_NAME
+			FROM	PLACE P
+					, MEMBER M
+					, COUNTRY C
+			WHERE	P.PLACE_ID = ?
+			AND		P.EMAIL = M.EMAIL
+			AND		P.COUNTRY_ID = C.COUNTRY_ID
+		</getDetailPlaceInfo>
 			
 	</place>
 	

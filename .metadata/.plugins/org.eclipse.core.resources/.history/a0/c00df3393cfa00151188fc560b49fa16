@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+div#detail-Wrapper {
+	width: 800px;
+	height: 700px;
+	float: left;
+	background-color: gray;
+}
+
+div#detail-LeftWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: blue;
+}
+
+div#detail-RightWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: red;
+}

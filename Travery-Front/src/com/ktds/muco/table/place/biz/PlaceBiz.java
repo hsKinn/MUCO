@@ -203,4 +203,21 @@ public class PlaceBiz {
 		return false;
 		
 	}
+
+
+	/**
+	 * Get Detail Place Info By Place ID
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeId
+	 * @return
+	 */
+	public PlaceVO getDetailPlaceInfo(int placeId) {
+		
+		return placeDAO.getDetailPlaceInfo( placeId );
+		
+	} // getDetailPlaceInfo END
+	
+	
 }

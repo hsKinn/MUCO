@@ -183,7 +183,7 @@ public class PlaceDAO {
 			
 			while (rs.next()) {
 				
-				place = new PlaceVO();
+				place = new PlaceVO();	
 				
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
@@ -309,14 +309,10 @@ public class PlaceDAO {
 				
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
-				place.setLatitude(rs.getInt("LATITUDE"));
-				place.setLongitude(rs.getInt("LONGITUDE"));
-				place.setAddress(rs.getString("ADDRESS"));
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
-				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				
-				// Place Like Count
-				place.setLikeCount(placeLikeDAO.countPlaceLike(place.getPlaceId()));
+				//TODO 김현섭 - 내가 추가한 여행지 리스트이므로 사진은 1개 출력 List로 1개 출력할지 대표 Location으로 출력할지 결정 해야함
 				
 				// Place Image List
 				/*List<ImageVO> imageList = imageDAO.getImageLocationList(place.getPlaceId());
@@ -455,7 +451,7 @@ public class PlaceDAO {
 			while (rs.next()) {
 
 				placeVO = new PlaceVO();
-
+				
 				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
@@ -537,7 +533,7 @@ public class PlaceDAO {
 
 
 				placeVO = new PlaceVO();
-
+				
 				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
@@ -675,6 +671,7 @@ public class PlaceDAO {
 		return placeList;
 	}
 	
+	
 	/**
 	 * 여행지 리스트 가져오기
 	 * 
@@ -717,7 +714,6 @@ public class PlaceDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
-				
 
 			}
 
@@ -871,13 +867,12 @@ public class PlaceDAO {
 			while (rs.next()) {
 
 				place = new PlaceVO();
-
+				
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setName(rs.getString("NAME"));
-				place.setImageLocation(rs.getString("IMAGE_LOCATION"));
 				
 				placeLikeVO.setPlaceId(place.getPlaceId());
 				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
@@ -935,13 +930,12 @@ public class PlaceDAO {
 			while (rs.next()) {
 
 				place = new PlaceVO();
-
+				
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setName(rs.getString("NAME"));
-				place.setImageLocation(rs.getString("IMAGE_LOCATION"));
 				
 				placeLikeVO.setPlaceId(place.getPlaceId());
 				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
@@ -999,13 +993,12 @@ public class PlaceDAO {
 			while (rs.next()) {
 
 				place = new PlaceVO();
-
+				
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setName(rs.getString("NAME"));
-				place.setImageLocation(rs.getString("IMAGE_LOCATION"));
 				
 				placeLikeVO.setPlaceId(place.getPlaceId());
 				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
@@ -1067,5 +1060,72 @@ public class PlaceDAO {
 			}
 		}
 	}
+
+	
+	/**
+	 * Get Detail Place Info BY Place ID
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeId
+	 * @return
+	 */
+	public PlaceVO getDetailPlaceInfo(int placeId) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		PlaceVO place = new PlaceVO();
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/place/getDetailPlaceInfo/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeId);
+			
+			rs = stmt.executeQuery();
+
+			if ( rs.next() ) {
+
+				place = new PlaceVO();
+
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setLatitude(rs.getInt("LATITUDE"));
+				place.setLongitude(rs.getInt("LONGITUDE"));
+				place.setAddress(rs.getString("ADDRESS"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				
+				MemberVO writer = new MemberVO();
+				writer.setEmail(rs.getString("EMAIL"));
+				writer.setName(rs.getString("NAME"));
+				place.setWriter(writer);
+				
+				place.setCountryName(rs.getString("COUNTRY_NAME"));
+				
+				// Place Image
+				place.setPlaceImageList(imageDAO.getImageLocationList(placeId));
+				
+				// Place Reply
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeId));
+				
+			}
+			
+			return place;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	} // getDetailPlaceInfo END
+	
+	
 
 }

@@ -184,17 +184,17 @@ tr.modal-table-top {
 	font-size: 20px;
 }
 
-div#notFoundPack {
+div.notFoundPack {
 	text-align: center;
 	margin-top: 10%;
 }
 
-div#notFoundPack span#red {
+div.notFoundPack span.red {
 	color: red;
 	font-size: 24px;
 }
 
-div#notFoundPack span#blue {
+div.notFoundPack span.blue {
 	color: #3399ff;
 	font-size: 25px;
 	text-decoration: underline;
