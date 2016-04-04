@@ -74,28 +74,12 @@ $(document).ready( function() {
 		$(".deletePlaceId").prop("checked", isChecked);
 	});
 	
-	$("#massiveDeleteBtn").click( function() {
-		var isChecked = false;
-		
-		$(".deletePlaceId").each( function (index, data) {
-			if (data.checked) {
-				isChecked = data.checked;
-			}
-			
-		});
-		
-		// 삭제할 대상을 정하지 않았으면 alert뜨기 
-		if( !isChecked ) {
-			alert("삭제할 대상을 선택하세요");
-		}
-		
+	$("#placeDeleteBtn").click( function() {
 		// 사용자의 confirm 받기 
 		if( confirm("정말 삭제하시겠습니까?") ) {
-			// 지우는 로직 넣기 
-			var form = $("#massiveDeleteForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/massiveDelete" />");
-			form.submit();
+			
+		} else {
+			return;
 		}
 		
 	});
@@ -122,11 +106,11 @@ $(document).ready( function() {
             
 				<!-- 회원 버튼 -->
 				<div id="buttonCollection">
-					<a href="<c:url value="/placeEdit?placeId=${placeDetail.placeId}&placeType=${placeDetail.isNewPlace }" />">
+					<a href="<c:url value="/placeEdit?placeId=${placeDetail.placeId}" />">
 						<button type="button" class="btn btn-default">Edit</button>
 					</a>
-					<a href="<c:url value="/placeDelete?placeId=${placeDetail.placeId}" />">
-						<button type="button" class="btn btn-default">Delete</button>
+					<a href="<c:url value="/placeDelete?placeId=${placeDetail.placeId}&placeType=${placeDetail.isNewPlace }" />">
+						<button id="placeDeleteBtn" type="button" class="btn btn-default">Delete</button>
 					</a>
 				</div>
 				            
@@ -148,7 +132,7 @@ $(document).ready( function() {
 							<td>${placeDetail.address}</td>
 							<td>${placeDetail.viewCount}</td>
 							<td>${placeDetail.likeCount}</td>
-							<td>${placeDetail.writer.email}</td>
+							<td>${registerMember.email}</td>
 							<td>${placeDetail.countryId}</td>
 						</tr>
 				
@@ -182,13 +166,16 @@ $(document).ready( function() {
 						</tr>
 
 						<tr>
-							<th colspan="7">여행지 Mood</th>
+							<th colspan="7">여행지 평균 Mood</th>
 						</tr>
+						
+						<c:forEach items="${evaluationList}" var="evaluation">
 						<tr>
-							<td colspan="7">
-								여행지 Mood
-							</td>
+							<td colspan="7">여행지 Mood 1 ${evaluation.score} : ${evaluation.score} </td>
 						</tr>
+						</c:forEach>
+
+
 					</table>
 					<!-- /#detailTable -->
 				</div>	

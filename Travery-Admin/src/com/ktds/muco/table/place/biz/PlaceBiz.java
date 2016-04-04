@@ -108,7 +108,6 @@ public class PlaceBiz {
 	public PlaceVO showPlaceDetail(String placeId) {
 
 		PlaceVO placeVO = placeDAO.getPlaceDetailByPlaceId(placeId);
-		
 		return placeVO;
 	}
 

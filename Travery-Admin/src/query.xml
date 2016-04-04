@@ -11,6 +11,14 @@
 	</country>
 	
 	<evaluation>
+		<getAvgEvaluationByPlaceId>
+            SELECT	AVG(SCORE) AS SCORE
+            		, STANDARD_ID
+            FROM    EVALUATION
+            WHERE   PLACE_ID = ?
+            GROUP	BY STANDARD_ID
+            ORDER	BY STANDARD_ID
+		</getAvgEvaluationByPlaceId>
 	</evaluation>
 	
 	<history>

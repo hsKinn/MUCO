@@ -457,4 +457,24 @@
     <servlet-name>AdminCheckServlet</servlet-name>
     <url-pattern>/adminCheck</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceEditServlet</display-name>
+    <servlet-name>PlaceEditServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.PlaceEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceEditServlet</servlet-name>
+    <url-pattern>/placeEdit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoPlaceEditServlet</display-name>
+    <servlet-name>DoPlaceEditServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.DoPlaceEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoPlaceEditServlet</servlet-name>
+    <url-pattern>/doPlaceEdit</url-pattern>
+  </servlet-mapping>
 </web-app>

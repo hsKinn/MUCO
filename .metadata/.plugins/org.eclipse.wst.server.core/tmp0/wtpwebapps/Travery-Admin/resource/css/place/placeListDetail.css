@@ -20,15 +20,29 @@ table#detailTable th {
 	background-color: #333333;
 	color: #ffffff;
 	text-align: center;
-	height: 25px;
+	height: 40px;
+	vertical-align: middle;
 }	
 
 table#detailTable td {
-	height: 50px;
+	height: 70px;
 	vertical-align: middle;
 }
 
 div#memberButtonCollection {
 	margin-top: 10px;
 	float: right;
+}
+
+input#placeDescriptionInputBox {
+	width: 80%;
+	background-color: #333333;
+	color: #ffffff; 
+	height: 50px; 
+}
+
+input#placeNameInputBox {
+	background-color: #333333;
+	color: #ffffff; 
+	
 }

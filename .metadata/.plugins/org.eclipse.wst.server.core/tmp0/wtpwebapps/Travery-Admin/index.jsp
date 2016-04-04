@@ -76,7 +76,6 @@
 				if (jsonData.result) {
 					//isAdmin : true
 					if (jsonData.isAdmin) {
-						alert("왜 안떠?");
 						$("#submit").attr("disabled", true);
 					//isAdmin : false
 					} else {

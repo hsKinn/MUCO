@@ -1,0 +1,131 @@
+package com.ktds.muco.table.evaluation.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.evaluation.vo.EvaluationVO;
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.util.xml.XML;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class EvaluationDAO {
+
+	
+	/**
+	 * @author 이기연
+	 * evaluation 평균 구하기
+	 * @param placeId
+	 * @return
+	 */
+	public List<EvaluationVO> getAvgEvaluationByPlaceId(String placeId) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<EvaluationVO> evaluations = new ArrayList<EvaluationVO>();
+
+		try {
+
+			EvaluationVO evaluationVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/place/getAvgEvaluationByPlaceId/text()");
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1, placeId);
+					
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				placeVO = new PlaceVO();
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getInt("LATITUDE"));
+				placeVO.setLongitude(rs.getInt("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
+				placeVO.setDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				String email = rs.getString("EMAIL");
+				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
+				
+				MemberVO member = new MemberVO();
+				
+				member.setEmail(email);
+				placeVO.setWriter(member);
+				
+				places.add(placeVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return places;
+		
+	}
+
+	
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+}
