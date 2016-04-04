@@ -135,8 +135,8 @@ div#showPackagesDiv {
 
 /* Korea */
 
-div.selectedCountry, div.loginUserPack {
-	background-color: #eeeeee;
+div.selectedCountry {
+	background-color: #ffffff;
 	color: #333333;
 }
 

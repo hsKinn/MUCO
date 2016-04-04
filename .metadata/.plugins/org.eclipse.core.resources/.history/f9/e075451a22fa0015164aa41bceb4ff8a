@@ -111,7 +111,7 @@ div#tempPlaceList {
 	padding-left: 10px;
 }
 
-div.selectedCountry, div.loginUserPack {
+div.selectedCountry {
 	text-align: center;
 	font-weight: bold;
 	width: 100px;
@@ -135,8 +135,8 @@ div#showPackagesDiv {
 
 /* Korea */
 
-div.selectedCountry, div.loginUserPack {
-	background-color: #eeeeee;
+div.selectedCountry {
+	background-color: #ffffff;
 	color: #333333;
 }
 
