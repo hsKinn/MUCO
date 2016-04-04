@@ -460,6 +460,8 @@
 				return;
 			}
 		});
+		
+		
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -638,9 +640,13 @@
 								text-align: center;
 								margin-left:20px;
 								margin-top:20px;" 
-						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							${ tempSelectedPlace.placeName }
+						<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+							<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
+						</a>
+							<span data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }" style="cursor: pointer; margin-left:13px;">
+							${ tempSelectedPlace.placeId }</span>
 						</div>
 									
 					<!-- Modal -->

@@ -283,8 +283,6 @@
 				}]
 			}
 		});
-		
-		
 	});
 </script>
 
@@ -358,7 +356,6 @@
 	   	$("#removeAllCountries").click(function(){
 			location.href = "/removeAllSelectedCountries";
 	   	});
-	   	
 	   	
 	   	
 	   	/* 2. 나라 검색 탭 */
@@ -437,12 +434,10 @@
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
 		});
 		
-<<<<<<< HEAD
 		/* 3. 마이 패키지 탭 */
 		$(".loginUserPack").click(function(){
 			location.href = "/hitTheRoad?selectedPackageId=" + $(this).attr('id');
 		});
-=======
 		// myPack 추가 버튼 - 체크되있는 여행지가 있을 때만 가능
 		/* $("#massiveSubmitBtn").click(function(){
 			if( $( ".selectedPlaceId:checkbox:checked" ).val() == null ) {
@@ -466,7 +461,7 @@
 			}
 		});
 		
->>>>>>> origin/YBH10
+		
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -645,9 +640,13 @@
 								text-align: center;
 								margin-left:20px;
 								margin-top:20px;" 
-						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							${ tempSelectedPlace.placeName }
+						<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+							<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
+						</a>
+							<span data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }" style="cursor: pointer; margin-left:13px;">
+							${ tempSelectedPlace.placeId }</span>
 						</div>
 									
 					<!-- Modal -->
