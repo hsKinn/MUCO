@@ -634,9 +634,9 @@
 								text-align: center;
 								margin-left:20px;
 								margin-top:20px;" 
-						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							${ tempSelectedPlace.placeName }
+							<span id="placeDetail"data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">${ tempSelectedPlace.placeName }</span>
 						</div>
 									
 					<!-- Modal -->
