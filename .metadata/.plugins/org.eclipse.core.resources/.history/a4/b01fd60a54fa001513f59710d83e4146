@@ -69,7 +69,7 @@ html, body {
     <b>Waypoints:</b> <br>
     <i>(Ctrl-Click for multiple selection)</i> <br>
     <select multiple id="waypoints">
-      <option value="540 Gaseon-ri, Yangsan-myeon, Yeongdong, Chungcheongbuk-do, South Korea">Chungcheongbuk-do, South Korea</option>
+      <option value="montreal, quebec">Montreal, QBC</option>
       <option value="toronto, ont">Toronto, ONT</option>
       <option value="chicago, il">Chicago</option>
       <option value="winnipeg, mb">Winnipeg</option>
@@ -80,7 +80,7 @@ html, body {
     <br>
     <b>End:</b>
     <select id="end">
-      <option value="산112 Geumsan-ri, Dong-myeon, Yangsan, Gyeongsangnam-do, South Korea">Yangsan, Gyeongsangnam-do</option>
+      <option value="Vancouver, BC">Vancouver, BC</option>
       <option value="Seattle, WA">Seattle, WA</option>
       <option value="San Francisco, CA">San Francisco, CA</option>
       <option value="Los Angeles, CA">Los Angeles, CA</option>
