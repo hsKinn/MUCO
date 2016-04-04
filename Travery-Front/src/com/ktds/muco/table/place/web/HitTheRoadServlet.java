@@ -121,6 +121,11 @@ public class HitTheRoadServlet extends HttpServlet {
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
 		request.setAttribute("placeListByPackId", packVO.getPlaceList());
 		
+		if( packVO.getPlaceList().size() > 0 ) {
+			
+			request.setAttribute("firstPlace", packVO.getPlaceList().get(0));
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);
 
