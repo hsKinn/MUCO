@@ -1,9 +1,8 @@
 package com.ktds.muco.table.pack.biz;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.ktds.muco.table.member.vo.MemberListVO;
-import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.dao.PackDAO;
 import com.ktds.muco.table.pack.vo.PackListVO;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
@@ -48,14 +47,18 @@ public class PackBiz {
 			deleteCount = packDAO.deletePack(Integer.parseInt(deletePackId));
 		}
 		return deleteCount;
-
 	}
 
+	/**
+	 * Pack List Detail를 볼 수 있는 Biz 
+	 * @param packId
+	 * @return
+	 */
 	public List<PlaceVO> getPlaceListByPackId(int packId) {
 		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
 		return places;
 	}
-
+	
 	/**
 	 * Pack List 받아오는 method
 	 * @author 이기연 
@@ -85,5 +88,4 @@ public class PackBiz {
 		
 		return packList;	
 	}
-
 }

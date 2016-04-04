@@ -1,0 +1,138 @@
+package com.ktds.muco.table.pack.biz;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.hashtag.dao.HashTagDAO;
+import com.ktds.muco.table.hashtag.vo.HashTagVO;
+import com.ktds.muco.table.pack.dao.PackDAO;
+import com.ktds.muco.table.pack.vo.PackListVO;
+import com.ktds.muco.table.pack.vo.PackSearchVO;
+import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.util.web.Paging;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackBiz {
+
+	/**
+	 * @author 백지경
+	 */
+	private PackDAO packDAO;
+	private HashTagDAO hashTagDAO;
+
+	public PackBiz() {
+		packDAO = new PackDAO();
+		hashTagDAO = new HashTagDAO();
+	}
+
+	public List<PackVO> getPackListByEmail(String email) {
+		List<PackVO> packs = packDAO.getPackListByEmail(email);
+		return packs;
+	}
+
+	public PackVO getPackDataByPackId(int packId) {
+		PackVO pack = packDAO.getPackDataByPackId(packId);
+		return pack;
+	}
+
+	public int addPack(PackVO newAddPack) {
+		int packId = packDAO.addPack(newAddPack);
+		return packId;
+	}
+
+	public int deletePacks(String[] deletePackIds) {
+		int deleteCount = 0;
+		for (String deletePackId : deletePackIds) {
+			deleteCount = packDAO.deletePack(Integer.parseInt(deletePackId));
+		}
+		return deleteCount;
+	}
+
+	/**
+	 * Pack List Detail를 볼 수 있는 Biz 
+	 * @param packId
+	 * @return
+	 */
+	public List<PlaceVO> getPlaceListByPackId(int packId) {
+		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
+		return places;
+	}
+
+	public int deletePlaceOfPack(int placeId, int packId) {
+		int deletePlaceOfPackCount = 0;
+		deletePlaceOfPackCount = packDAO.deletePlaceOfPack(placeId, packId);
+		return deletePlaceOfPackCount;
+	}
+
+	public int modifyPack(PackVO modifyPack) {
+		int modifyCount = 0;
+		modifyCount = packDAO.modifyPack(modifyPack);
+		return modifyCount;
+	}
+
+	public int addHashTagInPack(int packId, String hashtags) {
+		int insertCount = 0;
+		// 1. hashtags string을 split하여 배열로 바꾼다.
+		hashtags = hashtags.trim();
+		String hashtagArray[] = hashtags.split(" ");
+		
+		// 2. hashtag vo들로 만든다.
+		// 3. dao로 tag를 넘겨 db에 넣는다.
+		for (String tag : hashtagArray) {
+			HashTagVO hashTagVO = new HashTagVO();
+			hashTagVO.setPackId(packId);
+			hashTagVO.setHashtagName(tag);
+			insertCount = hashTagDAO.addHashTagInPack(hashTagVO);
+		}		
+		
+		return insertCount;
+	}
+
+	public String getHashTagsByPackId(int packId) {
+		List<HashTagVO> tags = new ArrayList<HashTagVO>();
+		tags = hashTagDAO.getHashTagOfPackage(packId);
+		String hashtagOfPack = "";
+		
+		for (HashTagVO hashTagVO : tags) {
+			String tag = hashTagVO.getHashtagName();
+			hashtagOfPack = hashtagOfPack + " #" + tag;
+		}
+		
+		return hashtagOfPack;
+	}
+	
+	/**
+	 * Pack List 받아오는 method
+	 * @author 이기연 
+	 * @param packSearchVO
+	 * @return
+	 */
+	public PackListVO getPackList(PackSearchVO packSearchVO) {
+		// 1. 전체 게시글의 수
+		int allPlaceCount = packDAO.getPackListCount();
+		// 1-1. 기본으로 페이지를 만들어준다. 
+		Paging paging = new Paging(20);
+		paging.setTotalArticleCount(allPlaceCount);
+		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
+		paging.setPageNumber(packSearchVO.getPageNO()+"");
+		
+		packSearchVO.setStartIndex(paging.getStartArticleNumber());
+		packSearchVO.setEndIndex(paging.getEndArticleNumber());
+		
+		//전체 article 받아오기
+		List<PackVO> packs = packDAO.getAllPackage(packSearchVO);
+		
+		// 2. DAO로부터 받아온 결과를 출력
+		PackListVO packList = new PackListVO();
+		packList.setPackList(packs);
+		// 2-2. 페이지 추가 
+		packList.setPaging(paging);
+		
+		return packList;	
+	}
+}

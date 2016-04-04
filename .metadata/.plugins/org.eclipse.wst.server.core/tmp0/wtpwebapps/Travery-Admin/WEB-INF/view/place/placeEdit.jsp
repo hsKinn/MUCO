@@ -69,6 +69,7 @@
 			<div class="container">
 
 				<form id="placeEditForm" method="post" action="/doPlaceEdit">
+					<input type="hidden" id="placeId" name="placeId" value="${placeDetail.placeId}"/>
 					<!-- 회원 버튼 -->
 					<div id="buttonCollection">
 						<input type="submit" class="btn btn-default" value="save" />

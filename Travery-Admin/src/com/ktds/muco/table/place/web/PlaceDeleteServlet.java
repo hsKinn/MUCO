@@ -48,9 +48,9 @@ public class PlaceDeleteServlet extends HttpServlet {
 		// 1 : new place 
 		// 0 : origin place
 		if ( placeType == 0 ) {
-			response.sendRedirect(Root.get(this) + "/originPlaceList");
+			response.sendRedirect(Root.get(this) + "/originPlaceList?sortOption=9");
 		} else {
-			response.sendRedirect(Root.get(this) + "/newPlaceList");
+			response.sendRedirect(Root.get(this) + "/newPlaceList?sortOption=9");
 		}
 	}
 

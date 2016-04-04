@@ -477,4 +477,14 @@
     <servlet-name>DoPlaceEditServlet</servlet-name>
     <url-pattern>/doPlaceEdit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PackDetailServlet</display-name>
+    <servlet-name>PackDetailServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.PackDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PackDetailServlet</servlet-name>
+    <url-pattern>/packDetail</url-pattern>
+  </servlet-mapping>
 </web-app>

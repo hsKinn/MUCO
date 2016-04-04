@@ -165,12 +165,12 @@ $(document).ready( function() {
 					    	정렬 <span class="caret"></span>
 					    </button>
 					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">여행지명</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/placeList?sortOption=1" />">등록자 이름</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">나라ID</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=1" />">여행지명</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=2" />" >등록자 이름</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">나라ID</a></li>
 					      <li role="presentation" class="divider"></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">추천수</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">조회수</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=4" />">추천수</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=5" />">조회수</a></li>
 					    </ul>
 					</div>	
 					<!-- /#dropdown memberListdropDown -->						

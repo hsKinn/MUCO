@@ -40,7 +40,11 @@ public class OriginPlaceListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+//		String sortOption1 = request.getParameter("sortOption");
+//		int sortOption = 3;
+		int sortOption = Integer.parseInt(request.getParameter("sortOption"));
+		System.out.println("소트 옵션: " + sortOption);
+		
 		PlaceListVO placeListVO;
 		int pageNO = 0;
 
@@ -52,7 +56,7 @@ public class OriginPlaceListServlet extends HttpServlet {
 		PlaceSearchVO placeSearchVO = new PlaceSearchVO();
 		placeSearchVO.setPageNO(pageNO);
 		
-		placeListVO = placeBiz.getOriginPlaceList(placeSearchVO);
+		placeListVO = placeBiz.getOriginPlaceList(placeSearchVO, sortOption);
 		request.setAttribute("places", placeListVO);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/originPlaceList.jsp");

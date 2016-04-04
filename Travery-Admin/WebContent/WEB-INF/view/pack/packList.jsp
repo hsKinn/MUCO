@@ -169,7 +169,7 @@ $(document).ready( function() {
 									<td>${pack.viewCount}</td>
 									<td>${pack.likeCount}</td>
 									<td>${pack.isPublic}</td>
-									<td>최초등록자 이름</td>
+									<td>${pack.name} + 최초등록자 이름</td>
 								</tr>
 							</c:forEach>
 						</form>

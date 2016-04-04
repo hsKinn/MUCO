@@ -219,9 +219,11 @@
 			WHERE	PACK_ID=?
 		</deletePack>
 		<getPlaceListByPackId>
-			SELECT  *
+			SELECT  PLACE.*
 			FROM    PACK_PLACE
-			WHERE   PACK_ID = ?
+					, PLACE
+			WHERE   PACK_PLACE.PLACE_ID = PLACE.PLACE_ID
+			AND		PACK_PLACE.PACK_ID = ?
 		</getPlaceListByPackId>
 		<getAllPackage>
 			SELECT	* 
@@ -294,6 +296,81 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllOriginPlaces>
+		<getAllOriginPlacesOrderbyPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE != 1
+									ORDER   BY PLACE_NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllOriginPlacesOrderbyPlaceName>
+		<getAllOriginPlacesOrderbyEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE != 1
+									ORDER   BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllOriginPlacesOrderbyEmail>
+		<getAllOriginPlacesOrderbyCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE != 1
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllOriginPlacesOrderbyCountryId>
+		<getAllOriginPlacesOrderbyLikeCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE != 1
+									ORDER   BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllOriginPlacesOrderbyLikeCount>
+		<getAllOriginPlacesOrderbyViewCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE != 1
+									ORDER   BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?				
+		</getAllOriginPlacesOrderbyViewCount>
 		<getAllNewPlaceCount>
 			SELECT	COUNT(PLACE_ID)
 			FROM	PLACE
@@ -314,6 +391,81 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllNewPlaces>
+		<getAllNewPlacesOrderbyPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = 1
+									ORDER   BY PLACE_NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllNewPlacesOrderbyPlaceName>
+		<getAllNewPlacesOrderbyEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = 1
+									ORDER   BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllNewPlacesOrderbyEmail>
+		<getAllNewPlacesOrderbyCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = 1
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllNewPlacesOrderbyCountryId>
+		<getAllNewPlacesOrderbyLikeCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = 1
+									ORDER   BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllNewPlacesOrderbyLikeCount>
+		<getAllNewPlacesOrderbyViewCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = 1
+									ORDER   BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllNewPlacesOrderbyViewCount>
 		<getPlaceDetailByPlaceId>
 			SELECT	*
 			FROM	PLACE
@@ -351,6 +503,16 @@
      		SET		IS_NEW_PLACE = 1
      		WHERE	PLACE_ID = ?  		
 		</goNewPlaceByPlaceId>
+		<updatePlaceName>
+     		UPDATE	PLACE
+     		SET		PLACE_NAME = ?
+     		WHERE	PLACE_ID = ?  		
+		</updatePlaceName>
+		<updateDescription>
+     		UPDATE	PLACE
+     		SET		DESCRIPTION = ?
+     		WHERE	PLACE_ID = ? 		
+		</updateDescription>
 	</place>
 	
 	<placeLike>

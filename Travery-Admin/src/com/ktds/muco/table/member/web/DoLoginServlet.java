@@ -47,7 +47,7 @@ public class DoLoginServlet extends HttpServlet {
 		boolean isLoginSuccess = memberBiz.loginForAdmin(request);
 
 		if (isLoginSuccess) {
-			response.sendRedirect(Root.get(this) + "/originPlaceList");
+			response.sendRedirect(Root.get(this) + "/originPlaceList?sortOption=9");
 		} else {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 요청입니다.");
 		}

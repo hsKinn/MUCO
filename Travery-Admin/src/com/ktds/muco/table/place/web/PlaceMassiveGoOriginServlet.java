@@ -47,7 +47,7 @@ public class PlaceMassiveGoOriginServlet extends HttpServlet {
 		
 		// 1 : new place 
 		// 0 : origin place
-		response.sendRedirect(Root.get(this) + "/newPlaceList");
+		response.sendRedirect(Root.get(this) + "/newPlaceList?sortOption=9");
 	}
 
 }

@@ -2,6 +2,8 @@ package com.ktds.muco.table.place.biz;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceListVO;
 import com.ktds.muco.table.place.vo.PlaceSearchVO;
@@ -41,9 +43,10 @@ public class PlaceBiz {
 	 * placeId로 origin place list 받기
 	 * @author 이기연
 	 * @param placeSearchVO
+	 * @param sortOption 
 	 * @return
 	 */
-	public PlaceListVO getOriginPlaceList(PlaceSearchVO placeSearchVO) {
+	public PlaceListVO getOriginPlaceList(PlaceSearchVO placeSearchVO, int sortOption) {
 		
 		// 1. 전체 게시글의 수
 		int allPlaceCount = placeDAO.getAllOriginPlaceCount();
@@ -57,7 +60,7 @@ public class PlaceBiz {
 		placeSearchVO.setEndIndex(paging.getEndArticleNumber());
 		
 		//전체 article 받아오기
-		List<PlaceVO> places = placeDAO.getAllOriginPlaces(placeSearchVO);
+		List<PlaceVO> places = placeDAO.getAllOriginPlaces(placeSearchVO, sortOption);
 		
 		// 2. DAO로부터 받아온 결과를 출력
 		PlaceListVO originPlaceList = new PlaceListVO();
@@ -72,9 +75,10 @@ public class PlaceBiz {
 	 * placeId로 new place list 받기
 	 * @author 이기연
 	 * @param placeSearchVO
+	 * @param sortOption 
 	 * @return
 	 */
-	public PlaceListVO getNewPlaceList(PlaceSearchVO placeSearchVO) {
+	public PlaceListVO getNewPlaceList(PlaceSearchVO placeSearchVO, int sortOption) {
 
 		// 1. 전체 게시글의 수
 		int allPlaceCount = placeDAO.getAllNewPlaceCount();
@@ -88,7 +92,7 @@ public class PlaceBiz {
 		placeSearchVO.setEndIndex(paging.getEndArticleNumber());
 		
 		//전체 article 받아오기
-		List<PlaceVO> places = placeDAO.getAllNewPlaces(placeSearchVO);
+		List<PlaceVO> places = placeDAO.getAllNewPlaces(placeSearchVO, sortOption);
 		
 		// 2. DAO로부터 받아온 결과를 출력
 		PlaceListVO originPlaceList = new PlaceListVO();
@@ -200,7 +204,32 @@ public class PlaceBiz {
 			placeDAO.goNewPlaceByPlaceId(Integer.parseInt(placeId));
 		}	
 	}
-
-
+	
+	
+	/**
+	 * @author place를 수정하는 method
+	 * @param placeId
+	 * @param placeVO
+	 * @param request 
+	 * @return 
+	 */
+	public PlaceVO doPlaceEdit(String placeId, PlaceVO placeVO, HttpServletRequest request) {
+		// 어느 부분이 수정되었는지 확인해야한다. 
+		String updatedPlaceName = request.getParameter("placeNameInputBox");
+		String updatedDescription = request.getParameter("placeDescriptionInputBox");
+		
+		//1. 여행지명 
+		if( placeVO.getPlaceName().equals(updatedPlaceName)) {
+		} else {
+			placeDAO.updatePlaceName(placeId, updatedPlaceName);
+		}
+		//2. 여행지 설명
+		if (placeVO.getDescription().equals(updatedDescription)) {
+		} else {
+			placeDAO.updateDescription(placeId, updatedDescription);
+		}
+		
+		return null;
+	}
 
 }

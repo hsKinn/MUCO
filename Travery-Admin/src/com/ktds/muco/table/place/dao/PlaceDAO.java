@@ -110,9 +110,10 @@ public class PlaceDAO {
 	
 	/** 
 	 * @author 이기연
+	 * @param sortOption 
 	 * @return
 	 */
-	public List<PlaceVO> getAllOriginPlaces(PlaceSearchVO placeSearchVO) {
+	public List<PlaceVO> getAllOriginPlaces(PlaceSearchVO placeSearchVO, int sortOption) {
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -127,7 +128,32 @@ public class PlaceDAO {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
 			// article을 꺼내온다.
-			String query = XML.getNodeString("//query/place/getAllOriginPlaces/text()");
+			String query = "";
+			
+			// order by 여행자명
+			if ( sortOption == 1 ) {
+				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyPlaceName/text()");
+			}
+			// order by 등록자 이름
+			else if ( sortOption == 2 ) {
+				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyEmail/text()");
+			}
+			// order by 나라ID
+			else if ( sortOption == 3 ) {
+				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyCountryId/text()");
+			}
+			// order by 추천수
+			else if ( sortOption == 4 ) {
+				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyLikeCount/text()");
+			}
+			// order by 조회수
+			else if ( sortOption == 5 ) {
+				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyViewCount/text()");
+			} 
+			else {
+				query = XML.getNodeString("//query/place/getAllOriginPlaces/text()");
+			}
+			
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, placeSearchVO.getEndIndex());
 			stmt.setInt(2, placeSearchVO.getStartIndex());
@@ -169,9 +195,10 @@ public class PlaceDAO {
 	
 	/** 
 	 * @author 이기연
+	 * @param sortOption 
 	 * @return
 	 */
-	public List<PlaceVO> getAllNewPlaces(PlaceSearchVO placeSearchVO) {
+	public List<PlaceVO> getAllNewPlaces(PlaceSearchVO placeSearchVO, int sortOption) {
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -184,9 +211,33 @@ public class PlaceDAO {
 
 			PlaceVO placeVO = null;
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = "";
+			
+			// order by 여행자명
+			if ( sortOption == 1 ) {
+				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyPlaceName/text()");
+			}
+			// order by 등록자 이름
+			else if ( sortOption == 2 ) {
+				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyEmail/text()");
+			}
+			// order by 나라ID
+			else if ( sortOption == 3 ) {
+				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyCountryId/text()");
+			}
+			// order by 추천수
+			else if ( sortOption == 4 ) {
+				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyLikeCount/text()");
+			}
+			// order by 조회수
+			else if ( sortOption == 5 ) {
+				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyViewCount/text()");
+			} 
+			else {
+				query = XML.getNodeString("//query/place/getAllNewPlaces/text()");
+			}
 
 			// article을 꺼내온다.
-			String query = XML.getNodeString("//query/place/getAllNewPlaces/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, placeSearchVO.getEndIndex());
 			stmt.setInt(2, placeSearchVO.getStartIndex());
@@ -599,6 +650,80 @@ public class PlaceDAO {
 		} finally {
 			closeDB(conn, stmt, null);
 		}
+	}
+
+	/**
+	 * @author 이기연 placeName을 수정/ 업데이트 
+	 * @param updatedPlaceName 
+	 * @param placeId 
+	 */
+	public void updatePlaceName(String placeId, String updatedPlaceName) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/updatePlaceName/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, updatedPlaceName);
+			stmt.setString(2, placeId);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		
+	}
+
+	/**
+	 * @author 이기연 place 내용을 수정/ 업데이트 
+	 * @param updatedDescription 
+	 * @param placeId 
+	 */
+	public void updateDescription(String placeId, String updatedDescription) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/updateDescription/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, updatedDescription);
+			stmt.setString(2, placeId);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		
 	}
 
 

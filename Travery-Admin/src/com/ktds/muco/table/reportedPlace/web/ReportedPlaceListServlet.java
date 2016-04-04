@@ -55,7 +55,7 @@ public class ReportedPlaceListServlet extends HttpServlet {
 		
 		request.setAttribute("places", placeListVO);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/reportedPlaceList.jsp");
 		rd.forward(request, response);
 		
 	}
