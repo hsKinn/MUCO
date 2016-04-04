@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
@@ -27,6 +32,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
 public class HitTheRoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,6 +40,7 @@ public class HitTheRoadServlet extends HttpServlet {
 	public HitTheRoadServlet() {
 		super();
 		packBiz = new PackBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -130,6 +137,15 @@ public class HitTheRoadServlet extends HttpServlet {
 			
 			request.setAttribute("firstPlace", packVO.getPlaceList().get(0));
 		}
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(memberVO.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.HIT_THE_ROAD);
+		history.setDescription(BuildDescription.get(Description.HIT_THE_ROAD, memberVO.getEmail()));
+		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);

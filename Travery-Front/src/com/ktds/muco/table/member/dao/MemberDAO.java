@@ -23,7 +23,7 @@ public class MemberDAO {
 	 * @author 유병훈
 	 * 
 	 */
-	public void addNewMember(MemberVO memberVO) {
+	public int addNewMember(MemberVO memberVO) {
 
 		loadOracleDriver();
 
@@ -39,7 +39,7 @@ public class MemberDAO {
 			stmt.setString(2, memberVO.getPassword());
 			stmt.setString(3, memberVO.getName());
 
-			stmt.executeUpdate();
+			return stmt.executeUpdate();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);

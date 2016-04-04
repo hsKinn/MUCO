@@ -30,9 +30,10 @@ public class MemberBiz {
 	 * @author 유병훈
 	 * 
 	 */
-	public void addNewMember(HttpServletRequest request) {
+	public boolean addNewMember(HttpServletRequest request) {
 
 		MemberVO memberVO = new MemberVO();
+		
 		String email = request.getParameter("userEmail");
 		String password = request.getParameter("userPassword");
 		String name = request.getParameter("userName");
@@ -41,7 +42,7 @@ public class MemberBiz {
 		memberVO.setPassword(password);
 		memberVO.setName(name);
 
-		memberDAO.addNewMember(memberVO);
+		return memberDAO.addNewMember(memberVO) > 0;
 
 	}
 
