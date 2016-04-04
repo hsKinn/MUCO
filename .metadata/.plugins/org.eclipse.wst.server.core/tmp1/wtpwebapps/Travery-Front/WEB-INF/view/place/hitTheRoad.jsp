@@ -376,13 +376,6 @@
 			</c:forEach>
 		</c:if>
 		
-		// 점에 마우스 대면 크게
-		$("#dottedDiv > a").mouseenter(function(){
-			$(this).css("font-size","x-large");	
-		});
-		$("#dottedDiv > a").mouseleave(function(){
-			$(this).css("font-size","x-small");
-		});
 		
 		// 점에 마우스 대면 여행지명 표시
 		$('[data-toggle="tooltip"]').tooltip();
@@ -391,10 +384,36 @@
 		$("#dottedDiv > a").click(function(){
 			var select = $(this);
 		    var id = select.attr('id');
+		    
+		    /* $post(
+		    		"<c:url value="/tempPlacePackage" />"
+					, { "selectedPlaceId" : id }	
+		    		,function(data){
+		    		}
+		    ); */
+		    alert(id);
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
 		});
 		
+		
+		
+		
 	});
+	
+	// 점에 마우스 대면 크게
+	function zoomin(id) {
+      var a = document.getElementById(id);
+      a.style.marginLeft = (parseInt(a.style.marginLeft) - 5) + "px"; 
+      a.style.marginTop = (parseInt(a.style.marginTop) - 15) + "px"; 
+      a.style.fontSize = "30px";
+   	}
+ 
+	function zoomout(id) {
+      var a = document.getElementById(id);
+      a.style.marginLeft = (parseInt(a.style.marginLeft) + 5) + "px"; 
+      a.style.marginTop = (parseInt(a.style.marginTop) + 15) + "px"; 
+      a.style.fontSize = "x-small";
+   	}
 </script>
 
 <!-- Hit the road -->
@@ -457,13 +476,15 @@
 											class="countryIdIs${ countryId }" 
 											data-toggle="tooltip"
 											title="${ placeName }"
+											onmouseover="zoomin('placeIdIs${ placeId }')"
+                                 			onmouseout="zoomout('placeIdIs${ placeId }')"
 											style="
 												font-weight: bolder;
 												font-size:x-small;
 												text-decoration: none;
 												position: absolute;
 												cursor: pointer;"
-											>●
+											><span>●</span>
 											</a>
 										</c:forEach>
 									</div>
@@ -498,19 +519,22 @@
 		
 				<!-- 여행지 임시 리스트 -->
 		
-				<div id="tempPlaceList" class="col-sm-8">
+				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;">
 		
 					<!-- 여행지 상세보기 페이지 -->
+				<form id="massiveSubmitForm">
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-						<div class="tempSelectedPlace" id="' + ${ tempSelectedPlace.placeName } + '" 
+						<div class="tempSelectedPlace" id="${ tempSelectedPlace.placeName }" 
 						style="float:left;
-								width:15%;
-								height:150px;
+								width:150px;
+								height:160px;
 								background-color: #5e5e5e;
 								text-align: center;
-								margin-left:20px;
-								margin-top:20px;" 
+								margin-left:40px;
+								margin-top:20px;
+								cursor:pointer;" 
 						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						<input class="selectedPlaceId" name="${ tempSelectedPlace.placeId }" type="checkbox" value="${ tempSelectedPlace.placeId }" />
 							${ tempSelectedPlace.placeName }
 						</div>
 									
@@ -558,6 +582,7 @@
 						</div>
 					</div>
 					</c:forEach>
+				</form>
 					
 				</div>
 		

@@ -406,4 +406,14 @@
     <servlet-name>TempSelectedPlaceServlet</servlet-name>
     <url-pattern>/tempSelectedPlace</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TempPlacePackageServlet</display-name>
+    <servlet-name>TempPlacePackageServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.TempPlacePackageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TempPlacePackageServlet</servlet-name>
+    <url-pattern>/tempPlacePackage</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -49,8 +49,7 @@ public class TempSelectedPlaceServlet extends HttpServlet {
 					// 여행지ID를 errorCode로 보낸다.
 					String selectedPlaceId2 = request.getParameter("selectedPlaceId");
 					String[] splitId = selectedPlaceId2.split("s");
-					
-					System.out.println("selectedPlaceId2 : " + splitId[1]);
+
 					
 					int selectedPlaceId = 0;
 					try {

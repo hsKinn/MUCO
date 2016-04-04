@@ -57,7 +57,6 @@ public class PlaceBiz {
 		String selectedPlaceId2 = request.getParameter("selectedPlaceId");
 		String[] splitId = selectedPlaceId2.split("s");
 		
-		System.out.println("selectedPlaceId2 : " + splitId[1]);
 		
 		int selectedPlaceId = 0;
 		try {
@@ -92,4 +91,13 @@ public class PlaceBiz {
 		return false;
 		
 	}
+	
+	public PlaceVO getTempPlacePackage(int selectedPlaceId) {
+		
+		PlaceVO placeVO = placeDAO.addTempSelectedPlaceByPlaceId(selectedPlaceId);
+		
+		return placeVO;
+		
+	}
+	
 }
