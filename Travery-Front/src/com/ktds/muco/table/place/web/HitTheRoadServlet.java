@@ -97,11 +97,16 @@ public class HitTheRoadServlet extends HttpServlet {
 		
 		// 유저가 가진 패키지들 뿌려주기
 		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
-		loginUserPackList = packBiz.getPackListByEmail(memberVO.getEmail());
-		if(loginUserPackList != null){
-			request.setAttribute("loginUserPackList", loginUserPackList);
+		
+		if(memberVO != null){
 			
+			loginUserPackList = packBiz.getPackListByEmail(memberVO.getEmail());
+			if(loginUserPackList != null){
+				request.setAttribute("loginUserPackList", loginUserPackList);
+				
+			}
 		}
+		
 
 		
 		// 팩 아이디 받아서 그 안에 있는 모든 여행지들 list로 묶어서 보낸다.
