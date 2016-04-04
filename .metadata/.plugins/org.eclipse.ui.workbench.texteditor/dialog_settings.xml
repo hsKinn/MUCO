@@ -2,15 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getAllOriginPlaces" key="selection"/>
+		<item value="/reportedPlaceList" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="getAllOriginPlaces"/>
-			<item value="getAllOriginPlaceCount"/>
+			<item value="/reportedPlaceList"/>
+			<item value="getPlaceListByPackId"/>
+			<item value="getPlaceDetailByPlaceId"/>
+			<item value="check"/>
+			<item value="namecheck"/>
+			<item value="name"/>
 			<item value="form"/>
+			<item value="place"/>
 		</list>
 		<list key="replacehistory">
 		</list>

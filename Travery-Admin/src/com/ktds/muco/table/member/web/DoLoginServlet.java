@@ -46,9 +46,12 @@ public class DoLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean isLoginSuccess = memberBiz.loginForAdmin(request);
 
+		// 로그인 성공할 경우
 		if (isLoginSuccess) {
 			response.sendRedirect(Root.get(this) + "/originPlaceList?sortOption=9");
-		} else {
+		} 
+		// 로그인 실패할 경우
+		else {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 요청입니다.");
 		}
 	}

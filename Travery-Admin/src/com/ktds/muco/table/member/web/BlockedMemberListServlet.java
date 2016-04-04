@@ -52,7 +52,7 @@ public class BlockedMemberListServlet extends HttpServlet {
 		
 		request.setAttribute("members", memberListVO);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/memberList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/blockedMemberList.jsp");
 		rd.forward(request, response);
 	}
 

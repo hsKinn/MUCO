@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.List"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceListVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.dao.PlaceDAO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.member.biz.MemberBiz"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.pack.biz.PackBiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.biz.MemberBiz"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.biz.EvaluationBiz"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.vo.EvaluationListVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.pack.web.PackDetailServlet"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
