@@ -79,8 +79,6 @@ div#printAxisX1 {
 	font-size: large;
 	padding-top: 16%;
 	color: #ffffff;
-<<<<<<< HEAD
-=======
 }
 
 div#printAxisY2 {
@@ -88,7 +86,6 @@ div#printAxisY2 {
 	font-weight: bolder;
 	font-size: large;
 	color: #ffffff;
->>>>>>> origin/KGM8
 }
 
 div#dottedDiv {
@@ -96,17 +93,9 @@ div#dottedDiv {
 	position: relative;
 }
 
-<<<<<<< HEAD
-div#printAxisY2 {
-	text-align: center;
-	font-weight: bolder;
-	font-size: large;
-	color: #ffffff;
-=======
 div#dottedDiv2 {
 	height: 100%;
 	position: relative;
->>>>>>> origin/KGM8
 }
 
 div#secondRowDiv {
@@ -133,8 +122,6 @@ div.selectedCountry, div.loginUserPack {
 	margin-left: 1px;
 }
 
-<<<<<<< HEAD
-=======
 div#showCountriesDiv {
 	display: none;
 }
@@ -142,48 +129,30 @@ div#showCountriesDiv {
 div#showPackagesDiv {
 	display: none;
 }
->>>>>>> origin/KGM8
 
 
 /* 나라 색깔 */
 
 /* Korea */
 
-<<<<<<< HEAD
-div.selectedCountry {
-	background-color: #ffffff;
-	color: #333333;
-}
-
-div#countryNameIsKorea {
-=======
 div.selectedCountry, div.loginUserPack {
 	background-color: #eeeeee;
 	color: #333333;
 }
 
 div#Korea {
->>>>>>> origin/KGM8
 	background-color: #fa3851;
 	color: #333333;
 }
 
 /* Russia */
-<<<<<<< HEAD
-div#countryNameIsRussia {
-=======
 div#Russia {
->>>>>>> origin/KGM8
 	background-color: #ffff4d;
 	color: #333333;
 }
 
 /* China */
-<<<<<<< HEAD
-div#countryNameIsChina {
-=======
 div#China {
->>>>>>> origin/KGM8
 	background-color: #9797ff;
 	color: #333333;
 }
@@ -207,8 +176,6 @@ a.countryIdIs12 {
 	color: #9797ff;
 }
 
-<<<<<<< HEAD
-=======
 div#massiveSubmitBtn {
 	text-align: center;
 	font-weight: bold;
@@ -243,4 +210,3 @@ div.addUserPackList:hover {
 	background-color: #5a5a5a;
 	color:#eeeeee;
 }
->>>>>>> origin/KGM8

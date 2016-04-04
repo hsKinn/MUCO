@@ -13,11 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
-<<<<<<< HEAD
-=======
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
->>>>>>> origin/KGM8
 import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
@@ -76,14 +73,6 @@ public class HitTheRoadServlet extends HttpServlet {
 				}
 				request.setAttribute("selectedAllPlaceList", selectedAllPlaceList);
 			}
-<<<<<<< HEAD
-		}
-		
-		String errorCode = request.getParameter("errorCode");
-		if( errorCode != null ) {
-			request.setAttribute("removeCountryName", errorCode);
-		}
-=======
 			
 			// 여행지 리스트가 존재하면
 			if( !memberVO.getTempSelectedPlaceList().isEmpty() ) {
@@ -104,11 +93,6 @@ public class HitTheRoadServlet extends HttpServlet {
 			if( errorCodeSecond != 0 ) {
 				request.setAttribute("removePlaceId", errorCodeSecond);
 			}
-		}
-		
-		boolean isSuccessRemoveCountries = Boolean.parseBoolean(request.getParameter("isSuccessRemoveCountries"));
-		if( isSuccessRemoveCountries ) {
-			request.setAttribute("isSuccessRemoveCountries", isSuccessRemoveCountries);
 		}
 		
 		// 유저가 가진 패키지들 뿌려주기
@@ -136,13 +120,7 @@ public class HitTheRoadServlet extends HttpServlet {
 		
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
 		request.setAttribute("placeListByPackId", packVO.getPlaceList());
->>>>>>> origin/KGM8
 		
-		boolean isSuccessRemoveCountries = Boolean.parseBoolean(request.getParameter("isSuccessRemoveCountries"));
-		if( isSuccessRemoveCountries ) {
-			request.setAttribute("isSuccessRemoveCountries", isSuccessRemoveCountries);
-		}
-
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);
 

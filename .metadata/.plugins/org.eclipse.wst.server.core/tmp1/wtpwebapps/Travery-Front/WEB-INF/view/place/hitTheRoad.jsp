@@ -51,13 +51,10 @@
 <script src="<c:url value="/resource/js/jvectormap/map.js" />"></script>
 <script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
-<<<<<<< HEAD
-=======
 <!-- Google Map API -->
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&libraries=geometry,places"></script>
 
->>>>>>> origin/KGM8
 <c:set var="axisX1" value="${ sessionScope._MEMBER_.selectedStandardList.get(0) }" />
 <c:set var="axisX2" value="${ sessionScope._MEMBER_.selectedStandardList.get(1) }" />
 <c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
@@ -300,32 +297,6 @@
 
 		/* 0. 기본 값 */
 		
-<<<<<<< HEAD
-		// 왼쪽 사이드바 메뉴 선택시
-		$("#hitTheRoadMenu").mouseout(function() {
-			$("#hitTheRoadMenu").css("color", "#ffffff");
-		});
-		$("#hitTheRoadMenu").css("color", "#ffffff");
-		
-		// 탭 유지
-		$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-           localStorage.setItem('activeTab', $(e.target).attr('href'));
-       });
-       var activeTab = localStorage.getItem('activeTab');
-       if(activeTab){
-           $('[href="' + activeTab + '"]').tab('show');
-       }
-		
-		// 새로고침 해도 현재 탭 유지
-		
-		/* 1. 나라 선택 탭 */
-		
-		// 오른쪽 나라 리스트에서 나라 지울때
-		<c:if test=" not empty ${ removeCountryName }">
-		<c:set value="${ removeCountryName }" var="removeCountryName" />
-			$('#'+ removeCountryName).remove();
-		</c:if>
-=======
 		// 탭 유지
 		$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
            localStorage.setItem('activeTab', $(e.target).attr('href'));
@@ -384,17 +355,12 @@
 		$(".selectedCountry").click(function(){
 			location.href = "/selectedCountry?selectedCountryName=" + $(this).attr('id');
 		});
->>>>>>> origin/KGM8
   	
 	   	// 나라 선택 초기화
 	   	$("#removeAllCountries").click(function(){
 			location.href = "/removeAllSelectedCountries";
 	   	});
 	   	
-<<<<<<< HEAD
-=======
-	   	
->>>>>>> origin/KGM8
 	   	/* 2. 나라 검색 탭 */
 	   	
 		// X축 변경
@@ -405,8 +371,6 @@
 		// Y축 변경
 		$(".axisY").click(function(){
 			location.href = "/selectedStandard?selectedStandard=Y&selectedStandardName=" + $(this).text();
-<<<<<<< HEAD
-=======
 		});
 		
 		// 점들의 위치 설정
@@ -498,7 +462,6 @@
 				alert("추가되었습니다.");
 				return;
 			}
->>>>>>> origin/KGM8
 		});
 		
 		// 점들의 위치 설정
@@ -570,79 +533,21 @@
 		
 						<!-- 탭 -->
 						<ul id="hitTheRoadTabs" class="nav nav-tabs">
-<<<<<<< HEAD
-							<li class="active"><a data-toggle="tab" href="#home">Country</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li class="tapMenu"><a data-toggle="tab" href="#menu3">Route</a></li>
-=======
 							<li id="homeTab" class="tabMenu1"><a data-toggle="tab" href="#home">Country</a></li>
 							<li id="menu1Tab" class="tabMenu1"><a data-toggle="tab" href="#menu1">Mood</a></li>
 							<li id="menu2Tab" class="tabMenu2"><a data-toggle="tab" href="#menu2">My package</a></li>
 							<li id="menu3Tab" class="tabMenu2"><a data-toggle="tab" href="#menu3">Route</a></li>
->>>>>>> origin/KGM8
 						</ul>
 		
 						<!-- 탭 내용 -->
 						<div class="tab-content">
 							<!-- 나라 선택 탭 -->
-<<<<<<< HEAD
-							<div id="home" class="tab-pane fade in active">
-		
-=======
 							<div id="home" class="tab-pane fade">
->>>>>>> origin/KGM8
 								<!-- 지도 -->
 								<div id="map1" style="width: 100%; height: 95%;"></div>
 		
 								<button id="focus-multiple" >KR and JP</button>
 								<button id="focus-init" >World Map</button>
-<<<<<<< HEAD
-								<button id="removeAllCountries" style="background-color: #333333; color:#ffffff;">Remove All Countries</button>
-							</div>
-		
-							<!-- 여행지 검색 탭 -->
-							<div id="menu1" class="tab-pane fade">
-								<div class="row">
-									<div id="printAxisY1">${ axisY1 }</div>
-								</div>
-								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
-									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
-									
-									<!-- ★★★★★★★★★★★★★★★★ 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
-									<div id="dottedDiv" class="col-sm-8" style="padding:0;">
-										<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
-											<c:set value="${ selectedPlace.placeId }" var="placeId" />
-											<c:set value="${ selectedPlace.placeName }" var="placeName" />
-											<c:set value="${ selectedPlace.countryId }" var="countryId" />
-											<a
-											id="placeIdIs${ placeId }"
-											class="countryIdIs${ countryId }" 
-											href="#"
-											data-toggle="tooltip"
-											title="${ placeName }"
-											style="
-												font-weight: bolder;
-												font-size:x-small;
-												text-decoration: none;
-												position: absolute;"
-											>●
-											</a>		
-										</c:forEach>
-									</div>
-									
-									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
-								</div>
-								<div class="row">
-									<div id="printAxisY2">${ axisY2 }</div>
-								</div>
-							</div>
-							<!-- 나의 패키지 탭 -->
-							<div id="menu2" class="tab-pane fade"></div>
-		
-							<!-- 경로 설정 탭 -->
-							<div id="menu3" class="tab-pane fade"></div>
-=======
 								<button id="removeAllCountries" style="background-color: #333333; color:#ffffff; height:29px;;">Remove All Countries</button>
 							</div>
 		
@@ -742,18 +647,11 @@
 								</script>
 								<div id="googleMap" style="width:960px;height:480px;"></div>
 							</div>
->>>>>>> origin/KGM8
 						</div>
 					</div>
 				</div>
 		
 				<!-- 선택된 나라 리스트 -->
-<<<<<<< HEAD
-				<div class="col-sm-1" style="height: 100%;" >
-					<div id="countries" style="width: 100%; height: 100%;">
-						<c:forEach items="${ selectedCountryList }" var="selectedCountry">
-							<div style="border-radius:6px;" class="selectedCountry" id="countryNameIs${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
-=======
 				<div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
 					<div id="countries" style="width: 100%; height: 100%;">
 						<c:forEach items="${ selectedCountryList }" var="selectedCountry">
@@ -765,7 +663,6 @@
 					<div id="packages" style="width: 100%; height: 100%;">
 						<c:forEach items="${ loginUserPackList }" var="loginUserPack">
 							<div style="border-radius:6px;" class="loginUserPack" id="packIdIs${ loginUserPack.packId }">${ loginUserPack.packTitle }</div>
->>>>>>> origin/KGM8
 						</c:forEach>
 					</div>
 				</div>
@@ -776,34 +673,6 @@
 		
 				<!-- 여행지 임시 리스트 -->
 		
-<<<<<<< HEAD
-				<div id="tempPlaceList" class="col-sm-8">
-		
-					<!-- 여행지 상세보기 페이지 -->
-		
-					<div class="placeDetail" data-toggle="modal" data-target="#myModal">KOREA</div>
-		
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" role="dialog">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="divHeader">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-		
-								<div class="divBody">
-		
-									<div class="travelImage">
-										<h4 class="modal-title">travel image</h4>
-									</div>
-		
-									<div class="travelExplain">
-										<div class="modal-header">
-											<h2 class="modal-title">travelTitle</h2>
-										</div>
-										<div class="modal-header" style="height: 50%;">
-											<h4 class="modal-title">travelDescript</h4>
-=======
 				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
@@ -843,7 +712,6 @@
 										</div>
 										<div class="modal-header" style="height: 50%;">
 											<h4 class="modal-title">${ tempSelectedPlace.placeDescription }</h4>
->>>>>>> origin/KGM8
 										</div>
 										<div class="modal-header" style="height: 40%;">
 											<h4 class="modal-title">travelReply</h4>
@@ -859,46 +727,11 @@
 										</div>
 									</div>
 								</div>
-<<<<<<< HEAD
-								<div class="modal-footer">
-=======
 								<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
->>>>>>> origin/KGM8
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
-<<<<<<< HEAD
-					</div>
-				</div>
-		
-				<!-- 기준 선택 -->
-				<div id="selectStandardBtns" class="col-sm-2" style="height: 100%;">
-		
-					<!-- Drop Down : X 축 -->
-					<div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
-						<span class="caret"></span></button>
-						<ul class="dropdown-menu">
-							<li><a class="axisX">Bright-Dark</a></li>
-							<li><a class="axisX">HighPrice-LowPrice</a></li>
-							<li><a class="axisX">Active-Calm</a></li>
-						</ul>
-					</div>
-					<br />
-					<!-- Drop Down : Y 축 -->
-					<div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
-						<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="axisY">Bright-Dark</a></li>
-							<li><a class="axisY">HighPrice-LowPrice</a></li>
-							<li><a class="axisY">Active-Calm</a></li>
-						</ul>
-					</div>
-				</div>
-=======
 					</div>
 					</c:forEach>
 				</form>
@@ -951,7 +784,6 @@
 					</div>
 				</div>
 				
->>>>>>> origin/KGM8
 			</div>
 		</div>
 	</div>

@@ -22,18 +22,12 @@ public class PackBiz {
 	 */
 	private PackDAO packDAO;
 	private HashTagDAO hashTagDAO;
-<<<<<<< HEAD
-=======
 	private PlaceDAO placeDAO;
->>>>>>> origin/KGM8
 
 	public PackBiz() {
 		packDAO = new PackDAO();
 		hashTagDAO = new HashTagDAO();
-<<<<<<< HEAD
-=======
 		placeDAO = new PlaceDAO();
->>>>>>> origin/KGM8
 	}
 
 	public List<PackVO> getPackListByEmail(String email) {
@@ -96,11 +90,6 @@ public class PackBiz {
 		// 1. hashtags string을 split하여 배열로 바꾼다.
 		hashtags = hashtags.trim();
 		String hashtagArray[] = hashtags.split(" ");
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> origin/KGM8
 		// 2. hashtag vo들로 만든다.
 		// 3. dao로 tag를 넘겨 db에 넣는다.
 		for (String tag : hashtagArray) {
@@ -108,13 +97,8 @@ public class PackBiz {
 			hashTagVO.setPackId(packId);
 			hashTagVO.setHashtagName(tag);
 			insertCount = hashTagDAO.addHashTagInPack(hashTagVO);
-<<<<<<< HEAD
-		}		
-		
-=======
 		}
 
->>>>>>> origin/KGM8
 		return insertCount;
 	}
 
@@ -122,20 +106,11 @@ public class PackBiz {
 		List<HashTagVO> tags = new ArrayList<HashTagVO>();
 		tags = hashTagDAO.getHashTagOfPackage(packId);
 		String hashtagOfPack = "";
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> origin/KGM8
 		for (HashTagVO hashTagVO : tags) {
 			String tag = hashTagVO.getHashtagName();
 			hashtagOfPack = hashtagOfPack + " #" + tag;
 		}
-<<<<<<< HEAD
-		
-		return hashtagOfPack;
-	}
-=======
 
 		return hashtagOfPack;
 	}
@@ -181,5 +156,4 @@ public class PackBiz {
 
 		return false;
 	}
->>>>>>> origin/KGM8
 }

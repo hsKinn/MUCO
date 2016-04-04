@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ktds.muco.table.hashtag.vo.HashTagVO;
 import com.ktds.muco.table.pack.vo.PackVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
@@ -366,10 +365,4 @@ public class PackDAO {
 			}
 		}
 	}
-
-<<<<<<< HEAD
-=======
-	
-
->>>>>>> origin/KGM8
 }

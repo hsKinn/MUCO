@@ -1,14 +1,11 @@
 package com.ktds.muco.table.place.biz;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
->>>>>>> origin/KGM8
 
-import com.ktds.muco.table.image.dao.ImageDAO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceListVO;
@@ -25,12 +22,9 @@ import com.ktds.muco.util.web.Paging;
 public class PlaceBiz {
 
 	private PlaceDAO placeDAO;
-	private ImageDAO imageDAO;
 
 	public PlaceBiz() {
 		placeDAO = new PlaceDAO();
-
-		imageDAO = new ImageDAO();
 	}
 	
 	

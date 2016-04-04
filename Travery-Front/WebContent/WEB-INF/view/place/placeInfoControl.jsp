@@ -6,15 +6,10 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/placeInfoControl.css"/>" />
-<<<<<<< HEAD
 <!-- Log out -->
 <jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
 
 <!-- Recommend placeInfo -->
-=======
-
-<!-- Recommend Place -->
->>>>>>> origin/KGM8
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -204,7 +199,7 @@
 							</div>
 							<div id="photo_Bottom">
 								<input type="file" id="image" name="image" accept="image/*" onchange="readURL(this);" required multiple />
-								<img id="blah" class="img-rounded"" src="#" />
+								<img id="blah" class="img-rounded" src="#" />
 							</div>
 						</div>
 				

@@ -30,24 +30,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Travel with Travery!</title>
-<<<<<<< HEAD
-<meta name="description"
-	content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Codeply">
-
-<link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link
-	href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css"
-	rel="stylesheet" />
-<link rel="stylesheet"
-	href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/styles.css"/>" />
-
-<!-- Boot strap -->
-=======
 <meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Codeply">
@@ -56,7 +38,6 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/styles.css"/>" />
->>>>>>> origin/KGM8
 
 <!-- jVector Map -->
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />

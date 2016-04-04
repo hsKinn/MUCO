@@ -584,9 +584,6 @@
 	</packReply>
 	
 	<place>
-<<<<<<< HEAD
-	
-=======
 		<getPlaceListByPackId>
 			SELECT	*
 			FROM	PLACE P
@@ -594,7 +591,6 @@
 			WHERE	PACKPLACE.PACK_ID = ?
 			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
 		</getPlaceListByPackId>
->>>>>>> origin/KGM8
 		<getPlaceListByCountryId>
 			SELECT  P1.PLACE_ID
 			        , PLACE_NAME
@@ -638,8 +634,6 @@
 			FROM	PLACE P1
 			WHERE	COUNTRY_ID = ?
 		</getPlaceListByCountryId>
-<<<<<<< HEAD
-		
 		<getPlaceByCountryName>
 			SELECT	PLACE_ID
 					, PLACE_NAME
@@ -973,9 +967,6 @@
 			FROM	PLACE
 			WHERE	COUNTRY_NAME = ?
 		</getPlaceByCountryName>
-=======
->>>>>>> origin/KGM8
-		
 		<getPlaceInPackage>
 			SELECT	P.PLACE_ID
 					, PLACE_NAME
@@ -1025,14 +1016,12 @@
 			FROM	DUAL
 		</getReturnPlaceId>
 		
-<<<<<<< HEAD
 		<viewCountRecommendPlace>
 			UPDATE  PLACE
 			SET     VIEW_COUNT = ( VIEW_COUNT + 1 )
 			WHERE   PLACE_ID = ?
 		</viewCountRecommendPlace>
 		
-=======
 		<addTempSelectedPlaceByPlaceId>
 			SELECT	PLACE_ID
 					, PLACE_NAME
@@ -1049,7 +1038,6 @@
 			WHERE PLACE_ID = ?
 		</addTempSelectedPlaceByPlaceId>
 			
->>>>>>> origin/KGM8
 	</place>
 	
 	<placeLike>

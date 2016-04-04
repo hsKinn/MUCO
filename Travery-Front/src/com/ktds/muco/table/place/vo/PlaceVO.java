@@ -29,13 +29,10 @@ public class PlaceVO extends CountryVO {
 	private int likeCount;
 	private String placeDescription;
 	private int isNewPlace;
-<<<<<<< HEAD
 	private int avgLikeCount;
 	
 	private boolean isExistPlaceLike;
 	private List<PlaceReplyVO> placeReplyList;
-=======
->>>>>>> origin/KGM8
 	
 	// 기준에 대한 평균값
 	private double avgBrightDarkScore;

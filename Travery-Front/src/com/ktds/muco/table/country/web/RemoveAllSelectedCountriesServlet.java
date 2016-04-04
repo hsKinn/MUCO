@@ -40,10 +40,10 @@ public class RemoveAllSelectedCountriesServlet extends HttpServlet {
 		boolean isSuccess = memberBiz.removeAllSelectedCountries(request);
 		
 		if(isSuccess){
-			response.sendRedirect(Root.get(this) + "/hitTheRoad?isSuccessRemoveCountries=true");
+			response.sendRedirect(Root.get(this) + "/hitTheRoad");
 		}
 		else {
-			response.sendRedirect(Root.get(this) + "/hitTheRoad?isSuccessRemoveCountries=false");
+			response.sendRedirect(Root.get(this) + "/hitTheRoad");
 		}
 	}
 
