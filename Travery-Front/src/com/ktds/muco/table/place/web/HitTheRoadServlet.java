@@ -111,20 +111,25 @@ public class HitTheRoadServlet extends HttpServlet {
 		if(loginUserPackList != null){
 			request.setAttribute("loginUserPackList", loginUserPackList);
 			
-			// 패키지 내의 모든 여행지 리스트 묶어서 보내기
-			List<PlaceVO> allPlaceListInUserPacks = new ArrayList<PlaceVO>();
-			for (PackVO userPackVO : loginUserPackList) {
-				// 나라의 여행지 리스트가 존재하면
-				if( userPackVO.getPlaceList() != null ) {
-						for (PlaceVO placeVO : userPackVO.getPlaceList()) {
-							allPlaceListInUserPacks.add(placeVO);
-							System.out.println(placeVO.getPlaceName() + " hi");
-						}
-				}
-			}
-			request.setAttribute("allPlaceListInUserPacks", allPlaceListInUserPacks);
-			
 		}
+
+		
+		// 팩 아이디 받아서 그 안에 있는 모든 여행지들 list로 묶어서 보낸다.
+		String packIdString = request.getParameter("selectedPackageId");
+		int packId = packBiz.convertPackIdStringToInteger(packIdString);
+		
+		session = request.getSession();
+		memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		if( packId != 0 ){
+			memberVO.setRecentViewPack(packId);
+		}
+		else {
+			packId = memberVO.getRecentViewPack();
+		}
+		
+		PackVO packVO = packBiz.getPackDataByPackId(packId);
+		request.setAttribute("placeListByPackId", packVO.getPlaceList());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);

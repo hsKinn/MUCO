@@ -300,7 +300,7 @@ public class PlaceDAO {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
-			String query = XML.getNodeString("//query/place/getPlaceListByPackId/text()");
+			String query = XML.getNodeString("//query/pack/getPlaceListByPackId/text()");
 			stmt = conn.prepareStatement(query);
 
 			stmt.setInt(1, packId);
@@ -321,6 +321,13 @@ public class PlaceDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
+				
+				// 각 기준에 대한 평균값 입력
+				// 김광민
+				placeVO.setAvgActiveCalmScore( rs.getDouble("AVG_ACTIVE_SCORE") );
+				placeVO.setAvgBrightDarkScore( rs.getDouble("AVG_BRIGHT_SCORE") );
+				placeVO.setAvgHighPriceLowPriceScore( rs.getDouble("AVG_HIGH_PRICE_SCORE") );
 				
 				placeList.add(placeVO);
 

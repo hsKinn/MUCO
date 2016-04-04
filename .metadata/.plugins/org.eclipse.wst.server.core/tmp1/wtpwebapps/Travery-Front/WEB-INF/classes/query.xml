@@ -153,6 +153,37 @@
 			        , LIKE_COUNT
 			        , DESCRIPTION
 			        , IS_NEW_PLACE
+			        , COUNTRY_ID
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 3
+			                                        )
+			            ) AVG_ACTIVE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 1
+			                                        )
+			            ) AVG_BRIGHT_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 2
+			                                        )
+			            ) AVG_HIGH_PRICE_SCORE
 			FROM    PACK_PLACE PP
 			        , PLACE P
 			WHERE   PP.PLACE_ID = P.PLACE_ID

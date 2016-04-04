@@ -10,24 +10,14 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * 
  * Member VO
  * 
- * mainImageName 메인 사진 이름
- * mainImageLocation 메인 사진 위치
- * joinDate 회원가입 날짜
- * recentAccessDate 최근 접속 날짜
- * selectedCountryList 사용자가 Hit the road에서 선택한 나라들
+ * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
+ * recentAccessDate 최근 접속 날짜 selectedCountryList 사용자가 Hit the road에서 선택한 나라들
  * 
- * ---Selected Standard---
- * 0번 인덱스 : X축 오른쪽
- * 1번 인덱스 : X축 왼쪽
- * 2번 인덱스 : Y축 위
- * 3번 인덱스 :
+ * ---Selected Standard--- 0번 인덱스 : X축 오른쪽 1번 인덱스 : X축 왼쪽 2번 인덱스 : Y축 위 3번 인덱스 :
  * Y축 아래
  * 
- * ---------초기값---------
- * 0번 인덱스 : Bright
- * 1번 인덱스 : Dark
- * 2번 인덱스 : Active
- * 3번 인덱스 : Calm
+ * ---------초기값--------- 0번 인덱스 : Bright 1번 인덱스 : Dark 2번 인덱스 : Active 3번 인덱스 :
+ * Calm
  * 
  * @author 김광민
  *
@@ -43,11 +33,12 @@ public class MemberVO extends PlaceVO {
 	private String mainImageLocation = "";
 	private String joinDate = "";
 	private String recentAccessDate = "";
+	private int recentViewPack = 0;
 
 	private List<CountryVO> selectedCountryList;
 	private List<PlaceVO> tempSelectedPlaceList;
 	private List<String> selectedStandardList;
-	
+
 	public MemberVO() {
 
 		email = "";
@@ -62,13 +53,21 @@ public class MemberVO extends PlaceVO {
 
 		selectedCountryList = new ArrayList<CountryVO>();
 		tempSelectedPlaceList = new ArrayList<PlaceVO>();
-		
+
 		// 기준 초기값 설정
 		selectedStandardList = new ArrayList<String>();
 		selectedStandardList.add("Bright");
 		selectedStandardList.add("Dark");
 		selectedStandardList.add("Active");
 		selectedStandardList.add("Calm");
+	}
+
+	public int getRecentViewPack() {
+		return recentViewPack;
+	}
+
+	public void setRecentViewPack(int recentViewPack) {
+		this.recentViewPack = recentViewPack;
 	}
 
 	public String getEmail() {
@@ -166,7 +165,7 @@ public class MemberVO extends PlaceVO {
 	public void setTempSelectedPlaceList(List<PlaceVO> tempSelectedPlaceList) {
 		this.tempSelectedPlaceList = tempSelectedPlaceList;
 	}
-	
+
 	/**
 	 * 
 	 * 선택된 나라 입력하기 전에 중복 체크
@@ -281,16 +280,15 @@ public class MemberVO extends PlaceVO {
 	 * @author 김광민
 	 */
 	public boolean removeAllSelectedCountries() {
-		
+
 		this.selectedCountryList.clear();
-		
-		if ( this.selectedCountryList.isEmpty() ) {
+
+		if (this.selectedCountryList.isEmpty()) {
 			return true;
 		}
 		return false;
 	}
-	
-	
+
 	/**
 	 * 
 	 * 선택된 여행지 입력하기 전에 중복 체크
@@ -300,16 +298,15 @@ public class MemberVO extends PlaceVO {
 	 */
 	public boolean isExistPlaceByPlaceId(int selectedPlaceId) {
 
-		for (PlaceVO placeVO: this.getTempSelectedPlaceList()) {
+		for (PlaceVO placeVO : this.getTempSelectedPlaceList()) {
 
-			if ( selectedPlaceId == placeVO.getPlaceId() ) {
+			if (selectedPlaceId == placeVO.getPlaceId()) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
+
 	/**
 	 * 
 	 * 여행지 리스트에 선택된 여행지 추가
@@ -322,7 +319,7 @@ public class MemberVO extends PlaceVO {
 		this.tempSelectedPlaceList.add(placeVO);
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * 여행지 리스트에 선택된 여행지 제거
@@ -344,5 +341,5 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
-	
+
 }

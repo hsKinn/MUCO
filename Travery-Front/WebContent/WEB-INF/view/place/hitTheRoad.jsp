@@ -399,27 +399,30 @@
 				</c:if>
 				
 			</c:forEach>
-			
-			<c:forEach items="${ allPlaceListInUserPacks }" var="placeInPack">
-			
+		</c:if>
+		
+		// 점들의 위치 설정
+		<c:if test="${ not empty placeListByPackId }">
+			<c:forEach items="${ placeListByPackId }" var="place">
+				
 				<c:if test="${ axisX1 eq 'Bright'}">
-					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-left" : "${ placeInPack.avgBrightDarkScore * 6.5}px"});
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgBrightDarkScore * 6.5}px"});
 				</c:if>
 				<c:if test="${ axisX1 eq 'Active' }">
-					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-left" : "${ placeInPack.avgActiveCalmScore * 6.5 }px"});
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgActiveCalmScore * 6.5 }px"});
 				</c:if>
 				<c:if test="${ axisX1 eq 'HighPrice' }">
-					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-left" : "${ placeInPack.avgHighPriceLowPriceScore * 6.5 }px"});
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgHighPriceLowPriceScore * 6.5 }px"});
 				</c:if>
 				
 				<c:if test="${ axisY1 eq 'Bright'}">
-					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-top" : "${ 325 - (placeInPack.avgBrightDarkScore * 3.25) }px"});
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgBrightDarkScore * 3.25) }px"});
 				</c:if>
 				<c:if test="${ axisY1 eq 'Active' }">
-					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-top" : "${ 325 - (placeInPack.avgActiveCalmScore * 3.25) }px"});
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgActiveCalmScore * 3.25) }px"});
 				</c:if>
 				<c:if test="${ axisY1 eq 'HighPrice' }">
-					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-top" : "${ 325 - (placeInPack.avgHighPriceLowPriceScore * 3.25) }px"});
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgHighPriceLowPriceScore * 3.25) }px"});
 				</c:if>
 				
 			</c:forEach>
@@ -433,6 +436,11 @@
 			var select = $(this);
 		    var id = select.attr('id');
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
+		});
+		
+		/* 3. 마이 패키지 탭 */
+		$(".loginUserPack").click(function(){
+			location.href = "/hitTheRoad?selectedPackageId=" + $(this).attr('id');
 		});
 	});
 	
@@ -500,9 +508,9 @@
 								</div>
 								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
 									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
-									
-									<!-- ★★★★★★★★★★★★★★★★ 탭 2  ★★★★★★★★★★★★★★★★★★★★ -->
+									<!-- ★★★★★ 나라별 점 찍는곳 ★★★★★ -->
 									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
+										<c:if test="${ not empty selectedAllPlaceList }">
 										<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
 											<c:set value="${ selectedPlace.placeId }" var="placeId" />
 											<c:set value="${ selectedPlace.placeName }" var="placeName" />
@@ -523,6 +531,7 @@
 											>●
 											</a>
 										</c:forEach>
+										</c:if>
 									</div>
 									
 									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
@@ -539,19 +548,20 @@
 								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
 									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
 									
-									<!-- ★★★★★★★★★★★★★★★ 패키지 내 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
+									<!-- ▲▲▲▲▲  패키지 점 찍는곳 ▲▲▲▲▲ -->
 									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
-										<c:forEach items="${ allPlaceListInUserPacks }" var="placeInUserPack">
-											<c:set value="${ placeInUserPack.placeId }" var="placeIdInPack" />
-											<c:set value="${ placeInUserPack.placeName }" var="placeNameInPack" />
-											<c:set value="${ placeInUserPack.countryId }" var="countryIdInPack" />
+										<c:if test="${ not empty placeListByPackId  }">
+										<c:forEach items="${ placeListByPackId }" var="placeByPackId">
+											<c:set value="${ placeByPackId.placeId }" var="placeIdInPack" />
+											<c:set value="${ placeByPackId.placeName }" var="placeNameInPack" />
+											<c:set value="${ placeByPackId.countryId }" var="countryIdInPack" />
 											<a
 											id="placeIdInPackIs${ placeIdInPack }"
 											class="countryIdIs${ countryIdInPack }" 
 											data-toggle="tooltip"
 											title="${ placeNameInPack }"
-											onmouseover="zoomin('placeIdIs${ placeIdInPack }')"
-											onmouseout="zoomout('placeIdIs${ placeIdInPack }')"
+											onmouseover="zoomin('placeIdInPackIs${ placeIdInPack }')"
+											onmouseout="zoomout('placeIdInPackIs${ placeIdInPack }')"
 											style="
 												font-weight: bolder;
 												font-size:x-small;
@@ -561,8 +571,8 @@
 											>●
 											</a>
 										</c:forEach>
+										</c:if>
 									</div>
-									
 									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
 								</div>
 								<div class="row">
