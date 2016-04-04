@@ -131,7 +131,7 @@ public class PlaceLikeDAO {
 	 * @param placeId
 	 * @return
 	 */
-	public int countPlaceLike(int placeId) {
+	public int countPlaceLike( int placeId ) {
 		
 		loadOracleDriver();
 		

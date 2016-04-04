@@ -41,10 +41,9 @@
 		</getReturnImageId>
 		<getImageLocationList>
 			SELECT  IMAGE_LOCATION
-            FROM    IMAGE I
-                    , PLACE P
-            WHERE   I.PLACE_ID = P.PLACE_ID
-            AND     I.EMAIL = ?
+					, IMAGE_NAME
+            FROM    IMAGE
+            WHERE   PLACE_ID = ?
 		</getImageLocationList>
 	</image>
 	
@@ -920,11 +919,15 @@
 		</getPlaceInPackage>
 		
 		<getUserRecommendPlaceList>
-			SELECT  PLACE_NAME
-			FROM    PLACE P
-			        , IMAGE I
-			WHERE	P.PLACE_ID = I.PLACE_ID
-			AND		P.EMAIL = ?
+			SELECT  PLACE_ID
+					, PLACE_NAME
+					, LATITUDE
+					, LONGITUDE
+					, ADDRESS
+					, VIEW_COUNT
+					, DESCRIPTION
+			FROM    PLACE
+			WHERE	EMAIL = ?
 		</getUserRecommendPlaceList>
 		
 		<insertPlaceInfo>

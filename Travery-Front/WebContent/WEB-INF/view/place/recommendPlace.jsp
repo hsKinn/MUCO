@@ -58,7 +58,7 @@
 			<div id="inner_wrapper">
 				<div id="daily_wrapper">
 					<div id="daily_top">
-						Daily Place
+						Daily Top Place
 					</div>
 					
 					<div id="daily_content">
@@ -89,7 +89,7 @@
 				
 				<div id="weekly_wrapper">
 					<div id="weekly_top">
-						Weekly Place
+						Weekly Top Place
 					</div>
 		
 					<div id="weekly_content">
@@ -120,7 +120,7 @@
 				
 				<div id="monthly_wrapper">
 					<div id="monthly_top">
-						Monthly Place
+						Monthly Top Place
 					</div>
 		
 					<div id="monthly_content">

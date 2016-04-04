@@ -14,7 +14,6 @@ import com.ktds.muco.util.web.Paging;
  */
 public class PlaceListVO {
 
-	private List<ImageVO> imageList;
 	private List<PlaceVO> placeList;
 	private Paging paging;
 	
@@ -29,11 +28,5 @@ public class PlaceListVO {
 	}
 	public void setPaging(Paging paging) {
 		this.paging = paging;
-	}
-	public List<ImageVO> getImageList() {
-		return imageList;
-	}
-	public void setImageList(List<ImageVO> imageList) {
-		this.imageList = imageList;
 	}
 }

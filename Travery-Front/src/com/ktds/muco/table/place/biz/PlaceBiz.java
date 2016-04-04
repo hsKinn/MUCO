@@ -130,13 +130,24 @@ public class PlaceBiz {
 
 	} 
 	
-	public PlaceListVO getUserRecommendList(MemberVO member) {
+	/**
+	 * Get User Recommend Place List
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param member
+	 * @return
+	 */
+	public List<PlaceVO> getUserRecommendList(MemberVO member) {
 
-		PlaceListVO placeListVO = new PlaceListVO();
-		placeListVO.setPlaceList(placeDAO.getUserRecommendPlaceList(member));
-		placeListVO.setImageList(imageDAO.getImageLocationList(member));
-		return placeListVO;
+		return placeDAO.getUserRecommendPlaceList(member);
 	}
+	
+	/**
+	 * 
+	 * @param placeVO
+	 * @return
+	 */
 
 	public PlaceVO placeInfoCreate(PlaceVO placeVO) {
 

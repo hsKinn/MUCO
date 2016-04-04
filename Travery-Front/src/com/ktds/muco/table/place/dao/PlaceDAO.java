@@ -8,11 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ktds.muco.table.image.dao.ImageDAO;
+import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.table.placeLike.biz.PlaceLikeBiz;
+import com.ktds.muco.table.placeLike.dao.PlaceLikeDAO;
 import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
 import com.ktds.muco.table.placeReply.dao.PlaceReplyDAO;
 import com.ktds.muco.util.xml.XML;
@@ -26,10 +29,14 @@ public class PlaceDAO {
 	
 	private PlaceReplyDAO placeReplyDAO;
 	private PlaceLikeBiz placeLikeBiz;
+	private PlaceLikeDAO placeLikeDAO;
+	private ImageDAO imageDAO;
 	
 	public PlaceDAO() {
 		placeReplyDAO = new PlaceReplyDAO();
 		placeLikeBiz = new PlaceLikeBiz();
+		placeLikeDAO = new PlaceLikeDAO();
+		imageDAO = new ImageDAO();
 	}
 
 	
@@ -271,34 +278,52 @@ public class PlaceDAO {
 	
 	/**
 	 * 
-	 * getUserRecommendPlaceList
+	 * Get User Recommend Place List
 	 * 
-	 * @author 김동규
+	 * @author 김현섭 (수정)
 	 * 
 	 */
-
 	public List<PlaceVO> getUserRecommendPlaceList(MemberVO member) {
 		
-		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+		loadOracleDriver();
+		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		loadOracleDriver();
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
 
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
 			String query = XML.getNodeString("//query/place/getUserRecommendPlaceList/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, member.getEmail());
 
 			rs = stmt.executeQuery();
-			PlaceVO placeVO = null;
+			
+			PlaceVO place = null;
 
 			while (rs.next()) {
-				placeVO = new PlaceVO();
-				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-				placeList.add(placeVO);
+				
+				place = new PlaceVO();
+				
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setLatitude(rs.getInt("LATITUDE"));
+				place.setLongitude(rs.getInt("LONGITUDE"));
+				place.setAddress(rs.getString("ADDRESS"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				
+				// Place Like Count
+				place.setLikeCount(placeLikeDAO.countPlaceLike(place.getPlaceId()));
+				
+				// Place Image List
+				/*List<ImageVO> imageList = imageDAO.getImageLocationList(place.getPlaceId());
+				place.setPlaceImageList(imageList);*/
+				
+				placeList.add(place);
 			}
 
 		} catch (SQLException e) {

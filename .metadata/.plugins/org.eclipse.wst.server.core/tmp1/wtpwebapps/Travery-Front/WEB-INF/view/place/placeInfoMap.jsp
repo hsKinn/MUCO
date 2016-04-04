@@ -22,7 +22,7 @@
 	});
 </script>
 <script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&libraries=geometry,places">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&libraries=geometry,places&language=en">
 	
 </script>
 <!-- <script type="text/javascript"	src="http://maps.google.com/maps/api/js?sensor=false"></script> -->

@@ -71,39 +71,46 @@ public class ImageDAO {
 	}
 
 	/**
+	 * Get Image List By Place ID
 	 * 
-	 * getImageLocationList
-	 * 
-	 * @author 김동규
+	 * @author 김현섭(수정)
 	 * 
 	 */
-	public List<ImageVO> getImageLocationList(MemberVO member) {
+	public List<ImageVO> getImageLocationList( int placeId ) {
 
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
 		List<ImageVO> imageList = new ArrayList<ImageVO>();
 
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
 			String query = XML.getNodeString("//query/image/getImageLocationList/text()");
 			stmt = conn.prepareStatement(query);
 
-			stmt.setString(1, member.getEmail());
+			stmt.setInt(1, placeId);
+			
 			rs = stmt.executeQuery();
-			ImageVO imageVO = null;
+			
+			ImageVO image = null;
 
-			while (rs.next()) {
-				imageVO = new ImageVO();
-				imageVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
-				imageList.add(imageVO);
+			while  (rs.next() ) {
+				
+				image = new ImageVO();
+				
+				image.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				image.setImageName(rs.getString("IMAGE_NAME"));
+				imageList.add(image);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
+		
 		return imageList;
 	}
 

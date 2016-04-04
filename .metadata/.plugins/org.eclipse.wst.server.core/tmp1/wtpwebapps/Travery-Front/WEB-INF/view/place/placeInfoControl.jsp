@@ -1,5 +1,4 @@
 <!-- 김동규 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,15 +6,17 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/placeInfoControl.css"/>" />
+<!-- Log out -->
+<jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
 
-<!-- Recommend Place -->
+<!-- Recommend placeInfo -->
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		$("#recommendPlaceMenu").mouseout(function() {
-			$("#recommendPlaceMenu").css("color", "#ffffff");
+		$("#recommendplaceInfoMenu").mouseout(function() {
+			$("#recommendplaceInfoMenu").css("color", "#ffffff");
 		});
-		$("#recommendPlaceMenu").css("color", "#ffffff");
+		$("#recommendplaceInfoMenu").css("color", "#ffffff");
 
 	});
 </script>
@@ -57,14 +58,14 @@
 
 						$("#massiveSelectCheckBox").click(function() {
 							var isChecked = $(this).prop("checked");
-							$(".deletePlaceId").prop("checked", isChecked);
+							$(".deleteplaceInfoId").prop("checked", isChecked);
 						});
 
 						$("#massiveDeleteBtn")
 								.click(
 										function() {
 											var isChecked = false;
-											$(".deletePlaceId")
+											$(".deleteplaceInfoId")
 													.each(
 															function(index,
 																	data) {
@@ -89,25 +90,30 @@
 					});
 </script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#mapBtn")
-								.click(
-										function openMap() {
-											url = "<c:url value="/placeInfoAddAddress"/>";
-											window
-													.open(
-															url,
-															"GoogleMapAPI",
-															"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800");
-										});
-						function Mapdata() {
-							GoogleMapAPI.document.dataform.lat;
-							GoogleMapAPI.document.dataform.lng;
-							GoogleMapAPI.document.dataform.address;
-						}
-					});
+	$(document).ready( function() { 
+		
+		$("#mapBtn").click( function openMap() {
+			url = "<c:url value="/placeInfoAddAddress"/>";
+			window.open(	url,
+							"GoogleMapAPI",
+							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800"
+						);
+		});
+		
+		$("#map").click( function openMap() {
+			url = "<c:url value="/placeInfoAddAddress"/>";
+			window.open(	url,
+							"GoogleMapAPI",
+							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800"
+						);
+		});
+		
+		function Mapdata() {
+			GoogleMapAPI.document.dataform.lat;
+			GoogleMapAPI.document.dataform.lng;
+			GoogleMapAPI.document.dataform.address;
+		}
+	});
 </script>
 <script type="text/javascript">
 	function readURL(input) {
@@ -120,133 +126,104 @@
 		}
 	}
 </script>
-<div class="jumbotron"
-	style="width: 50%; height: 90%; float: left; margin-left: 4%; margin-top: 1.5%;">
-	<div id="title"
-		style="margin-left: 2%; top: 0; width: 100%; height: 10%;">
-		<span class="glyphicon glyphicon-tags"
-			style="margin-right: 3%; float: left;"></span>
-		<H2>내 추천 여행지</H2>
-		<input type="checkbox" id="massiveSelectCheckBox" />전체선택
-	</div>
+
+<section class="bg-primary">
+	<div class="container">
 	
-
-
-			<c:forEach items="${ placeInfo.placeList }" var="placeInfo">
-				<tr>
-					<td>${ placeInfo.placeName }</td>
-					<td>${ placeInfo.imageLocation }</td>
-				</tr>
-			</c:forEach>
-
-	<div id="inner_wrapper">
-		<div id="allCheckBox">
-			<input type="checkbox" id="massiveSelectCheckBox" />
+				<!-- 제목 -->
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h2 class="margin-top-0 wow fadeIn">Add New placeInfo</h2>
+			<hr class="primary">
+			<p>새로운 Place를 등록하세요</p>
 		</div>
-		이미지 List정보 받아오기 checkbox/placeName/image
-		<form id="massiveDeleteForm">
-			<c:forEach items="${ placeInfo.placeInfoList }" var="placeInfo">
-				<div id="my_previousPlaceList">
-
-					<input type="checkbox" class="deletePlaceId" name="deletePlaceId"
-						value="${ placeInfo.placeId }" /> <a
-						href="<c:url value="/hit?placeId=${placeInfo.placeId}" />"> ${ placeInfo.placeName }</a>
-					<c:if test="${placeInfo.fileCount gt 0 }"> 
-							[${placeInfo.fileCount} each files included]
-						</c:if>
+		
+		<div id="placeInfoControl_Wrapper">
+			<div id="myPlace_Wrapper">
+				<div id="myPlace_Top">
+					<div id="myPlace_Title">
+						<span class="glyphicon glyphicon-folder-open"></span>
+						내 추천 여행지
+					</div>
+					<div id="myPlace_btn">
+						<div id="btn-delete">
+							<span class="glyphicon glyphicon-minus-sign"></span>
+						</div>
+						<div id="btn-create">
+							<span class="glyphicon glyphicon-plus-sign"></span>
+						</div>
+					</div>
 				</div>
-			</c:forEach>
-		</form>
+				<div id="myPlace_Content">
+					<c:forEach items="${ placeList }" var="placeInfo">
+						<div class="myPlace_Contents">
+							<div class="myPlace_Contents_top">
+								IMG
+								<!-- <img src="/image?imageName=${ placeInfo.placeImageList[1].imageName }" /> -->
+							</div>
+							<div class="myPlace_Contents_bottom">
+								${ placeInfo.placeName }
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>	
+			
+			<div id="addNewPlace_Wrapper">
+				<div id="newPlace_Title">
+					<span class="glyphicon glyphicon-cloud-upload"></span>
+					<span id="newPlace_Title">여행지 등록 & 수정</span>
+				</div>
+			
+				<form id="dataForm" name="dataform" enctype="multipart/form-data">
+					<div id="newPlace_Content">
+						<div id="newPlace_Top">
+							<div id="placeTitle">
+								<span id="placeTitle">Place Title :</span> 
+								<input type="text" id="placeName" name="placeName" placeholder="Place Title" value="${placeInfo.placeName}" />
+							</div>
+							<div id="placeAddress">
+								<span id="placeAddress">
+									Address : 
+								</span>
+								<input type="text" id="address" name="address" placeholder="Place Address" value="${placeInfo.address}" /> 
+								<input type="hidden" id="lat" name="lat" placeholder="#latitude" value="${placeInfo.latitude}" /> 
+								<input type="hidden" id="lng" name="lng" placeholder="#longitude" value="${placeInfo.longitude}" />
+								<span id="map" onclick="openMap(this.form)">Map </span>
+								<span class="glyphicon glyphicon-map-marker" id="mapBtn" onclick="openMap(this.form)"></span>
+							</div>
+						</div>
+				
+						<div id="newPlace_Middle">
+							<div id="photo_Top">
+								Photo <span class="glyphicon glyphicon-camera"></span> 
+							</div>
+							<div id="photo_Bottom">
+								<input type="file" id="image" name="image" accept="image/*" onchange="readURL(this);" required multiple />
+								<img id="blah" class="img-rounded"" src="#" />
+							</div>
+						</div>
+				
+						<div id="newPlace_Bottom">
+							<div id="description_Top">
+								<span id="description_Top">
+									Description
+								</span>
+								<textarea id="description" name="description" style="height: 100%; width: 100%;">${ placeInfo.description }</textarea>
+							</div>
+							<div id="description_Bottom">
+								SUBMIT
+								<c:if test="${ empty placeInfo }">
+									<span class="glyphicon glyphicon-send" id="submitBtn"></span>
+								</c:if>
+							</div>
+						</div>
+			
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-
-	<div style="width: 20%; float: right; margin-top: 70%; background-color: red; position: absolute;">
-		<div id="btn-create" style="float: left;">
-			<form id="createForm">
-				<span class="glyphicon glyphicon-pencil" id="createBtn"
-					style="cursor: pointer; position: absolute;"></span>
-			</form>
-		</div>
-		<div id="btn-delete" style="margin-left: 10%; float: left;">
-			<form id="deleteForm">
-				<span class="glyphicon glyphicon-trash" id="massiveDeleteBtn"
-					style="cursor: pointer"></span>
-			</form>
-		</div>
-	</div>
-</div>
-
-<div class="jumbotron"
-	style="width: 21%; height: 90%; float: left; margin-left: 2%; margin-top: 1.5%;">
-	<form id="dataForm" name="dataform" enctype="multipart/form-data">
-		<div class="container">
-			<div style="margin-left: 13%;">
-				<h2>여행지 등록하기</h2>
-			</div>
-			<div class="panel-group">
-				<div class="panel panel-default" style="width: 100%;">
-					<div class="panel-heading">
-						<input type="text" id="placeName" name="placeName"
-							placeholder="#여행지명" value="${placeInfo.placeName}"
-							style="padding: 0, 0, 0, 0; width: 100%;" />
-					</div>
-					<div class="panel-body">
-						<span class="glyphicon glyphicon-map-marker" id="mapBtn"
-							onclick="openMap(this.form)"
-							style="float: left; cursor: pointer;"></span> 
-						<input type="text"
-							id="address" name="address" placeholder="#address"
-							value="${placeInfo.address}" size="12"
-							style="margin-left: 5%; float: left;" /> 
-						<input type="hidden"
-							id="lat" name="lat" placeholder="#latitude"
-							value="${placeInfo.latitude}" size="12" /> 
-						<input type="hidden"
-							id="lng" name="lng" placeholder="#longitude"
-							value="${placeInfo.longitude}" size="12" />
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="panel-group">
-				<div class="panel panel-default" style="width: 100%;">
-					<div class="panel-heading" style="font-size: 10px;">
-						<span class="glyphicon glyphicon-camera"
-							style="cursor: pointer; float: left;"></span> 
-						<input type="file"
-							id="image" name="image" accept="image/*"
-							onchange="readURL(this);" required
-							style="float: left; margin-left: 2%;" />
-					</div>
-					<div class="panel-body">
-						<img id="blah" class="img-circle" src="#"
-							style="margin-left: 25%; width: 150px; height: 150px;" />
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="panel-group">
-				<div class="panel panel-default" style="height: 100%; width: 100%;">
-					<div class="panel-heading" style="height: 250px;">
-						<textarea id="description" name="description"
-							style="height: 100%; width: 100%;">${ placeInfo.description }</textarea>
-					</div>
-					<div class="panel-body">
-						SUBMIT
-						<c:if test="${ empty placeInfo }">
-							<span class="glyphicon glyphicon-send" id="submitBtn"
-								style="cursor: pointer"></span>
-						</c:if>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</form>
-</div>
+</section>			
 
 
 <!-- Footer -->

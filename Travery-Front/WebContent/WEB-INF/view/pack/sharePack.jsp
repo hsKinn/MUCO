@@ -149,7 +149,7 @@
 									      <tr>
 									        <td>${ places.placeName }</td>
 									        <th>${ places.address }</th>
-									        <td>${ places.placeName }</td>
+									        <td>${ places.likeCount }</td>
 									      </tr>
 									    </c:forEach>
 									  </table>

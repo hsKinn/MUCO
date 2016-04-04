@@ -3,6 +3,7 @@ package com.ktds.muco.table.place.vo;
 import java.util.List;
 
 import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.placeReply.vo.PlaceReplyVO;
 
@@ -44,7 +45,17 @@ public class PlaceVO extends CountryVO {
 	private String name;
 	private String imageLocation;	
 	
+	private List<ImageVO> placeImageList;
 	
+	
+	public List<ImageVO> getPlaceImageList() {
+		return placeImageList;
+	}
+
+	public void setPlaceImageList(List<ImageVO> placeImageList) {
+		this.placeImageList = placeImageList;
+	}
+
 	public int getLikeCount() {
 		return likeCount;
 	}

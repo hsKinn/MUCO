@@ -1,0 +1,271 @@
+@CHARSET "UTF-8";
+
+/* 김동규 */
+div#placeInfoControl_Wrapper {
+	width: 100%;
+	height: 660px;
+	background-color: green;
+	float: left;
+}
+
+div#myPlace_Wrapper {
+	width: 48%; 
+	height: 100%; 
+	float: left; 
+	margin-left: 2%; 
+	margin-top: 1.5%;
+	border: 3px Groove #5b5b5b;
+}
+
+div#myPlace_Top {
+	width: 100%;
+	height: 10%;
+	float: left;
+}
+
+div#myPlace_Title {
+	width: 65%;
+	float: left;
+	font-size: 25px;
+}
+
+div#myPlace_Title span {
+	margin: 10px;
+}
+
+div#myPlace_btn {
+	width: 30%;
+	float: left;
+	font-size: 20px;
+}
+
+div#btn-create {
+	width: 30%;
+	float: right;
+	cursor: pointer;
+	margin-top: 15px;
+}
+
+div#btn-delete {
+	width: 30%;
+	float: right;
+	cursor: pointer;
+	margin-top: 15px;
+}
+
+div#myPlace_Content {
+	width: 100%;
+	height: 580px;
+	float: left;
+	overFlow-y: auto;
+}
+
+div.myPlace_Contents {
+	width: 28%;
+	height: 15%;
+	float: left;
+	margin: 2%;
+	border: 3px Groove #5b5b5b;
+}
+
+div.myPlace_Contents_top {
+	width: 100%;
+	height: 70%;
+	float: left;
+	text-align: center;
+}
+
+div.myPlace_Contents_top img {
+	width: 100%;
+	height: 100%;
+}
+
+div.myPlace_Contents_bottom {
+	width: 100%;
+	height: 30%;
+	float: left;
+	text-align: center;
+	margin-top: 3px;
+}
+
+
+div#addNewPlace_Wrapper {
+	width: 48%; 
+	height: 100%; 
+	float: left; 
+	margin-left: 2%; 
+	margin-top: 1.5%;
+	border: 3px Groove #5b5b5b;
+}
+
+div#newPlace_Title {
+	width: 100%;
+	height: 10%;
+	float: left;
+	text-align: center;
+	font-size: 23px;
+}
+
+div#newPlace_Content {
+	width: 100%;
+	height: 90%;
+	float: left;
+}
+
+div#newPlace_Top {
+	width: 100%;
+	height: 30%;
+	float: left;
+	background-color: green;	
+}
+
+div#newPlace_Middle {
+	width: 100%;
+	height: 30%;
+	float: left;
+	background-color: blue;	
+}
+
+div#newPlace_Bottom {
+	width: 100%;
+	height: 30%;
+	float: left;
+	background-color: red;	
+}
+
+div#right_wrapper {
+	width: 20%;
+	height: 90%;
+	margin-left: 2%;
+	margin-right: 2%;
+	float: right;
+	background-color: orange;
+}
+
+div#placeInfoControler {
+	width: 58%;
+	margin-left: 6%;
+	float: left;
+	font-size: 30px;
+	background-color: pink;
+}
+
+div#my_recommendPlaceTitle {
+	margin-top: 50px;
+	margin-left: 50px;
+	font-size: 30px;
+	width: 60%;
+	background-color: red;
+	float: left;
+}
+
+div#my_recommendPlaceTitle img {
+	width: 50px;
+	height: 50px;
+}
+
+div#my_previousPlaceList {
+	width: 15%;
+	height: 25%;
+	margin: 3%;
+	float: left;
+	font-size: 30px;
+	background-color: yellow;
+}
+
+div#placeInfoCreate_main {
+	width: 40%;
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-size: 30px;
+}
+
+div#placeInfoCreate_title {
+	width: 30%;
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-size: 30px;
+	background-color: yellow;
+	float: left;
+}
+
+div#placeInfoCreate_searchMap {
+	width: 80%;
+	height: 200px;
+	margin-left: 10%;
+	margin-bottom: 5%;
+	background-color: yellow;
+	float: left;
+}
+
+div#placeInfoCreate_searchMap img {
+	float: left;
+	margin-left: 3%;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+
+div#placeInfoCreate_searchMap input {
+	float: left;
+	margin-left: 3%;
+	width: 300px;
+	height: 40px;
+}
+
+div#placeInfoCreate_imageUpload {
+	width: 80%;
+	height: 300px;
+	margin-left: 10%;
+	margin-bottom: 5%;
+	background-color: blue;
+	float: left;
+}
+
+div#placeInfoCreate_imageUpload img {
+	float: left;
+	margin-left: 3%;
+	width: 40px;
+	height: 40px;
+}
+
+div#placeInfoCreate_imageUpload input {
+	float: left;
+	margin-left: 3%;
+	width: 300px;
+	height: 40px;
+}
+
+div#placeInfoCreate_description {
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+	margin-bottom: 5%;
+	background-color: pink;
+	float: left;
+}
+
+div#placeInfoCreate_description textarea {
+	font-size: 20px;
+	width: 350px;
+	height: 250px;
+	float: left;
+}
+
+div#placeInfoCreate_submitBtn {
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+	margin-top: 8%;
+	font-size: 30px;
+	background-color: orange;
+}
+
+div#placeInfoCreate_submitBtn img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
