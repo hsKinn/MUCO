@@ -434,6 +434,30 @@
 		    var id = select.attr('id');
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
 		});
+		
+		// myPack 추가 버튼 - 체크되있는 여행지가 있을 때만 가능
+		/* $("#massiveSubmitBtn").click(function(){
+			if( $( ".selectedPlaceId:checkbox:checked" ).val() == null ) {
+				alert("My Package에 추가하실 여행지를 선택해주세요.");
+			}
+			else {
+				$("#massiveSubmitBtn").attr('data-target', '#massiveSubmitModal');
+			}
+		}); */
+		
+		// 체크된 여행지들 myPack에 추가 확인
+		$(".addUserPackList").click(function(){
+			var packId = $(this).attr('id');
+			if ( confirm( "["+ $(this).text() + "]에 추가하시겠습니까?") ) {
+				var form = $("#massiveSubmitForm");
+				form.attr("method", "post");
+				form.attr("action", "/addMyPackByPlace?packId=" + packId);
+				form.submit();
+				alert("추가되었습니다.");
+				return;
+			}
+		});
+		
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -599,7 +623,7 @@
 				<!-- 여행지 임시 리스트 -->
 		
 				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
-		
+				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
 						<div class="tempSelectedPlace" id="' + ${ tempSelectedPlace.placeName } + '" 
@@ -611,6 +635,7 @@
 								margin-left:20px;
 								margin-top:20px;" 
 						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
 							${ tempSelectedPlace.placeName }
 						</div>
 									
@@ -658,11 +683,11 @@
 						</div>
 					</div>
 					</c:forEach>
-					
+				</form>
 				</div>
 		
 				<!-- 기준 선택 -->
-				<div id="selectStandardBtns" class="col-sm-2" style="height: 100%;">
+				<div id="selectStandardBtns" class="col-sm-2" style="height: 70%;">
 		
 					<!-- Drop Down : X 축 -->
 					<div class="dropdown">
@@ -687,6 +712,27 @@
 						</ul>
 					</div>
 				</div>
+				
+				<!-- my pack 추가버튼 모달 -->
+				
+				<div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >추가</div>
+				<div class="modal fade" id="massiveSubmitModal" role="dialog" >
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
+							<div class="divBody" style="width: 100%;height: 100%;background-color: #333333; overflow-y:auto;">
+		
+								<c:forEach items="${loginUserPackList }" var="addMyPack">
+									<div class="addUserPackList" id="${addMyPack.packId }">${addMyPack.packTitle }</div>
+								</c:forEach>
+								
+							</div>
+							<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>

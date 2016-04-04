@@ -115,4 +115,25 @@ public class PackBiz {
 		
 		return hashtagOfPack;
 	}
+
+	
+	/**
+	 * 
+	 * @author 유병훈
+	 * 
+	 */
+	public boolean getAddMyPackByPlace(String[] selectedPlaceId, int packId) {
+		
+		int isSuccess = 0;
+		//packDAO.getAddMyPackByPlace(selectedPlaceId, packId);
+		for (String placeId : selectedPlaceId) {
+			int ori_placeId = Integer.parseInt(placeId);
+			isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
+		}
+		if ( isSuccess > 0) {
+			return true;
+		}
+		
+		return false;
+	}
 }
