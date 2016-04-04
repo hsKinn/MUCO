@@ -7,6 +7,7 @@ import com.ktds.muco.table.hashtag.dao.HashTagDAO;
 import com.ktds.muco.table.hashtag.vo.HashTagVO;
 import com.ktds.muco.table.pack.dao.PackDAO;
 import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
@@ -21,14 +22,31 @@ public class PackBiz {
 	 */
 	private PackDAO packDAO;
 	private HashTagDAO hashTagDAO;
+	private PlaceDAO placeDAO;
 
 	public PackBiz() {
 		packDAO = new PackDAO();
 		hashTagDAO = new HashTagDAO();
+		placeDAO = new PlaceDAO();
 	}
 
 	public List<PackVO> getPackListByEmail(String email) {
 		List<PackVO> packs = packDAO.getPackListByEmail(email);
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+		
+		// 김광민
+		if(packs != null){
+			
+			for (PackVO packVO : packs) {
+				
+				placeList = placeDAO.getPlaceListByPackId( packVO.getPackId() );
+				
+				if( placeList != null) {
+					packVO.setPlaceList( placeList );
+				}
+			}
+		}
+		
 		return packs;
 	}
 

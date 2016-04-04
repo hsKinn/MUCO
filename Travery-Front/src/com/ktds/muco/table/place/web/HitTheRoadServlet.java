@@ -106,12 +106,24 @@ public class HitTheRoadServlet extends HttpServlet {
 		}
 		
 		// 유저가 가진 패키지들 뿌려주기
-		System.out.println("hit the road servlet member Email : " + memberVO.getEmail());
 		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
 		loginUserPackList = packBiz.getPackListByEmail(memberVO.getEmail());
 		if(loginUserPackList != null){
-			System.out.println("hit the road servlet loginUserPackList size : " + loginUserPackList.size());
 			request.setAttribute("loginUserPackList", loginUserPackList);
+			
+			// 패키지 내의 모든 여행지 리스트 묶어서 보내기
+			List<PlaceVO> allPlaceListInUserPacks = new ArrayList<PlaceVO>();
+			for (PackVO userPackVO : loginUserPackList) {
+				// 나라의 여행지 리스트가 존재하면
+				if( userPackVO.getPlaceList() != null ) {
+						for (PlaceVO placeVO : userPackVO.getPlaceList()) {
+							allPlaceListInUserPacks.add(placeVO);
+							System.out.println(placeVO.getPlaceName() + " hi");
+						}
+				}
+			}
+			request.setAttribute("allPlaceListInUserPacks", allPlaceListInUserPacks);
+			
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");

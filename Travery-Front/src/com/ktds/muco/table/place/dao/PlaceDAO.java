@@ -278,7 +278,62 @@ public class PlaceDAO {
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * getPlaceListByPackId
+	 * 
+	 * @param packId
+	 * @return
+	 * @author 김광민
+	 */
+	public List<PlaceVO> getPlaceListByPackId(int packId) {
+		
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/place/getPlaceListByPackId/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setInt(1, packId);
+
+			rs = stmt.executeQuery();
+
+			PlaceVO placeVO = null;
+
+			while (rs.next()) {
+
+				placeVO = new PlaceVO();
+
+				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
+				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
+				placeVO.setLatitude(rs.getDouble("LATITUDE"));
+				placeVO.setLongitude(rs.getDouble("LONGITUDE"));
+				placeVO.setAddress(rs.getString("ADDRESS"));
+				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
+				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				
+				placeList.add(placeVO);
+
+			}
+
+			return placeList;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
 
 	/**
 	 * 
@@ -323,5 +378,4 @@ public class PlaceDAO {
 		}
 	}
 
-	
 }

@@ -319,15 +319,8 @@ public class MemberVO extends PlaceVO {
 	 */
 	public boolean addSelectedPlace(PlaceVO placeVO) {
 
-		// 최대 15개 나라 선택 가능
-		if (tempSelectedPlaceList.size() < 10) {
-
-			System.out.println(tempSelectedPlaceList.size());
-
-			this.tempSelectedPlaceList.add(placeVO);
-			return true;
-		}
-		return false;
+		this.tempSelectedPlaceList.add(placeVO);
+		return true;
 	}
 	
 	/**

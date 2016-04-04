@@ -535,6 +535,13 @@
 	</packReply>
 	
 	<place>
+		<getPlaceListByPackId>
+			SELECT	*
+			FROM	PLACE P
+					, PACK_PLACE PACKPLACE
+			WHERE	PACKPLACE.PACK_ID = ?
+			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
+		</getPlaceListByPackId>
 		<getPlaceListByCountryId>
 			SELECT  P1.PLACE_ID
 			        , PLACE_NAME

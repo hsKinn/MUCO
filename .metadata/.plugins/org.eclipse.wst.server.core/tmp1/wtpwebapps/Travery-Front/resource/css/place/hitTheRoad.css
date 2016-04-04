@@ -117,6 +117,10 @@ div.selectedCountry {
 	margin-left: 1px;
 }
 
+div#showCountriesDiv {
+	display: none;
+}
+
 div#showPackagesDiv {
 	display: none;
 }

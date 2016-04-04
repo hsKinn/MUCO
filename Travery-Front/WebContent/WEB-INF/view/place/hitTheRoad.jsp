@@ -295,12 +295,6 @@
 
 		/* 0. 기본 값 */
 		
-		// 왼쪽 사이드바 메뉴 선택시
-		$("#hitTheRoadMenu").mouseout(function() {
-			$("#hitTheRoadMenu").css("color", "#ffffff");
-		});
-		$("#hitTheRoadMenu").css("color", "#ffffff");
-		
 		// 탭 유지
 		$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
            localStorage.setItem('activeTab', $(e.target).attr('href'));
@@ -318,9 +312,40 @@
            $('#hitTheRoadTabs a[href="' + activeTab + '"]').tab('show');
        }
        
-       // 탭 1 ~ 2 나라 리스트 출력
+       if ( activeTab == "#home") {
+    	   $('#showCountriesDiv').css("display","block");
+    	   $('#showPackagesDiv').css("display","none");
+       }
+       else if ( activeTab == "#menu1" ) {
+    	   $('#showCountriesDiv').css("display","block");
+    	   $('#showPackagesDiv').css("display","none");
+       }
+       else if ( activeTab == "#menu2" ) {
+    	   $('#showCountriesDiv').css("display","none");
+    	   $('#showPackagesDiv').css("display","block");
+       }
+       else {
+    	   $('#showCountriesDiv').css("display","none");
+    	   $('#showPackagesDiv').css("display","block");
+       }
        
-       // 탭 3 ~ 4 패키지 리스트 출력
+       $("#homeTab").click(function(){
+    	   $('#showCountriesDiv').css("display","block");
+    	   $('#showPackagesDiv').css("display","none");
+       });
+       $("#menu1Tab").click(function(){
+    	   $('#showCountriesDiv').css("display","block");
+    	   $('#showPackagesDiv').css("display","none");
+       });
+       
+       $("#menu2Tab").click(function(){
+    	   $('#showCountriesDiv').css("display","none");
+    	   $('#showPackagesDiv').css("display","block");
+       });
+       $("#menu3Tab").click(function(){
+    	   $('#showCountriesDiv').css("display","none");
+    	   $('#showPackagesDiv').css("display","block");
+       });
        
 		/* 1. 나라 선택 탭 */
 		
@@ -374,6 +399,30 @@
 				</c:if>
 				
 			</c:forEach>
+			
+			<c:forEach items="${ allPlaceListInUserPacks }" var="placeInPack">
+			
+				<c:if test="${ axisX1 eq 'Bright'}">
+					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-left" : "${ placeInPack.avgBrightDarkScore * 6.5}px"});
+				</c:if>
+				<c:if test="${ axisX1 eq 'Active' }">
+					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-left" : "${ placeInPack.avgActiveCalmScore * 6.5 }px"});
+				</c:if>
+				<c:if test="${ axisX1 eq 'HighPrice' }">
+					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-left" : "${ placeInPack.avgHighPriceLowPriceScore * 6.5 }px"});
+				</c:if>
+				
+				<c:if test="${ axisY1 eq 'Bright'}">
+					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-top" : "${ 325 - (placeInPack.avgBrightDarkScore * 3.25) }px"});
+				</c:if>
+				<c:if test="${ axisY1 eq 'Active' }">
+					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-top" : "${ 325 - (placeInPack.avgActiveCalmScore * 3.25) }px"});
+				</c:if>
+				<c:if test="${ axisY1 eq 'HighPrice' }">
+					$('#placeIdInPackIs${ placeInPack.placeId }').css({"margin-top" : "${ 325 - (placeInPack.avgHighPriceLowPriceScore * 3.25) }px"});
+				</c:if>
+				
+			</c:forEach>
 		</c:if>
 		
 		// 점에 마우스 대면 여행지명 표시
@@ -385,7 +434,6 @@
 		    var id = select.attr('id');
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
 		});
-		
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -427,10 +475,10 @@
 		
 						<!-- 탭 -->
 						<ul id="hitTheRoadTabs" class="nav nav-tabs">
-							<li class="tabMenu1"><a data-toggle="tab" href="#home">Country</a></li>
-							<li class="tabMenu1"><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li class="tabMenu2"><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li class="tabMenu2"><a data-toggle="tab" href="#menu3">Route</a></li>
+							<li id="homeTab" class="tabMenu1"><a data-toggle="tab" href="#home">Country</a></li>
+							<li id="menu1Tab" class="tabMenu1"><a data-toggle="tab" href="#menu1">Mood</a></li>
+							<li id="menu2Tab" class="tabMenu2"><a data-toggle="tab" href="#menu2">My package</a></li>
+							<li id="menu3Tab" class="tabMenu2"><a data-toggle="tab" href="#menu3">Route</a></li>
 						</ul>
 		
 						<!-- 탭 내용 -->
@@ -453,7 +501,7 @@
 								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
 									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
 									
-									<!-- ★★★★★★★★★★★★★★★★ 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
+									<!-- ★★★★★★★★★★★★★★★★ 탭 2  ★★★★★★★★★★★★★★★★★★★★ -->
 									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
 										<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
 											<c:set value="${ selectedPlace.placeId }" var="placeId" />
@@ -484,7 +532,43 @@
 								</div>
 							</div>
 							<!-- 나의 패키지 탭 -->
-							<div id="menu2" class="tab-pane fade"></div>
+							<div id="menu2" class="tab-pane fade">
+								<div class="row">
+									<div id="printAxisY1">${ axisY1 }</div>
+								</div>
+								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
+									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
+									
+									<!-- ★★★★★★★★★★★★★★★ 패키지 내 점 찍는 곳 ★★★★★★★★★★★★★★★★★★★★ -->
+									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
+										<c:forEach items="${ allPlaceListInUserPacks }" var="placeInUserPack">
+											<c:set value="${ placeInUserPack.placeId }" var="placeIdInPack" />
+											<c:set value="${ placeInUserPack.placeName }" var="placeNameInPack" />
+											<c:set value="${ placeInUserPack.countryId }" var="countryIdInPack" />
+											<a
+											id="placeIdInPackIs${ placeIdInPack }"
+											class="countryIdIs${ countryIdInPack }" 
+											data-toggle="tooltip"
+											title="${ placeNameInPack }"
+											onmouseover="zoomin('placeIdIs${ placeIdInPack }')"
+											onmouseout="zoomout('placeIdIs${ placeIdInPack }')"
+											style="
+												font-weight: bolder;
+												font-size:x-small;
+												text-decoration: none;
+												position: absolute;
+												cursor: pointer;"
+											>●
+											</a>
+										</c:forEach>
+									</div>
+									
+									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
+								</div>
+								<div class="row">
+									<div id="printAxisY2">${ axisY2 }</div>
+								</div>
+							</div>
 		
 							<!-- 경로 설정 탭 -->
 							<div id="menu3" class="tab-pane fade"></div>
@@ -514,7 +598,7 @@
 		
 				<!-- 여행지 임시 리스트 -->
 		
-				<div id="tempPlaceList" class="col-sm-8">
+				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
 		
 					<!-- 여행지 상세보기 페이지 -->
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
@@ -576,9 +660,6 @@
 					</c:forEach>
 					
 				</div>
-		
-		
-		
 		
 				<!-- 기준 선택 -->
 				<div id="selectStandardBtns" class="col-sm-2" style="height: 100%;">
