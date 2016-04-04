@@ -45,6 +45,11 @@
             FROM    IMAGE
             WHERE   PLACE_ID = ?
 		</getImageLocationList>
+		<getPlaceMainImageByPlaceId>
+			SELECT	IMAGE_NAME
+			FROM 	IMAGE
+			WHERE 	PLACE_ID = ?
+		</getPlaceMainImageByPlaceId>
 	</image>
 	
 	<member>

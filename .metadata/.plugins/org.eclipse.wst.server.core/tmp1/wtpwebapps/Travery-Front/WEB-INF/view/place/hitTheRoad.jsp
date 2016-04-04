@@ -51,17 +51,10 @@
 <script src="<c:url value="/resource/js/jvectormap/map.js" />"></script>
 <script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
-<!-- Google Map API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&signed_in=true&callback=initMap"
-        async defer></script>
-
 <c:set var="axisX1" value="${ sessionScope._MEMBER_.selectedStandardList.get(0) }" />
 <c:set var="axisX2" value="${ sessionScope._MEMBER_.selectedStandardList.get(1) }" />
 <c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
 <c:set var="axisY2" value="${ sessionScope._MEMBER_.selectedStandardList.get(3) }" />
-
-<c:set var="firstLatitude" value="${ firstPlace.latitude }" />
-<c:set var="firstLongitude" value="${ firstPlace.longitude }" />
 
 <!-- 지도 출력 -->
 <script>
@@ -99,9 +92,10 @@
 				var map = $('#map1').vectorMap('get', 'mapObject');
 				location.href = "/selectedCountry?selectedCountryName=" + map.getRegionName(code);
 			},
+			
 			series : {
 				regions : [ {
-					scale: ['#C8EEFF', '#0071A4'],
+					scale: [],
 					normalizeFunction : 'polynomial',
 					values : {
 						"AF" : 16.63,
@@ -364,6 +358,7 @@
 			location.href = "/removeAllSelectedCountries";
 	   	});
 	   	
+	   	
 	   	/* 2. 나라 검색 탭 */
 	   	
 		// X축 변경
@@ -467,34 +462,7 @@
 			}
 		});
 		
-		// 점들의 위치 설정
-		<c:if test="${ not empty selectedAllPlaceList }">
-			<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
-			
-				<c:if test="${ axisX1 eq 'Bright'}">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgBrightDarkScore * 6.5}px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'Active' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgActiveCalmScore * 6.5 }px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'HighPrice' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgHighPriceLowPriceScore * 6.5 }px"});
-				</c:if>
-				
-				<c:if test="${ axisY1 eq 'Bright'}">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgBrightDarkScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'Active' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgActiveCalmScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'HighPrice' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgHighPriceLowPriceScore * 3.25) }px"});
-				</c:if>
-				
-			</c:forEach>
-		</c:if>
 		
-		$('[data-toggle="tooltip"]').tooltip();
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -634,115 +602,7 @@
 							</div>
 		
 							<!-- 경로 설정 탭 -->
-							<div id="menu3" class="tab-pane fade">
-								
-							<script>
-							
-							function initMap() {
-								  var markerArray = [];
-
-								  // Instantiate a directions service.
-								  var directionsService = new google.maps.DirectionsService;
-
-								  // Create a map and center it on Manhattan.
-								  var map = new google.maps.Map(document.getElementById('routeMap'), {
-								    zoom: 13,
-								    center: {lat: 40.771, lng: -73.974}
-								  });
-
-								  // Create a renderer for directions and bind it to the map.
-								  var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
-
-								  // Instantiate an info window to hold step text.
-								  var stepDisplay = new google.maps.InfoWindow;
-
-								  // Display the route between the initial start and end selections.
-								  calculateAndDisplayRoute(
-								      directionsDisplay, directionsService, markerArray, stepDisplay, map);
-								  // Listen to change events from the start and end lists.
-								  var onChangeHandler = function() {
-								    calculateAndDisplayRoute(
-								        directionsDisplay, directionsService, markerArray, stepDisplay, map);
-								  };
-								  document.getElementById('start').addEventListener('change', onChangeHandler);
-								  document.getElementById('end').addEventListener('change', onChangeHandler);
-								}
-
-								function calculateAndDisplayRoute(directionsDisplay, directionsService,
-								    markerArray, stepDisplay, map) {
-								  // First, remove any existing markers from the map.
-								  for (var i = 0; i < markerArray.length; i++) {
-								    markerArray[i].setMap(null);
-								  }
-
-								  // Retrieve the start and end locations and create a DirectionsRequest using
-								  // WALKING directions.
-								  directionsService.route({
-								    origin: document.getElementById('start').value,
-								    destination: document.getElementById('end').value,
-								    travelMode: google.maps.TravelMode.WALKING
-								  }, function(response, status) {
-								    // Route the directions and pass the response to a function to create
-								    // markers for each step.
-								    if (status === google.maps.DirectionsStatus.OK) {
-								      document.getElementById('warnings-panel').innerHTML =
-								          '<b>' + response.routes[0].warnings + '</b>';
-								      directionsDisplay.setDirections(response);
-								      showSteps(response, markerArray, stepDisplay, map);
-								    } else {
-								      window.alert('Directions request failed due to ' + status);
-								    }
-								  });
-								}
-
-								function showSteps(directionResult, markerArray, stepDisplay, map) {
-								  // For each step, place a marker, and add the text to the marker's infowindow.
-								  // Also attach the marker to an array so we can keep track of it and remove it
-								  // when calculating new routes.
-								  var myRoute = directionResult.routes[0].legs[0];
-								  for (var i = 0; i < myRoute.steps.length; i++) {
-								    var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;
-								    marker.setMap(map);
-								    marker.setPosition(myRoute.steps[i].start_location);
-								    attachInstructionText(
-								        stepDisplay, marker, myRoute.steps[i].instructions, map);
-								  }
-								}
-
-								function attachInstructionText(stepDisplay, marker, text, map) {
-								  google.maps.event.addListener(marker, 'click', function() {
-								    // Open an info window when the marker is clicked on, containing the text
-								    // of the step.
-								    stepDisplay.setContent(text);
-								    stepDisplay.open(map, marker);
-								  });
-								}
-								</script>
-								
-								<div id="floating-panel">
-								    <b>Start: </b>
-								    <select id="start">
-								      <option value="penn station, new york, ny">Penn Station</option>
-								      <option value="grand central station, new york, ny">Grand Central Station</option>
-								      <option value="625 8th Avenue, New York, NY, 10018">Port Authority Bus Terminal</option>
-								      <option value="staten island ferry terminal, new york, ny">Staten Island Ferry Terminal</option>
-								      <option value="101 E 125th Street, New York, NY">Harlem - 125th St Station</option>
-								    </select>
-							   		<b>End: </b>
-								    <select id="end">
-								      <option value="260 Broadway New York NY 10007">City Hall</option>
-								      <option value="W 49th St & 5th Ave, New York, NY 10020">Rockefeller Center</option>
-								      <option value="moma, New York, NY">MOMA</option>
-								      <option value="350 5th Ave, New York, NY, 10118">Empire State Building</option>
-								      <option value="253 West 125th Street, New York, NY">Apollo Theater</option>
-								      <option value="1 Wall St, New York, NY">Wall St</option>
-								    </select>
-							    </div>
-							    
-							    <div id="routeMap" style="height:100%;"></div>
-							    &nbsp;
-							    <div id="warnings-panel"></div>
-							</div>
+							<div id="menu3" class="tab-pane fade"></div>
 						</div>
 					</div>
 				</div>
@@ -768,6 +628,7 @@
 			<div id="secondRowDiv" class="row">
 		
 				<!-- 여행지 임시 리스트 -->
+		
 				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
@@ -778,11 +639,16 @@
 								height:150px;
 								background-color: #5e5e5e;
 								text-align: center;
-								margin-left:20px;
+								margin-left:45px;
 								margin-top:20px;" 
-						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							${ tempSelectedPlace.placeName }
+						<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+							<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
+						</a>
+							<span data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }" style="cursor: pointer; margin-left:13px;">
+							${ tempSelectedPlace.placeName }</span>
+							<div style="width:100%; height:125px; background-color: #ffffff;"></div>
 						</div>
 									
 					<!-- Modal -->
@@ -861,7 +727,7 @@
 				
 				<!-- my pack 추가버튼 모달 -->
 				
-				<div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >Add to Pack</div>
+				<div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >추가</div>
 				<div class="modal fade" id="massiveSubmitModal" role="dialog" >
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
