@@ -502,9 +502,11 @@
 				</div>
 				<div id="showPackagesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
 					<div id="countries" style="width: 100%; height: 100%;">
+						<c:if test="${ not empty loginUserPackList }">
 						<c:forEach items="${ loginUserPackList }" var="loginUserPack">
-							<div style="border-radius:6px;" class="loginUserPack" id="packIdIs${ loginUserPack.packId }">${ loginUserPack.packTitle }</div>
+							<div style="border-radius:6px;" class="loginUserPack" id="packNameIs${ loginUserPack.packName }">${ loginUserPack.packName }</div>
 						</c:forEach>
+						</c:if>
 					</div>
 				</div>
 			</div>

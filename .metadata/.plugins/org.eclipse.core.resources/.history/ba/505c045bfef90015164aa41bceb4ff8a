@@ -110,7 +110,6 @@ public class HitTheRoadServlet extends HttpServlet {
 		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
 		loginUserPackList = packBiz.getPackListByEmail(memberVO.getEmail());
 		if(loginUserPackList != null){
-			System.out.println("hit the road servlet loginUserPackList size : " + loginUserPackList.size());
 			request.setAttribute("loginUserPackList", loginUserPackList);
 		}
 		
