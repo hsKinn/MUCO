@@ -30,7 +30,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Travel with Travery!</title>
-<meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
+<meta name="description"
+	content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Codeply">
 
@@ -40,7 +41,8 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/styles.css"/>" />
 
 <!-- jVector Map -->
-<link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
+<link rel="stylesheet" media="all"
+	href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 
 <!--scripts loaded here from cdn for performance -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

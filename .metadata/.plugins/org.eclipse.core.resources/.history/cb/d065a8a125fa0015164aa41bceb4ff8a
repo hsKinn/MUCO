@@ -52,7 +52,7 @@ public class SelectedCountryServlet extends HttpServlet {
 			response.sendRedirect(Root.get(this) + "/hitTheRoad");
 		}
 		else {
-			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			response.sendRedirect(Root.get(this) + "/");
 		}
 	}
 }

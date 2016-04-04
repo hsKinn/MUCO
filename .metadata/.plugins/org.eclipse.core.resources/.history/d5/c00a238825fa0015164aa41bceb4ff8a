@@ -49,6 +49,7 @@ public class SelectedCountryServlet extends HttpServlet {
 		boolean isSuccess = countryBiz.getCountryInfoByCountryName(request);
 		
 		if( isSuccess ) {
+			// 해당 여행지가 DB에 있으면
 			response.sendRedirect(Root.get(this) + "/hitTheRoad");
 		}
 		else {

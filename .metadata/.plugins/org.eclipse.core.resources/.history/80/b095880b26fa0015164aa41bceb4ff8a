@@ -140,19 +140,19 @@ div.selectedCountry, div.loginUserPack {
 	color: #333333;
 }
 
-div#Korea {
+div#countryNameIsKorea {
 	background-color: #fa3851;
 	color: #333333;
 }
 
 /* Russia */
-div#Russia {
+div#countryNameIsRussia {
 	background-color: #ffff4d;
 	color: #333333;
 }
 
 /* China */
-div#China {
+div#countryNameIsChina {
 	background-color: #9797ff;
 	color: #333333;
 }

@@ -30,54 +30,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Travel with Travery!</title>
-<meta name="description"
-   content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
+<meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Codeply">
 
 <link rel="stylesheet"
    href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link
-   href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css"
-   rel="stylesheet" />
-<link rel="stylesheet"
-   href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css"
-   href="<c:url value="/resource/styles.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/styles.css"/>" />
 
 <!-- Jquery, Json Script -->
-<script type="text/javascript"
-   src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
-<script type="text/javascript"
-   src="<c:url value="/resource/js/json2.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
 
 <!-- 새로운 시도 -->
 <!-- Google Webfonts -->
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700'
-   rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans'
-   rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-<!-- Animate.css -->
-<link rel="stylesheet" href="css/animate.css">
-<!-- Icomoon Icon Fonts-->
-<link rel="stylesheet" href="css/icomoon.css">
-<!-- Simple Line Icons-->
-<link rel="stylesheet" href="css/simple-line-icons.css">
-<!-- Magnific Popup -->
-<link rel="stylesheet" href="css/magnific-popup.css">
-<!-- Owl Carousel -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<!-- Salvattore -->
-<link rel="stylesheet" href="css/salvattore.css">
-<!-- Theme Style -->
-<link rel="stylesheet" href="css/style.css">
-
-<!-- Modernizr JS -->
-<script src="js/modernizr-2.6.2.min.js"></script>
 </head>
 <script type="text/javascript">
    $(document).ready(function() {

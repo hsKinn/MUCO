@@ -349,9 +349,8 @@
        
 		/* 1. 나라 선택 탭 */
 		
-		// 오른쪽 리스트에서 나라 선택시 지우기
 		$(".selectedCountry").click(function(){
-			location.href = "/selectedCountry?selectedCountryName=" + $(this).attr('id');
+			alert("$(this).");
 		});
   	
 	   	// 나라 선택 초기화

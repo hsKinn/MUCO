@@ -349,10 +349,11 @@
        
 		/* 1. 나라 선택 탭 */
 		
-		// 오른쪽 리스트에서 나라 선택시 지우기
-		$(".selectedCountry").click(function(){
-			location.href = "/selectedCountry?selectedCountryName=" + $(this).attr('id');
-		});
+		// 오른쪽 나라 리스트에서 나라 지울때
+		<c:if test=" not empty ${ removeCountryName }">
+		<c:set value="${ removeCountryName }" var="removeCountryName" />
+			$('#'+ removeCountryName).remove();
+		</c:if>
   	
 	   	// 나라 선택 초기화
 	   	$("#removeAllCountries").click(function(){
@@ -589,7 +590,7 @@
 				<div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
 					<div id="countries" style="width: 100%; height: 100%;">
 						<c:forEach items="${ selectedCountryList }" var="selectedCountry">
-							<div style="border-radius:6px;" class="selectedCountry" id="${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
+							<div style="border-radius:6px;" class="selectedCountry" id="countryNameIs${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
 						</c:forEach>
 					</div>
 				</div>

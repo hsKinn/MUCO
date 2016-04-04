@@ -315,7 +315,7 @@
                   src="<c:url value="/resource/img/common/leina.jpg"/>"
                   style="width: 100px;" /> &nbsp;&nbsp; <img id="blah"
                   class="img-circle"
-                  src="<c:url value="/resource/img/common/JK.jpg"/>"
+                  src="<c:url value="/resource/img/common/leina.jpg"/>"
                   style="width: 100px;" /> &nbsp;&nbsp; <img id="blah"
                   class="img-circle"
                   src="<c:url value="/resource/img/common/leina.jpg"/>"

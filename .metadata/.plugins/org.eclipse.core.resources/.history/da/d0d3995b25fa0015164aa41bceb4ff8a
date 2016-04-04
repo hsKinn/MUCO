@@ -82,6 +82,11 @@ public class HitTheRoadServlet extends HttpServlet {
 			
 		}
 		
+		String errorCode = request.getParameter("errorCode");
+		if( errorCode != null ) {
+			request.setAttribute("removeCountryName", errorCode);
+		}
+		
 		if (request.getParameter("selectedPlaceId") != null ) {
 			
 			int errorCodeSecond = 0;
