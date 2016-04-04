@@ -290,6 +290,39 @@ public class PackDAO {
 		}
 		return modifyCount;
 	}
+	
+	
+	/**
+	 * 
+	 * 선택한 여행지 myPack에 추가
+	 * 
+	 * @author 유병훈
+	 * 
+	 */
+	public int getAddMyPackByPlace(int ori_placeId, int packId) {
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/getAddMyPackByPlace/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+			stmt.setInt(2, ori_placeId);
+
+			return stmt.executeUpdate();
+			
+
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+	}
 
 	/**
 	 * 
@@ -334,4 +367,9 @@ public class PackDAO {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> origin/KGM8
 }

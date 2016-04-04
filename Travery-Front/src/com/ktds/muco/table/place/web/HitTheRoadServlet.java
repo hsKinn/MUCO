@@ -13,6 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.country.vo.CountryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+<<<<<<< HEAD
+=======
+import com.ktds.muco.table.pack.biz.PackBiz;
+import com.ktds.muco.table.pack.vo.PackVO;
+>>>>>>> origin/KGM8
 import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
@@ -24,12 +29,14 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  */
 public class HitTheRoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private PackBiz packBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public HitTheRoadServlet() {
 		super();
+		packBiz = new PackBiz();
 	}
 
 	/**
@@ -69,12 +76,67 @@ public class HitTheRoadServlet extends HttpServlet {
 				}
 				request.setAttribute("selectedAllPlaceList", selectedAllPlaceList);
 			}
+<<<<<<< HEAD
 		}
 		
 		String errorCode = request.getParameter("errorCode");
 		if( errorCode != null ) {
 			request.setAttribute("removeCountryName", errorCode);
 		}
+=======
+			
+			// 여행지 리스트가 존재하면
+			if( !memberVO.getTempSelectedPlaceList().isEmpty() ) {
+				List<PlaceVO> tempSelectedPlaceList = memberVO.getTempSelectedPlaceList();
+				request.setAttribute("tempSelectedPlaceList", tempSelectedPlaceList);	
+			}
+			
+		}
+		
+		if (request.getParameter("selectedPlaceId") != null ) {
+			
+			int errorCodeSecond = 0;
+			
+			try {
+				errorCodeSecond = Integer.parseInt(request.getParameter("selectedPlaceId"));
+			} catch (NumberFormatException nfe) {}
+			
+			if( errorCodeSecond != 0 ) {
+				request.setAttribute("removePlaceId", errorCodeSecond);
+			}
+		}
+		
+		boolean isSuccessRemoveCountries = Boolean.parseBoolean(request.getParameter("isSuccessRemoveCountries"));
+		if( isSuccessRemoveCountries ) {
+			request.setAttribute("isSuccessRemoveCountries", isSuccessRemoveCountries);
+		}
+		
+		// 유저가 가진 패키지들 뿌려주기
+		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
+		loginUserPackList = packBiz.getPackListByEmail(memberVO.getEmail());
+		if(loginUserPackList != null){
+			request.setAttribute("loginUserPackList", loginUserPackList);
+			
+		}
+
+		
+		// 팩 아이디 받아서 그 안에 있는 모든 여행지들 list로 묶어서 보낸다.
+		String packIdString = request.getParameter("selectedPackageId");
+		int packId = packBiz.convertPackIdStringToInteger(packIdString);
+		
+		session = request.getSession();
+		memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		if( packId != 0 ){
+			memberVO.setRecentViewPack(packId);
+		}
+		else {
+			packId = memberVO.getRecentViewPack();
+		}
+		
+		PackVO packVO = packBiz.getPackDataByPackId(packId);
+		request.setAttribute("placeListByPackId", packVO.getPlaceList());
+>>>>>>> origin/KGM8
 		
 		boolean isSuccessRemoveCountries = Boolean.parseBoolean(request.getParameter("isSuccessRemoveCountries"));
 		if( isSuccessRemoveCountries ) {

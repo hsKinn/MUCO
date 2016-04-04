@@ -152,6 +152,37 @@
 			        , LIKE_COUNT
 			        , DESCRIPTION
 			        , IS_NEW_PLACE
+			        , COUNTRY_ID
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 3
+			                                        )
+			            ) AVG_ACTIVE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 1
+			                                        )
+			            ) AVG_BRIGHT_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 2
+			                                        )
+			            ) AVG_HIGH_PRICE_SCORE
 			FROM    PACK_PLACE PP
 			        , PLACE P
 			WHERE   PP.PLACE_ID = P.PLACE_ID
@@ -169,9 +200,22 @@
 					, IS_PUBLIC			= ?
 			WHERE	PACK_ID             = ?
 		</modifyPack>
+		
+		<getAddMyPackByPlace>
+			INSERT INTO PACK_PLACE (
+   										PACK_PLACE_ID
+   										, PACK_ID
+   										, PLACE_ID
+   									) 
+			VALUES 					( 
+										PACK_PLACE_ID_SEQ.NEXTVAL
+										,?
+										,? 
+									)
+		</getAddMyPackByPlace>
 	</pack>
 	
-<sharePack>
+	<sharePack>
 	
 		<hitCountPack>
 			UPDATE	PACK
@@ -381,6 +425,18 @@
 			WHERE	P.PACK_ID = H.PACK_ID
 			AND		H.PACK_ID = ?
 		</getHashTagOfPackage>
+		
+		<addHashTagInPack>
+			INSERT INTO HASH_TAG (
+			                        HASH_TAG_ID
+			                        , PACK_ID
+			                        , HASH_TAG_NAME
+			                     ) 
+			VALUES               ( HASH_TAG_ID_SEQ.NEXTVAL
+			                        ,?
+			                        ,?
+			                     )
+		</addHashTagInPack>
 	
 	</hashtag>
 	
@@ -528,7 +584,17 @@
 	</packReply>
 	
 	<place>
+<<<<<<< HEAD
 	
+=======
+		<getPlaceListByPackId>
+			SELECT	*
+			FROM	PLACE P
+					, PACK_PLACE PACKPLACE
+			WHERE	PACKPLACE.PACK_ID = ?
+			AND		PACKPLACE.PLACE_ID = P.PLACE_ID
+		</getPlaceListByPackId>
+>>>>>>> origin/KGM8
 		<getPlaceListByCountryId>
 			SELECT  P1.PLACE_ID
 			        , PLACE_NAME
@@ -572,6 +638,7 @@
 			FROM	PLACE P1
 			WHERE	COUNTRY_ID = ?
 		</getPlaceListByCountryId>
+<<<<<<< HEAD
 		
 		<getPlaceByCountryName>
 			SELECT	PLACE_ID
@@ -906,6 +973,8 @@
 			FROM	PLACE
 			WHERE	COUNTRY_NAME = ?
 		</getPlaceByCountryName>
+=======
+>>>>>>> origin/KGM8
 		
 		<getPlaceInPackage>
 			SELECT	P.PLACE_ID
@@ -956,12 +1025,31 @@
 			FROM	DUAL
 		</getReturnPlaceId>
 		
+<<<<<<< HEAD
 		<viewCountRecommendPlace>
 			UPDATE  PLACE
 			SET     VIEW_COUNT = ( VIEW_COUNT + 1 )
 			WHERE   PLACE_ID = ?
 		</viewCountRecommendPlace>
 		
+=======
+		<addTempSelectedPlaceByPlaceId>
+			SELECT	PLACE_ID
+					, PLACE_NAME
+					, LATITUDE
+					, LONGITUDE
+					, ADDRESS
+					, VIEW_COUNT
+					, LIKE_COUNT
+					, DESCRIPTION
+					, IS_NEW_PLACE
+					, EMAIL
+					, COUNTRY_ID
+			FROM PLACE
+			WHERE PLACE_ID = ?
+		</addTempSelectedPlaceByPlaceId>
+			
+>>>>>>> origin/KGM8
 	</place>
 	
 	<placeLike>
@@ -1118,11 +1206,13 @@
 	<qna>
 		<getFAQList>
 			SELECT	QNA_ID
+					,EMAIL
 					, QNA_DT
 					, TITLE
 					, DESCRIPTION
+					, IS_FAQ
 			FROM 	QNA
-			WHERE 	IS_FAQ = 1;
+			WHERE 	IS_FAQ != 0
 		</getFAQList>
 	</qna>
 	

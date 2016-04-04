@@ -398,6 +398,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>DeletePackReplyServlet</display-name>
     <servlet-name>DeletePackReplyServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.packReply.web.DeletePackReplyServlet</servlet-class>
@@ -455,5 +456,24 @@
   <servlet-mapping>
     <servlet-name>PlaceInfoInitServlet</servlet-name>
     <url-pattern>/placeInfoInit</url-pattern>
+=======
+    <display-name>TempSelectedPlaceServlet</display-name>
+    <servlet-name>TempSelectedPlaceServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.TempSelectedPlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TempSelectedPlaceServlet</servlet-name>
+    <url-pattern>/tempSelectedPlace</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMyPackByPlaceServlet</display-name>
+    <servlet-name>AddMyPackByPlaceServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.AddMyPackByPlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMyPackByPlaceServlet</servlet-name>
+    <url-pattern>/addMyPackByPlace</url-pattern>
+>>>>>>> origin/KGM8
   </servlet-mapping>
 </web-app>

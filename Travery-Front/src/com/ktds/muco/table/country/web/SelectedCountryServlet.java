@@ -49,6 +49,7 @@ public class SelectedCountryServlet extends HttpServlet {
 		boolean isSuccess = countryBiz.getCountryInfoByCountryName(request);
 		
 		if( isSuccess ) {
+<<<<<<< HEAD
 			// 해당 여행지가 DB에 있으면
 			response.sendRedirect(Root.get(this) + "/hitTheRoad");
 		}
@@ -57,6 +58,12 @@ public class SelectedCountryServlet extends HttpServlet {
 			// 나라명을 errorCode로 보낸다.
 			String selectedCountryName = request.getParameter("selectedCountryName");
 			response.sendRedirect(Root.get(this) + "/hitTheRoad?errorCode=" + selectedCountryName);
+=======
+			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+		}
+		else {
+			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+>>>>>>> origin/KGM8
 		}
 	}
 }

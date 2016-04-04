@@ -6,10 +6,15 @@
 <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/placeInfoControl.css"/>" />
+<<<<<<< HEAD
 <!-- Log out -->
 <jsp:include page="/WEB-INF/view/member/logout.jsp"></jsp:include>
 
 <!-- Recommend placeInfo -->
+=======
+
+<!-- Recommend Place -->
+>>>>>>> origin/KGM8
 <script type="text/javascript">
 	$(document).ready(function() {
 

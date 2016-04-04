@@ -34,6 +34,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Codeply">
 
+<<<<<<< HEAD
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
@@ -45,10 +46,67 @@
 <link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/pack/sharePack.css"/>" />
 <link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
 <link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
+=======
+<link rel="stylesheet"
+   href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/styles.css"/>" />
+>>>>>>> origin/KGM8
 
 <!-- Jquery, Json Script -->
 <script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
+
+<<<<<<< HEAD
+</head>
+<script type="text/javascript">
+   $(document).ready(function() {
+
+      $("#join").hide();
+      $("#login").hide();
+
+      $("#letsJoin").click(function() {
+         $("#letsJoin").animate({
+            height : 'toggle'
+         });
+         $("#join").animate({
+            height : 'toggle'
+         });
+
+         $("#letsLogIn").hide();
+         $("#login").hide();
+         $("#goBack").show();
+      });
+
+      $("#letsLogIn").click(function() {
+         $("#letsLogIn").animate({
+            height : 'toggle'
+         });
+         $("#login").animate({
+            height : 'toggle'
+         });
+
+         $("#letsJoin").hide();
+         $("#join").hide();
+         $("#goBack").show();
+      });
+
+      $("#goBack").click(function() {
+         $("#join").hide();
+         $("#login").hide();
+         $("#letsJoin").show();
+         $("#letsLogIn").show();
+         $("#goBack").hide();
+      });
+
+=======
+<!-- 새로운 시도 -->
+<!-- Google Webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 </head>
 <script type="text/javascript">
@@ -91,6 +149,7 @@
          $("#goBack").hide();
       });
 
+>>>>>>> origin/KGM8
       // 회원 가입 
       $("#btnJoin").click(function() {
 
@@ -136,7 +195,12 @@
 </script>
 
 <body>
+<<<<<<< HEAD
    <nav id="topNav" class="navbar navbar-default navbar-fixed-top" data-spy="affix">
+=======
+   <nav id="topNav" class="navbar navbar-default navbar-fixed-top"
+      data-spy="affix">
+>>>>>>> origin/KGM8
       <div class="container-fluid">
          <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
@@ -145,9 +209,15 @@
                   class="icon-bar"></span> <span class="icon-bar"></span> <span
                   class="icon-bar"></span>
             </button>
+<<<<<<< HEAD
             <a class="navbar-brand page-scroll" href="/">
             <i
                class="ion-ios-analytics-outline"></i> Travery </a>
+=======
+            <a class="navbar-brand page-scroll" href="/"> <i
+               class="ion-ios-analytics-outline"></i> Travery
+            </a>
+>>>>>>> origin/KGM8
          </div>
          <div class="navbar-collapse collapse" id="bs-navbar">
             <ul class="nav navbar-nav">
@@ -157,6 +227,7 @@
                      PACKAGE </a></li>
                <li><a href="<c:url value="/init"/>" id="sharePackMenu">
                      SHARE PACKAGE </a></li>
+<<<<<<< HEAD
                <li><a href="<c:url value="/placeInfoInit"/>"
                   id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
                <li><a href="<c:url value="/tripReservation"/>"
@@ -167,6 +238,31 @@
             <ul class="nav navbar-nav navbar-right">
                <li><a class="page-scroll" data-toggle="modal"
                   title="A free Bootstrap video landing theme" href="#aboutModal">Hello</a>
+=======
+               <li><a href="<c:url value="/recommendPlace"/>"
+                  id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
+               <li><a href="<c:url value="/tripReservation"/>"
+                  id="tripReservationMenu"> TRIP RESERVATION </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+               <li>
+                  <a href="<c:url value="/personalInfo"/>" id="dropdownMenu1" data-toggle="dropdown" 
+                     aria-expanded="true"> PERSONAL INFO <span class="caret"></span> </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                     <li>
+                        <a> 
+                           OOO님 안녕하세요 :)  <br/>
+                           여기에 프로필 사진을 빡 <br/>
+                           <br/>
+                        </a> 
+                     </li>
+                     <li><a href="<c:url value="/personalInfo"/>" >Setting</a></li>
+                     <li role="separator" class="divider"></li>
+                     <li><a href="#">Log out</a></li>
+                  </ul> 
+                  
+>>>>>>> origin/KGM8
                </li>
             </ul>
          </div>
