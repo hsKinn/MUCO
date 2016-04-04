@@ -65,7 +65,7 @@ public class DoWritePlaceReplyServlet extends HttpServlet {
 		
 		placeReplyBiz.addNewPlaceReplyDepthOne(placeReply);
 		
-		response.sendRedirect(Root.get(this) + "/recommendPlace");
+		response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
 	}
 
 }

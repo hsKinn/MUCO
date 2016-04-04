@@ -18,7 +18,22 @@
 <!-- Share Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		$("#writePlaceReplyBtn").click( function() {
+			
+			var description = $("#description").val();
+			description = $.trim(description);
+			if ( description == "" ) {
+				alert("댓글을 입력해주세요");
+				$("#description").focus();
+				return;
+			}
+			
+			var form = $("#writePlaceReplyForm");
+			
+			form.attr("method", "POST");
+			form.attr("action", "<c:url value="/doWritePlaceReply"/>");
+			form.submit();
+		});
 	});
 </script>
 
@@ -58,16 +73,17 @@
 			<div id="detail-RightWrapper">
 				<div id="info-Top">
 					<div id="place-Title">
-						국가명 ${ place.countryName }, 여행지명 ${ place.placeName } 
+						${ place.countryName }, ${ place.placeName } 
 					</div>
 					<div id="place-LikeCount">
-						♥ 42 ${ place.likeCount }
+						<span class="glyphicon glyphicon-heart"></span>
+						<span id="placeLikeCount">${ place.likeCount }</span>
 					</div>
 				</div>
 				
 				<div id="info-Middle">
 					<div id="place-Description">
-						<textarea>여행지에 대한 설명입니다${ place.placeDescription }</textarea>
+						<textarea>${ place.placeDescription }</textarea>
 					</div>
 				</div>
 				
@@ -80,21 +96,21 @@
 							<tr>
 								<td>Bright</td>
 								<td>
-									<input type="range" readonly="readonly" min="1" max="100" value="88">
+									<input type="range" readonly="readonly" min="1" max="100" value="${ place.avgBrightDarkScore }">
 								</td>
 								<td>Dark</td>
 							</tr>
 							<tr>
 								<td>HightPrice</td>
 								<td>
-									<input type="range" readonly="readonly" min="1" max="100" value="27">
+									<input type="range" readonly="readonly" min="1" max="100" value="${ place.avgHighPriceLowPriceScore }">
 								</td>
 								<td>LowPrice</td>
 							</tr>
 							<tr>
 								<td>Active</td>
 								<td>
-									<input type="range" readonly="readonly" min="1" max="100" value="50">
+									<input type="range" readonly="readonly" min="1" max="100" value="${ place.avgActiveCalmScore }">
 								</td>
 								<td>Calm</td>
 							</tr>
@@ -103,16 +119,16 @@
 				</div>
 				
 				<div id="info-Bottom">
-		          	<div class="pack-reply">
-						<div class="formWrapper">
-							<form class="writeReplyForm">
-								<table class="reply_table">
+		          	<div id="place-Reply">
+						<div id="placeReplyWrapper">
+							<form id="writePlaceReplyForm">
+								<table id="placeReply_table">
 									<tr>
-										<td class="reply_content">
-											<textarea class="description" name="description" placeholder="댓글을 달아보세요"></textarea>
+										<td id="placeReply_content">
+											<textarea id="description" name="description" placeholder="댓글을 달아보세요"></textarea>
 										</td>
-										<td class="reply_btn">
-											<button type="button" class="btn btn-info" id="writeReplyBtn">
+										<td id="placeReply_btn">
+											<button type="button" class="btn btn-info" id="writePlaceReplyBtn">
 									     		<span class="glyphicon glyphicon-pencil"></span>댓글 등록
 									   		</button>  													
 										</td>
@@ -123,29 +139,29 @@
 								<input type="hidden" class="parentReplyId" name="parentReplyId" value="0" />
 								<input type="hidden" class="groupId" name="groupId" value="0" />
 								<input type="hidden" class="orderNo" name="orderNo" value="0" />
-								<input type="hidden" class="packReplyId" name="packReplyId" value="0" />
+								<input type="hidden" class="placeReplyId" name="placeReplyId" value="0" />
 							</form>
 						</div>
 						
-						<div class="replybypack">
-							<c:forEach items="${ place.replyList }" var="reply">
+						<div id="replybyPlace">
+							<c:forEach items="${ place.placeReplyList }" var="reply">
 								<div>
 								<table>
-									<tr class="replyTR">
-										<td class="replyWriterName">${ reply.name }</td>
-										<td class="replyWrittenReply">
+									<tr id="placeReplyTR">
+										<td id="placeReplyWriterName">${ reply.name }</td>
+										<td id="placeReplyWrittenReply">
 											${ reply.placeReplyDescription }
 										</td>
 										<c:if test="${ reply.email eq loginEmail }">
-											<td class="deleteReply">
-										        <a href="/deletePackReply?packReplyId=${ reply.packReplyId }">
+											<td id="deletePlaceReply">
+										        <a href="/deletePlaceReply?placeReplyId=${ reply.placeReplyId }">
 										          <span class="glyphicon glyphicon-remove"></span>
 										        </a>
 											</td>
 										</c:if>
 									</tr>
 								</table>
-								<div class="hide formAppender"></div>
+								<div id="hide formAppender"></div>
 								</div>
 							</c:forEach>
 						</div>	

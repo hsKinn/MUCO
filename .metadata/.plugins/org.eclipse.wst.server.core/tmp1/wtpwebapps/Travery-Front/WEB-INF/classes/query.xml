@@ -1059,6 +1059,36 @@
 					, M.EMAIL
 					, NAME
 					, COUNTRY_NAME
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 3
+			                                        )
+			            ) AVG_ACTIVE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 1
+			                                        )
+			            ) AVG_BRIGHT_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 2
+			                                        )
+			            ) AVG_HIGH_PRICE_SCORE					
 			FROM	PLACE P
 					, MEMBER M
 					, COUNTRY C

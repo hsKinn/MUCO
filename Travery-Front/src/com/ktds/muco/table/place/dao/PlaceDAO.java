@@ -1077,7 +1077,7 @@ public class PlaceDAO {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-
+		
 		PlaceVO place = new PlaceVO();
 		
 		try {
@@ -1100,6 +1100,11 @@ public class PlaceDAO {
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				
+				// 기준값 받기
+				place.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));
+				place.setAvgHighPriceLowPriceScore(rs.getDouble("AVG_HIGH_PRICE_SCORE"));
+				place.setAvgActiveCalmScore(rs.getDouble("AVG_ACTIVE_SCORE"));
 				
 				MemberVO writer = new MemberVO();
 				writer.setEmail(rs.getString("EMAIL"));

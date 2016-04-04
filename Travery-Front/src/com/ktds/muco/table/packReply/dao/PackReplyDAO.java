@@ -115,7 +115,7 @@ public class PackReplyDAO {
 	
 	
 	/**
-	 * 대댓글 작성
+	 * 댓글 작성
 	 * 
 	 * @author 김현섭
 	 * 
