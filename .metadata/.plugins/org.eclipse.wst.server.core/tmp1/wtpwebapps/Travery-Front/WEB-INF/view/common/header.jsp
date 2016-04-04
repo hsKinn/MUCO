@@ -151,7 +151,7 @@
                <span class="icon-bar"></span> <span class="icon-bar"></span>
                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="/"> <i
+            <a class="navbar-brand page-scroll" href="/hitTheRoad"> <i
                class="ion-ios-analytics-outline"></i> Travery
             </a>
          </div>
@@ -163,7 +163,7 @@
                      PACKAGE </a></li>
                <li><a href="<c:url value="/init"/>" id="sharePackMenu">
                      SHARE PACKAGE </a></li>
-               <li><a href="<c:url value="/recommendPlace"/>"
+               <li><a href="<c:url value="/placeInfoInit"/>"
                   id="recommendPlaceMenu"> RECOMMEND PLACE </a></li>
                <li><a href="<c:url value="/tripReservation"/>"
                   id="tripReservationMenu"> TRIP RESERVATION </a></li>
