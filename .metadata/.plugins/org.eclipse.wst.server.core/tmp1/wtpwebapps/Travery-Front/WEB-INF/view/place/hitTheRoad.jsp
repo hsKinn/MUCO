@@ -51,6 +51,10 @@
 <script src="<c:url value="/resource/js/jvectormap/map.js" />"></script>
 <script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
+<!-- Google Map API -->
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&libraries=geometry,places"></script>
+
 <c:set var="axisX1" value="${ sessionScope._MEMBER_.selectedStandardList.get(0) }" />
 <c:set var="axisX2" value="${ sessionScope._MEMBER_.selectedStandardList.get(1) }" />
 <c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
@@ -283,8 +287,6 @@
 				}]
 			}
 		});
-		
-		
 	});
 </script>
 
@@ -358,7 +360,6 @@
 	   	$("#removeAllCountries").click(function(){
 			location.href = "/removeAllSelectedCountries";
 	   	});
-	   	
 	   	
 	   	
 	   	/* 2. 나라 검색 탭 */
@@ -437,12 +438,10 @@
 		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
 		});
 		
-<<<<<<< HEAD
 		/* 3. 마이 패키지 탭 */
 		$(".loginUserPack").click(function(){
 			location.href = "/hitTheRoad?selectedPackageId=" + $(this).attr('id');
 		});
-=======
 		// myPack 추가 버튼 - 체크되있는 여행지가 있을 때만 가능
 		/* $("#massiveSubmitBtn").click(function(){
 			if( $( ".selectedPlaceId:checkbox:checked" ).val() == null ) {
@@ -465,8 +464,6 @@
 				return;
 			}
 		});
-		
->>>>>>> origin/YBH10
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -606,7 +603,22 @@
 							</div>
 		
 							<!-- 경로 설정 탭 -->
-							<div id="menu3" class="tab-pane fade"></div>
+							<div id="menu3" class="tab-pane fade">
+								<script>
+								function initialize()
+								{
+								var mapOpt = {
+								  center:new google.maps.LatLng(0,0),
+								  zoom:1,
+								  mapTypeId:google.maps.MapTypeId.ROADMAP
+								  };
+								var map=new google.maps.Map(document.getElementById("googleMap"),mapOpt);
+								}
+								
+								google.maps.event.addDomListener(window, 'load', initialize);
+								</script>
+								<div id="googleMap" style="width:960px;height:480px;"></div>
+							</div>
 						</div>
 					</div>
 				</div>
