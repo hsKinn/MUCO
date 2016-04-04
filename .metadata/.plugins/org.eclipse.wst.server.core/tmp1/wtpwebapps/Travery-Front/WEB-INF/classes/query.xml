@@ -201,6 +201,19 @@
 					, IS_PUBLIC			= ?
 			WHERE	PACK_ID             = ?
 		</modifyPack>
+		
+		<getAddMyPackByPlace>
+			INSERT INTO PACK_PLACE (
+   										PACK_PLACE_ID
+   										, PACK_ID
+   										, PLACE_ID
+   									) 
+			VALUES 					( 
+										PACK_PLACE_ID_SEQ.NEXTVAL
+										,?
+										,? 
+									)
+		</getAddMyPackByPlace>
 	</pack>
 	
 	<sharePack>
