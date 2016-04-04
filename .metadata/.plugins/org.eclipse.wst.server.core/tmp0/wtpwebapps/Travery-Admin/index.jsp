@@ -59,7 +59,40 @@
 			$("#goBack").hide();
 	    });
 
-	    
+	    // admin인지 확인 
+		$("#userEmail").blur(function() {
+
+			$.post("<c:url value="/adminCheck" />", {
+				"email" : $("#userEmail").val()
+			}, function(data) {
+
+				var jsonData = {};
+
+				try {
+					jsonData = JSON.parse(data);
+				} catch (e) {
+				}
+
+				if (jsonData.result) {
+					//isAdmin : true
+					if (jsonData.isAdmin) {
+						alert("왜 안떠?");
+						$("#submit").attr("disabled", true);
+					//isAdmin : false
+					} else {
+						alert("접근할 수 없습니다")
+						$("#userEmail").val("");
+						$("#userEmail").focus();
+						$("#submit").removeAttr("disabled");
+					}
+				} else {
+					alert("세션을 종료합니다.");
+					location.href = "<c:url value="/" />";
+				}
+
+			});
+
+		});	    
 	    // 로그인 
 		$("#btnLogin").click(function() {
 			var form = $("#loginForm");

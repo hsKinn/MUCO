@@ -10,6 +10,7 @@ import com.ktds.muco.table.member.dao.MemberDAO;
 import com.ktds.muco.table.member.vo.MemberListVO;
 import com.ktds.muco.table.member.vo.MemberSearchVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.file.MultipartHttpServletRequest;
 import com.ktds.muco.util.web.Paging;
@@ -51,18 +52,18 @@ public class MemberBiz {
 
 	/**
 	 * 
-	 * 로그인
+	 * 어드민 로그인
 	 * 
 	 * @author 김광민
 	 * 
 	 */
-	public boolean login(HttpServletRequest request) {
+	public boolean loginForAdmin(HttpServletRequest request) {
 
 		MemberVO memberVO = new MemberVO();
 		memberVO.setEmail(request.getParameter("userEmail"));
 		memberVO.setPassword(request.getParameter("userPw"));
 
-		MemberVO loginMemberVO = memberDAO.getMemberByEmailAndPassword(memberVO);
+		MemberVO loginMemberVO = memberDAO.getMemberByEmailAndPasswordForAdmin(memberVO);
 
 		// 해당 유저가 있으면 세션에 등록
 		if (loginMemberVO != null) {
@@ -187,6 +188,82 @@ public class MemberBiz {
 		memberList.setPaging(paging);
 		
 		return memberList;				
+	}
+
+	/**
+	 * @author 이기연
+	 * 차단된 멤버 리스트 불러오기
+	 * @param memberSearchVO
+	 * @return
+	 */
+	public MemberListVO getBlockedMemberList(MemberSearchVO memberSearchVO) {
+		// 1. 전체 게시글의 수
+		int allPlaceCount = memberDAO.getBlockedMemberCount();
+		// 1-1. 기본으로 페이지를 만들어준다. 
+		Paging paging = new Paging(20);
+		paging.setTotalArticleCount(allPlaceCount);
+		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
+		paging.setPageNumber(memberSearchVO.getPageNO()+"");
+		
+		memberSearchVO.setStartIndex(paging.getStartArticleNumber());
+		memberSearchVO.setEndIndex(paging.getEndArticleNumber());
+		
+		//전체 article 받아오기
+		List<MemberVO> members = memberDAO.getBlockedMembers(memberSearchVO);
+		
+		// 2. DAO로부터 받아온 결과를 출력
+		MemberListVO memberList = new MemberListVO();
+		memberList.setMemberList(members);
+		// 2-2. 페이지 추가 
+		memberList.setPaging(paging);
+		
+		return memberList;		
+	}
+
+	/**
+	 * @author 이기연
+	 * reported된 member list 받아오기
+	 * @param memberSearchVO
+	 * @return
+	 */
+	public MemberListVO getReportedMemberList(MemberSearchVO memberSearchVO) {
+		
+		// 1. 전체 게시글의 수
+		int allPlaceCount = memberDAO.getReportedMemberCount();
+		// 1-1. 기본으로 페이지를 만들어준다. 
+		Paging paging = new Paging(20);
+		paging.setTotalArticleCount(allPlaceCount);
+		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
+		paging.setPageNumber(memberSearchVO.getPageNO()+"");
+		
+		memberSearchVO.setStartIndex(paging.getStartArticleNumber());
+		memberSearchVO.setEndIndex(paging.getEndArticleNumber());
+		
+		//전체 article 받아오기
+		List<MemberVO> members = memberDAO.getReportedMembers(memberSearchVO);
+		
+		// 2. DAO로부터 받아온 결과를 출력
+		MemberListVO memberList = new MemberListVO();
+		memberList.setMemberList(members);
+		// 2-2. 페이지 추가 
+		memberList.setPaging(paging);
+		
+		return memberList;	
+	}
+	
+	/**
+	 * @author 이기연
+	 * 멤버 리스트 디테일 받는 메소드
+	 * @param email
+	 * @return
+	 */
+	public MemberVO showMemberDetail(String email) {
+		MemberVO memberVO = memberDAO.getMemberDetailByEmail(email);
+		return memberVO;
+	}
+
+	public boolean isAdmin(String email) {
+		return memberDAO.isAdmin(email) > 0;
 	}
 
 }

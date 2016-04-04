@@ -10,7 +10,6 @@ import java.util.List;
 
 import com.ktds.muco.table.member.vo.MemberSearchVO;
 import com.ktds.muco.table.member.vo.MemberVO;
-import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -53,14 +52,10 @@ public class MemberDAO {
 	}
 
 	/**
-	 * 
-	 * 로그인하기위해 해당 유저가 존재하는지 확인
-	 * 
-	 * @author 김광민
-	 * 
-	 * validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER")); @author 이기연 수정 
+	 * 어드민 로그인 확인
+	 * @author 이기연
 	 */
-	public MemberVO getMemberByEmailAndPassword(MemberVO memberVO) {
+	public MemberVO getMemberByEmailAndPasswordForAdmin(MemberVO memberVO) {
 
 		loadOracleDriver();
 		Connection conn = null;
@@ -71,7 +66,7 @@ public class MemberDAO {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
-			String query = XML.getNodeString("//query/member/getMemberByIdAndPassword/text()");
+			String query = XML.getNodeString("//query/member/getMemberByEmailAndPasswordForAdmin/text()");
 			stmt = conn.prepareStatement(query);
 
 			stmt.setString(1, memberVO.getEmail());
@@ -88,7 +83,7 @@ public class MemberDAO {
 				validMemberVO.setEmail(rs.getString("EMAIL"));
 				validMemberVO.setPassword(rs.getString("PASSWORD"));
 				validMemberVO.setName(rs.getString("NAME"));
-				// 이부분 추가 
+				// 이부분 추가
 				validMemberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
 				validMemberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
 				validMemberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
@@ -109,36 +104,34 @@ public class MemberDAO {
 
 	/**
 	 *
-	 * 회원 이름 수정 
+	 * 회원 이름 수정
 	 * 
 	 * @author 이기연
 	 * 
 	 */
 	public void updateName(MemberVO memberVO) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/updateName/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getName());
 			stmt.setString(2, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
 	}
-	
+
 	/**
 	 * 회원 번호 수정
 	 * 
@@ -147,29 +140,27 @@ public class MemberDAO {
 	 */
 	public void updatePhoneNumber(MemberVO memberVO) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/updatePhoneNumber/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getPhoneNumber());
 			stmt.setString(2, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
 	}
-	
+
 	/**
 	 * 회원 비밀번호 수정
 	 * 
@@ -178,45 +169,41 @@ public class MemberDAO {
 	 */
 	public void updatePassword(MemberVO memberVO) {
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/updatePassword/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getPassword());
 			stmt.setString(2, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
 	}
-	
+
 	/**
-	 * 이름 중복 체크
-	 * 0: 중복 X 
-	 * 1: 중복 O
+	 * 이름 중복 체크 0: 중복 X 1: 중복 O
 	 * 
 	 * @author 이기연
 	 * 
 	 * 
 	 */
 	public int isExistName(String name) {
-	
+
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
@@ -228,7 +215,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				return  rs.getInt("COUNT");
+				return rs.getInt("COUNT");
 			}
 
 		} catch (SQLException e) {
@@ -236,7 +223,7 @@ public class MemberDAO {
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
-		
+
 		return 0;
 	}
 
@@ -247,35 +234,372 @@ public class MemberDAO {
 	 * 
 	 */
 	public void addMainImage(MemberVO memberVO) {
-	
+
 		loadOracleDriver();
-		
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
+
 			String query = XML.getNodeString("//query/member/addMainImage/text()");
-			
+
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, memberVO.getMainImageName());
 			stmt.setString(2, memberVO.getMainImageLocation());
 			stmt.setString(3, memberVO.getEmail());
-			
+
 			stmt.executeUpdate();
 
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
 		}
-		finally {
-			closeDB(conn, stmt, null);	
-		}		
-		
+
 	}
 
-	
+	/**
+	 * @author 이기연 memberCount 받아오기
+	 * @return
+	 */
+	public int getAllMemberCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/getAllMemberCount/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+
+			if (rs.next()) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * @author 이기연 모든 memberList 받아오기
+	 * @param memberSearchVO
+	 * @return
+	 */
+	public List<MemberVO> getAllMembers(MemberSearchVO memberSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<MemberVO> members = new ArrayList<MemberVO>();
+
+		try {
+
+			MemberVO memberVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/member/getAllMembers/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, memberSearchVO.getEndIndex());
+			stmt.setInt(2, memberSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				memberVO = new MemberVO();
+
+				memberVO.setEmail(rs.getString("EMAIL"));
+				memberVO.setPassword(rs.getString("PASSWORD"));
+				memberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
+				memberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
+				memberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
+				memberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
+				memberVO.setName(rs.getString("NAME"));
+				memberVO.setJoinDate(rs.getString("JOIN_DT"));
+				memberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+
+				members.add(memberVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return members;
+	}
+
+	/**
+	 * @author 이기연 Block 된 member 수 구하기
+	 * @return
+	 */
+	public int getBlockedMemberCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/getBlockedMemberCount/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+
+			if (rs.next()) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * @author 이기연 Block된 멤버 list 받아오기
+	 * @param memberSearchVO
+	 * @return
+	 */
+	public List<MemberVO> getBlockedMembers(MemberSearchVO memberSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<MemberVO> members = new ArrayList<MemberVO>();
+
+		try {
+
+			MemberVO memberVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/member/getBlockedMembers/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, memberSearchVO.getEndIndex());
+			stmt.setInt(2, memberSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				memberVO = new MemberVO();
+
+				memberVO.setEmail(rs.getString("EMAIL"));
+				memberVO.setPassword(rs.getString("PASSWORD"));
+				memberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
+				memberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
+				memberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
+				memberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
+				memberVO.setName(rs.getString("NAME"));
+				memberVO.setJoinDate(rs.getString("JOIN_DT"));
+				memberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+
+				members.add(memberVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return members;
+	}
+
+	/**
+	 * @author 이기연 신고된 place를 생성한 멤버 count 받아오기
+	 * @return
+	 */
+	public int getReportedMemberCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/getReportedMemberCount/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			int placeCount = 0;
+
+			if (rs.next()) {
+				placeCount = rs.getInt(1);
+			}
+			return placeCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * @author 이기연 신고된 place를 생성한 멤버 list 받아오기
+	 * @param memberSearchVO
+	 * @return
+	 */
+	public List<MemberVO> getReportedMembers(MemberSearchVO memberSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<MemberVO> members = new ArrayList<MemberVO>();
+
+		try {
+
+			MemberVO memberVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/member/getReportedMembers/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, memberSearchVO.getEndIndex());
+			stmt.setInt(2, memberSearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				memberVO = new MemberVO();
+
+				memberVO.setEmail(rs.getString("EMAIL"));
+				memberVO.setPassword(rs.getString("PASSWORD"));
+				memberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
+				memberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
+				memberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
+				memberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
+				memberVO.setName(rs.getString("NAME"));
+				memberVO.setJoinDate(rs.getString("JOIN_DT"));
+				memberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+
+				members.add(memberVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return members;
+	}
+
+	/**
+	 * @author 이기연 memberDetail를 email로 받아온다.
+	 * @param email
+	 * @return
+	 */
+	public MemberVO getMemberDetailByEmail(String email) {
+		MemberVO memberVO = new MemberVO();
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/getMemberDetailByEmail/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, email);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+
+				memberVO.setEmail(rs.getString("EMAIL"));
+				memberVO.setPassword(rs.getString("PASSWORD"));
+				memberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
+				memberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
+				memberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
+				memberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
+				memberVO.setName(rs.getString("NAME"));
+				memberVO.setJoinDate(rs.getString("JOIN_DT"));
+				memberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+			}
+			return memberVO;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * 로그인한 회원이 admin인지 확인하는 경우
+	 * @param email
+	 * @return
+	 */
+	public int isAdmin(String email) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/isAdmin/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, email);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("COUNT");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return 0;
+	}
+
+
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -318,95 +642,5 @@ public class MemberDAO {
 			}
 		}
 	}
-
-	/**
-	 * @author 이기연 
-	 * memberCount 받아오기
-	 * @return
-	 */
-	public int getAllMemberCount() {
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		try {
-
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/member/getAllMemberCount/text()");
-			stmt = conn.prepareStatement(query);
-			
-			rs = stmt.executeQuery();
-
-			int placeCount = 0;
-			
-			if ( rs.next() ) {
-				placeCount = rs.getInt(1);
-			}
-			return placeCount;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-	}
-
-	/**
-	 * @author 이기연
-	 * 모든 memberList 받아오기
-	 * @param memberSearchVO
-	 * @return
-	 */
-	public List<MemberVO> getAllMembers(MemberSearchVO memberSearchVO) {
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		List<MemberVO> members = new ArrayList<MemberVO>();
-
-		try {
-
-			MemberVO memberVO = null;
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			// article을 꺼내온다.
-			String query = XML.getNodeString("//query/member/getAllMembers/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, memberSearchVO.getEndIndex());
-			stmt.setInt(2, memberSearchVO.getStartIndex());
-					
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				memberVO = new MemberVO();
-
-				memberVO.setEmail(rs.getString("EMAIL"));
-				memberVO.setPassword(rs.getString("PASSWORD"));
-				memberVO.setIsAdmin(rs.getInt("IS_ADMIN"));
-				memberVO.setPhoneNumber(rs.getString("PHONE_NUMBER"));
-				memberVO.setMainImageName(rs.getString("MAIN_IMAGE_NAME"));
-				memberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
-				memberVO.setName(rs.getString("NAME"));
-				memberVO.setJoinDate(rs.getString("JOIN_DT"));
-				memberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
-				
-				members.add(memberVO);
-			}
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-
-		return members;
-	}
-
 
 }

@@ -5,14 +5,13 @@ div#buttonCollection {
 	margin-bottom: 16px;
 }
 
-div#memberListWrapper {
+div#listWrapper {
    text-align: center;
-   background-color: #8ebe5a;
    height: 100%;
    margin: 0 auto;   
 }
 
-div#memberListWrapper table#tableList {
+div#listWrapper table#tableList {
 	background-color: white;
 	border :solid 2px;
 	text-align: center;
@@ -21,7 +20,7 @@ div#memberListWrapper table#tableList {
 	margin: 0 auto; 
 }
 
-div#memberListWrapper div#buttonCollection {
+div#listWrapper div#buttonCollection {
 	float: right;
 }
 

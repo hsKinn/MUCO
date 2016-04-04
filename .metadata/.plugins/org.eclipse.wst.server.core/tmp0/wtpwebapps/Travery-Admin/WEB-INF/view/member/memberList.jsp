@@ -10,8 +10,7 @@
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/common/test.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
 <script
 	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
@@ -43,13 +42,13 @@ $(document).ready( function() {
 	$("#massiveSelectCheckBox").click( function() {
 		var isChecked = $(this).prop("checked");
 		//일괄체크 되도록 하는 것 
-		$(".deleteArticleId").prop("checked", isChecked);
+		$(".deleteMemberId").prop("checked", isChecked);
 	});
 	
 	$("#massiveDeleteBtn").click( function() {
 		var isChecked = false;
 		
-		$(".deleteArticleId").each( function (index, data) {
+		$(".deleteMemberId").each( function (index, data) {
 			if (data.checked) {
 				isChecked = data.checked;
 			}
@@ -66,7 +65,7 @@ $(document).ready( function() {
 			// 지우는 로직 넣기 
 			var form = $("#massiveDeleteForm");
 			form.attr("method", "post");
-			form.attr("action", "<c:url value="/massiveDelete" />");
+			form.attr("action", "<c:url value="/memberMassiveDelete" />");
 			form.submit();
 		}
 		
@@ -79,30 +78,7 @@ $(document).ready( function() {
 	<div id="wrapper">
 		<div class="overlay"></div>
 
-		<!-- Sidebar -->
-		<nav class="navbar navbar-inverse navbar-fixed-top"
-			id="sidebar-wrapper" role="navigation">
-			<ul class="nav sidebar-nav">
-				<li class="sidebar-brand"><a href="#"> TRAVERY </a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">여행지<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li class="dropdown-header">여행지 관리자 메뉴</li>
-						<li><a href="<c:url value="/originPlaceList" />">Origin
-								Place</a></li>
-						<li><a href="<c:url value="/newPlaceList" />">New Place</a></li>
-						<li><a href="#">New Place Front Page</a></li>
-						<li><a href="<c:url value="/reportedPlaceList" />">Reported
-								Place</a></li>
-					</ul></li>
-				<li><a href="<c:url value="/packList" />">패키지</a></li>
-				<li><a href="<c:url value="/memberList" />">멤버</a></li>
-				<li><a href="#">예약</a></li>
-				<li><a href="#">QnA</a></li>
-				<li><a href="#">History</a></li>
-			</ul>
-		</nav>
-		<!-- /#sidebar-wrapper -->
+		<jsp:include page="/WEB-INF/view/common/sidebar.jsp"></jsp:include>
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
@@ -124,14 +100,38 @@ $(document).ready( function() {
 				<div id="buttonCollection">
 					<span id="massiveDeleteBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">Delete</button>
-					</span> <span id="massiveBlockBtn" style="cursor: pointer">
-						<button type="button" class="btn btn-default">Report</button>
-					</span> <a href="<c:url value="/registerMember"/>">
-						<button type="button" class="btn btn-default">sorting</button>
-					</a>
+					</span> 
+					
+					<span id="massiveBlockBtn" style="cursor: pointer">
+						<button type="button" class="btn btn-default">Block</button>
+					</span> 
+					
+					<span id="massiveBlockBtn" style="cursor: pointer">
+						<button type="button" class="btn btn-default">+ Admin</button>
+					</span> 
+
+					<span id="massiveBlockBtn" style="cursor: pointer">
+						<button type="button" class="btn btn-default">- Admin</button>
+					</span> 
+				
+				
+					<div class="dropdown memberListdropDown" style="float: right;">
+					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+					    	정렬 <span class="caret"></span>
+					    </button>
+					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">가입일</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">최근 접속일</a></li>
+					      <li role="presentation" class="divider"></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">이름</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Email</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">운영자</a></li>
+					    </ul>
+					</div>	
+					<!-- /#dropdown memberListdropDown -->			
 				</div>
 
-				<div id="memberListWrapper">
+				<div id="listWrapper">
 					<!-- 게시글 보여주는 list table -->
 					<table id="tableList">
 						<tr>
@@ -148,10 +148,10 @@ $(document).ready( function() {
 						<form id="massiveDeleteForm">
 							<c:forEach items="${members.memberList}" var="member">
 								<tr>
-									<td><input type="checkbox" class="deleteMemberId"
-										name="deleteMemberId" value="${member.email}" /></td>
-									<td><a
-										href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
+									<td>
+										<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${member.email}" /></td>
+									<td>
+										<a href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
 									<td>${member.password}</a></td>
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>
@@ -163,15 +163,33 @@ $(document).ready( function() {
 						</form>
 
 						<tr>
-							<td colspan="8">
-								<form id="searchForm">${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
-								</form>
+							<td colspan="8" style="background-color:#a1a1a1;">
+								<!-- 검색 form  -->
+								<form id="searchForm">
+									<br/>
+									<div style="text-align: center;"> <!-- 페이징 -->
+										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
+									</div>
+									<div style="text-align: center;"> <!-- 검색어 -->
+										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
+										<select name="searchList" id="searchList">
+											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>Email</option>
+											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>전화번호</option>
+											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>이름</option>
+										</select>
+										
+										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
+										<input type="button" id="initSearchBtn" value="검색초기화" />
+									</div>
+								</form>									
+								<br/>
 							</td>
 						</tr>
 					</table>
 					<!-- /#tableList -->
 				</div>
-				<!-- /#memberListWrapper -->
+				<!-- /#listWrapper -->
 
 
 			</div>

@@ -40,6 +40,8 @@ public class NewPlaceListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		PlaceListVO placeListVO;
 		int pageNO = 0;
 
 		try {
@@ -50,11 +52,10 @@ public class NewPlaceListServlet extends HttpServlet {
 		PlaceSearchVO placeSearchVO = new PlaceSearchVO();
 		placeSearchVO.setPageNO(pageNO);
 		
-		PlaceListVO placeListVO = placeBiz.getNewPlaceList(placeSearchVO);
-		
+		placeListVO = placeBiz.getNewPlaceList(placeSearchVO);
 		request.setAttribute("places", placeListVO);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeList.jsp");
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/newPlaceList.jsp");
 		rd.forward(request, response);	
 	}
 

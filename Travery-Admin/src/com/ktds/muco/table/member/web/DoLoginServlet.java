@@ -43,14 +43,13 @@ public class DoLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		boolean isLoginSuccess = memberBiz.login(request);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		boolean isLoginSuccess = memberBiz.loginForAdmin(request);
 
 		if (isLoginSuccess) {
 			response.sendRedirect(Root.get(this) + "/originPlaceList");
 		} else {
-			response.sendRedirect(Root.get(this) + "/");
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 요청입니다.");
 		}
 	}
 }

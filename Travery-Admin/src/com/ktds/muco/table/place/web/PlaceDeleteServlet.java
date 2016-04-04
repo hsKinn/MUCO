@@ -37,15 +37,17 @@ public class PlaceDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int placeType = Integer.parseInt(request.getParameter("placeType"));
 		int placeId = Integer.parseInt(request.getParameter("placeId"));
 
-		placeBiz.detelePlace(placeId);
+		placeBiz.detelePlaceByPlaceId(placeId);
 		
 //		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeList.jsp");
 //		rd.forward(request, response);
 		
+		// 1 : new place 
+		// 0 : origin place
 		response.sendRedirect(Root.get(this) + "/placeList");
-		
 	}
 
 }

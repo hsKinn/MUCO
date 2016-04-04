@@ -95,6 +95,78 @@
 					)	
 			WHERE	RNUM >= ?	     	
      	</getAllMembers>
+     	<getBlockedMemberCount>
+			SELECT	COUNT(EMAIL)
+			FROM	BLOCKED_MEMBER   
+     	</getBlockedMemberCount>
+     	<getBlockedMembers>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  MEMBER.EMAIL
+											, MEMBER.PASSWORD
+											, MEMBER.IS_ADMIN
+											, MEMBER.PHONE_NUMBER
+											, MEMBER.MAIN_IMAGE_NAME
+											, MEMBER.MAIN_IMAGE_LOCATION
+											, MEMBER.NAME
+											, MEMBER.JOIN_DT
+											, MEMBER.RECENT_ACCESS_DT
+									FROM    MEMBER
+											, BLOCKED_MEMBER
+									WHERE	MEMBER.EMAIL = BLOCKED_MEMBER.EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?      	
+     	</getBlockedMembers>
+     	<getReportedMemberCount>
+     		SELECT	COUNT(DISTINCT(EMAIL))
+     		FROM	REPORTED_PLACE
+     	</getReportedMemberCount>
+     	<getReportedMembers>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  MEMBER.EMAIL
+											, MEMBER.PASSWORD
+											, MEMBER.IS_ADMIN
+											, MEMBER.PHONE_NUMBER
+											, MEMBER.MAIN_IMAGE_NAME
+											, MEMBER.MAIN_IMAGE_LOCATION
+											, MEMBER.NAME
+											, MEMBER.JOIN_DT
+											, MEMBER.RECENT_ACCESS_DT
+									FROM    MEMBER
+											, REPORTED_PLACE
+									WHERE	MEMBER.EMAIL = REPORTED_PLACE.EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     		
+     	</getReportedMembers>
+     	<getMemberDetailByEmail>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     	</getMemberDetailByEmail>
+     	<isAdmin>
+     		SELECT	COUNT(NAME) AS COUNT
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		IS_ADMIN = 1     	
+     	</isAdmin>
+     	<getMemberByEmailAndPasswordForAdmin>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     		AND		IS_ADMIN = 1     	
+     	</getMemberByEmailAndPasswordForAdmin>
 	</member>
 	
 	<pack>
@@ -256,11 +328,21 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllReportedPlaces>
-		<deletePlace>
+		<deletePlaceByPlaceId>
 			DELETE	
 			FROM	PLACE
 			WHERE	PLACE_ID = ?					
-		</deletePlace>
+		</deletePlaceByPlaceId>
+		<goOriginPlaceByPlaceId>
+     		UPDATE	PLACE
+     		SET		IS_NEW_PLACE = 0
+     		WHERE	PLACE_ID = ?   		
+		</goOriginPlaceByPlaceId>
+		<goNewPlaceByPlaceId>
+     		UPDATE	PLACE
+     		SET		IS_NEW_PLACE = 1
+     		WHERE	PLACE_ID = ?  		
+		</goNewPlaceByPlaceId>
 	</place>
 	
 	<placeLike>

@@ -21,7 +21,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
 public class NameCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	MemberBiz memberBiz;
+	private MemberBiz memberBiz;
     /**
      * @see HttpServlet#HttpServlet()
      */

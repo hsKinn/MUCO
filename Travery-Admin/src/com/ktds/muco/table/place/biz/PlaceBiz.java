@@ -48,7 +48,7 @@ public class PlaceBiz {
 		// 1. 전체 게시글의 수
 		int allPlaceCount = placeDAO.getAllOriginPlaceCount();
 		// 1-1. 기본으로 페이지를 만들어준다. 
-		Paging paging = new Paging(10);
+		Paging paging = new Paging(20);
 		paging.setTotalArticleCount(allPlaceCount);
 		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
 		paging.setPageNumber(placeSearchVO.getPageNO()+"");
@@ -79,7 +79,7 @@ public class PlaceBiz {
 		// 1. 전체 게시글의 수
 		int allPlaceCount = placeDAO.getAllNewPlaceCount();
 		// 1-1. 기본으로 페이지를 만들어준다. 
-		Paging paging = new Paging(10);
+		Paging paging = new Paging(20);
 		paging.setTotalArticleCount(allPlaceCount);
 		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
 		paging.setPageNumber(placeSearchVO.getPageNO()+"");
@@ -147,9 +147,61 @@ public class PlaceBiz {
 	 * place 삭제
 	 * @param placeId
 	 */
-	public void detelePlace(int placeId) {
-		placeDAO.deletePlace(placeId);
+	public void detelePlaceByPlaceId(int placeId) {
+		placeDAO.deletePlaceByPlaceId(placeId);
 	}
+
+	/**
+	 * @author 이기연
+	 * place를 massive delete 하는 biz
+	 * @param deletePlaceIds
+	 */
+	public void deletePlaces(String[] deletePlaceIds) {
+		for (String placeId : deletePlaceIds) {
+			placeDAO.deletePlaceByPlaceId(Integer.parseInt(placeId));
+		}		
+	}
+
+	/**
+	 * @author 이기연
+	 * placeId로 goOriginPlace
+	 * @param placeId
+	 */
+	public void goOriginPlaceByPlaceId(int placeId) {
+		placeDAO.goOriginPlaceByPlaceId(placeId);
+	}
+
+	/**
+	 * @author 이기연
+	 * place를 Origin place로 보내는 massive go origin Biz
+	 * @param deletePlaceIds
+	 */
+	public void goOriginPlaces(String[] deletePlaceIds) {
+		for (String placeId : deletePlaceIds) {
+			placeDAO.goOriginPlaceByPlaceId(Integer.parseInt(placeId));
+		}	
+	}
+	/**
+	 * @author 이기연
+	 * place를 New place로 보내는 go origin Biz
+	 * @param placeId
+	 */
+	public void goNewPlaceByPlaceId(int placeId) {
+		placeDAO.goNewPlaceByPlaceId(placeId);
+		
+	}
+
+	/**
+	 * @author 이기연
+	 * place 여러개를 New place로 보내는 massive go origin Biz
+	 * @param deletePlaceIds
+	 */
+	public void goNewPlaces(String[] deletePlaceIds) {
+		for (String placeId : deletePlaceIds) {
+			placeDAO.goNewPlaceByPlaceId(Integer.parseInt(placeId));
+		}	
+	}
+
 
 
 }
