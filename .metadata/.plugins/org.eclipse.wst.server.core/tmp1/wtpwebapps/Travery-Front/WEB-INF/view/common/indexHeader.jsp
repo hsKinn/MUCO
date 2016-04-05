@@ -73,9 +73,38 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a class="page-scroll" data-toggle="modal"
-						title="A free Bootstrap video landing theme" href="#aboutModal">Login</a>
+						title="A free Bootstrap video landing theme" href="#aboutModal">About Us</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+	
+	
+	<div id="aboutModal" class="modal fade" tabindex="-1" role="dialog"
+	   aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-body">
+	            <h2 class="text-center">Travery made by MUCO</h2>
+	            <h5 class="text-center">
+	            MUCO : 무적코딩 kt'ds 2016 project #1</h5>
+	            <p class="text-justify" style="text-align: center;">
+	            Travery is Developed by  : </br> 
+				            <a href="http://cocomo.tistory.com/">김광민</a></br>
+				            유병훈</br>
+				            김동규</br>
+				            <a href="http://kiyeonlee.com/">이기연</a></br>
+				            백지경</br>
+				            <a href="http://loveiskey.tistory.com/">김현섭</a></br>
+	       		</p>
+	            <p class="text-center">
+	               Thank you!
+	            </p>
+	            <br />
+	            <button class="btn btn-primary btn-lg center-block"
+	               data-dismiss="modal" aria-hidden="true">OK</button>
+	         </div>
+	      </div>
+	   </div>
+	</div>

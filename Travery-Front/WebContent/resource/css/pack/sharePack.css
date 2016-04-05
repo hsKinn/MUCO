@@ -78,6 +78,8 @@ div.sharePack {
 	margin-top: 1%;
 	margin-left: 2.5%;
 	border: 3px Groove #5b5b5b;
+	background-color: #585858;
+
 }
 
 div.packTop {
@@ -102,7 +104,7 @@ div.packHashTag {
 }
 
 div.packHashTag span#hashtag {
-	color: #3399ff;
+	color: #9AA7C1;
 	font-size: 12px;
 	margin: 5px;
 }

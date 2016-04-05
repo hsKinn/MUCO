@@ -168,24 +168,18 @@
                <li><a href="<c:url value="/tripReservation"/>"
                   id="tripReservationMenu"> TRIP RESERVATION </a></li>
             </ul>
+            
             <ul class="nav navbar-nav navbar-right">
                <li>
-                  <a href="<c:url value="/personalInfo"/>" id="dropdownMenu1" data-toggle="dropdown" 
-                     aria-expanded="true"> PERSONAL INFO <span class="caret"></span> </a>
-
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                     <li>
-                        <a> 
-                           OOO님 안녕하세요 :)  <br/>
-                           여기에 프로필 사진을 빡 <br/>
-                           <br/>
-                        </a> 
-                     </li>
-                     <li><a href="<c:url value="/personalInfo"/>" >Setting</a></li>
-                     <li role="separator" class="divider"></li>
-                     <li><a href="#">Log out</a></li>
-                  </ul> 
-               </li>
+               		<a class="dropdown-toggle" data-toggle="dropdown" ><span class="glyphicon glyphicon-user "></span> Info <span class="caret"></span> </a>
+               		 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=2" />" >등록자 이름</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">나라ID</a></li>
+					      <li role="presentation" class="divider"></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/personalInfo" />">Setting</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/logout" />">Logout</a></li>
+					 </ul>
+               	</li>
             </ul>
          </div>
       </div>
