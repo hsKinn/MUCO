@@ -633,11 +633,10 @@
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-						<div class="tempSelectedPlace" id="' + ${ tempSelectedPlace.placeName } + '" 
+						<div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
 						style="float:left;
 								width:15%;
 								height:150px;
-								background-color: #5e5e5e;
 								text-align: center;
 								margin-left:45px;
 								margin-top:20px;" 

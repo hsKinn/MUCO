@@ -1038,9 +1038,12 @@
 					, DESCRIPTION
 					, IS_NEW_PLACE
 					, EMAIL
-					, COUNTRY_ID
-			FROM PLACE
-			WHERE PLACE_ID = ?
+					, C.COUNTRY_ID
+					, COUNTRY_NAME
+			FROM 	PLACE P
+					, COUNTRY C
+			WHERE	P.COUNTRY_ID = C.COUNTRY_ID
+			AND		PLACE_ID = ?
 		</addTempSelectedPlaceByPlaceId>
 			
 	</place>
