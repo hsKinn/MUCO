@@ -617,24 +617,29 @@
 							  
                               var size = "${placeListByPackId.size()}";
                               
+                              alert("${placeListByPackId.get(0).latitude}");
+                              alert("${placeListByPackId.get(1).latitude}");
+                              alert("${placeListByPackId.get(2).latitude}");
+                              
                               var lat;
                               var lng;
                               
                               var markers = [];
                               var map;
                               
-                              <c:forEach items="${placeListByPackId}" var="place">
-                              	alert("${place.latitude}");
-                              </c:forEach>
-                              
                               function getList() {
-	                                  for (var i = 0; i < 1; i++) {
-	                                	lat = "${place.latitude}";
-	                                	lng = "${place.longitude}";
-	                                	alert(lat);
-	                                	alert(lng);
-	                                    neighborhoods[i] = {lat: lat, lng: lng };
-	                                   }
+                                  for (var i = 0; i < size; i++) {
+                                	  alert(i);
+                                	  lat = "${placeListByPackId.get(i).latitude}";
+                                	lng = "${placeListByPackId.get(i).longitude}";
+                                	alert(lat);
+                                	alert(lng);
+                                      neighborhoods[i] = {lat: lat, lng: lng };
+                                   }
+                                  <c:forEach var="place" items="${placeListByPackId}" begin="0" end="size" varStatus="status">
+                                  	alert("포이치${ place.latitude}");
+                                  	alert("포이치${ place.longitude}")
+                                  </c:forEach>
                               }
                         
                               function initMap() {

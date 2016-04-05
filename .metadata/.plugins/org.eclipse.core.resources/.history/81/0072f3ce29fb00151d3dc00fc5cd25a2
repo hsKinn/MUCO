@@ -623,18 +623,12 @@
                               var markers = [];
                               var map;
                               
-                              <c:forEach items="${placeListByPackId}" var="place">
-                              	alert("${place.latitude}");
-                              </c:forEach>
+                                  <c:forEach var="i" begin="1" end="3">
+                                  	alert("포이치${ place.latitude}");
+                                  	alert("포이치${ place.longitude}");
+                                  </c:forEach>
                               
                               function getList() {
-	                                  for (var i = 0; i < 1; i++) {
-	                                	lat = "${place.latitude}";
-	                                	lng = "${place.longitude}";
-	                                	alert(lat);
-	                                	alert(lng);
-	                                    neighborhoods[i] = {lat: lat, lng: lng };
-	                                   }
                               }
                         
                               function initMap() {

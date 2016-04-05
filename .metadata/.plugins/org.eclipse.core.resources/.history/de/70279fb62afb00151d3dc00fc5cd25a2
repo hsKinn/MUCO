@@ -622,7 +622,6 @@
                               
                               var markers = [];
                               var map;
-                              
                               <c:forEach items="${placeListByPackId}" var="place">
                               	alert("${place.latitude}");
                               </c:forEach>
