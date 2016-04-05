@@ -384,6 +384,9 @@
 				<c:if test="${ axisX1 eq 'HighPrice' }">
 					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgHighPriceLowPriceScore * 6.5 }px"});
 				</c:if>
+				<c:if test="${ axisX1 eq 'Artificial' }">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgArtificialNaturalScore * 6.5 }px"});
+				</c:if>
 				
 				<c:if test="${ axisY1 eq 'Bright'}">
 					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgBrightDarkScore * 3.25) }px"});
@@ -393,6 +396,9 @@
 				</c:if>
 				<c:if test="${ axisY1 eq 'HighPrice' }">
 					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgHighPriceLowPriceScore * 3.25) }px"});
+				</c:if>
+				<c:if test="${ axisY1 eq 'Artificial' }">
+					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgArtificialNaturalScore * 3.25) }px"});
 				</c:if>
 				
 			</c:forEach>
@@ -411,6 +417,9 @@
 				<c:if test="${ axisX1 eq 'HighPrice' }">
 					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgHighPriceLowPriceScore * 6.5 }px"});
 				</c:if>
+				<c:if test="${ axisX1 eq 'Artificial' }">
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgArtificialNaturalScore * 6.5 }px"});
+				</c:if>
 				
 				<c:if test="${ axisY1 eq 'Bright'}">
 					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgBrightDarkScore * 3.25) }px"});
@@ -420,6 +429,9 @@
 				</c:if>
 				<c:if test="${ axisY1 eq 'HighPrice' }">
 					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgHighPriceLowPriceScore * 3.25) }px"});
+				</c:if>
+				<c:if test="${ axisY1 eq 'Artificial' }">
+					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgArtificialNaturalScore * 3.25) }px"});
 				</c:if>
 				
 			</c:forEach>
@@ -797,6 +809,7 @@
 							<li><a class="axisX">Bright-Dark</a></li>
 							<li><a class="axisX">HighPrice-LowPrice</a></li>
 							<li><a class="axisX">Active-Calm</a></li>
+							<li><a class="axisX">Artificial-Natural</a></li>
 						</ul>
 					</div>
 					<br />
@@ -809,6 +822,7 @@
 							<li><a class="axisY">Bright-Dark</a></li>
 							<li><a class="axisY">HighPrice-LowPrice</a></li>
 							<li><a class="axisY">Active-Calm</a></li>
+							<li><a class="axisY">Artificial-Natural</a></li>
 						</ul>
 					</div>
 				</div>
