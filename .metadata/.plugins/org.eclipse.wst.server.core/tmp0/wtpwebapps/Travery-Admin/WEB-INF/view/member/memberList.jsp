@@ -15,6 +15,26 @@
 <script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
 $(document).ready( function() {
+	// 검색 종류 list 받아오기 
+	
+	// 검색 초기화 클릭
+	$("#initSearchBtn").click(function() {
+		location.href = "<c:url value="/memberList/init" />";
+	});
+	
+	// 검색 버튼 클릭 
+	$("#searchBtn").click(function() {
+		
+		// 검색어를 입력하지 않았을 경우
+		if ( $("#searchKeyword").val() =="") { 
+			alert("검색어를 입력하세요");
+			return;
+		}
+		
+		// 검색을 마치고 movePage 0으로 간다 
+		movePage('0');
+		
+	});
 	
 	$("#massiveSelectCheckBox").click( function() {
 		var isChecked = $(this).prop("checked");
@@ -176,12 +196,12 @@ $(document).ready( function() {
 					    	정렬 <span class="caret"></span>
 					    </button>
 					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">가입일</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">최근 접속일</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/memberList?sortOption=1" />"">가입일</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/memberList?sortOption=2" />"">최근 접속일</a></li>
 					      <li role="presentation" class="divider"></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">이름</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Email</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">운영자</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/memberList?sortOption=3" />"">이름</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/memberList?sortOption=4" />"">Email</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/memberList?sortOption=5" />"">운영자</a></li>
 					    </ul>
 					</div>	
 					<!-- /#dropdown memberListdropDown -->			
@@ -229,9 +249,9 @@ $(document).ready( function() {
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>Email</option>
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>전화번호</option>
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>이름</option>
+											<option value="email" ${selectedList eq "email" ? "selected" : "" }>Email</option>
+											<option value="phoneNumber" ${selectedList eq "phoneNumber" ? "selected" : "" }>전화번호</option>
+											<option value="name" ${selectedList eq "name" ? "selected" : "" }>이름</option>
 										</select>
 										
 										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>

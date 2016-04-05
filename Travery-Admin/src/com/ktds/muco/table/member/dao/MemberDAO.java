@@ -299,7 +299,7 @@ public class MemberDAO {
 	 * @param memberSearchVO
 	 * @return
 	 */
-	public List<MemberVO> getAllMembers(MemberSearchVO memberSearchVO) {
+	public List<MemberVO> getAllMembers(MemberSearchVO memberSearchVO, int sortOption) {
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -312,12 +312,219 @@ public class MemberDAO {
 
 			MemberVO memberVO = null;
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			// article을 꺼내온다.
-			String query = XML.getNodeString("//query/member/getAllMembers/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, memberSearchVO.getEndIndex());
-			stmt.setInt(2, memberSearchVO.getStartIndex());
+			String query = "";
+			
+			//가입일
+			if (sortOption==1) {
+				if (memberSearchVO.getSearchKeyword().equals("email")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDateSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				}
+				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDateSearchByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDateSearchByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDate/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, memberSearchVO.getEndIndex());
+					stmt.setInt(2, memberSearchVO.getStartIndex());
+					
+				}
+			} 
+			// 최근 접속일 
+			else if (sortOption==2) {
+				if (memberSearchVO.getSearchKeyword().equals("email")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDateSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				}
+				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDateSearchByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDateSearchByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDate/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, memberSearchVO.getEndIndex());
+					stmt.setInt(2, memberSearchVO.getStartIndex());
+				}				
+			} 
+			// 이름 
+			else if (sortOption==3) {
+				if (memberSearchVO.getSearchKeyword().equals("email")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByNameSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				}
+				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByNameSearchByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByNameSearchByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, memberSearchVO.getEndIndex());
+					stmt.setInt(2, memberSearchVO.getStartIndex());
+					
+				}				
+			}
+			// 이메일 
+			else if (sortOption==4) {
+				if (memberSearchVO.getSearchKeyword().equals("email")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByEmailSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				}
+				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByEmailSearchByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByEmailSearchByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, memberSearchVO.getEndIndex());
+					stmt.setInt(2, memberSearchVO.getStartIndex());
+				}				
+			}
+			// 운영자 
+			else if (sortOption==5) {
+				if (memberSearchVO.getSearchKeyword().equals("email")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdminSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				}
+				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdminSearchByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdminSearchByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdmin/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, memberSearchVO.getEndIndex());
+					stmt.setInt(2, memberSearchVO.getStartIndex());
+					
+				}				
+			} 
+			else {
+				if (memberSearchVO.getSearchKeyword().equals("email")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				}
+				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersSearchByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+					
+				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembersSearchByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, memberSearchVO.getSearchKeyword());
+					stmt.setInt(2, memberSearchVO.getEndIndex());
+					stmt.setInt(3, memberSearchVO.getStartIndex());
+				} else {
+					// article을 꺼내온다.
+					query = XML.getNodeString("//query/member/getAllMembers/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, memberSearchVO.getEndIndex());
+					stmt.setInt(2, memberSearchVO.getStartIndex());
+				}				
+			}
 
 			rs = stmt.executeQuery();
 

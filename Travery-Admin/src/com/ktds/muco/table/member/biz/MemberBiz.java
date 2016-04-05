@@ -166,12 +166,12 @@ public class MemberBiz {
 	 * @param placeSearchVO
 	 * @return
 	 */
-	public MemberListVO getMemberList(MemberSearchVO memberSearchVO) {
+	public MemberListVO getMemberList(MemberSearchVO memberSearchVO, int sortOption) {
 		// 1. 전체 게시글의 수
-		int allPlaceCount = memberDAO.getAllMemberCount();
+		int allMemberCount = memberDAO.getAllMemberCount();
 		// 1-1. 기본으로 페이지를 만들어준다. 
 		Paging paging = new Paging(20);
-		paging.setTotalArticleCount(allPlaceCount);
+		paging.setTotalArticleCount(allMemberCount);
 		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
 		paging.setPageNumber(memberSearchVO.getPageNO()+"");
 		
@@ -179,7 +179,7 @@ public class MemberBiz {
 		memberSearchVO.setEndIndex(paging.getEndArticleNumber());
 		
 		//전체 article 받아오기
-		List<MemberVO> members = memberDAO.getAllMembers(memberSearchVO);
+		List<MemberVO> members = memberDAO.getAllMembers(memberSearchVO, sortOption);
 		
 		// 2. DAO로부터 받아온 결과를 출력
 		MemberListVO memberList = new MemberListVO();

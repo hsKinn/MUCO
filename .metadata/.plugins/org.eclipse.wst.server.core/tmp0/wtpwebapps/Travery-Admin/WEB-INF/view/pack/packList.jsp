@@ -22,7 +22,7 @@ $(document).ready( function() {
 	
 	// 검색 초기화 클릭
 	$("#initSearchBtn").click(function() {
-		location.href = "<c:url value="/list/init" />";
+		location.href = "<c:url value="/packList/init" />";
 	});
 	
 	// 검색 버튼 클릭 
@@ -104,12 +104,12 @@ $(document).ready( function() {
 					    	정렬 <span class="caret"></span>
 					    </button>
 					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">패키지명</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">등록자 이름</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">공개 여부</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/packList?sortOption=1" />">패키지명</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/packList?sortOption=2" />">등록자 이름</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/packList?sortOption=3" />">공개 여부</a></li>
 					      <li role="presentation" class="divider"></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">추천수</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">조회수</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/packList?sortOption=4" />">추천수</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/packList?sortOption=5" />">조회수</a></li>
 					    </ul>
 					</div>	
 					<!-- /#dropdown memberListdropDown -->	
@@ -125,7 +125,7 @@ $(document).ready( function() {
 							<th>조회수</th>
 							<th>추천수</th>
 							<th>공개 여부</th>
-							<th>최초등록자 이름</th>
+							<th>최초등록자 EMAIL</th>
 						</tr>
 
 						<form id="massiveDeleteForm">
@@ -155,10 +155,8 @@ $(document).ready( function() {
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>패키지 타이틀</option>
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>여행지명</option>
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>태그 검색</option>
-										  	<option value="memberUsername" ${selectedList eq "memberId" ? "selected" : "" }>등록자 username</option>
+											<option value="packTitle" ${selectedList eq "packTitle" ? "selected" : "" }>패키지 타이틀</option>
+										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>등록자 Email</option>
 										</select>
 										
 										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>

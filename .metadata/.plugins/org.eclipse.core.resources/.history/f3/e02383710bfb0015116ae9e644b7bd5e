@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+
+	<country>
+		<getCountryInfoByCountryName>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
+			FROM	COUNTRY
+			WHERE	COUNTRY_NAME = ?
+		</getCountryInfoByCountryName>
+	</country>
+	
+	<evaluation>
+		<getAvgEvaluationByPlaceId>
+            SELECT	AVG(SCORE) AS SCORE
+            		, STANDARD_ID
+            FROM    EVALUATION
+            WHERE   PLACE_ID = ?
+            GROUP	BY STANDARD_ID
+            ORDER	BY STANDARD_ID
+		</getAvgEvaluationByPlaceId>
+	</evaluation>
+	
+	<history>
+		<getAllHistoryCount>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+		</getAllHistoryCount>
+		<getAllHistoryList>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryList>
+	</history>
+	
+	<image>
+		<insertImage>
+			INSERT	INTO	IMAGE	( 
+										IMAGE_ID
+										, PLACE_ID
+										, IMAGE_NAME
+										, IMAGE_LOCATION
+									)
+			VALUES 					(
+										IMAGE_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+									)
+		</insertImage>
+	</image>
+	
+	<member>
+		<addNewMember>
+			INSERT INTO MEMBER (
+	                      			EMAIL
+	                       		 	, PASSWORD
+	                       			, NAME
+	                   			) 
+			VALUES              ( 
+	                        		?,
+	                        		?,
+	                        		?
+	                     		)
+     	</addNewMember>
+     	<getMemberByIdAndPassword>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     	</getMemberByIdAndPassword>
+     	<updateName>
+     		UPDATE	MEMBER
+     		SET		NAME = ?
+     		WHERE	EMAIL = ?
+     	</updateName>
+     	<updatePhoneNumber>
+     		UPDATE	MEMBER
+     		SET		PHONE_NUMBER = ?
+     		WHERE	EMAIL = ?     	
+     	</updatePhoneNumber>
+     	<updatePassword>
+     		UPDATE	MEMBER
+     		SET		PASSWORD = ?
+     		WHERE	EMAIL = ?       	
+     	</updatePassword>
+     	<isExistName>
+     		SELECT	COUNT(NAME) AS COUNT
+     		FROM	MEMBER
+     		WHERE	NAME = ?
+     	</isExistName>
+     	<addMainImage>
+     		UPDATE	MEMBER 
+     		SET		MAIN_IMAGE_NAME = ?
+     				, MAIN_IMAGE_LOCATION = ?
+     		WHERE	EMAIL = ?
+     	</addMainImage>
+     	<getAllMemberCount>
+			SELECT	COUNT(EMAIL)
+			FROM	MEMBER     	
+     	</getAllMemberCount>
+     	<getAllMembers>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembers>
+     	<getBlockedMemberCount>
+			SELECT	COUNT(EMAIL)
+			FROM	BLOCKED_MEMBER   
+     	</getBlockedMemberCount>
+     	<getBlockedMembers>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  MEMBER.EMAIL
+											, MEMBER.PASSWORD
+											, MEMBER.IS_ADMIN
+											, MEMBER.PHONE_NUMBER
+											, MEMBER.MAIN_IMAGE_NAME
+											, MEMBER.MAIN_IMAGE_LOCATION
+											, MEMBER.NAME
+											, MEMBER.JOIN_DT
+											, MEMBER.RECENT_ACCESS_DT
+									FROM    MEMBER
+											, BLOCKED_MEMBER
+									WHERE	MEMBER.EMAIL = BLOCKED_MEMBER.EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?      	
+     	</getBlockedMembers>
+     	<getReportedMemberCount>
+     		SELECT	COUNT(DISTINCT(EMAIL))
+     		FROM	REPORTED_PLACE
+     	</getReportedMemberCount>
+     	<getReportedMembers>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  MEMBER.EMAIL
+											, MEMBER.PASSWORD
+											, MEMBER.IS_ADMIN
+											, MEMBER.PHONE_NUMBER
+											, MEMBER.MAIN_IMAGE_NAME
+											, MEMBER.MAIN_IMAGE_LOCATION
+											, MEMBER.NAME
+											, MEMBER.JOIN_DT
+											, MEMBER.RECENT_ACCESS_DT
+									FROM    MEMBER
+											, REPORTED_PLACE
+									WHERE	MEMBER.EMAIL = REPORTED_PLACE.EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     		
+     	</getReportedMembers>
+     	<getMemberDetailByEmail>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     	</getMemberDetailByEmail>
+     	<isAdmin>
+     		SELECT	COUNT(NAME) AS COUNT
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		IS_ADMIN = 1     	
+     	</isAdmin>
+     	<getMemberByEmailAndPasswordForAdmin>
+     		SELECT	*
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     		AND		PASSWORD = ?
+     		AND		IS_ADMIN = 1     	
+     	</getMemberByEmailAndPasswordForAdmin>
+     	<deleteMembersByEmail>
+     		DELETE	
+			FROM	MEMBER
+			WHERE	EMAIL = ?
+     	</deleteMembersByEmail>
+     	<blockMembersByEmail>
+			INSERT INTO BLOCKED_MEMBER (
+			   								EMAIL
+			   							) 
+			VALUES						( 
+											? 
+										)								
+     	</blockMembersByEmail>
+     	<addAdminMemberByEmail>
+     		UPDATE	MEMBER
+     		SET		IS_ADMIN = 1
+     		WHERE	EMAIL = ?
+     	</addAdminMemberByEmail>
+     	<subAdminMemberByEmail>
+     		UPDATE	MEMBER
+     		SET		IS_ADMIN = 0
+     		WHERE	EMAIL = ?     	
+     	</subAdminMemberByEmail>
+     	<releaseBlockedMemberByEmail>
+     		DELETE	BLOCKED_MEMBER
+     		WHERE	EMAIL = ?      	
+     	</releaseBlockedMemberByEmail>
+	</member>
+	
+	<pack>
+		<getPackListByEmail>
+			SELECT  *
+			FROM    PACK
+			WHERE   EMAIL = ?
+		</getPackListByEmail>
+		<getPackDataByPackId>
+			SELECT  *
+			FROM    PACK
+			WHERE   PACK_ID = ?
+		</getPackDataByPackId>
+		<addPack>
+			INSERT INTO PACK (
+			                            PACK_ID
+			                            , SHARE_IMAGE_NAME
+			                            , PACK_TITLE
+			                            , EMAIL
+			                            , SHARE_IMAGE_LOCATION
+			                        ) 
+				VALUES              ( PACK_ID_SEQ.NEXTVAL
+			                          ,0
+			                          ,?
+			                          ,?
+			                          ,0
+			                          )
+		</addPack>
+		<getLatesPackId>
+			SELECT	PACK_ID_SEQ.CURRVAL
+			FROM	PACK
+		</getLatesPackId>
+		<uploadPackImgFile>
+			UPDATE PACK
+			SET    SHARE_IMAGE_NAME     = ?
+			       , SHARE_IMAGE_LOCATION = ?
+			WHERE  PACK_ID              = ?
+		</uploadPackImgFile>
+		<deletePack>
+			DELETE	
+			FROM	PACK
+			WHERE	PACK_ID=?
+		</deletePack>
+		<getPlaceListByPackId>
+			SELECT  PLACE.*
+			FROM    PACK_PLACE
+					, PLACE
+			WHERE   PACK_PLACE.PLACE_ID = PLACE.PLACE_ID
+			AND		PACK_PLACE.PACK_ID = ?
+		</getPlaceListByPackId>
+		<getAllPackage>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY PACK_ID
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackage>
+		<getAllPackageSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY PACK_ID
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageSearchedByPackTitle>
+		<getAllPackageSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY PACK_ID
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		
+		</getAllPackageSearchedByEmail>
+		<getAllPackageOrderByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY PACK_TITLE ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByPackTitle>
+		<getAllPackageOrderByPackTitleSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY PACK_TITLE ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByPackTitleSearchedByPackTitle>
+		<getAllPackageOrderByPackTitleSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY PACK_TITLE ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByPackTitleSearchedByEmail>
+		<getAllPackageOrderByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByEmail>
+		<getAllPackageOrderByEmailSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByEmailSearchedByPackTitle>
+		<getAllPackageOrderByEmailSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByEmailSearchedByEmail>
+		<getAllPackageOrderByIsPublic>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY IS_PUBLIC DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByIsPublic>
+		<getAllPackageOrderByIsPublicSearachedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY IS_PUBLIC DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByIsPublicSearachedByPackTitle>
+		<getAllPackageOrderByIsPublicSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY IS_PUBLIC DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		
+		</getAllPackageOrderByIsPublicSearchedByEmail>
+		<getAllPackageOrderByLikeCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByLikeCount>
+		<getAllPackageOrderByLikeCountSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByLikeCountSearchedByPackTitle>
+		<getAllPackageOrderByLikeCountSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByLikeCountSearchedByEmail>
+		<getAllPackageOrderByViewCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByViewCount>
+		<getAllPackageOrderByViewCountSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByViewCountSearchedByPackTitle>
+		<getAllPackageOrderByViewCountSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByViewCountSearchedByEmail>
+		<getPackListCount>
+			SELECT 	COUNT(PACK_ID)
+			FROM    PACK		
+		</getPackListCount>
+	</pack>
+	
+	<packLike>
+	</packLike>
+	
+	<packReply>
+	</packReply>
+	
+	<place>
+		<placeInfoRecommendedList>
+		</placeInfoRecommendedList>
+		<insertPlaceInfo>
+			INSERT	INTO	PLACE	(
+											PLACE_ID
+											, PLACE_NAME
+											, ADDRESS
+											, LATITUDE
+											, LONGITUDE
+											, DESCRIPTION
+										)
+			VALUES						(
+											PLACE_ID_SEQ.NEXTVAL
+											, ?
+											, ?
+											, ?
+											, ?
+											, ?
+										)
+		</insertPlaceInfo>
+		<getReturnPlaceId>
+			SELECT	PLACE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getReturnPlaceId>
+		<getAllPlaceCount>
+			SELECT	COUNT(PLACE_ID)
+			FROM	PLACE
+			WHERE	IS_NEW_PLACE = ?		
+		</getAllPlaceCount>
+		<getAllPlaces>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									ORDER   BY PLACE_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlaces>
+		<getAllPlacesSearchedByPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		PLACE_NAME = ?
+									ORDER   BY PLACE_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesSearchedByPlaceName>
+		<getAllPlacesSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		EMAIL = ?
+									ORDER   BY PLACE_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesSearchedByEmail>
+		<getAllPlacesSearchedByCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		COUNTRY_ID = ?
+									ORDER   BY PLACE_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesSearchedByCountryId>
+		<getAllPlacesOrderbyPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									ORDER   BY PLACE_NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllPlacesOrderbyPlaceName>
+		<getAllPlacesOrderbyPlaceNameSearchedByPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		PLACE_NAME = ?
+									ORDER   BY PLACE_NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesOrderbyPlaceNameSearchedByPlaceName>
+		<getAllPlacesOrderbyEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									ORDER   BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllPlacesOrderbyEmail>
+		<getAllPlacesOrderbyPlaceNameSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		EMAIL = ?
+									ORDER   BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		
+		</getAllPlacesOrderbyPlaceNameSearchedByEmail>
+		<getAllPlacesOrderbyCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllPlacesOrderbyCountryId>
+		<getAllPlacesOrderbyCountryIdSearchedByPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		PLACE_NAME = ?
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllPlacesOrderbyCountryIdSearchedByPlaceName>
+		<getAllPlacesOrderbyCountryIdSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		EMAIL = ?
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllPlacesOrderbyCountryIdSearchedByEmail>
+		<getAllPlacesOrderbyCountryIdSearchedByCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		COUNTRY_ID = ?
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllPlacesOrderbyCountryIdSearchedByCountryId>
+		<getAllPlacesOrderbyPlaceNameSearchedByCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		COUNTRY_ID = ? 
+									ORDER   BY COUNTRY_ID ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		
+		</getAllPlacesOrderbyPlaceNameSearchedByCountryId>
+		<getAllPlacesOrderbyLikeCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									ORDER   BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesOrderbyLikeCount>
+		<getAllPlacesOrderbyLikeCountSearchedByPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		PLACE_NAME = ?
+									ORDER   BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesOrderbyLikeCountSearchedByPlaceName>
+		<getAllPlacesOrderbyLikeCountSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		EMAIL = ?
+									ORDER   BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPlacesOrderbyLikeCountSearchedByEmail>
+		<getAllPlacesOrderbyLikeCountSearchedByCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		COUNTRY_ID = ?
+									ORDER   BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		
+		</getAllPlacesOrderbyLikeCountSearchedByCountryId>
+		<getAllPlacesOrderbyViewCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									ORDER   BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?				
+		</getAllPlacesOrderbyViewCount>
+		<getAllPlacesOrderbyViewCountSearchedByPlaceName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		PLACE_NAME = ?
+									ORDER   BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?				
+		</getAllPlacesOrderbyViewCountSearchedByPlaceName>
+		<getAllPlacesOrderbyViewCountSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		EMAIL = ?
+									ORDER   BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?				
+		</getAllPlacesOrderbyViewCountSearchedByEmail>
+		<getAllPlacesOrderbyViewCountSearchedByCountryId>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PLACE
+									WHERE	IS_NEW_PLACE = ?
+									AND		COUNTRY_ID = ?
+									ORDER   BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?				
+		</getAllPlacesOrderbyViewCountSearchedByCountryId>
+		<getPlaceDetailByPlaceId>
+			SELECT	*
+			FROM	PLACE
+			WHERE	PLACE_ID = ?
+		</getPlaceDetailByPlaceId>
+		<getAllReportedPlaceCount>
+			SELECT	COUNT(REPORT_ID)
+			FROM	REPORTED_PLACE			
+		</getAllReportedPlaceCount>
+		<getAllReportedPlaces>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    REPORTED_PLACE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllReportedPlaces>
+		<deletePlaceByPlaceId>
+			DELETE	
+			FROM	PLACE
+			WHERE	PLACE_ID = ?					
+		</deletePlaceByPlaceId>
+		<goOriginPlaceByPlaceId>
+     		UPDATE	PLACE
+     		SET		IS_NEW_PLACE = 0
+     		WHERE	PLACE_ID = ?   		
+		</goOriginPlaceByPlaceId>
+		<goNewPlaceByPlaceId>
+     		UPDATE	PLACE
+     		SET		IS_NEW_PLACE = 1
+     		WHERE	PLACE_ID = ?  		
+		</goNewPlaceByPlaceId>
+		<updatePlaceName>
+     		UPDATE	PLACE
+     		SET		PLACE_NAME = ?
+     		WHERE	PLACE_ID = ?  		
+		</updatePlaceName>
+		<updateDescription>
+     		UPDATE	PLACE
+     		SET		DESCRIPTION = ?
+     		WHERE	PLACE_ID = ? 		
+		</updateDescription>
+	</place>
+	
+	<placeLike>
+	</placeLike>
+	
+	<placeReply>
+	</placeReply>
+	
+	<qna>
+	</qna>
+	
+	<rent>
+	</rent>
+	
+	<reportedPlace>
+	</reportedPlace>
+	
+	<reserve>
+	</reserve>
+	
+	<selectedCountry>
+	</selectedCountry>
+	
+	<standard>
+	</standard>
+	
+	<stay>
+	</stay>
+	
+	<transport>
+	</transport>
+	
+</query>
+

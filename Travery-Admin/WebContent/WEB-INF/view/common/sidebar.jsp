@@ -62,7 +62,7 @@ $(document).ready(function() {
 						<li><a href="<c:url value="/blockedMemberList" />">차단된 멤버</a></li>
 					</ul>
 				</li>
-				<li><a href="#">예약</a></li>
+				<li><a href="<c:url value="/reserveList" />">예약</a></li>
 				<li><a href="#">QnA</a></li>
 				<li><a href="<c:url value="/historyList" />">History</a></li>
 			</ul>

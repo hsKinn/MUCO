@@ -617,4 +617,34 @@
     <servlet-name>OverDatedHistoryListServlet</servlet-name>
     <url-pattern>/overDatedHistoryList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitPackList</display-name>
+    <servlet-name>InitPackList</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.InitPackList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitPackList</servlet-name>
+    <url-pattern>/packList/init</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitMemberListServlet</display-name>
+    <servlet-name>InitMemberListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.InitMemberListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitMemberListServlet</servlet-name>
+    <url-pattern>/memberList/init</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReserveListServlet</display-name>
+    <servlet-name>ReserveListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reserve.web.ReserveListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReserveListServlet</servlet-name>
+    <url-pattern>/reserveList</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -37,7 +37,8 @@ public class InitSerachServlet extends HttpServlet {
 		int placeType = Integer.parseInt(request.getParameter("placeType"));
 		HttpSession session = request.getSession();
 		//session 없애기
-		session.removeAttribute("_SEARCH_");
+		session.removeAttribute("_NEW_PLACE_SEARCH_");
+		session.removeAttribute("_ORIGIN_PLACE_SEARCH_");
 		
 		// 1 : new place 
 		// 0 : origin place

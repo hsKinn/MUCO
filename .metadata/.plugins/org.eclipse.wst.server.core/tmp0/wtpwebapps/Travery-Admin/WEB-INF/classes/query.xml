@@ -120,6 +120,347 @@
 					)	
 			WHERE	RNUM >= ?	     	
      	</getAllMembers>
+     	<getAllMembersSearchByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	NAME = ?
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersSearchByName>
+     	<getAllMembersSearchByPhoneNumber>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	PHONE_NUMBER = ?
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersSearchByPhoneNumber>
+     	<getAllMembersSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	EMAIL = ?
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersSearchByEmail>
+     	<getAllMembersOrderByJoinDate>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									ORDER	BY JOIN_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByJoinDate>
+     	<getAllMembersOrderByJoinDateSearchByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	NAME = ?
+									ORDER	BY JOIN_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByJoinDateSearchByName>
+     	<getAllMembersOrderByJoinDateSearchByPhoneNumber>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	PHONE_NUMBER = ?
+									ORDER	BY JOIN_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByJoinDateSearchByPhoneNumber>
+     	<getAllMembersOrderByJoinDateSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	EMAIL = ?
+									ORDER	BY JOIN_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByJoinDateSearchByEmail>
+     	<getAllMembersOrderByRecentAccessDate>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									ORDER	BY RECENT_ACCESS_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByRecentAccessDate>
+     	<getAllMembersOrderByRecentAccessDateSearchByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	NAME = ?
+									ORDER	BY RECENT_ACCESS_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByRecentAccessDateSearchByName>
+     	<getAllMembersOrderByRecentAccessDateSearchByPhoneNumber>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	PHONE_NUMBER = ?
+									ORDER	BY RECENT_ACCESS_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	
+     	</getAllMembersOrderByRecentAccessDateSearchByPhoneNumber>
+     	<getAllMembersOrderByRecentAccessDateSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	EMAIL = ?
+									ORDER	BY RECENT_ACCESS_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByRecentAccessDateSearchByEmail>
+     	<getAllMembersOrderByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									ORDER	BY NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByName>
+     	<getAllMembersOrderByNameSearchByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	NAME = ?
+									ORDER	BY NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByNameSearchByName>
+     	<getAllMembersOrderByNameSearchByPhoneNumber>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	PHONE_NUMBER = ?
+									ORDER	BY NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	
+     	</getAllMembersOrderByNameSearchByPhoneNumber>
+     	<getAllMembersOrderByNameSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	EMAIL = ?
+									ORDER	BY NAME ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	
+     	</getAllMembersOrderByNameSearchByEmail>
+     	<getAllMembersOrderByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									ORDER	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByEmail>
+     	<getAllMembersOrderByEmailSearchByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	NAME = ?
+									ORDER	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByEmailSearchByName>
+     	<getAllMembersOrderByEmailSearchByPhoneNumber>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	PHONE_NUMBER = ?
+									ORDER	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByEmailSearchByPhoneNumber>
+     	<getAllMembersOrderByEmailSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	EMAIL = ?
+									ORDER	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByEmailSearchByEmail>
+     	<getAllMembersOrderByIsAdmin>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									ORDER	BY IS_ADMIN DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByIsAdmin>
+     	<getAllMembersOrderByIsAdminSearchByName>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	NAME = ?
+									ORDER	BY IS_ADMIN DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByIsAdminSearchByName>
+     	<getAllMembersOrderByIsAdminSearchByPhoneNumber>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	PHONE_NUMBER = ?
+									ORDER	BY IS_ADMIN DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	</getAllMembersOrderByIsAdminSearchByPhoneNumber>
+     	<getAllMembersOrderByIsAdminSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    MEMBER
+									WHERE	EMAIL = ?
+									ORDER	BY IS_ADMIN DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?	     	
+     	
+     	</getAllMembersOrderByIsAdminSearchByEmail>
      	<getBlockedMemberCount>
 			SELECT	COUNT(EMAIL)
 			FROM	BLOCKED_MEMBER   
@@ -283,6 +624,258 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllPackage>
+		<getAllPackageSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY PACK_ID
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageSearchedByPackTitle>
+		<getAllPackageSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY PACK_ID
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		
+		</getAllPackageSearchedByEmail>
+		<getAllPackageOrderByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY PACK_TITLE ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByPackTitle>
+		<getAllPackageOrderByPackTitleSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY PACK_TITLE ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByPackTitleSearchedByPackTitle>
+		<getAllPackageOrderByPackTitleSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY PACK_TITLE ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByPackTitleSearchedByEmail>
+		<getAllPackageOrderByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByEmail>
+		<getAllPackageOrderByEmailSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByEmailSearchedByPackTitle>
+		<getAllPackageOrderByEmailSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY EMAIL ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByEmailSearchedByEmail>
+		<getAllPackageOrderByIsPublic>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY IS_PUBLIC DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByIsPublic>
+		<getAllPackageOrderByIsPublicSearachedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY IS_PUBLIC DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByIsPublicSearachedByPackTitle>
+		<getAllPackageOrderByIsPublicSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY IS_PUBLIC DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		
+		</getAllPackageOrderByIsPublicSearchedByEmail>
+		<getAllPackageOrderByLikeCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByLikeCount>
+		<getAllPackageOrderByLikeCountSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByLikeCountSearchedByPackTitle>
+		<getAllPackageOrderByLikeCountSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY LIKE_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByLikeCountSearchedByEmail>
+		<getAllPackageOrderByViewCount>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									ORDER 	BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByViewCount>
+		<getAllPackageOrderByViewCountSearchedByPackTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	PACK_TITLE = ?
+									ORDER 	BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByViewCountSearchedByPackTitle>
+		<getAllPackageOrderByViewCountSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    PACK
+									WHERE	EMAIL = ?
+									ORDER 	BY VIEW_COUNT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllPackageOrderByViewCountSearchedByEmail>
 		<getPackListCount>
 			SELECT 	COUNT(PACK_ID)
 			FROM    PACK		

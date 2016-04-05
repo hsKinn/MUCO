@@ -6,7 +6,21 @@ public class PackSearchVO {
 	private int pageNO;
 	private int startIndex;
 	private int endIndex;
+	private String searchList = "";
+	private String searchKeyword;
 	
+	public String getSearchList() {
+		return searchList;
+	}
+	public void setSearchList(String searchList) {
+		this.searchList = searchList;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 	public int getPageNO() {
 		return pageNO;
 	}
