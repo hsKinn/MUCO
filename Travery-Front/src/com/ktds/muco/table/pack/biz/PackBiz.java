@@ -1,3 +1,4 @@
+
 package com.ktds.muco.table.pack.biz;
 
 import java.util.ArrayList;
@@ -5,6 +6,8 @@ import java.util.List;
 
 import com.ktds.muco.table.hashtag.dao.HashTagDAO;
 import com.ktds.muco.table.hashtag.vo.HashTagVO;
+import com.ktds.muco.table.image.dao.ImageDAO;
+import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.table.pack.dao.PackDAO;
 import com.ktds.muco.table.pack.vo.PackVO;
 import com.ktds.muco.table.place.dao.PlaceDAO;
@@ -23,11 +26,13 @@ public class PackBiz {
 	private PackDAO packDAO;
 	private HashTagDAO hashTagDAO;
 	private PlaceDAO placeDAO;
+	private ImageDAO imageDAO;
 
 	public PackBiz() {
 		packDAO = new PackDAO();
 		hashTagDAO = new HashTagDAO();
 		placeDAO = new PlaceDAO();
+		imageDAO = new ImageDAO();
 	}
 
 	public List<PackVO> getPackListByEmail(String email) {
@@ -68,8 +73,17 @@ public class PackBiz {
 		return deleteCount;
 	}
 
-	public List<PlaceVO> getPlaceListByPackId(int packId) {
+public List<PlaceVO> getPlaceListByPackId(int packId) {
+		
 		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
+		
+		for (PlaceVO placeVO : places) {
+			int placeId = placeVO.getPlaceId();
+			List<ImageVO> images = new ArrayList<ImageVO>();
+			images = imageDAO.getImageVOListByPlaceId(placeId);
+			placeVO.setPlaceImageList(images);
+		}
+		
 		return places;
 	}
 

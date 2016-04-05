@@ -112,6 +112,49 @@ public class ImageDAO {
 		}
 		
 		return imageList;
+	} // TODO 중복 
+	
+	
+	/**
+	 * @author 백지경
+	 * @param placeId
+	 * @return
+	 */
+	public List<ImageVO> getImageVOListByPlaceId(int placeId) {
+
+		loadOracleDriver();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<ImageVO> images = new ArrayList<ImageVO>();
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+
+			String query = XML.getNodeString("//query/image/getImageVOListByPlaceId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeId);
+			rs = stmt.executeQuery();
+			
+			ImageVO image = null;
+
+			while (rs.next()) {
+				image = new ImageVO();
+				image.setImageId(rs.getInt("IMAGE_ID"));
+				image.setImageName(rs.getString("IMAGE_NAME"));
+				image.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				image.setEmail(rs.getString("EMAIL"));
+				image.setCreatedDate(rs.getString("CRT_DT"));
+				images.add(image);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return images;
 	}
 
 	/**

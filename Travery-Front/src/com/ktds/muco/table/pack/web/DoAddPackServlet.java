@@ -81,10 +81,13 @@ public class DoAddPackServlet extends HttpServlet {
 		File upFile = null;		
 		if (file != null && file.getFileName().length() >0) {
 			// file이 null이면 파일을 업로드 안한것
+			file.setFileName(packId+ file.getFileName());
 			upFile = file.write("D:\\travery\\" + file.getFileName());			
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}else{
-			upFile = file.write("D:\\travery\\basic1.jpg");
+			int random = (int) (Math.random() * 4) + 1;
+			String randomFile= "basic"+random+".jpg";			
+			upFile = new File("D:\\travery\\" + randomFile);
 			fileBiz.uploadPackImgFile(packId, upFile);
 		}
 		
