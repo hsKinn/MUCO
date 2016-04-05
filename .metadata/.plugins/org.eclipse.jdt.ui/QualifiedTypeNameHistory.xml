@@ -13,4 +13,6 @@
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.pack.web.PackDetailServlet"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.Description"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.ActionCode"/>
 </qualifiedTypeNameHistroy>
