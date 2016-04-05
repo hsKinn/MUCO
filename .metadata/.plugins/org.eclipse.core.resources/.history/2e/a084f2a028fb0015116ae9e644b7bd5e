@@ -105,11 +105,9 @@
 							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=1" />"">예약ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=2" />"">패키지ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=2" />"">동행인수</a></li>
+								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
 						</ul>
 					</div>
 					<!-- /#dropdown memberListdropDown -->

@@ -36,13 +36,13 @@
 		$("#massiveSelectCheckBox").click(function() {
 			var isChecked = $(this).prop("checked");
 			//일괄체크 되도록 하는 것 
-			$(".deleteMemberId").prop("checked", isChecked);
+			$(".deleteReserveId").prop("checked", isChecked);
 		});
 
 		$("#massiveDeleteBtn").click(function() {
 			var isChecked = false;
 
-			$(".deleteMemberId").each(function(index, data) {
+			$(".deleteReserveId").each(function(index, data) {
 				if (data.checked) {
 					isChecked = data.checked;
 				}
@@ -105,9 +105,11 @@
 							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=1" />"">예약ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
+								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=2" />"">패키지ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
+								href="<c:url value="/reserveList?sortOption=2" />"">동행인수</a></li>
 						</ul>
 					</div>
 					<!-- /#dropdown memberListdropDown -->
@@ -131,8 +133,7 @@
 						<form id="massiveDeleteForm">
 							<c:forEach items="${reservations.reserveList}" var="reservation">
 								<tr>
-									<td><input type="checkbox" class="deleteMemberId"
-										name="deleteMemberId" value="${reservations.reserveId}" /></td>
+									<td> <input type="checkbox" class="deleteReserveId" name="deleteReserveId" value="${reservation.reserveId}" /></td>
 									<td>${reservation.reserveId}</td>
 									<td>예약한EMAIL</td>
 									<td>${reservation.departDate}</td>
@@ -152,7 +153,7 @@
 									<br />
 									<div style="text-align: center;">
 										<!-- 페이징 -->
-										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
+										${ reservations.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;">
 										<!-- 검색어 -->

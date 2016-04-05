@@ -105,11 +105,9 @@
 							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=1" />"">예약ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=2" />"">패키지ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=2" />"">동행인수</a></li>
+								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
 						</ul>
 					</div>
 					<!-- /#dropdown memberListdropDown -->
@@ -133,7 +131,7 @@
 						<form id="massiveDeleteForm">
 							<c:forEach items="${reservations.reserveList}" var="reservation">
 								<tr>
-									<td> <input type="checkbox" class="deleteReserveId" name="deleteReserveId" value="${reservation.reserveId}" /></td>
+									<td><input type="checkbox" class="deleteReserveId" name="deleteReserveId" value="${reservations.reserveId}" /></td>
 									<td>${reservation.reserveId}</td>
 									<td>예약한EMAIL</td>
 									<td>${reservation.departDate}</td>
@@ -153,7 +151,7 @@
 									<br />
 									<div style="text-align: center;">
 										<!-- 페이징 -->
-										${ reservations.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
+										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;">
 										<!-- 검색어 -->

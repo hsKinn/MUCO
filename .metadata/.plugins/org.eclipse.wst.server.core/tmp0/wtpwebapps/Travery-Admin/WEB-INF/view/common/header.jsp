@@ -16,26 +16,15 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/common/header.css"/>" />
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/common/leftMenu.css"/>" />
-<link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/member/logout.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/country/country.css"/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/common/footer.css"/>" />
 
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/pack/myPack.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/place/recommendPlace.css"/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 		
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
-
 <!-- Boot strap -->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
