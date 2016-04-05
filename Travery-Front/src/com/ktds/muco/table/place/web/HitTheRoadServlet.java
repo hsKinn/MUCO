@@ -118,10 +118,21 @@ public class HitTheRoadServlet extends HttpServlet {
 			}
 		}
 		
-
-		
 		// 팩 아이디 받아서 그 안에 있는 모든 여행지들 list로 묶어서 보낸다.
 		String packIdString = request.getParameter("selectedPackageId");
+		
+		if( packIdString != null){
+			
+			// History
+			HistoryVO history = new HistoryVO();
+			history.setIp(request.getRemoteHost());
+			history.setEmail(memberVO.getEmail());
+			history.setUrl(request.getRequestURI());
+			history.setActionCode(ActionCode.SELECT_PACKAGE);
+			history.setHistoryDescription(BuildDescription.get(Description.SELECT_PACKAGE, memberVO.getEmail(), packIdString + ""));
+			historyBiz.addHistory(history);
+		}
+		
 		int packId = packBiz.convertPackIdStringToInteger(packIdString);
 		
 		session = request.getSession();
@@ -137,16 +148,11 @@ public class HitTheRoadServlet extends HttpServlet {
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
 		request.setAttribute("placeListByPackId", packVO.getPlaceList());
 		
-		if( packVO.getPlaceList().size() > 0 ) {
-			
-			request.setAttribute("firstPlace", packVO.getPlaceList().get(0));
-		}
-		
 		// placeId로 여행지 대표 이미지 보냄
-		
 		String placeMainImage = imageBiz.getPlaceMainImageByPlaceId(request);
 		request.setAttribute("placeMainImage", placeMainImage);
 		System.out.println(placeMainImage);
+		
 		// History
 		HistoryVO history = new HistoryVO();
 		history.setIp(request.getRemoteHost());

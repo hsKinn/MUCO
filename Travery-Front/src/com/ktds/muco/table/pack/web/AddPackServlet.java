@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
@@ -20,6 +25,7 @@ import com.ktds.muco.table.pack.vo.PackVO;
 public class AddPackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -27,6 +33,7 @@ public class AddPackServlet extends HttpServlet {
 	public AddPackServlet() {
 		super();
 		packBiz = new PackBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -51,6 +58,20 @@ public class AddPackServlet extends HttpServlet {
 		List<PackVO> packs = packBiz.getPackListByEmail(email);
 
 		request.setAttribute("packs", packs);
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(loginMember.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.ADD_PACK);
+		if( packs != null ) {
+			history.setHistoryDescription(BuildDescription.get(Description.ADD_PACK, loginMember.getEmail()));
+		} else {
+			history.setHistoryDescription(BuildDescription.get(Description.ADD_PACK_FAIL, loginMember.getEmail()));
+		}
+		historyBiz.addHistory(history);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/pack/addPack.jsp");
 		rd.forward(request, response);
 	}

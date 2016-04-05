@@ -1,0 +1,54 @@
+package com.ktds.muco.table.pack.web;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ktds.muco.table.pack.biz.PackBiz;
+import com.ktds.muco.util.root.Root;
+
+public class DoDeletePackServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private PackBiz packBiz;
+	private HistoryBiz historyBiz;
+
+	public DoDeletePackServlet() {
+		super();
+		packBiz = new PackBiz();
+		historyBiz = new HistoryBiz();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		this.doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String[] deletePackIds = request.getParameterValues("deletePackId");
+		for (String string : deletePackIds) {
+			System.out.println(string);
+		}
+
+		int deleteCount = 0;
+		deleteCount = packBiz.deletePacks(deletePackIds);
+		
+
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.LOGIN);
+		history.setHistoryDescription(BuildDescription.get(Description.VISIT_LOGIN_PAGE, member.getEmail()));
+		historyBiz.addHistory(history);
+		
+		response.sendRedirect(Root.get(this) + "/detailPack");
+	}
+
+}

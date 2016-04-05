@@ -6,7 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.util.root.Root;
 
@@ -17,12 +24,15 @@ public class TempSelectedPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private PlaceBiz placeBiz;
+	private HistoryBiz historyBiz;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public TempSelectedPlaceServlet() {
         super();
         placeBiz = new PlaceBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -46,7 +56,20 @@ public class TempSelectedPlaceServlet extends HttpServlet {
 		
 		boolean isSuccess =  placeBiz.addTempSelectedPlaceByPlaceId(request);
 		
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
 		if( isSuccess ) {
+			
+			// History
+			HistoryVO history = new HistoryVO();
+			history.setIp(request.getRemoteHost());
+			history.setEmail(member.getEmail());
+			history.setUrl(request.getRequestURI());
+			history.setActionCode(ActionCode.SELECTED_PLACE);
+			history.setHistoryDescription(BuildDescription.get(Description.SELECTED_PLACE, member.getEmail(), selectedPlaceId + ""));
+			historyBiz.addHistory(history);
+			
 			// 해당 여행지가 DB에 있으면
 			response.sendRedirect(Root.get(this) + "/hitTheRoad?placeId=" + selectedPlaceId);
 		}
@@ -58,6 +81,16 @@ public class TempSelectedPlaceServlet extends HttpServlet {
 			try {
 				selectedPlaceId = Integer.parseInt(splitId[1]);
 			} catch (NumberFormatException nfe) {	}
+			
+			// History
+			HistoryVO history = new HistoryVO();
+			history.setIp(request.getRemoteHost());
+			history.setEmail(member.getEmail());
+			history.setUrl(request.getRequestURI());
+			history.setActionCode(ActionCode.SELECTED_PLACE);
+			history.setHistoryDescription(BuildDescription.get(Description.SELECTED_PLACE_FAIL, member.getEmail(), selectedPlaceId + ""));
+			historyBiz.addHistory(history);
+			
 			response.sendRedirect(Root.get(this) + "/hitTheRoad?errorCodeSecond=" + selectedPlaceId);
 		}
 		

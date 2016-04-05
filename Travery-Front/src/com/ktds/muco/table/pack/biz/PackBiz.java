@@ -152,8 +152,10 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 	}
 
 	/**
+	 * 선택된 나라들 나의 패키지에 넣기
 	 * 
 	 * @author 유병훈
+	 * @author 김광민 수정
 	 * 
 	 */
 	public boolean getAddMyPackByPlace(String[] selectedPlaceId, int packId) {

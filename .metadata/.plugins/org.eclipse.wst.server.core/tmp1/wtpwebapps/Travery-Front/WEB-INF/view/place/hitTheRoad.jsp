@@ -602,9 +602,6 @@
 							</div>
 		
 							<!-- 경로 설정 탭 -->
-<<<<<<< HEAD
-							<div id="menu3" class="tab-pane fade"></div>
-=======
 							<div id="menu3" class="tab-pane fade" style="height: 100%; width: 100%;">
 								
 								<div id="map"></div>
@@ -693,7 +690,6 @@
 								<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&signed_in=true&callback=initMap"
 								        async defer></script>
 							</div>
->>>>>>> origin/KGM10
 						</div>
 					</div>
 				</div>

@@ -1,16 +1,14 @@
 package com.ktds.muco.util.file;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.muco.table.file.vo.FileVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
-import com.ktds.muco.util.file.DownloadUtil;
 
 /**
  * Servlet implementation class DownloadServlet
@@ -30,9 +28,6 @@ public class ImageServlet extends HttpServlet {
 		
 		DownloadUtil downloadUtil = DownloadUtil.getInstance("D:\\travery\\");
 		downloadUtil.download(request, response, imageName, imageName);
-				
-		
-		
 	}
 
 }
