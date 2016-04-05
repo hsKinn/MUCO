@@ -2,13 +2,10 @@ package com.ktds.muco.table.place.vo;
 
 import java.util.List;
 
-import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.util.web.Paging;
 /**
  * 여행지
- * 
- * Paging 미구현
- * 
+ *  
  * @author 김동규
  *
  */

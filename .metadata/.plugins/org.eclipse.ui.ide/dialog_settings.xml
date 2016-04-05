@@ -39,7 +39,6 @@
 		<item value="org.eclipse.datatools.sqltools.doc.user:1.12.0.v201405281819-37D-7733L3D753L7BBF"/>
 		<item value="org.eclipse.draw2d:3.10.1.201508170204"/>
 		<item value="org.eclipse.egit.mylyn:4.2.0.201601211800-r"/>
-		<item value="org.eclipse.egit.source:4.2.0.201601211800-r"/>
 		<item value="org.eclipse.egit:4.2.0.201601211800-r"/>
 		<item value="org.eclipse.emf.codegen.ecore.ui:2.11.1.v20160208-0841"/>
 		<item value="org.eclipse.emf.codegen.ecore:2.11.1.v20160208-0841"/>
@@ -111,14 +110,14 @@
 		<item value="org.eclipse.rse.telnet:3.7.0.201505221634"/>
 		<item value="org.eclipse.rse.useractions:3.7.0.201505221634"/>
 		<item value="org.eclipse.rse:3.7.0.201505221634"/>
-		<item value="org.eclipse.team.svn.m2e.sources:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.mylyn.sources:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.mylyn:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.nl1.sources:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.resource.ignore.rules.jdt.sources:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.resource.ignore.rules.jdt:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.revision.graph.sources:3.0.0.I20150529-1700"/>
-		<item value="org.eclipse.team.svn.revision.graph:3.0.0.I20150529-1700"/>
+		<item value="org.eclipse.team.svn.m2e.sources:2.0.4.I20150123-1700"/>
+		<item value="org.eclipse.team.svn.mylyn.sources:2.0.3.I20141224-1700"/>
+		<item value="org.eclipse.team.svn.mylyn:2.0.3.I20141224-1700"/>
+		<item value="org.eclipse.team.svn.nl1.sources:2.0.3.I20141224-1700"/>
+		<item value="org.eclipse.team.svn.resource.ignore.rules.jdt.sources:2.0.3.I20141224-1700"/>
+		<item value="org.eclipse.team.svn.resource.ignore.rules.jdt:2.0.3.I20141224-1700"/>
+		<item value="org.eclipse.team.svn.revision.graph.sources:2.0.3.I20141224-1700"/>
+		<item value="org.eclipse.team.svn.revision.graph:2.0.3.I20141224-1700"/>
 		<item value="org.eclipse.team.svn.sources:2.0.4.I20150123-1700"/>
 		<item value="org.eclipse.team.svn:2.0.4.I20150123-1700"/>
 		<item value="org.eclipse.tm.terminal.control.feature:4.0.0.201506040610"/>
@@ -161,37 +160,26 @@
 			<item value=""/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
-			<item value="C:\Users\206-001\Desktop\광민이랑 합치는중.zip"/>
-			<item value="C:\Users\206-001\Desktop\현섭+동규형 마무리.zip"/>
-			<item value="C:\Users\206-001\Desktop\MUCO-KGM6 (1).zip"/>
-			<item value="C:\Users\206-001\Desktop\MUCO-KGM6.zip"/>
-			<item value="C:\Users\206-001\Desktop\광민이랑합친거.zip"/>
-			<item value="C:\Users\206-001\Desktop\Travery-Front ( SharePack 마무리 ).zip"/>
-			<item value="C:\Users\206-001\Desktop\travery_front.zip"/>
+			<item value="G:\modify.zip"/>
+			<item value="C:\Users\206-001\Desktop\옮겨두기.zip"/>
 		</list>
 	</section>
 	<section name="ChooseWorkspaceDialogSettings">
-		<item value="204" key="DIALOG_X_ORIGIN"/>
-		<item value="197" key="DIALOG_Y_ORIGIN"/>
+		<item value="660" key="DIALOG_X_ORIGIN"/>
+		<item value="341" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>
 		<item value="true" key="ShowStatusLine"/>
-<<<<<<< HEAD
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode/&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
-=======
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/member/biz/MemberBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/country/biz/CountryBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/WebContent/resource/css/place/hitTheRoad.css&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/WebContent/WEB-INF/view/place/hitTheRoad.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
->>>>>>> origin/KGM8
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/member/biz/MemberBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/country/biz/CountryBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/WebContent/resource/css/place/hitTheRoad.css&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
 		<item value="false" key="ShowDerived"/>
 		<section name="DialogBoundsSettings">
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 			<item value="500" key="DIALOG_HEIGHT"/>
-			<item value="180" key="DIALOG_X_ORIGIN"/>
-			<item value="187" key="DIALOG_Y_ORIGIN"/>
+			<item value="668" key="DIALOG_X_ORIGIN"/>
+			<item value="195" key="DIALOG_Y_ORIGIN"/>
 		</section>
-	</section>
-	<section name="SaveAsDialogSettings">
 	</section>
 </section>

@@ -24,13 +24,6 @@
 	$(document)
 			.ready(
 					function() {
-						/* 		$("#createBtn").click(function() {
-						 var form = $("#createForm");
-						 form.attr("method", "post");
-						 form.attr("action", "<c:url value="/placeInfoCreate"/>");
-						 form.submit();
-						 }); */
-
 						<c:if test="${ empty placeInfo }">
 						$("#submitBtn")
 								.click(
@@ -96,15 +89,7 @@
 			url = "<c:url value="/placeInfoAddAddress"/>";
 			window.open(	url,
 							"GoogleMapAPI",
-							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800"
-						);
-		});
-		
-		$("#map").click( function openMap() {
-			url = "<c:url value="/placeInfoAddAddress"/>";
-			window.open(	url,
-							"GoogleMapAPI",
-							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=1000, height=800"
+							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=825, height=660"
 						);
 		});
 		
@@ -112,6 +97,7 @@
 			GoogleMapAPI.document.dataform.lat;
 			GoogleMapAPI.document.dataform.lng;
 			GoogleMapAPI.document.dataform.address;
+			GoogleMapAPI.document.dataform.countryId;
 		}
 	});
 </script>
@@ -186,9 +172,9 @@
 									Address : 
 								</span>
 								<input type="text" id="address" name="address" placeholder="Place Address" value="${placeInfo.address}" /> 
-								<input type="hidden" id="lat" name="lat" placeholder="#latitude" value="${placeInfo.latitude}" /> 
-								<input type="hidden" id="lng" name="lng" placeholder="#longitude" value="${placeInfo.longitude}" />
-								<span id="map" onclick="openMap(this.form)">Map </span>
+								<input type="hidden" id="lat" name="lat" value="${placeInfo.latitude}" /> 
+								<input type="hidden" id="lng" name="lng" value="${placeInfo.longitude}" />
+								<input type="text" id="countryId" name="countryId" value="${placeInfo.countryId}" />
 								<span class="glyphicon glyphicon-map-marker" id="mapBtn" onclick="openMap(this.form)"></span>
 							</div>
 						</div>

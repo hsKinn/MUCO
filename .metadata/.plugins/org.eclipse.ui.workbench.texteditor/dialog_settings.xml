@@ -2,37 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-<<<<<<< HEAD
-		<item value="searchPlaceKeyword" key="selection"/>
-=======
-		<item value="placeIdIs" key="selection"/>
->>>>>>> origin/KGM8
+		<item value="placeListByPackId" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="searchPlaceKeyword"/>
-			<item value="pageNo"/>
-			<item value="searchForm2"/>
-			<item value="searchBtn"/>
-			<item value="initBtn"/>
-			<item value="placeInfoInit"/>
-			<item value="search"/>
-			<item value="searchkeyword"/>
-=======
-			<item value="placeIdIs"/>
-			<item value="width"/>
-			<item value="Map"/>
-			<item value="updateSize"/>
-			<item value="100"/>
-			<item value="hitTheRoadTabs"/>
-			<item value="getPlaceListByCountryId"/>
-			<item value="dottedDiv"/>
->>>>>>> origin/KGM8
+			<item value="placeListByPackId"/>
+			<item value="div"/>
+			<item value="SelectMap"/>
+			<item value="select"/>
+			<item value="foreach"/>
+			<item value="start"/>
+			<item value="mapBtn"/>
+			<item value="btn-create"/>
 		</list>
 		<list key="replacehistory">
+			<item value="placeReply"/>
+			<item value="PlaceReplyVO"/>
+			<item value="placeId"/>
+			<item value="place"/>
+			<item value="place."/>
 			<item value="likeCount"/>
 		</list>
 	</section>
@@ -40,12 +30,7 @@
 		<item value="261" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-<<<<<<< HEAD
-		<item value="164" key="DIALOG_X_ORIGIN"/>
-		<item value="210" key="DIALOG_Y_ORIGIN"/>
-=======
-		<item value="699" key="DIALOG_X_ORIGIN"/>
-		<item value="435" key="DIALOG_Y_ORIGIN"/>
->>>>>>> origin/KGM8
+		<item value="80" key="DIALOG_X_ORIGIN"/>
+		<item value="351" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
