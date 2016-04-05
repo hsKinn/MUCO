@@ -144,7 +144,7 @@ public class HitTheRoadServlet extends HttpServlet {
 		history.setEmail(memberVO.getEmail());
 		history.setUrl(request.getRequestURI());
 		history.setActionCode(ActionCode.HIT_THE_ROAD);
-		history.setDescription(BuildDescription.get(Description.HIT_THE_ROAD, memberVO.getEmail()));
+		history.setHistoryDescription(BuildDescription.get(Description.HIT_THE_ROAD, memberVO.getEmail()));
 		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");

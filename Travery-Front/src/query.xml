@@ -15,26 +15,26 @@
 	
 	<history>
 		<addHistory>
-			INSERT INTO HISTORY	(
-									HISTORY_ID
-									, IP
-									, CRT_DT
-									, URL
-									, ACTION_CODE
-									, DESCRIPTION
-									, ETC
-									, EMAIL
-								)
-			VALUES				(
-									HISTORY_ID_SEQ.NEXTVAL
-									, ?
-									, SYS_DATE
-									, ?
-									, ?
-									, ?
-									, ?
-									, ?
-								)
+			INSERT INTO TRAVERY.HISTORY (
+			                                HISTORY_ID
+			                                , IP
+			                                , CRT_DT
+			                                , URL
+			                                , ACTION_CODE
+			                                , DESCRIPTION
+			                                , ETC
+			                                , EMAIL
+			                            ) 
+			VALUES                      (
+			                                HISTORY_ID_SEQ.NEXTVAL
+			                                , ?
+			                                , SYSDATE
+			                                , ?
+			                                , ?
+			                                , ?
+			                                , ?
+			                                , ?
+			                            )
 		</addHistory>	
 	</history>
 	

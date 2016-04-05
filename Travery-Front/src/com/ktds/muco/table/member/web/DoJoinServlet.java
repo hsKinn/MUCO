@@ -58,7 +58,7 @@ public class DoJoinServlet extends HttpServlet {
 			history.setEmail(email);
 			history.setUrl(request.getRequestURI());
 			history.setActionCode(ActionCode.JOIN);
-			history.setDescription(BuildDescription.get(Description.JOIN, email));
+			history.setHistoryDescription(BuildDescription.get(Description.JOIN, email));
 			historyBiz.addHistory(history);
 		}
 		else {
@@ -67,7 +67,7 @@ public class DoJoinServlet extends HttpServlet {
 			history.setEmail(email);
 			history.setUrl(request.getRequestURI());
 			history.setActionCode(ActionCode.JOIN);
-			history.setDescription(BuildDescription.get(Description.JOIN_FAIL, email));
+			history.setHistoryDescription(BuildDescription.get(Description.JOIN_FAIL, email));
 			historyBiz.addHistory(history);
 		}
 		

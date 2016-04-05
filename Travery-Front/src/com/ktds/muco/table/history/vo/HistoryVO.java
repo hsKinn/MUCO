@@ -14,7 +14,7 @@ public class HistoryVO extends MemberVO {
 	private String createdDate;
 	private String url;
 	private String actionCode;
-	private String description;
+	private String historyDescription;
 	private String etc;
 
 	public int getHistoryId() {
@@ -57,12 +57,12 @@ public class HistoryVO extends MemberVO {
 		this.actionCode = actionCode;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getHistoryDescription() {
+		return historyDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setHistoryDescription(String historyDescription) {
+		this.historyDescription = historyDescription;
 	}
 
 	public String getEtc() {
