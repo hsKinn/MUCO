@@ -1037,11 +1037,13 @@
 											, ADDRESS
 											, LATITUDE
 											, LONGITUDE
+											, COUNTRY_ID
 											, DESCRIPTION
 											, EMAIL
 										)
 			VALUES						(
 											PLACE_ID_SEQ.NEXTVAL
+											, ?
 											, ?
 											, ?
 											, ?
@@ -1134,7 +1136,12 @@
 			AND		P.EMAIL = M.EMAIL
 			AND		P.COUNTRY_ID = C.COUNTRY_ID
 		</getDetailPlaceInfo>
-			
+		<getCountryList>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
+            FROM    COUNTRY
+            ORDER BY COUNTRY_NAME ASC
+		</getCountryList>
 	</place>
 	
 	<placeLike>

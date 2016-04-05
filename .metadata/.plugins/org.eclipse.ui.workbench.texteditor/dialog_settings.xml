@@ -2,24 +2,52 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
 		<item value="addHistory" key="selection"/>
+=======
+		<item value="placeListByPackId" key="selection"/>
+>>>>>>> origin/롯드6
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="addHistory"/>
 			<item value="&lt;history&gt;"/>
 			<item value="추가"/>
 		</list>
 		<list key="replacehistory">
+=======
+			<item value="placeListByPackId"/>
+			<item value="div"/>
+			<item value="SelectMap"/>
+			<item value="select"/>
+			<item value="foreach"/>
+			<item value="start"/>
+			<item value="mapBtn"/>
+			<item value="btn-create"/>
+		</list>
+		<list key="replacehistory">
+			<item value="placeReply"/>
+			<item value="PlaceReplyVO"/>
+			<item value="placeId"/>
+			<item value="place"/>
+			<item value="place."/>
+			<item value="likeCount"/>
+>>>>>>> origin/롯드6
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="261" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
+<<<<<<< HEAD
 		<item value="838" key="DIALOG_X_ORIGIN"/>
 		<item value="275" key="DIALOG_Y_ORIGIN"/>
+=======
+		<item value="80" key="DIALOG_X_ORIGIN"/>
+		<item value="351" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> origin/롯드6
 	</section>
 </section>

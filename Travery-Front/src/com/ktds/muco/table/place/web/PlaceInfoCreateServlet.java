@@ -62,6 +62,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO.setAddress(multipartRequest.getParameter("address"));
 		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
 		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
+		placeVO.setCountryId(Integer.parseInt(multipartRequest.getParameter("countryId")));
 		placeVO.setPlaceDescription(multipartRequest.getParameter("description"));
 		placeVO.setWriter(member);
 

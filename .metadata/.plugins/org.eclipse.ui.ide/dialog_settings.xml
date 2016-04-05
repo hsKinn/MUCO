@@ -38,6 +38,7 @@
 		<item value="org.eclipse.datatools.sqldevtools.parsers.feature:1.12.0.v201406061321-623BgJ9EE9ZJRDZLA"/>
 		<item value="org.eclipse.datatools.sqltools.doc.user:1.12.0.v201405281819-37D-7733L3D753L7BBF"/>
 		<item value="org.eclipse.draw2d:3.10.1.201508170204"/>
+<<<<<<< HEAD
 		<item value="org.eclipse.egit.mylyn:4.1.1.201511131810-r"/>
 		<item value="org.eclipse.egit:4.1.1.201511131810-r"/>
 		<item value="org.eclipse.emf.codegen.ecore.ui:2.11.1.v20150806-0404"/>
@@ -60,6 +61,30 @@
 		<item value="org.eclipse.emf.mapping:2.9.0.v20150806-0404"/>
 		<item value="org.eclipse.emf:2.11.1.v20150806-0404"/>
 		<item value="org.eclipse.epp.mpc:1.4.1.v20150916-1928"/>
+=======
+		<item value="org.eclipse.egit.mylyn:4.2.0.201601211800-r"/>
+		<item value="org.eclipse.egit:4.2.0.201601211800-r"/>
+		<item value="org.eclipse.emf.codegen.ecore.ui:2.11.1.v20160208-0841"/>
+		<item value="org.eclipse.emf.codegen.ecore:2.11.1.v20160208-0841"/>
+		<item value="org.eclipse.emf.codegen.ui:2.8.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.codegen:2.11.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.common.ui:2.10.1.v20160208-0841"/>
+		<item value="org.eclipse.emf.common:2.11.1.v20160208-0816"/>
+		<item value="org.eclipse.emf.converter:2.11.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.databinding.edit:1.4.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.databinding:1.4.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.ecore.edit:2.9.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.ecore.editor:2.11.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.ecore:2.11.2.v20160208-0816"/>
+		<item value="org.eclipse.emf.edit.ui:2.11.1.v20160208-0841"/>
+		<item value="org.eclipse.emf.edit:2.11.1.v20160208-0841"/>
+		<item value="org.eclipse.emf.mapping.ecore.editor:2.10.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.mapping.ecore:2.9.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.mapping.ui:2.9.0.v20160208-0841"/>
+		<item value="org.eclipse.emf.mapping:2.9.0.v20160208-0841"/>
+		<item value="org.eclipse.emf:2.11.2.v20160208-0841"/>
+		<item value="org.eclipse.epp.mpc:1.4.2.v20160210-2005"/>
+>>>>>>> origin/롯드6
 		<item value="org.eclipse.gef:3.10.1.201508170204"/>
 		<item value="org.eclipse.help:2.1.1.v20150904-0015"/>
 		<item value="org.eclipse.jdt:3.11.1.v20150904-0015"/>
@@ -152,6 +177,21 @@
 		<item value="org.springsource.sts.package:3.7.2.201511261048-RELEASE-e45"/>
 		<item value="org.springsource.sts:3.7.2.201511261048-RELEASE"/>
 	</list>
+<<<<<<< HEAD
+=======
+	<section name="ExternalProjectImportWizard">
+		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="G:\modify.zip"/>
+			<item value="C:\Users\206-001\Desktop\옮겨두기.zip"/>
+		</list>
+	</section>
+>>>>>>> origin/롯드6
 	<section name="ChooseWorkspaceDialogSettings">
 		<item value="660" key="DIALOG_X_ORIGIN"/>
 		<item value="341" key="DIALOG_Y_ORIGIN"/>
@@ -159,7 +199,11 @@
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>
 		<item value="true" key="ShowStatusLine"/>
+<<<<<<< HEAD
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/member/biz/MemberBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/country/biz/CountryBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/WebContent/resource/css/place/hitTheRoad.css&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/WebContent/WEB-INF/view/place/hitTheRoad.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+=======
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/member/biz/MemberBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/src/com/ktds/muco/table/country/biz/CountryBiz.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Travery-Front/WebContent/resource/css/place/hitTheRoad.css&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+>>>>>>> origin/롯드6
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
 		<item value="false" key="ShowDerived"/>
 		<section name="DialogBoundsSettings">
