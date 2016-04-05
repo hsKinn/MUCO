@@ -225,12 +225,11 @@ div.addUserPackList:hover {
   padding-left: 10px;
 }
 
-<<<<<<< HEAD
 div.placeCards img {
 	width: 100%;
 	height: 100%;
-	
-=======
+}
+
 #right-panel select, #right-panel input {
   font-size: 15px;
 }
@@ -255,5 +254,21 @@ div.placeCards img {
   margin-top: 20px;
   background-color: #FFEE77;
   padding: 10px;
->>>>>>> origin/KGM10
+}
+
+div#tempPlaceNameDiv {
+	height:16%;
+	text-overflow:ellipsis;
+}
+
+a#tempPlaceName {
+	margin-left:13px;
+	color:#eeeeee;
+    text-decoration:none;
+    opacity :1;
+	transition: all 0.3s ease-out;
+}
+
+a#tempPlaceName:hover {
+	opacity :0.7;
 }

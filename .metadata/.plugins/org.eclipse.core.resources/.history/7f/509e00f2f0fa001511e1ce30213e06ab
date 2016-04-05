@@ -1,0 +1,61 @@
+package com.ktds.muco.table.reserve.biz;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.ktds.muco.table.reserve.dao.ReserveDAO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class ReserveBiz {
+	
+	private ReserveDAO reserveDAO;
+	
+	public ReserveBiz() {
+		reserveDAO = new ReserveDAO();
+	}
+	
+	
+	/**
+	 * reserveVO 입력 및 reserveId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getReserveId(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * transportVO 입력 및 transportId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getTransportId(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * rentVO 입력 및 rentId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getRentId(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * stayVO 입력 및 stayId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getStayId(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

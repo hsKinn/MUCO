@@ -248,6 +248,11 @@
 										,? 
 									)
 		</getAddMyPackByPlace>
+		<getMyPackCheckPlaceId>
+			SELECT 	PLACE_ID
+			FROM 	PACK_PLACE
+			WHERE 	PACK_ID = ?
+		</getMyPackCheckPlaceId>
 	</pack>
 	
 	<sharePack>
@@ -1308,6 +1313,180 @@
 	</reportedMember>
 	
 	<reserve>
+		<addNewReserve>
+			INSERT INTO RESERVE (
+   									RESERVE_ID
+   									, PACK_ID
+   									, DEPARTURE_NAME
+   									, PERSON_COUNT
+   									, DEPART_DT
+   									, ARRIVE_DT
+   								) 
+			VALUES 				( 
+									RESERVE_ID_SEQ.NEXTVAL
+									, ?
+									, ?
+									, ?
+									, ?
+									, ? 
+								)
+		</addNewReserve>
+		<getReserveId>
+			SELECT RESERVE_ID_SEQ.CURRVAL
+			FROM DUAL
+		</getReserveId>
+		<addNewReserveTransport>
+			INSERT INTO TRANSPORT 	(
+   										TRANSPORT_ID
+   										, TRANSPORT_CLASS
+   									) 
+			VALUES 					( 
+										TRANSPORT_ID_SEQ.NEXTVAL
+										, ? 
+									)
+		</addNewReserveTransport>
+		<getTransportId>
+			SELECT TRANSPORT_ID_SEQ.CURRVAL
+			FROM DUAL
+		</getTransportId>
+		<addNewReserveStay>
+			INSERT INTO STAY (
+			                    STAY_ID
+			                    , STAY_TYPE
+			                    , STAY_CLASS
+			                    , PERSON_COUNT
+			                    , CHECK_IN_DT
+			                    , CHECK_OUT_DT
+			                 ) 
+			VALUES          ( 
+			                    STAY_ID_SEQ.NEXTVAL
+			                    , ?
+			                    , ?
+			                    , ?
+			                    , ?
+			                    , ? 
+			                )
+		</addNewReserveStay>
+		<getStayId>
+			SELECT STAY_ID_SEQ.CURRVAL
+			FROM DUAL
+		</getStayId>
+		<addNewReserveRent>
+			INSERT INTO RENT (
+   								RENT_ID
+   								, RENT_TYPE
+   								, RENT_START_DT
+   								, RENT_END_DT
+   								, PERSON_COUNT
+   							) 
+			VALUES 			( 
+								RENT_ID_SEQ.NEXTVAL
+								, ?
+								, ?
+								, ?
+								, ? 
+							)
+		</addNewReserveRent>
+		<getRentId>
+			SELECT RENT_ID_SEQ.CURRVAL
+			FROM DUAL
+		</getRentId>
+		<getReserveTransport>
+			INSERT INTO RESERVE_TRANSPORT (
+   											RESERVE_TRANSPORT_ID
+   											, RESERVE_ID
+   											, TRANSPORT_ID
+   										   ) 
+			VALUES 							( 
+											RESERVE_TRANSPORT_ID_SEQ.NEXTVAL
+											, ?
+											, ? 
+											)
+		</getReserveTransport>
+		<getReserveStay>
+			INSERT INTO RESERVE_STAY (
+   										RESERVE_STAY_ID
+   										, RESERVE_ID
+   										, STAY_ID
+   									) 
+			VALUES 					( 	RESERVE_STAY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+									)
+		</getReserveStay>
+		<getReserveRent>
+			INSERT INTO RESERVE_RENT (
+   										RESERVE_RENT_ID
+   										, RESERVE_ID
+   										, RENT_ID
+   									) 
+			VALUES 					( 
+										RESERVE_RENT_ID_SEQ.NEXTVAL
+										, ?
+										, ? 
+									)
+		</getReserveRent>
+		<getReserveInfo>
+			SELECT  P.PACK_ID
+					, P.PACK_TITLE
+        			, RE.RESERVE_ID
+        			, DEPARTURE_NAME
+        			, PERSON_COUNT
+        			, DEPART_DT
+        			, ARRIVE_DT
+			FROM  	RESERVE RE
+     				, PACK P
+     				, MEMBER M
+					WHERE   RE.PACK_ID = P.PACK_ID
+					AND   P.EMAIL = M.EMAIL
+					AND   M.EMAIL = ?
+		</getReserveInfo>
+		<getTransportInfo>
+			SELECT  TRANSPORT_CLASS
+			FROM TRANSPORT T
+			     , RESERVE_TRANSPORT RT
+			     , RESERVE RE
+			     , PACK P
+			     , MEMBER M
+			WHERE T.TRANSPORT_ID = RT.TRANSPORT_ID
+			AND   RE.RESERVE_ID = RT.RESERVE_ID
+			AND   RE.PACK_ID = P.PACK_ID
+			AND   P.EMAIL = M.EMAIL
+			AND   M.EMAIL = ?
+		</getTransportInfo>
+		<getStayInfo>
+			SELECT  STAY_TYPE
+					, STAY_CLASS
+					, S.PERSON_COUNT
+					, CHECK_IN_DT
+					, CHECK_OUT_DT
+			FROM STAY S
+			     , RESERVE_STAY RS
+			     , RESERVE RE
+			     , PACK P
+			     , MEMBER M
+			WHERE S.STAY_ID = RS.STAY_ID
+			AND   RE.RESERVE_ID = RS.RESERVE_ID
+			AND   RE.PACK_ID = P.PACK_ID
+			AND   P.EMAIL = M.EMAIL
+			AND   M.EMAIL = ?
+		</getStayInfo>
+		<getRentInfo>
+			SELECT  RENT_TYPE
+					, R.PERSON_COUNT
+					, RENT_START_DT
+					, RENT_END_DT
+			FROM RENT R
+			     , RESERVE_RENT RR
+			     , RESERVE RE
+			     , PACK P
+			     , MEMBER M
+			WHERE R.RENT_ID = RR.RENT_ID
+			AND   RE.RESERVE_ID = RR.RESERVE_ID
+			AND   RE.PACK_ID = P.PACK_ID
+			AND   P.EMAIL = M.EMAIL
+			AND   M.EMAIL = ?
+		</getRentInfo>
 	</reserve>
 	
 	<selectedCountry>

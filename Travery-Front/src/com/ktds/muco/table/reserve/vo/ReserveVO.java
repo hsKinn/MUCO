@@ -10,9 +10,28 @@ import com.ktds.muco.table.pack.vo.PackVO;
 public class ReserveVO extends PackVO {
 
 	private int reserveId;
+	private String departureName;
 	private String departDate;
 	private String arriveDate;
 	private int isOneWay;
+	private int personCount;
+
+	
+	public int getPersonCount() {
+		return personCount;
+	}
+
+	public void setPersonCount(int personCount) {
+		this.personCount = personCount;
+	}
+
+	public String getDepartureName() {
+		return departureName;
+	}
+
+	public void setDepartureName(String departureName) {
+		this.departureName = departureName;
+	}
 
 	public int getReserveId() {
 		return reserveId;

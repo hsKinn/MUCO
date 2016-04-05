@@ -604,91 +604,71 @@
 							<!-- 경로 설정 탭 -->
 							<div id="menu3" class="tab-pane fade" style="height: 100%; width: 100%;">
 								
-								<div id="map"></div>
-								    <div id="right-panel">
-								    <div>
-								    <b>Start:</b>
-								    <select id="start" style="color: #333333;">
-								    	<c:forEach items="${ placeListByPackId }" var="placeInRoute">
-									      <option value="${ placeInRoute.address }">${ placeInRoute.address }</option>
-									    </c:forEach>
-								    </select>
-								    <br><br>
-								    <b>Waypoints:</b><br>
-								    <i>(Ctrl-Click for multiple selection)</i> <br>
-								    <select multiple id="waypoints" style="color: #333333;">
-								        <c:forEach items="${ placeListByPackId }" var="placeInRoute">
-									      <option value="${ placeInRoute.address }">${ placeInRoute.address }</option>
-									    </c:forEach>
-								    </select>
-								    <br>
-								    <b>End:</b>
-								    <select id="end" style="color: #333333;">
-								   		<c:forEach items="${ placeListByPackId }" var="placeInRoute">
-									      <option value="${ placeInRoute.address }">${ placeInRoute.address }</option>
-									    </c:forEach>
-								    </select>
-								    <br>
-								      <input type="submit" id="submit" style="color: #333333;">
-								    </div>
-								    <div id="directions-panel" style="color: #333333;"></div>
-								    </div>
-								    <script>
-									function initMap() {
-									  var directionsService = new google.maps.DirectionsService;
-									  var directionsDisplay = new google.maps.DirectionsRenderer;
-									  var map = new google.maps.Map(document.getElementById('map'), {
-									    zoom: 6,
-									    center: {lat: 41.85, lng: -87.65}
-									  });
-									  directionsDisplay.setMap(map);
-									
-									  document.getElementById('submit').addEventListener('click', function() {
-									    calculateAndDisplayRoute(directionsService, directionsDisplay);
-									  });
-									}
-									
-									function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-									  var waypts = [];
-									  var checkboxArray = document.getElementById('waypoints');
-									  for (var i = 0; i < checkboxArray.length; i++) {
-									    if (checkboxArray.options[i].selected) {
-									      waypts.push({
-									        location: checkboxArray[i].value,
-									        stopover: true
-									      });
-									    }
-									  }
-									
-									  directionsService.route({
-									    origin: document.getElementById('start').value,
-									    destination: document.getElementById('end').value,
-									    waypoints: waypts,
-									    optimizeWaypoints: true,
-									    travelMode: google.maps.TravelMode.DRIVING
-									  }, function(response, status) {
-									    if (status === google.maps.DirectionsStatus.OK) {
-									      directionsDisplay.setDirections(response);
-									      var route = response.routes[0];
-									      var summaryPanel = document.getElementById('directions-panel');
-									      summaryPanel.innerHTML = '';
-									      // For each route, display summary information.
-									      for (var i = 0; i < route.legs.length; i++) {
-									        var routeSegment = i + 1;
-									        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-									            '</b><br>';
-									        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-									        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-									        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-									      }
-									    } else {
-									      window.alert('Directions request failed due to ' + status);
-									    }
-									  });
-									}
-								</script>
-								<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&signed_in=true&callback=initMap"
-								        async defer></script>
+									<div id="floating-panel">
+										<button id="drop" onclick="drop()">Drop Markers</button>
+									</div>
+									<div id="map"></div>
+									<script>
+										// If you're adding a number of markers, you may want to drop them on the map
+										// consecutively rather than all at once. This example shows how to use
+										// window.setTimeout() to space your markers' animation.
+								
+										
+										var neighborhoods=[];
+										
+										
+										var a;
+										var b;
+										<c:forEach items="${placeListByPackId}" var="placeByPackId">
+											a = '${ placeByPackId.latitude }';
+											b = '${ placeByPackId.longitude }';
+											alert(a);
+											alert(b);
+										</c:forEach>
+										
+										for (var i = 0; i < neighborhoods.length; i++) {
+											neighborhoods[i].setMap(a,b);
+										}
+										
+										var markers = [];
+										var map;
+								
+										function initMap() {
+											map = new google.maps.Map(document.getElementById('map'), {
+												zoom : 12,
+												center : {
+													lat : 52.520,
+													lng : 13.410
+												}
+											});
+										}
+								
+										function drop() {
+											clearMarkers();
+											for (var i = 0; i < neighborhoods.length; i++) {
+												addMarkerWithTimeout(neighborhoods[i], i * 200);
+											}
+										}
+								
+										function addMarkerWithTimeout(position, timeout) {
+											window.setTimeout(function() {
+												markers.push(new google.maps.Marker({
+													position : position,
+													map : map,
+													animation : google.maps.Animation.DROP
+												}));
+											}, timeout);
+										}
+								
+										function clearMarkers() {
+											for (var i = 0; i < markers.length; i++) {
+												markers[i].setMap(null);
+											}
+											markers = [];
+										}
+									</script>
+									<script async defer
+										src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&signed_in=true&callback=initMap"></script>
 							</div>
 						</div>
 					</div>
@@ -732,56 +712,13 @@
 						<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
 							<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
 						</a>
-							<span data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }" style="cursor: pointer; margin-left:13px;">
-							${ tempSelectedPlace.placeName }</span>
+						<div id="tempPlaceNameDiv"><a id="tempPlaceName" href="/detailPlace?placeId="${ tempSelectedPlace.placeId }>
+							${ tempSelectedPlace.placeName }</a></div>
 							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff;">
 								<img src="/image?imageName=basic1.jpg" />
 							</div>
 						</div>
 									
-					<!-- Modal -->
-					
-					<div class="modal fade" id="${ tempSelectedPlace.placeId }" role="dialog" >
-					
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content" style="width: 1500px;height: 900px;margin-left: -300px;">
-								<div class="divHeader" style="height: 30px;background-color: #333333;">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-		
-								<div class="divBody" style="width: 100%;height: 90%;">
-		
-									<div class="travelImage" style="width: 50%;height: 100%;background-color: #c8c8c8;float: left;">
-										<h4 class="modal-title">travel image</h4>
-									</div>
-		
-									<div class="travelExplain" style="width: 50%;height: 100%;background-color: #c8c8c8;float: left;">
-										<div class="modal-header">
-											<h2 class="modal-title">${ tempSelectedPlace.placeName }</h2>
-										</div>
-										<div class="modal-header" style="height: 50%;">
-											<h4 class="modal-title">${ tempSelectedPlace.placeDescription }</h4>
-										</div>
-										<div class="modal-header" style="height: 40%;">
-											<h4 class="modal-title">travelReply</h4>
-											<div id="writeReply">
-												<div style="float: left; width: 70%;">
-													<textarea id="description" name="description"
-														style="width: 500px; height: 47px;"></textarea>
-												</div>
-												<div style="float: left;">
-													<button type="button" class="btn btn-info btn-lg">댓글등록</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
 					</c:forEach>
 				</form>
 				</div>

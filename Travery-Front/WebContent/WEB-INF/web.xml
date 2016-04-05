@@ -485,4 +485,14 @@
     <servlet-name>DetailPlaceServlet</servlet-name>
     <url-pattern>/detailPlace</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoTripReservationServlet</display-name>
+    <servlet-name>DoTripReservationServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reserve.web.DoTripReservationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoTripReservationServlet</servlet-name>
+    <url-pattern>/doTripReservation</url-pattern>
+  </servlet-mapping>
 </web-app>
