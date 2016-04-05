@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackListVO;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
@@ -20,12 +26,15 @@ public class PackListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private PackBiz packBiz;
+	private HistoryBiz historyBiz;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PackListServlet() {
         super();
         packBiz = new PackBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -84,8 +93,19 @@ public class PackListServlet extends HttpServlet {
 		session.setAttribute("_SEARCH_", packSearchVO);
 		
 		request.setAttribute("packs", packListVO);
+		
+		// History
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.PACKAGE_PAGE);
+		history.setHistoryDescription(BuildDescription.get(Description.PACKAGE_PAGE, member.getEmail()));
+		historyBiz.addHistory(history);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/packList.jsp");
 		rd.forward(request, response);
 	}
-
 }

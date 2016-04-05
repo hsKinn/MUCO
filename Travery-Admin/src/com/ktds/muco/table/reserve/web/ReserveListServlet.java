@@ -9,39 +9,51 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ktds.muco.table.place.vo.PlaceSearchVO;
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.reserve.biz.ReserveBiz;
 import com.ktds.muco.table.reserve.vo.ReserveListVO;
 import com.ktds.muco.table.reserve.vo.ReserveSearchVO;
 
 /**
  * Servlet implementation class OriginPlaceListActionServlet
+ * 
  * @author 이기연
  */
 public class ReserveListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private ReserveBiz reserveBiz;      
-    
-	/**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ReserveListServlet() {
-        super();
-        reserveBiz = new ReserveBiz();
-    }
+
+	private ReserveBiz reserveBiz;
+	private HistoryBiz historyBiz;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ReserveListServlet() {
+		super();
+		reserveBiz = new ReserveBiz();
+		historyBiz = new HistoryBiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int pageNO = 0;
 		int sortOption;
 		if (request.getParameter("sortOption") == null) {
@@ -68,7 +80,7 @@ public class ReserveListServlet extends HttpServlet {
 
 		} catch (NumberFormatException nfe) {
 			// 그런데 이 searchVO도 null인 경우가 있다.
-			reserveSearchVO = (PlaceSearchVO) session.getAttribute("_NEW_PLACE_SEARCH_");
+			reserveSearchVO = (ReserveSearchVO) session.getAttribute("_NEW_PLACE_SEARCH_");
 
 			// 그러면 다시 0으로 맞춘다.
 			if (reserveSearchVO == null) {
@@ -78,15 +90,27 @@ public class ReserveListServlet extends HttpServlet {
 				reserveSearchVO.setSearchKeyword("");
 			}
 		}
-		placeListVO = reserveBiz.getPlaceList(reserveSearchVO, sortOption, 1);
-		
+		reserveListVO = reserveBiz.getReserveList(reserveSearchVO, sortOption);
+
 		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
 		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
-		session.setAttribute("_NEW_PLACE_SEARCH_", reserveSearchVO);
+		session.setAttribute("_RESERVE_SEARCH_", reserveSearchVO);
 
 		request.setAttribute("places", reserveListVO);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/newPlaceList.jsp");
-		rd.forward(request, response);	
+		
+		// History
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.RESERVATION_PAGE);
+		history.setHistoryDescription(BuildDescription.get(Description.RESERVATION_PAGE, member.getEmail()));
+		historyBiz.addHistory(history);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/reserve/reserveList.jsp");
+		rd.forward(request, response);
 	}
 
 }
