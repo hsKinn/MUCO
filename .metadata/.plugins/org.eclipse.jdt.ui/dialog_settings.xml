@@ -26,8 +26,6 @@
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>
 	</section>
-<<<<<<< HEAD
-=======
 	<section name="JavaSearchPage">
 		<item value="1" key="HISTORY_SIZE"/>
 		<item value="false" key="CASE_SENSITIVE"/>
@@ -45,7 +43,6 @@
 			</list>
 		</section>
 	</section>
->>>>>>> origin/YBH13
 	<section name="completion_proposal_size">
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">

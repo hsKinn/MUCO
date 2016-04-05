@@ -13,7 +13,7 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.wst.css.ui.internal.wizard.NewCSSWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.jst.servlet.ui.internal.wizard.AddServletWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.wst.web.ui"/>
 		</list>
@@ -24,19 +24,15 @@
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
+		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
 	</section>
 	<section name="ZipFileExportWizard">
 		<item value="true" key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID"/>
 		<item value="true" key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
-<<<<<<< HEAD
-			<item value="C:\Users\206-001\Desktop\합본.zip"/>
-			<item value="C:\Users\206-001\Desktop\광민이랑 합치는중.zip"/>
-			<item value="C:\Users\206-001\Desktop\현섭+동규형 마무리.zip"/>
-			<item value="C:\Users\206-001\Desktop\Travery-Front ( SharePack 마무리 ).zip"/>
-=======
 			<item value="C:\Users\206-001\Desktop\Travery-temp.zip"/>
->>>>>>> origin/YBH13
 		</list>
 	</section>
 </section>

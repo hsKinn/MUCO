@@ -1,0 +1,12 @@
+package com.ktds.muco.table.history.biz;
+
+import com.ktds.muco.table.history.vo.HistoryVO;
+
+public class HistoryBiz {
+
+	public void addHistory(HistoryVO history) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

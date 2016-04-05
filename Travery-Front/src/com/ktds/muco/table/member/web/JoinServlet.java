@@ -42,6 +42,7 @@ public class JoinServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		RequestDispatcher rd = request.getRequestDispatcher(Root.get(this) + "/WEB-INF/view/member/join.jsp");
 		rd.forward(request, response);
 	}

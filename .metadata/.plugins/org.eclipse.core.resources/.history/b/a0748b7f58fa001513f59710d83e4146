@@ -1,0 +1,23 @@
+package com.ktds.muco.table.history.biz;
+
+import com.ktds.muco.table.history.dao.HistoryDAO;
+import com.ktds.muco.table.history.vo.HistoryVO;
+
+public class HistoryBiz {
+	
+	private HistoryDAO historyDAO;
+	
+	public HistoryBiz() {
+		
+		historyDAO = new HistoryDAO();
+		
+	}
+
+	public void addHistory(HistoryVO history) {
+		
+		if( historyDAO.addHistory(history) ) {
+			
+		}
+		
+	}
+}
