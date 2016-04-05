@@ -216,8 +216,8 @@ public class PackDAO {
 				placeVO = new PlaceVO();
 				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
 				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-				placeVO.setLatitude(rs.getInt("LATITUDE"));
-				placeVO.setLongitude(rs.getInt("LONGITUDE"));
+				placeVO.setLatitude(rs.getDouble("LATITUDE"));
+				placeVO.setLongitude(rs.getDouble("LONGITUDE"));
 				placeVO.setAddress(rs.getString("ADDRESS"));
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));

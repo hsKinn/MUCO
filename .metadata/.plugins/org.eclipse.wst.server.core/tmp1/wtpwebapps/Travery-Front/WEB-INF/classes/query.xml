@@ -1384,5 +1384,28 @@
 	<transport>
 	</transport>
 	
+	<reportedPlace>
+		
+		<setReportPlace>
+			INSERT INTO	REPORTED_PLACE	(
+											REPORT_ID
+											, EMAIL
+											, PLACE_ID
+											, REPORT_DT
+											, CATEGORY
+											, DESCRIPTION
+										)
+			VALUES						(
+											REPORT_ID_SEQ.NEXTVAL
+											, ?
+											, ?
+											, SYSDATE
+											, ?
+											, ?
+										)
+		</setReportPlace>
+	
+	</reportedPlace>
+	
 </query>
 

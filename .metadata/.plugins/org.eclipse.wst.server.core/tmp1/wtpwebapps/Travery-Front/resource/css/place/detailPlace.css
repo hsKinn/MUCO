@@ -13,14 +13,6 @@ div#detail-LeftWrapper {
 	border: 3px Groove #5b5b5b;	
 }
 
-div.range-slider span.range-slider__value {
-	font-size: 10px;
-}
-
-div.range-slider input {
-	margin-top: 21px;
-}
-
 div#photo-Top {
 	width: 100%;
 	height: 50%;
@@ -73,14 +65,14 @@ div#place-LikeCount {
 span.glyphicon-heart {
 	color: red;
 	width: 8px;
-	height: 10px;
+	height: 15px;
 }
 
 span#placeLikeCount {
-	font-size: 23px;
+	font-size: 16px;
 	color: red;
 	margin-bottom: 10px;
-	margin-left: 5px;
+	margin-left: 1px;
 }
 
 span.placeLike {
@@ -96,19 +88,26 @@ div#info-Top {
 	height: 5%;
 	float: left;
 	margin-top: 5px;
+	overFlow: auto;
 }
 
 div#info-Top div#place-Title {
-	width: 80%;
+	width: 70%;
 	float: left;
-	font-size: 18px;
+	font-size: 17px;
+	margin-top: 3px;
+}
+
+div#info-Top div#place-Reportbtn {
+	width: 5%;
+	float: left;
+	margin-top: 7px;
 }
 
 div#info-Top div#place-LikeCount {
-	width: 20%;
+	width: 25%;
 	float: left;
 	color: red;
-	font-size: 18px;
 }
 
 div#info-Middle {
@@ -121,6 +120,7 @@ div#place-Description textarea {
 	width: 100%;
 	height: 260px;
 	color: black;
+	font-size: 14px; 
 }
 
 div#info-Vote {
@@ -154,14 +154,40 @@ div.placeVote {
 
 div.placeVote table {
 	width: 100%;
-	height: 100%;
-	font-size: 18px;
+	height: 25%;
+	font-size: 13px;
 	text-align: center;
 	font-weight: bold;
 }
 
 div.placeVote input {
 	width: 100%;
+}
+
+div.placeVoteModal {
+	width: 100%;
+	height: 45%;
+	float: left;
+}
+
+div.placeVoteModal table {
+	width: 100%;
+	height: 100%;
+	font-size: 15px;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.placeVoteModal input {
+	width: 100%;
+}
+
+div.range-slider span.range-slider__value {
+	font-size: 10px;
+}
+
+div.range-slider input {
+	margin-top: 11px;
 }
 
 div#info-Bottom {

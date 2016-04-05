@@ -56,15 +56,14 @@ public class DoVoteServlet extends HttpServlet {
 		 * [0] : Bright-Dark
 		 * [1] : HightPrice-LowPrice
 		 * [2] : Active-Calm
-		 * 
+		 * [3] : Artificial-Natural
 		 */
 		int voteScore[] = new int[] {
 										Integer.parseInt(request.getParameter("bright"))
 										, Integer.parseInt(request.getParameter("highPrice"))
 										, Integer.parseInt(request.getParameter("active"))
+										, Integer.parseInt(request.getParameter("artificial"))
 									};
-		
-		
 		
 		if ( evaluationBiz.setVoteScore( voteScore, evaluation ) ) {
 			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);

@@ -103,10 +103,9 @@
 			};
 	
 			rangeSlider();
-		
 	});
-</script>
 
+</script>
 <c:set var="loginEmail" value="${ sessionScope._MEMBER_.email }" />
 
 <!-- Detail Place Content by hskim -->
@@ -142,12 +141,19 @@
 			
 			<div id="detail-RightWrapper">
 				<div id="info-Top">
+					<div id="place-Reportbtn">
+				        <a href="#">
+				          <span class="glyphicon glyphicon-ban-circle" data-toggle="modal" data-target="#reportModal"></span>
+				        </a>
+					</div>
 					<div id="place-Title">
-						${ place.countryName }, ${ place.placeName } 
+						${ place.placeName }, [${ place.countryName }]
 					</div>
 					<div id="place-LikeCount">
-						<span class="glyphicon glyphicon-heart"></span>
-						<span id="placeLikeCount">${ place.likeCount }</span>
+						<span class="badge">
+							<span class="glyphicon glyphicon-heart"></span>
+							<span id="placeLikeCount">${ place.likeCount }</span>
+						</span>
 					</div>
 				</div>
 				
@@ -186,62 +192,6 @@
 						</c:if>
 					</div>
 					
-					<!-- Modal -->
-					<div class="modal fade" id="voteModal" role="dialog">
-					    <div class="modal-dialog">
-					      <!-- Modal content-->
-					    	<div class="modal-content">
-					        	<div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h4 class="modal-title">
-						          	Mood Vote !
-						          </h4>
-						        </div>
-						        <!-- Modal Body -->
-						        <div class="modal-body">
-									<div class="placeVote">
-										<form id="voteForm">
-											<input type="hidden" name="placeId" value="${ place.placeId }" />
-											<div class="range-slider">
-												<table border="1">
-													<tr>
-														<td colspan="2">Bright</td>
-														<td>
-															<input class="range-slider__range" name="bright" type="range" min="1" max="100" value="50">
-															<span class="range-slider__value">0</span>
-														</td>
-														<td colspan="2">Dark</td>
-													</tr>
-													<tr>
-														<td colspan="2">HightPrice</td>
-														<td>
-															<input class="range-slider__range" name="highPrice" type="range" min="1" max="100" value="50">
-															<span class="range-slider__value">0</span>
-														</td>
-														<td colspan="2">LowPrice</td>
-													</tr>
-													<tr>
-														<td colspan="2">Active</td>
-														<td>
-															<input class="range-slider__range" name="active" type="range" min="1" max="100" value="50">
-															<span class="range-slider__value">0</span>
-														</td>
-														<td colspan="2">Calm</td>
-													</tr>
-												</table>
-											</div>
-										</form>
-									</div>
-						        </div>
-						        <!-- Modal Footer -->
-						        <div class="modal-footer">
-						    		<button type="button" class="btn btn-default" id="voteSubmit">Do Vote</button>
-						    		<button type="button" class="btn btn-default" id="placeModal-Close" data-dismiss="modal">Close</button>
-						        </div>
-					     	 </div>
-					    </div>
-					 </div>
-					 					
 					<div class="placeVote">
 						<div class="range-slider">
 							<table border="1">
@@ -249,7 +199,7 @@
 									<td colspan="2">Bright</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgBrightDarkScore }">
-										<span class="range-slider__value">0</span>
+										<span class="badge range-slider__value">0</span>
 									</td>
 									<td colspan="2">Dark</td>
 								</tr>
@@ -257,7 +207,7 @@
 									<td colspan="2">HightPrice</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgHighPriceLowPriceScore }">
-										<span class="range-slider__value">0</span>
+										<span class="badge range-slider__value">0</span>
 									</td>
 									<td colspan="2">LowPrice</td>
 								</tr>
@@ -265,9 +215,17 @@
 									<td colspan="2">Active</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgActiveCalmScore }">
-										<span class="range-slider__value">0</span>
+										<span class="badge range-slider__value">0</span>
 									</td>
 									<td colspan="2">Calm</td>
+								</tr>
+								<tr>
+									<td colspan="2">Artificial</td>
+									<td>
+										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgArtificialNaturalScore }">
+										<span class="badge range-slider__value">0</span>
+									</td>
+									<td colspan="2">Natural</td>
 								</tr>
 							</table>
 						</div>						
@@ -328,6 +286,107 @@
 			
 		
 		</div>
+		
+		<!-- Vote Modal -->
+		<div class="modal fade" id="voteModal" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		    	<div class="modal-content">
+		        	<div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">
+			          	Mood Vote !
+			          </h4>
+			        </div>
+			        <!-- Modal Body -->
+			        <div class="modal-body">
+						<div class="placeVoteModal">
+							<form id="voteForm">
+								<input type="hidden" name="placeId" value="${ place.placeId }" />
+								<div class="range-slider">
+									<table border="1">
+										<tr>
+											<td colspan="2">Bright</td>
+											<td>
+												<input class="range-slider__range" name="bright" type="range" min="1" max="100" value="50">
+												<span class="badge range-slider__value">0</span>
+											</td>
+											<td colspan="2">Dark</td>
+										</tr>
+										<tr>
+											<td colspan="2">HightPrice</td>
+											<td>
+												<input class="range-slider__range" name="highPrice" type="range" min="1" max="100" value="50">
+												<span class="badge range-slider__value">0</span>
+											</td>
+											<td colspan="2">LowPrice</td>
+										</tr>
+										<tr>
+											<td colspan="2">Active</td>
+											<td>
+												<input class="range-slider__range" name="active" type="range" min="1" max="100" value="50">
+												<span class="badge range-slider__value">0</span>
+											</td>
+											<td colspan="2">Calm</td>
+										</tr>
+										<tr>
+											<td colspan="2">Artificial</td>
+											<td>
+												<input class="range-slider__range" name="artificial" type="range" min="1" max="100" value="50">
+												<span class="badge range-slider__value">0</span>
+											</td>
+											<td colspan="2">Natural</td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+			        </div>
+			        <!-- Modal Footer -->
+			        <div class="modal-footer">
+			    		<button type="button" class="btn btn-default" id="voteSubmit">Do Vote</button>
+			    		<button type="button" class="btn btn-default" id="placeModal-Close" data-dismiss="modal">Close</button>
+			        </div>
+		     	 </div>
+		    </div>
+		 </div> <!-- Modal END -->		
+		
+		<!-- Report Modal -->
+		<div class="modal fade" id="reportModal" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		    	<div class="modal-content">
+		        	<div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">
+			          	Report Place
+			          </h4>
+			        </div>
+			        <!-- Modal Body -->
+			        <div class="modal-body">
+						<form id="reportForm">
+							<input type="hidden" name="placeId" value="${ place.placeId }" />
+							<table>
+								<tr>
+									<td>Category :</td>
+									<td>
+										<select>
+											<option></option>
+										
+										</select>										
+									</td>
+								</tr>
+							</table>
+						</form>
+			        </div>
+			        <!-- Modal Footer -->
+			        <div class="modal-footer">
+			    		<button type="button" class="btn btn-default" id="reportSubmit">Do Report</button>
+			    		<button type="button" class="btn btn-default" id="placeModal-Close" data-dismiss="modal">Close</button>
+			        </div>
+		     	 </div>
+		    </div>
+		 </div> <!-- Modal END -->		
 
 	</div>
 </section>

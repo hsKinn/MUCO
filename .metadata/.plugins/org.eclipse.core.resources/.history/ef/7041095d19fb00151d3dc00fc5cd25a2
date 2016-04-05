@@ -1,0 +1,25 @@
+package com.ktds.muco.table.reportedPlace.biz;
+
+import com.ktds.muco.table.reportedPlace.dao.ReportedPlaceDAO;
+import com.ktds.muco.table.reportedPlace.vo.ReportedPlaceVO;
+
+/**
+ * 
+ * @author 김현섭
+ *
+ */
+public class ReportedPlaceBiz {
+	
+	private ReportedPlaceDAO reportPlaceDAO;
+	
+	public ReportedPlaceBiz() {
+		reportPlaceDAO = new ReportedPlaceDAO();
+	}
+
+	public boolean setReportPlace(ReportedPlaceVO reportPlace) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+}

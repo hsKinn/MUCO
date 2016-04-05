@@ -495,4 +495,14 @@
     <servlet-name>DoVoteServlet</servlet-name>
     <url-pattern>/doVote</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoReportServlet</display-name>
+    <servlet-name>DoReportServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reportedPlace.web.DoReportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoReportServlet</servlet-name>
+    <url-pattern>/doReport</url-pattern>
+  </servlet-mapping>
 </web-app>
