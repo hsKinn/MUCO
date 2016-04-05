@@ -647,4 +647,14 @@
     <servlet-name>ReserveListServlet</servlet-name>
     <url-pattern>/reserveList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QNAListServlet</display-name>
+    <servlet-name>QNAListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.qna.web.QNAListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QNAListServlet</servlet-name>
+    <url-pattern>/qnaList</url-pattern>
+  </servlet-mapping>
 </web-app>

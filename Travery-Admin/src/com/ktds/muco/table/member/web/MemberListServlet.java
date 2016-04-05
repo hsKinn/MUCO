@@ -9,10 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.biz.MemberBiz;
 import com.ktds.muco.table.member.vo.MemberListVO;
 import com.ktds.muco.table.member.vo.MemberSearchVO;
-import com.ktds.muco.table.pack.vo.PackSearchVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
  * Servlet implementation class MemberListServlet
@@ -20,13 +25,15 @@ import com.ktds.muco.table.pack.vo.PackSearchVO;
 public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	MemberBiz memberBiz;
+	private MemberBiz memberBiz;
+	private HistoryBiz historyBiz;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MemberListServlet() {
         super();
         memberBiz = new MemberBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -83,6 +90,18 @@ public class MemberListServlet extends HttpServlet {
 		session.setAttribute("_MEMBER_SEARCH_", memberSearchVO);
 		
 		request.setAttribute("members", memberListVO);
+		
+		// History
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.MEMBER_PAGE);
+		history.setHistoryDescription(BuildDescription.get(Description.MEMBER_PAGE, member.getEmail()));
+		historyBiz.addHistory(history);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/memberList.jsp");
 		rd.forward(request, response);
 	}

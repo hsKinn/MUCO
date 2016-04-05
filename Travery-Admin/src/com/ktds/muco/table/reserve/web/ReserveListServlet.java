@@ -9,18 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.reserve.biz.ReserveBiz;
 import com.ktds.muco.table.reserve.vo.ReserveListVO;
 import com.ktds.muco.table.reserve.vo.ReserveSearchVO;
 
 /**
  * Servlet implementation class OriginPlaceListActionServlet
+ * 
  * @author 이기연
  */
 public class ReserveListServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
    
-   ReserveBiz reserveBiz;      
+   private ReserveBiz reserveBiz;
+   private HistoryBiz historyBiz;
     
    /**
      * @see HttpServlet#HttpServlet()
@@ -28,6 +36,7 @@ public class ReserveListServlet extends HttpServlet {
     public ReserveListServlet() {
         super();
         reserveBiz = new ReserveBiz();
+        historyBiz = new HistoryBiz();
     }
 
    /**
@@ -83,6 +92,17 @@ public class ReserveListServlet extends HttpServlet {
       // session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
       session.setAttribute("_RESERVE_SEARCH_", reserveSearchVO);
       request.setAttribute("reservations", reserveListVO);
+      
+		// History
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.RESERVATION_PAGE);
+		history.setHistoryDescription(BuildDescription.get(Description.RESERVATION_PAGE, member.getEmail()));
+		historyBiz.addHistory(history);
       
       RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/reserve/reserveList.jsp");
       rd.forward(request, response);   

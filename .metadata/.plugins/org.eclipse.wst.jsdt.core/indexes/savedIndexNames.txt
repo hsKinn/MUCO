@@ -2,7 +2,6 @@ INDEX VERSION 1.3+C:\Users\206-001\workspace\MUCO\.metadata\.plugins\org.eclipse
 44358053.index
 2239471081.index
 2117559712.index
-3173058432.index
 221875234.index
 1017483640.index
 3598199387.index

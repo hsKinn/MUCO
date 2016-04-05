@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceListVO;
 import com.ktds.muco.table.place.vo.PlaceSearchVO;
@@ -20,7 +26,8 @@ import com.ktds.muco.table.place.vo.PlaceSearchVO;
 public class NewPlaceListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	PlaceBiz placeBiz;      
+	private PlaceBiz placeBiz;
+	private HistoryBiz historyBiz;
     
 	/**
      * @see HttpServlet#HttpServlet()
@@ -28,6 +35,7 @@ public class NewPlaceListServlet extends HttpServlet {
     public NewPlaceListServlet() {
         super();
         placeBiz = new PlaceBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -67,7 +75,7 @@ public class NewPlaceListServlet extends HttpServlet {
 
 		} catch (NumberFormatException nfe) {
 			// 그런데 이 searchVO도 null인 경우가 있다.
-			placeSearchVO = (PlaceSearchVO) session.getAttribute("_NEW_PLACE_SEARCH_");
+			placeSearchVO = (PlaceSearchVO) session.getAttribute("_SEARCH_");
 
 			// 그러면 다시 0으로 맞춘다.
 			if (placeSearchVO == null) {
@@ -81,11 +89,22 @@ public class NewPlaceListServlet extends HttpServlet {
 		
 		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
 		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
-		session.setAttribute("_NEW_PLACE_SEARCH_", placeSearchVO);
+		session.setAttribute("_SEARCH_", placeSearchVO);
 
 		request.setAttribute("places", placeListVO);
+		
+		// History
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.NEW_PLACE);
+		history.setHistoryDescription(BuildDescription.get(Description.NEW_PLACE, member.getEmail()));
+		historyBiz.addHistory(history);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/newPlaceList.jsp");
 		rd.forward(request, response);	
 	}
-
 }
