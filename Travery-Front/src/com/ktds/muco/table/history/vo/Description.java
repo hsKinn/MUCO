@@ -15,6 +15,9 @@ public interface Description {
 	public static final String LOGIN = "[%s]님이 로그인했습니다.";
 	public static final String LOGIN_FAIL = "[%s]가 [%s]로 로그인을 시도했지만, 실패했습니다.";
 	
+	// 로그아웃
+	public static final String LOGOUT = "[%s]님이 로그아웃했습니다.";
+	
 	// Hit the road
 	public static final String HIT_THE_ROAD = "[%s]님이 HIT_THE_ROAD 메뉴로 접근했습니다.";
 	public static final String SELECT_COUNTRY = "[%s]님이 HIT_THE_ROAD 메뉴에서 [%s] 나라를 선택했습니다.";
@@ -47,11 +50,21 @@ public interface Description {
 	// Share pack
 	public static final String SHARE_PACKAGE = "[%s]님이 SHARE_PACKAGE 메뉴로 접근했습니다.";
 	public static final String PACKAGE_SEARCH_INIT = "[%s]님이 SHARE_PACKAGE 메뉴에서 검색을 초기화 했습니다.";
+	public static final String SHOW_PACK = "[%s]님이 SHARE_PACKAGE 메뉴에서 [%s] 패키지 디테일 페이지로 이동 했습니다.";
+	public static final String SHOW_PACK_FAIL = "[%s]님이 SHARE_PACKAGE 메뉴에서 패키지 디테일 페이지로 이동 실패 했습니다.";
+	public static final String ADD_HIT_PACK = "[%s]님이 SHARE_PACKAGE 메뉴에서 [%s]패키지의 조회수를 증가 시켰습니다.";
+	public static final String ADD_HIT_PACK_FAIL = "[%s]님이 SHARE_PACKAGE 메뉴에서 [%s]패키지의 조회수를 증가 시키지 못했습니다..";
+	public static final String ADD_LIKE_PACK = "[%s]님이 SHARE_PACKAGE 메뉴에서 [%s]패키지의 추천 버튼을 눌렀습니다.";
 	
 	// Recommend place
 	public static final String RECOMMEND_PLACE = "[%s]님이 RECOMMEND_PLACE 메뉴로 접근했습니다.";
 	
 	// Trip reservation
 	public static final String TRIP_RESERVATION = "[%s]님이 TRIP_RESERVATION 메뉴로 접근했습니다.";
+	
+	// Personal info
+	public static final String PERSONAL_INFO = "[%s]님이 PERSONAL_INFO 메뉴로 접근했습니다.";
+	public static final String DO_PERSONAL_INFO = "[%s]님이 PERSONAL_INFO 메뉴에서 정보를 저장했습니다.";
+	public static final String DO_PERSONAL_INFO_FAIL = "[%s]님이 PERSONAL_INFO 메뉴에서 정보를 저장하지 못습니다.";
 	
 }

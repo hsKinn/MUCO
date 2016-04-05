@@ -13,13 +13,6 @@
 	src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
- 		var countryId = $("#countryId option:selected").val();
-		if ( countryId == undefined ) {
-			alert("choose the country.");
-			$("#countryId").fadeOut().fadeIn().fadeOut().fadeIn();
-			return;
-		}
-		
 		$("#mapData").click(function mapData() {
 			window.opener.dataform.lat.value = $("#lat").val();
 			window.opener.dataform.lng.value = $("#lng").val();

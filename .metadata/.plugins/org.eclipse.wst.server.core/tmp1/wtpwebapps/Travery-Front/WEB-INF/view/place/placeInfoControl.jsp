@@ -174,7 +174,7 @@
 								<input type="text" id="address" name="address" placeholder="Place Address" value="${placeInfo.address}" /> 
 								<input type="hidden" id="lat" name="lat" value="${placeInfo.latitude}" /> 
 								<input type="hidden" id="lng" name="lng" value="${placeInfo.longitude}" />
-								<input type="text" id="countryId" name="countryId" value="${placeInfo.countryId}" />
+								<input type="hidden" id="countryId" name="countryId" value="${placeInfo.countryId}" />
 								<span class="glyphicon glyphicon-map-marker" id="mapBtn" onclick="openMap(this.form)"></span>
 							</div>
 						</div>

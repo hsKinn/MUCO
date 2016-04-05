@@ -53,10 +53,15 @@ public interface ActionCode {
 	// Share pack
 	public static final String SHARE_PACKAGE = "MN_SP";
 	public static final String PACKAGE_SEARCH_INIT = "PK_IN";
+	public static final String SHOW_PACK = "PK_DT";
+	public static final String ADD_HIT_PACK = "KH_AD";
+	public static final String ADD_LIKE_PACK = "KL_AD";
 	
 	// Recommend place
 	public static final String RECOMMEND_PLACE = "MN_RP";
 	
 	// Trip reservation
-	public static final String TRIP_RESERVATION = "MN_TR";
+	public static final String PERSONAL_INFO = "MB_DT";
+	
+	// Personal info
 }

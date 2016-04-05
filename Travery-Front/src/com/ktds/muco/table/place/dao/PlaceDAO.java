@@ -1054,13 +1054,8 @@ public class PlaceDAO {
 			stmt.setInt(1, placeId);
 
 			rs = stmt.executeQuery();
-<<<<<<< HEAD
 			
 			if ( rs.next() ) {
-=======
-
-			if (rs.next()) {
->>>>>>> origin/롯드6
 
 				place = new PlaceVO();
 

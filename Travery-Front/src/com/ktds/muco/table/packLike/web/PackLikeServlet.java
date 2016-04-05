@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.packLike.biz.PackLikeBiz;
 import com.ktds.muco.table.packLike.vo.PackLikeVO;
@@ -20,6 +25,8 @@ public class PackLikeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private PackLikeBiz packLikeBiz;
+	private HistoryBiz historyBiz;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,6 +34,7 @@ public class PackLikeServlet extends HttpServlet {
         super();
         
         packLikeBiz = new PackLikeBiz();
+        historyBiz = new HistoryBiz();
 
     }
 
@@ -60,6 +68,15 @@ public class PackLikeServlet extends HttpServlet {
 		json.append("\"result\" : true");
 		json.append(", \"isPackLike\" : " + isExistPackLike );
 		json.append("}");
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.ADD_LIKE_PACK);
+		history.setHistoryDescription(BuildDescription.get(Description.ADD_LIKE_PACK, member.getEmail(), packId+""));
+		historyBiz.addHistory(history);
 		
 		PrintWriter out = response.getWriter();
 		out.print( json.toString() );
