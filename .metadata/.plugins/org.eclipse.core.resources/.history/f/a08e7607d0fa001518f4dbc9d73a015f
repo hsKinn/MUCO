@@ -1082,12 +1082,15 @@ public class PlaceDAO {
 		
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
 			String query = XML.getNodeString("//query/place/getDetailPlaceInfo/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, placeId);
 			
+			System.out.println(placeId);
+			
 			rs = stmt.executeQuery();
+			
+			System.out.println("쿼리 실행 후");
 			
 			if ( rs.next() ) {
 
@@ -1101,6 +1104,9 @@ public class PlaceDAO {
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				
+				System.out.println(place.getPlaceId());
+				System.out.println(place.getPlaceName());
 				
 				// 기준값 받기
 				place.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));

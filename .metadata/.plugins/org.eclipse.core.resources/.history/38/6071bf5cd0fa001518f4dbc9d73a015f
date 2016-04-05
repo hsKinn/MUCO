@@ -1082,7 +1082,6 @@ public class PlaceDAO {
 		
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
 			String query = XML.getNodeString("//query/place/getDetailPlaceInfo/text()");
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, placeId);

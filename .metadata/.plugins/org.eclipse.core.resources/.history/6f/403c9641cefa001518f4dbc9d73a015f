@@ -45,7 +45,7 @@ public class DeletePlaceReplyServlet extends HttpServlet {
 		boolean check = placeReplyBiz.deletePlaceReply(placeReplyId);
 		
 		if ( check ) {
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
+			response.sendRedirect(Root.get(this) + "/recommendPlace");
 		}
 		else {
 			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);

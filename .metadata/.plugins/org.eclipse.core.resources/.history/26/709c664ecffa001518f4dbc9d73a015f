@@ -47,8 +47,6 @@ public class DoWritePlaceReplyServlet extends HttpServlet {
 		int placeReplyId = Integer.parseInt(request.getParameter("placeReplyId"));
 		String description = request.getParameter("description");
 		
-		System.out.println(placeId);
-		
 		PlaceReplyVO placeReply = new PlaceReplyVO();
 		placeReply.setPlaceId(placeId);
 		placeReply.setDepth(depth);

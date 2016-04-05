@@ -154,7 +154,7 @@
 										</td>
 										<c:if test="${ reply.email eq loginEmail }">
 											<td id="deletePlaceReply">
-										        <a href="/deletePlaceReply?placeReplyId=${ reply.placeReplyId }&placeId=${ place.placeId }">
+										        <a href="/deletePlaceReply?placeReplyId=${ reply.placeReplyId }">
 										          <span class="glyphicon glyphicon-remove"></span>
 										        </a>
 											</td>

@@ -40,15 +40,14 @@ public class DeletePlaceReplyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int placeReplyId = Integer.parseInt(request.getParameter("placeReplyId"));
-		int placeId = Integer.parseInt(request.getParameter("placeId"));
 		
 		boolean check = placeReplyBiz.deletePlaceReply(placeReplyId);
 		
 		if ( check ) {
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
+			response.sendRedirect(Root.get(this) + "/recommendPlace");
 		}
 		else {
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
+			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId");
 		}
 		
 	}

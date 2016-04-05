@@ -1,30 +1,31 @@
-package com.ktds.muco.table.placeReply.web;
+package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.muco.table.placeReply.biz.PlaceReplyBiz;
-import com.ktds.muco.util.root.Root;
+import com.ktds.muco.table.place.biz.PlaceBiz;
+import com.ktds.muco.table.place.vo.PlaceVO;
 
 /**
- * Servlet implementation class DeletePlaceReplyServlet
+ * Servlet implementation class DetailPlaceServlet
  */
-public class DeletePlaceReplyServlet extends HttpServlet {
+public class DetailPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private PlaceReplyBiz placeReplyBiz;
+	private PlaceBiz placeBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeletePlaceReplyServlet() {
+    public DetailPlaceServlet() {
         super();
         
-        placeReplyBiz = new PlaceReplyBiz();
+        placeBiz = new PlaceBiz();
     }
 
 	/**
@@ -38,19 +39,19 @@ public class DeletePlaceReplyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int placeReplyId = Integer.parseInt(request.getParameter("placeReplyId"));
+
 		int placeId = Integer.parseInt(request.getParameter("placeId"));
 		
-		boolean check = placeReplyBiz.deletePlaceReply(placeReplyId);
+		// 여행지 상세정보 가져오기
+		// PLACE_ID, PLACE_NAME, LATITUDE, LONGTITUDE, ADDRESS, VIEW_COUNT, LIKE_COUNT
+		// DESCRIPTION, EMAIL, NAME, COUNTRY_NAME, imageList(사진 목록), replyList(리플 목록)
+		PlaceVO seletedPlace = placeBiz.getDetailPlaceInfo( placeId );
 		
-		if ( check ) {
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
-		}
-		else {
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
-		}
+		request.setAttribute( "place", seletedPlace );
+		request.setAttribute( "writer", seletedPlace.getWriter() );
 		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/detailPlace.jsp");
+		rd.forward(request, response);
 	}
 
 }
