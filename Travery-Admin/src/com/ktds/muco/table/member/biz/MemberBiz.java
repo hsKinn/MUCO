@@ -266,4 +266,96 @@ public class MemberBiz {
 		return memberDAO.isAdmin(email) > 0;
 	}
 
+	/**
+	 * @author 이기연
+	 * Member 삭제하는 기능
+	 * @param deletePlaceIds
+	 */
+	public void deleteMembers(String[] deleteMemberEmails) {
+		for (String email : deleteMemberEmails) {
+			memberDAO.deleteMembers(email);
+		}
+	}
+
+	/**
+	 * @author 이기연
+	 * Member를 Block하는 기능
+	 * @param deleteMemberEmails
+	 */
+	public void blockMembers(String[] deleteMemberEmails) {
+		for (String email : deleteMemberEmails) {
+			memberDAO.blockMembersByEmail(email);
+		}
+	}
+
+	/**
+	 * @author 이기연
+	 * 1명의 member 삭제
+	 * @param email
+	 */
+	public void deleteMemberByEmail(String email) {
+		memberDAO.blockMembersByEmail(email);
+	}
+
+	/**
+	 * 1명의 member block
+	 * @param email
+	 */
+	public void blockMemberByEmail(String email) {
+		memberDAO.blockMembersByEmail(email);
+	}
+
+	/**
+	 * @author 이기연
+	 * 여러명을 어드민으로 승격
+	 * @param deleteMemberEmails
+	 */
+	public void addAdminMembers(String[] deleteMemberEmails) {
+		for (String email : deleteMemberEmails) {
+			memberDAO.addAdminMemberByEmail(email);
+		}
+		
+	}
+
+	/**
+	 * @author 이기연
+	 * 여러명의 어드민을 일반으로 ...
+	 * @param deleteMemberEmails
+	 */
+	public void subAdminMembers(String[] deleteMemberEmails) {
+		for (String email : deleteMemberEmails) {
+			memberDAO.subAdminMemberByEmail(email);
+		}
+	}
+
+	/**
+	 * 일반회원 -> 어드민
+	 * @param email
+	 */
+	public void addAdminMember(String email) {
+		memberDAO.addAdminMemberByEmail(email);
+	}
+
+	/**
+	 * 어드민 -> 일반 회원
+	 * @param email
+	 */
+	public void subAdminMember(String email) {
+		memberDAO.subAdminMemberByEmail(email);
+	}
+	
+	/**
+	 * block 해제 
+	 * @param deleteMemberEmails
+	 */
+	public void releaseMembers(String[] deleteMemberEmails) {
+		for (String email : deleteMemberEmails) {
+			memberDAO.releaseBlockedMemberByEmail(email);
+		}
+	}
+
+	public void releaseBlockedMemberByEmail(String email) {
+		memberDAO.releaseBlockedMemberByEmail(email);		
+	}
+
 }

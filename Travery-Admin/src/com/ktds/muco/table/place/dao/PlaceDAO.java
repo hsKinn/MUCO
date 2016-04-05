@@ -113,7 +113,7 @@ public class PlaceDAO {
 	 * @param sortOption 
 	 * @return
 	 */
-	public List<PlaceVO> getAllOriginPlaces(PlaceSearchVO placeSearchVO, int sortOption) {
+	public List<PlaceVO> getAllPlaces(PlaceSearchVO placeSearchVO, int sortOption, int placeType) {
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -132,32 +132,227 @@ public class PlaceDAO {
 			
 			// order by 여행자명
 			if ( sortOption == 1 ) {
-				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyPlaceName/text()");
+				if (placeSearchVO.getSearchList().equals("placeName")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyPlaceNameSearchedByPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());
+				} else if (placeSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyPlaceNameSearchedByEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else if (placeSearchVO.getSearchList().equals("countryId")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyPlaceNameSearchedByCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());				
+				}
+				else {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setInt(2, placeSearchVO.getEndIndex());
+					stmt.setInt(3, placeSearchVO.getStartIndex());
+				}
 			}
 			// order by 등록자 이름
 			else if ( sortOption == 2 ) {
-				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyEmail/text()");
+				if (placeSearchVO.getSearchList().equals("placeName")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyEmailSearchedByPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());	
+				} else if (placeSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyEmailSearchedByEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else if (placeSearchVO.getSearchList().equals("countryId")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyEmailSearchedByCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setInt(2, placeSearchVO.getEndIndex());
+					stmt.setInt(3, placeSearchVO.getStartIndex());
+				}
 			}
 			// order by 나라ID
 			else if ( sortOption == 3 ) {
-				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyCountryId/text()");
+				if (placeSearchVO.getSearchList().equals("placeName")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyCountryIdSearchedByPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());
+				} else if (placeSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyCountryIdSearchedByEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());				
+				}
+				else if (placeSearchVO.getSearchList().equals("countryId")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyCountryIdSearchedByCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setInt(2, placeSearchVO.getEndIndex());
+					stmt.setInt(3, placeSearchVO.getStartIndex());
+				}
 			}
 			// order by 추천수
 			else if ( sortOption == 4 ) {
-				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyLikeCount/text()");
+				if (placeSearchVO.getSearchList().equals("placeName")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyLikeCountSearchedByPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());	
+				} else if (placeSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyLikeCountSearchedByEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else if (placeSearchVO.getSearchList().equals("countryId")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyLikeCountSearchedByCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyLikeCount/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setInt(2, placeSearchVO.getEndIndex());
+					stmt.setInt(3, placeSearchVO.getStartIndex());
+				}				
 			}
 			// order by 조회수
 			else if ( sortOption == 5 ) {
-				query = XML.getNodeString("//query/place/getAllOriginPlacesOrderbyViewCount/text()");
+				if (placeSearchVO.getSearchList().equals("placeName")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyViewCountSearchedByPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());	
+				} else if (placeSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyViewCountSearchedByEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else if (placeSearchVO.getSearchList().equals("countryId")) {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyViewCountSearchedByCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());					
+				}
+				else {
+					query = XML.getNodeString("//query/place/getAllPlacesOrderbyViewCount/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setInt(2, placeSearchVO.getEndIndex());
+					stmt.setInt(3, placeSearchVO.getStartIndex());
+				}					
 			} 
 			else {
-				query = XML.getNodeString("//query/place/getAllOriginPlaces/text()");
+				if (placeSearchVO.getSearchList().equals("placeName")) {
+					query = XML.getNodeString("//query/place/getAllPlacesSearchedByPlaceName/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());	
+				} else if (placeSearchVO.getSearchList().equals("memberEmail")) {
+					query = XML.getNodeString("//query/place/getAllPlacesSearchedByEmail/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());						
+				}
+				else if (placeSearchVO.getSearchList().equals("countryId")) {
+					query = XML.getNodeString("//query/place/getAllPlacesSearchedByCountryId/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setString(2, placeSearchVO.getSearchKeyword());
+					stmt.setInt(3, placeSearchVO.getEndIndex());
+					stmt.setInt(4, placeSearchVO.getStartIndex());						
+				}
+				else {
+					query = XML.getNodeString("//query/place/getAllPlaces/text()");
+					
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, placeType);
+					stmt.setInt(2, placeSearchVO.getEndIndex());
+					stmt.setInt(3, placeSearchVO.getStartIndex());
+				}				
 			}
 			
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, placeSearchVO.getEndIndex());
-			stmt.setInt(2, placeSearchVO.getStartIndex());
-					
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -191,89 +386,6 @@ public class PlaceDAO {
 
 		return places;
 		
-	}
-	
-	/** 
-	 * @author 이기연
-	 * @param sortOption 
-	 * @return
-	 */
-	public List<PlaceVO> getAllNewPlaces(PlaceSearchVO placeSearchVO, int sortOption) {
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		List<PlaceVO> places = new ArrayList<PlaceVO>();
-
-		try {
-
-			PlaceVO placeVO = null;
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			String query = "";
-			
-			// order by 여행자명
-			if ( sortOption == 1 ) {
-				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyPlaceName/text()");
-			}
-			// order by 등록자 이름
-			else if ( sortOption == 2 ) {
-				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyEmail/text()");
-			}
-			// order by 나라ID
-			else if ( sortOption == 3 ) {
-				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyCountryId/text()");
-			}
-			// order by 추천수
-			else if ( sortOption == 4 ) {
-				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyLikeCount/text()");
-			}
-			// order by 조회수
-			else if ( sortOption == 5 ) {
-				query = XML.getNodeString("//query/place/getAllNewPlacesOrderbyViewCount/text()");
-			} 
-			else {
-				query = XML.getNodeString("//query/place/getAllNewPlaces/text()");
-			}
-
-			// article을 꺼내온다.
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, placeSearchVO.getEndIndex());
-			stmt.setInt(2, placeSearchVO.getStartIndex());
-					
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				placeVO = new PlaceVO();
-				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
-				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-				placeVO.setLatitude(rs.getInt("LATITUDE"));
-				placeVO.setLongitude(rs.getInt("LONGITUDE"));
-				placeVO.setAddress(rs.getString("ADDRESS"));
-				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
-				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
-				placeVO.setDescription(rs.getString("DESCRIPTION"));
-				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
-				String email = rs.getString("EMAIL");
-				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
-				
-				MemberVO member = new MemberVO();
-				
-				member.setEmail(email);
-				placeVO.setWriter(member);
-				
-				places.add(placeVO);
-			}
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-
-		return places;
 	}
 
 	/** 
@@ -282,7 +394,7 @@ public class PlaceDAO {
 	 * @author 이기연
 	 * @return
 	 */
-	public int getAllOriginPlaceCount() {
+	public int getAllPlaceCount(int placeType) {
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -293,8 +405,9 @@ public class PlaceDAO {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
-			String query = XML.getNodeString("//query/place/getAllOriginPlaceCount/text()");
+			String query = XML.getNodeString("//query/place/getAllPlaceCount/text()");
 			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeType);
 			
 			rs = stmt.executeQuery();
 
@@ -313,41 +426,6 @@ public class PlaceDAO {
 		
 	}
 	
-	/** 
-	 * 
-	 * 모든 New Place 총 개수 출력
-	 * @author 이기연
-	 * @return
-	 */
-	public int getAllNewPlaceCount() {
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		try {
-
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/place/getAllNewPlaceCount/text()");
-			stmt = conn.prepareStatement(query);
-			
-			rs = stmt.executeQuery();
-
-			int placeCount = 0;
-			
-			if ( rs.next() ) {
-				placeCount = rs.getInt(1);
-			}
-			return placeCount;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-	}
 	
 	/**
 	 * place Detail 보여주기

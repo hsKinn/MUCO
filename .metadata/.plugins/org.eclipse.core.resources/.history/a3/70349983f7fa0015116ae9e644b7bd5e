@@ -1,0 +1,17 @@
+package com.ktds.muco.table.history.biz;
+
+import com.ktds.muco.table.history.vo.HistoryListVO;
+import com.ktds.muco.table.history.vo.HistorySearchVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class HistoryBiz {
+
+	public HistoryListVO getHistoryList(HistorySearchVO historySearchVO) {
+		return null;
+	}
+
+}

@@ -12,67 +12,8 @@
 	href="<c:url value="/resource/css/common/test.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
-<script
-	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
-<script type="text/javascript">
-$(document).ready( function() {
-	var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false; trigger.click(function() {
-		hamburger_cross();
-	});
-
-	function hamburger_cross() {
-
-		if (isClosed == true) {
-			overlay.hide();
-			trigger.removeClass('is-open');
-			trigger.addClass('is-closed');
-			isClosed = false;
-		} else {
-			overlay.show();
-			trigger.removeClass('is-closed');
-			trigger.addClass('is-open');
-			isClosed = true;
-		}
-	}
-
-	$('[data-toggle="offcanvas"]').click(function() {
-		$('#wrapper').toggleClass('toggled');
-	});
-	
-	$("#massiveSelectCheckBox").click( function() {
-		var isChecked = $(this).prop("checked");
-		//일괄체크 되도록 하는 것 
-		$(".deleteMemberId").prop("checked", isChecked);
-	});
-	
-	$("#massiveDeleteBtn").click( function() {
-		var isChecked = false;
-		
-		$(".deleteMemberId").each( function (index, data) {
-			if (data.checked) {
-				isChecked = data.checked;
-			}
-			
-		});
-		
-		// 삭제할 대상을 정하지 않았으면 alert뜨기 
-		if( !isChecked ) {
-			alert("삭제할 대상을 선택하세요");
-		}
-		
-		// 사용자의 confirm 받기 
-		if( confirm("정말 삭제하시겠습니까?") ) {
-			// 지우는 로직 넣기 
-			var form = $("#massiveDeleteForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/memberMassiveDelete" />");
-			form.submit();
-		}
-		
-	});
-	
-});
-</script>
+<script	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
+<script type="text/javascript"></script>
 <body>
 
 	<div id="wrapper">
@@ -98,13 +39,12 @@ $(document).ready( function() {
 
 				<!-- 회원 버튼 -->
 				<div id="buttonCollection">
-					<span id="massiveDeleteBtn" style="cursor: pointer">
+					<a href="<c:url value="/memberDelete?email=${member.email}" />">
 						<button type="button" class="btn btn-default">Delete</button>
-					</span> 
-					
-					<span id="massiveBlockBtn" style="cursor: pointer">
+					</a>
+					<a href="<c:url value="/memberRelease?email=${member.email}" />">
 						<button type="button" class="btn btn-default">Release</button>
-					</span> 
+					</a>
 				
 					<div class="dropdown memberListdropDown" style="float: right;">
 					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
@@ -142,7 +82,7 @@ $(document).ready( function() {
 									<td>
 										<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${member.email}" /></td>
 									<td>
-										<a href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
+										<a href="<c:url value="/blockedMemberDetail?email=${member.email}" />">${member.email}</a></td>
 									<td>${member.password}</a></td>
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>

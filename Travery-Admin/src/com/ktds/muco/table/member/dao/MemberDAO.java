@@ -598,7 +598,187 @@ public class MemberDAO {
 
 		return 0;
 	}
+	
+	
+	/**
+	 * @author 이기연
+	 * 맴버 삭제
+	 * @param placeId
+	 */
+	public void deleteMembers(String memberEmail) {
+		int insertCount = 0;
+		loadOracleDriver();
 
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/deleteMembersByEmail/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, memberEmail);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("memberEmail 삭제 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}	
+		
+	}
+
+	/**
+	 * @author 이기연
+	 * 맴버 블락
+	 * @param memberEmail
+	 */
+	public void blockMembersByEmail(String email) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/blockMembersByEmail/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, email);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("MEMBER BLOCK 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}	
+	}
+	
+	/**
+	 * @author 이기연
+	 * add admin
+	 * @param email
+	 */
+	public void addAdminMemberByEmail(String email) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/addAdminMemberByEmail/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, email);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("MEMBER admin 추가 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}	
+	}
+	
+	/**
+	 * @author 이기연
+	 * 어드민을 일반회원으로...
+	 * @param email
+	 */
+	public void subAdminMemberByEmail(String email) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/subAdminMemberByEmail/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, email);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("MEMBER admin 제외 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}	
+	}
+	
+	/**
+	 * block 맴버 해제
+	 * @param email
+	 */
+	public void releaseBlockedMemberByEmail(String email) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/releaseBlockedMemberByEmail/text()");
+			stmt = conn.prepareStatement(query);
+			System.out.println(query);
+
+			stmt.setString(1, email);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("block 맴버 해제 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}	
+	}
 
 	/**
 	 * 
@@ -642,5 +822,7 @@ public class MemberDAO {
 			}
 		}
 	}
+
+
 
 }

@@ -12,32 +12,9 @@
 	href="<c:url value="/resource/css/common/test.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
-<script
-	src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
+<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
 $(document).ready( function() {
-	var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false; trigger.click(function() {
-		hamburger_cross();
-	});
-
-	function hamburger_cross() {
-
-		if (isClosed == true) {
-			overlay.hide();
-			trigger.removeClass('is-open');
-			trigger.addClass('is-closed');
-			isClosed = false;
-		} else {
-			overlay.show();
-			trigger.removeClass('is-closed');
-			trigger.addClass('is-open');
-			isClosed = true;
-		}
-	}
-
-	$('[data-toggle="offcanvas"]').click(function() {
-		$('#wrapper').toggleClass('toggled');
-	});
 	
 	$("#massiveSelectCheckBox").click( function() {
 		var isChecked = $(this).prop("checked");
@@ -61,11 +38,89 @@ $(document).ready( function() {
 		}
 		
 		// 사용자의 confirm 받기 
-		if( confirm("정말 삭제하시겠습니까?") ) {
+		if ( confirm("정말 삭제하시겠습니까?") ) {
 			// 지우는 로직 넣기 
 			var form = $("#massiveDeleteForm");
 			form.attr("method", "post");
 			form.attr("action", "<c:url value="/memberMassiveDelete" />");
+			form.submit();
+		}
+		
+	});
+
+	$("#massiveBlockBtn").click( function() {
+		var isChecked = false;
+		
+		$(".deleteMemberId").each( function (index, data) {
+			if (data.checked) {
+				isChecked = data.checked;
+			}
+			
+		});
+		
+		// 삭제할 대상을 정하지 않았으면 alert뜨기 
+		if( !isChecked ) {
+			alert("블락할 대상을 선택하세요");
+		}
+		
+		// 사용자의 confirm 받기 
+		if ( confirm("정말 블락하시겠습니까?") ) {
+			// 지우는 로직 넣기 
+			var form = $("#massiveDeleteForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/memberMassiveBlock" />");
+			form.submit();
+		}
+		
+	});
+	
+	$("#massiveAddAdminBtn").click( function() {
+		var isChecked = false;
+		
+		$(".deleteMemberId").each( function (index, data) {
+			if (data.checked) {
+				isChecked = data.checked;
+			}
+			
+		});
+		
+		// 삭제할 대상을 정하지 않았으면 alert뜨기 
+		if( !isChecked ) {
+			alert("운영자로 추가할 대상을 선택하세요");
+		}
+		
+		// 사용자의 confirm 받기 
+		if ( confirm("정말 추가하시겠습니까?") ) {
+			// 지우는 로직 넣기 
+			var form = $("#massiveDeleteForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/memberMassiveAddAdmin" />");
+			form.submit();
+		}
+		
+	});
+	
+	$("#massiveSubAdminBtn").click( function() {
+		var isChecked = false;
+		
+		$(".deleteMemberId").each( function (index, data) {
+			if (data.checked) {
+				isChecked = data.checked;
+			}
+			
+		});
+		
+		// 삭제할 대상을 정하지 않았으면 alert뜨기 
+		if( !isChecked ) {
+			alert("운영자에서 제할 대상을 선택하세요");
+		}
+		
+		// 사용자의 confirm 받기 
+		if ( confirm("정말 제거하시겠습니까?") ) {
+			// 지우는 로직 넣기 
+			var form = $("#massiveDeleteForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/memberMassiveSubAdmin" />");
 			form.submit();
 		}
 		
@@ -90,7 +145,8 @@ $(document).ready( function() {
 
 			<!-- Origin Place Contents -->
 			<div class="container">
-
+			<h1 style="text-align: center;">Member List</h1>
+			<hr style="border-top: 3px solid #333333;"/>
 
 				<!-- 총 회원 수 보여주기  -->
 				총 <b style="color: red">${members.paging.totalArticleCount}</b>명
@@ -106,11 +162,11 @@ $(document).ready( function() {
 						<button type="button" class="btn btn-default">Block</button>
 					</span> 
 					
-					<span id="massiveBlockBtn" style="cursor: pointer">
+					<span id="massiveAddAdminBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">+ Admin</button>
 					</span> 
 
-					<span id="massiveBlockBtn" style="cursor: pointer">
+					<span id="massiveSubAdminBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">- Admin</button>
 					</span> 
 				
@@ -187,6 +243,7 @@ $(document).ready( function() {
 							</td>
 						</tr>
 					</table>
+					
 					<!-- /#tableList -->
 				</div>
 				<!-- /#listWrapper -->

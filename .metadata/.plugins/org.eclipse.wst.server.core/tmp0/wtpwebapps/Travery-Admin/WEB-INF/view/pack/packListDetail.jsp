@@ -15,36 +15,6 @@
 
 <script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
-
-/* 사이드 메뉴 script */
-$(document).ready(function() {
-	var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false;
-
-	trigger.click(function() {
-		hamburger_cross();
-	});
-
-	function hamburger_cross() {
-
-		if (isClosed == true) {
-			overlay.hide();
-			trigger.removeClass('is-open');
-			trigger.addClass('is-closed');
-			isClosed = false;
-		} else {
-			overlay.show();
-			trigger.removeClass('is-closed');
-			trigger.addClass('is-open');
-			isClosed = true;
-		}
-	}
-
-	$('[data-toggle="offcanvas"]').click(function() {
-		$('#wrapper').toggleClass('toggled');
-	});
-	
-});
-
 /* 내용 script */
 $(document).ready( function() {
 	
@@ -131,7 +101,6 @@ $(document).ready( function() {
 					<!-- 게시글 보여주는 list table -->
 					<table id="tableList">
 						<tr>
-							<th><input type="checkbox" id="massiveSelectCheckBox" /></th>
 							<th>패키지ID</th>
 							<th>패키지 타이틀</th>
 							<th>조회수</th>
@@ -142,22 +111,35 @@ $(document).ready( function() {
 
 						<tr>
 							<td>${packVO.packId}</td>
-							<td>${packVO.packId}</td>
-							<td>${pack.viewCount}</td>
-							<td>${pack.likeCount}</td>
-							<td>${pack.isPublic}</td>
-							<td>최초등록자 이름</td>
+							<td>${packVO.packTitle}</td>
+							<td>${packVO.viewCount}</td>
+							<td>${packVO.likeCount}</td>
+							<td>${packVO.isPublic}</td>
+							<td>${packVO.email}</td>
+						</tr>
+						
+						<tr>
+							<th colspan="6" style="vertical-align: middle;">
+								Package 대표 사진
+							</th>
+						</tr>
+						
+						<tr>
+							<td colspan="6">
+								Package 대표 사진 넣기!
+							</td>
 						</tr>
 
+
 						<tr>
-							<th colspan="7">
+							<th colspan="6" style="vertical-align: middle;">
 								Place List
 							</th>
 						</tr>
 						
 						<c:forEach items="${packs}" var="pack">
 						<tr>
-							<td colspan="7">
+							<td colspan="6">
 								<b>Place Id</b>: ${pack.placeId} / 
 								<b>Place Name</b>: ${pack.placeName} <br/>
 							</td>

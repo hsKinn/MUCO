@@ -12,36 +12,6 @@
 
 <script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
-
-/* 사이드 메뉴 script */
-$(document).ready(function() {
-	var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false;
-
-	trigger.click(function() {
-		hamburger_cross();
-	});
-
-	function hamburger_cross() {
-
-		if (isClosed == true) {
-			overlay.hide();
-			trigger.removeClass('is-open');
-			trigger.addClass('is-closed');
-			isClosed = false;
-		} else {
-			overlay.show();
-			trigger.removeClass('is-closed');
-			trigger.addClass('is-open');
-			isClosed = true;
-		}
-	}
-
-	$('[data-toggle="offcanvas"]').click(function() {
-		$('#wrapper').toggleClass('toggled');
-	});
-	
-});
-
 /* 내용 script */
 $(document).ready( function() {
 	
@@ -49,7 +19,7 @@ $(document).ready( function() {
 	
 	// 검색 초기화 클릭
 	$("#initSearchBtn").click(function() {
-		location.href = "<c:url value="/list/init" />";
+		location.href = "<c:url value="/placeList/init" />" + "?placeType=1";
 	});
 	
 	// 검색 버튼 클릭 
@@ -144,7 +114,9 @@ $(document).ready( function() {
 
 			<!-- Origin Place Contents -->
 			<div class="container">
-
+			
+			<h1 style="text-align: center;">New Place</h1>
+			<hr style="border-top: 3px solid #333333;"/>
 
 				<!-- 총 Place 수 보여주기  -->
 				총 <b style="color: red">${places.paging.totalArticleCount}</b> 있습니다.
@@ -222,14 +194,14 @@ $(document).ready( function() {
 										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
 											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>여행지명</option>
-										  	<option value="memberEmail" ${selectedList eq "memberId" ? "selected" : "" }>등록자 email</option>
-										  	<option value="memberUsername" ${selectedList eq "memberId" ? "selected" : "" }>등록자 username</option>
-										  	<option value="countryId" ${selectedList eq "memberNickName" ? "selected" : "" }>나라명</option>
+										  	<option value="memberEmail" ${selectedList eq "email" ? "selected" : "" }>최초등록자Email</option>
+										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>나라ID</option>
 										</select>
 										
 										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
 										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
+										<input type="hidden" id="placeType" name="placeType" value="0" />
 									</div>
 								</form>									
 								<br/>

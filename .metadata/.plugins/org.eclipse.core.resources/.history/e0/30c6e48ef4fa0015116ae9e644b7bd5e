@@ -1,0 +1,12 @@
+package com.ktds.muco.table.history.vo;
+
+import java.util.List;
+
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.util.web.Paging;
+
+public class HistoryListVO {
+	
+	private List<HistoryVO> historyList;
+	private Paging paging;
+}

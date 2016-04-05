@@ -46,10 +46,10 @@ public class PlaceBiz {
 	 * @param sortOption 
 	 * @return
 	 */
-	public PlaceListVO getOriginPlaceList(PlaceSearchVO placeSearchVO, int sortOption) {
+	public PlaceListVO getPlaceList(PlaceSearchVO placeSearchVO, int sortOption, int placeType) {
 		
 		// 1. 전체 게시글의 수
-		int allPlaceCount = placeDAO.getAllOriginPlaceCount();
+		int allPlaceCount = placeDAO.getAllPlaceCount(placeType);
 		// 1-1. 기본으로 페이지를 만들어준다. 
 		Paging paging = new Paging(20);
 		paging.setTotalArticleCount(allPlaceCount);
@@ -60,7 +60,7 @@ public class PlaceBiz {
 		placeSearchVO.setEndIndex(paging.getEndArticleNumber());
 		
 		//전체 article 받아오기
-		List<PlaceVO> places = placeDAO.getAllOriginPlaces(placeSearchVO, sortOption);
+		List<PlaceVO> places = placeDAO.getAllPlaces(placeSearchVO, sortOption, placeType);
 		
 		// 2. DAO로부터 받아온 결과를 출력
 		PlaceListVO originPlaceList = new PlaceListVO();
@@ -71,38 +71,7 @@ public class PlaceBiz {
 		return originPlaceList;
 	}
 
-	/**
-	 * placeId로 new place list 받기
-	 * @author 이기연
-	 * @param placeSearchVO
-	 * @param sortOption 
-	 * @return
-	 */
-	public PlaceListVO getNewPlaceList(PlaceSearchVO placeSearchVO, int sortOption) {
-
-		// 1. 전체 게시글의 수
-		int allPlaceCount = placeDAO.getAllNewPlaceCount();
-		// 1-1. 기본으로 페이지를 만들어준다. 
-		Paging paging = new Paging(20);
-		paging.setTotalArticleCount(allPlaceCount);
-		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작 
-		paging.setPageNumber(placeSearchVO.getPageNO()+"");
-		
-		placeSearchVO.setStartIndex(paging.getStartArticleNumber());
-		placeSearchVO.setEndIndex(paging.getEndArticleNumber());
-		
-		//전체 article 받아오기
-		List<PlaceVO> places = placeDAO.getAllNewPlaces(placeSearchVO, sortOption);
-		
-		// 2. DAO로부터 받아온 결과를 출력
-		PlaceListVO originPlaceList = new PlaceListVO();
-		originPlaceList.setPlaceList(places); 
-		// 2-2. 페이지 추가 
-		originPlaceList.setPaging(paging);
-		
-		return originPlaceList;		
-		
-	}
+	
 	/**
 	 * 
 	 * @author 이기연

@@ -1,0 +1,5 @@
+package com.ktds.muco.table.history.vo;
+
+public class HistoryListVO {
+
+}

@@ -1,6 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
+<script type="text/javascript">
+
+/* 사이드 메뉴 script */
+$(document).ready(function() {
+	var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = false;
+
+	trigger.click(function() {
+		hamburger_cross();
+	});
+
+	function hamburger_cross() {
+
+		if (isClosed == true) {
+			overlay.hide();
+			trigger.removeClass('is-open');
+			trigger.addClass('is-closed');
+			isClosed = false;
+		} else {
+			overlay.show();
+			trigger.removeClass('is-closed');
+			trigger.addClass('is-open');
+			isClosed = true;
+		}
+	}
+
+	$('[data-toggle="offcanvas"]').click(function() {
+		$('#wrapper').toggleClass('toggled');
+	});
+	
+});
+</script>
+
 		<!-- Sidebar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top"
 			id="sidebar-wrapper" role="navigation">
@@ -30,7 +64,7 @@
 				</li>
 				<li><a href="#">예약</a></li>
 				<li><a href="#">QnA</a></li>
-				<li><a href="#">History</a></li>
+				<li><a href="<c:url value="/historyList" />">History</a></li>
 			</ul>
 		</nav>
 		<!-- /#sidebar-wrapper -->

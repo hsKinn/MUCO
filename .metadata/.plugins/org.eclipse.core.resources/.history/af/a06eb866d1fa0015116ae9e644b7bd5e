@@ -1,0 +1,89 @@
+package com.ktds.muco.table.place.web;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.place.biz.PlaceBiz;
+import com.ktds.muco.table.place.vo.PlaceListVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
+
+/**
+ * Servlet implementation class OriginPlaceListActionServlet
+ * @author 이기연
+ */
+public class OriginPlaceListServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	PlaceBiz placeBiz;      
+    
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
+    public OriginPlaceListServlet() {
+        super();
+        placeBiz = new PlaceBiz();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pageNO = 0;
+		int sortOption;
+		if ( request.getParameter("sortOption") == null ) {
+			sortOption = 9;
+		} 
+		else {
+			sortOption = Integer.parseInt(request.getParameter("sortOption"));
+		}
+		
+		PlaceListVO placeListVO;
+		PlaceSearchVO placeSearchVO = new PlaceSearchVO();
+		HttpSession session = request.getSession();
+
+		try {
+			// 데이터가 없다면 page는 null 그렇기 때문에 numberFormatException발생..? 그래서 catch에다가 search session을 이용한다라..?
+			pageNO = Integer.parseInt(request.getParameter("pageNO"));
+			
+			// 검색 종류 및 키워드 가져오기
+			placeSearchVO.setSearchList(request.getParameter("searchList"));
+			placeSearchVO.setSearchKeyword(request.getParameter("searchKeyword"));
+
+			// 정상적일 때만 pageNO을 설정하도록 한다. 
+			placeSearchVO.setPageNO(pageNO);
+			
+		} catch (NumberFormatException nfe) {
+			// 그런데 이 searchVO도 null인 경우가 있다.
+			placeSearchVO = (PlaceSearchVO) session.getAttribute("_SEARCH_");
+			
+			// 그러면 다시 0으로 맞춘다.
+			if (placeSearchVO == null) {
+				placeSearchVO = new PlaceSearchVO();
+				placeSearchVO.setPageNO(0);
+				// 그리고 Keyword를 공백으로 맞춘다.
+				placeSearchVO.setSearchKeyword("");
+			}
+		}
+		
+		
+		placeListVO = placeBiz.getOriginPlaceList(placeSearchVO, sortOption);
+		request.setAttribute("places", placeListVO);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/originPlaceList.jsp");
+		rd.forward(request, response);	
+	}
+
+}
