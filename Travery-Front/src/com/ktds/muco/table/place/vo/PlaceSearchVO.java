@@ -2,8 +2,6 @@ package com.ktds.muco.table.place.vo;
 /**
  * 여행지
  * 
- * Paging 미구현
- * 
  * @author 김동규
  *
  */

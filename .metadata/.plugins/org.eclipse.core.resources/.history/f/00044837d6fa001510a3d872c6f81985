@@ -1,0 +1,37 @@
+package com.ktds.muco.table.history.vo;
+
+/**
+ * 
+ * MB 멤버
+ * MN 메뉴
+ * CT 나라
+ * 
+ * @author 김광민
+ *
+ */
+public interface ActionCode {
+
+	// 회원가입
+	public static final String JOIN = "MB_JI";
+	
+	// 로그인, 로그아웃
+	public static final String LOGIN = "MB_LI";
+	public static final String LOGOUT = "MB_LO";
+	
+	// Hit the road
+	public static final String HIT_THE_ROAD = "MN_HR";
+	public static final String SELECT_COUNTRY = "CT_SE";
+	public static final String REMOVE_ALL_COUNTRY = "CT_RE";
+	
+	// My pack
+	public static final String MY_PACKAGE = "MN_MP";
+	
+	// Share pack
+	public static final String SHARE_PACKAGE = "MN_SP";
+	
+	// Recommend place
+	public static final String RECOMMEND_PLACE = "MN_RP";
+	
+	// Trip reservation
+	public static final String TRIP_RESERVATION = "MN_TR";
+}

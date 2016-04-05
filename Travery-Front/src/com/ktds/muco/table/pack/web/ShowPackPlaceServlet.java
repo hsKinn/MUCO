@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
@@ -18,6 +23,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
 public class ShowPackPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -25,7 +31,7 @@ public class ShowPackPlaceServlet extends HttpServlet {
 	public ShowPackPlaceServlet() {
 		super();
 		packBiz = new PackBiz();
-		// TODO Auto-generated constructor stub
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -52,6 +58,19 @@ public class ShowPackPlaceServlet extends HttpServlet {
 		List<PackVO> packs = packBiz.getPackListByEmail(email);		
 		List<PlaceVO> places = packBiz.getPlaceListByPackId(packId);
 		
+
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(loginMember.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.SHOW_PACK);
+		if ( packId != 0) {
+			history.setHistoryDescription(BuildDescription.get(Description.SHOW_PACK, loginMember.getEmail(), packId+""));
+		} else {
+			history.setHistoryDescription(BuildDescription.get(Description.SHOW_PACK, loginMember.getEmail()));
+		}
+		historyBiz.addHistory(history);
 		
 		request.setAttribute("packs", packs);
 		request.setAttribute("places", places);

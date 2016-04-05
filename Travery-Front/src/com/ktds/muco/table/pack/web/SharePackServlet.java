@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.SharePackBiz;
 import com.ktds.muco.table.pack.vo.PackListVO;
@@ -25,6 +30,7 @@ public class SharePackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private SharePackBiz sharePackBiz;
+	private HistoryBiz historyBiz;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,6 +39,7 @@ public class SharePackServlet extends HttpServlet {
         super();
         
         sharePackBiz = new SharePackBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -83,6 +90,15 @@ public class SharePackServlet extends HttpServlet {
 		
 		request.setAttribute("packages", packages);
 		request.setAttribute("packSearchVO", packSearchVO);
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.SHARE_PACKAGE);
+		history.setHistoryDescription(BuildDescription.get(Description.SHARE_PACKAGE, member.getEmail()));
+		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/pack/sharePack.jsp");
 		rd.forward(request, response);

@@ -11,6 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.evaluation.biz.EvaluationBiz;
 import com.ktds.muco.table.evaluation.vo.EvaluationVO;
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
@@ -23,6 +28,7 @@ public class DetailPlaceServlet extends HttpServlet {
 	
 	private PlaceBiz placeBiz;
 	private EvaluationBiz evaluationBiz;
+	private HistoryBiz historyBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,6 +38,7 @@ public class DetailPlaceServlet extends HttpServlet {
         
         placeBiz = new PlaceBiz();
         evaluationBiz = new EvaluationBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -48,6 +55,7 @@ public class DetailPlaceServlet extends HttpServlet {
 
 		int placeId = Integer.parseInt(request.getParameter("placeId"));
 		
+		// History
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		
@@ -67,7 +75,14 @@ public class DetailPlaceServlet extends HttpServlet {
 		request.setAttribute( "place", seletedPlace );
 		request.setAttribute( "writer", seletedPlace.getWriter() );
 		
-		System.out.println(seletedPlace.getWriter().isExistVote());
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.PLACE_DETAIL);
+		history.setHistoryDescription(BuildDescription.get(Description.PLACE_DETAIL, member.getEmail(), placeId+""));
+		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/detailPlace.jsp");
 		rd.forward(request, response);

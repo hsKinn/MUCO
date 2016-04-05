@@ -203,8 +203,6 @@ public class PlaceBiz {
 		return false;
 		
 	}
-
-
 	/**
 	 * Get Detail Place Info By Place ID
 	 * 
@@ -220,6 +218,16 @@ public class PlaceBiz {
 		return placeDAO.getDetailPlaceInfo( placeId, member );
 		
 	} // getDetailPlaceInfo END
-	
-	
+	/**
+	 * getCountryList
+	 * 
+	 * @author 김동규
+	 * 
+	 * @param memberVO
+	 * @return
+	 */
+
+	public List<PlaceVO> getCountryList(MemberVO memberVO) {
+		return placeDAO.getCountryList(memberVO);
+	}
 }

@@ -39,6 +39,28 @@
 	</evaluation>
 	
 	<history>
+		<addHistory>
+			INSERT INTO TRAVERY.HISTORY (
+			                                HISTORY_ID
+			                                , IP
+			                                , CRT_DT
+			                                , URL
+			                                , ACTION_CODE
+			                                , DESCRIPTION
+			                                , ETC
+			                                , EMAIL
+			                            ) 
+			VALUES                      (
+			                                HISTORY_ID_SEQ.NEXTVAL
+			                                , ?
+			                                , SYSDATE
+			                                , ?
+			                                , ?
+			                                , ?
+			                                , ?
+			                                , ?
+			                            )
+		</addHistory>	
 	</history>
 	
 	<image>
@@ -221,6 +243,16 @@
 			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 4
+			                                        )
+			            ) AVG_ARTIFICIAL_NATURAL_SCORE
 			FROM    PACK_PLACE PP
 			        , PLACE P
 			WHERE   PP.PLACE_ID = P.PLACE_ID
@@ -669,6 +701,16 @@
 			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE
+					,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 4
+			                                        )
+			            ) AVG_ARTIFICIAL_NATURAL_SCORE
 			FROM	PLACE P1
 			WHERE	COUNTRY_ID = ?
 		</getPlaceListByCountryId>
@@ -1040,11 +1082,13 @@
 											, ADDRESS
 											, LATITUDE
 											, LONGITUDE
+											, COUNTRY_ID
 											, DESCRIPTION
 											, EMAIL
 										)
 			VALUES						(
 											PLACE_ID_SEQ.NEXTVAL
+											, ?
 											, ?
 											, ?
 											, ?
@@ -1130,6 +1174,16 @@
 			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE					
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 2
+			                                        )
+			            ) AVG_ARTIFICIAL_NATURAL_SCORE		
 			FROM	PLACE P
 					, MEMBER M
 					, COUNTRY C
@@ -1137,7 +1191,12 @@
 			AND		P.EMAIL = M.EMAIL
 			AND		P.COUNTRY_ID = C.COUNTRY_ID(+)
 		</getDetailPlaceInfo>
-			
+		<getCountryList>
+			SELECT	COUNTRY_ID
+					, COUNTRY_NAME
+            FROM    COUNTRY
+            ORDER BY COUNTRY_NAME ASC
+		</getCountryList>
 	</place>
 	
 	<placeLike>

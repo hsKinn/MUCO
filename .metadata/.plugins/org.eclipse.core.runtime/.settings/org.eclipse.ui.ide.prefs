@@ -6,6 +6,14 @@ IMPORT_FILES_AND_FOLDERS_TYPE=23,1
 PROBLEMS_FILTERS_MIGRATE=true
 SWITCH_PERSPECTIVE_ON_PROJECT_CREATION=never
 eclipse.preferences.version=1
+<<<<<<< HEAD
 platformState=1454299227096
+=======
+<<<<<<< HEAD
+platformState=1454299362712
+=======
+platformState=1454299403539
+>>>>>>> origin/롯드6
+>>>>>>> origin/KGM11
 quickStart=false
 tipsAndTricks=true

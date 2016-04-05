@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
@@ -20,12 +25,14 @@ import com.ktds.muco.table.member.vo.MemberVO;
  */
 public class PersonalInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public PersonalInfoServlet() {
 		super();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -62,6 +69,15 @@ public class PersonalInfoServlet extends HttpServlet {
 
 			System.out.println("파일 location: " + loginMemberVO.getMainImageLocation());
 
+			// History
+			HistoryVO history = new HistoryVO();
+			history.setIp(request.getRemoteHost());
+			history.setEmail(loginMemberVO.getEmail());
+			history.setUrl(request.getRequestURI());
+			history.setActionCode(ActionCode.PERSONAL_INFO);
+			history.setHistoryDescription(BuildDescription.get(Description.PERSONAL_INFO, loginMemberVO.getEmail()));
+			historyBiz.addHistory(history);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/personalInfo.jsp");
 			rd.forward(request, response);
 

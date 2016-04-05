@@ -2,7 +2,6 @@ package com.ktds.muco.table.pack.web;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.file.biz.FileBiz;
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
@@ -24,11 +28,13 @@ public class DoAddPackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
 	private FileBiz fileBiz;
+	private HistoryBiz historyBiz;
 
 	public DoAddPackServlet() {
 		super();
 		packBiz = new PackBiz();
 		fileBiz = new FileBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -96,6 +102,20 @@ public class DoAddPackServlet extends HttpServlet {
 			int addHashTagCount = 0;
 			addHashTagCount = packBiz.addHashTagInPack(packId, hashtags);
 		}
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(loginMember.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.DO_ADD_PACK);
+		if(title != null) {
+			history.setHistoryDescription(BuildDescription.get(Description.DO_DEL_PACK, loginMember.getEmail(), newAddPack.getPackId()+""));
+		} else {
+			history.setHistoryDescription(BuildDescription.get(Description.DO_DEL_PACK_FAIL, loginMember.getEmail()));
+		}
+		historyBiz.addHistory(history);
+		
 		response.sendRedirect("/addPack");
 	}
 

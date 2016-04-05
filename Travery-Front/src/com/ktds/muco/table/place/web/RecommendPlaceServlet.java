@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceListVO;
@@ -26,6 +31,7 @@ public class RecommendPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private PlaceBiz placeBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,6 +40,7 @@ public class RecommendPlaceServlet extends HttpServlet {
 		super();
 		
 		placeBiz = new PlaceBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -94,6 +101,15 @@ public class RecommendPlaceServlet extends HttpServlet {
 		// Recommend Place 상단 부분
 		RecommendPlaceListVO recommendPlaceList = placeBiz.getTopRecommendPlace(member);
 		request.setAttribute("recommendPlaceList", recommendPlaceList);
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.RECOMMEND_PLACE);
+		history.setHistoryDescription(BuildDescription.get(Description.RECOMMEND_PLACE, member.getEmail()));
+		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/recommendPlace.jsp");
 		rd.forward(request, response);

@@ -17,8 +17,9 @@
 			window.opener.dataform.lat.value = $("#lat").val();
 			window.opener.dataform.lng.value = $("#lng").val();
 			window.opener.dataform.address.value = $("#address").val();
+			window.opener.dataform.countryId.value = $("#countryId").val();
 			self.close();
-		});
+		});		
 	});
 </script>
 <script type="text/javascript"
@@ -284,24 +285,24 @@
 	<form id="dataform">
 		<table border="1" align="right" id="SelectMap">
 			<tr>
-				<td colspan="2"><div id="map_canvas"></div></td>
-			</tr>
-			<tr>
-				<th width="100">위도</th>
-				<td><input type="text" id="lat" name="lat" size="50" /></td>
-			</tr>
-			<tr>
-				<th width="100">경도</th>
-				<td><input type="text" id="lng" name="lng" size="50" /></td>
+				<td colspan="4"><div id="map_canvas"></div> <input
+					type="hidden" id="lat" name="lat" size="50" /> 
+					<input type="hidden" id="lng" name="lng" size="50" />
+				</td>
 			</tr>
 			<tr>
 				<th width="100">주소</th>
 				<td><input type="text" id="address" name="address" size="50" /></td>
+				<th width="100">나라선택</th>
+				<td><select id="countryId" name="countryId" style="color: #333333; size: 30;">
+						<c:forEach items="${ countryList }" var="selectPlace">
+							<option value="${ selectPlace.countryId }">${ selectPlace.countryName }</option>
+						</c:forEach>
+				</select>
+				<input type="button" id="mapData" value="submit" onclick="mapData();" style="float: right;" />
+				</td>
 			</tr>
 		</table>
-		<div style="float: right;">
-			<input type="button" id="mapData" value="submit" onclick="mapData();" />
-		</div>
 	</form>
 </body>
 </html>

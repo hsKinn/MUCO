@@ -3,12 +3,18 @@ package com.ktds.muco.table.pack.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
 
@@ -18,6 +24,7 @@ import com.ktds.muco.table.pack.vo.PackVO;
 public class PackInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -25,6 +32,7 @@ public class PackInfoServlet extends HttpServlet {
 	public PackInfoServlet() {
 		super();
 		packBiz = new PackBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -67,6 +75,32 @@ public class PackInfoServlet extends HttpServlet {
 		json.append(", \"hashtags\" : \""+hashtags+"\"");
 		json.append("}");
 
+		// History
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		if( packName != null ) {
+			
+			HistoryVO history = new HistoryVO();
+			history.setIp(request.getRemoteHost());
+			history.setEmail(member.getEmail());
+			history.setUrl(request.getRequestURI());
+			history.setActionCode(ActionCode.PACK_INFO);
+			history.setHistoryDescription(BuildDescription.get(Description.PACK_INFO, member.getEmail(), packId + ""));
+			historyBiz.addHistory(history);
+			
+		} else {
+			
+			HistoryVO history = new HistoryVO();
+			history.setIp(request.getRemoteHost());
+			history.setEmail(member.getEmail());
+			history.setUrl(request.getRequestURI());
+			history.setActionCode(ActionCode.PACK_INFO);
+			history.setHistoryDescription(BuildDescription.get(Description.PACK_INFO_FAIL, member.getEmail(), packId + ""));
+			historyBiz.addHistory(history);
+			
+		}
+		
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toString());
