@@ -25,8 +25,6 @@
 	href="<c:url value="/resource/css/common/footer.css"/>" />
 
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
-<link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/pack/myPack.css"/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/pack/sharePack.css"/>" />
@@ -37,8 +35,6 @@
 		
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/reserve/tripReservation.css"/>" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/member/personalInfo.css"/>" />
 
 <!-- Boot strap -->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -50,10 +46,6 @@
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-<!-- jVector Map -->
-<link rel="stylesheet" media="all"
-	href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 
 <title>Travery</title>
 <script type="text/javascript"

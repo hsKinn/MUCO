@@ -12,7 +12,6 @@
 	href="<c:url value="/resource/css/common/test.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
-<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
 $(document).ready( function() {
 	// 검색 종류 list 받아오기 
@@ -23,10 +22,10 @@ $(document).ready( function() {
 	});
 	
 	// 검색 버튼 클릭 
-	$("#searchBtn").click(function() {
+	$("#searchMemberBtn").click(function() {
 		
 		// 검색어를 입력하지 않았을 경우
-		if ( $("#searchKeyword").val() =="") { 
+		if ( $("#searchMemberKeyword").val() =="") { 
 			alert("검색어를 입력하세요");
 			return;
 		}
@@ -241,21 +240,21 @@ $(document).ready( function() {
 						<tr>
 							<td colspan="8" style="background-color:#a1a1a1;">
 								<!-- 검색 form  -->
-								<form id="searchForm">
+								<form id="searchForm2">
 									<br/>
 									<div style="text-align: center;"> <!-- 페이징 -->
-										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
+										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm2") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
-										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
-										<select name="searchList" id="searchList">
+										<c:set var="selectedList" value="${sessionScope._MEMBER_SEARCH_.searchList }" />
+										<select name="searchMemberList" id="searchMemberList">
 											<option value="email" ${selectedList eq "email" ? "selected" : "" }>Email</option>
 											<option value="phoneNumber" ${selectedList eq "phoneNumber" ? "selected" : "" }>전화번호</option>
 											<option value="name" ${selectedList eq "name" ? "selected" : "" }>이름</option>
 										</select>
 										
-										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
-										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
+										<input type="text" id="searchMemberKeyword" name="searchMemberKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="button" id="searchMemberBtn" name="searchMemberBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 									</div>
 								</form>									

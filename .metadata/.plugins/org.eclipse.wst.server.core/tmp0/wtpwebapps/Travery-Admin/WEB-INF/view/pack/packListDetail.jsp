@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
-<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
 /* 내용 script */
 $(document).ready( function() {

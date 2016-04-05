@@ -36,7 +36,7 @@ public class InitPackList extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		//session 없애기
-		session.removeAttribute("_SEARCH_");
+		session.removeAttribute("_PACK_SEARCH_");
 		
 		response.sendRedirect(Root.get(this) + "/packList");
 	}

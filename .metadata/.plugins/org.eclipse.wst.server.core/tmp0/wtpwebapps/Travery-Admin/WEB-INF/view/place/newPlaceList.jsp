@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/common/test.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
-<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
 /* 내용 script */
 $(document).ready( function() {
@@ -191,7 +190,7 @@ $(document).ready( function() {
 										${ places.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
-										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
+										<c:set var="selectedList" value="${sessionScope._NEW_PLACE_SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
 											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>여행지명</option>
 										  	<option value="memberEmail" ${selectedList eq "email" ? "selected" : "" }>최초등록자Email</option>

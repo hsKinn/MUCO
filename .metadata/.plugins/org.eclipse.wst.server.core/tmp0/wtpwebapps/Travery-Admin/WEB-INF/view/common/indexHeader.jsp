@@ -32,10 +32,6 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-<!-- jVector Map -->
-<link rel="stylesheet" media="all"
-	href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
-
 <title>Travery</title>
 <script type="text/javascript"
 	src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>

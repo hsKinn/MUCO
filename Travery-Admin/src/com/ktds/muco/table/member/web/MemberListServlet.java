@@ -43,7 +43,7 @@ public class MemberListServlet extends HttpServlet {
 		int pageNO = 0;
 		int sortOption;
 		if (request.getParameter("sortOption") == null) {
-			sortOption = 0;
+			sortOption = 1;
 		} else {
 			sortOption = Integer.parseInt(request.getParameter("sortOption"));
 		}
@@ -58,12 +58,12 @@ public class MemberListServlet extends HttpServlet {
 			pageNO = Integer.parseInt(request.getParameter("pageNO"));
 
 			// 검색 종류 및 키워드 가져오기
-			memberSearchVO.setSearchList(request.getParameter("searchList"));
-			memberSearchVO.setSearchKeyword(request.getParameter("searchKeyword"));
-
+			memberSearchVO.setSearchList(request.getParameter("searchMemberList"));
+			memberSearchVO.setSearchKeyword(request.getParameter("searchMemberKeyword"));
+			
 			// 정상적일 때만 pageNO을 설정하도록 한다.
 			memberSearchVO.setPageNO(pageNO);
-
+			
 		} catch (NumberFormatException nfe) {
 			// 그런데 이 searchVO도 null인 경우가 있다.
 			memberSearchVO = (MemberSearchVO) session.getAttribute("_MEMBER_SEARCH_");
@@ -81,7 +81,6 @@ public class MemberListServlet extends HttpServlet {
 		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
 		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
 		session.setAttribute("_MEMBER_SEARCH_", memberSearchVO);
-		
 		
 		request.setAttribute("members", memberListVO);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/memberList.jsp");

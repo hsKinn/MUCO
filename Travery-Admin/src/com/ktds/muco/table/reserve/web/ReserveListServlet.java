@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.reserve.biz.ReserveBiz;
 import com.ktds.muco.table.reserve.vo.ReserveListVO;
 import com.ktds.muco.table.reserve.vo.ReserveSearchVO;
@@ -19,11 +18,11 @@ import com.ktds.muco.table.reserve.vo.ReserveSearchVO;
  * @author 이기연
  */
 public class ReserveListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	private ReserveBiz reserveBiz;      
+   private static final long serialVersionUID = 1L;
+   
+   ReserveBiz reserveBiz;      
     
-	/**
+   /**
      * @see HttpServlet#HttpServlet()
      */
     public ReserveListServlet() {
@@ -31,62 +30,62 @@ public class ReserveListServlet extends HttpServlet {
         reserveBiz = new ReserveBiz();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doPost(request, response);
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pageNO = 0;
-		int sortOption;
-		if (request.getParameter("sortOption") == null) {
-			sortOption = 9;
-		} else {
-			sortOption = Integer.parseInt(request.getParameter("sortOption"));
-		}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      int pageNO = 0;
+      int sortOption;
+      if (request.getParameter("sortOption") == null) {
+         sortOption = 9;
+      } else {
+         sortOption = Integer.parseInt(request.getParameter("sortOption"));
+      }
 
-		ReserveListVO reserveListVO;
-		ReserveSearchVO reserveSearchVO = new ReserveSearchVO();
-		HttpSession session = request.getSession();
+      ReserveListVO reserveListVO;
+      ReserveSearchVO reserveSearchVO = new ReserveSearchVO();
+      HttpSession session = request.getSession();
 
-		try {
-			// 데이터가 없다면 page는 null 그렇기 때문에 numberFormatException발생..? 그래서
-			// catch에다가 search session을 이용한다라..?
-			pageNO = Integer.parseInt(request.getParameter("pageNO"));
+      try {
+         // 데이터가 없다면 page는 null 그렇기 때문에 numberFormatException발생..? 그래서
+         // catch에다가 search session을 이용한다라..?
+         pageNO = Integer.parseInt(request.getParameter("pageNO"));
 
-			// 검색 종류 및 키워드 가져오기
-			reserveSearchVO.setSearchList(request.getParameter("searchList"));
-			reserveSearchVO.setSearchKeyword(request.getParameter("searchKeyword"));
+         // 검색 종류 및 키워드 가져오기
+         reserveSearchVO.setSearchList(request.getParameter("searchList"));
+         reserveSearchVO.setSearchKeyword(request.getParameter("searchKeyword"));
 
-			// 정상적일 때만 pageNO을 설정하도록 한다.
-			reserveSearchVO.setPageNO(pageNO);
+         // 정상적일 때만 pageNO을 설정하도록 한다.
+         reserveSearchVO.setPageNO(pageNO);
 
-		} catch (NumberFormatException nfe) {
-			// 그런데 이 searchVO도 null인 경우가 있다.
-			reserveSearchVO = (PlaceSearchVO) session.getAttribute("_NEW_PLACE_SEARCH_");
+      } catch (NumberFormatException nfe) {
+         // 그런데 이 searchVO도 null인 경우가 있다.
+    	  reserveSearchVO = (ReserveSearchVO) session.getAttribute("_RESERVE_SEARCH_");
 
-			// 그러면 다시 0으로 맞춘다.
-			if (reserveSearchVO == null) {
-				reserveSearchVO = new ReserveSearchVO();
-				reserveSearchVO.setPageNO(0);
-				// 그리고 Keyword를 공백으로 맞춘다.
-				reserveSearchVO.setSearchKeyword("");
-			}
-		}
-		placeListVO = reserveBiz.getPlaceList(reserveSearchVO, sortOption, 1);
-		
-		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
-		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
-		session.setAttribute("_NEW_PLACE_SEARCH_", reserveSearchVO);
-
-		request.setAttribute("places", reserveListVO);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/newPlaceList.jsp");
-		rd.forward(request, response);	
-	}
+         // 그러면 다시 0으로 맞춘다.
+         if (reserveSearchVO == null) {
+        	 reserveSearchVO = new ReserveSearchVO();
+        	 reserveSearchVO.setPageNO(0);
+            // 그리고 Keyword를 공백으로 맞춘다.
+        	 reserveSearchVO.setSearchKeyword("");
+         }
+      }
+      reserveListVO = reserveBiz.getReserveList(reserveSearchVO, sortOption);
+      
+      // search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
+      // session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
+      session.setAttribute("_RESERVE_SEARCH_", reserveSearchVO);
+      request.setAttribute("reservations", reserveListVO);
+      
+      RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/reserve/reserveList.jsp");
+      rd.forward(request, response);   
+   }
 
 }

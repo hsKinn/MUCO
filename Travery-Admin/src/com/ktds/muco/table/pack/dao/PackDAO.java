@@ -265,14 +265,14 @@ public class PackDAO {
 			
 			// 패키지명
 			if (sortOption == 1) {
-				if (packSearchVO.getSearchKeyword().equals("packTitle")) {
+				if (packSearchVO.getSearchList().equals("packTitle")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByPackTitleSearchedByPackTitle/text()");
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, packSearchVO.getSearchKeyword());
 					stmt.setInt(2, packSearchVO.getEndIndex());
 					stmt.setInt(3, packSearchVO.getStartIndex());
-				} else if (packSearchVO.getSearchKeyword().equals("email")) {
+				} else if (packSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByPackTitleSearchedByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -290,14 +290,14 @@ public class PackDAO {
 			} 
 			// 등록자 이메일
 			else if (sortOption==2) {
-				if (packSearchVO.getSearchKeyword().equals("packTitle")) {
+				if (packSearchVO.getSearchList().equals("packTitle")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByEmailSearchedByPackTitle/text()");
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, packSearchVO.getSearchKeyword());
 					stmt.setInt(2, packSearchVO.getEndIndex());
 					stmt.setInt(3, packSearchVO.getStartIndex());					
-				} else if (packSearchVO.getSearchKeyword().equals("email")) {
+				} else if (packSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByEmailSearchedByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -315,14 +315,14 @@ public class PackDAO {
 			} 
 			// 공개 여부
 			else if (sortOption==3) {
-				if (packSearchVO.getSearchKeyword().equals("packTitle")) {
+				if (packSearchVO.getSearchList().equals("packTitle")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByIsPublicSearachedByPackTitle/text()");
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, packSearchVO.getSearchKeyword());
 					stmt.setInt(2, packSearchVO.getEndIndex());
 					stmt.setInt(3, packSearchVO.getStartIndex());						
-				} else if (packSearchVO.getSearchKeyword().equals("email")) {
+				} else if (packSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByIsPublicSearchedByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -340,14 +340,14 @@ public class PackDAO {
 			} 
 			// 추천수
 			else if (sortOption==4) {
-				if (packSearchVO.getSearchKeyword().equals("packTitle")) {
+				if (packSearchVO.getSearchList().equals("packTitle")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByLikeCountSearchedByPackTitle/text()");
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, packSearchVO.getSearchKeyword());
 					stmt.setInt(2, packSearchVO.getEndIndex());
 					stmt.setInt(3, packSearchVO.getStartIndex());						
-				} else if (packSearchVO.getSearchKeyword().equals("email")) {
+				} else if (packSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByLikeCountSearchedByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -365,14 +365,14 @@ public class PackDAO {
 			} 
 			// 조회수
 			else if (sortOption==5) {
-				if (packSearchVO.getSearchKeyword().equals("packTitle")) {
+				if (packSearchVO.getSearchList().equals("packTitle")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByViewCountSearchedByPackTitle/text()");
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, packSearchVO.getSearchKeyword());
 					stmt.setInt(2, packSearchVO.getEndIndex());
 					stmt.setInt(3, packSearchVO.getStartIndex());						
-				} else if (packSearchVO.getSearchKeyword().equals("email")) {
+				} else if (packSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageOrderByViewCountSearchedByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -388,14 +388,14 @@ public class PackDAO {
 					stmt.setInt(2, packSearchVO.getStartIndex());
 				}
 			} else {
-				if (packSearchVO.getSearchKeyword().equals("packTitle")) {
+				if (packSearchVO.getSearchList().equals("packTitle")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageSearchedByPackTitle/text()");
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, packSearchVO.getSearchKeyword());
 					stmt.setInt(2, packSearchVO.getEndIndex());
 					stmt.setInt(3, packSearchVO.getStartIndex());						
-				} else if (packSearchVO.getSearchKeyword().equals("email")) {
+				} else if (packSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/pack/getAllPackageSearchedByEmail/text()");
 					stmt = conn.prepareStatement(query);

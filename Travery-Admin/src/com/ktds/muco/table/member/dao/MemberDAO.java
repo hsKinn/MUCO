@@ -305,7 +305,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-
+		
 		List<MemberVO> members = new ArrayList<MemberVO>();
 
 		try {
@@ -315,8 +315,8 @@ public class MemberDAO {
 			String query = "";
 			
 			//가입일
-			if (sortOption==1) {
-				if (memberSearchVO.getSearchKeyword().equals("email")) {
+			if ( sortOption == 1) {
+				if (memberSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDateSearchByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -324,8 +324,10 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
+					System.out.println("EMAIL DAO");
+					
 				}
-				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+				else if (memberSearchVO.getSearchList().equals("phoneNumber")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDateSearchByPhoneNumber/text()");
 					stmt = conn.prepareStatement(query);
@@ -333,7 +335,7 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
-				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+				} else if (memberSearchVO.getSearchList().equals("name")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByJoinDateSearchByName/text()");
 					stmt = conn.prepareStatement(query);
@@ -352,7 +354,7 @@ public class MemberDAO {
 			} 
 			// 최근 접속일 
 			else if (sortOption==2) {
-				if (memberSearchVO.getSearchKeyword().equals("email")) {
+				if (memberSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDateSearchByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -361,7 +363,7 @@ public class MemberDAO {
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
 				}
-				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+				else if (memberSearchVO.getSearchList().equals("phoneNumber")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDateSearchByPhoneNumber/text()");
 					stmt = conn.prepareStatement(query);
@@ -369,7 +371,7 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
-				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+				} else if (memberSearchVO.getSearchList().equals("name")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByRecentAccessDateSearchByName/text()");
 					stmt = conn.prepareStatement(query);
@@ -387,7 +389,7 @@ public class MemberDAO {
 			} 
 			// 이름 
 			else if (sortOption==3) {
-				if (memberSearchVO.getSearchKeyword().equals("email")) {
+				if (memberSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByNameSearchByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -396,7 +398,7 @@ public class MemberDAO {
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
 				}
-				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+				else if (memberSearchVO.getSearchList().equals("phoneNumber")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByNameSearchByPhoneNumber/text()");
 					stmt = conn.prepareStatement(query);
@@ -404,7 +406,7 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
-				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+				} else if (memberSearchVO.getSearchList().equals("name")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByNameSearchByName/text()");
 					stmt = conn.prepareStatement(query);
@@ -423,7 +425,7 @@ public class MemberDAO {
 			}
 			// 이메일 
 			else if (sortOption==4) {
-				if (memberSearchVO.getSearchKeyword().equals("email")) {
+				if (memberSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByEmailSearchByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -432,7 +434,7 @@ public class MemberDAO {
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
 				}
-				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+				else if (memberSearchVO.getSearchList().equals("phoneNumber")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByEmailSearchByPhoneNumber/text()");
 					stmt = conn.prepareStatement(query);
@@ -440,7 +442,7 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
-				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+				} else if (memberSearchVO.getSearchList().equals("name")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByEmailSearchByName/text()");
 					stmt = conn.prepareStatement(query);
@@ -458,7 +460,7 @@ public class MemberDAO {
 			}
 			// 운영자 
 			else if (sortOption==5) {
-				if (memberSearchVO.getSearchKeyword().equals("email")) {
+				if (memberSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdminSearchByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -467,7 +469,7 @@ public class MemberDAO {
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
 				}
-				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+				else if (memberSearchVO.getSearchList().equals("phoneNumber")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdminSearchByPhoneNumber/text()");
 					stmt = conn.prepareStatement(query);
@@ -475,7 +477,7 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
-				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+				} else if (memberSearchVO.getSearchList().equals("name")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersOrderByIsAdminSearchByName/text()");
 					stmt = conn.prepareStatement(query);
@@ -493,7 +495,7 @@ public class MemberDAO {
 				}				
 			} 
 			else {
-				if (memberSearchVO.getSearchKeyword().equals("email")) {
+				if (memberSearchVO.getSearchList().equals("email")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersSearchByEmail/text()");
 					stmt = conn.prepareStatement(query);
@@ -502,7 +504,7 @@ public class MemberDAO {
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
 				}
-				else if (memberSearchVO.getSearchKeyword().equals("phoneNumber")) {
+				else if (memberSearchVO.getSearchList().equals("phoneNumber")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersSearchByPhoneNumber/text()");
 					stmt = conn.prepareStatement(query);
@@ -510,7 +512,7 @@ public class MemberDAO {
 					stmt.setInt(2, memberSearchVO.getEndIndex());
 					stmt.setInt(3, memberSearchVO.getStartIndex());
 					
-				} else if (memberSearchVO.getSearchKeyword().equals("name")) {
+				} else if (memberSearchVO.getSearchList().equals("name")) {
 					// article을 꺼내온다.
 					query = XML.getNodeString("//query/member/getAllMembersSearchByName/text()");
 					stmt = conn.prepareStatement(query);

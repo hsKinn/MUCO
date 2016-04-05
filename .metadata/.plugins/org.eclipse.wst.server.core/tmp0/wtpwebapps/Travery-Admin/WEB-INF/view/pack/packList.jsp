@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
-<script src="<c:url value="/resource/js/jquery-jvectormap-world-mill-en.js" />"></script>
 <script type="text/javascript">
 /* 내용 script */
 $(document).ready( function() {
@@ -153,7 +152,7 @@ $(document).ready( function() {
 										${ packs.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
-										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
+										<c:set var="selectedList" value="${sessionScope._PACK_SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
 											<option value="packTitle" ${selectedList eq "packTitle" ? "selected" : "" }>패키지 타이틀</option>
 										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>등록자 Email</option>

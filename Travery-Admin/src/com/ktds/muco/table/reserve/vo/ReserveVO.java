@@ -13,6 +13,24 @@ public class ReserveVO extends PackVO {
 	private String departDate;
 	private String arriveDate;
 	private int isOneWay;
+	private String derpartureName;
+	private int personCount;
+
+	public String getDerpartureName() {
+		return derpartureName;
+	}
+
+	public void setDerpartureName(String derpartureName) {
+		this.derpartureName = derpartureName;
+	}
+
+	public int getPersonCount() {
+		return personCount;
+	}
+
+	public void setPersonCount(int personCount) {
+		this.personCount = personCount;
+	}
 
 	public int getReserveId() {
 		return reserveId;

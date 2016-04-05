@@ -8,6 +8,8 @@ import com.ktds.muco.table.place.dao.PlaceDAO;
 import com.ktds.muco.table.place.vo.PlaceListVO;
 import com.ktds.muco.table.place.vo.PlaceSearchVO;
 import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.table.reserve.vo.ReserveListVO;
+import com.ktds.muco.table.reserve.vo.ReserveSearchVO;
 import com.ktds.muco.util.web.Paging;
 
 /**

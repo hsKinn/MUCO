@@ -214,7 +214,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE ?
 									ORDER	BY JOIN_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1316,6 +1316,23 @@
 	</reportedPlace>
 	
 	<reserve>
+		<getReserveCount>
+			SELECT	COUNT(RESERVE_ID)
+			FROM	RESERVE
+		</getReserveCount>
+		<getAllReservation>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    RESERVE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?					
+		</getAllReservation>
 	</reserve>
 	
 	<selectedCountry>
