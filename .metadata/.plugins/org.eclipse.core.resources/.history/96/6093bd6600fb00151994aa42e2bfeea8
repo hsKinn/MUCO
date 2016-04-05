@@ -1,0 +1,30 @@
+package com.ktds.muco.table.history.vo;
+
+/**
+ * MB 멤버
+ * 
+ * LI 로그인
+ * LO 로그아웃
+ * 
+ * @author 김광민
+ *
+ */
+public interface ActionCode {
+
+	// 로그인, 로그아웃
+	public static final String LOGIN = "MB_LI";
+	public static final String LOGOUT = "MB_LO";
+	
+	// ORIGIN_PLACE
+	public static final String LOGOUT = "MB_LO";
+	
+	// NEW_PLACE
+	public static final String LOGOUT = "MB_LO";
+	
+	// NEW_PLACE_FRONT_PAGE
+	public static final String LOGOUT = "MB_LO";
+	
+	// REPORTED_PLACE
+	public static final String LOGOUT = "MB_LO";
+	
+}

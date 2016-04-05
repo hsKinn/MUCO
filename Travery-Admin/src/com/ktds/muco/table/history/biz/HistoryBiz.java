@@ -55,4 +55,14 @@ public class HistoryBiz {
 		return null;
 	}
 
+	/**
+	 * addHistory
+	 * 
+	 * @param history
+	 * @author 김광민 
+	 */
+	public void addHistory(HistoryVO history) {
+		historyDAO.addHistory(history);
+	}
+
 }

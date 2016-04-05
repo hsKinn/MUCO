@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.biz.MemberBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.util.root.Root;
@@ -18,6 +23,7 @@ import com.ktds.muco.util.root.Root;
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberBiz memberBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -25,6 +31,7 @@ public class LogoutServlet extends HttpServlet {
 	public LogoutServlet() {
 		super();
 		memberBiz = new MemberBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -48,6 +55,15 @@ public class LogoutServlet extends HttpServlet {
 		
 		boolean isLogoutSuccess = memberBiz.logout(request);
 
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(loginMemberVO.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.LOGOUT);
+		history.setHistoryDescription(BuildDescription.get(Description.LOGOUT, loginMemberVO.getEmail()));
+		historyBiz.addHistory(history);
+		
 		if (isLogoutSuccess) {
 			response.sendRedirect(Root.get(this) + "/");
 		} else {

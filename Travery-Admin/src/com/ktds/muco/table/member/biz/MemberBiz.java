@@ -10,7 +10,6 @@ import com.ktds.muco.table.member.dao.MemberDAO;
 import com.ktds.muco.table.member.vo.MemberListVO;
 import com.ktds.muco.table.member.vo.MemberSearchVO;
 import com.ktds.muco.table.member.vo.MemberVO;
-import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.file.MultipartFile;
 import com.ktds.muco.util.file.MultipartHttpServletRequest;
 import com.ktds.muco.util.web.Paging;
