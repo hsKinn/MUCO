@@ -4,7 +4,6 @@ div#detail-Wrapper {
 	width: 100%;
 	height: 700px;
 	float: left;
-
 }
 
 div#detail-LeftWrapper {
@@ -12,6 +11,14 @@ div#detail-LeftWrapper {
 	height: 100%;
 	float: left;
 	border: 3px Groove #5b5b5b;	
+}
+
+div.range-slider span.range-slider__value {
+	font-size: 10px;
+}
+
+div.range-slider input {
+	margin-top: 21px;
 }
 
 div#photo-Top {
@@ -76,6 +83,14 @@ span#placeLikeCount {
 	margin-left: 5px;
 }
 
+span.placeLike {
+	cursor: pointer;
+}
+
+span.doVote {
+	cursor: pointer;
+}
+
 div#info-Top {
 	width: 100%;
 	height: 5%;
@@ -110,7 +125,7 @@ div#place-Description textarea {
 
 div#info-Vote {
 	width: 100%;
-	height: 30%;
+	height: 35%;
 	float: left;
 }
 
@@ -130,14 +145,14 @@ div#vote-Right {
 	text-align: right;
 }
 
-div#placeVote {
+div.placeVote {
 	width: 100%;
 	height: 85%;
 	float: left;
 	overFlow-y: auto;
 }
 
-div#placeVote table {
+div.placeVote table {
 	width: 100%;
 	height: 100%;
 	font-size: 18px;
@@ -145,7 +160,7 @@ div#placeVote table {
 	font-weight: bold;
 }
 
-div#placeVote input {
+div.placeVote input {
 	width: 100%;
 }
 
@@ -182,6 +197,10 @@ td#placeReply_btn button {
 	width: 100px;
 	height: 28px;
 	margin-bottom: 5px;
+}
+
+span.glyphicon-pencil {
+	margin-right: 5px;
 }
 
 div#replybyPlace {

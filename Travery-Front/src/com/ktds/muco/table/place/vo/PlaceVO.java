@@ -32,6 +32,7 @@ public class PlaceVO extends CountryVO {
 	private int avgLikeCount;
 	
 	private boolean isExistPlaceLike;
+	private boolean isExistVote;
 	private List<PlaceReplyVO> placeReplyList;
 	
 	// 기준에 대한 평균값
@@ -48,6 +49,15 @@ public class PlaceVO extends CountryVO {
 	private List<ImageVO> placeImageList;
 	
 	
+	
+	
+	public boolean isExistVote() {
+		return isExistVote;
+	}
+
+	public void setExistVote(boolean isExistVote) {
+		this.isExistVote = isExistVote;
+	}
 	public List<ImageVO> getPlaceImageList() {
 		return placeImageList;
 	}

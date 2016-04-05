@@ -1,0 +1,12 @@
+package com.ktds.muco.table.evaluation.vo;
+
+import com.ktds.muco.table.member.vo.MemberVO;
+
+public class EvaluationVO extends MemberVO {
+	
+	private int evaluationId;
+	private int score;
+	private int standardId;
+	
+	
+}

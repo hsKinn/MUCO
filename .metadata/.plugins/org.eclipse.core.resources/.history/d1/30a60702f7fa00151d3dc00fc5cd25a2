@@ -1,0 +1,21 @@
+package com.ktds.muco.table.evaluation.biz;
+
+import com.ktds.muco.table.evaluation.dao.EvaluationDAO;
+
+/**
+ * 
+ * @author 김현섭
+ *
+ */
+public class EvaluationBiz {
+	
+	private EvaluationDAO evaluationDAO;
+	
+	public EvaluationBiz() {
+		evaluationDAO = new EvaluationDAO();
+	}
+	
+	
+	
+	
+}

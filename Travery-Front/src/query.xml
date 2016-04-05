@@ -11,6 +11,31 @@
 	</country>
 	
 	<evaluation>
+		
+		<setVoteScore>
+			INSERT INTO	EVALUATION (
+									EVALUATION_ID
+									, SCORE
+									, PLACE_ID
+									, STANDARD_ID
+									, EMAIL				
+								   )
+			VALUES				   (
+									EVALUATION_ID_SEQ.NEXTVAL
+									, ?
+									, ?
+									, ?
+									, ?
+								   )
+		</setVoteScore>
+		
+		<isExistVote>
+			SELECT	COUNT(EVALUATION_ID)
+			FROM	EVALUATION
+			WHERE	PLACE_ID = ?
+			AND		EMAIL = ?
+		</isExistVote>		
+	
 	</evaluation>
 	
 	<history>

@@ -18,6 +18,20 @@
 <!-- Share Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$(".doNotVote").click( function() {
+			
+			alert("Already Vote.");
+		});
+		
+		$("#voteSubmit").click( function() {
+			
+			var form = $("#voteForm");
+			
+			form.attr("method", "POST");
+			form.attr("action", "<c:url value="/doVote"/>");
+			form.submit();
+		});
 	
 		$("#writePlaceReplyBtn").click( function() {
 			
@@ -59,7 +73,7 @@
 								$(".placeLike").text("Like ♥");							
 							}
 							else {
-								$(".placeLike").text("Not Like ♡");	
+								$(".placeLike").text("Like ♡");	
 							}
 						}
 						else {
@@ -69,6 +83,26 @@
 					}
 			  );
 		});
+		
+		var rangeSlider = function(){
+			  var slider = $('.range-slider'),
+			      range = $('.range-slider__range'),
+			      value = $('.range-slider__value');
+			    
+			  slider.each(function(){
+	
+			    value.each(function(){
+			      var value = $(this).prev().attr('value');
+			      $(this).html(value);
+			    });
+	
+			    range.on('input', function(){
+			      $(this).next(value).html(this.value);
+			    });
+			  });
+			};
+	
+			rangeSlider();
 		
 	});
 </script>
@@ -133,39 +167,110 @@
 							</c:when>
 							<c:otherwise>
 								<span class="placeLike" >
-									Not Like ♡
+									Like ♡
 								</span>
 							</c:otherwise>
 						</c:choose>
 					</div>
 				
 					<div id="vote-Right">
-						Do Vote
+						<c:if test="${ !writer.isExistVote() }">
+							<span class="doVote" data-toggle="modal" data-target="#voteModal">
+								Vote
+							</span>
+						</c:if>
+						<c:if test="${ writer.isExistVote() }">
+							<span class="doNotVote">
+								Vote
+							</span>						
+						</c:if>
 					</div>
-					<div id="placeVote">
-						<table>
-							<tr>
-								<td>Bright</td>
-								<td>
-									<input type="range" readonly="readonly" min="1" max="100" value="${ place.avgBrightDarkScore }">
-								</td>
-								<td>Dark</td>
-							</tr>
-							<tr>
-								<td>HightPrice</td>
-								<td>
-									<input type="range" readonly="readonly" min="1" max="100" value="${ place.avgHighPriceLowPriceScore }">
-								</td>
-								<td>LowPrice</td>
-							</tr>
-							<tr>
-								<td>Active</td>
-								<td>
-									<input type="range" readonly="readonly" min="1" max="100" value="${ place.avgActiveCalmScore }">
-								</td>
-								<td>Calm</td>
-							</tr>
-						</table>
+					
+					<!-- Modal -->
+					<div class="modal fade" id="voteModal" role="dialog">
+					    <div class="modal-dialog">
+					      <!-- Modal content-->
+					    	<div class="modal-content">
+					        	<div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">
+						          	Mood Vote !
+						          </h4>
+						        </div>
+						        <!-- Modal Body -->
+						        <div class="modal-body">
+									<div class="placeVote">
+										<form id="voteForm">
+											<input type="hidden" name="placeId" value="${ place.placeId }" />
+											<div class="range-slider">
+												<table border="1">
+													<tr>
+														<td colspan="2">Bright</td>
+														<td>
+															<input class="range-slider__range" name="bright" type="range" min="1" max="100" value="50">
+															<span class="range-slider__value">0</span>
+														</td>
+														<td colspan="2">Dark</td>
+													</tr>
+													<tr>
+														<td colspan="2">HightPrice</td>
+														<td>
+															<input class="range-slider__range" name="highPrice" type="range" min="1" max="100" value="50">
+															<span class="range-slider__value">0</span>
+														</td>
+														<td colspan="2">LowPrice</td>
+													</tr>
+													<tr>
+														<td colspan="2">Active</td>
+														<td>
+															<input class="range-slider__range" name="active" type="range" min="1" max="100" value="50">
+															<span class="range-slider__value">0</span>
+														</td>
+														<td colspan="2">Calm</td>
+													</tr>
+												</table>
+											</div>
+										</form>
+									</div>
+						        </div>
+						        <!-- Modal Footer -->
+						        <div class="modal-footer">
+						    		<button type="button" class="btn btn-default" id="voteSubmit">Do Vote</button>
+						    		<button type="button" class="btn btn-default" id="placeModal-Close" data-dismiss="modal">Close</button>
+						        </div>
+					     	 </div>
+					    </div>
+					 </div>
+					 					
+					<div class="placeVote">
+						<div class="range-slider">
+							<table border="1">
+								<tr>
+									<td colspan="2">Bright</td>
+									<td>
+										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgBrightDarkScore }">
+										<span class="range-slider__value">0</span>
+									</td>
+									<td colspan="2">Dark</td>
+								</tr>
+								<tr>
+									<td colspan="2">HightPrice</td>
+									<td>
+										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgHighPriceLowPriceScore }">
+										<span class="range-slider__value">0</span>
+									</td>
+									<td colspan="2">LowPrice</td>
+								</tr>
+								<tr>
+									<td colspan="2">Active</td>
+									<td>
+										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgActiveCalmScore }">
+										<span class="range-slider__value">0</span>
+									</td>
+									<td colspan="2">Calm</td>
+								</tr>
+							</table>
+						</div>						
 					</div>
 				</div>
 				
@@ -180,7 +285,7 @@
 										</td>
 										<td id="placeReply_btn">
 											<button type="button" class="btn btn-info" id="writePlaceReplyBtn">
-									     		<span class="glyphicon glyphicon-pencil"></span>submit
+									     		<span class="glyphicon glyphicon-pencil"></span><span id="placeReply-Submit">Submit</span>
 									   		</button>  													
 										</td>
 									</tr>

@@ -485,4 +485,14 @@
     <servlet-name>DetailPlaceServlet</servlet-name>
     <url-pattern>/detailPlace</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoVoteServlet</display-name>
+    <servlet-name>DoVoteServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.evaluation.web.DoVoteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoVoteServlet</servlet-name>
+    <url-pattern>/doVote</url-pattern>
+  </servlet-mapping>
 </web-app>

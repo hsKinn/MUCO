@@ -1,0 +1,10 @@
+package com.ktds.muco.table.evaluation.vo;
+
+public class EvaluationVO {
+	
+	private int evaluationId;
+	private int score;
+	private int standardId;
+	
+	
+}

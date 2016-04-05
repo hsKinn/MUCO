@@ -1,0 +1,16 @@
+package com.ktds.muco.table.evaluation.biz;
+
+import com.ktds.muco.table.evaluation.dao.EvaluationDAO;
+
+public class EvaluationBiz {
+	
+	private EvaluationDAO evaluationDAO;
+	
+	public EvaluationBiz() {
+		evaluationDAO = new EvaluationDAO();
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,38 @@
+package com.ktds.muco.table.evaluation.biz;
+
+import com.ktds.muco.table.evaluation.dao.EvaluationDAO;
+import com.ktds.muco.table.evaluation.vo.EvaluationVO;
+
+/**
+ * 
+ * @author 김현섭
+ *
+ */
+public class EvaluationBiz {
+	
+	private EvaluationDAO evaluationDAO;
+	
+	public EvaluationBiz() {
+		evaluationDAO = new EvaluationDAO();
+	}
+	
+	/**
+	 * 
+	 * Set Vote Score
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param voteScore
+	 * @param member
+	 * @return
+	 */
+	public boolean setVoteScore(int[] voteScore, EvaluationVO evaluation) {
+		
+		return evaluationDAO.setVoteScore( voteScore, evaluation ) > 0;
+		
+	} // setVoteScore END
+	
+	
+	
+	
+}

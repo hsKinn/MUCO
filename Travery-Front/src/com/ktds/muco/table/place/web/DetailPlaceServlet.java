@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.evaluation.biz.EvaluationBiz;
+import com.ktds.muco.table.evaluation.vo.EvaluationVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
@@ -20,6 +22,7 @@ public class DetailPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private PlaceBiz placeBiz;
+	private EvaluationBiz evaluationBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,6 +31,7 @@ public class DetailPlaceServlet extends HttpServlet {
         super();
         
         placeBiz = new PlaceBiz();
+        evaluationBiz = new EvaluationBiz();
     }
 
 	/**
@@ -47,13 +51,23 @@ public class DetailPlaceServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		
+		EvaluationVO evaluation = new EvaluationVO();
+		evaluation.setPlaceId(placeId);
+		evaluation.setEmail(member.getEmail());
+		
+		member.setExistVote(evaluationBiz.isExistVote( evaluation ));
+		
 		// 여행지 상세정보 가져오기
 		// PLACE_ID, PLACE_NAME, LATITUDE, LONGTITUDE, ADDRESS, VIEW_COUNT, LIKE_COUNT
 		// DESCRIPTION, EMAIL, NAME, COUNTRY_NAME, imageList(사진 목록), replyList(리플 목록)
 		PlaceVO seletedPlace = placeBiz.getDetailPlaceInfo( placeId, member );
 		
+		seletedPlace.getWriter().setExistVote(evaluationBiz.isExistVote( evaluation ));
+		
 		request.setAttribute( "place", seletedPlace );
 		request.setAttribute( "writer", seletedPlace.getWriter() );
+		
+		System.out.println(seletedPlace.getWriter().isExistVote());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/detailPlace.jsp");
 		rd.forward(request, response);

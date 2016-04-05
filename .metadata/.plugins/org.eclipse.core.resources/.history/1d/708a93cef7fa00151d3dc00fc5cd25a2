@@ -1,0 +1,13 @@
+package com.ktds.muco.table.evaluation.vo;
+
+public class EvaluationVO {
+	
+	private int evaluationId;
+	private int score;
+	private int placeId;
+	private int standardId;
+	private String email;
+	
+	
+	
+}

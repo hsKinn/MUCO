@@ -1,0 +1,346 @@
+@CHARSET "UTF-8";
+
+div#detail-Wrapper {
+	width: 100%;
+	height: 700px;
+	float: left;
+}
+
+// Base Colors
+$shade-10: #2c3e50 !default;
+$shade-1: #d7dcdf !default;
+$shade-0: #fff !default;
+$teal: #1abc9c !default;
+
+
+// Reset
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font-family: sans-serif;
+  padding: 60px 20px;
+  
+  @media (min-width: 600px) {
+    padding: 60px;
+  }
+}
+
+.range-slider {
+  margin: 60px 0 0 0%;
+}
+
+
+// Range Slider
+$range-width: 100% !default;
+
+$range-handle-color: $shade-10 !default;
+$range-handle-color-hover: $teal !default;
+$range-handle-size: 20px !default;
+
+$range-track-color: $shade-1 !default;
+$range-track-height: 10px !default;
+
+$range-label-color: $shade-10 !default;
+$range-label-width: 60px !default;
+
+.range-slider {
+  width: $range-width;
+}
+
+.range-slider__range {
+  -webkit-appearance: none;
+  width: calc(100% - (#{$range-label-width + 13px}));
+  height: $range-track-height;
+  border-radius: 5px;
+  background: $range-track-color;
+  outline: none;
+  padding: 0;
+  margin: 0;
+
+  // Range Handle
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  &:active::-webkit-slider-thumb {
+    background: $range-handle-color-hover;
+  }
+
+  &::-moz-range-thumb {
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border: 0;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  &:active::-moz-range-thumb {
+    background: $range-handle-color-hover;
+  }
+}
+
+
+// Range Label
+.range-slider__value {
+  display: inline-block;
+  position: relative;
+  width: $range-label-width;
+  color: $shade-0;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: $range-label-color;
+  padding: 5px 10px;
+  margin-left: 8px;
+
+  &:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid $range-label-color;
+    border-bottom: 7px solid transparent;
+    content: '';
+  }
+}
+
+
+// Firefox Overrides
+::-moz-range-track {
+    background: $range-track-color;
+    border: 0;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer { 
+  border: 0; 
+}
+
+div#detail-LeftWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+	border: 3px Groove #5b5b5b;	
+}
+
+div#photo-Top {
+	width: 100%;
+	height: 50%;
+	float: left;
+}
+
+div#photo-Top img {
+	width: 95%;
+	height: 92%;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+}
+
+div#photo-Bottom {
+	width: 100%;
+	height: 50%;
+	float: left;
+	overFlow-y: auto;	
+}
+
+div.photos {
+	width: 25%;
+	height: 24%;
+	float: left;
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+div.photos img {
+	width: 100%;
+	height: 100%;
+}
+
+div#detail-RightWrapper {
+	width: 49%;
+	height: 100%;
+	float: left;
+	margin-left: 1%;
+	border: 3px Groove #5b5b5b;		
+}
+
+div#place-LikeCount {
+	float: left;
+	width: 25%;
+	text-align: right;
+}
+
+span.glyphicon-heart {
+	color: red;
+	width: 8px;
+	height: 10px;
+}
+
+span#placeLikeCount {
+	font-size: 23px;
+	color: red;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+div#info-Top {
+	width: 100%;
+	height: 5%;
+	float: left;
+	margin-top: 5px;
+}
+
+div#info-Top div#place-Title {
+	width: 80%;
+	float: left;
+	font-size: 18px;
+}
+
+div#info-Top div#place-LikeCount {
+	width: 20%;
+	float: left;
+	color: red;
+	font-size: 18px;
+}
+
+div#info-Middle {
+	width: 100%;
+	height: 40%;
+	float: left;
+}
+
+div#place-Description textarea {
+	width: 100%;
+	height: 260px;
+	color: black;
+}
+
+div#info-Vote {
+	width: 100%;
+	height: 30%;
+	float: left;
+}
+
+div#vote-Left {
+	width: 50%;
+	height: 15%;
+	float: left;
+	font-size: 18px;
+	text-align: left;
+}
+
+div#vote-Right {
+	width: 50%;
+	height: 15%;
+	float: right;
+	font-size: 18px;
+	text-align: right;
+}
+
+div.placeVote {
+	width: 100%;
+	height: 85%;
+	float: left;
+	overFlow-y: auto;
+}
+
+div.placeVote table {
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.placeVote input {
+	width: 100%;
+}
+
+div#info-Bottom {
+	width: 100%;
+	height: 30%;
+	float: left;
+}
+
+div#place-Reply {
+	width: 100%;
+	float: left;
+}
+
+div#place-Reply table {
+	width: 60%;
+}
+
+div#placeReplyWrapper {
+	float: left;
+	width: 100%;
+}
+
+td#placeReply_content textarea {
+	width: 230px;
+	height: 30px;
+	wrap: off;
+	margin-right: 10px;
+	maxlength: 20;
+	color: black;
+}
+
+td#placeReply_btn button {
+	width: 100px;
+	height: 28px;
+	margin-bottom: 5px;
+}
+
+div#replybyPlace {
+	width: 100%;
+	height: 80px;
+	overFlow-y: auto;
+}
+
+div#replybyPlace table {
+	width: 100%;
+}
+
+td#placeReplyWriterName {
+	text-align: left;
+	width: 18%;
+	word-break: break-all;	
+}
+
+td#placeReplyWrittenReply {
+	text-align: left;
+	word-break: break-all;
+}
+
+td#deletePlaceReply {
+	width: 3%;
+}
+
+
+
