@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.country.vo.CountryVO;
+import com.ktds.muco.table.image.biz.ImageBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.vo.PackVO;
@@ -27,6 +28,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
 public class HitTheRoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackBiz packBiz;
+	private ImageBiz imageBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,6 +36,7 @@ public class HitTheRoadServlet extends HttpServlet {
 	public HitTheRoadServlet() {
 		super();
 		packBiz = new PackBiz();
+		imageBiz = new ImageBiz();
 	}
 
 	/**
@@ -120,6 +123,17 @@ public class HitTheRoadServlet extends HttpServlet {
 		
 		PackVO packVO = packBiz.getPackDataByPackId(packId);
 		request.setAttribute("placeListByPackId", packVO.getPlaceList());
+		
+		if( packVO.getPlaceList().size() > 0 ) {
+			
+			request.setAttribute("firstPlace", packVO.getPlaceList().get(0));
+		}
+		
+		// placeId로 여행지 대표 이미지 보냄
+		
+		String placeMainImage = imageBiz.getPlaceMainImageByPlaceId(request);
+		request.setAttribute("placeMainImage", placeMainImage);
+		System.out.println(placeMainImage);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/hitTheRoad.jsp");
 		rd.forward(request, response);

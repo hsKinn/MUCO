@@ -51,10 +51,6 @@
 <script src="<c:url value="/resource/js/jvectormap/map.js" />"></script>
 <script src="<c:url value="/resource/js/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
 
-<!-- Google Map API -->
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&libraries=geometry,places"></script>
-
 <c:set var="axisX1" value="${ sessionScope._MEMBER_.selectedStandardList.get(0) }" />
 <c:set var="axisX2" value="${ sessionScope._MEMBER_.selectedStandardList.get(1) }" />
 <c:set var="axisY1" value="${ sessionScope._MEMBER_.selectedStandardList.get(2) }" />
@@ -96,9 +92,10 @@
 				var map = $('#map1').vectorMap('get', 'mapObject');
 				location.href = "/selectedCountry?selectedCountryName=" + map.getRegionName(code);
 			},
+			
 			series : {
 				regions : [ {
-					scale: ['#C8EEFF', '#0071A4'],
+					scale: [],
 					normalizeFunction : 'polynomial',
 					values : {
 						"AF" : 16.63,
@@ -361,6 +358,7 @@
 			location.href = "/removeAllSelectedCountries";
 	   	});
 	   	
+	   	
 	   	/* 2. 나라 검색 탭 */
 	   	
 		// X축 변경
@@ -464,34 +462,7 @@
 			}
 		});
 		
-		// 점들의 위치 설정
-		<c:if test="${ not empty selectedAllPlaceList }">
-			<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
-			
-				<c:if test="${ axisX1 eq 'Bright'}">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgBrightDarkScore * 6.5}px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'Active' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgActiveCalmScore * 6.5 }px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'HighPrice' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgHighPriceLowPriceScore * 6.5 }px"});
-				</c:if>
-				
-				<c:if test="${ axisY1 eq 'Bright'}">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgBrightDarkScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'Active' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgActiveCalmScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'HighPrice' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgHighPriceLowPriceScore * 3.25) }px"});
-				</c:if>
-				
-			</c:forEach>
-		</c:if>
 		
-		$('[data-toggle="tooltip"]').tooltip();
 	});
 	
 	// 새로고침 해도 현재 탭 유지
@@ -631,22 +602,7 @@
 							</div>
 		
 							<!-- 경로 설정 탭 -->
-							<div id="menu3" class="tab-pane fade">
-								<script>
-								function initialize()
-								{
-								var mapOpt = {
-								  center:new google.maps.LatLng(0,0),
-								  zoom:1,
-								  mapTypeId:google.maps.MapTypeId.ROADMAP
-								  };
-								var map=new google.maps.Map(document.getElementById("googleMap"),mapOpt);
-								}
-								
-								google.maps.event.addDomListener(window, 'load', initialize);
-								</script>
-								<div id="googleMap" style="width:960px;height:480px;"></div>
-							</div>
+							<div id="menu3" class="tab-pane fade"></div>
 						</div>
 					</div>
 				</div>
@@ -677,17 +633,23 @@
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-						<div class="tempSelectedPlace" id="' + ${ tempSelectedPlace.placeName } + '" 
+						<div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
 						style="float:left;
 								width:15%;
 								height:150px;
-								background-color: #5e5e5e;
 								text-align: center;
-								margin-left:20px;
+								margin-left:45px;
 								margin-top:20px;" 
-						data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }">
+						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							${ tempSelectedPlace.placeName }
+						<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+							<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
+						</a>
+							<span data-toggle="modal" data-target="#${ tempSelectedPlace.placeId }" style="cursor: pointer; margin-left:13px;">
+							${ tempSelectedPlace.placeName }</span>
+							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff;">
+								<img src="/image?imageName=basic1.jpg" />
+							</div>
 						</div>
 									
 					<!-- Modal -->

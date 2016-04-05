@@ -210,3 +210,31 @@ div.addUserPackList:hover {
 	background-color: #5a5a5a;
 	color:#eeeeee;
 }
+
+/* 구글맵 경로 */
+
+div#warnings-panel {
+  width: 100%;
+  height:10%;
+  text-align: center;
+}
+
+div#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+div.placeCards img {
+	width: 100%;
+	height: 100%;
+	
+}

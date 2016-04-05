@@ -2,6 +2,7 @@ package com.ktds.muco.table.image.biz;
 
 import java.io.File;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.ktds.muco.table.image.dao.ImageDAO;
@@ -46,5 +47,22 @@ public class ImageBiz {
 
 		imageDAO.insertImage(imageVO);
 
+	}
+	
+	/**
+	 * 
+	 * @author 유병훈
+	 *
+	 */
+	public String getPlaceMainImageByPlaceId(HttpServletRequest request) {
+		
+		int placeId = 0;
+		
+		try {
+			placeId= Integer.parseInt(request.getParameter("placeId"));
+		}
+		catch(NumberFormatException nfe){}
+		
+		return imageDAO.getPlaceMainImageByPlaceId(placeId);
 	}
 }

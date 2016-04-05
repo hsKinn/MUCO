@@ -177,7 +177,7 @@ public class PlaceBiz {
 		
 		// CountryVO 에 나라정보 등록
 		PlaceVO placeVO = placeDAO.addTempSelectedPlaceByPlaceId(selectedPlaceId);
-		
+		System.out.println("countryName : " + placeVO.getCountryName());
 			
 		
 		// 선택한 나라명과 일치하는 나라가 존재하면

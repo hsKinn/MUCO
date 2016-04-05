@@ -11,6 +11,7 @@ import java.util.List;
 import com.ktds.muco.table.image.vo.ImageVO;
 import com.ktds.muco.table.member.dao.Const;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
 import com.ktds.muco.util.xml.XML;
 
 /**
@@ -156,6 +157,43 @@ public class ImageDAO {
 		}
 		return images;
 	}
+	
+	/**
+	 * 
+	 * @author 유병훈
+	 *
+	 */
+	public String getPlaceMainImageByPlaceId(int placeId) {
+		
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = XML.getNodeString("//query/image/getPlaceMainImageByPlaceId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeId);
+
+			rs = stmt.executeQuery();
+			String placeMainImage = "";
+			if ( rs.next() ) {
+				placeMainImage = rs.getString(1);
+			}
+			
+			return placeMainImage;
+
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+	}
+	
 
 	/**
 	 * 
@@ -199,4 +237,6 @@ public class ImageDAO {
 			}
 		}
 	}
+
+	
 }
