@@ -44,7 +44,7 @@ public class PlaceLikeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int placeId = Integer.parseInt(request.getParameter("placeId"));
-
+		
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
 

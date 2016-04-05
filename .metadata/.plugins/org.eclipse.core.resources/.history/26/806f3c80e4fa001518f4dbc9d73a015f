@@ -1,0 +1,213 @@
+@CHARSET "UTF-8";
+
+div#detail-Wrapper {
+	width: 100%;
+	height: 700px;
+	float: left;
+
+}
+
+div#detail-LeftWrapper {
+	width: 50%;
+	height: 100%;
+	float: left;
+	border: 3px Groove #5b5b5b;	
+}
+
+div#photo-Top {
+	width: 100%;
+	height: 50%;
+	float: left;
+}
+
+div#photo-Top img {
+	width: 95%;
+	height: 92%;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+}
+
+div#photo-Bottom {
+	width: 100%;
+	height: 50%;
+	float: left;
+	overFlow-y: auto;	
+}
+
+div.photos {
+	width: 25%;
+	height: 24%;
+	float: left;
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+div.photos img {
+	width: 100%;
+	height: 100%;
+}
+
+div#detail-RightWrapper {
+	width: 49%;
+	height: 100%;
+	float: left;
+	margin-left: 1%;
+	border: 3px Groove #5b5b5b;		
+}
+
+div#place-LikeCount {
+	float: left;
+	width: 25%;
+	text-align: right;
+}
+
+span.glyphicon-heart {
+	color: red;
+	width: 8px;
+	height: 10px;
+}
+
+span#placeLikeCount {
+	font-size: 23px;
+	color: red;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+div#info-Top {
+	width: 100%;
+	height: 5%;
+	float: left;
+	margin-top: 5px;
+}
+
+div#info-Top div#place-Title {
+	width: 80%;
+	float: left;
+	font-size: 18px;
+}
+
+div#info-Top div#place-LikeCount {
+	width: 20%;
+	float: left;
+	color: red;
+	font-size: 18px;
+}
+
+div#info-Middle {
+	width: 100%;
+	height: 40%;
+	float: left;
+}
+
+div#place-Description textarea {
+	width: 100%;
+	height: 260px;
+	color: black;
+}
+
+div#info-Vote {
+	width: 100%;
+	height: 30%;
+	float: left;
+}
+
+div#vote-Left {
+	width: 50%;
+	height: 15%;
+	float: left;
+	font-size: 18px;
+	text-align: left;
+}
+
+div#vote-Right {
+	width: 50%;
+	height: 15%;
+	float: right;
+	font-size: 15px;
+	text-align: right;
+}
+
+div#placeVote {
+	width: 100%;
+	height: 85%;
+	float: left;
+	overFlow-y: auto;
+}
+
+div#placeVote table {
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+}
+
+div#placeVote input {
+	width: 100%;
+}
+
+div#info-Bottom {
+	width: 100%;
+	height: 30%;
+	float: left;
+}
+
+div#place-Reply {
+	width: 100%;
+	float: left;
+}
+
+div#place-Reply table {
+	width: 60%;
+}
+
+div#placeReplyWrapper {
+	float: left;
+	width: 100%;
+}
+
+td#placeReply_content textarea {
+	width: 230px;
+	height: 30px;
+	wrap: off;
+	margin-right: 10px;
+	maxlength: 20;
+	color: black;
+}
+
+td#placeReply_btn button {
+	width: 100px;
+	height: 28px;
+	margin-bottom: 5px;
+}
+
+div#replybyPlace {
+	width: 100%;
+	height: 80px;
+	overFlow-y: auto;
+}
+
+div#replybyPlace table {
+	width: 100%;
+}
+
+td#placeReplyWriterName {
+	text-align: left;
+	width: 18%;
+	word-break: break-all;	
+}
+
+td#placeReplyWrittenReply {
+	text-align: left;
+	word-break: break-all;
+}
+
+td#deletePlaceReply {
+	width: 3%;
+}
+
+
+

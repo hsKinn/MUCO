@@ -40,6 +40,7 @@
 				$("#searchBtn").click();
 			}
 		});
+		
 	});
 </script>
 <c:set var="loginEmail" value="${ sessionScope._MEMBER_.email }" />
@@ -68,7 +69,7 @@
 									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
-									${ daily.placeName }
+									<a href="/detailPlace?placeId=${daily.placeId}">${ daily.placeName }</a>
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
@@ -99,7 +100,7 @@
 									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
-									${ weekly.placeName }
+									<a href="/detailPlace?placeId=${weekly.placeId}">${ weekly.placeName }</a>
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
@@ -130,7 +131,7 @@
 									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
-									${ monthly.placeName }
+									<a href="/detailPlace?placeId=${monthly.placeId}">${ monthly.placeName }</a>
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
@@ -162,16 +163,16 @@
 						</button>
 					</div>
 					<div id="top_sort">
-								<div class="dropdown">
-						 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
-						  				<span class="caret"></span>
-						  			</button>
-						 			<ul class="dropdown-menu">
-									    <li><a href="/recommendPlace?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-									    <li><a href="/recommendPlace?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-									    <li><a href="/recommendPlace?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
-						  			</ul>
-						  		</div>
+						<div class="dropdown">
+				 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+				  				<span class="caret"></span>
+				  			</button>
+				 			<ul class="dropdown-menu">
+							    <li><a href="/recommendPlace?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+							    <li><a href="/recommendPlace?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+							    <li><a href="/recommendPlace?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+				  			</ul>
+				  		</div>
 		  			</div>
 					<div id="write_part">
 						<a href="/placeInfoControl" id="placeInfoControl">
@@ -185,216 +186,48 @@
 					</div>
 				</form>
 			</div>
-				
-				<div id="inner_wrapper2">
-					<div id="new_wrapper">
-						<div id="new_top">
-							<div id="top_name">New Place</div>
-						</div>
-		
-						<div id="new_content">
-							<c:forEach items="${ placeList.placeList }" var="place">
-								<div class="new_contents">
-									<div class="content_top">
-										<img src="${ place.imageLocation }" />
-									</div>					
-									<div class="content_middle">
-										<span class="header" data-toggle="modal" data-target="#${ place.placeId }">
-											${ place.placeName }
-										</span>
+			
+			<div id="inner_wrapper2">
+				<div id="new_wrapper">
+					<div id="new_top">
+						<div id="top_name">New Place</div>
+					</div>
+	
+					<div id="new_content">
+						<c:forEach items="${ placeList.placeList }" var="place">
+							<div class="new_contents">
+								<div class="content_top">
+									<img src="${ place.imageLocation }" />
+								</div>					
+								<div class="content_middle">
+									<span class="header" data-toggle="modal" data-target="#myModal" data-placeId="${ place.placeId }">
+										<a href="/detailPlace?placeId=${place.placeId}">${ place.placeName }</a>
+									</span>
+								</div>
+								<div class="content_bottom">
+									<div class="bottom_top">
+										<!-- 중간 내용 -->
 									</div>
-									<div class="content_bottom">
-										<div class="bottom_top">
-											<!-- 중간 내용 -->
-										</div>
-										<div class="bottom_first">
-											<span class="badge">View: ${ place.viewCount }</span>
-										</div>
-										<div class="bottom_second">
-											<span class="glyphicon glyphicon-heart"></span>
-											<span id="likeCount">${ place.likeCount }</span>
-										</div>
+									<div class="bottom_first">
+										<span class="badge">View: ${ place.viewCount }</span>
+									</div>
+									<div class="bottom_second">
+										<span class="glyphicon glyphicon-heart"></span>
+										<span id="likeCount">${ place.likeCount }</span>
 									</div>
 								</div>
-									
-								<!-- Modal -->
-								<div class="modal fade" id="${ place.placeId }" role="dialog">
-									<div class="modal-dialog">
-									
-										<!-- Modal content-->
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">
-													${ place.placeName }
-													<span class="badge">View: ${ place.viewCount }</span>
-												</h4>
-											</div>
-											
-											<!-- Modal Body -->
-											<div class="modal-body">
-												<table class="table table-hover table-bordered table-condensed">
-													<thead>
-														<tr>
-															<td width="130px">여행지 명</td>
-															<td>주소</td>
-															<td width="80px">추천수</td>
-														</tr>
-													</thead>
-													<tbody>
-															<tr>
-																<td>${ places.placeName }</td>
-																<th>${ places.address }</th>
-																<td>${ places.viewCount }</td>
-															</tr>
-												</table>
-											</div>
-											
-											<!-- Modal Footer -->
-											<div class="modal-footer">
-											
-												<!-- Modal Like -->
-												<div class="modal-like">
-													<c:choose>
-														<c:when test="${ place.isExistPlaceLike() }">
-															<span class="${place.placeId}placeLike">
-																Like ♥
-															</span>
-														</c:when>
-														<c:otherwise>
-															<span class="${place.placeId}placeLike" >
-																Not Like ♡
-															</span>
-														</c:otherwise>
-													</c:choose>
-													<button type="button" class="btn btn-default"
-														data-dismiss="modal">Close</button>
-												</div>
-												
-												<!-- place Reply -->
-												<div class="place-reply">
-													<div class="formWrapper">
-														<form class="${place.placeId}writeReplyForm">
-															<table class="reply_table">
-																<tr>
-																	<td class="reply_content">
-																		<textarea class="${place.placeId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
-																	</td>
-																	<td class="reply_btn">
-																		<button type="button" class="btn btn-info"
-																			id="${place.placeId}writeReplyBtn">
-																			<span class="glyphicon glyphicon-pencil"></span>댓글 등록
-																		</button>
-																	</td>
-																</tr>
-															</table>
-																<input type="hidden" class="placeId" name="placeId" value="${ place.placeId }" /> 
-																<input type="hidden" class="depth" name="depth" value="0" /> 
-																<input type="hidden" class="parentReplyId" name="parentReplyId" value="0" /> 
-																<input type="hidden" class="groupId" name="groupId" value="0" /> <input type="hidden"
-																class="orderNo" name="orderNo" value="0" /> 
-																<input type="hidden" class="placeReplyId" name="placeReplyId" value="0" />
-														</form>
-													</div>
-			
-													<div class="replybyplace">
-														<c:forEach items="${ place.placeReplyList }" var="reply">
-															<div>
-																<table>
-																	<tr>
-																		<td class="replybyplaceWriterName">${ reply.name }</td>
-																		<td class="replybyplaceWrittenReply">${ reply.placeReplyDescription }</td>
-																	<c:if test="${ reply.email eq loginEmail }">
-																		<td class="deleteReplybyplace">
-																	        <a href="/deletePlaceReply?placeReplyId=${ reply.placeReplyId }">
-																	          <span class="glyphicon glyphicon-remove"></span>
-																	        </a>
-																		</td>
-																	</c:if>
-																	</tr>
-																</table>
-																<div class="hide formAppender"></div>
-															</div>
-														</c:forEach>
-													</div>
-			
-													</div>
-												</div>
-											</div>
-										</div>
-								</div>
-								
-							
-								<script type="text/javascript">
-									$("#${place.placeId}writeReplyBtn").click(function() {
-								
-										var description = $(".${place.placeId}description").val();
-										description = $.trim(description);
-										if (description == "") {
-											alert("댓글을 입력해주세요");
-											$(".${place.placeId}description").focus();
-											return;
-										}
-								
-										var form = $(".${place.placeId}writeReplyForm");
-								
-										form.attr("method", "POST");
-										form.attr("action", "<c:url value="/doWritePlaceReply"/>");
-										form.submit();
-									});
-								
-									$(".${place.placeId}placeLike").click(function() {
-								
-										$.post(
-												"/placeLike"
-												, { "placeId" : "${place.placeId}" }
-												, function(data) {
-								
-													var jsonData3 = {};
-										
-													try {
-														jsonData3 = JSON.parse(data);
-													} catch (e) {
-														jsonData3.result = false;
-													}
-										
-													if (jsonData3.result) {
-														// 하트를 넣음
-														var text = $(".${place.placeId}placeLike").text();
-														if (jsonData3.isplaceLike) {
-															$(".${place.placeId}placeLike").text("Like ♥");
-														} else {
-															$(".${place.placeId}placeLike").text("Not Like ♡");
-														}
-													} else {
-														alert("세션 만료");
-														location.href = "/";
-												}
-										});
-									});
-								
-									$(".header").click(function() {
-										$.post(
-												"/viewCountRecommendPlace"
-												, { "placeId" : "${place.placeId}" }
-												, function() {
-												}
-										);
-									});
-								</script>
-		
-						</c:forEach>		
-						
-						<c:if test="${ placeList.paging.totalArticleCount == 0 }">
-						<div class="notFoundPack">
-							<h3><span class="blue">${placeSearch.searchKeyword}</span>로 검색된 여행지가 존재하지 않습니다<br/><span class="red">초기화</span> 후 재 검색해주세요</h3>
-						</div>
-						</c:if>	
-		
-						</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
+		</div>
+			
+		<c:if test="${ placeList.paging.totalArticleCount == 0 }">
+			<div class="notFoundPack">
+				<h3><span class="blue">${placeSearch.searchKeyword}</span>로 검색된 여행지가 존재하지 않습니다<br/><span class="red">초기화</span> 후 재 검색해주세요</h3>
+			</div>
+		</c:if>	
 	</div>
 </section>
 

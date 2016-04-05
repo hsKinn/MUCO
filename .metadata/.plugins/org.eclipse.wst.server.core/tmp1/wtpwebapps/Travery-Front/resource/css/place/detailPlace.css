@@ -114,10 +114,18 @@ div#info-Vote {
 	float: left;
 }
 
-div#vote-Top {
-	width: 100%;
+div#vote-Left {
+	width: 50%;
 	height: 15%;
 	float: left;
+	font-size: 18px;
+	text-align: left;
+}
+
+div#vote-Right {
+	width: 50%;
+	height: 15%;
+	float: right;
 	font-size: 18px;
 	text-align: right;
 }

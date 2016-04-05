@@ -213,9 +213,11 @@ public class PlaceBiz {
 	 * @param placeId
 	 * @return
 	 */
-	public PlaceVO getDetailPlaceInfo(int placeId) {
+	public PlaceVO getDetailPlaceInfo(int placeId, MemberVO member) {
 		
-		return placeDAO.getDetailPlaceInfo( placeId );
+		viewCountRecommendPlace(placeId);
+		
+		return placeDAO.getDetailPlaceInfo( placeId, member );
 		
 	} // getDetailPlaceInfo END
 	

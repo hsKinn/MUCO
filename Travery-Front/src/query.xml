@@ -1110,7 +1110,7 @@
 					, COUNTRY C
 			WHERE	P.PLACE_ID = ?
 			AND		P.EMAIL = M.EMAIL
-			AND		P.COUNTRY_ID = C.COUNTRY_ID
+			AND		P.COUNTRY_ID = C.COUNTRY_ID(+)
 		</getDetailPlaceInfo>
 			
 	</place>

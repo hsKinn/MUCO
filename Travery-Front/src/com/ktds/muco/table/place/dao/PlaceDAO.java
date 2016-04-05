@@ -1019,7 +1019,91 @@ public class PlaceDAO {
 		return placeList;
 		
 	} // getPlaceListByPlaceNameOrderByDate END
+	
 
+	/**
+	 * Get Detail Place Info BY Place ID
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param placeId
+	 * @return
+	 */
+	public PlaceVO getDetailPlaceInfo( int placeId, MemberVO member)  {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		PlaceVO place = new PlaceVO();
+		
+		PlaceLikeVO placeLikeVO = new PlaceLikeVO();
+		placeLikeVO.setWriter(member);
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/place/getDetailPlaceInfo/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, placeId);
+			
+			rs = stmt.executeQuery();
+			
+			if ( rs.next() ) {
+
+				place = new PlaceVO();
+
+				place.setPlaceId(rs.getInt("PLACE_ID"));
+				place.setPlaceName(rs.getString("PLACE_NAME"));
+				place.setLatitude(rs.getInt("LATITUDE"));
+				place.setLongitude(rs.getInt("LONGITUDE"));
+				place.setAddress(rs.getString("ADDRESS"));
+				place.setViewCount(rs.getInt("VIEW_COUNT"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				
+				String placeDescription = place.getPlaceDescription();
+				placeDescription = placeDescription.replaceAll("<br/>", "\n");
+				place.setPlaceDescription(placeDescription);
+				
+				place.setCountryName(rs.getString("COUNTRY_NAME"));
+				
+				// 기준값 받기
+				place.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));
+				place.setAvgHighPriceLowPriceScore(rs.getDouble("AVG_HIGH_PRICE_SCORE"));
+				place.setAvgActiveCalmScore(rs.getDouble("AVG_ACTIVE_SCORE"));
+				
+				// 작성자
+				MemberVO writer = new MemberVO();
+				writer.setEmail(rs.getString("EMAIL"));
+				writer.setName(rs.getString("NAME"));
+				place.setWriter(writer);
+				
+				// 보는 유저 추천 여부
+				placeLikeVO.setPlaceId(place.getPlaceId());
+				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
+				
+				// Place Image
+				place.setPlaceImageList(imageDAO.getImageLocationList(placeId));
+				
+				// Place Reply
+				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeId));
+				
+			}
+			
+			return place;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		
+	} // getDetailPlaceInfo END
+	
+	
 	/**
 	 * 
 	 * Load Oracle Driver
@@ -1063,76 +1147,6 @@ public class PlaceDAO {
 		}
 	}
 
-	
-	/**
-	 * Get Detail Place Info BY Place ID
-	 * 
-	 * @author 김현섭
-	 * 
-	 * @param placeId
-	 * @return
-	 */
-	public PlaceVO getDetailPlaceInfo(int placeId) {
-
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		
-		PlaceVO place = new PlaceVO();
-		
-		try {
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-			
-			String query = XML.getNodeString("//query/place/getDetailPlaceInfo/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, placeId);
-			
-			rs = stmt.executeQuery();
-			
-			if ( rs.next() ) {
-
-				place = new PlaceVO();
-
-				place.setPlaceId(rs.getInt("PLACE_ID"));
-				place.setPlaceName(rs.getString("PLACE_NAME"));
-				place.setLatitude(rs.getInt("LATITUDE"));
-				place.setLongitude(rs.getInt("LONGITUDE"));
-				place.setAddress(rs.getString("ADDRESS"));
-				place.setViewCount(rs.getInt("VIEW_COUNT"));
-				place.setLikeCount(rs.getInt("LIKE_COUNT"));
-				place.setPlaceDescription(rs.getString("DESCRIPTION"));
-				
-				// 기준값 받기
-				place.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));
-				place.setAvgHighPriceLowPriceScore(rs.getDouble("AVG_HIGH_PRICE_SCORE"));
-				place.setAvgActiveCalmScore(rs.getDouble("AVG_ACTIVE_SCORE"));
-				
-				MemberVO writer = new MemberVO();
-				writer.setEmail(rs.getString("EMAIL"));
-				writer.setName(rs.getString("NAME"));
-				place.setWriter(writer);
-				
-				place.setCountryName(rs.getString("COUNTRY_NAME"));
-				
-				// Place Image
-				place.setPlaceImageList(imageDAO.getImageLocationList(placeId));
-				
-				// Place Reply
-				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeId));
-				
-			}
-			
-			return place;
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-		
-	} // getDetailPlaceInfo END
 	
 	
 

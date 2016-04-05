@@ -18,6 +18,7 @@
 <!-- Share Package -->
 <script type="text/javascript">
 	$(document).ready(function() {
+	
 		$("#writePlaceReplyBtn").click( function() {
 			
 			var description = $("#description").val();
@@ -34,6 +35,41 @@
 			form.attr("action", "<c:url value="/doWritePlaceReply"/>");
 			form.submit();
 		});
+		
+		$(".placeLike").click( function() {
+			
+			$.post(
+					"/placeLike"
+					, { "placeId" : "${place.placeId}" } 
+					, function(data) {
+						
+						var jsonData4 = {};
+						
+						try {
+							jsonData4 = JSON.parse(data);
+						}
+						catch(e) {
+							jsonData4.result = false;							
+						}
+						
+						if ( jsonData4.result) {
+							// 하트를 넣음
+							var text = $(".placeLike").text();
+							if ( jsonData4.isplaceLike ) {
+								$(".placeLike").text("Like ♥");							
+							}
+							else {
+								$(".placeLike").text("Not Like ♡");	
+							}
+						}
+						else {
+							alert("세션 만료");
+							location.href = "/";
+						}
+					}
+			  );
+		});
+		
 	});
 </script>
 
@@ -83,13 +119,28 @@
 				
 				<div id="info-Middle">
 					<div id="place-Description">
-						<textarea>${ place.placeDescription }</textarea>
+						<textarea readonly="readonly">${ place.placeDescription }</textarea>
 					</div>
 				</div>
 				
 				<div id="info-Vote">
-					<div id="vote-Top">
-						투표하기
+					<div id="vote-Left">
+						<c:choose>
+							<c:when test="${ place.isExistPlaceLike() }">
+								<span class="placeLike">
+									Like ♥
+								</span>
+							</c:when>
+							<c:otherwise>
+								<span class="placeLike" >
+									Not Like ♡
+								</span>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				
+					<div id="vote-Right">
+						Do Vote
 					</div>
 					<div id="placeVote">
 						<table>
@@ -125,11 +176,11 @@
 								<table id="placeReply_table">
 									<tr>
 										<td id="placeReply_content">
-											<textarea id="description" name="description" placeholder="댓글을 달아보세요"></textarea>
+											<textarea id="description" name="description" placeholder="Write Reply"></textarea>
 										</td>
 										<td id="placeReply_btn">
 											<button type="button" class="btn btn-info" id="writePlaceReplyBtn">
-									     		<span class="glyphicon glyphicon-pencil"></span>댓글 등록
+									     		<span class="glyphicon glyphicon-pencil"></span>submit
 									   		</button>  													
 										</td>
 									</tr>

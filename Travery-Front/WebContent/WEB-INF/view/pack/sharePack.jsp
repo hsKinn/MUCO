@@ -146,7 +146,7 @@
 									    <tbody>
 									    <c:forEach items="${ pack.placeList }" var="places">
 									      <tr>
-									        <td>${ places.placeName }</td>
+									        <td><a href="/detailPlace?placeId=${places.placeId}">${ places.placeName }</a></td>
 									        <th>${ places.address }</th>
 									        <td>${ places.likeCount }</td>
 									      </tr>
