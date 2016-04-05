@@ -38,6 +38,7 @@ public class PlaceVO extends CountryVO {
 	private double avgBrightDarkScore;
 	private double avgHighPriceLowPriceScore;
 	private double avgActiveCalmScore;
+	private double avgArtificialNaturalScore;
 
 	// 작성자
 	private MemberVO writer;
@@ -198,5 +199,13 @@ public class PlaceVO extends CountryVO {
 
 	public void setAvgActiveCalmScore(double avgActiveCalmScore) {
 		this.avgActiveCalmScore = avgActiveCalmScore;
+	}
+
+	public double getAvgArtificialNaturalScore() {
+		return avgArtificialNaturalScore;
+	}
+
+	public void setAvgArtificialNaturalScore(double avgArtificialNaturalScore) {
+		this.avgArtificialNaturalScore = avgArtificialNaturalScore;
 	}
 }

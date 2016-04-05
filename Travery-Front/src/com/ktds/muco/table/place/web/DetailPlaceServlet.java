@@ -7,7 +7,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
@@ -18,6 +25,7 @@ public class DetailPlaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private PlaceBiz placeBiz;
+	private HistoryBiz historyBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,6 +34,7 @@ public class DetailPlaceServlet extends HttpServlet {
         super();
         
         placeBiz = new PlaceBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -49,6 +58,18 @@ public class DetailPlaceServlet extends HttpServlet {
 		
 		request.setAttribute( "place", seletedPlace );
 		request.setAttribute( "writer", seletedPlace.getWriter() );
+		
+		// History
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.PLACE_DETAIL);
+		history.setHistoryDescription(BuildDescription.get(Description.PLACE_DETAIL, member.getEmail(), placeId+""));
+		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/detailPlace.jsp");
 		rd.forward(request, response);

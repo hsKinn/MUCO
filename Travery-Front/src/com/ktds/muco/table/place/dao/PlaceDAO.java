@@ -672,6 +672,7 @@ public class PlaceDAO {
 				placeVO.setAvgActiveCalmScore(rs.getDouble("AVG_ACTIVE_SCORE"));
 				placeVO.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));
 				placeVO.setAvgHighPriceLowPriceScore(rs.getDouble("AVG_HIGH_PRICE_SCORE"));
+				placeVO.setAvgArtificialNaturalScore(rs.getDouble("AVG_ARTIFICIAL_NATURAL_SCORE"));
 
 				placeList.add(placeVO);
 
@@ -727,8 +728,6 @@ public class PlaceDAO {
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
 				placeVO.setCountryName(rs.getString("COUNTRY_NAME"));
-
-
 			}
 
 			return placeVO;
@@ -790,6 +789,7 @@ public class PlaceDAO {
 				placeVO.setAvgActiveCalmScore(rs.getDouble("AVG_ACTIVE_SCORE"));
 				placeVO.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));
 				placeVO.setAvgHighPriceLowPriceScore(rs.getDouble("AVG_HIGH_PRICE_SCORE"));
+				placeVO.setAvgArtificialNaturalScore(rs.getDouble("AVG_ARTIFICIAL_NATURAL_SCORE"));
 
 				placeList.add(placeVO);
 
@@ -1032,6 +1032,7 @@ public class PlaceDAO {
 	 * Get Detail Place Info BY Place ID
 	 * 
 	 * @author 김현섭
+	 * @author 김광민 AVG_ARTIFICIAL_NATURAL_SCORE 추가함
 	 * 
 	 * @param placeId
 	 * @return
@@ -1072,6 +1073,7 @@ public class PlaceDAO {
 				place.setAvgBrightDarkScore(rs.getDouble("AVG_BRIGHT_SCORE"));
 				place.setAvgHighPriceLowPriceScore(rs.getDouble("AVG_HIGH_PRICE_SCORE"));
 				place.setAvgActiveCalmScore(rs.getDouble("AVG_ACTIVE_SCORE"));
+				place.setAvgArtificialNaturalScore(rs.getDouble("AVG_ARTIFICIAL_NATURAL_SCORE"));
 
 				MemberVO writer = new MemberVO();
 				writer.setEmail(rs.getString("EMAIL"));

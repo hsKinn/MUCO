@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.image.biz.ImageBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
@@ -26,6 +31,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PlaceBiz placeBiz;
 	private ImageBiz imageBiz;
+	private HistoryBiz historyBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,6 +40,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		super();
 		placeBiz = new PlaceBiz();
 		imageBiz = new ImageBiz();
+		historyBiz = new HistoryBiz();
 	}
 
 	/**
@@ -73,6 +80,15 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		// 세션생성
 		session.setAttribute("_PLACE_", placeVO);
 
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.ADD_NEW_PLACE);
+		history.setHistoryDescription(BuildDescription.get(Description.ADD_NEW_PLACE, member.getEmail(), placeVO.getPlaceId() + ""));
+		historyBiz.addHistory(history);
+		
 		if (image.getFileSize() > 0) {
 			imageBiz.insertImageToss(multipartRequest, placeVO);
 		}

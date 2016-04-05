@@ -218,6 +218,16 @@
 			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 4
+			                                        )
+			            ) AVG_ARTIFICIAL_NATURAL_SCORE
 			FROM    PACK_PLACE PP
 			        , PLACE P
 			WHERE   PP.PLACE_ID = P.PLACE_ID
@@ -666,6 +676,16 @@
 			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE
+					,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P1.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 4
+			                                        )
+			            ) AVG_ARTIFICIAL_NATURAL_SCORE
 			FROM	PLACE P1
 			WHERE	COUNTRY_ID = ?
 		</getPlaceListByCountryId>
@@ -1129,6 +1149,16 @@
 			                                            WHERE   STANDARD_ID = 2
 			                                        )
 			            ) AVG_HIGH_PRICE_SCORE					
+			        ,   (
+			                SELECT  AVG(E.SCORE)
+			                FROM    EVALUATION E
+			                WHERE   P.PLACE_ID = E.PLACE_ID
+			                AND     STANDARD_ID =   (
+			                                            SELECT  STANDARD_ID
+			                                            FROM    STANDARD
+			                                            WHERE   STANDARD_ID = 2
+			                                        )
+			            ) AVG_ARTIFICIAL_NATURAL_SCORE		
 			FROM	PLACE P
 					, MEMBER M
 					, COUNTRY C

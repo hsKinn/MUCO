@@ -7,19 +7,28 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.member.vo.MemberVO;
 
 /**
  * Servlet implementation class ContactUsServlet
  */
 public class ContactUsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private HistoryBiz historyBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ContactUsServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -33,6 +42,19 @@ public class ContactUsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// History
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.CONTACT_US);
+		history.setHistoryDescription(BuildDescription.get(Description.CONTACT_US, member.getEmail()));
+		historyBiz.addHistory(history);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/footer/contactUs.jsp");
 		rd.forward(request, response);
 	}

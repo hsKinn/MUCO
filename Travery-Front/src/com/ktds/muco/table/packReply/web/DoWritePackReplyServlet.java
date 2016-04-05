@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.packReply.biz.PackReplyBiz;
 import com.ktds.muco.table.packReply.vo.PackReplyVO;
@@ -19,6 +24,7 @@ import com.ktds.muco.util.root.Root;
 public class DoWritePackReplyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PackReplyBiz packReplyBiz;
+	private HistoryBiz historyBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,6 +33,7 @@ public class DoWritePackReplyServlet extends HttpServlet {
         super();
         
         packReplyBiz = new PackReplyBiz();
+        historyBiz = new HistoryBiz();
     }
 
 	/**
@@ -62,10 +69,27 @@ public class DoWritePackReplyServlet extends HttpServlet {
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		
 		if ( member != null ) {
+			
+			
+			
 			packReply.setEmail(member.getEmail());
-		}		
+		}
 		
 		packReplyBiz.addNewReplyDepthOne(packReply);
+		
+		
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.PACK_REPLY_ADD);
+		if(packId > 0) {
+			history.setHistoryDescription(BuildDescription.get(Description.PACK_REPLY_ADD, member.getEmail()));
+		} else {
+			history.setHistoryDescription(BuildDescription.get(Description.PACK_REPLY_ADD_FAIL, member.getEmail()));
+		}
+		historyBiz.addHistory(history);
 		
 		response.sendRedirect(Root.get(this) + "/sharePack");
 	}

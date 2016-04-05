@@ -7,7 +7,15 @@ package com.ktds.muco.table.history.vo;
  * CT 나라
  * ST 기준
  * PL 여행지
+ * PM 여행지 맵 
+ * PS 여행지 세션
+ * PH 여행지 조회수
+ * PI 여행지 추천수
+ * PR 여행지 댓글
  * PK 패키지
+ * KH 패키지 조회수
+ * KL 패키지 추천수
+ * KR 패키지 댓글
  * 
  * JI 회원가입
  * LI 로그인
@@ -56,12 +64,28 @@ public interface ActionCode {
 	public static final String SHOW_PACK = "PK_DT";
 	public static final String ADD_HIT_PACK = "KH_AD";
 	public static final String ADD_LIKE_PACK = "KL_AD";
+	public static final String PACK_REPLY_ADD = "KR_AD";
+	public static final String PACK_REPLY_DEL = "KR_DL";
 	
 	// Recommend place
 	public static final String RECOMMEND_PLACE = "MN_RP";
+	public static final String PLACE_DETAIL = "PL_DT";
+	public static final String ADD_PLACE_MAP = "PM_AD";
+	public static final String MODIFY_MY_PLACE = "PL_MD";
+	public static final String ADD_NEW_PLACE = "PL_AD";
+	public static final String REMOVE_PLACE_SESSION = "PS_DL";
+	public static final String ADD_PLACE_HIT = "PH_AD";
+	public static final String ADD_PLACE_LIKE = "PI_AD";
+	public static final String ADD_PLACE_REPLY = "PR_AD";
+	public static final String DEL_PLACE_REPLY = "PR_DL";
 	
 	// Trip reservation
-	public static final String PERSONAL_INFO = "MB_DT";
+	public static final String TRIP_RESERVATION = "MN_TR";
 	
 	// Personal info
+	public static final String PERSONAL_INFO = "MN_PI";
+	
+	// ContactUs, Q&A
+	public static final String CONTACT_US = "MN_CU";
+	public static final String QNA = "MN_QA";
 }
