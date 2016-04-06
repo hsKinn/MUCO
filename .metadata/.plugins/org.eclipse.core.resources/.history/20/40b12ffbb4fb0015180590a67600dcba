@@ -1,7 +1,10 @@
 package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> origin/KGM18
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -33,6 +36,10 @@ public class DetailPlaceServlet extends HttpServlet {
 	private PlaceBiz placeBiz;
 	private EvaluationBiz evaluationBiz;
 	private HistoryBiz historyBiz;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> origin/KGM18
 	private PackBiz packBiz;
        
     /**
@@ -44,6 +51,10 @@ public class DetailPlaceServlet extends HttpServlet {
         placeBiz = new PlaceBiz();
         evaluationBiz = new EvaluationBiz();
         historyBiz = new HistoryBiz();
+<<<<<<< HEAD
+=======
+        
+>>>>>>> origin/KGM18
         packBiz = new PackBiz();
     }
 

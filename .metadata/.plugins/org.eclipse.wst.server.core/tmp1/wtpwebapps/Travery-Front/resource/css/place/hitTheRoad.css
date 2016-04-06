@@ -216,7 +216,6 @@ div.placeCards img {
   padding: 10px;
 }
 
-
 /* 오른쪽 선택된 나라 디브 색깔 */
 
 div.selectedCountry, div.loginUserPack {
@@ -226,31 +225,31 @@ div.selectedCountry, div.loginUserPack {
 
 /* #Italy */
 div#Italy {
-   background-color: #fa3851;
+   background-color: #ffffbb;
    color: #333333;
 }
 
 /* #France */
 div#France {
-   background-color: #ffff4d;
+   background-color: #ff6666;
    color: #333333;
 }
 
 /* #United-Kingdom */
 div#United-Kingdom {
-   background-color: #9797ff;
+   background-color: #93c9ff;
    color: #333333;
 }
 
 /* #Germany */
 div#Germany {
-   background-color: #ff80c0;
+   background-color: #ffb3d9;
    color: #333333;
 }
 
 /* #Spain */
 div#Spain {
-   background-color: #80ff80;
+   background-color: #b7fea5;
    color: #333333;
 }
 /* #Korea */
@@ -263,30 +262,30 @@ div#Korea {
 
 /* Italy */
 a.countryIdIs163 {
-   color: #fa3851;
+   color: #ffffbb;
 }
 
 /* France */
 a.countryIdIs85 {
-   color: #ffff4d;
+   color: #ff6666;
 }
 
 /* United-Kingdom */
 a.countryIdIs31 {
-   color: #9797ff;
+   color: #93c9ff;
 }
 
 /* Germany */
 a.countryIdIs133 {
-   color: #ff80c0;
+   color: #ffb3d9;
 }
 
 /* Spain */
 a.countryIdIs68 {
-   color: #80ff80;
+   color: #b7fea5;
 }
 
 /* Korea*/
-a.countryIdIs68 {
+a.countryIdIs120 {
    color: #ffae88;
 }

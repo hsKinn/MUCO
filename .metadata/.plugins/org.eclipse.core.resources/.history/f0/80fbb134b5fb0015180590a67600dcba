@@ -216,6 +216,7 @@ div.placeCards img {
   padding: 10px;
 }
 
+
 /* 오른쪽 선택된 나라 디브 색깔 */
 
 div.selectedCountry, div.loginUserPack {
