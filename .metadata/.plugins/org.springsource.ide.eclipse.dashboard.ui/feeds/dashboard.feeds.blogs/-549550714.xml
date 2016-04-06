@@ -5,7 +5,190 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-31T13:30:55Z</updated>
+  <updated>2016-04-05T14:40:41Z</updated>
+  <entry>
+    <title>This Week in Spring  - April 5th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/05/this-week-in-spring-april-5th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-04-05:2453</id>
+    <updated>2016-04-05T14:40:41Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! As usual, we&amp;rsquo;ve got a &lt;em&gt;lot&lt;/em&gt; to cover so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Security lead &lt;a href="https://spring.io/blog/2016/03/31/spring-ldap-2-1-0-rc1-released"&gt;Rob Winch has just announced Spring LDAP 2.1.0.RC1 has been released!&lt;/a&gt; Get the bits and try it out.&lt;/li&gt;
+  &lt;li&gt;Oracle&amp;rsquo;s amazing &lt;a href="http://twitter.com/GeertjanW"&gt;Geertjan Wielenga&lt;/a&gt; put together an &lt;em&gt;awesome&lt;/em&gt;, 100% live demo &lt;a href="https://spring.io/blog/2016/03/30/webinar-replay-up-and-running-with-spring-boot-in-netbeans-ide"&gt;looking at how to use Spring Boot with NetBeans&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I love Spring Cloud Data Flow! Whether you want a way to describe and compose complex processing streams from simple actor-like components, want to orchestrate stream processing solutions, manage tasks like data at-scale data ingest or otherwise, Spring Cloud Data Flow is probably what you&amp;rsquo;re looking for. Check out this quick look &lt;a href="https://spring.io/blog/2016/04/05/1-stream-2-applications-and-3-dependencies-for-spring-cloud-data-flow"&gt;at standing up a Spring Cloud Data Flow server, shell and a custom module that I put together&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud team member Marcin Grzejszczak, on the cusp of a recent Spring Cloud release, takes a look at what&amp;rsquo;s changed and &lt;a href="http://toomuchcoding.com/blog/2016/03/25/spring-cloud-sleuth-rc1-deployed/"&gt;what&amp;rsquo;s awesome in Spring Cloud Sleuth&lt;/a&gt;, the distributed tracing abstraction in Spring Cloud&lt;/li&gt;
+  &lt;li&gt;Michael Scharhag put together a really cool &lt;a href="http://www.mscharhag.com/spring/spring-retry"&gt;look at Spring Retry, one of my favorite projects&lt;/a&gt;. Spring Retry is &lt;em&gt;very&lt;/em&gt; popular, according to our download numbers!&lt;/li&gt;
+  &lt;li&gt;This post, by the Pivotal Data Science team, looks at how they integrated disparate, &lt;a href="https://blog.pivotal.io/data-science-pivotal/products/scoring-as-a-service-to-operationalize-algorithms-for-real-time"&gt;polyglot services with RabbitMQ and Spring XD, among other things, to operationalize a scoring service&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;our pals at Codecentric are at it again, this time with a great &lt;a href="https://blog.codecentric.de/en/2016/04/event-driven-microservices-spring-cloud-stream/"&gt;surface-look at Spring Cloud Stream&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;nice new entry in an ongoing series, this one &lt;a href="https://dzone.com/articles/the-netflix-stack-using-spring-boot-part-3-feign"&gt;on using Spring Cloud&amp;rsquo;s Netflix Feign support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the &lt;a href="https://github.com/mybatis/spring-boot-starter"&gt;MyBatis Spring Boot starter continues to improve&lt;/a&gt; by leaps and bounds. I am super happy to see this (and to have contributed some to it) because MyBatis is used a &lt;em&gt;lot&lt;/em&gt; in China at large (China scale!) services who otherwise abhor ORM technologies like Hibernate.&lt;/li&gt;
+  &lt;li&gt;There are lot&amp;rsquo;s of exciting new choices in the world of [the Spring Initializr] this week! choose Spring Boot &lt;code&gt;1.3.4 (SNAPSHOT)&lt;/code&gt; and you&amp;rsquo;ll see checkboxes for the &lt;code&gt;Zipkin UI&lt;/code&gt; (combine it with the &lt;code&gt;Zipkin Stream Server&lt;/code&gt; to get an instant span collection and visualization service), &lt;a href="https://twitter.com/davsclaus/status/715924136426610688"&gt;&lt;code&gt;Apache Camel&lt;/code&gt;&lt;/a&gt;, &lt;code&gt;Spring Cloud Data Flow Shell&lt;/code&gt; (a client for the &lt;code&gt;Spring Cloud Data Flow Local Server&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;the &lt;a href="https://github.com/mybatis/spring-boot-starter"&gt;MyBatis Spring Boot starter&lt;/a&gt; continues to get slicker and slicker&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>1 Stream, 2 Applications, and 3 Dependencies for Spring Cloud Data Flow</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/05/1-stream-2-applications-and-3-dependencies-for-spring-cloud-data-flow" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-04-05:2452</id>
+    <updated>2016-04-05T13:56:00Z</updated>
+    <content type="html">&lt;p&gt;I just wanted to register here an experience that made me smile yesterday: making the rapidly improving &lt;a href="http://cloud.spring.io/spring-cloud-dataflow/"&gt;Spring Cloud Data Flow&lt;/a&gt; wiggle from (Spring Boot) start(-ers) to service in a matter of minutes!&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The only pre-requisite is that you have a Redis instance runnning. My Redis instance is running on &lt;code&gt;127.0.0.1&lt;/code&gt; and it required no further configuration for Spring Boot to find and work with it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We&amp;rsquo;ll use the epic &lt;a href="http://start.spring.io"&gt;Spring Initializr&lt;/a&gt; to make short work of generating our applications. Remember those silly Apple commercials, &amp;ldquo;There&amp;rsquo;s an App For That?&amp;rdquo; Nevermind that, &lt;em&gt;there&amp;rsquo;s a &lt;strong&gt;checkbox&lt;/strong&gt; for that!&lt;/em&gt; Let&amp;rsquo;s see if you like the experience as much as I did!&lt;/p&gt;&lt;h2&gt;&lt;a href="#a-local-data-flow-server" class="anchor" name="a-local-data-flow-server"&gt;&lt;/a&gt;A Local Data Flow Server&lt;/h2&gt;
+&lt;p&gt;Go to the &lt;a href="http://start.spring.io/"&gt;Spring Initializr&lt;/a&gt; and select &lt;code&gt;Local Data Flow Server&lt;/code&gt; and name the artifact &lt;code&gt;df-server&lt;/code&gt;. This will be used to standup a local Data Flow service - a REST API and some persistence logic - to orchestrate and store information about streams and tasks. In the old Spring XD world, this was called the Spring XD &lt;em&gt;Admin Server&lt;/em&gt;.&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/joshlong/meh/master/df-123/initializr-df-server.png" /&gt;
+&lt;p&gt;Open the project in your IDE of choice and add &lt;code&gt;@EnableDataFlowServer&lt;/code&gt; to the &lt;code&gt;DfServerApplication&lt;/code&gt; class:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package com.example;&#xD;
+&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.cloud.dataflow.server.EnableDataFlowServer;&#xD;
+&#xD;
+@EnableDataFlowServer&#xD;
+@SpringBootApplication&#xD;
+public class DfServerApplication {&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		SpringApplication.run(DfServerApplication.class, args);&#xD;
+	}&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run &lt;code&gt;mvn spring-boot:run&lt;/code&gt; in the root of the &lt;code&gt;df-server&lt;/code&gt; project and the application will spin up on port &lt;code&gt;9393&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TIP&lt;/strong&gt;: You&amp;rsquo;ll know you&amp;rsquo;re (probably) home-free when you see the welcome ASCII artwork!&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/joshlong/meh/master/df-123/df-ascii.png" /&gt;
+&lt;p&gt;&lt;strong&gt;TIP about the TIP&lt;/strong&gt;: so, that&amp;rsquo;s probably not true. It might fail for all sorts of reasons (like conflicting ports for the service or for the embedded H2 database), but quality ASCII artwork has been shown to be therapeutic in (my) study.. (of.. me).&lt;/p&gt;&lt;h2&gt;&lt;a href="#a-data-flow-shell" class="anchor" name="a-data-flow-shell"&gt;&lt;/a&gt;A Data Flow Shell&lt;/h2&gt;
+&lt;p&gt;Go to the Spring Initializr and select &lt;code&gt;Data Flow Shell&lt;/code&gt; and named the artifact &lt;code&gt;df-shell&lt;/code&gt;. This will be used to standup a Data Flow shell powered by Spring Shell.&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/joshlong/meh/master/df-123/initializr-df-shell.png" /&gt;
+&lt;p&gt;The Data Flow shell runs on any operating system. It&amp;rsquo;s a client for the Data Flow service we&amp;rsquo;ve just stood up. It let&amp;rsquo;s us operate the service using a familiar pipes-and-filters DSL and commands. I love good banner ASCII artwork as much as the next developer, there &lt;em&gt;is&lt;/em&gt; (gulp!) such a thing as too much of a good thing. By default, &lt;em&gt;both&lt;/em&gt; Spring Shell &lt;em&gt;and&lt;/em&gt; Spring Boot will both try to emit an ASCII banner, so we&amp;rsquo;ll Spring Boot to keep out of this (this time!). Open the project in your IDE of choice and add &lt;code&gt;@EnableDataFlowShell&lt;/code&gt; to the &lt;code&gt;DfShellApplication&lt;/code&gt; class and then configure how the &lt;code&gt;SpringApplication&lt;/code&gt; is created to hide the Spring Boot banner:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package com.example;&#xD;
+&#xD;
+import org.springframework.boot.Banner;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.boot.builder.SpringApplicationBuilder;&#xD;
+import org.springframework.cloud.dataflow.shell.EnableDataFlowShell;&#xD;
+&#xD;
+@EnableDataFlowShell&#xD;
+@SpringBootApplication&#xD;
+public class DfShellApplication {&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		new SpringApplicationBuilder(DfShellApplication.class)&#xD;
+				.bannerMode(Banner.Mode.OFF)&#xD;
+				.run(args);&#xD;
+	}&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run &lt;code&gt;mvn spring-boot:run&lt;/code&gt; in the root of the &lt;code&gt;df-shell&lt;/code&gt; project. You should be able to interact with the Data Flow server, running locally, by default. Try it out by issuing the &lt;code&gt;module list&lt;/code&gt; command. You should see a table of all the in-built components that Spring Cloud Data Flow already knows about.&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/joshlong/meh/master/df-123/df-shell-module-list.png" /&gt;&lt;h2&gt;&lt;a href="#a-logging-sink-module" class="anchor" name="a-logging-sink-module"&gt;&lt;/a&gt;A Logging Sink Module&lt;/h2&gt;
+&lt;p&gt;Go to the Spring Initializr and select &lt;code&gt;Stream Redis&lt;/code&gt; and name the artifact &lt;code&gt;logging-sink&lt;/code&gt;. We&amp;rsquo;re going to use Spring Cloud Stream, which builds atop Spring&amp;rsquo;s &lt;code&gt;MessageChannel&lt;/code&gt; abstraction and the component model in Spring Integration to make concise the work of describing and integrating messaging-based microservices, to build a &lt;em&gt;custom&lt;/em&gt; module that logs incoming messages. We&amp;rsquo;ll then deploy and orchestrate this module with Spring Cloud Data Flow.&lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/joshlong/meh/master/df-123/initializr-logging-sink.png" /&gt;
+&lt;p&gt;Spring Cloud Data Flow is a powerful way to describe complex integration, batch and stream processing workloads in terms of small Spring Boot-powered modules. There are several types of &lt;code&gt;module&lt;/code&gt;s. A &lt;code&gt;source&lt;/code&gt; produces data, often on a fixed schedule, that downstream components may consume and process. A &lt;code&gt;processor&lt;/code&gt; takes data in, does something with it, and writes data out. A &lt;code&gt;sink&lt;/code&gt; merely takes data in but does not produce anything to be sent out. These components compose nicely together to describe any kind of potentially ceasless workload (internet-of-things sensor data, 24/7 event processing, online transaction data ingest and integration scenarios, etc.) Ultimately, a source is &lt;em&gt;usually&lt;/em&gt; a Spring Integration inbound adapter. A processor is &lt;em&gt;usually&lt;/em&gt; any kind of Spring Integration component (like a transformer) that takes data in and produces data out. A sink is &lt;em&gt;usually&lt;/em&gt; a Spring Integration outbound adapter.&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;task&lt;/code&gt; describes any workload that will, ultimately, stop. It might be a simple Spring Boot &lt;code&gt;Command Line Runner&lt;/code&gt; or a Spring Batch &lt;code&gt;Job&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Spring Cloud Data Flow doesn&amp;rsquo;t have particular knowledge of Spring Integration, though. It just knows about Spring Cloud Stream and well-known Spring &lt;code&gt;MessageChannels&lt;/code&gt; like &lt;code&gt;input&lt;/code&gt; and &lt;code&gt;output&lt;/code&gt;. It doesn&amp;rsquo;t care what is on the terminuses of those channels. Spring Cloud Data Flow doesn&amp;rsquo;t have particularly knowledge of Spring Batch, either. It just knows about Spring Cloud Task.&lt;/p&gt;
+&lt;p&gt;In the way that the UNIX &lt;code&gt;sh&lt;/code&gt; shell environment lets us compose arbitrary many and arbitrarily sophisticated solutions from singly-focused command-line utilities by passing data to and from &lt;code&gt;stdin&lt;/code&gt; and &lt;code&gt;stdout&lt;/code&gt;, respectively, so too does Spring Cloud Data Flow let us compose arbitrary many and arbitrarily sophisticated solutions from singly-focused messaging components.&lt;/p&gt;
+&lt;p&gt;Spring Cloud Data Flow has lots of &lt;em&gt;batteries included&lt;/em&gt; already. We&amp;rsquo;re going to develop and install a simple module to log things - in our case, the time. It&amp;rsquo;s worth noting that we&amp;rsquo;re going to do this for our own edification, but we don&amp;rsquo;t &lt;em&gt;need&lt;/em&gt; to do this; Spring Cloud Data Flow already provides a &lt;code&gt;log&lt;/code&gt; module! (and a &lt;code&gt;time&lt;/code&gt; module!)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;package com.example;&#xD;
+&#xD;
+import org.springframework.boot.SpringApplication;&#xD;
+import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
+import org.springframework.cloud.stream.annotation.EnableBinding;&#xD;
+import org.springframework.cloud.stream.messaging.Sink;&#xD;
+import org.springframework.integration.annotation.MessageEndpoint;&#xD;
+import org.springframework.integration.annotation.ServiceActivator;&#xD;
+import org.springframework.messaging.handler.annotation.Headers;&#xD;
+import org.springframework.messaging.handler.annotation.Payload;&#xD;
+&#xD;
+import java.util.Map;&#xD;
+&#xD;
+@EnableBinding(Sink.class)&#xD;
+@SpringBootApplication&#xD;
+public class LoggingSinkApplication {&#xD;
+&#xD;
+	@MessageEndpoint&#xD;
+	public static class LoggingMessageEndpoint {&#xD;
+&#xD;
+		@ServiceActivator(inputChannel = Sink.INPUT)&#xD;
+		public void logIncomingMessages(&#xD;
+				@Payload String msg,&#xD;
+				@Headers Map&amp;lt;String, Object&amp;gt; headers) {&#xD;
+&#xD;
+			System.out.println(msg);&#xD;
+			headers.entrySet().forEach(e -&amp;gt;&#xD;
+					System.out.println(e.getKey() + &amp;#39;=&amp;#39; + e.getValue()));&#xD;
+&#xD;
+		}&#xD;
+	}&#xD;
+&#xD;
+	public static void main(String[] args) {&#xD;
+		SpringApplication.run(LoggingSinkApplication.class, args);&#xD;
+	}&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a simple Spring Cloud Stream binding. The &lt;code&gt;Sink.class&lt;/code&gt; is an interface that defines a &lt;code&gt;MessageChannel input()&lt;/code&gt;. Spring Cloud Stream will turn that into a live, named conduit to a message broker (in this case, Redis, though the default for Spring Cloud Data Flow will likely change to RabbitMQ in coming months) that any of our messaging code can work with. The example uses Spring Integration to print incoming message data out on arrival. Let&amp;rsquo;s first register our custom module with Data Flow and then compose a stream that takes incoming messages containing the time from a &lt;code&gt;time&lt;/code&gt; component and then logs the results.&lt;/p&gt;
+&lt;p&gt;First, &lt;code&gt;mvn clean install&lt;/code&gt; the &lt;code&gt;logging-sink&lt;/code&gt; project so that it&amp;rsquo;s resolvable in the local Maven repository. Spring Cloud Data Flow uses a pluggable strategy to resolve instances of custom modules. In our example, it&amp;rsquo;ll try to resolve them in our system local Maven repository.&lt;/p&gt;
+&lt;p&gt;Return to the Data Flow Shell and enter the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint shell"&gt;dataflow:&amp;gt;module register --name custom-log --type sink --uri maven://com.example:logging-sink:jar:0.0.1-SNAPSHOT&#xD;
+Successfully registered module &amp;#39;sink:custom-log&amp;#39;&#xD;
+&#xD;
+dataflow:&amp;gt;module list&#xD;
+???????????????????????????????????????????????????????????????&#xD;
+?    source    ¦¢   processor    ¦¢       sink        ¦¢  task   ?&#xD;
+???????????????????????????????????????????????????????????????&#xD;
+?file          ¦¢bridge          ¦¢aggregate-counter  ¦¢timestamp?&#xD;
+?ftp           ¦¢filter          ¦¢cassandra          ¦¢         ?&#xD;
+?http          ¦¢groovy-filter   ¦¢counter            ¦¢         ?&#xD;
+?jdbc          ¦¢groovy-transform¦¢custom-log         ¦¢         ?&#xD;
+?jms           ¦¢httpclient      ¦¢field-value-counter¦¢         ?&#xD;
+?load-generator¦¢pmml            ¦¢file               ¦¢         ?&#xD;
+?rabbit        ¦¢splitter        ¦¢ftp                ¦¢         ?&#xD;
+?sftp          ¦¢transform       ¦¢gemfire            ¦¢         ?&#xD;
+?tcp           ¦¢                ¦¢gpfdist            ¦¢         ?&#xD;
+?time          ¦¢                ¦¢hdfs               ¦¢         ?&#xD;
+?trigger       ¦¢                ¦¢jdbc               ¦¢         ?&#xD;
+?twitterstream ¦¢                ¦¢log                ¦¢         ?&#xD;
+?              ¦¢                ¦¢rabbit             ¦¢         ?&#xD;
+?              ¦¢                ¦¢redis              ¦¢         ?&#xD;
+?              ¦¢                ¦¢router             ¦¢         ?&#xD;
+?              ¦¢                ¦¢tcp                ¦¢         ?&#xD;
+?              ¦¢                ¦¢throughput         ¦¢         ?&#xD;
+?              ¦¢                ¦¢websocket          ¦¢         ?&#xD;
+???????????????????????????????????????????????????????????????&#xD;
+&#xD;
+dataflow:&amp;gt;stream create --name time-to-log --definition &amp;#39;time | custom-log&amp;#39;&#xD;
+Created new stream &amp;#39;time-to-log&amp;#39;&#xD;
+&#xD;
+dataflow:&amp;gt;stream list&#xD;
+??????????????????????????????????????????&#xD;
+?Stream Name¦¢Stream Definition¦¢  Status  ?&#xD;
+??????????????????????????????????????????&#xD;
+?time-to-log¦¢time | custom-log¦¢undeployed?&#xD;
+??????????????????????????????????????????&#xD;
+&#xD;
+dataflow:&amp;gt;stream deploy --name time-to-log&#xD;
+Deployed stream &amp;#39;time-to-log&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You&amp;rsquo;ll see in the Data Flow service logs that the modules have been started and stitched together. In my particular logs I observed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;2016-04-05 09:09:18.067  INFO 58339 --- [nio-9393-exec-3] o.s.c.d.spi.local.LocalAppDeployer       : deploying app time-to-log.custom-log instance 0&#xD;
+   Logs will be in /var/folders/cr/grkckb753fld3lbmt386jp740000gn/T/spring-cloud-dataflow-2481763302070183542/time-to-log-1459861757641/time-to-log.custom-log&#xD;
+2016-04-05 09:09:30.838  INFO 58339 --- [nio-9393-exec-3] o.s.c.d.spi.local.LocalAppDeployer       : deploying app time-to-log.time instance 0&#xD;
+   Logs will be in /var/folders/cr/grkckb753fld3lbmt386jp740000gn/T/spring-cloud-dataflow-2481763302070183542/time-to-log-1459861757641/time-to-log.time&#xD;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tail the logs to confirm what you already know in your heart of hearts: our custom &lt;code&gt;logging-sink&lt;/code&gt; is working!&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;tail -f /var/folders/cr/grkckb753fld3lbmt386jp740000gn/T/spring-cloud-dataflow-2481763302070183542/time-to-log-1459861757641/time-to-log.custom-log/std*
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#next-steps" class="anchor" name="next-steps"&gt;&lt;/a&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;To the cloud! We&amp;rsquo;re using the Local Data Flow Server. There are other implementations available for processing fabrics like Cloud Foundry. The Cloud Foundry Data Flow Server spins up application instances instead of local Java processes. Now, building a scalable data ingest and processing stream is as easy as &lt;code&gt;cf push ..&lt;/code&gt; and &lt;code&gt;cf scale -i $MOAR&lt;/code&gt;!&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re using but a few of Spring Cloud Data Flow&amp;rsquo;s capabilities! Use Spring Cloud Data Flow to orchestrate any number of messaging-based microservices powered by Spring Cloud Stream. I&amp;rsquo;d recommend a look at some of &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-modules"&gt;the built-in Spring Cloud Stream modules&lt;/a&gt; for inspiration.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring LDAP 2.1.0.RC1 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/31/spring-ldap-2-1-0-rc1-released" />
@@ -718,78 +901,5 @@ class UserController(val repo: UserRepository) {&#xD;
 &lt;p&gt;The few pain points I have encountered (&lt;a href="https://youtrack.jetbrains.com/issue/KT-11235"&gt;array annotation attributes&lt;/a&gt;, &lt;a href="https://youtrack.jetbrains.com/issue/KT-5175"&gt;Java 8 Stream support&lt;/a&gt;, &lt;a href="https://youtrack.jetbrains.com/issue/KT-6947"&gt;full callable reference support&lt;/a&gt;), are planned to be fixed in Kotlin 1.1. Exposed library is still young and need to mature, but from my point of view it is promising and shows how Kotlin could be used for building type-safe DSL API (&lt;a href="https://kotlinlang.org/docs/reference/type-safe-builders.html"&gt;this HTML type-safe builder&lt;/a&gt; is also a good example).&lt;/p&gt;
 &lt;p&gt;And keep in mind that officially supported &lt;a href="http://projects.spring.io/spring-data/"&gt;Spring Data projects&lt;/a&gt; works well with Kotlin as shown in the &lt;a href="https://github.com/sdeleuze/spring-boot-kotlin-demo"&gt;spring-boot-kotlin-demo&lt;/a&gt; project in my &lt;a href="https://spring.io/blog/2016/02/15/developing-spring-boot-applications-with-kotlin"&gt;previous blog post&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you happen to be in Barcelona mid May (never a bad time to be in Barcelona anyway!), don¡¯t miss the chance to join the &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt;. Also, the registration for &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; (early August, Las Vegas) has opened recently, in case you want to benefit from early bird ticket pricing. The latter is also still open for talk proposals. So if you¡¯re interested to give a talk about Spring or Pivotal-related technologies, feel free to submit!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>First Release Candidate of Spring Data Hopper Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/18/first-release-candidate-of-spring-data-hopper-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Oliver Gierke</name>
-    </author>
-    <id>tag:spring.io,2016-03-18:2431</id>
-    <updated>2016-03-18T11:38:00Z</updated>
-    <content type="html">&lt;p&gt;In behalf of the Spring Data team I am happy to announce the first and final release candidate for the &lt;a href="https://de.wikipedia.org/wiki/Grace_Hopper"&gt;Hopper&lt;/a&gt; release train. The release ships with a couple of important changes and updates:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Upgrade of the Spring Framework baseline to 4.2 (4.2.5 in particular).&lt;/li&gt;
-  &lt;li&gt;Support for Query by Example in Spring Data JPA and MongoDB.&lt;/li&gt;
-  &lt;li&gt;Support for object mapping and repositories for Spring Data Redis.&lt;/li&gt;
-  &lt;li&gt;Improved support for composed annotations.&lt;/li&gt;
-  &lt;li&gt;Support for lookup types and nested associations in Spring Data REST&lt;/li&gt;
-  &lt;li&gt;Upgrade to Elasticsearch 2.2, and thus the version number change of Spring Data Elasticsearch to 2.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;We&amp;rsquo;ve managed to resolve &lt;a href="https://jira.spring.io/issues/?filter=15359"&gt;97 tickets&lt;/a&gt; in total for this release and the &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Hopper"&gt;curated change log for the release train&lt;/a&gt; has been updated to include more detailed changes. We&amp;rsquo;re shooting for a GA release in the first week of April, which means that it&amp;rsquo;s the perfect time to give the binaries a spin to make sure you can upgrade smoothly.&lt;/p&gt;
-&lt;p&gt;There will be a more detailed blog post coming up early next week to cast some more light on the new features. In the meantime, here&amp;rsquo;s the laundry list of modules included:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Data Commons 1.12 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-commons/1.12.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.12.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.12.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.12.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data JPA 1.10 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-jpa/1.10.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.10.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.10.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.10.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data KeyValue 1.1 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-keyvalue/1.1.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.1.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.1.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.1.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Cassandra 1.4 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-cassandra/1.4.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.4.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.4.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.4.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Solr 2.0 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-solr/2.0.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.0.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.0.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.0.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Gemfire 1.8 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-gemfire/1.8.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.8.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.8.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.8.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Neo4j 4.1 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-neo4j/4.1.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.1.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.1.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.1.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data MongoDB 1.9 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-mongodb/1.9.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.9.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.9.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.9.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Envers 1.0 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-envers/1.0.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/1.0.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/1.0.0.RC1/reference/html"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data REST 2.5 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-rest-webmvc/2.5.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.5.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.5.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.5.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Redis 1.7 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-redis/1.7.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.7.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.7.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.7.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Elasticsearch 2.0 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-elasticsearch/2.0.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.0.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Couchbase 2.1 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-couchbase/2.1.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.1.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If you happen to be in Barcelona mid May (never a bad time to be in Barcelona anyway!), don&amp;rsquo;t miss the chance to join the &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where I&amp;rsquo;ll be presenting on the latest and greatest in Spring Data in general. Also, the registration for &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; (early August, Las Vegas) has opened recently, in case you want to benefit from early bird ticket pricing. The latter is also still open for talk proposals. So if you&amp;rsquo;re interested to give a talk about Spring or Pivotal-related technologies, feel free to submit!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session 1.2.0 RC1 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/17/spring-session-1-2-0-rc1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2016-03-17:2428</id>
-    <updated>2016-03-17T12:50:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.2.0.RC1. The release can be found in the &lt;a href="https://github.com/spring-projects/spring-framework/wiki/Spring-repository-FAQ"&gt;Spring Milestone repository&lt;/a&gt; (&lt;a href="https://repo.spring.io/milestone)"&gt;https://repo.spring.io/milestone)&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#change-log" class="anchor" name="change-log"&gt;&lt;/a&gt;Change Log&lt;/h2&gt;
-&lt;p&gt;This release includes nearly 30 issues with some exciting new features. You can find a complete list of changes in the &lt;a href="https://github.com/spring-projects/spring-session/issues?utf8=%E2%9C%93&amp;q=milestone%3A1.2.0.RC1"&gt;change log&lt;/a&gt;. The highlights can be found in &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC1/reference/html5/#what-s-new-in-1-2"&gt;What&amp;rsquo;s New in 1.2&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;&lt;a href="#contributions" class="anchor" name="contributions"&gt;&lt;/a&gt;Contributions&lt;/h2&gt;
-&lt;p&gt;I continue to be amazed with the growing Spring Session community. It is because of our community that we were able to do this release within a month of 1.1.0 going GA. A special thank you to all those who contributed Pull Requests for this release:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/371"&gt;#371&lt;/a&gt; - Add MongoOperationsSessionRepository. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/379"&gt;#379&lt;/a&gt; - Add JdbcOperationsSessionRepository. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/397"&gt;#397&lt;/a&gt; - Fix minor documentation errors. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/402"&gt;#402&lt;/a&gt; - @DirtiesContext for GemFire integration tests. Thanks &lt;a href="https://github.com/jxblum"&gt;John Blum&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/404"&gt;#404&lt;/a&gt; - Polish GemFire. Thanks &lt;a href="https://github.com/jxblum"&gt;John Blum&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/413"&gt;#413&lt;/a&gt; - Add Checkstyle to build. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/414"&gt;#414&lt;/a&gt; - Fix bad reference in IndexDocTests. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/418"&gt;#418&lt;/a&gt; - Add JDBC documentation. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/421"&gt;#421&lt;/a&gt; - Fix JdbcOperationsSessionRepository session cleanup. Thanks &lt;a href="https://github.com/erindru"&gt;Erin Drummond&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/425"&gt;#425&lt;/a&gt; - JacksonMongoSessionConverter. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/426"&gt;#426&lt;/a&gt; - SessionRepositoryFilter caches null session lookup. Thanks &lt;a href="https://github.com/oyvindhorneland"&gt;¨ªyvind Horneland&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/428"&gt;#428&lt;/a&gt; - Fix incorrect link in What&amp;rsquo;s new section. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/429"&gt;#429&lt;/a&gt; - Update to Sonarqube Plugin. Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/430"&gt;#430&lt;/a&gt; - Extend Mongo documentation. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/433"&gt;#433&lt;/a&gt; - JdkMongoSessionConverter supports custom ClassLoader. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="callout"&gt;&#xD;
-&lt;div class="callout-title"&gt;Upcoming Conferences&lt;/div&gt;&#xD;
-&lt;p&gt;Make sure to register for &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where you can learn about the latest and greatest Spring has to offer.&lt;/p&gt;&#xD;
-&lt;p&gt;If you are interested in attending &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; make sure you register before the early bird discount ends to save big!&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC1/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
   </entry>
 </feed>

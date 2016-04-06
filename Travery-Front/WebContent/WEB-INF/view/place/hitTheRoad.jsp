@@ -615,12 +615,6 @@
                         
                               var neighborhoods = [];
 							  
-                              var size = "${placeListByPackId.size()}";
-                              
-                              alert("${placeListByPackId.get(0).latitude}");
-                              alert("${placeListByPackId.get(1).latitude}");
-                              alert("${placeListByPackId.get(2).latitude}");
-                              
                               var lat;
                               var lng;
                               
