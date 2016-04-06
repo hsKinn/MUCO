@@ -24,8 +24,8 @@
          <div class="col-xs-6 col-sm-3 column">
             <h4>Information</h4>
             <ul class="list-unstyled">
-               <li><a href="<c:url value="/termsAccess?menuNo=1"/>">About</a></li>
-               <li><a href="<c:url value="/termsAccess?menuNo=2"/>">Privacy Policy</a></li>
+               <li><a href="<c:url value="/termsAccess?menuNo=1"/>">이용약관</a></li>
+               <li><a href="<c:url value="/termsAccess?menuNo=2"/>">개인정보취급방침</a></li>
             </ul>
          </div>
          <div class="col-xs-6 col-sm-3 column">

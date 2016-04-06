@@ -118,7 +118,7 @@
          var userName = $("#userName").val();
          userName = $.trim(userName);
          if (userName == "") {
-            alert("Enter name!");
+            alert("닉네임을 입력하세요!");
             $("#userName").focus();
             return;
          }

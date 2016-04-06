@@ -192,7 +192,7 @@
          <h2 class="margin-top-0 wow fadeIn">Personal Info</h2>
          <hr class="primary">
          <p>Modify your personal information</p>
-       	 <div id="reserveConfirmBtn" data-toggle="modal" data-target="#reserveConfirmModal" >Check reservation info</div>  
+       	 <div id="reserveConfirmBtn" data-toggle="modal" data-target="#reserveConfirmModal" >Reservation</div>  
       </div>
 		
 		<!-- Modal -->

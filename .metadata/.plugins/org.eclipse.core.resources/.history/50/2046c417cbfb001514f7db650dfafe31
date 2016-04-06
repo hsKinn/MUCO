@@ -118,7 +118,7 @@
          var userName = $("#userName").val();
          userName = $.trim(userName);
          if (userName == "") {
-            alert("Enter name!");
+            alert("닉네임을 입력하세요!");
             $("#userName").focus();
             return;
          }
@@ -174,9 +174,16 @@
                      aria-expanded="true"> PERSONAL INFO <span class="caret"></span> </a>
 
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                     <li>
+                        <a> 
+                           OOO님 안녕하세요 :)  <br/>
+                           여기에 프로필 사진을 빡 <br/>
+                           <br/>
+                        </a> 
+                     </li>
                      <li><a href="<c:url value="/personalInfo"/>" >Setting</a></li>
                      <li role="separator" class="divider"></li>
-                     <li><a href="/logout">Log out</a></li>
+                     <li><a href="#">Log out</a></li>
                   </ul> 
                </li>
             </ul>
