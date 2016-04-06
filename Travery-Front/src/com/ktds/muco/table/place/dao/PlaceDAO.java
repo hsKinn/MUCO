@@ -1094,7 +1094,7 @@ public class PlaceDAO {
 				place.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
 				
 				// Place Image
-				place.setPlaceImageList(imageDAO.getImageLocationList(placeId));
+				place.setPlaceImageList(imageDAO.getImageList(placeId));
 
 				// Place Reply
 				place.setPlaceReplyList(placeReplyDAO.getReplyListByplaceId(placeId));

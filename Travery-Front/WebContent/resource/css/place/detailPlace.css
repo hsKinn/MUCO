@@ -1,5 +1,48 @@
 @CHARSET "UTF-8";
 
+.main_image{
+	width:100%;
+	margin-left: 2.5%;
+}
+
+.main_image img{
+	width:100%;
+}
+
+.selection_image{
+	display:inline-block;
+	width: 25%;
+	height: 24%;
+	float: left;
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-top: 3%;
+	margin-bottom: 3%;	
+}
+
+.thumb {
+	position:relative; 
+	width:100%; 
+	height:100%; 
+	display:inline-block; 
+	}
+	
+.thumb:hover .overlay {
+	opacity:0!important;
+	cursor:pointer;
+}
+
+.overlay {
+	position:absolute;
+	top:0;left:0;width:100%;height:100%;
+	background:#000;opacity:0.4;
+}
+
+.selection_image img {
+	width:100%;
+	height:100%;	
+}
+
 div#addMyPack {
 	width: 100%;
 	height: 22px;
@@ -28,8 +71,9 @@ div#detail-LeftWrapper {
 }
 
 div#photo-Top {
-	width: 100%;
-	height: 50%;
+	margin-top: 5%;
+	width: 95%;
+	height: 43%;
 	float: left;
 }
 
@@ -42,9 +86,23 @@ div#photo-Top img {
 
 div#photo-Bottom {
 	width: 100%;
-	height: 50%;
+	height: 45%;
 	float: left;
 	overFlow-y: auto;	
+}
+
+div#photoAdd {
+	width: 100%;
+	height: 12%;
+	float: left;
+}
+
+span#addPhoto {
+	font-size: 17px;
+}
+
+span#addPhoto span.glyphicon {
+	font-size: 18px;
 }
 
 div.photos {

@@ -49,7 +49,13 @@ public class AddMyPackByOnePlaceServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PackVO pack = new PackVO();
+		
 		pack.setPackId( Integer.parseInt(request.getParameter("packList")) );
+		
+		if ( pack.getPackId() == 0 ) {
+			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
+		}
+		
 		pack.setPlaceId( Integer.parseInt(request.getParameter("placeId")) );
 		
 		boolean isSuccess = packBiz.addMyPackByOnePlace( pack );

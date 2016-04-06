@@ -77,7 +77,7 @@ public class ImageDAO {
 	 * @author 김현섭(수정)
 	 * 
 	 */
-	public List<ImageVO> getImageLocationList( int placeId ) {
+	public List<ImageVO> getImageList( int placeId ) {
 
 		loadOracleDriver();
 		Connection conn = null;
@@ -89,7 +89,7 @@ public class ImageDAO {
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			
-			String query = XML.getNodeString("//query/image/getImageLocationList/text()");
+			String query = XML.getNodeString("//query/image/getImageList/text()");
 			stmt = conn.prepareStatement(query);
 
 			stmt.setInt(1, placeId);

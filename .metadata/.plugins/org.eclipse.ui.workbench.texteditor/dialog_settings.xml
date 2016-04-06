@@ -2,35 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-<<<<<<< HEAD
-		<item value="View" key="selection"/>
-=======
-		<item value="border" key="selection"/>
->>>>>>> origin/YBH14
+		<item value="addPlacePhoto" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="view"/>
-			<item value="alert"/>
-			<item value="size"/>
-			<item value="border"/>
-			<item value="placeLikeCount"/>
-			<item value="bor"/>
-			<item value="place-Title"/>
-			<item value="placeVote"/>
-=======
-			<item value="border"/>
-			<item value="reserve"/>
-			<item value="getPackListByEmail"/>
-			<item value="pack"/>
-			<item value="getAddMyPackByPlace"/>
-			<item value="추가"/>
-			<item value="head"/>
-			<item value="addTempSelectedPlaceByPlaceId"/>
->>>>>>> origin/YBH14
+			<item value="addPlacePhoto"/>
+			<item value="addPhotoForm"/>
+			<item value="addPhotoUpload"/>
+			<item value="addMyPackOnePlace"/>
+			<item value="file"/>
+			<item value="input file"/>
+			<item value="&lt;image"/>
+			<item value="style1"/>
 		</list>
 		<list key="replacehistory">
 			<item value="placeInfo"/>
@@ -42,7 +27,7 @@
 		<item value="261" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="164" key="DIALOG_X_ORIGIN"/>
-		<item value="210" key="DIALOG_Y_ORIGIN"/>
+		<item value="8" key="DIALOG_X_ORIGIN"/>
+		<item value="202" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

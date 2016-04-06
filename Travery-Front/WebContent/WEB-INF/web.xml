@@ -535,4 +535,14 @@
     <servlet-name>DeleteHashTagServlet</servlet-name>
     <url-pattern>/deleteHashTag</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddPlacePhotoServlet</display-name>
+    <servlet-name>AddPlacePhotoServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.place.web.AddPlacePhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPlacePhotoServlet</servlet-name>
+    <url-pattern>/addPlacePhoto</url-pattern>
+  </servlet-mapping>
 </web-app>

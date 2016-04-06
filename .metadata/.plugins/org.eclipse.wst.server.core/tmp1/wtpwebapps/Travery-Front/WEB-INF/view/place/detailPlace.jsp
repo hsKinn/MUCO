@@ -25,6 +25,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+	    $('.thumb').hover(function(){
+	          $('.main_image img').attr('src',$(this).children('img').attr('src'));
+	    });
+		
 		$(".doNotVote").click( function() {
 			
 			alert("Already Vote.");
@@ -50,17 +54,20 @@
 		
 		$("#addMyPackOnePlace").click( function() {
 			
-			if ( $("#selectBox option:selected").text() == "none" ) {
-				alert("Select Package");
-				return;
-			}
-			
 			var form = $("#addMyPackForm");
 			
 			form.attr("method", "POST");
 			form.attr("action", "<c:url value="/addMyPackByOnePlace"/>");
 			form.submit();
+		});
+		
+		$("#addPhotoUpload").click( function() {
 			
+			var form = $("#addPhotoForm");
+			
+			form.attr("method", "POST");
+			form.attr("action", "<c:url value="/addPlacePhoto"/>");
+			form.submit();			
 		});
 	
 		$("#writePlaceReplyBtn").click( function() {
@@ -153,7 +160,7 @@
 				Add My Package : 
 					<select name="packList" id="packList">
 						<c:if test="${ not empty loginUserPackList }">
-							<option value="none">Your Packages</option>
+							<option value="0">Your Packages</option>
 								<c:forEach items="${ loginUserPackList }" var="myPack">
 									<option value="${ myPack.packId }">${ myPack.packTitle }</option>
 								</c:forEach>
@@ -174,20 +181,39 @@
 			
 			<div id="detail-LeftWrapper">
 				
-				<div id="photo-Top">
-					대표 이미지
-					<img src="#" />
-				</div>
-				
-				<div id="photo-Bottom">
-					<c:forEach var="i" begin="1" end="12">
-						<div class="photos">
-							<img src="#" />
+				<div class="gallery">
+					<div id="photo-Top">
+						<div class="main_image">
+							<img src="/image?imageName=${ imageList[0].imageName }" />
 						</div>
-					</c:forEach>
+					</div>
+					
+					<div id="photo-Bottom">
+						<c:forEach items="${ imageList }" var="images">
+							<div class="selection_image">
+								<div id="photos">
+									<div class="thumb">
+				    		     		<div class="overlay"></div>
+						    		    <img src="/image?imageName=${images.imageName }" />
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+					
+					<div id="photoAdd">
+						<span id="addPhoto">Add Place Image
+						<span id="addPhotoUpload">
+				          	<span class="glyphicon glyphicon-upload" style="cursor:pointer;"></span>
+	                    </span>
+				        </span>
+						<form id="addPhotoForm"  enctype="multipart/form-data">
+							<input type="file" id="image" name="image" />
+							<input type="hidden" id="placeId" name="placeId" value="${ place.placeId }" />
+						</form>
+					</div>
+					
 				</div>
-				
-				
 			</div>
 			
 			<div id="detail-RightWrapper">
