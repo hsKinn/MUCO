@@ -125,6 +125,7 @@ $(document).ready( function() {
 							<th>추천수</th>
 							<th>공개 여부</th>
 							<th>최초등록자 EMAIL</th>
+							<th>등록된 여행지 수</th>
 						</tr>
 
 						<form id="massiveDeleteForm">
@@ -139,12 +140,13 @@ $(document).ready( function() {
 									<td>${pack.likeCount}</td>
 									<td>${pack.isPublic}</td>
 									<td>${pack.email}</td>
+									<td>등록된 여행지 수</td>
 								</tr>
 							</c:forEach>
 						</form>
 
 						<tr>
-							<td colspan="7" style="background-color:#a1a1a1;">
+							<td colspan="8" style="background-color:#a1a1a1;">
 								<!-- 검색 form  -->
 								<form id="searchForm">
 									<br/>

@@ -144,6 +144,127 @@ public class HistoryDAO {
 	}
 
 	/**
+	 * 30일 지난 히스토리 count
+	 * @return
+	 */
+	public int getOver30DaysHistoryListCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/history/getOver30DaysHistoryListCount/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			int historyCount = 0;
+
+			if (rs.next()) {
+				historyCount = rs.getInt(1);
+			}
+			return historyCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * 30일 지난 history 받아오기
+	 * @param historySearchVO
+	 * @return 
+	 */
+	public List<HistoryVO> getOver30DaysHistoryList(HistorySearchVO historySearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<HistoryVO> histories = new ArrayList<HistoryVO>();
+
+		try {
+
+			HistoryVO historyVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			// article을 꺼내온다.
+			String query = XML.getNodeString("//query/history/getOver30DaysHistoryList/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, historySearchVO.getEndIndex());
+			stmt.setInt(2, historySearchVO.getStartIndex());
+
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				historyVO = new HistoryVO();
+
+				historyVO.setHistoryId(rs.getInt("HISTORY_ID"));
+				historyVO.setIp(rs.getString("IP"));
+				historyVO.setCreatedDate(rs.getString("CRT_DT"));
+				historyVO.setUrl(rs.getString("URL"));
+				historyVO.setActionCode(rs.getString("ACTION_CODE"));
+				historyVO.setHistoryDescription(rs.getString("DESCRIPTION"));
+				historyVO.setEtc(rs.getString("ETC"));
+				historyVO.setEmail(rs.getString("EMAIL"));
+
+				histories.add(historyVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return histories;
+	}
+	
+	
+	/**
+	 * 일괄삭제
+	 */
+	public void deleteAllHistories() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/history/deleteAllHistories/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	/**
+	 * 하나씩 삭제
+	 * @param parseInt
+	 */
+	public void deleteHistoryByHisotryId(int parseInt) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
 	 * 
 	 * Load Oracle Driver
 	 * 
@@ -185,4 +306,5 @@ public class HistoryDAO {
 			}
 		}
 	}
+
 }

@@ -71,49 +71,204 @@ public class QNADAO {
 
 		try {
 			QNAVO qnaVO = null;
-
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 			String query = "";
 
 			// 제목
 			if (sortOption == 1) {
-				query = XML.getNodeString("//query/qna/getAllQnasOrderByTitle/text()");
-				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, qnaSearchVO.getEndIndex());
-				stmt.setInt(2, qnaSearchVO.getStartIndex());
+				// 제목
+				if(qnaSearchVO.getSearchList().equals("title")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByTitleSearchByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 내용
+				else if (qnaSearchVO.getSearchList().equals("description")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByTitleSearchByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 질문자
+				else if (qnaSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByTitleSearchByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());	
+				}
+				else {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, qnaSearchVO.getEndIndex());
+					stmt.setInt(2, qnaSearchVO.getStartIndex());
+				}
 			} 
 			// 질문자 Email
 			else if (sortOption == 2) {
-				query = XML.getNodeString("//query/qna/getAllQnasOrderByEmail/text()");
-				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, qnaSearchVO.getEndIndex());
-				stmt.setInt(2, qnaSearchVO.getStartIndex());
+				// 제목
+				if(qnaSearchVO.getSearchList().equals("title")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByEmailSearchedByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 내용
+				else if (qnaSearchVO.getSearchList().equals("description")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByEmailSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 질문자
+				else if (qnaSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByEmailSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, qnaSearchVO.getEndIndex());
+					stmt.setInt(2, qnaSearchVO.getStartIndex());
+				}
 			} 
 			// 질문 날짜 
 			else if (sortOption == 3) {
-				query = XML.getNodeString("//query/qna/getAllQnasOrderByQnaDate/text()");
-				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, qnaSearchVO.getEndIndex());
-				stmt.setInt(2, qnaSearchVO.getStartIndex());
+				// 제목
+				if(qnaSearchVO.getSearchList().equals("title")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByQnaDateSearchedByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 내용
+				else if (qnaSearchVO.getSearchList().equals("description")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByQnaDateSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 질문자
+				else if (qnaSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByQnaDateSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByQnaDate/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, qnaSearchVO.getEndIndex());
+					stmt.setInt(2, qnaSearchVO.getStartIndex());
+				}
 			} 
 			// 답변 여부
 			else if (sortOption == 4) {
-				query = XML.getNodeString("//query/qna/getAllQnasOrderByIsAnswer/text()");
-				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, qnaSearchVO.getEndIndex());
-				stmt.setInt(2, qnaSearchVO.getStartIndex());
+				// 제목
+				if(qnaSearchVO.getSearchList().equals("title")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsAnswerSearchedByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 내용
+				else if (qnaSearchVO.getSearchList().equals("description")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsAnswerSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 질문자
+				else if (qnaSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsAnswerSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsAnswer/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, qnaSearchVO.getEndIndex());
+					stmt.setInt(2, qnaSearchVO.getStartIndex());
+				}
 			} 
 			// FAQ 여부
 			else if (sortOption == 5) {
-				query = XML.getNodeString("//query/qna/getAllQnasOrderByIsFaq/text()");
-				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, qnaSearchVO.getEndIndex());
-				stmt.setInt(2, qnaSearchVO.getStartIndex());
+				// 제목
+				if(qnaSearchVO.getSearchList().equals("title")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsFaqSearchedByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 내용
+				else if (qnaSearchVO.getSearchList().equals("description")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsFaqSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 질문자
+				else if (qnaSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsFaqSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/qna/getAllQnasOrderByIsFaq/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, qnaSearchVO.getEndIndex());
+					stmt.setInt(2, qnaSearchVO.getStartIndex());
+				}
 			} else {
-				query = XML.getNodeString("//query/qna/getAllQnas/text()");
-				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, qnaSearchVO.getEndIndex());
-				stmt.setInt(2, qnaSearchVO.getStartIndex());
+				// 제목
+				if(qnaSearchVO.getSearchList().equals("title")) {
+					query = XML.getNodeString("//query/qna/getAllQnasSearchedByTitle/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 내용
+				else if (qnaSearchVO.getSearchList().equals("description")) {
+					query = XML.getNodeString("//query/qna/getAllQnasSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				} 
+				// 질문자
+				else if (qnaSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/qna/getAllQnasSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, qnaSearchVO.getSearchKeyword());
+					stmt.setInt(2, qnaSearchVO.getEndIndex());
+					stmt.setInt(3, qnaSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/qna/getAllQnas/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, qnaSearchVO.getEndIndex());
+					stmt.setInt(2, qnaSearchVO.getStartIndex());
+				}
 			}
 
 			rs = stmt.executeQuery();
@@ -150,6 +305,7 @@ public class QNADAO {
 	 * @return
 	 */
 	public QNAVO getQNADetailByQnaId(String qnaId) {
+		
 		QNAVO qnaVO = new QNAVO();
 
 		loadOracleDriver();

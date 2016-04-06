@@ -48,6 +48,11 @@
 			SELECT	COUNT(HISTORY_ID)
 			FROM	HISTORY
 		</getAllHistoryCount>
+		<getOver30DaysHistoryListCount>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE   CRT_DT - SYSDATE > 30
+		</getOver30DaysHistoryListCount>
 		<getAllHistoryList>
 			SELECT	* 
 			FROM	(
@@ -61,6 +66,24 @@
 					)	
 			WHERE	RNUM >= ?		
 		</getAllHistoryList>
+		<getOver30DaysHistoryList>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	CRT_DT - SYSDATE > 30
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getOver30DaysHistoryList>
+		<deleteAllHistories>
+			DELETE	
+			FROM	HISTORY
+		</deleteAllHistories>
 	</history>
 	
 	<image>
@@ -150,7 +173,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	NAME = ?
+									WHERE	NAME LIKE '%' || ? || '%'
 								) A 
 						WHERE	ROWNUM &lt;= ?	
 					)	
@@ -164,7 +187,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	PHONE_NUMBER = ?
+									WHERE	PHONE_NUMBER LIKE '%' || ? || '%'
 								) A 
 						WHERE	ROWNUM &lt;= ?	
 					)	
@@ -178,7 +201,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 								) A 
 						WHERE	ROWNUM &lt;= ?	
 					)	
@@ -206,7 +229,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	NAME = ?
+									WHERE	NAME LIKE '%' || ? || '%'
 									ORDER	BY JOIN_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -221,7 +244,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	PHONE_NUMBER = ?
+									WHERE	PHONE_NUMBER LIKE '%' || ? || '%'
 									ORDER	BY JOIN_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -236,7 +259,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL LIKE ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER	BY JOIN_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -265,7 +288,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	NAME = ?
+									WHERE	NAME LIKE '%' || ? || '%'
 									ORDER	BY RECENT_ACCESS_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -280,7 +303,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	PHONE_NUMBER = ?
+									WHERE	PHONE_NUMBER LIKE '%' || ? || '%'
 									ORDER	BY RECENT_ACCESS_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -296,7 +319,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER	BY RECENT_ACCESS_DT ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -325,7 +348,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	NAME = ?
+									WHERE	NAME LIKE '%' || ? || '%'
 									ORDER	BY NAME ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -340,7 +363,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	PHONE_NUMBER = ?
+									WHERE	PHONE_NUMBER LIKE '%' || ? || '%'
 									ORDER	BY NAME ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -356,7 +379,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER	BY NAME ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -386,7 +409,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	NAME = ?
+									WHERE	NAME LIKE '%' || ? || '%'
 									ORDER	BY EMAIL ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -401,7 +424,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	PHONE_NUMBER = ?
+									WHERE	PHONE_NUMBER LIKE '%' || ? || '%'
 									ORDER	BY EMAIL ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -416,7 +439,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER	BY EMAIL ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -445,7 +468,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	NAME = ?
+									WHERE	NAME LIKE '%' || ? || '%'
 									ORDER	BY IS_ADMIN DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -460,7 +483,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	PHONE_NUMBER = ?
+									WHERE	PHONE_NUMBER LIKE '%' || ? || '%'
 									ORDER	BY IS_ADMIN DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -475,7 +498,7 @@
 						FROM	(
 									SELECT  *
 									FROM    MEMBER
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER	BY IS_ADMIN DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -654,7 +677,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	PACK_TITLE = ?
+									WHERE	PACK_TITLE LIKE '%' || ? || '%'
 									ORDER 	BY PACK_ID
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -669,7 +692,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER 	BY PACK_ID
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -699,7 +722,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	PACK_TITLE = ?
+									WHERE	PACK_TITLE LIKE '%' || ? || '%'
 									ORDER 	BY PACK_TITLE ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -714,7 +737,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER 	BY PACK_TITLE ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -743,7 +766,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	PACK_TITLE = ?
+									WHERE	PACK_TITLE LIKE '%' || ? || '%'
 									ORDER 	BY EMAIL ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -758,7 +781,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER 	BY EMAIL ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -787,7 +810,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	PACK_TITLE = ?
+									WHERE	PACK_TITLE LIKE '%' || ? || '%'
 									ORDER 	BY IS_PUBLIC DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -802,7 +825,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER 	BY IS_PUBLIC DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -832,7 +855,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	PACK_TITLE = ?
+									WHERE	PACK_TITLE LIKE '%' || ? || '%'
 									ORDER 	BY LIKE_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -847,7 +870,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	EMAIL = ?
+									WHERE	EMAIL LIKE '%' || ? || '%'
 									ORDER 	BY LIKE_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -876,7 +899,7 @@
 						FROM	(
 									SELECT  *
 									FROM    PACK
-									WHERE	PACK_TITLE = ?
+									WHERE	PACK_TITLE LIKE '%' || ? || '%'
 									ORDER 	BY VIEW_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -964,7 +987,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		PLACE_NAME = ?
+									AND		PLACE_NAME LIKE '%' || ? || '%'
 									ORDER   BY PLACE_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -980,7 +1003,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		EMAIL = ?
+									AND		EMAIL LIKE '%' || ? || '%'
 									ORDER   BY PLACE_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -996,7 +1019,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		COUNTRY_ID = ?
+									AND		COUNTRY_ID LIKE '%' || ? || '%'
 									ORDER   BY PLACE_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1027,7 +1050,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		PLACE_NAME = ?
+									AND		PLACE_NAME LIKE '%' || ? || '%'
 									ORDER   BY PLACE_NAME ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1058,7 +1081,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		EMAIL = ?
+									AND		EMAIL LIKE '%' || ? || '%'
 									ORDER   BY EMAIL ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1090,7 +1113,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		PLACE_NAME = ?
+									AND		PLACE_NAME LIKE '%' || ? || '%'
 									ORDER   BY COUNTRY_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1106,7 +1129,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		EMAIL = ?
+									AND		EMAIL LIKE '%' || ? || '%'
 									ORDER   BY COUNTRY_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1122,7 +1145,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		COUNTRY_ID = ?
+									AND		COUNTRY_ID LIKE '%' || ? || '%'
 									ORDER   BY COUNTRY_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1138,7 +1161,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		COUNTRY_ID = ? 
+									AND		COUNTRY_ID LIKE '%' || ? || '%' 
 									ORDER   BY COUNTRY_ID ASC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1170,7 +1193,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		PLACE_NAME = ?
+									AND		PLACE_NAME LIKE '%' || ? || '%'
 									ORDER   BY LIKE_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1186,7 +1209,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		EMAIL = ?
+									AND		EMAIL LIKE '%' || ? || '%'
 									ORDER   BY LIKE_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1202,7 +1225,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		COUNTRY_ID = ?
+									AND		COUNTRY_ID LIKE '%' || ? || '%'
 									ORDER   BY LIKE_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1234,7 +1257,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		PLACE_NAME = ?
+									AND		PLACE_NAME LIKE '%' || ? || '%'
 									ORDER   BY VIEW_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1250,7 +1273,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		EMAIL = ?
+									AND		EMAIL LIKE '%' || ? || '%'
 									ORDER   BY VIEW_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1266,7 +1289,7 @@
 									SELECT  *
 									FROM    PLACE
 									WHERE	IS_NEW_PLACE = ?
-									AND		COUNTRY_ID = ?
+									AND		COUNTRY_ID LIKE '%' || ? || '%'
 									ORDER   BY VIEW_COUNT DESC
 								) A 
 						WHERE	ROWNUM &lt;= ?	
@@ -1346,6 +1369,48 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllQnas>
+		<getAllQnasSearchedByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	TITLE LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasSearchedByTitle>
+		<getAllQnasSearchedByDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasSearchedByDescription>
+		<getAllQnasSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	EMAIL LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasSearchedByEmail>
 		<getAllQnasOrderByTitle>
 			SELECT	* 
 			FROM	(
@@ -1360,6 +1425,51 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllQnasOrderByTitle>
+		<getAllQnasOrderByTitleSearchByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	TITLE LIKE '%' || ? || '%'
+									ORDER	BY TITLE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByTitleSearchByTitle>
+		<getAllQnasOrderByTitleSearchByDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY TITLE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByTitleSearchByDescription>
+		<getAllQnasOrderByTitleSearchByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY TITLE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByTitleSearchByEmail>
 		<getAllQnasOrderByEmail>
 			SELECT	* 
 			FROM	(
@@ -1374,6 +1484,51 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllQnasOrderByEmail>
+		<getAllQnasOrderByEmailSearchedByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	TITLE LIKE '%' || ? || '%'
+									ORDER	BY EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByEmailSearchedByTitle>
+		<getAllQnasOrderByEmailSearchedByDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByEmailSearchedByDescription>
+		<getAllQnasOrderByEmailSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByEmailSearchedByEmail>
 		<getAllQnasOrderByQnaDate>
 			SELECT	* 
 			FROM	(
@@ -1388,6 +1543,51 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllQnasOrderByQnaDate>
+		<getAllQnasOrderByQnaDateSearchedByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	TITLE LIKE '%' || ? || '%'
+									ORDER	BY QNA_DT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByQnaDateSearchedByTitle>
+		<getAllQnasOrderByQnaDateSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY QNA_DT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByQnaDateSearchedByEmail>
+		<getAllQnasOrderByQnaDateSearchedByDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY QNA_DT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByQnaDateSearchedByDescription>
 		<getAllQnasOrderByIsAnswer>
 			SELECT	* 
 			FROM	(
@@ -1402,6 +1602,51 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllQnasOrderByIsAnswer>
+		<getAllQnasOrderByIsAnswerSearchedByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	TITLE LIKE '%' || ? || '%'
+									ORDER	BY IS_ANSWER
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsAnswerSearchedByTitle>
+		<getAllQnasOrderByIsAnswerSearchedByDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY IS_ANSWER
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsAnswerSearchedByDescription>
+		<getAllQnasOrderByIsAnswerSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY IS_ANSWER
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsAnswerSearchedByEmail>
 		<getAllQnasOrderByIsFaq>
 			SELECT	* 
 			FROM	(
@@ -1416,6 +1661,51 @@
 					)	
 			WHERE	RNUM >= ?			
 		</getAllQnasOrderByIsFaq>
+		<getAllQnasOrderByIsFaqSearchedByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	TITLE LIKE '%' || ? || '%'
+									ORDER	BY IS_FAQ
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsFaqSearchedByTitle>
+		<getAllQnasOrderByIsFaqSearchedByDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY IS_FAQ
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsFaqSearchedByDescription>
+		<getAllQnasOrderByIsFaqSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY IS_FAQ
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsFaqSearchedByEmail>
 		<getQNADetailByQnaId>
 			SELECT	*
 			FROM	QNA

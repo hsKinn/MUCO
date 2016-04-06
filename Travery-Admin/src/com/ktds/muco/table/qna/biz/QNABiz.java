@@ -61,6 +61,8 @@ public class QNABiz {
 	 */
 	public QNAVO showQNADetail(String qnaId) {
 		QNAVO qnaVO = qnaDAO.getQNADetailByQnaId(qnaId);
+		System.out.println("1"+qnaVO.getQnaId());
+		System.out.println("2"+qnaVO.getAnswerDescription());
 		return qnaVO;
 	}
 
@@ -108,13 +110,25 @@ public class QNABiz {
 	public void doQnaEdit(String qnaId, QNAVO qnaVO, HttpServletRequest request) {
 		// 어느 부분이 수정되었는지 확인해야한다. 
 		String qnaAnswerSheet = request.getParameter("qnaAnswerSheet");
-		//1. 여행지명 
-		if( qnaVO.getAnswerDescription().equals(qnaAnswerSheet) ) {
-			System.out.println("들어가져?");
-		} else {
-			qnaDAO.updateQnaAnswerSheet(qnaId, qnaAnswerSheet);
-			System.out.println("들어가져?????");
+		try {
+			//1. 여행지명 
+			if( qnaVO.getAnswerDescription().equals(qnaAnswerSheet) ) {
+				System.out.println("들어가져?");
+			} else {
+				qnaDAO.updateQnaAnswerSheet(qnaId, qnaAnswerSheet);
+				System.out.println("들어가져?????");
+			}
+		} catch (NullPointerException ne) {
+			qnaVO.setAnswerDescription("");
+			//1. 여행지명 
+			if( qnaVO.getAnswerDescription().equals(qnaAnswerSheet) ) {
+				System.out.println("들어가져?");
+			} else {
+				qnaDAO.updateQnaAnswerSheet(qnaId, qnaAnswerSheet);
+				System.out.println("들어가져?????");
+			}
 		}
+		
 	}
 
 }

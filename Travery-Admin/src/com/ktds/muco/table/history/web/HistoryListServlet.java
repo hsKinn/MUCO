@@ -17,6 +17,7 @@ import com.ktds.muco.table.history.vo.HistoryListVO;
 import com.ktds.muco.table.history.vo.HistorySearchVO;
 import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.vo.PlaceSearchVO;
 
 /**
  * Servlet implementation class MemberListServlet
@@ -47,21 +48,48 @@ public class HistoryListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int pageNO = 0;
 		
-		try {
-			pageNO = Integer.parseInt(request.getParameter("pageNO"));
-		} catch (NumberFormatException nfe) {
+		int sortOption;
+		if (request.getParameter("sortOption") == null) {
+			sortOption = 9;
+		} else {
+			sortOption = Integer.parseInt(request.getParameter("sortOption"));
 		}
 		
+		HistoryListVO historyListVO;
 		HistorySearchVO historySearchVO = new HistorySearchVO();
+		HttpSession session = request.getSession();
+		
+		try {
+			// 데이터가 없다면 page는 null 그렇기 때문에 numberFormatException발생..? 그래서
+			// catch에다가 search session을 이용한다라..?
+			pageNO = Integer.parseInt(request.getParameter("pageNO"));
+
+			// 검색 종류 및 키워드 가져오기
+			historySearchVO.setSearchList(request.getParameter("searchList"));
+			historySearchVO.setSearchKeyword(request.getParameter("searchKeyword"));
+
+			// 정상적일 때만 pageNO을 설정하도록 한다.
+			historySearchVO.setPageNO(pageNO);
+
+		} catch (NumberFormatException nfe) {
+			// 그런데 이 searchVO도 null인 경우가 있다.
+			historySearchVO = (HistorySearchVO) session.getAttribute("_HISOTRY_SEARCH_");
+
+			// 그러면 다시 0으로 맞춘다.
+			if (historySearchVO == null) {
+				historySearchVO = new HistorySearchVO();
+				historySearchVO.setPageNO(0);
+				// 그리고 Keyword를 공백으로 맞춘다.
+				historySearchVO.setSearchKeyword("");
+			}
+		}
+		
 		historySearchVO.setPageNO(pageNO);
 		
-		HistoryListVO hisotryListVO = historyBiz.getHistoryList(historySearchVO);
+		historyListVO = historyBiz.getHistoryList(historySearchVO);
+		request.setAttribute("hisotryies", historyListVO);
 		
-		request.setAttribute("hisotryies", hisotryListVO);
-		
-
-		// History
-		HttpSession session = request.getSession();
+		// History 기록
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		
 		HistoryVO history = new HistoryVO();

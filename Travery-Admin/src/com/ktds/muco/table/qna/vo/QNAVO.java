@@ -14,11 +14,11 @@ import com.ktds.muco.table.member.vo.MemberVO;
 public class QNAVO extends MemberVO {
 
 	private int qnaId;
-	private String qndDate;
-	private String title;
-	private String description;
+	private String qndDate = "";
+	private String title = "";
+	private String description = "";
 	private int isAnswer;
-	private String answerDescription;
+	private String answerDescription = "";
 	private int isFaq;
 
 	public int getQnaId() {

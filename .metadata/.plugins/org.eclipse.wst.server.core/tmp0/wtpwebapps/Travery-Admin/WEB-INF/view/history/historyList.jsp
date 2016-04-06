@@ -18,7 +18,7 @@ $(document).ready( function() {
 	
 	// 검색 초기화 클릭
 	$("#initSearchBtn").click(function() {
-		location.href = "<c:url value="/placeList/init" />" + "?placeType=0";
+		location.href = "<c:url value="/historyList/init" />";
 	});
 	
 	// 검색 버튼 클릭 
@@ -38,13 +38,13 @@ $(document).ready( function() {
 	$("#massiveSelectCheckBox").click( function() {
 		var isChecked = $(this).prop("checked");
 		//일괄체크 되도록 하는 것 
-		$(".deletePlaceId").prop("checked", isChecked);
+		$(".hisotryId").prop("checked", isChecked);
 	});
 	
 	$("#massiveDeleteBtn").click( function() {
 		var isChecked = false;
 		
-		$(".deletePlaceId").each( function (index, data) {
+		$(".hisotryId").each( function (index, data) {
 			if (data.checked) {
 				isChecked = data.checked;
 			}
@@ -67,31 +67,6 @@ $(document).ready( function() {
 		
 	});
 	
-	$("#massiveGoOriginBtn").click( function() {
-		var isChecked = false;
-		
-		$(".deletePlaceId").each( function (index, data) {
-			if (data.checked) {
-				isChecked = data.checked;
-			}
-			
-		});
-		
-		// 삭제할 대상을 정하지 않았으면 alert뜨기 
-		if( !isChecked ) {
-			alert("Go Origin할 Place를 선택하세요");
-		}
-		
-		// 사용자의 confirm 받기 
-		if( confirm("정말 New Place로 넘기시겠습니까?") ) {
-			// 지우는 로직 넣기 
-			var form = $("#massiveDeleteForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/placeMassiveGoNewPlace" />");
-			form.submit();
-		}
-		
-	});
 			
 });
 </script>
@@ -121,54 +96,23 @@ $(document).ready( function() {
 
 				<!-- Place 관리 버튼 -->
 				<div id="buttonCollection">
-					<a href="<c:url value="/memberBlock?email=${member.email}" />">
+					<a href="<c:url value="/showOver30DaysHistoryList" />">
 						<button type="button" class="btn btn-default">30일 지난 history</button>
 					</a> 
 					<span id="massiveDeleteBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">Delete</button>
 					</span> 
+					<a href="<c:url value="/deleteAllHistoryList" />">
+						<button type="button" class="btn btn-default">Delete All History</button>
+					</a> 
 					
-					<!-- dropdown 정렬 메뉴 -->
-					<div class="dropdown memberListdropDown" style="float: right;">
-					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-					    	접근URL <span class="caret"></span>
-					    </button>
-					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=1" />">/doLogin</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=2" />" >/hitTheRoad</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">/tripReservation</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">/myPack</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=4" />">/selectedCountry</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=5" />">/addMyPackByPlace</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=5" />">/tempSelectedPlace</a></li>
-					    </ul>
-					</div>	
-					<!-- /#dropdown memberListdropDown -->
-						
-					<!-- dropdown 정렬 메뉴 -->
-					<div class="dropdown memberListdropDown" style="float: right;">
-					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-					    	액션코드 <span class="caret"></span>
-					    </button>
-					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=1" />">MB_LI</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=2" />" >MN_HR</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">MN_MP</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">MN_SP</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=4" />">MN_RP</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=5" />">MN_TR</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=5" />">PK_SE</a></li>
-					    </ul>
-					</div>	
-					<!-- /#dropdown memberListdropDown -->
-						
 					<!-- dropdown 정렬 메뉴 -->
 					<div class="dropdown memberListdropDown" style="float: right;">
 					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
 					    	정렬 <span class="caret"></span>
 					    </button>
 					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=1" />">IP</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=1" />">IP</a></li>
 					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=2" />" >EMAIL</a></li>
 					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">최근 생성일순</a></li>
 					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">오래된 생성일</a></li>

@@ -91,7 +91,6 @@ public class QNAListServlet extends HttpServlet {
 		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
 		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
 		session.setAttribute("_QNA_SEARCH_", qnaSearchVO);
-		
 		request.setAttribute("QNAs", qnaListVO);
 		
 //		// History

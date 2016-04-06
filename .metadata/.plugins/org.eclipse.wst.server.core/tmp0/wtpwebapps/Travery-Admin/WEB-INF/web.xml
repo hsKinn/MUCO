@@ -747,4 +747,44 @@
     <servlet-name>InitQNAServlet</servlet-name>
     <url-pattern>/qnaList/init</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitHistoryListServlet</display-name>
+    <servlet-name>InitHistoryListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.history.web.InitHistoryListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitHistoryListServlet</servlet-name>
+    <url-pattern>/historyList/init</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowOver30DaysHistoryListServlet</display-name>
+    <servlet-name>ShowOver30DaysHistoryListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.history.web.ShowOver30DaysHistoryListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowOver30DaysHistoryListServlet</servlet-name>
+    <url-pattern>/showOver30DaysHistoryList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAllHistoryListServlet</display-name>
+    <servlet-name>DeleteAllHistoryListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.history.web.DeleteAllHistoryListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAllHistoryListServlet</servlet-name>
+    <url-pattern>/deleteAllHistoryList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HistoryMassiveDeleteServlet</display-name>
+    <servlet-name>HistoryMassiveDeleteServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.history.web.HistoryMassiveDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoryMassiveDeleteServlet</servlet-name>
+    <url-pattern>/historyMassiveDelete</url-pattern>
+  </servlet-mapping>
 </web-app>

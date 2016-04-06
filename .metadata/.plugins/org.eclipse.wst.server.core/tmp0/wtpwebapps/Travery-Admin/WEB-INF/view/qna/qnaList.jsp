@@ -21,7 +21,7 @@ $(document).ready( function() {
 	
 	// 검색 초기화 클릭
 	$("#initSearchBtn").click(function() {
-		location.href = "<c:url value="/packList/init" />";
+		location.href = "<c:url value="/qnaList/init" />";
 	});
 	
 	// 검색 버튼 클릭 
@@ -158,9 +158,9 @@ $(document).ready( function() {
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._QNA_SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
-											<option value="packTitle" ${selectedList eq "packTitle" ? "selected" : "" }>제목</option>
-											<option value="packTitle" ${selectedList eq "packTitle" ? "selected" : "" }>내용</option>
-											<option value="packTitle" ${selectedList eq "packTitle" ? "selected" : "" }>질문자 Email</option>
+											<option value="title" ${selectedList eq "title" ? "selected" : "" }>제목</option>
+											<option value="description" ${selectedList eq "description" ? "selected" : "" }>내용</option>
+											<option value="email" ${selectedList eq "email" ? "selected" : "" }>질문자 Email</option>
 										</select>
 										
 										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>

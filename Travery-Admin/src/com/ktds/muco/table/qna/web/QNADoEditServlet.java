@@ -42,7 +42,7 @@ public class QNADoEditServlet extends HttpServlet {
 		
 		qnaBiz.doQnaEdit(qnaId, qnaVO, request);
 		
-		response.sendRedirect(Root.get(this) + "/qnaDetail?qnaId="+qnaId);
+		response.sendRedirect(Root.get(this) + "/qnaListDetail?qnaId="+qnaId);
 	
 	}
 
