@@ -94,6 +94,35 @@ public class HashTagDAO {
 		}
 	}
 	
+	/**
+	 * 		
+	 * @param packId
+	 * @author 백지경
+	 * @return
+	 */
+	public int deleteAllHashTagByPackId(int packId) {
+		int deleteCount = 0;
+
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/hashtag/deleteAllHashTagByPackId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+
+			deleteCount = stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		return deleteCount;
+		
+	}	
 	
 	/**
 	 * 

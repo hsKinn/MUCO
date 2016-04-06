@@ -30,22 +30,17 @@ import com.ktds.muco.table.transport.vo.TransportVO;
  */
 public class PersonalInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
 	private HistoryBiz historyBiz;
 
-=======
 	private ReserveBiz reserveBiz;
->>>>>>> origin/YBH14
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public PersonalInfoServlet() {
 		super();
-<<<<<<< HEAD
 		historyBiz = new HistoryBiz();
-=======
 		reserveBiz = new ReserveBiz();
->>>>>>> origin/YBH14
 	}
 
 	/**

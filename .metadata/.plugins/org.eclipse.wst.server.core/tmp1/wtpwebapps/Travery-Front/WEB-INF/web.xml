@@ -487,7 +487,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
     <display-name>DoVoteServlet</display-name>
     <servlet-name>DoVoteServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.evaluation.web.DoVoteServlet</servlet-class>
@@ -515,7 +514,9 @@
   <servlet-mapping>
     <servlet-name>AddMyPackByOnePlaceServlet</servlet-name>
     <url-pattern>/addMyPackByOnePlace</url-pattern>
-=======
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>DoTripReservationServlet</display-name>
     <servlet-name>DoTripReservationServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.reserve.web.DoTripReservationServlet</servlet-class>
@@ -523,6 +524,15 @@
   <servlet-mapping>
     <servlet-name>DoTripReservationServlet</servlet-name>
     <url-pattern>/doTripReservation</url-pattern>
->>>>>>> origin/YBH14
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteHashTagServlet</display-name>
+    <servlet-name>DeleteHashTagServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.hashtag.web.DeleteHashTagServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteHashTagServlet</servlet-name>
+    <url-pattern>/deleteHashTag</url-pattern>
   </servlet-mapping>
 </web-app>

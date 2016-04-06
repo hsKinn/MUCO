@@ -74,8 +74,14 @@
 					var tag = $("#hashTag").val();
 					var tags = $("#texthashtag").val();
 					$(".hashtagBox").append(" #" + tag);
-					$("#texthashtag").val(tags + " " + tag);
+					$("#texthashtag").val(tags + " #" + tag);
 					$("#hashTag").val(null);
+				});
+				$("#hashtagDeleteBtn").click(function(){
+					var form = $("#modifyForm");
+					form.attr("method", "post");
+					form.attr("action", "/deleteHashTag");
+					form.submit();
 				});
 
 				$("#modifyOkBtn").click(function() {
@@ -125,11 +131,11 @@
 			</div>
 			<div id="buttondiv">
 				 <button type="button" class="btn btn-primary btn-sm" id="wantAddBtn" style="width:80px;font-size: 15px;">
-				 <span class="glyphicon glyphicon-plus" style="font-size: 15px;"></span>add</button>
+				 <span class="glyphicon glyphicon-plus" style="font-size: 15px;"></span> add</button>
 				  <button type="button" class="btn btn-primary btn-sm" id="wantRemoveBtn" style="width:100px;font-size: 15px;">
-				 <span class="	glyphicon glyphicon-remove" style="font-size: 15px;"></span>remove</button>
+				 <span class="	glyphicon glyphicon-remove" style="font-size: 15px;"></span> remove</button>
 				  <button type="button" class="btn btn-primary btn-sm" id="wantOkBtn" style="width:80px;font-size: 15px;">
-				 <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span>okay</button>
+				 <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span> okay</button>
 			</div>
 		</div>
 
@@ -162,12 +168,17 @@
 						<label for="likeCount" >  <b>Like</b></label>
 					</div>
 					<div class="form-group">
-						<label for="texthashtag">Hash Tag :</label> <input type="hidden"
-							name="texthashtag" id="texthashtag" /> <input type="text"
+						<label for="texthashtag">Hash Tag :</label> 
+						<input type="hidden"
+							name="texthashtag" id="texthashtag" style="color:black;"/> 
+							<input type="text"
 							class="form-control" id="hashTag" name="hashTag"
 							style="width: 30%; display: inline;" />
-						<button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button>
+						<button type="button" id="hashtagAddBtn" class="btn btn-info" style="height:25px;font-size:13px;">Push</button>
 						</br> <span class="hashtagBox" name="hashtagBox"></span>
+
+						<button type="button" id="hashtagDeleteBtn" class="btn btn-primary" style="width:75px;height:25px;font-size:13px;">delete all</button>
+
 					</div>
 				</form>
 				<button type="button" class="btn btn-success" id="modifyOkBtn" >Modify</button>

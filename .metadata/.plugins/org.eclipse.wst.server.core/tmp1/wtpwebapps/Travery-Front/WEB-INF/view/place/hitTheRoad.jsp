@@ -373,7 +373,6 @@
           location.href="/hitTheRoad";
        });
        
-<<<<<<< HEAD
       /* 1. 나라 선택 탭 */
       
       // 오른쪽 리스트에서 나라 선택시 지우기
@@ -502,6 +501,9 @@
          }
       });
       
+  	$("#massiveCleanBtn").click(function(){
+		location.href = "/tempSelectedPlace?clean=1"
+	});
       
    });
    
@@ -519,145 +521,11 @@
       a.style.marginTop = (parseInt(a.style.marginTop) + 15) + "px"; 
       a.style.fontSize = "x-small";
    }
-=======
-		/* 1. 나라 선택 탭 */
 		
-		// 오른쪽 리스트에서 나라 선택시 지우기
-		$(".selectedCountry").click(function(){
-			location.href = "/selectedCountry?selectedCountryName=" + $(this).attr('id');
-		});
-  	
-	   	// 나라 선택 초기화
-	   	$("#removeAllCountries").click(function(){
-			location.href = "/removeAllSelectedCountries";
-	   	});
-	   	
-	   	
-	   	/* 2. 나라 검색 탭 */
-	   	
-		// X축 변경
-		$(".axisX").click(function(){
-			location.href = "/selectedStandard?selectedStandard=X&selectedStandardName=" + $(this).text();
-		});
 	
-		// Y축 변경
-		$(".axisY").click(function(){
-			location.href = "/selectedStandard?selectedStandard=Y&selectedStandardName=" + $(this).text();
-		});
-		
-		// 점들의 위치 설정
-		<c:if test="${ not empty selectedAllPlaceList }">
-			<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
-			
-				<c:if test="${ axisX1 eq 'Bright'}">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgBrightDarkScore * 6.5}px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'Active' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgActiveCalmScore * 6.5 }px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'HighPrice' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-left" : "${ selectedPlace.avgHighPriceLowPriceScore * 6.5 }px"});
-				</c:if>
-				
-				<c:if test="${ axisY1 eq 'Bright'}">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgBrightDarkScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'Active' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgActiveCalmScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'HighPrice' }">
-					$('#placeIdIs${ selectedPlace.placeId }').css({"margin-top" : "${ 325 - (selectedPlace.avgHighPriceLowPriceScore * 3.25) }px"});
-				</c:if>
-				
-			</c:forEach>
-		</c:if>
-		
-		// 점들의 위치 설정
-		<c:if test="${ not empty placeListByPackId }">
-			<c:forEach items="${ placeListByPackId }" var="place">
-				
-				<c:if test="${ axisX1 eq 'Bright'}">
-					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgBrightDarkScore * 6.5}px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'Active' }">
-					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgActiveCalmScore * 6.5 }px"});
-				</c:if>
-				<c:if test="${ axisX1 eq 'HighPrice' }">
-					$('#placeIdInPackIs${ place.placeId }').css({"margin-left" : "${ place.avgHighPriceLowPriceScore * 6.5 }px"});
-				</c:if>
-				
-				<c:if test="${ axisY1 eq 'Bright'}">
-					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgBrightDarkScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'Active' }">
-					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgActiveCalmScore * 3.25) }px"});
-				</c:if>
-				<c:if test="${ axisY1 eq 'HighPrice' }">
-					$('#placeIdInPackIs${ place.placeId }').css({"margin-top" : "${ 325 - (place.avgHighPriceLowPriceScore * 3.25) }px"});
-				</c:if>
-				
-			</c:forEach>
-		</c:if>
-		
-		// 점에 마우스 대면 여행지명 표시
-		$('[data-toggle="tooltip"]').tooltip();
-		
-		// 점 클릭하면 아래 임시 리스트에 Div 생성
-		$("#dottedDiv > a").click(function(){
-			var select = $(this);
-		    var id = select.attr('id');
-		    location.href = "/tempSelectedPlace?selectedPlaceId=" + id;
-		});
-		
-		/* 3. 마이 패키지 탭 */
-		$(".loginUserPack").click(function(){
-			location.href = "/hitTheRoad?selectedPackageId=" + $(this).attr('id');
-		});
-		// myPack 추가 버튼 - 체크되있는 여행지가 있을 때만 가능
-		/* $("#massiveSubmitBtn").click(function(){
-			if( $( ".selectedPlaceId:checkbox:checked" ).val() == null ) {
-				alert("My Package에 추가하실 여행지를 선택해주세요.");
-			}
-			else {
-				$("#massiveSubmitBtn").attr('data-target', '#massiveSubmitModal');
-			}
-		}); */
-		
-		// 체크된 여행지들 myPack에 추가 확인
-		$(".addUserPackList").click(function(){
-			var packId = $(this).attr('id');
-			if ( confirm( "["+ $(this).text() + "]에 추가하시겠습니까?") ) {
-				var form = $("#massiveSubmitForm");
-				form.attr("method", "post");
-				form.attr("action", "/addMyPackByPlace?packId=" + packId);
-				form.submit();
-				alert("추가되었습니다.");
-				return;
-			}
-		});
-		
-		$("#massiveCleanBtn").click(function(){
-			location.href = "/tempSelectedPlace?clean=1"
-		});
 		
 		
-	});
 	
-	// 새로고침 해도 현재 탭 유지
-	function zoomin(id) {
-		var a = document.getElementById(id);
-		a.style.marginLeft = (parseInt(a.style.marginLeft) - 5) + "px"; 
-		a.style.marginTop = (parseInt(a.style.marginTop) - 15) + "px"; 
-		a.style.fontSize = "30px";
-	}
-	
-	function zoomout(id) {
-		var a = document.getElementById(id);
-		a.style.marginLeft = (parseInt(a.style.marginLeft) + 5) + "px"; 
-		a.style.marginTop = (parseInt(a.style.marginTop) + 15) + "px"; 
-		a.style.fontSize = "x-small";
-	}
->>>>>>> origin/YBH14
 </script>
 
 <!-- Hit the road -->
@@ -813,7 +681,6 @@
                               	 
                               	neighborhoods.push(data);
 
-<<<<<<< HEAD
                               	</c:forEach>
                               	
                               function initMap() {
@@ -871,292 +738,7 @@
                </div>
             </div>
       
-            <!-- 선택된 나라 리스트 -->
-            <div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
-               <div id="countries" style="width: 100%; height: 100%;">
-                  <c:forEach items="${ selectedCountryList }" var="selectedCountry">
-                     <div style="border-radius:6px;" class="selectedCountry" id="${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
-                  </c:forEach>
-               </div>
-            </div>
-            <div id="showPackagesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
-               <div id="packages" style="width: 100%; height: 100%;">
-                  <c:forEach items="${ loginUserPackList }" var="loginUserPack">
-                     <div style="border-radius:6px;" class="loginUserPack" id="packIdIs${ loginUserPack.packId }">${ loginUserPack.packTitle }</div>
-                  </c:forEach>
-               </div>
-            </div>
-         </div>
-      
-         <!-- 두번째 열 -->
-         <div id="secondRowDiv" class="row">
-      
-            <!-- 여행지 임시 리스트 -->
-      
-            <div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
-            <form id="massiveSubmitForm">
-               <!-- 여행지 상세보기 페이지 -->
-               <c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-                  <div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
-                  style="float:left;
-                        width:15%;
-                        height:150px;
-                        text-align: center;
-                        margin-left:45px;
-                        margin-top:20px;" 
-                  >
-                  <input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-                  <a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
-                     <img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
-                  </a>
-                  <div id="tempPlaceNameDiv"><a id="tempPlaceName" href="#" onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
-                     ${ tempSelectedPlace.placeName }</a></div>
-                     <div class="placeCards" style="width:100%; height:125px; background-color: #ffffff;">
-                        <img src="/image?imageName=basic1.jpg" />
-                     </div>
-                  </div>
-                           
-               </c:forEach>
-            </form>
-            </div>
-      
-            <!-- 기준 선택 -->
-            <div id="selectStandardBtns" class="col-sm-2" style="height: 70%;">
-      
-               <!-- Drop Down : X 축 -->
-               <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                     <li><a class="axisX">Bright-Dark</a></li>
-                     <li><a class="axisX">HighPrice-LowPrice</a></li>
-                     <li><a class="axisX">Active-Calm</a></li>
-                     <li><a class="axisX">Artificial-Natural</a></li>
-                  </ul>
-               </div>
-               <br />
-               <!-- Drop Down : Y 축 -->
-               <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
-                  <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                     <li><a class="axisY">Bright-Dark</a></li>
-                     <li><a class="axisY">HighPrice-LowPrice</a></li>
-                     <li><a class="axisY">Active-Calm</a></li>
-                     <li><a class="axisY">Artificial-Natural</a></li>
-                  </ul>
-               </div>
-            </div>
-            
-            <!-- my pack 추가버튼 모달 -->
-            
-            <div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >추가</div>
-            <div class="modal fade" id="massiveSubmitModal" role="dialog" >
-               <div class="modal-dialog modal-lg">
-                  <div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
-                     <div class="divBody" style="width: 100%;height: 100%;background-color: #333333; overflow-y:auto;">
-      
-                        <c:forEach items="${loginUserPackList }" var="addMyPack">
-                           <div class="addUserPackList" id="${addMyPack.packId }">${addMyPack.packTitle }</div>
-                        </c:forEach>
-                        
-                     </div>
-                     <div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            
-         </div>
-      </div>
-   </div>
-=======
-		<!-- 내용 -->
-		<div id="hitTheRoad">
-		
-			<!-- 첫번째 열 -->
-			<div id="firstRow" class="row">
-		
-				<!-- 나라 선택, 여행지 검색, 나의 패키지, 경로설정 -->
-				<div class="col-sm-8" style="height: 100%;">
-					<div id="firstContainer" class="container">
-		
-						<!-- 탭 -->
-						<ul id="hitTheRoadTabs" class="nav nav-tabs">
-							<li id="homeTab" class="tabMenu1"><a data-toggle="tab" href="#home">Country</a></li>
-							<li id="menu1Tab" class="tabMenu1"><a data-toggle="tab" href="#menu1">Mood</a></li>
-							<li id="menu2Tab" class="tabMenu2"><a data-toggle="tab" href="#menu2">My package</a></li>
-							<li id="menu3Tab" class="tabMenu2"><a data-toggle="tab" href="#menu3">Route</a></li>
-						</ul>
-		
-						<!-- 탭 내용 -->
-						<div class="tab-content">
-							<!-- 나라 선택 탭 -->
-							<div id="home" class="tab-pane fade">
-								<!-- 지도 -->
-								<div id="map1" style="width: 100%; height: 95%;"></div>
-		
-								<button id="focus-multiple" >KR and JP</button>
-								<button id="focus-init" >World Map</button>
-								<button id="removeAllCountries" style="background-color: #333333; color:#ffffff; height:29px;;">Remove All Countries</button>
-							</div>
-		
-							<!-- 여행지 검색 탭 -->
-							<div id="menu1" class="tab-pane">
-								<div class="row">
-									<div id="printAxisY1">${ axisY1 }</div>
-								</div>
-								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
-									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
-									<!-- ★★★★★ 나라별 점 찍는곳 ★★★★★ -->
-									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
-										<c:if test="${ not empty selectedAllPlaceList }">
-										<c:forEach items="${ selectedAllPlaceList }" var="selectedPlace">
-											<c:set value="${ selectedPlace.placeId }" var="placeId" />
-											<c:set value="${ selectedPlace.placeName }" var="placeName" />
-											<c:set value="${ selectedPlace.countryId }" var="countryId" />
-											<a
-											id="placeIdIs${ placeId }"
-											class="countryIdIs${ countryId }" 
-											data-toggle="tooltip"
-											title="${ placeName }"
-											onmouseover="zoomin('placeIdIs${ placeId }')"
-											onmouseout="zoomout('placeIdIs${ placeId }')"
-											style="
-												font-weight: bolder;
-												font-size:x-small;
-												text-decoration: none;
-												position: absolute;
-												cursor: pointer;"
-											>●
-											</a>
-										</c:forEach>
-										</c:if>
-									</div>
-									
-									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
-								</div>
-								<div class="row">
-									<div id="printAxisY2">${ axisY2 }</div>
-								</div>
-							</div>
-							<!-- 나의 패키지 탭 -->
-							<div id="menu2" class="tab-pane fade">
-								<div class="row">
-									<div id="printAxisY1">${ axisY1 }</div>
-								</div>
-								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
-									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
-									
-									<!-- ▲▲▲▲▲  패키지 점 찍는곳 ▲▲▲▲▲ -->
-									<div id="dottedDiv" class="col-sm-8" style="padding:0;" >
-										<c:if test="${ not empty placeListByPackId  }">
-										<c:forEach items="${ placeListByPackId }" var="placeByPackId">
-											<c:set value="${ placeByPackId.placeId }" var="placeIdInPack" />
-											<c:set value="${ placeByPackId.placeName }" var="placeNameInPack" />
-											<c:set value="${ placeByPackId.countryId }" var="countryIdInPack" />
-											<a
-											id="placeIdInPackIs${ placeIdInPack }"
-											class="countryIdIs${ countryIdInPack }" 
-											data-toggle="tooltip"
-											title="${ placeNameInPack }"
-											onmouseover="zoomin('placeIdInPackIs${ placeIdInPack }')"
-											onmouseout="zoomout('placeIdInPackIs${ placeIdInPack }')"
-											style="
-												font-weight: bolder;
-												font-size:x-small;
-												text-decoration: none;
-												position: absolute;
-												cursor: pointer;"
-											>●
-											</a>
-										</c:forEach>
-										</c:if>
-									</div>
-									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
-								</div>
-								<div class="row">
-									<div id="printAxisY2">${ axisY2 }</div>
-								</div>
-							</div>
-		
-							<!-- 경로 설정 탭 -->
-							<div id="menu3" class="tab-pane fade" style="height: 100%; width: 100%;">
-								
-									<div id="floating-panel">
-										<button id="drop" onclick="drop()">Drop Markers</button>
-									</div>
-									<div id="map"></div>
-									<script>
-										// If you're adding a number of markers, you may want to drop them on the map
-										// consecutively rather than all at once. This example shows how to use
-										// window.setTimeout() to space your markers' animation.
-								
-										
-										
-										
-										
-										var a;
-										var b;
-										<c:forEach items="${placeListByPackId}" var="placeByPackId">
-											a = '${ placeByPackId.latitude }';
-											b = '${ placeByPackId.longitude }';
-											
-										</c:forEach>
-										alert(a[0]);
-										alert(b[0]);
-										var neighborhoods = [
-										                     {lat: 52.511, lng: 13.447},
-										                     {lat: 52.549, lng: 13.422},
-										                     {lat: 52.497, lng: 13.396},
-										                     {lat: 52.517, lng: 13.394}
-										                   ];
-										
-										var markers = [];
-										var map;
-								
-										function initMap() {
-											map = new google.maps.Map(document.getElementById('map'), {
-												zoom : 12,
-												center : {
-													lat : 52.520,
-													lng : 13.410
-												}
-											});
-										}
-								
-										function drop() {
-											clearMarkers();
-											for (var i = 0; i < neighborhoods.length; i++) {
-												addMarkerWithTimeout(neighborhoods[i], i * 200);
-											}
-										}
-								
-										function addMarkerWithTimeout(position, timeout) {
-											window.setTimeout(function() {
-												markers.push(new google.maps.Marker({
-													position : position,
-													map : map,
-													animation : google.maps.Animation.DROP
-												}));
-											}, timeout);
-										}
-								
-										function clearMarkers() {
-											for (var i = 0; i < markers.length; i++) {
-												markers[i].setMap(null);
-											}
-											markers = [];
-										}
-									</script>
-									<script async defer
-										src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLfX3hC4iBa4XL588g7cB2OCHhPpjuy8&signed_in=true&callback=initMap"></script>
-							</div>
-						</div>
-					</div>
-				</div>
+
 		
 				<!-- 선택된 나라 리스트 -->
 				<div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
@@ -1190,14 +772,15 @@
 								height:150px;
 								text-align: center;
 								margin-left:45px;
-								margin-top:20px;" 
+								margin-top:20px;
+								color:#333333;" 
 						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
 							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
 								<img src="/image?imageName=basic1.jpg" />
 							</div>
 							<div style="width:100%; height:100%;" >
-								<div class="tempPlaceNameDiv"><a class="tempPlaceName" href="/detailPlace?placeId=${ tempSelectedPlace.placeId }" >
+								<div class="tempPlaceNameDiv"><a class="tempPlaceName" href="#" onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
 									${ tempSelectedPlace.placeName }</a></div>
 								<div style=" position:relative; left:128px; bottom:22.4px; width:21px;height:21px"><a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
 									<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px;" />
@@ -1220,6 +803,7 @@
 							<li><a class="axisX">Bright-Dark</a></li>
 							<li><a class="axisX">HighPrice-LowPrice</a></li>
 							<li><a class="axisX">Active-Calm</a></li>
+							<li><a class="axisX">Artifitial-Natural</a></li>
 						</ul>
 					</div>
 					<br />
@@ -1232,6 +816,7 @@
 							<li><a class="axisY">Bright-Dark</a></li>
 							<li><a class="axisY">HighPrice-LowPrice</a></li>
 							<li><a class="axisY">Active-Calm</a></li>
+							<li><a class="axisY">Artifitial-Natural</a></li>
 						</ul>
 					</div>
 				</div>
@@ -1270,7 +855,6 @@
 			</div>
 		</div>
 	</div>
->>>>>>> origin/YBH14
 </section>
 
 <!-- Footer -->

@@ -73,51 +73,13 @@ public class TempSelectedPlaceServlet extends HttpServlet {
 				response.sendRedirect(Root.get(this) + "/hitTheRoad?errorCodeSecond=" + selectedPlaceId);
 			}
 		
-<<<<<<< HEAD
-		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
-		
-		if( isSuccess ) {
-			
-			// History
-			HistoryVO history = new HistoryVO();
-			history.setIp(request.getRemoteHost());
-			history.setEmail(member.getEmail());
-			history.setUrl(request.getRequestURI());
-			history.setActionCode(ActionCode.SELECTED_PLACE);
-			history.setHistoryDescription(BuildDescription.get(Description.SELECTED_PLACE, member.getEmail(), selectedPlaceId + ""));
-			historyBiz.addHistory(history);
-			
-			// 해당 여행지가 DB에 있으면
-			response.sendRedirect(Root.get(this) + "/hitTheRoad?placeId=" + selectedPlaceId);
-=======
->>>>>>> origin/YBH14
 		}
 		else {
 			boolean isSuccess = placeBiz.cleanTempPlaceList(request);
 			
-<<<<<<< HEAD
-			try {
-				selectedPlaceId = Integer.parseInt(splitId[1]);
-			} catch (NumberFormatException nfe) {	}
-			
-			// History
-			HistoryVO history = new HistoryVO();
-			history.setIp(request.getRemoteHost());
-			history.setEmail(member.getEmail());
-			history.setUrl(request.getRequestURI());
-			history.setActionCode(ActionCode.SELECTED_PLACE);
-			history.setHistoryDescription(BuildDescription.get(Description.SELECTED_PLACE_FAIL, member.getEmail(), selectedPlaceId + ""));
-			historyBiz.addHistory(history);
-			
-			response.sendRedirect(Root.get(this) + "/hitTheRoad?errorCodeSecond=" + selectedPlaceId);
-=======
 			if ( isSuccess ) {
 				response.sendRedirect(Root.get(this) + "/hitTheRoad");
 			}
->>>>>>> origin/YBH14
 		}
-		
 	}
-
 }

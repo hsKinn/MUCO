@@ -204,6 +204,7 @@ public class PlaceBiz {
 		return false;
 		
 	}
+	
 	/**
 	 * Get Detail Place Info By Place ID
 	 * 
@@ -219,7 +220,7 @@ public class PlaceBiz {
 		return placeDAO.getDetailPlaceInfo( placeId, member );
 		
 	} // getDetailPlaceInfo END
-<<<<<<< HEAD
+
 	/**
 	 * getCountryList
 	 * 
@@ -232,7 +233,6 @@ public class PlaceBiz {
 	public List<PlaceVO> getCountryList(MemberVO memberVO) {
 		return placeDAO.getCountryList(memberVO);
 	}
-=======
 
 	/**
 	 * 임시 여행지 리스트 비우기
@@ -262,6 +262,4 @@ public class PlaceBiz {
 		return false;
 	}
 	
-	
->>>>>>> origin/YBH14
 }

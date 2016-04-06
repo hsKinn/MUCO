@@ -1,5 +1,4 @@
 INDEX VERSION 1.127+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclipse.jdt.core
-<<<<<<< HEAD
 1763995614.index
 3517303933.index
 1733192377.index
@@ -11,17 +10,10 @@ INDEX VERSION 1.127+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclip
 392419882.index
 3386692302.index
 737404345.index
-=======
-3261789623.index
-1951512101.index
-2181683745.index
-3309830863.index
->>>>>>> origin/YBH14
 2806613913.index
 3309830863.index
 1951512101.index
 4029769606.index
-<<<<<<< HEAD
 1658438775.index
 3880920677.index
 3890676705.index
@@ -36,54 +28,22 @@ INDEX VERSION 1.127+C:\Users\206-001\Documents\MUCO\.metadata\.plugins\org.eclip
 3174019598.index
 2327267026.index
 1772137307.index
-=======
-1472653249.index
-3886168665.index
->>>>>>> origin/YBH14
 990578149.index
 1472653249.index
 3447782974.index
 3261789623.index
 3433415982.index
 3920974120.index
-<<<<<<< HEAD
 1280244118.index
 2706122839.index
 1558295235.index
-=======
-981367820.index
-3517303933.index
-2327267026.index
-3174019598.index
-3385318125.index
-2078831815.index
-733859106.index
-888886519.index
-4152291903.index
->>>>>>> origin/YBH14
 2292411991.index
 3385318125.index
 51178355.index
-<<<<<<< HEAD
-=======
-212673794.index
-2174539543.index
-1804150988.index
-1733192377.index
-189063585.index
->>>>>>> origin/YBH14
 3497882578.index
 212673794.index
 3886168665.index
 2947034401.index
 1804150988.index
 1332610715.index
-<<<<<<< HEAD
 246498896.index
-=======
-1763995614.index
-1558295235.index
-3985950586.index
-2087114955.index
-4274169106.index
->>>>>>> origin/YBH14

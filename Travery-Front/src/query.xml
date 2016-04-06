@@ -491,6 +491,12 @@
 	</sharePack>
 	
 	<hashtag>
+	
+		<deleteAllHashTagByPackId>
+         DELETE
+         FROM   HASH_TAG
+         WHERE   PACK_ID = ?
+     	</deleteAllHashTagByPackId>
 		
 		<getHashTagOfPackage>
 			SELECT	HASH_TAG_ID
