@@ -735,6 +735,10 @@
 									<span class="image" style="height: 150px;"> <img
 										src="/resource/img/common/santorini.jpg"
 										alt="" style="height:100%;"/>
+										<div style=" position:relative; left:128px; bottom:22.4px; width:21px;height:21px">
+										<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+										<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; z-index:999999;" />
+										</a></div>
 									</span> <a href="#"
 										onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
 										<p>${ tempSelectedPlace.placeName }</p>

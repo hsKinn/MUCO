@@ -582,7 +582,7 @@
 							<!-- 나의 패키지 탭 -->
 							<div id="menu2" class="tab-pane fade">
 								<div class="row">
-									<div id="printAxisY1">${ axisY1 }</div>
+									<div id="printAxisY1" style="text-align: center; width:100%;">${ axisY1 }</div>
 								</div>
 								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
 									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
@@ -615,7 +615,7 @@
 									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
 								</div>
 								<div class="row">
-									<div id="printAxisY2">${ axisY2 }</div>
+									<div id="printAxisY2" style="text-align: center; width:100%;">${ axisY2 }</div>
 								</div>
 							</div>
 		
@@ -720,7 +720,7 @@
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
 			<div class="inner">
-				<section class="tiles" style="padding-top: 0px;">
+				<section class="tiles" style="padding-top: 0px; height:0px;">
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId" value="${ tempSelectedPlace.placeId }" />
 						
@@ -730,9 +730,8 @@
 									height:150px;
 									text-align: center;
 									margin-left:45px;
-									margin-bottom:0px;
 									position: relative;
-									top:20px;">
+									top:25px;">
 									<span class="image" style="height: 150px;"> <img
 										src="/resource/img/common/santorini.jpg"
 										alt="" style="height:100%;"/>

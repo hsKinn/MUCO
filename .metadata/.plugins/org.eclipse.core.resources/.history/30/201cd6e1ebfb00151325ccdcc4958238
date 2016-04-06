@@ -720,7 +720,7 @@
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
 			<div class="inner">
-				<section class="tiles" style="padding-top: 0px; height:0px;">
+				<section class="tiles" style="padding-top: 0px;">
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId" value="${ tempSelectedPlace.placeId }" />
 						
@@ -731,7 +731,7 @@
 									text-align: center;
 									margin-left:45px;
 									position: relative;
-									top:25px;">
+									top:20px;">
 									<span class="image" style="height: 150px;"> <img
 										src="/resource/img/common/santorini.jpg"
 										alt="" style="height:100%;"/>
