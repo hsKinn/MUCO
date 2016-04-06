@@ -1,0 +1,299 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+ul#hitTheRoadTabs li a {
+	font-size: 13pt;
+}
+
+div#hitTheRoad {
+	width: 1550px;
+	height: 850px;
+	float: left;
+}
+
+div#firstRow {
+	width: 100%;
+	height: 60%;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+div#firstContainer {
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+
+div.tab-content {
+	height: 90%;
+	width: 100%;
+	margin-top: 10px;
+}
+
+div#home {
+	width: 100%;
+	height: 100%;
+}
+
+button#focus-multiple {
+	background-color: #333333;
+	color: #ffffff;
+	padding: 3px;
+	margin-top: 2px;
+}
+
+button#focus-init {
+	background-color: #333333;
+	color: #ffffff;
+	padding: 3px;
+	margin-top: 2px;
+	margin-left: 2px;
+}
+
+div#menu1 {
+	width: 100%;
+	height: 100%;
+}
+
+div#printAxisY1 {
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	color: #ffffff;
+	padding-top: 20px;
+}
+
+div#printAxisX2 {
+	height: 100%;
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	padding-top: 16%;
+	color: #ffffff;
+}
+
+div#printAxisX1 {
+	height: 100%;
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	padding-top: 16%;
+	color: #ffffff;
+}
+
+div#printAxisY2 {
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	color: #ffffff;
+}
+
+div#dottedDiv {
+	height: 100%;
+	position: relative;
+}
+
+div#dottedDiv2 {
+	height: 100%;
+	position: relative;
+}
+
+div#secondRowDiv {
+	width: 100%;
+	height: 25%;
+	float: left;
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+div#tempPlaceList {
+	height: 100%;
+	padding-left: 10px;
+}
+
+div.selectedCountry, div.loginUserPack {
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	margin-top: 10px;
+	cursor: pointer;
+	padding: 5px;
+	float: left;
+	margin-left: 1px;
+}
+
+div#showCountriesDiv {
+	display: none;
+}
+
+div#showPackagesDiv {
+	display: none;
+}
+
+
+/* 나라 색깔 */
+
+/* Korea */
+
+div.selectedCountry, div.loginUserPack {
+	background-color: #eeeeee;
+	color: #333333;
+}
+
+div#Korea {
+	background-color: #fa3851;
+	color: #333333;
+}
+
+/* Russia */
+div#Russia {
+	background-color: #ffff4d;
+	color: #333333;
+}
+
+/* China */
+div#China {
+	background-color: #9797ff;
+	color: #333333;
+}
+
+
+
+/* 여행지 점 색깔 */
+
+/* Korea */
+a.countryIdIs6 {
+	color: #fa3851;
+}
+
+/* Russia */
+a.countryIdIs11 {
+	color: #ffff4d;
+}
+
+/* China */
+a.countryIdIs12 {
+	color: #9797ff;
+}
+
+div#massiveSubmitBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	height:30px;
+	margin-top: 40px;
+	cursor: pointer;
+	padding: 5px;
+	margin-right:26%;
+	margin-bottom:8%;
+	border-radius:6px;
+	float:right;
+	background-color: #eeeeee;
+	color:#333333;
+}
+
+div.addUserPackList {
+	text-align: center;
+	font-size:20px;
+	font-weight: bold;
+	width:70%;
+	margin:auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	cursor: pointer;
+}
+
+div.addUserPackList:hover {
+	background-color: #5a5a5a;
+	color:#eeeeee;
+}
+
+/* 구글맵 경로 */
+
+#map {
+  height: 100%;
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+div.placeCards img {
+	width: 100%;
+	height: 100%;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+
+#right-panel {
+  margin: 20px;
+  border-width: 2px;
+  width: 20%;
+  float: left;
+  text-align: left;
+  padding-top: 20px;
+}
+#directions-panel {
+  margin-top: 20px;
+  background-color: #FFEE77;
+  padding: 10px;
+}
+
+div.tempPlaceNameDiv {
+	flaat:left;
+	width:124px;
+	height:24px;
+	background-color: #0000a0;
+	text-align: center;
+	/* white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip ellipsis; */
+	
+}
+
+a.tempPlaceName {
+	margin-left:13px;
+	padding-right:2px;
+	color:#eeeeee;
+    text-decoration:none;
+    opacity :1;
+	transition: all 0.3s ease-out;
+	overflow-y:auto;
+}
+
+a.tempPlaceName:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+#massiveCleanBtn{
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	height:30px;
+	
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	margin-left:67.5%;
+	margin-top:15%;
+	background-color: #eeeeee;
+	color:#333333;
+}

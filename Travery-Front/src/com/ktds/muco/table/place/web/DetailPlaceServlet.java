@@ -1,6 +1,7 @@
 package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,6 @@ public class DetailPlaceServlet extends HttpServlet {
 	private PlaceBiz placeBiz;
 	private EvaluationBiz evaluationBiz;
 	private HistoryBiz historyBiz;
-	
 	private PackBiz packBiz;
        
     /**
@@ -44,7 +44,6 @@ public class DetailPlaceServlet extends HttpServlet {
         placeBiz = new PlaceBiz();
         evaluationBiz = new EvaluationBiz();
         historyBiz = new HistoryBiz();
-        
         packBiz = new PackBiz();
     }
 
@@ -65,6 +64,17 @@ public class DetailPlaceServlet extends HttpServlet {
 		// History
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		// 유저가 가진 패키지들 뿌려주기
+		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
+		
+		if(member != null){
+			
+			loginUserPackList = packBiz.getPackListByEmail(member.getEmail());
+			if(loginUserPackList != null){
+				request.setAttribute("loginUserPackList", loginUserPackList);
+			}
+		}		
 		
 		EvaluationVO evaluation = new EvaluationVO();
 		evaluation.setPlaceId(placeId);

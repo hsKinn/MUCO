@@ -1,0 +1,184 @@
+package com.ktds.muco.table.reserve.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.table.placeLike.vo.PlaceLikeVO;
+import com.ktds.muco.table.reserve.vo.ReserveVO;
+import com.ktds.muco.table.transport.vo.TransportVO;
+import com.ktds.muco.util.xml.XML;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class ReserveDAO {
+	
+	/**
+	 * 예약 정보 등록
+	 * @param reserveVO
+	 * @return
+	 * @author 유병훈
+	 */
+	public int getReserveId(ReserveVO reserveVO) {
+		
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		int insertCount = 0;
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/reserve/addNewReserve/text()");
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setInt(1, reserveVO.getPackId());
+			stmt.setString(2, reserveVO.getDepartureName());
+			stmt.setInt(3, reserveVO.getPersonCount());
+			stmt.setString(4, reserveVO.getDepartDate());
+			stmt.setString(5, reserveVO.getArriveDate());
+			
+			insertCount = stmt.executeUpdate();
+
+			if ( insertCount > 0 ) {
+				
+				stmt.close();
+				query = XML.getNodeString("//query/reserve/getReserveId/text()");
+				stmt = conn.prepareStatement(query);
+				
+				ResultSet rs = stmt.executeQuery();
+				
+				int reserveId = 0;
+				
+				if (rs.next()) {
+					reserveId = rs.getInt(1);
+				}
+				rs.close();
+				
+				return reserveId;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		
+		return insertCount;
+		
+	}
+	
+	/**
+	 * 예약 정보 교통 등록
+	 * @param transportVO
+	 * @return
+	 * @author 유병훈
+	 */
+	public int getTransportId(TransportVO transportVO) {
+		
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		int insertCount = 0;
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			String query = XML.getNodeString("//query/reserve/addNewReserveTransport/text()");
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1, transportVO.getTransportClass());
+			
+			
+			insertCount = stmt.executeUpdate();
+
+			if ( insertCount > 0 ) {
+				
+				stmt.close();
+				query = XML.getNodeString("//query/reserve/getTransportId/text()");
+				stmt = conn.prepareStatement(query);
+				
+				ResultSet rs = stmt.executeQuery();
+				
+				int transportId = 0;
+				
+				if (rs.next()) {
+					transportId = rs.getInt(1);
+				}
+				rs.close();
+				
+				return transportId;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		
+		return insertCount;
+	}
+	
+	
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+
+
+
+	
+
+	
+
+}

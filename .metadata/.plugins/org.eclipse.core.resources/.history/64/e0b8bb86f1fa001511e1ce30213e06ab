@@ -1,0 +1,77 @@
+package com.ktds.muco.table.reserve.biz;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.ktds.muco.table.reserve.dao.ReserveDAO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class ReserveBiz {
+	
+	private ReserveDAO reserveDAO;
+	
+	public ReserveBiz() {
+		reserveDAO = new ReserveDAO();
+	}
+	
+	
+	/**
+	 * reserveVO 입력 및 reserveId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getReserveId(HttpServletRequest request) {
+		
+		String departureName = request.getParameter("departure");
+		int arriveByPackId = Integer.parseInt(request.getParameter("destination"));
+		String departDate = request.getParameter("departureDate");
+		String arriveDate = request.getParameter("destinationDate");
+		int traPerson = Integer.parseInt(request.getParameter("traPerson"));
+		
+	}
+
+	/**
+	 * transportVO 입력 및 transportId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getTransportId(HttpServletRequest request) {
+
+		String transportClass = request.getParameter("traGrade");
+		
+	}
+
+	/**
+	 * stayVO 입력 및 stayId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getStayId(HttpServletRequest request) {
+		
+		String stayType = request.getParameter("accommodations");
+		String stayClass = request.getParameter("accGrade");
+		String checkInDate = request.getParameter("checkIn");
+		String checkOutDate = request.getParameter("checkOut");
+		int accPerson = Integer.parseInt(request.getParameter("accPerson"));
+		
+	}
+	
+	/**
+	 * rentVO 입력 및 rentId 리턴
+	 * @author 유병훈
+	 *
+	 */
+	public int getRentId(HttpServletRequest request) {
+
+		String rentType = request.getParameter("rentCar");
+		String rentStartDate = request.getParameter("rentDate");
+		String rentEndDate = request.getParameter("returnDate");
+		int rentPerson = Integer.parseInt(request.getParameter("rentPerson"));
+		
+	}
+
+
+}

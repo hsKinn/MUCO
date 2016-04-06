@@ -7,4 +7,6 @@
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.vo.EvaluationVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.vo.reportedPlaceVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.biz.ReportedPlaceBiz"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

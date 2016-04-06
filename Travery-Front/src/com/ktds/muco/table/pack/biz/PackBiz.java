@@ -115,6 +115,37 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 
 		return insertCount;
 	}
+	
+	/**
+	 * 
+	 * @param packId
+	 * @param hashtags
+	 * @author 백지경
+	 * @return
+	 */
+	public int modifyHashTag(int packId, String hashtags) {
+		// 기존 해시태그 다지우고 새로넣기
+		// 다지우기
+		int deleteCount = 0;
+		deleteCount = hashTagDAO.deleteAllHashTagByPackId(packId);
+		
+		
+		int modifyCount = 0;
+		// 1. hashtags string을 split하여 배열로 바꾼다.
+		String hashtagArray[] = hashtags.split(" #");
+		// 2. hashtag vo들로 만든다.
+		// 3. dao로 tag를 넘겨 db에 넣는다.
+		for (String tag : hashtagArray) {
+			HashTagVO hashTagVO = new HashTagVO();
+			hashTagVO.setPackId(packId);
+			hashTagVO.setHashtagName(tag);
+			if(tag != null && tag.length()>0){
+				modifyCount = hashTagDAO.addHashTagInPack(hashTagVO);
+			}
+		}
+
+		return modifyCount;
+	}	
 
 	public String getHashTagsByPackId(int packId) {
 		List<HashTagVO> tags = new ArrayList<HashTagVO>();
@@ -161,10 +192,14 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 	public boolean getAddMyPackByPlace(String[] selectedPlaceId, int packId) {
 
 		int isSuccess = 0;
+		int checkPlaceId = packDAO.getMyPackCheckPlaceId(packId);
+		
 		// packDAO.getAddMyPackByPlace(selectedPlaceId, packId);
 		for (String placeId : selectedPlaceId) {
 			int ori_placeId = Integer.parseInt(placeId);
-			isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
+			if ( checkPlaceId != ori_placeId ) {
+				isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
+			}
 		}
 		if (isSuccess > 0) {
 			return true;
@@ -172,4 +207,20 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 
 		return false;
 	}
+
+	
+	/**
+	 * Add My Pack BY One Place
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param pack
+	 * @return
+	 */
+	public boolean addMyPackByOnePlace(PackVO pack) {
+		
+		return packDAO.getAddMyPackByPlace( pack.getPlaceId(), pack.getPackId() ) > 0;
+		
+	} // addMyPackByOnePlace END
+	
 }

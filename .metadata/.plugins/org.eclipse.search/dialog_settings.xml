@@ -106,7 +106,11 @@
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
+<<<<<<< HEAD
 			<item value="size" key="textPattern"/>
+=======
+			<item value="KGM" key="textPattern"/>
+>>>>>>> origin/YBH14
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -118,7 +122,11 @@
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
+<<<<<<< HEAD
 			<item value="asaf" key="textPattern"/>
+=======
+			<item value="System." key="textPattern"/>
+>>>>>>> origin/YBH14
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -161,7 +169,12 @@
 		<item value="977" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="436" key="DIALOG_HEIGHT"/>
+<<<<<<< HEAD
 		<item value="-17" key="DIALOG_X_ORIGIN"/>
 		<item value="337" key="DIALOG_Y_ORIGIN"/>
+=======
+		<item value="465" key="DIALOG_X_ORIGIN"/>
+		<item value="261" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> origin/YBH14
 	</section>
 </section>

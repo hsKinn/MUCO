@@ -501,6 +501,9 @@
          }
       });
       
+  	$("#massiveCleanBtn").click(function(){
+		location.href = "/tempSelectedPlace?clean=1"
+	});
       
    });
    
@@ -518,6 +521,11 @@
       a.style.marginTop = (parseInt(a.style.marginTop) + 15) + "px"; 
       a.style.fontSize = "x-small";
    }
+		
+	
+		
+		
+	
 </script>
 
 <!-- Hit the road -->
@@ -730,107 +738,123 @@
                </div>
             </div>
       
-            <!-- 선택된 나라 리스트 -->
-            <div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
-               <div id="countries" style="width: 100%; height: 100%;">
-                  <c:forEach items="${ selectedCountryList }" var="selectedCountry">
-                     <div style="border-radius:6px;" class="selectedCountry" id="${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
-                  </c:forEach>
-               </div>
-            </div>
-            <div id="showPackagesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
-               <div id="packages" style="width: 100%; height: 100%;">
-                  <c:forEach items="${ loginUserPackList }" var="loginUserPack">
-                     <div style="border-radius:6px;" class="loginUserPack" id="packIdIs${ loginUserPack.packId }">${ loginUserPack.packTitle }</div>
-                  </c:forEach>
-               </div>
-            </div>
-         </div>
-      
-         <!-- 두번째 열 -->
-         <div id="secondRowDiv" class="row">
-      
-            <!-- 여행지 임시 리스트 -->
-      
-            <div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
-            <form id="massiveSubmitForm">
-               <!-- 여행지 상세보기 페이지 -->
-               <c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-                  <div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
-                  style="float:left;
-                        width:15%;
-                        height:150px;
-                        text-align: center;
-                        margin-left:45px;
-                        margin-top:20px;" 
-                  >
-                  <input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-                  <a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
-                     <img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
-                  </a>
-                  <div id="tempPlaceNameDiv"><a id="tempPlaceName" href="#" onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
-                     ${ tempSelectedPlace.placeName }</a></div>
-                     <div class="placeCards" style="width:100%; height:125px; background-color: #ffffff;">
-                        <img src="/image?imageName=basic1.jpg" />
-                     </div>
-                  </div>
-                           
-               </c:forEach>
-            </form>
-            </div>
-      
-            <!-- 기준 선택 -->
-            <div id="selectStandardBtns" class="col-sm-2" style="height: 70%;">
-      
-               <!-- Drop Down : X 축 -->
-               <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                     <li><a class="axisX">Bright-Dark</a></li>
-                     <li><a class="axisX">HighPrice-LowPrice</a></li>
-                     <li><a class="axisX">Active-Calm</a></li>
-                     <li><a class="axisX">Artificial-Natural</a></li>
-                  </ul>
-               </div>
-               <br />
-               <!-- Drop Down : Y 축 -->
-               <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
-                  <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                     <li><a class="axisY">Bright-Dark</a></li>
-                     <li><a class="axisY">HighPrice-LowPrice</a></li>
-                     <li><a class="axisY">Active-Calm</a></li>
-                     <li><a class="axisY">Artificial-Natural</a></li>
-                  </ul>
-               </div>
-            </div>
-            
-            <!-- my pack 추가버튼 모달 -->
-            
-            <div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >추가</div>
-            <div class="modal fade" id="massiveSubmitModal" role="dialog" >
-               <div class="modal-dialog modal-lg">
-                  <div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
-                     <div class="divBody" style="width: 100%;height: 100%;background-color: #333333; overflow-y:auto;">
-      
-                        <c:forEach items="${loginUserPackList }" var="addMyPack">
-                           <div class="addUserPackList" id="${addMyPack.packId }">${addMyPack.packTitle }</div>
-                        </c:forEach>
-                        
-                     </div>
-                     <div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            
-         </div>
-      </div>
-   </div>
+
+		
+				<!-- 선택된 나라 리스트 -->
+				<div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
+					<div id="countries" style="width: 100%; height: 100%;">
+						<c:forEach items="${ selectedCountryList }" var="selectedCountry">
+							<div style="border-radius:6px;" class="selectedCountry" id="${ selectedCountry.countryName }">${ selectedCountry.countryName }</div>
+						</c:forEach>
+					</div>
+				</div>
+				<div id="showPackagesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
+					<div id="packages" style="width: 100%; height: 100%;">
+						<c:forEach items="${ loginUserPackList }" var="loginUserPack">
+							<div style="border-radius:6px;" class="loginUserPack" id="packIdIs${ loginUserPack.packId }">${ loginUserPack.packTitle }</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		
+			<!-- 두번째 열 -->
+			<div id="secondRowDiv" class="row">
+		
+				<!-- 여행지 임시 리스트 -->
+		
+				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
+				<form id="massiveSubmitForm">
+					<!-- 여행지 상세보기 페이지 -->
+					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
+						<div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
+						style="float:left;
+								width:15%;
+								height:150px;
+								text-align: center;
+								margin-left:45px;
+								margin-top:20px;
+								color:#333333;" 
+						>
+						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
+							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
+								<img src="/image?imageName=basic1.jpg" />
+							</div>
+							<div style="width:100%; height:100%;" >
+								<div class="tempPlaceNameDiv"><a class="tempPlaceName" href="#" onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+									${ tempSelectedPlace.placeName }</a></div>
+								<div style=" position:relative; left:128px; bottom:22.4px; width:21px;height:21px"><a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+									<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px;" />
+								</a></div>
+							</div>
+						</div>
+									
+					</c:forEach>
+				</form>
+				</div>
+		
+				<!-- 기준 선택 -->
+				<div id="selectStandardBtns" class="col-sm-2" style="height: 40%;">
+		
+					<!-- Drop Down : X 축 -->
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">X - Axis
+						<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+							<li><a class="axisX">Bright-Dark</a></li>
+							<li><a class="axisX">HighPrice-LowPrice</a></li>
+							<li><a class="axisX">Active-Calm</a></li>
+							<li><a class="axisX">Artifitial-Natural</a></li>
+						</ul>
+					</div>
+					<br />
+					<!-- Drop Down : Y 축 -->
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Y - Axis
+						<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="axisY">Bright-Dark</a></li>
+							<li><a class="axisY">HighPrice-LowPrice</a></li>
+							<li><a class="axisY">Active-Calm</a></li>
+							<li><a class="axisY">Artifitial-Natural</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<!-- my pack 추가버튼 모달 -->
+				
+				<c:if test="${tempSelectedPlaceList ne null }">
+					<div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >Add to pack</div>
+					<div id="massiveCleanBtn"  >Clean</div>
+				</c:if>
+				<div class="modal fade" id="massiveSubmitModal" role="dialog" >
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
+							<div class="divBody" style="width: 100%;height: 100%;background-color: #333333; overflow-y:auto;">
+		
+								<c:forEach items="${loginUserPackList }" var="addMyPack">
+									<div class="addUserPackList" id="${addMyPack.packId }">${addMyPack.packTitle }</div>
+								</c:forEach>
+								
+							</div>
+							<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
+								<!-- myPack 생성하는 버튼 및 모달 -->
+								<button id="addMyPackBtn" type="button" class="btn btn-default"  >Add</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<script>
+									$("#createMyPack").click(function(){
+										
+									});
+								</script>
+				
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- Footer -->

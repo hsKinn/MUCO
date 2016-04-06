@@ -192,8 +192,86 @@
          <h2 class="margin-top-0 wow fadeIn">Personal Info</h2>
          <hr class="primary">
          <p>회원 정보를 수정할 수 있습니다.</p>
+       	 <div id="reserveConfirmBtn" data-toggle="modal" data-target="#reserveConfirmModal" >예약정보확인</div>  
       </div>
+		
+		<!-- Modal -->
+					
+			<div class="modal fade" id="reserveConfirmModal" role="dialog" >
+			
+				<div class="modal-dialog modal-lg" style="margin-top:10%;">
+					<div class="modal-content" style="width: 800px;height: 400px; margin: auto;">
+						<div class="divHeader" style="height: 30px;background-color: #333333;">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
 
+						<div class="divBody" style="width: 100%;height: 70%;">
+
+							<!-- 출발,여행지 입력 -->
+							<table id="reserveTable" >
+								<tr>
+									<td class="firstTr">출발지 :</td>
+									<td class="firstTr">여행지 :</td>
+								</tr>
+								<tr>
+									<td class="secondTr">${reserveInfo.departureName }</td>
+									<td class="secondTr">${reserveInfo.packTitle}</td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td class="firstTr">교통 :</td>
+									<td class="firstTr">등급 :</td>
+									<td class="firstTr">출국일 :</td>
+									<td class="firstTr">귀국일 :</td>
+									<td class="firstTr">인원 :</td>
+								</tr>
+								<tr>
+									<td class="secondTr">비행기</td>
+									<td class="secondTr">${transportInfo.transportClass }</td>
+									<td class="secondTr">${reserveInfo.departDate }</td>
+									<td class="secondTr">${reserveInfo.arriveDate }</td>
+									<td class="secondTr">${reserveInfo.personCount }</td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td class="firstTr">숙소 :</td>
+									<td class="firstTr">등급 :</td>
+									<td class="firstTr">체크인 :</td>
+									<td class="firstTr">체크아웃 :</td>
+									<td class="firstTr">인원 :</td>
+								</tr>
+								<tr>
+									<td class="secondTr">${stayInfo.stayType }</td>
+									<td class="secondTr">${stayInfo.stayClass }</td>
+									<td class="secondTr">${stayInfo.checkInDate }</td>
+									<td class="secondTr">${stayInfo.checkOutDate }</td>
+									<td class="secondTr">${stayInfo.personCount }</td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td class="firstTr">렌트카 :</td>
+									<td class="firstTr">대여일 :</td>
+									<td class="firstTr">반납일 :</td>
+									<td class="firstTr">인원 :</td>
+								</tr>
+								<tr>
+									<td class="secondTr">${rentInfo.rentType }</td>
+									<td class="secondTr">${rentInfo.rentStartDate }</td>
+									<td class="secondTr">${rentInfo.rentEndDate }</td>
+									<td class="secondTr">${rentInfo.personCount }</td>
+								</tr>
+							</table>
+								
+	
+						</div>
+						<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+					
+        
       <form id="personalInfoForm" method="post" action="/personalInfoAction" enctype="multipart/Form-data">
          <table class="table" id="personalInfoTable">
 

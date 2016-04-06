@@ -14,6 +14,34 @@ public class StayVO extends ReserveVO {
 	private int stayId;
 	private String stayType;
 	private String stayClass;
+	private String checkInDate;
+	private String checkOutDate;
+	private int personCount;
+	
+	
+	public String getCheckInDate() {
+		return checkInDate;
+	}
+
+	public void setCheckInDate(String checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+
+	public String getCheckOutDate() {
+		return checkOutDate;
+	}
+
+	public void setCheckOutDate(String checkOutDate) {
+		this.checkOutDate = checkOutDate;
+	}
+
+	public int getPersonCount() {
+		return personCount;
+	}
+
+	public void setPersonCount(int personCount) {
+		this.personCount = personCount;
+	}
 
 	public int getStayId() {
 		return stayId;

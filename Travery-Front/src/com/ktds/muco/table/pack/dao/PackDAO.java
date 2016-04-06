@@ -55,7 +55,7 @@ public class PackDAO {
 				pack.setIsPublic(rs.getInt("IS_PUBLIC"));
 				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				pack.setShareImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
-
+				
 				packs.add(pack);
 			}
 
@@ -314,6 +314,41 @@ public class PackDAO {
 
 			return stmt.executeUpdate();
 			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+
+	/**
+	 * 
+	 * 선택한 여행지 myPack에 추가 중복체크
+	 * 
+	 * @author 유병훈
+	 * 
+	 */
+	public int getMyPackCheckPlaceId(int packId) {
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/getMyPackCheckPlaceId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, packId);
+
+			rs = stmt.executeQuery();
+			
+			int checkPlaceId = 0;
+			if ( rs.next() ) {
+				checkPlaceId = rs.getInt(1);
+			}
+			
+			return checkPlaceId;
 
 			
 		} catch (SQLException e) {
@@ -322,7 +357,7 @@ public class PackDAO {
 			closeDB(conn, stmt, null);
 		}
 	}
-
+	
 	/**
 	 * 
 	 * Load Oracle Driver

@@ -1,6 +1,8 @@
 package com.ktds.muco.table.reserve.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,8 @@ import com.ktds.muco.table.history.vo.BuildDescription;
 import com.ktds.muco.table.history.vo.Description;
 import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.pack.biz.PackBiz;
+import com.ktds.muco.table.pack.vo.PackVO;
 
 /**
  * 
@@ -26,7 +30,7 @@ import com.ktds.muco.table.member.vo.MemberVO;
 public class TripReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HistoryBiz historyBiz;
-	
+	private PackBiz packBiz;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,6 +38,7 @@ public class TripReservationServlet extends HttpServlet {
 	public TripReservationServlet() {
 		super();
 		historyBiz = new HistoryBiz();
+		packBiz = new PackBiz();
 	}
 
 	/**
@@ -55,6 +60,16 @@ public class TripReservationServlet extends HttpServlet {
 		// History
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		// 유저가 가진 패키지들 뿌려주기
+		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
+		
+		if(member != null){
+			loginUserPackList = packBiz.getPackListByEmail(member.getEmail());
+			if(loginUserPackList != null){
+				request.setAttribute("loginUserPackList", loginUserPackList);	
+			}
+		}
 		
 		HistoryVO history = new HistoryVO();
 		history.setIp(request.getRemoteHost());
