@@ -1,6 +1,7 @@
 package com.ktds.muco.table.place.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +18,8 @@ import com.ktds.muco.table.history.vo.BuildDescription;
 import com.ktds.muco.table.history.vo.Description;
 import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.pack.biz.PackBiz;
+import com.ktds.muco.table.pack.vo.PackVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
 
@@ -29,6 +32,8 @@ public class DetailPlaceServlet extends HttpServlet {
 	private PlaceBiz placeBiz;
 	private EvaluationBiz evaluationBiz;
 	private HistoryBiz historyBiz;
+	
+	private PackBiz packBiz;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,6 +44,8 @@ public class DetailPlaceServlet extends HttpServlet {
         placeBiz = new PlaceBiz();
         evaluationBiz = new EvaluationBiz();
         historyBiz = new HistoryBiz();
+        
+        packBiz = new PackBiz();
     }
 
 	/**
@@ -75,7 +82,13 @@ public class DetailPlaceServlet extends HttpServlet {
 		request.setAttribute( "place", seletedPlace );
 		request.setAttribute( "writer", seletedPlace.getWriter() );
 		
+		// 광민 - 패키지 리스트 가져오기
+		List<PackVO> userPackList = packBiz.getPackListByEmail(member.getEmail());
+		if( userPackList != null ) {
+			request.setAttribute( "userPackList", userPackList );
+		}
 		
+		// History
 		HistoryVO history = new HistoryVO();
 		history.setIp(request.getRemoteHost());
 		history.setEmail(member.getEmail());
