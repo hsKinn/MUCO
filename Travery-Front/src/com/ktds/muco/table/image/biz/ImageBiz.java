@@ -38,7 +38,7 @@ public class ImageBiz {
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 
 		MultipartFile image = request.getFile("image");
-		File upLoadImage = image.write("D:\\" + image.getFileName());
+		File upLoadImage = image.write("D:\\travery\\" + image.getFileName());
 
 		imageVO.setPlaceId(placeVO.getPlaceId());
 		imageVO.setImageName(image.getFileName());

@@ -184,7 +184,7 @@
 								Photo <span class="glyphicon glyphicon-camera"></span> 
 							</div>
 							<div id="photo_Bottom">
-								<input type="file" id="image" name="image" accept="image/*" onchange="readURL(this);" required multiple />
+								<input type="file" id="image" name="image" accept="image/*" onchange="readURL(this);" required/>
 								<img id="blah" class="img-rounded" src="#" />
 							</div>
 						</div>

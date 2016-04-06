@@ -91,6 +91,7 @@ public class DetailPlaceServlet extends HttpServlet {
 		
 		request.setAttribute( "place", seletedPlace );
 		request.setAttribute( "writer", seletedPlace.getWriter() );
+		request.setAttribute("imageList", seletedPlace.getPlaceImageList());
 		
 		// History
 		HistoryVO history = new HistoryVO();

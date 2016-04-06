@@ -86,17 +86,19 @@
 			SELECT	IMAGE_ID_SEQ.CURRVAL
 			FROM	DUAL
 		</getReturnImageId>
-		<getImageLocationList>
+		
+		<getImageList>
 			SELECT  IMAGE_LOCATION
 					, IMAGE_NAME
             FROM    IMAGE
             WHERE   PLACE_ID = ?
-		</getImageLocationList>
+		</getImageList>
 
 		<getImageVOListByPlaceId>
 		SELECT  *
 		FROM    IMAGE
 		WHERE   PLACE_ID= ? 
+		AND		ROWNUM = 1
 		</getImageVOListByPlaceId>
 
 		<getPlaceMainImageByPlaceId>

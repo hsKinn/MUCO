@@ -49,9 +49,6 @@ public class PlaceVO extends CountryVO {
 	
 	private List<ImageVO> placeImageList;
 	
-	
-	
-	
 	public boolean isExistVote() {
 		return isExistVote;
 	}
