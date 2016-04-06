@@ -169,6 +169,7 @@
 						</span>
 					</div>
 				</div>
+				
 				<div id="info-Middle">
 					<div id="place-Description">
 						<textarea readonly="readonly">${ place.placeDescription }</textarea>

@@ -82,6 +82,12 @@ public class DetailPlaceServlet extends HttpServlet {
 		request.setAttribute( "place", seletedPlace );
 		request.setAttribute( "writer", seletedPlace.getWriter() );
 		
+		// 광민 - 패키지 리스트 가져오기
+		List<PackVO> userPackList = packBiz.getPackListByEmail(member.getEmail());
+		if( userPackList != null ) {
+			request.setAttribute( "userPackList", userPackList );
+		}
+		
 		// History
 		HistoryVO history = new HistoryVO();
 		history.setIp(request.getRemoteHost());

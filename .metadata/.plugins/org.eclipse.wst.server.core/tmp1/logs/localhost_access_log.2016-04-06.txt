@@ -13128,3 +13128,9 @@
 0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:52:51 +0900] "GET /detailPlace?placeId=188 HTTP/1.1" 200 17314
 0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:52:51 +0900] "GET /resource/img/place/plusIcon.png HTTP/1.1" 304 -
 0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:52:51 +0900] "GET /detailPlace?placeId=188 HTTP/1.1" 200 17314
+0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:57:46 +0900] "GET /detailPlace?placeId=188 HTTP/1.1" 200 17314
+0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:57:46 +0900] "GET /resource/css/place/detailPlace.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:57:46 +0900] "GET /resource/css/place/hitTheRoad.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:57:46 +0900] "GET /resource/img/place/plusIcon.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [06/Apr/2016:13:57:46 +0900] "GET /detailPlace?placeId=188 HTTP/1.1" 200 17314
+127.0.0.1 - - [06/Apr/2016:14:00:58 +0900] "GET / HTTP/1.1" 200 16400

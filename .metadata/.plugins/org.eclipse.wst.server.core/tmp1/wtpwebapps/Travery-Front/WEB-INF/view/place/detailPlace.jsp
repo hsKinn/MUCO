@@ -118,19 +118,6 @@
 			};
 	
 			rangeSlider();		
-			
-	      // 체크된 여행지들 myPack에 추가 확인
-	      $(".addUserPackList").click(function(){
-	         var packId = $(this).attr('id');
-	         if ( confirm( "["+ $(this).text() + "]에 추가하시겠습니까?") ) {
-	            var form = $("#massiveSubmitForm");
-	            form.attr("method", "post");
-	            form.attr("action", "/addMyPackByPlace?packId=" + packId);
-	            form.submit();
-	            alert("추가되었습니다.");
-	            return;
-	         }
-	      });
 	});
 
 </script>
@@ -176,41 +163,12 @@
 						${ place.placeName }, [${ place.countryName }]
 					</div>
 					<div id="place-LikeCount">
-						
-						<!-- 광민 : 내 패키지에 추가하기 버튼 -->
-			            <span id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >
-			            	<img id="plusImg" src="/resource/img/place/plusIcon.png" style="width:20px; cursor: pointer;"/>
-			            </span>
-			            <div class="modal fade" id="massiveSubmitModal" role="dialog" >
-			               <div class="modal-dialog modal-lg">
-			                  <div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
-			                     <div class="divBody" style="width: 100%;height: 100%;background-color: #333333; overflow-y:auto;">
-			      
-			      					<c:if test="${ not empty userPackList }">
-				                        <c:forEach items="${ userPackList }" var="addMyPack">
-				                           <div class="addUserPackList" id="${addMyPack.packId }">${addMyPack.packTitle }</div>
-				                        </c:forEach>
-			                        </c:if>
-			                        <c:if test="${ not empty userPackList }">
-			                        	<div class="addUserPackList">You don't have any package</div>
-			                        </c:if>
-			                        
-			                     </div>
-			                     <div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
-			                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			                     </div>
-			                  </div>
-			               </div>
-			            </div>
-			            <!-- 광민 : 여기까지 -->
-			            
 						<span class="badge">
 							<span class="glyphicon glyphicon-heart"></span>
 							<span id="placeLikeCount">${ place.likeCount }</span>
 						</span>
 					</div>
 				</div>
-				
 				<div id="info-Middle">
 					<div id="place-Description">
 						<textarea readonly="readonly">${ place.placeDescription }</textarea>
