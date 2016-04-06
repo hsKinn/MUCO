@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<qualifiedTypeNameHistroy/>
-=======
 <qualifiedTypeNameHistroy>
-<<<<<<< HEAD
-<fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.Description"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.ActionCode"/>
-=======
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.biz.PlaceBiz"/>
->>>>>>> origin/롯드6
+<fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.dao.EvaluationDAO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.biz.EvaluationBiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.vo.EvaluationVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.vo.reportedPlaceVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.biz.ReportedPlaceBiz"/>
 </qualifiedTypeNameHistroy>
->>>>>>> origin/KGM11

@@ -42,6 +42,8 @@
 				$("#searchBtn").click();
 			}
 		});
+		
+
 	});
 </script>
 
@@ -146,10 +148,15 @@
 									    <tbody>
 									    <c:forEach items="${ pack.placeList }" var="places">
 									      <tr>
-									        <td><a href="/detailPlace?placeId=${places.placeId}">${ places.placeName }</a></td>
+									        <td>
+										        <a href="#" onclick="window.open('/detailPlace?placeId=${places.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+										        	${ places.placeName }
+										        </a>
+									        </td>
 									        <th>${ places.address }</th>
 									        <td>${ places.likeCount }</td>
 									      </tr>
+									      </script>
 									    </c:forEach>
 									  </table>
 						        </div>
@@ -174,7 +181,7 @@
 												<table class="reply_table">
 													<tr>
 														<td class="reply_content">
-															<textarea class="${pack.packId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
+															<input type="text" class="${pack.packId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
 														</td>
 														<td class="reply_btn">
 															<button type="button" class="btn btn-info" id="${pack.packId}writeReplyBtn">
@@ -239,6 +246,12 @@
 							form.attr("action", "<c:url value="/doWritePackReply"/>");
 							form.submit();
 						});
+			    		
+						$(".${pack.packId}description").keyup(function(e) {
+							if (e.keyCode == 13) {
+								$("#${pack.packId}writeReplyBtn").click();
+							}
+						});
 					 
 						$(".${pack.packId}packLike").click( function() {
 							
@@ -282,6 +295,7 @@
 									}
 							 );
 						 });
+						 
 						</script>
 			  
 				</c:forEach>

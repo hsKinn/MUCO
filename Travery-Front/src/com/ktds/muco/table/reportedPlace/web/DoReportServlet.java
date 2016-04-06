@@ -46,15 +46,16 @@ public class DoReportServlet extends HttpServlet {
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");	
 		
 		int placeId = Integer.parseInt(request.getParameter("placeId"));
-		String category = request.getParameter("category");
+		String category = request.getParameter("reportReason");
 		String reportDescription = request.getParameter("reportDescription");
+		reportDescription = reportDescription.replaceAll("\n", "<br/>");
 		
 		ReportedPlaceVO reportPlace = new ReportedPlaceVO();
 		reportPlace.setEmail(member.getEmail());
 		reportPlace.setPlaceId(placeId);
 		reportPlace.setCategory(category);
 		reportPlace.setReportDescription(reportDescription);
-		
+
 		if ( reportPlaceBiz.setReportPlace ( reportPlace ) ) {
 			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + placeId);
 		}

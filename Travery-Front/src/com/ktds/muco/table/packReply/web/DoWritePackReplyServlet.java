@@ -85,9 +85,9 @@ public class DoWritePackReplyServlet extends HttpServlet {
 		history.setUrl(request.getRequestURI());
 		history.setActionCode(ActionCode.PACK_REPLY_ADD);
 		if(packId > 0) {
-			history.setHistoryDescription(BuildDescription.get(Description.PACK_REPLY_ADD, member.getEmail()));
+			history.setHistoryDescription(BuildDescription.get(Description.PACK_REPLY_ADD, member.getEmail(), packId+""));
 		} else {
-			history.setHistoryDescription(BuildDescription.get(Description.PACK_REPLY_ADD_FAIL, member.getEmail()));
+			history.setHistoryDescription(BuildDescription.get(Description.PACK_REPLY_ADD_FAIL, member.getEmail(), packId+""));
 		}
 		historyBiz.addHistory(history);
 		

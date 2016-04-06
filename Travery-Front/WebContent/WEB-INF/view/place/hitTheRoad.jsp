@@ -344,6 +344,8 @@
        $("#menu3Tab").click(function(){
           $('#showCountriesDiv').css("display","none");
           $('#showPackagesDiv').css("display","block");
+          
+          location.href="/hitTheRoad";
        });
        
       /* 1. 나라 선택 탭 */
@@ -603,55 +605,63 @@
       
                      <!-- 경로 설정 탭 -->
                      <div id="menu3" class="tab-pane fade" style="height: 100%; width: 100%;">
-                        
+                        	<c:if test="${ not empty placeListByPackId}">
                            <div id="floating-panel">
-                              <button id="drop" onclick="drop()">Drop Markers</button>
+                              <button class="btn btn-info" id="drop" onclick="drop()">View Places</button>
                            </div>
                            <div id="map"></div>
+                           </c:if>
+                           <c:if test="${ empty placeListByPackId}">
+                           		없습니다. 무언가 표현할거 찾기
+                           </c:if>
                            <script>
                               // If you're adding a number of markers, you may want to drop them on the map
                               // consecutively rather than all at once. This example shows how to use
                               // window.setTimeout() to space your markers' animation.
                         
-                              var neighborhoods = [];
+                              var neighborhoods = new Array();
 							  
-                              var size = "${placeListByPackId.size()}";
-                              
-                              var lat;
-                              var lng;
-                              
                               var markers = [];
                               var map;
                               
-                              <c:forEach items="${placeListByPackId}" var="place">
-                              	alert("${place.latitude}");
-                              </c:forEach>
-                              
-                              function getList() {
-	                                  for (var i = 0; i < 1; i++) {
-	                                	lat = "${place.latitude}";
-	                                	lng = "${place.longitude}";
-	                                	alert(lat);
-	                                	alert(lng);
-	                                    neighborhoods[i] = {lat: lat, lng: lng };
-	                                   }
-                              }
-                        
+                              <c:forEach items="${placeListByPackId}" var="place" varStatus="status">
+                              	 var data = {};
+                              	 
+                              	 data.lat = parseFloat("${place.latitude}");
+                              	 data.lng = parseFloat("${place.longitude}");
+                              	 
+                              	neighborhoods.push(data);
+
+                              	</c:forEach>
+                              	
                               function initMap() {
                                  map = new google.maps.Map(document.getElementById('map'), {
-                                    zoom : 12,
+                                    zoom : 10,
                                     center : {
-                                       lat : 52.520,
-                                       lng : 13.410
+                                       lat : neighborhoods[0].lat,
+                                       lng : neighborhoods[0].lng
+                                    }
+                                 });
+                              }
+                              
+                              function initMap2(lat1, lng1) {
+                                 map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom : 6,
+                                    center : {
+                                       lat : lat1,
+                                       lng : lng1
                                     }
                                  });
                               }
                         
                               function drop() {
-                            	  getList();
                                  clearMarkers();
-                                 for (var i = 0; i < neighborhoods.length; i++) {
-                                    addMarkerWithTimeout(neighborhoods[i], i * 200);
+                                 
+                                 for (var i = 0; i < neighborhoods.length ; i++) {
+                                    
+                                    addMarkerWithTimeout(neighborhoods[i], i * 500);
+                                    
+                                    initMap2(neighborhoods[0].lat, neighborhoods[0].lng);
                                  }
                               }
                         
@@ -717,7 +727,7 @@
                   <a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
                      <img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
                   </a>
-                  <div id="tempPlaceNameDiv"><a id="tempPlaceName" href="/detailPlace?placeId="${ tempSelectedPlace.placeId }>
+                  <div id="tempPlaceNameDiv"><a id="tempPlaceName" href="#" onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
                      ${ tempSelectedPlace.placeName }</a></div>
                      <div class="placeCards" style="width:100%; height:125px; background-color: #ffffff;">
                         <img src="/image?imageName=basic1.jpg" />

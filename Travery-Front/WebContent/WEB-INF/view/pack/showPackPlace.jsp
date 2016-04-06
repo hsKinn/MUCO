@@ -48,10 +48,10 @@
 
 		});
 
-			$("#wantModifyBtn").click(function(){
-				location.href="/detailPack";
-			});
-
+		$("#wantModifyBtn").click(function(){
+			location.href="/detailPack";
+		});
+		
 	});
 </script>
 <section class="bg-primary" >
@@ -107,11 +107,11 @@
 								
 								</div>
 									<div id="placeNamediv">
-										<a href="/detailPlace?placeId=${ places.placeId }">
 											<p id="placetitle" style="display: inline; cursor: pointer; color:black;">
-											${places.placeName}
+												<a href="#" onclick="window.open('/detailPlace?placeId=${places.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+													${ places.placeName }
+												</a>
 											</p>
-										</a>
 									</div>
 								<input type="hidden" class="placeId"
 								name="placeId" value="${places.placeId}" />

@@ -50,6 +50,8 @@ div#placesOfPackListdiv div.placeInfodiv{
 	background-color:#000000;
 	display:inline-block;
 	margin:2px;
+	border: 4px solid red;
+	border-radius: 20px;
 	
 }
 

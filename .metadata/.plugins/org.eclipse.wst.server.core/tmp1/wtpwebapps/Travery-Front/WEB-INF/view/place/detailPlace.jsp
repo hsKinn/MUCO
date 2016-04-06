@@ -4,9 +4,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- Header -->
+<%-- <!-- Header -->
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
-
+ --%>
+ 
+ <!-- Jquery, Json Script -->
+<script type="text/javascript" src="<c:url value="/resource/js/jquery-1.12.1.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resource/js/json2.js" />"></script>
+ 
 <!-- Boot Script -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -30,6 +35,15 @@
 			
 			form.attr("method", "POST");
 			form.attr("action", "<c:url value="/doVote"/>");
+			form.submit();
+		});
+		
+		$("#reportSubmit").click( function() {
+			
+			var form = $("#reportForm");
+			
+			form.attr("method", "POST");
+			form.attr("action", "<c:url value="/doReport"/>");
 			form.submit();
 		});
 	
@@ -109,8 +123,6 @@
 <c:set var="loginEmail" value="${ sessionScope._MEMBER_.email }" />
 
 <!-- Detail Place Content by hskim -->
-<section class="bg-primary" id="one">
-	<div class="container">
 
 		<!-- 제목 -->
 		<div class="col-lg-8 col-lg-offset-2 text-center">
@@ -359,7 +371,12 @@
 		        	<div class="modal-header">
 			          <button type="button" class="close" data-dismiss="modal">&times;</button>
 			          <h4 class="modal-title">
-			          	Report Place
+			          	<span id="report-Title">Report Place</span><br>
+		          		
+		          		<span class="glyphicon glyphicon-exclamation-sign"></span> 
+			          	<span id="report-Content">
+			          		[허위 신고시 신고하신 분의 활동이 제한될 수 있습니다]
+			          	</span>
 			          </h4>
 			        </div>
 			        <!-- Modal Body -->
@@ -368,12 +385,20 @@
 							<input type="hidden" name="placeId" value="${ place.placeId }" />
 							<table>
 								<tr>
-									<td>Category :</td>
+									<th id="cate">Category :</th>
 									<td>
-										<select>
-											<option></option>
-										
+										<select name="reportReason">
+											<option value="욕설/비방">욕설/비방</option>
+											<option value="음란성">음란성</option>
+											<option value="광고">광고</option>
+											<option value="저작권 위반">저작권 위반</option>
 										</select>										
+									</td>
+								</tr>
+								<tr>
+									<th>Description : </th>
+									<td>
+										<textarea id="reportDescription" name="reportDescription"></textarea>
 									</td>
 								</tr>
 							</table>
@@ -388,9 +413,21 @@
 		    </div>
 		 </div> <!-- Modal END -->		
 
-	</div>
-</section>
-
-<!-- Footer -->
+<%-- <!-- Footer -->
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
+ --%>
 
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resource/styles.css"/>" />
+
+<!-- Boot strap -->
+
+<link rel="stylesheet"   href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css"   rel="stylesheet" />
+<link rel="stylesheet"   href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css"   href="<c:url value="/resource/styles.css"/>" />
+ 

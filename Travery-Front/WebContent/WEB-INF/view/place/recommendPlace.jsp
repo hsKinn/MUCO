@@ -69,7 +69,7 @@
 									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
-									<a href="/detailPlace?placeId=${daily.placeId}">${ daily.placeName }</a>
+									<a href="#" onclick="window.open('/detailPlace?placeId=${daily.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ daily.placeName }</a>
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
@@ -100,7 +100,7 @@
 									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
-									<a href="/detailPlace?placeId=${weekly.placeId}">${ weekly.placeName }</a>
+									<a href="#" onclick="window.open('/detailPlace?placeId=${weekly.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ weekly.placeName }</a>
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
@@ -131,7 +131,7 @@
 									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
-									<a href="/detailPlace?placeId=${monthly.placeId}">${ monthly.placeName }</a>
+									<a href="#" onclick="window.open('/detailPlace?placeId=${monthly.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ monthly.placeName }</a>
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
@@ -201,7 +201,7 @@
 								</div>					
 								<div class="content_middle">
 									<span class="header" data-toggle="modal" data-target="#myModal" data-placeId="${ place.placeId }">
-										<a href="/detailPlace?placeId=${place.placeId}">${ place.placeName }</a>
+										<a href="#" onclick="window.open('/detailPlace?placeId=${place.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ place.placeName }</a>
 									</span>
 								</div>
 								<div class="content_bottom">
