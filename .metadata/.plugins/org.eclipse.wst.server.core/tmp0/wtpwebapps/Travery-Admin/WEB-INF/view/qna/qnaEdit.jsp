@@ -68,65 +68,56 @@
 
 			<!-- Origin Place Contents -->
 			<div class="container">
+				<form id="qnaEditForm" method="post" action="/qnaDoEdit">
+					<input type="hidden" id="qnaId" name="qnaId" value="${QNA.qnaId }"/>
+					<!-- place 관리 버튼 -->
+					<div id="buttonCollection">
+						<input type="submit" class="btn btn-default" value="save" />
+					</div>
 
-				<!-- place 관리 버튼 -->
-				<div id="buttonCollection">
-					<a href="<c:url value="/qnaDelete?qnaId=${QNA.qnaId}" />">
-						<button id="placeDeleteBtn" type="button" class="btn btn-default">Delete</button>
-					</a>
-					<a href="<c:url value="/placeDelete?placeId=${placeDetail.placeId}&placeType=${placeDetail.isNewPlace }" />">
-						<button id="placeDeleteBtn" type="button" class="btn btn-default">Edit</button>
-					</a>
-					
-					<a href="<c:url value="/makeAnswer?placeId=${QNA.qnaId}" />">
-						<button id="placeDeleteBtn" type="button" class="btn btn-default" style="float:right;">답변 체크</button>
-					</a>
-					<a href="<c:url value="/makeFAQ?qnaId=${QNA.qnaId}" />">
-						<button id="placeDeleteBtn" type="button" class="btn btn-default" style="float:right;">FAQ 만들기</button>
-					</a>
-				</div>
+					<div id="listWrapper">
+						<!-- 게시글 보여주는 list table -->
+						<table id="tableList">
+							<tr>
+								<th>QnA ID</th>
+								<th>제목</th>
+								<th>질문자EMAIL</th>
+								<th>질문날짜</th>
+								<th style="color: yellow;">답변 여부</th>
+								<th style="color: yellow;">FAQ 여부</th>
+							</tr>
 
-				<div id="listWrapper">
-					<!-- 게시글 보여주는 list table -->
-					<table id="tableList">
-						<tr>
-							<th>QnA ID</th>
-							<th>제목</th>
-							<th>질문자EMAIL</th>
-							<th>질문날짜</th>
-							<th style="color:yellow;">답변 여부</th>
-							<th style="color:yellow;">FAQ 여부</th>
-						</tr>
+							<tr>
+								<td>${QNA.qnaId}</td>
+								<td>${QNA.title}</td>
+								<td>${QNA.email}</td>
+								<td>${QNA.qndDate}</td>
+								<td>${QNA.isAnswer}</td>
+								<td>${QNA.isFaq}</td>
+							</tr>
 
-						<tr>
-							<td>${QNA.qnaId}</td>
-							<td>${QNA.title}</td>
-							<td>${QNA.email}</td>
-							<td>${QNA.qndDate}</td>
-							<td>${QNA.isAnswer}</td>
-							<td>${QNA.isFaq}</td>
-						</tr>
+							<tr>
+								<th colspan="6" style="vertical-align: middle;">질문 내용</th>
+							</tr>
+							<tr>
+								<td colspan="6" style="vertical-align: middle;">${QNA.description}</td>
+							</tr>
 
-						<tr>
-							<th colspan="6" style="vertical-align: middle;">질문 내용</th>
-						</tr>
-						<tr>
-							<td colspan="6" style="vertical-align: middle;">${QNA.description}</td>
-						</tr>
+							<tr>
+								<th colspan="6" style="vertical-align: middle;">답변 내용</th>
+							</tr>
+							<tr>
+								<td colspan="6"><input id="qnaAnswerSheet"
+									name="qnaAnswerSheet" value="${QNA.answerDescription}"
+									style="margin: 4px; height: 60px; width: 80%; background-color: #333333; color: #ffffff;"
+									type="text" /></td>
+							</tr>
+						</table>
+						<!-- /#tableList -->
+					</div>
+					<!-- /#listWrapper -->
 
-						<tr>
-							<th colspan="6" style="vertical-align: middle;">답변 내용</th>
-						</tr>
-						<tr>
-							<td colspan="6">${QNA.answerDescription}</td>
-						</tr>
-
-					</table>
-					<!-- /#tableList -->
-				</div>
-				<!-- /#listWrapper -->
-
-
+				</form>
 			</div>
 			<!-- /#Origin Place Contents -->
 

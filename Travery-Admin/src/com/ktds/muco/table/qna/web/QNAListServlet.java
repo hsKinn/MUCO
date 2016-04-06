@@ -90,20 +90,20 @@ public class QNAListServlet extends HttpServlet {
 		
 		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
 		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
-		session.setAttribute("_PACK_SEARCH_", qnaSearchVO);
+		session.setAttribute("_QNA_SEARCH_", qnaSearchVO);
 		
 		request.setAttribute("QNAs", qnaListVO);
 		
-		// History
-		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
-		
-		HistoryVO history = new HistoryVO();
-		history.setIp(request.getRemoteHost());
-		history.setEmail(member.getEmail());
-		history.setUrl(request.getRequestURI());
-		history.setActionCode(ActionCode.QNA_PAGE);
-		history.setHistoryDescription(BuildDescription.get(Description.QNA_PAGE, member.getEmail()));
-		historyBiz.addHistory(history);
+//		// History
+//		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+//		
+//		HistoryVO history = new HistoryVO();
+//		history.setIp(request.getRemoteHost());
+//		history.setEmail(member.getEmail());
+//		history.setUrl(request.getRequestURI());
+//		history.setActionCode(ActionCode.QNA_PAGE);
+//		history.setHistoryDescription(BuildDescription.get(Description.QNA_PAGE, member.getEmail()));
+//		historyBiz.addHistory(history);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/qna/qnaList.jsp");
 		rd.forward(request, response);

@@ -1436,6 +1436,11 @@
 			SET		IS_FAQ = 1
 			WHERE	QNA_ID = ?
 		</makeFAQ>
+		<updateQnaAnswerSheet>
+			UPDATE	QNA
+			SET		ANSWER_DESCRIPTION = ?
+			WHERE	QNA_ID = ?			
+		</updateQnaAnswerSheet>
 	</qna>
 	
 	<rent>

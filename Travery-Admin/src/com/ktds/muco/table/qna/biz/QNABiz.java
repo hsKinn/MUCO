@@ -2,6 +2,8 @@ package com.ktds.muco.table.qna.biz;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.ktds.muco.table.qna.dao.QNADAO;
 import com.ktds.muco.table.qna.vo.QNAListVO;
 import com.ktds.muco.table.qna.vo.QNASearchVO;
@@ -95,6 +97,24 @@ public class QNABiz {
 	 */
 	public void deleteQna(String qnaId) {
 		qnaDAO.deleteQna(qnaId);		
+	}
+
+	/**
+	 * qna 수정하는 servlet
+	 * @param qnaId
+	 * @param qnaVO
+	 * @param request
+	 */
+	public void doQnaEdit(String qnaId, QNAVO qnaVO, HttpServletRequest request) {
+		// 어느 부분이 수정되었는지 확인해야한다. 
+		String qnaAnswerSheet = request.getParameter("qnaAnswerSheet");
+		//1. 여행지명 
+		if( qnaVO.getAnswerDescription().equals(qnaAnswerSheet) ) {
+			System.out.println("들어가져?");
+		} else {
+			qnaDAO.updateQnaAnswerSheet(qnaId, qnaAnswerSheet);
+			System.out.println("들어가져?????");
+		}
 	}
 
 }

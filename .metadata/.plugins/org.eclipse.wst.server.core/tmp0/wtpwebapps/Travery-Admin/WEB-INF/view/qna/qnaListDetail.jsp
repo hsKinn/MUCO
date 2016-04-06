@@ -14,41 +14,10 @@
 	href="<c:url value="/resource/css/place/originPlaceList.css"/>" />
 
 <script type="text/javascript">
-	/* 내용 script */
-	$(document).ready(function() {
+/* 내용 script */
+$(document).ready(function() {
 
-		$("#massiveSelectCheckBox").click(function() {
-			var isChecked = $(this).prop("checked");
-			//일괄체크 되도록 하는 것 
-			$(".deletePackId").prop("checked", isChecked);
-		});
-
-		$("#massiveDeleteBtn").click(function() {
-			var isChecked = false;
-
-			$(".deletePackId").each(function(index, data) {
-				if (data.checked) {
-					isChecked = data.checked;
-				}
-
-			});
-
-			// 삭제할 대상을 정하지 않았으면 alert뜨기 
-			if (!isChecked) {
-				alert("삭제할 대상을 선택하세요");
-			}
-
-			// 사용자의 confirm 받기 
-			if (confirm("정말 삭제하시겠습니까?")) {
-				// 지우는 로직 넣기 
-				var form = $("#massiveDeleteForm");
-				form.attr("method", "post");
-				form.attr("action", "<c:url value="/packMassiveDelete" />");
-				form.submit();
-			}
-
-		});
-	});
+});
 </script>
 <body>
 
@@ -74,11 +43,11 @@
 					<a href="<c:url value="/qnaDelete?qnaId=${QNA.qnaId}" />">
 						<button id="placeDeleteBtn" type="button" class="btn btn-default">Delete</button>
 					</a>
-					<a href="<c:url value="/placeDelete?placeId=${placeDetail.placeId}&placeType=${placeDetail.isNewPlace }" />">
+					<a href="<c:url value="/qnaEdit?qnaId=${QNA.qnaId}" />">
 						<button id="placeDeleteBtn" type="button" class="btn btn-default">Edit</button>
 					</a>
 					
-					<a href="<c:url value="/makeAnswer?placeId=${QNA.qnaId}" />">
+					<a href="<c:url value="/makeAnswer?qnaId=${QNA.qnaId}" />">
 						<button id="placeDeleteBtn" type="button" class="btn btn-default" style="float:right;">답변 체크</button>
 					</a>
 					<a href="<c:url value="/makeFAQ?qnaId=${QNA.qnaId}" />">

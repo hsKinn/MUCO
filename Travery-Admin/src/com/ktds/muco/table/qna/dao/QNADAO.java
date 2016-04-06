@@ -336,6 +336,35 @@ public class QNADAO {
 		}
 	}
 
+	public void updateQnaAnswerSheet(String qnaId, String qnaAnswerSheet) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/qna/updateQnaAnswerSheet/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, qnaAnswerSheet);
+			stmt.setString(2, qnaId);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}		
+	}
+
 
 
 }

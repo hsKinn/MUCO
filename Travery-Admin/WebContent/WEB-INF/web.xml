@@ -717,4 +717,34 @@
     <servlet-name>QNAEditServlet</servlet-name>
     <url-pattern>/qnaEdit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QNAWriteServlet</display-name>
+    <servlet-name>QNAWriteServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.qna.web.QNAWriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QNAWriteServlet</servlet-name>
+    <url-pattern>/qnaWrite</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QNADoEditServlet</display-name>
+    <servlet-name>QNADoEditServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.qna.web.QNADoEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QNADoEditServlet</servlet-name>
+    <url-pattern>/qnaDoEdit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitQNAServlet</display-name>
+    <servlet-name>InitQNAServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.qna.web.InitQNAServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitQNAServlet</servlet-name>
+    <url-pattern>/qnaList/init</url-pattern>
+  </servlet-mapping>
 </web-app>

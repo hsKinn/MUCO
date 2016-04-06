@@ -39,9 +39,6 @@ public class QNAEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String qnaId = request.getParameter("qnaId");
 
-		qnaBiz.deleteQna(qnaId);
-		response.sendRedirect(Root.get(this) + "/qnaList");
-		
 		QNAVO qnaVO = qnaBiz.showQNADetail(qnaId);
 		request.setAttribute("QNA", qnaVO);
 		
