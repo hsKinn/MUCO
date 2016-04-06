@@ -130,52 +130,6 @@ div#showPackagesDiv {
 	display: none;
 }
 
-
-/* 나라 색깔 */
-
-/* Korea */
-
-div.selectedCountry, div.loginUserPack {
-	background-color: #eeeeee;
-	color: #333333;
-}
-
-div#Korea {
-	background-color: #fa3851;
-	color: #333333;
-}
-
-/* Russia */
-div#Russia {
-	background-color: #ffff4d;
-	color: #333333;
-}
-
-/* China */
-div#China {
-	background-color: #9797ff;
-	color: #333333;
-}
-
-
-
-/* 여행지 점 색깔 */
-
-/* Korea */
-a.countryIdIs6 {
-	color: #fa3851;
-}
-
-/* Russia */
-a.countryIdIs11 {
-	color: #ffff4d;
-}
-
-/* China */
-a.countryIdIs12 {
-	color: #9797ff;
-}
-
 div#massiveSubmitBtn {
 	text-align: center;
 	font-weight: bold;
@@ -209,6 +163,12 @@ div.addUserPackList {
 div.addUserPackList:hover {
 	background-color: #5a5a5a;
 	color:#eeeeee;
+}
+
+.countryMapBtn {
+	background-color: #333333;
+	color:#ffffff;
+	height:29px;
 }
 
 /* 구글맵 경로 */
@@ -254,4 +214,79 @@ div.placeCards img {
   margin-top: 20px;
   background-color: #FFEE77;
   padding: 10px;
+}
+
+
+/* 오른쪽 선택된 나라 디브 색깔 */
+
+div.selectedCountry, div.loginUserPack {
+   background-color: #eeeeee;
+   color: #333333;
+}
+
+/* #Italy */
+div#Italy {
+   background-color: #fa3851;
+   color: #333333;
+}
+
+/* #France */
+div#France {
+   background-color: #ffff4d;
+   color: #333333;
+}
+
+/* #United-Kingdom */
+div#United-Kingdom {
+   background-color: #9797ff;
+   color: #333333;
+}
+
+/* #Germany */
+div#Germany {
+   background-color: #ff80c0;
+   color: #333333;
+}
+
+/* #Spain */
+div#Spain {
+   background-color: #80ff80;
+   color: #333333;
+}
+/* #Korea */
+div#Korea {
+   background-color: #ffae88;
+   color: #333333;
+}
+
+/* 여행지 점 색깔 */
+
+/* Italy */
+a.countryIdIs163 {
+   color: #fa3851;
+}
+
+/* France */
+a.countryIdIs85 {
+   color: #ffff4d;
+}
+
+/* United-Kingdom */
+a.countryIdIs31 {
+   color: #9797ff;
+}
+
+/* Germany */
+a.countryIdIs133 {
+   color: #ff80c0;
+}
+
+/* Spain */
+a.countryIdIs68 {
+   color: #80ff80;
+}
+
+/* Korea*/
+a.countryIdIs68 {
+   color: #ffae88;
 }
