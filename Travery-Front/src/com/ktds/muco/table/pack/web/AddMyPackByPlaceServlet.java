@@ -43,11 +43,11 @@ public class AddMyPackByPlaceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] selectedPlaceId = request.getParameterValues("addPackByPlaceId");
-		int packId = 0;
-		String packTitle = "";
+		String packId2 = request.getParameter("packId");
+		String packTitle = request.getParameter("packTitle");
 		
-		if ( packId !=0 ) {
-			packId = Integer.parseInt(request.getParameter("packId"));
+		if ( packTitle == null) {
+			int packId = Integer.parseInt(packId2);
 			boolean isSuccess = packBiz.getAddMyPackByPlace(selectedPlaceId, packId);
 			
 			if (isSuccess) {
@@ -56,9 +56,10 @@ public class AddMyPackByPlaceServlet extends HttpServlet {
 			else {
 				response.sendRedirect(Root.get(this) + "/hitTheRoad");
 			}
+			
 		}
 		
-		if ( packTitle != null ){
+		if ( packId2 == null ){
 			packTitle = request.getParameter("packTitle");
 			HttpSession session = request.getSession();
 			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
@@ -73,7 +74,7 @@ public class AddMyPackByPlaceServlet extends HttpServlet {
 			else {
 				response.sendRedirect(Root.get(this) + "/hitTheRoad");
 			}
-
+			
 		}
 		
 		

@@ -9,7 +9,6 @@ div#mypackWrapperdiv {
 }
 
 div#mypackListdiv {
-	background-color: #696969;
 	float: left;
 	height: 80%;
 	width: 100%;
@@ -68,6 +67,7 @@ div#placesOfPackListdiv div#placeNamediv{
 	width:100%;
 	background-color: white;
 	opacity: 0.4;
+	overFlow: auto;
 }
 
 div#addPackFormdiv {
@@ -89,15 +89,22 @@ td.pack {
 
 p#title {
 	font-family: 'Lucida Console', 'Ubuntu Condensed', "Noto Sans Korean";
-	font-size: 20px;
-	padding: 10px;
+	font-size: 17px;
+	color: #e1e1e1;
+	display: inline;
+	margin-left: 5px;
+}
+
+p#placetitle {
+	font-family: 'Lucida Console', 'Ubuntu Condensed', "Noto Sans Korean";
+	font-size: 12px;
 	color: #e1e1e1;
 	display: inline;
 }
 
 span#packData_Title {
 	font-family: 'Lucida Console', 'Ubuntu Condensed', "Noto Sans Korean";
-	font-size: 20px;
+	font-size: 18px;
 	padding: 10px;
 	color: #dbdbdb;
 }

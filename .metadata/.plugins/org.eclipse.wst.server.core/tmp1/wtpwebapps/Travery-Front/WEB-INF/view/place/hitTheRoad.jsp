@@ -13,6 +13,9 @@
 <script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
 <!-- jVector Map CSS -->
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 
@@ -540,7 +543,7 @@
 							<!-- 여행지 검색 탭 -->
 							<div id="menu1" class="tab-pane">
 								<div class="row">
-									<div id="printAxisY1">${ axisY1 }</div>
+									<div id="printAxisY1"  style="text-align: center; width:100%;">${ axisY1 }</div>
 								</div>
 								<div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
 									<div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
@@ -573,7 +576,7 @@
 									<div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
 								</div>
 								<div class="row">
-									<div id="printAxisY2">${ axisY2 }</div>
+									<div id="printAxisY2" style="text-align: center; width: 100%;">${ axisY2 }</div>
 								</div>
 							</div>
 							<!-- 나의 패키지 탭 -->
@@ -639,8 +642,7 @@
 											b = '${ placeByPackId.longitude }';
 											
 										</c:forEach>
-										alert(a[0]);
-										alert(b[0]);
+										
 										var neighborhoods = [
 										                     {lat: 52.511, lng: 13.447},
 										                     {lat: 52.549, lng: 13.422},
@@ -717,18 +719,34 @@
 				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
+			<div class="inner">
+				<section class="tiles" style="padding-top: 0px;">
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-						<div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
-						style="float:left;
-								width:15%;
-								height:150px;
-								text-align: center;
-								margin-left:45px;
-								margin-top:20px;" 
-						>
-						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
-								<img src="/image?imageName=basic1.jpg" />
+						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId" value="${ tempSelectedPlace.placeId }" />
+						
+						<article class="${tempSelectedPlace.countryName}"
+									style="float:left;
+									width:15%;
+									height:150px;
+									text-align: center;
+									margin-left:45px;
+									margin-bottom:0px;
+									position: relative;
+									top:20px;">
+									<span class="image" style="height: 150px;"> <img
+										src="/resource/img/common/santorini.jpg"
+										alt="" style="height:100%;"/>
+									</span> <a href="#"
+										onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+										<p>${ tempSelectedPlace.placeName }</p>
+										<div class="content">
+											<p>${ tempSelectedPlace.countryName}</p>
+										</div>
+									</a>
+						</article>
+						<%-- 	<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
+								<!-- <img src="/image?imageName=basic1.jpg" /> -->
+								<img src="/resource/img/common/deleteIcon.png" />
 							</div>
 							<div style="width:100%; height:100%;" >
 								<div class="tempPlaceNameDiv"><a class="tempPlaceName" href="/detailPlace?placeId=${ tempSelectedPlace.placeId }" >
@@ -736,9 +754,11 @@
 								<div style=" position:relative; left:128px; bottom:22.4px; width:21px;height:21px"><a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
 									<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px;" />
 								</a></div>
-							</div>
-						</div>									
+							</div> --%>
+															
 					</c:forEach>
+				</section>
+			</div>
 				</form>
 				</div>
 		
