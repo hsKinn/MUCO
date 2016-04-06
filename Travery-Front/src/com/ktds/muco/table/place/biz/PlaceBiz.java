@@ -200,6 +200,7 @@ public class PlaceBiz {
 				}
 			}
 		}
+		
 		return false;
 		
 	}
@@ -218,6 +219,34 @@ public class PlaceBiz {
 		return placeDAO.getDetailPlaceInfo( placeId );
 		
 	} // getDetailPlaceInfo END
+
+	/**
+	 * 임시 여행지 리스트 비우기
+	 * @param request
+	 * @return
+	 * @author 유병훈
+	 */
+	public boolean cleanTempPlaceList(HttpServletRequest request) {
+		
+		int cleanCode = 0;
+		
+		try{
+			cleanCode = Integer.parseInt(request.getParameter("clean"));
+		}
+		catch(NullPointerException npe){}
+		
+		if ( cleanCode == 1 ) {
+			HttpSession session = request.getSession();
+			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+			
+			if (memberVO.removeAllTempPlaceList()) {
+				session.setAttribute("_MEMBER_", memberVO);
+				return true;
+			}
+			
+		}
+		return false;
+	}
 	
 	
 }

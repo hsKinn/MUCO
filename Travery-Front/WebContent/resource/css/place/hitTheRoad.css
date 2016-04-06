@@ -181,7 +181,7 @@ div#massiveSubmitBtn {
 	font-weight: bold;
 	width: 100px;
 	height:30px;
-	margin-top: 10px;
+	margin-top: 40px;
 	cursor: pointer;
 	padding: 5px;
 	margin-right:26%;
@@ -190,6 +190,13 @@ div#massiveSubmitBtn {
 	float:right;
 	background-color: #eeeeee;
 	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+}
+
+div#massiveSubmitBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
 }
 
 div.addUserPackList {
@@ -256,19 +263,52 @@ div.placeCards img {
   padding: 10px;
 }
 
-div#tempPlaceNameDiv {
-	height:16%;
-	text-overflow:ellipsis;
+div.tempPlaceNameDiv {
+	flaat:left;
+	width:124px;
+	height:24px;
+	text-align: center;
+	padding-top:3px;
+	overflow-y:auto;
+	/* white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip ellipsis; */
+	
 }
 
-a#tempPlaceName {
+a.tempPlaceName {
 	margin-left:13px;
+	padding-right:2px;
 	color:#eeeeee;
     text-decoration:none;
     opacity :1;
 	transition: all 0.3s ease-out;
+	overflow-y:auto;
 }
 
-a#tempPlaceName:hover {
+a.tempPlaceName:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+div#massiveCleanBtn{
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	float:right;
+	position:relative;
+	left:6.51%;
+	bottom:19%;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+}
+div#massiveCleanBtn:hover {
+	text-decoration:none;
 	opacity :0.7;
 }

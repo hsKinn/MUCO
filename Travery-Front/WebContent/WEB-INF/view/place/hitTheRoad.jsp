@@ -462,6 +462,10 @@
 			}
 		});
 		
+		$("#massiveCleanBtn").click(function(){
+			location.href = "/tempSelectedPlace?clean=1"
+		});
+		
 		
 	});
 	
@@ -614,7 +618,7 @@
 										// window.setTimeout() to space your markers' animation.
 								
 										
-										var neighborhoods=[];
+										
 										
 										
 										var a;
@@ -622,13 +626,16 @@
 										<c:forEach items="${placeListByPackId}" var="placeByPackId">
 											a = '${ placeByPackId.latitude }';
 											b = '${ placeByPackId.longitude }';
-											alert(a);
-											alert(b);
+											
 										</c:forEach>
-										
-										for (var i = 0; i < neighborhoods.length; i++) {
-											neighborhoods[i].setMap(a,b);
-										}
+										alert(a[0]);
+										alert(b[0]);
+										var neighborhoods = [
+										                     {lat: 52.511, lng: 13.447},
+										                     {lat: 52.549, lng: 13.422},
+										                     {lat: 52.497, lng: 13.396},
+										                     {lat: 52.517, lng: 13.394}
+										                   ];
 										
 										var markers = [];
 										var map;
@@ -709,13 +716,15 @@
 								margin-top:20px;" 
 						>
 						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-						<a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
-							<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px; float:right;" />
-						</a>
-						<div id="tempPlaceNameDiv"><a id="tempPlaceName" href="/detailPlace?placeId="${ tempSelectedPlace.placeId }>
-							${ tempSelectedPlace.placeName }</a></div>
-							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff;">
+							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
 								<img src="/image?imageName=basic1.jpg" />
+							</div>
+							<div style="width:100%; height:100%;" >
+								<div class="tempPlaceNameDiv"><a class="tempPlaceName" href="/detailPlace?placeId=${ tempSelectedPlace.placeId }" >
+									${ tempSelectedPlace.placeName }</a></div>
+								<div style=" position:relative; left:128px; bottom:22.4px; width:21px;height:21px"><a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
+									<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px;" />
+								</a></div>
 							</div>
 						</div>
 									
@@ -724,7 +733,7 @@
 				</div>
 		
 				<!-- 기준 선택 -->
-				<div id="selectStandardBtns" class="col-sm-2" style="height: 70%;">
+				<div id="selectStandardBtns" class="col-sm-2" style="height: 40%;">
 		
 					<!-- Drop Down : X 축 -->
 					<div class="dropdown">
@@ -752,7 +761,10 @@
 				
 				<!-- my pack 추가버튼 모달 -->
 				
-				<div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >추가</div>
+				<c:if test="${tempSelectedPlaceList ne null }">
+					<div id="massiveSubmitBtn" data-toggle="modal" data-target="#massiveSubmitModal" >Add to pack</div>
+					<div id="massiveCleanBtn"  >Clean</div>
+				</c:if>
 				<div class="modal fade" id="massiveSubmitModal" role="dialog" >
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content" style="width: 500px;height: 400px; margin:auto; margin-top:25%; ">
@@ -764,11 +776,19 @@
 								
 							</div>
 							<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
+								<!-- myPack 생성하는 버튼 및 모달 -->
+								<button id="addMyPackBtn" type="button" class="btn btn-default"  >Add</button>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<script>
+									$("#createMyPack").click(function(){
+										
+									});
+								</script>
 				
 			</div>
 		</div>
