@@ -120,7 +120,7 @@
 
 					series : {
 						regions : [ {
-							scale: ['#C8EEFF', '#0071A4'],
+							scale : [],
 							normalizeFunction : 'polynomial',
 							values : {
 								"AF" : 16.63,
