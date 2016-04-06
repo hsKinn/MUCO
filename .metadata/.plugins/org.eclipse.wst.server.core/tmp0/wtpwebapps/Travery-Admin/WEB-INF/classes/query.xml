@@ -1687,13 +1687,13 @@
 			SELECT	COUNT(PLACE_ID)
 			FROM	PLACE
 			WHERE	IS_NEW_PLACE = ?
-			AND		PLACE_NAME = ?		
+			AND		PLACE_NAME LIKE '%' || ? || '%'			
 		</getAllPlaceCountSearchedByPlaceName>
 		<getAllPlaceCountSearchedByEmail>
 			SELECT	COUNT(PLACE_ID)
 			FROM	PLACE
 			WHERE	IS_NEW_PLACE = ?
-			AND		EMAIL = ?		
+			AND		EMAIL LIKE '%' || ? || '%'		
 		</getAllPlaceCountSearchedByEmail>
 		<getAllPlaceCountSearchedByCountryId>
 			SELECT	COUNT(PLACE_ID)

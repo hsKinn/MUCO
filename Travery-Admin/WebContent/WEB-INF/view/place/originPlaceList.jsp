@@ -192,13 +192,15 @@ $(document).ready( function() {
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._ORIGIN_PLACE_SEARCH_.searchList }" />
+										<c:set var="placeSearchVO" value="${sessionScope._ORIGIN_PLACE_SEARCH_ }" />
 										<select name="searchList" id="searchList">
+											<option value="basic">검색 타입</option>
 											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>여행지명</option>
 										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>최초등록자Email</option>
 										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>나라ID</option>
 										</select>
 										
-										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="text" id="searchKeyword" name="searchKeyword" value="${placeSearchVO.searchKeyword}"/>
 										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 										<input type="hidden" id="placeType" name="placeType" value="0" />
