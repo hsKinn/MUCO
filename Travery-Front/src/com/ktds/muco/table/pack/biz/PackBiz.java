@@ -174,4 +174,29 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 
 		return false;
 	}
+	
+	/**
+	 * hitTheRoad에서 나의 패키지 만들기
+	 * @param packTitle
+	 * @return
+	 * @author 유병훈
+	 */
+	public boolean getCreateMyPackByPackTitle(String email, String packTitle, String[] selectedPlaceId) {
+
+		int isSuccess = 0;
+		int packId = packDAO.getCreateMyPackByLatestId(email,packTitle);
+		
+		for (String placeId : selectedPlaceId) {
+			int ori_placeId = Integer.parseInt(placeId);
+			
+			isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
+			
+		}
+		
+		if ( isSuccess > 0 ) {
+			return true;
+		}
+		
+		return false;
+	}
 }

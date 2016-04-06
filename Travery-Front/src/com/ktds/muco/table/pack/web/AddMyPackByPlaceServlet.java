@@ -1,12 +1,15 @@
 package com.ktds.muco.table.pack.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.util.root.Root;
 
@@ -40,16 +43,40 @@ public class AddMyPackByPlaceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] selectedPlaceId = request.getParameterValues("addPackByPlaceId");
-		int packId = Integer.parseInt(request.getParameter("packId"));
-	
-		boolean isSuccess = packBiz.getAddMyPackByPlace(selectedPlaceId, packId);
+		int packId = 0;
+		String packTitle = "";
 		
-		if (isSuccess) {
-			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+		if ( packId !=0 ) {
+			packId = Integer.parseInt(request.getParameter("packId"));
+			boolean isSuccess = packBiz.getAddMyPackByPlace(selectedPlaceId, packId);
+			
+			if (isSuccess) {
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+			else {
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
 		}
-		else {
-			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+		
+		if ( packTitle != null ){
+			packTitle = request.getParameter("packTitle");
+			HttpSession session = request.getSession();
+			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
+			
+			String email = memberVO.getEmail();
+			
+			boolean isSuccess = packBiz.getCreateMyPackByPackTitle(email, packTitle, selectedPlaceId);
+			
+			if (isSuccess) {
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+			else {
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+
 		}
+		
+		
 	}
 
 }

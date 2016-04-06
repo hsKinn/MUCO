@@ -462,6 +462,17 @@
 			}
 		});
 		
+		$("#createMyPackBtn").click(function(){
+			var packTitle = $("#createMyPackInput").val();
+			if ( confirm( "["+ packTitle + "]에 추가하시겠습니까?" ) ) {
+				var form = $("#massiveSubmitForm");
+				form.attr("method", "post");
+				form.attr("action", "/addMyPackByPlace?packTitle=" + packTitle);
+				form.submit();
+				return;
+			} 
+		});
+		
 		$("#massiveCleanBtn").click(function(){
 			location.href = "/tempSelectedPlace?clean=1"
 		});
@@ -726,8 +737,7 @@
 									<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px;" />
 								</a></div>
 							</div>
-						</div>
-									
+						</div>									
 					</c:forEach>
 				</form>
 				</div>
@@ -777,18 +787,28 @@
 							</div>
 							<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
 								<!-- myPack 생성하는 버튼 및 모달 -->
-								<button id="addMyPackBtn" type="button" class="btn btn-default"  >Add</button>
+								<button id="addMyPackBtn" type="button" class="btn btn-default" data-toggle="modal" data-target="#createMyPackModal" >Add</button>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div id="createMyPackModal" class="modal fade" role="dialog" style="margin: auto; margin-top: 20%;">
+				  <div class="modal-dialog">
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      
+				      <div class="modal-body" style="margin:auto;">
+				      	
+				        <input id="createMyPackInput" type="text" placeholder="New Package Name"/>
+				        <div id="createMyPackBtn"  >Confirm</div>
+				        <div id="closeMyPackBtn" data-dismiss="modal" >Close</div>
+				      	
+				      </div>      
+				    </div>
+				  </div>
+				</div>
 				
-				<script>
-									$("#createMyPack").click(function(){
-										
-									});
-								</script>
 				
 			</div>
 		</div>

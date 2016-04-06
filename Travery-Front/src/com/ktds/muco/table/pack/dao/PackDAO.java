@@ -361,6 +361,58 @@ public class PackDAO {
 	}
 	
 	/**
+	 * hitTheRoad 페이지에서 나의 패키지 생성
+	 * @param packTitle
+	 * @return
+	 * @author 유병훈
+	 */
+	public int getCreateMyPackByLatestId(String email, String packTitle) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		int insertCount = 0;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@10.225.152.191:1521:XE", "TRAVERY", "TRAVERY");
+			String query = XML.getNodeString("//query/pack/getCreateMyPackByPackTitle/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, packTitle);
+			stmt.setString(2, email);
+			
+			insertCount = stmt.executeUpdate();
+			
+			if (insertCount > 0) {
+
+				stmt.close();
+				// close
+				query = XML.getNodeString("//query/pack/getLatesPackId/text()");
+				stmt = conn.prepareStatement(query);
+
+				ResultSet rs = stmt.executeQuery();
+
+				int packId = 0;
+
+				if (rs.next()) {
+					packId = rs.getInt(1);
+				}
+				rs.close();
+				
+			return packId;
+			
+			}
+			
+		return insertCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+	}
+	
+	
+	/**
 	 * 
 	 * Load Oracle Driver
 	 * 
@@ -402,4 +454,6 @@ public class PackDAO {
 			}
 		}
 	}
+
+	
 }

@@ -312,3 +312,56 @@ div#massiveCleanBtn:hover {
 	text-decoration:none;
 	opacity :0.7;
 }
+
+div#createMyPackBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 80px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+	float:left;
+	margin-top:5px;
+	margin-left:4px;
+}
+
+div#createMyPackBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+div#createMyPackModal input#createMyPackInput {
+	color:#eeeeee;
+	background-color: #333333;  
+	height:40px; 
+	width:400px;
+	float:left;
+	font-size:18px;
+}
+
+div#closeMyPackBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 80px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+	float:left;
+	margin-top:5px;
+	margin-left:4px;
+}
+
+div#closeMyPackBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}

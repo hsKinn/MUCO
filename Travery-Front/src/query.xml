@@ -253,6 +253,18 @@
 			FROM 	PACK_PLACE
 			WHERE 	PACK_ID = ?
 		</getMyPackCheckPlaceId>
+		<getCreateMyPackByPackTitle>
+			INSERT INTO PACK 	(
+   									PACK_ID
+   									, PACK_TITLE
+   									, EMAIL
+   								) 
+			VALUES 				( 
+									PACK_ID_SEQ.NEXTVAL
+									, ?
+									, ? 
+								)
+		</getCreateMyPackByPackTitle>
 	</pack>
 	
 	<sharePack>
