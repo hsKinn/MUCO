@@ -11,6 +11,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 <script src="<c:url value="/resource/js/scripts.js" />"></script>
+<script src="<c:url value="/resource/js/jquery.bxslider.js" />"></script>
 <script type="text/javascript">
    $(document).ready(function() {
       $("#join").hide();
