@@ -221,7 +221,8 @@
 			        , LIKE_COUNT
 			        , DESCRIPTION
 			        , IS_NEW_PLACE
-			        , COUNTRY_ID
+			        , P.COUNTRY_ID
+			        , COUNTRY_NAME
 			        ,   (
 			                SELECT  AVG(E.SCORE)
 			                FROM    EVALUATION E
@@ -264,7 +265,9 @@
 			            ) AVG_ARTIFICIAL_NATURAL_SCORE
 			FROM    PACK_PLACE PP
 			        , PLACE P
+			        , COUNTRY C
 			WHERE   PP.PLACE_ID = P.PLACE_ID
+			AND		P.COUNTRY_ID = C.COUNTRY_ID
 			AND     PP.PACK_ID = ?
 		</getPlaceListByPackId>
 		<deletePlaceOfPack>

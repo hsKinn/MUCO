@@ -73,7 +73,7 @@
 			<item value="" key="javaElement"/>
 			<item value="0" key="scope"/>
 			<item value="11" key="includeMask"/>
-			<item value="YBH" key="pattern"/>
+			<item value="KGM" key="pattern"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
@@ -85,7 +85,7 @@
 			<item value="" key="javaElement"/>
 			<item value="0" key="scope"/>
 			<item value="11" key="includeMask"/>
-			<item value="KGM" key="pattern"/>
+			<item value="YBH" key="pattern"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="matchLocations"/>
 			<item value="0" key="searchFor"/>
@@ -98,13 +98,10 @@
 	</section>
 	<section name="completion_proposal_size">
 	</section>
-<<<<<<< HEAD
 	<section name="AddGetterSetterDialog">
 		<item value="false" key="SortOrdering"/>
 		<item value="false" key="RemoveFinal"/>
 	</section>
-=======
->>>>>>> origin/KGM18
 	<section name="JavaElementSearchActions">
 	</section>
 </section>

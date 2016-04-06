@@ -2,37 +2,26 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-<<<<<<< HEAD
-		<item value="addPlacePhoto" key="selection"/>
-=======
-		<item value="id=&quot;place-LikeCount&quot;" key="selection"/>
->>>>>>> origin/KGM18
+		<item value="AVG_ARTIFICIAL_NATURAL_SCORE" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="addPlacePhoto"/>
-			<item value="addPhotoForm"/>
-			<item value="addPhotoUpload"/>
-			<item value="addMyPackOnePlace"/>
-			<item value="file"/>
-			<item value="input file"/>
-			<item value="&lt;image"/>
-			<item value="style1"/>
-=======
-			<item value="id=&quot;place-likeCount&quot;"/>
-			<item value="like ♥"/>
-			<item value="like"/>
-			<item value="write reply"/>
-			<item value="♥"/>
-			<item value="추가"/>
-			<item value="view"/>
-			<item value="alert"/>
->>>>>>> origin/KGM18
+			<item value="AVG_ARTIFICIAL_NATURAL_SCORE"/>
+			<item value="avg"/>
+			<item value="mapBtn"/>
+			<item value="여행지"/>
+			<item value="getUserRecommendPlaceList"/>
+			<item value="&lt;getUser"/>
+			<item value="recommendList"/>
+			<item value="recommend"/>
 		</list>
 		<list key="replacehistory">
+			<item value="I.IMAGE_NAME"/>
+			<item value="placeVO.setImageName(rs.getString(&quot;IMAGE_NAME&quot;));"/>
+			<item value="SHARE_IMAGE_NAME"/>
+			<item value="pack.setShareImageName(rs.getString(&quot;SHARE_IMAGE_NAME&quot;));"/>
 			<item value="placeInfo"/>
 			<item value="place"/>
 			<item value="likeCount"/>
