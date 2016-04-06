@@ -5,7 +5,45 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-04-05T14:40:41Z</updated>
+  <updated>2016-04-06T09:00:20Z</updated>
+  <entry>
+    <title>Spring Framework 4.3 goes RC1</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/06/spring-framework-4-3-goes-rc1" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Juergen Hoeller</name>
+    </author>
+    <id>tag:spring.io,2016-04-05:2451</id>
+    <updated>2016-04-06T09:00:20Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
+&lt;p&gt;It is my pleasure to announce that a feature-complete Spring Framework 4.3 release candidate is available now! This is a perfect opportunity for you to get involved: Please run your regression tests against it, and of course, feel free to try the new features&amp;hellip;&lt;/p&gt;
+&lt;h3&gt;Dependency injection refinements:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;@Autowired injection of Map/Collection beans and self references&lt;/li&gt;
+  &lt;li&gt;@Autowired on configuration class constructors (finally!)&lt;/li&gt;
+  &lt;li&gt;No need for declaring @Autowired on a unique non-default constructor&lt;/li&gt;
+  &lt;li&gt;ObjectProvider as a richer variant of an ObjectFactory handle&lt;/li&gt;
+  &lt;li&gt;InjectionPoint/DependencyDescriptor as an injectable argument for @Bean methods&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;MVC processing refinements:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Default processing of OPTIONS, HEAD, Allow and If-Unmodified-Since&lt;/li&gt;
+  &lt;li&gt;Support for custom HTTP Vary configuration and HTTP Range on custom resources&lt;/li&gt;
+  &lt;li&gt;Precomposed @GetMapping, @PostMapping, @RequestScope, @SessionScope etc&lt;/li&gt;
+  &lt;li&gt;@RequestAttribute and @SessionAttribute as handler method arguments&lt;/li&gt;
+  &lt;li&gt;Full support for Jackson 2.7&amp;rsquo;s new type resolution algorithm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Various infrastructural refinements across the framework:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Wider support for composed annotations and for placeholders/expressions in attributes&lt;/li&gt;
+  &lt;li&gt;Richer programmatic metadata in core container exceptions&lt;/li&gt;
+  &lt;li&gt;Component scanning in manifest-defined classpath entries&lt;/li&gt;
+  &lt;li&gt;A background initialization option for bootstrapping JPA / Hibernate&lt;/li&gt;
+  &lt;li&gt;A &amp;lsquo;sync&amp;rsquo; flag on @Cacheable and support for the Caffeine cache provider&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We are working towards an RC2 with some remaining fine-tuning and performance improvements in the meantime, preparing for 4.3&amp;rsquo;s general availability on June 1st!&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring  - April 5th, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/04/05/this-week-in-spring-april-5th-2016" />
@@ -771,135 +809,5 @@ public class VoteHandler {&#xD;
 &lt;p&gt;If you are interested in attending &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; make sure you register before the early bird discount ends to save big!&lt;/p&gt;&#xD;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href="https://spring.io/spring-security-saml"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security-saml/docs/1.0.x/reference/html/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-security-saml/issues?q=milestone%3A1.0.2"&gt;Changelog&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>A Geospatial Messenger with Kotlin, Spring Boot and PostgreSQL</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/20/a-geospatial-messenger-with-kotlin-spring-boot-and-postgresql" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>S?bastien Deleuze</name>
-    </author>
-    <id>tag:spring.io,2016-03-20:2433</id>
-    <updated>2016-03-20T10:51:00Z</updated>
-    <content type="html">&lt;p&gt;Following my first &lt;a href="https://spring.io/blog/2016/02/15/developing-spring-boot-applications-with-kotlin"&gt;Kotlin blog post&lt;/a&gt;, today I want introduce the new Spring Boot + Kotlin application I have developed for my upcoming &lt;a href="http://www.springio.net/"&gt;Spring I/O 2016 conference&lt;/a&gt; talk &amp;ldquo;Developing Geospatial Web Services with Kotlin and Spring Boot&amp;rdquo;.&lt;/p&gt;&lt;h1&gt;&lt;a href="#dealing-with-native-database-functionalities" class="anchor" name="dealing-with-native-database-functionalities"&gt;&lt;/a&gt;Dealing with native database functionalities&lt;/h1&gt;
-&lt;p&gt;One of the goal of this application is to see how to take advantage of native database functionalities like we do in NoSQL world. Here we want to use Geospatial support provided by &lt;a href="http://postgis.net/"&gt;PostGIS&lt;/a&gt;, the spatial database extender for &lt;a href="http://postgresql.org/"&gt;PostgreSQL&lt;/a&gt;. &lt;a href="https://www.compose.io/articles/is-postgresql-your-next-json-database/"&gt;Native JSON support&lt;/a&gt; could also be a good use case.&lt;/p&gt;
-&lt;p&gt;This Geospatial Messenger sample application is &lt;a href="https://github.com/sdeleuze/geospatial-messenger"&gt;available on GitHub&lt;/a&gt; in 2 flavors:&lt;br/&gt; - The &lt;code&gt;master&lt;/code&gt; branch uses &lt;a href="https://github.com/JetBrains/Exposed"&gt;Exposed&lt;/a&gt;, a Kotlin SQL library with a typesafe API created by JetBrains. It could be compared to &lt;a href="https://github.com/querydsl/querydsl/tree/master/querydsl-sql"&gt;Query DSL SQL&lt;/a&gt; or &lt;a href="http://www.jooq.org/"&gt;jOOQ&lt;/a&gt; but provides an idiomatic Kotlin API and does not require code generation.&lt;br/&gt; - The &lt;a href="https://github.com/sdeleuze/geospatial-messenger/tree/spring-data-jdbc-repository"&gt;&lt;code&gt;spring-data-jdbc-repository&lt;/code&gt;&lt;/a&gt; branch is using &lt;code&gt;spring-data-jdbc-repository&lt;/code&gt;, a community project that allows to use Spring Data &lt;a href="https://docs.spring.io/spring-data/data-commons/docs/current/api/org/springframework/data/repository/PagingAndSortingRepository.html"&gt;&lt;code&gt;PagingAndSortingRepository&lt;/code&gt;&lt;/a&gt; API with raw SQL queries without JPA. I am using &lt;a href="https://github.com/jirutka/spring-data-jdbc-repository/"&gt;this Jakub Jirutka fork&lt;/a&gt; which is an improved version of &lt;a href="https://github.com/nurkiewicz/spring-data-jdbc-repository"&gt;Tomasz Nurkiewicz original project&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;A &lt;a href="https://github.com/sebastianperruolo/spring-gis"&gt;Spring Data JPA + Hibernate Spatial variant&lt;/a&gt; would be interesting, so feel free to contribute it with a pull request ;-) Kotlin Query DSL support would be also nice but this is currently not supported (please comment on &lt;a href="https://github.com/querydsl/querydsl/issues/1828"&gt;this issue&lt;/a&gt; if you are interested). In this blog post I will focus on the &lt;a href="https://github.com/JetBrains/Exposed"&gt;Exposed&lt;/a&gt; variant.&lt;/p&gt;&lt;h1&gt;&lt;a href="#a-tour-of-geospatial-messenger-code" class="anchor" name="a-tour-of-geospatial-messenger-code"&gt;&lt;/a&gt;A tour of Geospatial Messenger code&lt;/h1&gt;
-&lt;p&gt;Our domain model is described easily thanks to these 2 &lt;a href="https://kotlinlang.org/docs/reference/data-classes.html"&gt;Kotlin data classes&lt;/a&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;data class Message(&#xD;
-    var content  : String,&#xD;
-    var author   : String,&#xD;
-    var location : Point? = null,&#xD;
-    var id       : Int?   = null&#xD;
-)&#xD;
-&#xD;
-data class User(&#xD;
-    var userName  : String,&#xD;
-    var firstName : String,&#xD;
-    var lastName  : String,&#xD;
-    var location  : Point? = null&#xD;
-)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Exposed allows us to describe the structure of our tables with a type-safe SQL API quite handy to use (autocomplete, refactoring and error prone):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;object Messages : Table() {&#xD;
-    val id       = integer(&amp;quot;id&amp;quot;).autoIncrement().primaryKey()&#xD;
-    val content  = text(&amp;quot;content&amp;quot;)&#xD;
-    val author   = reference(&amp;quot;author&amp;quot;, Users.userName)&#xD;
-    val location = point(&amp;quot;location&amp;quot;).nullable()&#xD;
-}&#xD;
-&#xD;
-object Users : Table() {&#xD;
-    val userName  = text(&amp;quot;user_name&amp;quot;).primaryKey()&#xD;
-    val firstName = text(&amp;quot;first_name&amp;quot;)&#xD;
-    val lastName  = text(&amp;quot;last_name&amp;quot;)&#xD;
-    val location  = point(&amp;quot;location&amp;quot;).nullable()&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It is interesting to notice that Exposed does not support natively PostGIS functionalities like geometry types or geospatial requests. That&amp;rsquo;s where &lt;a href="https://kotlinlang.org/docs/reference/extensions.html"&gt;Kotlin extensions&lt;/a&gt; shine, and allow with a few lines of code to add such support without requiring to use extended classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;fun Table.point(name: String, srid: Int = 4326): Column&amp;lt;Point&amp;gt;&#xD;
-  = registerColumn(name, PointColumnType())&#xD;
-&#xD;
-infix fun ExpressionWithColumnType&amp;lt;*&amp;gt;.within(box: PGbox2d) : Op&amp;lt;Boolean&amp;gt;&#xD;
-  = WithinOp(this, box)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Our repository is also quite short and very flexible, since it allows you to write any kind of SQL request even with complex &lt;code&gt;WHERE&lt;/code&gt; clause with a type-safe SQL API. Currently we need to use &lt;code&gt;db.transaction{ }&lt;/code&gt; wrapper, I have created Exposed issue &lt;a href="https://github.com/JetBrains/Exposed/issues/25"&gt;#25&lt;/a&gt; to be able to use regular &lt;a href="http://docs.spring.io/autorepo/docs/spring/4.2.x/spring-framework-reference/html/transaction.html"&gt;Spring transaction management&lt;/a&gt; with &lt;a href="http://docs.spring.io/autorepo/docs/spring/4.2.x/spring-framework-reference/html/transaction.html#transaction-declarative-annotations"&gt;&lt;code&gt;@Transactional&lt;/code&gt;&lt;/a&gt; annotation, feel free to add your +1 ;-)&lt;/p&gt;
-&lt;p&gt;Please notice that since we are using Spring Framework 4.3, we &lt;a href="https://spring.io/blog/2016/03/04/core-container-refinements-in-spring-framework-4-3#implicit-constructor-injection-for-single-constructor-scenarios"&gt;no longer need to specify an &lt;code&gt;@Autowired&lt;/code&gt; annotation in such single-constructor class&lt;/a&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;@Repository&#xD;
-open class UserRepository(val db: Database) {&#xD;
-&#xD;
-    open fun createTable() = db.transaction {&#xD;
-        create(Users)&#xD;
-    }&#xD;
-&#xD;
-    open fun create(user: User) = db.transaction {&#xD;
-        Users.insert( toRow(user) )&#xD;
-    }&#xD;
-&#xD;
-    open fun updateLocation(u:String, l: Point) = db.transaction {&#xD;
-        location.srid = 4326&#xD;
-        Users.update({Users.userName eq u}) { it[Users.location] = l}&#xD;
-    }&#xD;
-&#xD;
-    open fun findAll() = db.transaction {&#xD;
-        Users.selectAll().map { fromRow(it) }&#xD;
-    }&#xD;
-&#xD;
-    open fun findByBoundingBox(box: PGbox2d) = db.transaction {&#xD;
-        Users.select { Users.location within box }.map { fromRow(it) }&#xD;
-    }&#xD;
-&#xD;
-    open fun deleteAll() = db.transaction {&#xD;
-        Users.deleteAll()&#xD;
-    }&#xD;
-&#xD;
-    fun toRow(u: User): Users.(UpdateBuilder&amp;lt;*&amp;gt;) -&amp;gt; Unit = {&#xD;
-        it[userName] = u.userName&#xD;
-        it[firstName] = u.firstName&#xD;
-        it[lastName] = u.lastName&#xD;
-        it[location] = u.location&#xD;
-    }&#xD;
-&#xD;
-    fun fromRow(r: ResultRow) =&#xD;
-        User(r[Users.userName],&#xD;
-             r[Users.firstName],&#xD;
-             r[Users.lastName],&#xD;
-             r[Users.location])&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Controllers are also very concise and use Spring Framework 4.3 upcoming &lt;code&gt;@GetMapping&lt;/code&gt; / &lt;code&gt;@PostMapping&lt;/code&gt; annotations which are just method-specific shortcuts for &lt;code&gt;@RequestMapping&lt;/code&gt; annotations:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;@RestController&#xD;
-@RequestMapping(&amp;quot;/user&amp;quot;)&#xD;
-class UserController(val repo: UserRepository) {&#xD;
-&#xD;
-    @PostMapping&#xD;
-    @ResponseStatus(CREATED)&#xD;
-    fun create(@RequestBody u: User) { repo.create(u) }&#xD;
-&#xD;
-    @GetMapping&#xD;
-    fun list() = repo.findAll()&#xD;
-&#xD;
-    @GetMapping(&amp;quot;/bbox/{xMin},{yMin},{xMax},{yMax}&amp;quot;)&#xD;
-    fun findByBoundingBox(@PathVariable xMin:Double,&#xD;
-                          @PathVariable yMin:Double,&#xD;
-                          @PathVariable xMax:Double,&#xD;
-                          @PathVariable yMax:Double)&#xD;
-            = repo.findByBoundingBox(&#xD;
-                        PGbox2d(Point(xMin, yMin), Point(xMax, yMax)))&#xD;
-&#xD;
-    @PutMapping(&amp;quot;/{userName}/location/{x},{y}&amp;quot;)&#xD;
-    @ResponseStatus(NO_CONTENT)&#xD;
-    fun updateLocation(@PathVariable userName:String,&#xD;
-                       @PathVariable x: Double,&#xD;
-                       @PathVariable y: Double)&#xD;
-            = repo.updateLocation(userName, Point(x, y))&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The client side is a pure HTML + Javascript application developed with &lt;a href="http://openlayers.org/"&gt;OpenLayers&lt;/a&gt; mapping library (see &lt;a href="https://github.com/sdeleuze/geospatial-messenger/blob/master/src/main/resources/static/index.html"&gt;index.html&lt;/a&gt; and &lt;a href="https://github.com/sdeleuze/geospatial-messenger/blob/master/src/main/resources/static/map.js"&gt;map.js&lt;/a&gt; for more details) that geolocalizes you and creates geolocalized messages sent/received to/from other users thanks to Server-Sent Events.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/sdeleuze/geospatial-messenger/master/screenshot.png" alt="Screenshot" /&gt;&lt;/p&gt;
-&lt;p&gt;And last but not least, the REST API is fully tested and documented thanks to the awesome &lt;a href="http://projects.spring.io/spring-restdocs/"&gt;Spring REST docs&lt;/a&gt; project, see &lt;a href="https://github.com/sdeleuze/geospatial-messenger/blob/master/src/test/kotlin/io/spring/messenger/MessageControllerTests.kt"&gt;MessageControllerTests&lt;/a&gt; and &lt;a href="https://github.com/sdeleuze/geospatial-messenger/blob/master/src/main/resources/static/index.html"&gt;index.adoc&lt;/a&gt; for more details.&lt;/p&gt;&lt;h1&gt;&lt;a href="#conclusion" class="anchor" name="conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h1&gt;
-&lt;p&gt;The main impression I had developing this application is that it was fun, efficient, with a high level of flexibility and safety provided by the SQL API and Kotlin type system and &lt;a href="https://kotlinlang.org/docs/reference/null-safety.html"&gt;null safety&lt;/a&gt;. The resulting Spring Boot application is a 18 MBytes self-contained executable jar with low memory consumption (the app can run with &lt;code&gt;-Xmx32m&lt;/code&gt;!!!). Using Spring REST docs was also a pleasure, demonstrating again Kotlin nice Java interoperability.&lt;/p&gt;
-&lt;p&gt;The few pain points I have encountered (&lt;a href="https://youtrack.jetbrains.com/issue/KT-11235"&gt;array annotation attributes&lt;/a&gt;, &lt;a href="https://youtrack.jetbrains.com/issue/KT-5175"&gt;Java 8 Stream support&lt;/a&gt;, &lt;a href="https://youtrack.jetbrains.com/issue/KT-6947"&gt;full callable reference support&lt;/a&gt;), are planned to be fixed in Kotlin 1.1. Exposed library is still young and need to mature, but from my point of view it is promising and shows how Kotlin could be used for building type-safe DSL API (&lt;a href="https://kotlinlang.org/docs/reference/type-safe-builders.html"&gt;this HTML type-safe builder&lt;/a&gt; is also a good example).&lt;/p&gt;
-&lt;p&gt;And keep in mind that officially supported &lt;a href="http://projects.spring.io/spring-data/"&gt;Spring Data projects&lt;/a&gt; works well with Kotlin as shown in the &lt;a href="https://github.com/sdeleuze/spring-boot-kotlin-demo"&gt;spring-boot-kotlin-demo&lt;/a&gt; project in my &lt;a href="https://spring.io/blog/2016/02/15/developing-spring-boot-applications-with-kotlin"&gt;previous blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If you happen to be in Barcelona mid May (never a bad time to be in Barcelona anyway!), don¡¯t miss the chance to join the &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt;. Also, the registration for &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; (early August, Las Vegas) has opened recently, in case you want to benefit from early bird ticket pricing. The latter is also still open for talk proposals. So if you¡¯re interested to give a talk about Spring or Pivotal-related technologies, feel free to submit!&lt;/p&gt;</content>
   </entry>
 </feed>

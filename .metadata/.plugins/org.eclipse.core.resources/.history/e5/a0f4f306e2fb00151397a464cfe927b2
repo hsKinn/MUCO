@@ -111,7 +111,7 @@
 								<article class="${places.countryName}">
 									<span class="image" style="height: 150px;"> <img
 										src="/image?imageName=${places.placeImageList[0].imageName}"
-										alt="" style="height:100%;" />
+										alt="" />
 									</span> <a href="#"
 										onclick="window.open('/detailPlace?placeId=${places.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
 										<p>${ places.placeName }</p>

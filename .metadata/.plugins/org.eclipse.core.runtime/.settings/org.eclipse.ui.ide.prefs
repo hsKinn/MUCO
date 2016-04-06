@@ -1,15 +1,11 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
->>>>>>>=origin/KGM11
+>>>>>>>=origin/YBH2
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
-IMPORT_FILES_AND_FOLDERS_TYPE=23,1
+IMPORT_FILES_AND_FOLDERS_TYPE=23,1\:7,1
 PROBLEMS_FILTERS_MIGRATE=true
 SWITCH_PERSPECTIVE_ON_PROJECT_CREATION=never
 eclipse.preferences.version=1
-<<<<<<< HEAD
-platformState=1454299227096
-=======
-platformState=1454299362712
->>>>>>> KGM17
+platformState=1454299392538
 quickStart=false
 tipsAndTricks=true
