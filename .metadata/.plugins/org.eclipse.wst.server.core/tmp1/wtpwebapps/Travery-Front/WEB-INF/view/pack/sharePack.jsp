@@ -107,7 +107,7 @@
 						</div>
 						
 						<div class="packPhoto">
-							<img src="${ pack.imageLocation }" class="img-rounded" />
+							<img src="/image?imageName=${ pack.shareImageName }" class="img-rounded" />
 						</div>
 						
 						<div class="packFooter">

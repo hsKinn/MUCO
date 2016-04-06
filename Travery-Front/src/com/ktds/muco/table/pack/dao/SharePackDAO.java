@@ -116,7 +116,7 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
 
@@ -178,7 +178,7 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
 
@@ -240,7 +240,7 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
 
@@ -340,8 +340,7 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
-				
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
 
@@ -405,7 +404,7 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));
 
@@ -467,7 +466,7 @@ public class SharePackDAO {
 				pack.setViewCount(rs.getInt("VIEW_COUNT"));
 				pack.setLikeCount(rs.getInt("LIKE_COUNT"));
 				pack.setName(rs.getString("NAME"));
-				pack.setImageLocation(rs.getString("SHARE_IMAGE_LOCATION"));
+				pack.setShareImageName(rs.getString("SHARE_IMAGE_NAME"));
 				;
 				pack.setHashtagList(hashtagDAO.getHashTagOfPackage(pack.getPackId()));
 				pack.setPlaceList(placeDAO.getPlaceInPackage(pack.getPackId()));

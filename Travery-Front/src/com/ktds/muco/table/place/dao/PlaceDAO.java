@@ -124,6 +124,7 @@ public class PlaceDAO {
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setAvgLikeCount(rs.getInt("DAILY_LIKE"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				place.setImageName(rs.getString("IMAGE_NAME"));
 				// TODO 무드 별 평균값 가져와야함
 
 				placeLikeVO.setPlaceId(place.getPlaceId());
@@ -184,6 +185,7 @@ public class PlaceDAO {
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setAvgLikeCount(rs.getInt("WEEKLY_LIKE"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				place.setImageName(rs.getString("IMAGE_NAME"));				
 				// TODO 무드 별 평균값 가져와야함
 
 				placeLikeVO.setPlaceId(place.getPlaceId());
@@ -244,6 +246,7 @@ public class PlaceDAO {
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setAvgLikeCount(rs.getInt("MONTHLY_LIKE"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
+				place.setImageName(rs.getString("IMAGE_NAME"));				
 				// TODO 무드 별 평균값 가져와야함
 
 				placeLikeVO.setPlaceId(place.getPlaceId());
@@ -300,6 +303,7 @@ public class PlaceDAO {
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setViewCount(rs.getInt("VIEW_COUNT"));
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
+				place.setImageName(rs.getString("IMAGE_NAME"));
 
 				// TODO 김현섭 - 내가 추가한 여행지 리스트이므로 사진은 1개 출력 List로 1개 출력할지 대표
 				// Location으로 출력할지 결정 해야함
@@ -449,7 +453,7 @@ public class PlaceDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
 				placeVO.setName(rs.getString("NAME"));
-				placeVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				placeVO.setImageName(rs.getString("IMAGE_NAME"));
 
 				placeLikeVO.setPlaceId(placeVO.getPlaceId());
 				placeVO.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
@@ -546,7 +550,7 @@ public class PlaceDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
 				placeVO.setName(rs.getString("NAME"));
-				placeVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				placeVO.setImageName(rs.getString("IMAGE_NAME"));
 
 				placeLikeVO.setPlaceId(placeVO.getPlaceId());
 				placeVO.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));
@@ -606,7 +610,7 @@ public class PlaceDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
 				placeVO.setName(rs.getString("NAME"));
-				placeVO.setImageLocation(rs.getString("IMAGE_LOCATION"));
+				placeVO.setImageName(rs.getString("IMAGE_NAME"));
 
 				placeLikeVO.setPlaceId(placeVO.getPlaceId());
 				placeVO.setExistPlaceLike(placeLikeBiz.isExistPlaceLike(placeLikeVO));

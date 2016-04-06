@@ -331,7 +331,7 @@
                                                 WHERE   PACK_ID = P.PACK_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , SHARE_IMAGE_LOCATION
+			                             , SHARE_IMAGE_NAME
 			                     FROM    PACK P
 			                             , MEMBER M
 			                             , HASH_TAG H
@@ -362,7 +362,7 @@
                                                 WHERE   PACK_ID = P.PACK_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , SHARE_IMAGE_LOCATION
+			                             , SHARE_IMAGE_NAME
 			                     FROM    PACK P
 			                             , MEMBER M
 			                             , HASH_TAG H
@@ -393,7 +393,7 @@
                                                 WHERE   PACK_ID = P.PACK_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , SHARE_IMAGE_LOCATION
+			                             , SHARE_IMAGE_NAME
 			                     FROM    PACK P
 			                             , MEMBER M
 			                             , HASH_TAG H
@@ -429,7 +429,7 @@
                                                 WHERE   PACK_ID = P.PACK_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , SHARE_IMAGE_LOCATION
+			                             , SHARE_IMAGE_NAME
 			                     FROM    PACK P
 			                             , MEMBER M
 			                     WHERE   IS_PUBLIC = 1
@@ -457,7 +457,7 @@
                                                 WHERE   PACK_ID = P.PACK_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , SHARE_IMAGE_LOCATION
+			                             , SHARE_IMAGE_NAME
 			                     FROM    PACK P
 			                             , MEMBER M
 			                     WHERE   IS_PUBLIC = 1
@@ -485,7 +485,7 @@
                                                 WHERE   PACK_ID = P.PACK_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , SHARE_IMAGE_LOCATION
+			                             , SHARE_IMAGE_NAME
 			                     FROM    PACK P
 			                             , MEMBER M
 			                     WHERE   IS_PUBLIC = 1
@@ -761,7 +761,6 @@
 		<getAllPlaceCount>
 			SELECT  COUNT(PLACE_ID)
 			FROM    PLACE
-			WHERE	IS_NEW_PLACE = 1
 		</getAllPlaceCount>
 
 		<getAllPlaceList>
@@ -770,7 +769,7 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  P.PLACE_ID
+			                     SELECT  DISTINCT P.PLACE_ID
 			                     		 , PLACE_NAME
 			                             , VIEW_COUNT
 			                             , (
@@ -779,12 +778,16 @@
                                                 WHERE   PLACE_ID = P.PLACE_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , I.IMAGE_LOCATION
+										 , (
+										    SELECT IMAGE_NAME
+										    FROM   IMAGE I
+										    WHERE P.PLACE_ID = I.PLACE_ID
+										    AND  ROWNUM = 1
+										   ) IMAGE_NAME
 			                     FROM    PLACE P
 			                             , MEMBER M
 			                             , IMAGE I
-			                     WHERE   IS_NEW_PLACE = 1
-			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     WHERE   P.EMAIL = M.EMAIL(+)
 								 AND	 P.PLACE_ID = I.PLACE_ID(+)
 			                     ORDER   BY LIKE_COUNT DESC   
 			                     		 , VIEW_COUNT DESC   			                     
@@ -800,7 +803,7 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  P.PLACE_ID
+			                     SELECT  DISTINCT P.PLACE_ID
 			                     		 , PLACE_NAME
 			                             , VIEW_COUNT
 			                             , (
@@ -809,12 +812,16 @@
                                                 WHERE   PLACE_ID = P.PLACE_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , I.IMAGE_LOCATION
+                      			         , (
+					                         SELECT IMAGE_NAME
+					                         FROM   IMAGE I
+					                         WHERE P.PLACE_ID = I.PLACE_ID
+					                         AND  ROWNUM = 1
+					                       ) IMAGE_NAME
 			                     FROM    PLACE P
 			                             , MEMBER M
 			                             , IMAGE I 
-			                     WHERE   IS_NEW_PLACE = 1
-			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     WHERE   P.EMAIL = M.EMAIL(+)
 			                     AND	 P.PLACE_ID = I.PLACE_ID(+)
 			                     ORDER   BY VIEW_COUNT DESC   
 			                     		 , LIKE_COUNT DESC   			                     
@@ -831,7 +838,7 @@
 		               SELECT  ROWNUM AS RNUM
 		                     , A.*
 		               FROM    (
-			                     SELECT  P.PLACE_ID
+			                     SELECT  DISTINCT P.PLACE_ID
 			                     		 , PLACE_NAME
 			                             , VIEW_COUNT
 			                             , (
@@ -840,12 +847,16 @@
                                                 WHERE   PLACE_ID = P.PLACE_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , I.IMAGE_LOCATION
+			                             , (
+					                         SELECT IMAGE_NAME
+					                         FROM   IMAGE I
+					                         WHERE P.PLACE_ID = I.PLACE_ID
+					                         AND  ROWNUM = 1
+					                       ) IMAGE_NAME
 			                     FROM    PLACE P
 			                             , MEMBER M
 			                             , IMAGE I
-			                     WHERE   IS_NEW_PLACE = 1
-			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     WHERE   P.EMAIL = M.EMAIL(+)
 			                     AND	 P.PLACE_ID = I.PLACE_ID(+)
 			                     ORDER   BY P.PLACE_ID DESC   
 		                     ) A
@@ -857,8 +868,7 @@
 		<getPlaceCountByPlaceName>
 			SELECT  COUNT(PLACE_ID)
 			FROM    PLACE
-			WHERE	IS_NEW_PLACE = 1
-			AND		PLACE_NAME LIKE '%' || ? || '%'
+			WHERE	PLACE_NAME LIKE '%' || ? || '%'
 		</getPlaceCountByPlaceName>
 
 		<getPlaceListByPlaceName>
@@ -876,12 +886,16 @@
                                                 WHERE   PLACE_ID = P.PLACE_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , I.IMAGE_LOCATION
+			                             , (
+					                         SELECT IMAGE_NAME
+					                         FROM   IMAGE I
+					                         WHERE P.PLACE_ID = I.PLACE_ID
+					                         AND  ROWNUM = 1
+					                       ) IMAGE_NAME
 			                     FROM    PLACE P
 			                             , MEMBER M
 			                             , IMAGE I
-			                     WHERE   IS_NEW_PLACE = 1
-			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     WHERE   P.EMAIL = M.EMAIL(+)
 								 AND	 P.PLACE_ID = I.PLACE_ID(+)
 			                     AND	 PLACE_NAME LIKE '%' || ? || '%'
 			                     ORDER   BY LIKE_COUNT DESC   
@@ -907,12 +921,16 @@
                                                 WHERE   PLACE_ID = P.PLACE_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , I.IMAGE_LOCATION
+			                             , (
+					                         SELECT IMAGE_NAME
+					                         FROM   IMAGE I
+					                         WHERE P.PLACE_ID = I.PLACE_ID
+					                         AND  ROWNUM = 1
+					                       ) IMAGE_NAME
 			                     FROM    PLACE P
 			                             , MEMBER M
 			                             , IMAGE I 
-			                     WHERE   IS_NEW_PLACE = 1
-			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     WHERE   P.EMAIL = M.EMAIL(+)
 			                     AND	 P.PLACE_ID = I.PLACE_ID(+)
 			                     AND	 PLACE_NAME LIKE '%' || ? || '%'
 			                     ORDER   BY VIEW_COUNT DESC   
@@ -938,12 +956,16 @@
                                                 WHERE   PLACE_ID = P.PLACE_ID
                                             ) LIKE_COUNT			                             
 			                             , M.NAME
-			                             , I.IMAGE_LOCATION
+			                             , (
+					                         SELECT IMAGE_NAME
+					                         FROM   IMAGE I
+					                         WHERE P.PLACE_ID = I.PLACE_ID
+					                         AND  ROWNUM = 1
+					                       ) IMAGE_NAME
 			                     FROM    PLACE P
 			                             , MEMBER M
 			                             , IMAGE I
-			                     WHERE   IS_NEW_PLACE = 1
-			                     AND	 P.EMAIL = M.EMAIL(+)
+			                     WHERE   P.EMAIL = M.EMAIL(+)
 			                     AND	 P.PLACE_ID = I.PLACE_ID(+)
 			                     AND	 PLACE_NAME LIKE '%' || ? || '%'
 			                     ORDER   BY P.PLACE_ID DESC   
@@ -954,7 +976,7 @@
 		</getPlaceListByPlaceNameOrderByDate>
 		
 		<getPlaceListByDaily>
-			 SELECT P.PLACE_ID
+			 SELECT DISTINCT P.PLACE_ID
 			        , P.PLACE_NAME
 			        , P.ADDRESS
 			        , P.VIEW_COUNT
@@ -971,7 +993,14 @@
                             GROUP   BY PLACE_ID
                          ) DAILY_LIKE				                    
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -983,12 +1012,13 @@
 			                                        ORDER   BY LIKE_C DESC
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
-			                        )		  
+			                        )	
+			 AND	P.PLACE_ID = I.PLACE_ID(+) 
 			ORDER	BY DAILY_LIKE DESC                     	
 		</getPlaceListByDaily>
 		
 		<getPlaceListByWeekly>
-			 SELECT P.PLACE_ID
+			 SELECT DISTINCT P.PLACE_ID
 			        , P.PLACE_NAME
 			        , P.ADDRESS
 			        , P.VIEW_COUNT
@@ -1005,7 +1035,14 @@
                             GROUP   BY PLACE_ID
                          ) WEEKLY_LIKE	        			            	        
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -1018,11 +1055,12 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
-			ORDER	BY WEEKLY_LIKE DESC   			                        
+			 AND	P.PLACE_ID = I.PLACE_ID(+)  			                        
+			 ORDER	BY WEEKLY_LIKE DESC   			                        
 		</getPlaceListByWeekly>
 		
 		<getPlaceListByMonthly>
-			 SELECT P.PLACE_ID
+			 SELECT DISTINCT P.PLACE_ID
 			        , P.PLACE_NAME
 			        , P.ADDRESS
 			        , P.VIEW_COUNT
@@ -1039,7 +1077,14 @@
                             GROUP   BY PLACE_ID
                          ) MONTHLY_LIKE	        
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -1052,7 +1097,8 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
-			ORDER	BY MONTHLY_LIKE DESC  			                        
+			 AND	P.PLACE_ID = I.PLACE_ID(+)	  			                        
+			 ORDER	BY MONTHLY_LIKE DESC  			                        
 		</getPlaceListByMonthly>
 		
 		<getPlaceByCountryName>
@@ -1091,8 +1137,16 @@
                         WHERE   PLACE_ID = P.PLACE_ID
                       ) LIKE_COUNT					
 					, DESCRIPTION
+					, (
+					    SELECT IMAGE_NAME
+					    FROM   IMAGE I
+					    WHERE P.PLACE_ID = I.PLACE_ID
+					    AND  ROWNUM = 1
+					   ) IMAGE_NAME					
 			FROM    PLACE P
-			WHERE	EMAIL = ?
+					, IMAGE I
+			WHERE	P.EMAIL = ?
+			AND		P.PLACE_ID = I.PLACE_ID(+)
 		</getUserRecommendPlaceList>
 		
 		<insertPlaceInfo>
@@ -1201,7 +1255,7 @@
 			                AND     STANDARD_ID =   (
 			                                            SELECT  STANDARD_ID
 			                                            FROM    STANDARD
-			                                            WHERE   STANDARD_ID = 2
+			                                            WHERE   STANDARD_ID = 4
 			                                        )
 			            ) AVG_ARTIFICIAL_NATURAL_SCORE		
 			FROM	PLACE P

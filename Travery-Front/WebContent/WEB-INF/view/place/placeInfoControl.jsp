@@ -89,7 +89,7 @@
 			url = "<c:url value="/placeInfoAddAddress"/>";
 			window.open(	url,
 							"GoogleMapAPI",
-							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=825, height=660"
+							"toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=835, height=660"
 						);
 		});
 		
@@ -143,11 +143,12 @@
 					<c:forEach items="${ placeList }" var="placeInfo">
 						<div class="myPlace_Contents">
 							<div class="myPlace_Contents_top">
-								IMG
-								<!-- <img src="/image?imageName=${ placeInfo.placeImageList[1].imageName }" /> -->
+								<img src="/image?imageName=${ placeInfo.placeImageList[1].imageName }" />
 							</div>
 							<div class="myPlace_Contents_bottom">
-								${ placeInfo.placeName }
+								 <a href="#" onclick="window.open('/detailPlace?placeId=${placeInfo.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+								 	${ placeInfo.placeName }
+							 	</a>
 							</div>
 						</div>
 					</c:forEach>
@@ -157,7 +158,7 @@
 			<div id="addNewPlace_Wrapper">
 				<div id="newPlace_Title">
 					<span class="glyphicon glyphicon-cloud-upload"></span>
-					<span id="newPlace_Title">여행지 등록 & 수정</span>
+					<span id="newPlace_Title">여행지 등록</span>
 				</div>
 			
 				<form id="dataForm" name="dataform" enctype="multipart/form-data">

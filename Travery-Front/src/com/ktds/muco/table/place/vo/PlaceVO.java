@@ -45,14 +45,25 @@ public class PlaceVO extends CountryVO {
 	private MemberVO writer;
 	
 	private String name;
+	private String imageName;
 	private String imageLocation;	
 	
 	private List<ImageVO> placeImageList;
 	
+	
+	
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	public boolean isExistVote() {
 		return isExistVote;
 	}
-
+	
 	public void setExistVote(boolean isExistVote) {
 		this.isExistVote = isExistVote;
 	}
