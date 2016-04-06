@@ -66,7 +66,7 @@
 						<c:forEach items="${ recommendPlaceList.dailyList }" var="daily" >
 							<div class="content">
 								<div class="content_top">
-									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
+									<img src="/image?imageName=${ daily.placeImageList[0].imageName }" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
 									<a href="/detailPlace?placeId=${daily.placeId}">${ daily.placeName }</a>
@@ -97,7 +97,7 @@
 						<c:forEach items="${ recommendPlaceList.weeklyList }" var="weekly" >
 							<div class="content">
 								<div class="content_top">
-									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
+									<img src="/image?imageName=${ weekly.placeImageList[1].imageName }" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
 									<a href="/detailPlace?placeId=${weekly.placeId}">${ weekly.placeName }</a>
@@ -128,7 +128,7 @@
 						<c:forEach items="${ recommendPlaceList.monthlyList }" var="monthly" >
 							<div class="content">
 								<div class="content_top">
-									<img src="/resource/img/pack/basic$1.jpg" class="img-thumbnail" />
+									<img src="/image?imageName=${ monthly.placeImageList[2].imageName }" class="img-thumbnail" />
 								</div>					
 								<div class="content_middle">
 									<a href="/detailPlace?placeId=${monthly.placeId}">${ monthly.placeName }</a>

@@ -226,6 +226,7 @@ div#description_Bottom {
 	margin-top: 30px;
 	margin-right: 10px;
 	font-size: 18px;
+	cursor: pointer;
 }
 
 
@@ -366,7 +367,6 @@ div#placeInfoCreate_submitBtn {
 	margin-left: 10%;
 	margin-top: 8%;
 	font-size: 30px;
-	background-color: orange;
 }
 
 div#placeInfoCreate_submitBtn img {

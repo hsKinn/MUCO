@@ -1,6 +1,5 @@
 package com.ktds.muco.util.file;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
