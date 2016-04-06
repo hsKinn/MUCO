@@ -62,7 +62,7 @@ $(document).ready(function() {
 					</ul>
 				</li>
 				<li><a href="<c:url value="/reserveList" />">예약</a></li>
-				<li><a href="#">QnA</a></li>
+				<li><a href="<c:url value="/qnaList" />">QnA</a></li>
 				<li><a href="<c:url value="/historyList" />">History</a></li>
 			</ul>
 		</nav>

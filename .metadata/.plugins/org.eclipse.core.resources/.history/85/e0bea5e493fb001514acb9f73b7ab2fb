@@ -1,0 +1,204 @@
+package com.ktds.muco.table.qna.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.qna.vo.QNASearchVO;
+import com.ktds.muco.table.qna.vo.QNAVO;
+import com.ktds.muco.util.xml.XML;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class QNADAO {
+
+	/**
+	 * @author 이기연
+	 * @return
+	 */
+	public int getQnaListCount() {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/qna/getQnaListCount/text()");
+			stmt = conn.prepareStatement(query);
+
+			rs = stmt.executeQuery();
+
+			int qnaCount = 0;
+
+			if (rs.next()) {
+				qnaCount = rs.getInt(1);
+			}
+			return qnaCount;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * @author 이기연
+	 * @param qnaSearchVO
+	 * @param sortOption
+	 * @return
+	 */
+	public List<QNAVO> getAllQnas(QNASearchVO qnaSearchVO, int sortOption) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<QNAVO> qnas = new ArrayList<QNAVO>();
+
+		try {
+			QNAVO qnaVO = null;
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = "";
+
+			if (sortOption == 1) {
+
+			} else if (sortOption == 2) {
+
+			} else {
+				query = XML.getNodeString("//query/qna/getAllQnas/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, qnaSearchVO.getEndIndex());
+				stmt.setInt(2, qnaSearchVO.getStartIndex());
+			}
+
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				qnaVO = new QNAVO();
+
+				qnaVO.setQnaId(rs.getInt("QNA_ID"));
+				qnaVO.setEmail(rs.getString("EMAIL"));
+				qnaVO.setQndDate(rs.getString("QNA_DT"));
+				qnaVO.setTitle(rs.getString("TITLE"));
+				qnaVO.setDescription(rs.getString("DESCRIPTION"));
+				qnaVO.setIsAnswer(rs.getInt("IS_ANSWER"));
+				qnaVO.setAnswerDescription(rs.getString("ANSWER_DESCRIPTION"));
+				qnaVO.setIsFaq(rs.getInt("IS_FAQ"));
+
+				qnas.add(qnaVO);
+			}
+
+		}
+
+		catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} 
+		finally {
+			closeDB(conn, stmt, rs);
+		}
+		return qnas;
+	}
+
+	/**
+	 * @author 이기연
+	 * @param qnaId
+	 * @return
+	 */
+	public QNAVO getQNADetailByQnaId(String qnaId) {
+		QNAVO qnaVO = new QNAVO();
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/qna/getQNADetailByQnaId/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setString(1, qnaId);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				qnaVO.setQnaId(rs.getInt("QNA_ID"));
+				qnaVO.setEmail(rs.getString("EMAIL"));
+				qnaVO.setQndDate(rs.getString("QNA_DT"));
+				qnaVO.setTitle(rs.getString("TITLE"));
+				qnaVO.setDescription(rs.getString("DESCRIPTION"));
+				qnaVO.setIsAnswer(rs.getInt("IS_ANSWER"));
+				qnaVO.setAnswerDescription(rs.getString("ANSWER_DESCRIPTION"));
+				qnaVO.setIsFaq(rs.getInt("IS_FAQ"));
+			}
+			return qnaVO;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+
+
+}

@@ -38,12 +38,10 @@ public class PlaceEditServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String placeId = request.getParameter("placeId");
-		System.out.println(placeId);
 		
 		PlaceVO placeVO = placeBiz.showPlaceDetail(placeId);
 		request.setAttribute("placeDetail", placeVO);
 		
-		System.out.println(placeVO.getAddress());
 	    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/place/placeEdit.jsp");
 	    rd.forward(request, response);
 	    

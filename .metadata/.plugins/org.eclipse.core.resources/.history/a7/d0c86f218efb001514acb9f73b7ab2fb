@@ -1,0 +1,9 @@
+package com.ktds.muco.table.qna.vo;
+
+public class QNASearchVO {
+	private int pageNO;
+	private int startIndex;
+	private int endIndex;
+	private String searchList = "";
+	private String searchKeyword;
+}

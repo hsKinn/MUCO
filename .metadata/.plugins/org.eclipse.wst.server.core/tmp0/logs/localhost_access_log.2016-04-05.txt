@@ -9268,3 +9268,19 @@
 0:0:0:0:0:0:0:1 - - [05/Apr/2016:20:04:46 +0900] "GET /reportedMemberList HTTP/1.1" 404 992
 0:0:0:0:0:0:0:1 - - [05/Apr/2016:20:06:54 +0900] "GET /reserveList HTTP/1.1" 404 992
 >>>>>>> origin/KGM16
+127.0.0.1 - - [05/Apr/2016:21:27:47 +0900] "GET / HTTP/1.1" 200 4601
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET / HTTP/1.1" 200 4073
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/css/common/indexHeader.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/css/common/reset.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/css/member/logout.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/css/common/index.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/js/jquery-1.12.1.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/css/common/footer.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/js/json2.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET /resource/img/common/traveryIcon.PNG HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:47 +0900] "GET / HTTP/1.1" 200 4073
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:51 +0900] "POST /doLogin HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:27:52 +0900] "GET /originPlaceList?sortOption=9 HTTP/1.1" 200 13452
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:28:15 +0900] "GET /packList HTTP/1.1" 200 14646
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:28:22 +0900] "GET /historyList HTTP/1.1" 200 24385
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:21:29:10 +0900] "GET /reserveList HTTP/1.1" 200 10809

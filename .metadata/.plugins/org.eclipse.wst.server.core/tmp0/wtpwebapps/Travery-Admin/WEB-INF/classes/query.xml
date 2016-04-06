@@ -1329,6 +1329,113 @@
 	</placeReply>
 	
 	<qna>
+		<getQnaListCount>
+			SELECT	COUNT(QNA_ID)
+			FROM	QNA
+		</getQnaListCount>
+		<getAllQnas>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnas>
+		<getAllQnasOrderByTitle>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									ORDER	BY TITLE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByTitle>
+		<getAllQnasOrderByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									ORDER	BY EMAIL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByEmail>
+		<getAllQnasOrderByQnaDate>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									ORDER	BY QNA_DT DESC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByQnaDate>
+		<getAllQnasOrderByIsAnswer>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									ORDER	BY IS_ANSWER
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsAnswer>
+		<getAllQnasOrderByIsFaq>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    QNA
+									ORDER	BY IS_FAQ
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllQnasOrderByIsFaq>
+		<getQNADetailByQnaId>
+			SELECT	*
+			FROM	QNA
+			WHERE	QNA_ID = ?
+		</getQNADetailByQnaId>
+		<deleteQna>
+			DELETE	
+			FROM	QNA
+			WHERE	QNA_ID = ?
+		</deleteQna>
+		<makeAnswer>
+			UPDATE	QNA
+			SET		IS_ANSWER = 1
+			WHERE	QNA_ID = ?
+		</makeAnswer>
+		<makeFAQ>
+			UPDATE	QNA
+			SET		IS_FAQ = 1
+			WHERE	QNA_ID = ?
+		</makeFAQ>
 	</qna>
 	
 	<rent>
