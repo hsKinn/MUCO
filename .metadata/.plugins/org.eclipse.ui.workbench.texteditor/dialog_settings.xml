@@ -2,29 +2,22 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="AVG_ARTIFICIAL_NATURAL_SCORE" key="selection"/>
+		<item value="member" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="AVG_ARTIFICIAL_NATURAL_SCORE"/>
-			<item value="avg"/>
-			<item value="mapBtn"/>
-			<item value="여행지"/>
-			<item value="getUserRecommendPlaceList"/>
-			<item value="&lt;getUser"/>
-			<item value="recommendList"/>
-			<item value="recommend"/>
+			<item value="member"/>
+			<item value="searchVO"/>
+			<item value="placeSearchVO"/>
+			<item value="getAllPlaceCountSearchedByEmail"/>
+			<item value="System"/>
+			<item value="getAllPlaceCount"/>
+			<item value="places"/>
+			<item value="memberEmail"/>
 		</list>
 		<list key="replacehistory">
-			<item value="I.IMAGE_NAME"/>
-			<item value="placeVO.setImageName(rs.getString(&quot;IMAGE_NAME&quot;));"/>
-			<item value="SHARE_IMAGE_NAME"/>
-			<item value="pack.setShareImageName(rs.getString(&quot;SHARE_IMAGE_NAME&quot;));"/>
-			<item value="placeInfo"/>
-			<item value="place"/>
-			<item value="likeCount"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
@@ -32,6 +25,6 @@
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
 		<item value="8" key="DIALOG_X_ORIGIN"/>
-		<item value="202" key="DIALOG_Y_ORIGIN"/>
+		<item value="55" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

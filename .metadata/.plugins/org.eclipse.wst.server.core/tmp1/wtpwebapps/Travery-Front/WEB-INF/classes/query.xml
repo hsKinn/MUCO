@@ -165,7 +165,11 @@
      		SET		MILEAGE = MILEAGE + ?
      		WHERE	EMAIL = ?
      	</updateMileage>
-     	
+     	<isExistEmail>
+     		SELECT	COUNT(EMAIL)
+     		FROM	MEMBER
+     		WHERE	EMAIL = ?
+     	</isExistEmail>
 	</member>
 	
 	<pack>

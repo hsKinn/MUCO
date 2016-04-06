@@ -373,4 +373,37 @@ public class MemberDAO {
 		}
 	}
 
+	/**
+	 * 가입 이메일 체크 
+	 * @author 이기연
+	 * @param email
+	 * @return
+	 */
+	public int isExistEmail(String email) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/isExistEmail/text()");
+
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, email);
+
+			rs = stmt.executeQuery();
+			rs.next();
+
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
 }

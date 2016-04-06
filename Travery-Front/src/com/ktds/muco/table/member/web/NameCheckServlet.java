@@ -65,6 +65,7 @@ public class NameCheckServlet extends HttpServlet {
 		else {
 			isExistName = memberBiz.isExistName(name);
 		}
+		
 		StringBuffer json = new StringBuffer();
 		json.append("{");
 		json.append("\"result\" : true");

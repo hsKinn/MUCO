@@ -12,57 +12,100 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 <script src="<c:url value="/resource/js/scripts.js" />"></script>
 <script type="text/javascript">
-   $(document).ready(function() {
-      $("#join").hide();
+$(document).ready(function() {
+   $("#join").hide();
+   $("#login").hide();
+   $("#letsJoin").click(function() {
       $("#login").hide();
-      $("#letsJoin").click(function() {
-         $("#login").hide();
-         $("#join").animate({
-            height : 'toggle'
-         });
-      });
-      $("#letsLogIn").click(function() {
-         $("#join").hide();
-         $("#login").animate({
-            height : 'toggle'
-         });
-      });
-      // 회원 가입 
-      $("#btnJoin").click(function() {
-         var userEmail = $("#userEmail").val();
-         userEmail = $.trim(userEmail);
-         if (userEmail == "") {
-            alert("이메일을 입력하세요!");
-            $("#userEmail").focus();
-            return;
-         }
-         var userPassword = $("#userPassword").val();
-         userPassword = $.trim(userPassword);
-         if (userPassword == "") {
-            alert("비밀번호를 입력하세요!");
-            $("#userPassword").focus();
-            return;
-         }
-         var userName = $("#userName").val();
-         userName = $.trim(userName);
-         if (userName == "") {
-            alert("닉네임을 입력하세요!");
-            $("#userName").focus();
-            return;
-         }
-         var form = $("#joinForm");
-         form.attr("method", "post");
-         form.attr("action", "<c:url value="/doJoin"/>");
-         form.submit();
-      });
-      // 로그인 
-      $("#btnLogin").click(function() {
-         var form = $("#loginForm");
-         form.attr("method", "post");
-         form.attr("action", "<c:url value="/doLogin"/>")
-         form.submit();
+      $("#join").animate({
+         height : 'toggle'
       });
    });
+   $("#letsLogIn").click(function() {
+      $("#join").hide();
+      $("#login").animate({
+         height : 'toggle'
+      });
+   });
+   
+   // 회원 가입 
+   $("#btnJoin").click(function() {
+      var userEmail = $("#SignUpUserEmail").val();
+      userEmail = $.trim(userEmail);
+      if (userEmail == "") {
+         alert("이메일을 입력하세요!");
+         $("#SignUpUserEmail").focus();
+         return;
+      }
+      var userPassword = $("#userPassword").val();
+      userPassword = $.trim(userPassword);
+      if (userPassword == "") {
+         alert("비밀번호를 입력하세요!");
+         $("#userPassword").focus();
+         return;
+      }
+      var userName = $("#userName").val();
+      userName = $.trim(userName);
+      if (userName == "") {
+         alert("닉네임을 입력하세요!");
+         $("#userName").focus();
+         return;
+      }
+      var form = $("#joinForm");
+      form.attr("method", "post");
+      form.attr("action", "<c:url value="/doJoin"/>");
+      form.submit();
+   });
+   
+   // 로그인 
+   $("#btnLogin").click(function() {
+      var form = $("#loginForm");
+      form.attr("method", "post");
+      form.attr("action", "<c:url value="/doLogin"/>")
+      form.submit();
+   });
+   
+   //가입 체크 alert 
+   $("#SignUpReEnterPasswordCheck").hide();
+   $("#SignUpPasswordCheck").hide();
+   $("#SignUpNickNameCheck").hide();
+   $("#SignUpEmailCheck").hide();
+   $("#SignUpInputCheck").hide();
+   
+   //로그인 체크 alert
+   $("#LoginEmailCheck").hide();
+   
+   //가입 체크
+     $("#SignUpUserEmail").blur(function() {
+		$.post("<c:url value="/signUpEmailCheck" />", {
+			"email" : $("#SignUpUserEmail").val()
+		}, function(data) {
+			var jsonData = {};
+			try {
+				jsonData = JSON.parse(data);
+			} catch (e) {
+			}
+			if (jsonData.result) {
+				//isExistName : true 존재 O 불가능
+				if (jsonData.isExistName) {
+					$("#SignUpUserEmail").val("");
+					$("#SignUpUserEmail").focus();
+					$("#SignUpEmailCheck").show();
+					$("#submit").removeAttr("disabled");
+				//isExistName : false 존재 X 가능 
+				} else {
+					$("#SignUpEmailCheck").hide();
+					$("#submit").attr("disabled", true);
+				}
+			} else {
+				alert("세션을 종료합니다.");
+				location.href = "<c:url value="/" />";
+			}
+		});
+	});	
+   
+   
+});
 </script>
 
     <header id="first">
@@ -92,41 +135,59 @@
                     </p>
                     <a id="letsJoin" class="btn btn-default btn-xl page-scroll">Sign Up</a> &nbsp;
                     <a id="letsLogIn" class="btn btn-default btn-xl page-scroll">Login</a>
-                    
                     <div class="clear"></div>
                <div id="index">
                
                   <div id="join" style="margin:auto;">
                      <form id="joinForm">
-                     
-                        <input type="text" class="form-control"   tabindex="1" id="userEmail" name="userEmail"
-                           placeholder="Email" >
-                        <input type="password" class="form-control"   tabindex="2" id="userPassword"
-                           name="userPassword" placeholder="Password" >          
-                        <input type="text" class="form-control"   tabindex="1" id="userName" name="userName" placeholder="Nick name" >
+                        <input type="email" class="form-control"   tabindex="1" id="SignUpUserEmail" name="SignUpUserEmail" placeholder="Email" >
+                        <input type="password" class="form-control"   tabindex="2" id="SignUpuserPassword" name="SignUpuserPassword" placeholder="Password" >          
+                        <input type="password" class="form-control"   tabindex="3" id="SignUpuserPasswordCheck" name="SignUpuserPasswordCheck" placeholder="Re-Enter Password" >          
+                        <input type="text" class="form-control"   tabindex="4" id="SignUpuserName" name="SignUpuserName" placeholder="Nick name" >
                         <br/>   
+						<div class="alert alert-info" id="SignUpEmailCheck">
+							<strong>Email !</strong> You have already Travery account. 
+							<br/>
+							<a href="#" style="color:#333333;"><strong>Forgot your password? come here!</strong></a>
+						</div>    
+						<div class="alert alert-info" id="SignUpNickNameCheck">
+							<strong>User name !</strong> This nick name is already taken. Please choose another nick name.
+						</div>    
+						<div class="alert alert-info" id="SignUpPasswordCheck">
+							<strong>Password !</strong> Enter at least 6 character.
+						</div>    
+						<div class="alert alert-info" id="SignUpReEnterPasswordCheck">
+							<strong>Password !</strong> Please enter your password correctly.
+						</div>    
+						<div class="alert alert-info" id="SignUpInputCheck">
+							<strong>Upps!</strong> Do not forget to input information.
+						</div>    
+						                 
                         <label>
                            <a class="btn btn-primary btn-xl page-scroll">Let's Join!</a>
-                           <input type="button" id="btnJoin" value="Signup" style="display:none;"/>
+                           <input type="button" id="btnJoin" tabindex="5" value="Signup" style="display:none;"/>
                         </label>
-                        
                      </form>
                   </div>
                   
                   
                   <div id="login" style="margin:auto;">
                      <form id="loginForm">
-                        <input type="text" class="form-control"   tabindex="1" id="userEmail" name="userEmail" placeholder=" Email" >
+                        <input type="text" class="form-control"   tabindex="1" id="LoginUserEmail" name="userEmail" placeholder=" Email" >
                         <input type="password" class="form-control"   tabindex="2" id="userPw" name="userPw" placeholder=" Password" > 
                         <br/>
+                        <div class="alert alert-info" id="LoginEmailCheck">
+							<strong>Upps !</strong> Please enter your email correctly.
+							<br/>
+							<a href="#" style="color:#333333;"><strong>Don't you have Travey account? Join us!</strong></a>
+						</div>   
                         <label>
                            <a class="btn btn-primary btn-xl page-scroll">Let's fun!</a>
-                           <input type="button" id="btnLogin" value="Login" style="display:none;" />
-                        </label>                        
-                        
+                           <input type="button" id="btnLogin" tabindex="3" value="Login" style="display:none;" />
+                        </label> 
                      </form>
-                  </div>   
-               
+                  </div>  
+
                </div>
        
    
@@ -141,6 +202,7 @@
                 <div class="col-lg-12 text-center">
                     <h2 class="margin-top-0 text-primary">Travery Service</h2>
                     <hr class="primary">
+                    <br/>
                 </div>
             </div>
         </div>

@@ -233,6 +233,16 @@ public class MemberBiz {
 	public boolean updateMileage(String email, int point) {
 		return memberDAO.updateMileage(email, point) > 0;
 	}
+
+	/**
+	 * @author 이기연
+	 * 가입 email 체크 
+	 * @param email
+	 * @return
+	 */
+	public boolean isExistEmail(String email) {
+		return memberDAO.isExistEmail(email) > 0;
+	}
 }
 
 

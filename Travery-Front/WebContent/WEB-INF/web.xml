@@ -545,4 +545,14 @@
     <servlet-name>AddPlacePhotoServlet</servlet-name>
     <url-pattern>/addPlacePhoto</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignUpEmailCheckServlet</display-name>
+    <servlet-name>SignUpEmailCheckServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.SignUpEmailCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpEmailCheckServlet</servlet-name>
+    <url-pattern>/signUpEmailCheck</url-pattern>
+  </servlet-mapping>
 </web-app>
