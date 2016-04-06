@@ -11,14 +11,17 @@
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.pack.web.PackDetailServlet"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceSearchVO"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.member.biz.MemberBiz"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.history.biz.HistoryBiz"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.history.dao.HistoryDAO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.pack.vo.PackSearchVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberSearchVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.Description"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.ActionCode"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.qna.biz.QNABiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.history.vo.HistorySearchVO"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.history.biz.HistoryBiz"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.vo.RepoertedPlaceListVO"/>
 </qualifiedTypeNameHistroy>

@@ -4,6 +4,7 @@
 	<item value="3" key="TypeHierarchyViewPart.orientation"/>
 	<item value="false" key="TypeHierarchyViewPart.linkeditors"/>
 	<item value="2" key="TypeHierarchyViewPart.hierarchyview"/>
+	<item value="filter_imports;" key="filters_last_used"/>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="true" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>
@@ -33,7 +34,7 @@
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 			<item value="500" key="DIALOG_HEIGHT"/>
-			<item value="655" key="DIALOG_X_ORIGIN"/>
+			<item value="360" key="DIALOG_X_ORIGIN"/>
 			<item value="187" key="DIALOG_Y_ORIGIN"/>
 		</section>
 	</section>
@@ -66,6 +67,24 @@
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>
 	</section>
+	<section name="JavaSearchPage">
+		<item value="1" key="HISTORY_SIZE"/>
+		<item value="false" key="CASE_SENSITIVE"/>
+		<item value="11" key="INCLUDE_MASK"/>
+		<section name="HISTORY0">
+			<item value="false" key="isCaseSensitive"/>
+			<item value="" key="javaElement"/>
+			<item value="2" key="scope"/>
+			<item value="11" key="includeMask"/>
+			<item value="PALCE_NAME" key="pattern"/>
+			<item value="2" key="limitTo"/>
+			<item value="0" key="matchLocations"/>
+			<item value="3" key="searchFor"/>
+			<list key="workingSets">
+				<item value="admin"/>
+			</list>
+		</section>
+	</section>
 	<section name="completion_proposal_size">
 	</section>
 	<section name="AddGetterSetterDialog">
@@ -73,5 +92,8 @@
 		<item value="false" key="RemoveFinal"/>
 	</section>
 	<section name="JavaElementSearchActions">
+		<list key="lastUsedWorkingSetNames0">
+			<item value="admin"/>
+		</list>
 	</section>
 </section>

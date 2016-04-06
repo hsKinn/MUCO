@@ -1270,18 +1270,11 @@
 						SELECT	ROWNUM AS RNUM
 								, A.*
 						FROM	(
-									SELECT  MEMBER.EMAIL
-											, MEMBER.PASSWORD
-											, MEMBER.IS_ADMIN
-											, MEMBER.PHONE_NUMBER
-											, MEMBER.MAIN_IMAGE_NAME
-											, MEMBER.MAIN_IMAGE_LOCATION
-											, MEMBER.NAME
-											, MEMBER.JOIN_DT
-											, MEMBER.RECENT_ACCESS_DT
-									FROM    MEMBER
+									SELECT  MEMBER.*
 											, REPORTED_PLACE
-									WHERE	MEMBER.EMAIL = REPORTED_PLACE.EMAIL
+											, PLACE
+									WHERE	PLACE.PLACE_ID = REPORTED_PLACE.PLACE_ID
+									AND		MEMBER.EMAIL = PLACE.EMAIL 
 								) A 
 						WHERE	ROWNUM &lt;= ?	
 					)	
@@ -1690,6 +1683,24 @@
 			FROM	PLACE
 			WHERE	IS_NEW_PLACE = ?		
 		</getAllPlaceCount>
+		<getAllPlaceCountSearchedByPlaceName>
+			SELECT	COUNT(PLACE_ID)
+			FROM	PLACE
+			WHERE	IS_NEW_PLACE = ?
+			AND		PLACE_NAME = ?		
+		</getAllPlaceCountSearchedByPlaceName>
+		<getAllPlaceCountSearchedByEmail>
+			SELECT	COUNT(PLACE_ID)
+			FROM	PLACE
+			WHERE	IS_NEW_PLACE = ?
+			AND		EMAIL = ?		
+		</getAllPlaceCountSearchedByEmail>
+		<getAllPlaceCountSearchedByCountryId>
+			SELECT	COUNT(PLACE_ID)
+			FROM	PLACE
+			WHERE	IS_NEW_PLACE = ?
+			AND		COUNTRY_ID = ?		
+		</getAllPlaceCountSearchedByCountryId>
 		<getAllPlaces>
 			SELECT	* 
 			FROM	(
@@ -2028,23 +2039,6 @@
 			FROM	PLACE
 			WHERE	PLACE_ID = ?
 		</getPlaceDetailByPlaceId>
-		<getAllReportedPlaceCount>
-			SELECT	COUNT(REPORT_ID)
-			FROM	REPORTED_PLACE			
-		</getAllReportedPlaceCount>
-		<getAllReportedPlaces>
-			SELECT	* 
-			FROM	(
-						SELECT	ROWNUM AS RNUM
-								, A.*
-						FROM	(
-									SELECT  *
-									FROM    REPORTED_PLACE
-								) A 
-						WHERE	ROWNUM &lt;= ?	
-					)	
-			WHERE	RNUM >= ?			
-		</getAllReportedPlaces>
 		<deletePlaceByPlaceId>
 			DELETE	
 			FROM	PLACE
@@ -2464,6 +2458,23 @@
 	</rent>
 	
 	<reportedPlace>
+		<getAllReportedPlaceCount>
+			SELECT COUNT(REPORT_ID)
+			FROM	REPORTED_PLACE
+		</getAllReportedPlaceCount>	
+		<getAllReportedPlaces>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    REPORTED_PLACE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?			
+		</getAllReportedPlaces>		
 	</reportedPlace>
 	
 	<reserve>

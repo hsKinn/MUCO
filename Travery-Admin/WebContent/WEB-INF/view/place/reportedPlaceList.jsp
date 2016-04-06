@@ -116,7 +116,7 @@ $(document).ready( function() {
 
 
 				<!-- 총 Place 수 보여주기  -->
-				총 <b style="color: red">${places.paging.totalArticleCount}</b> 있습니다.
+				총 <b style="color: red">${reportedPlaces.paging.totalArticleCount}</b> 있습니다.
 
 				<!-- Place 관리 버튼 -->
 				<div id="buttonCollection">
@@ -130,12 +130,10 @@ $(document).ready( function() {
 					    	정렬 <span class="caret"></span>
 					    </button>
 					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/newPlaceList?sortOption=1" />">여행지명</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/newPlaceList?sortOption=2" />" >등록자 이름</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/newPlaceList?sortOption=3" />">나라ID</a></li>
-					      <li role="presentation" class="divider"></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/newPlaceList?sortOption=4" />">추천수</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/newPlaceList?sortOption=5" />">조회수</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/reportedPlaceList?sortOption=1" />">신고자EMAIL</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/reportedPlaceList?sortOption=2" />" >신고된 여행지</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/reportedPlaceList?sortOption=3" />">신고일</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/reportedPlaceList?sortOption=4" />">신고이유</a></li>
 					    </ul>
 					</div>	
 					<!-- /#dropdown memberListdropDown -->						
@@ -146,50 +144,46 @@ $(document).ready( function() {
 					<table id="tableList">
 						<tr>
 							<th><input type="checkbox" id="massiveSelectCheckBox" /></th>
-							<th>여행지ID</th>
-							<th>여행지명</th>
-							<th>주소</th>
-							<th>조회수</th>
-							<th>추천수</th>
-							<th>최초등록자 이름</th>
-							<th>나라ID</th>
+							<th>신고ID</th>
+							<th>신고자EMAIL</th>
+							<th>신고된 여행지ID</th>
+							<th>신고일</th>
+							<th>신고 이유</th>
+							<th>신고 설명</th>
 						</tr>
 
 						<form id="massiveDeleteForm">
-							<c:forEach items="${places.placeList}" var="place">
+							<c:forEach items="${reportedPlaces.reportedPlaceList}" var="reportedPlace">
 								<tr>
 									<td>
-										<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${place.placeId}" />
-										<input type="hidden" class="placeType" name="placeType" value="${place.isNewPlace }" />
+										<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${reportedPlace.reportedId}" />
 									</td>
-									<td>${place.placeId}</td>
+									<td>${reportedPlace.reportedId}</td>
+									<td>${reportedPlace.email}</td>
 									<td><a
-										href="<c:url value="/placeDetail?placeId=${place.placeId}" />">${place.placeName}</a></td>
-									<td><a
-										href="<c:url value="/placeDetail?placeId=${place.placeId}" />">${place.address}</a></td>
-									<td>${place.viewCount}</td>
-									<td>${place.likeCount}</td>
-									<td>${place.writer.email}</td>
-									<td>${place.countryId}</td>
+										href="<c:url value="/placeDetail?placeId=${reportedPlace.placeId}" />">${reportedPlace.placeId}</a></td>
+									<td>${reportedPlace.reportedDate}</td>
+									<td>${reportedPlace.category}</td>
+									<td>${reportedPlace.description}</td>
 								</tr>
 							</c:forEach>
 						</form>
 
 						<tr>
-							<td colspan="8" style="background-color:#a1a1a1;">
+							<td colspan="7" style="background-color:#a1a1a1;">
 								<!-- 검색 form  -->
 								<form id="searchForm">
 									<br/>
 									<div style="text-align: center;"> <!-- 페이징 -->
-										${ places.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
+										${ reportedPlaces.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>여행지명</option>
-										  	<option value="memberEmail" ${selectedList eq "memberId" ? "selected" : "" }>등록자 email</option>
-										  	<option value="memberUsername" ${selectedList eq "memberId" ? "selected" : "" }>등록자 username</option>
-										  	<option value="countryId" ${selectedList eq "memberNickName" ? "selected" : "" }>나라명</option>
+											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>신고자 Email</option>
+										  	<option value="memberEmail" ${selectedList eq "memberId" ? "selected" : "" }>신고된 여행지ID</option>
+										  	<option value="countryId" ${selectedList eq "memberNickName" ? "selected" : "" }>신고이유</option>
+										  	<option value="countryId" ${selectedList eq "memberNickName" ? "selected" : "" }>신고설명</option>
 										</select>
 										
 										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>

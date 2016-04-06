@@ -325,7 +325,7 @@ public class PlaceDAO {
 					stmt.setString(2, placeSearchVO.getSearchKeyword());
 					stmt.setInt(3, placeSearchVO.getEndIndex());
 					stmt.setInt(4, placeSearchVO.getStartIndex());	
-				} else if (placeSearchVO.getSearchList().equals("memberEmail")) {
+				} else if (placeSearchVO.getSearchList().equals("email")) {
 					query = XML.getNodeString("//query/place/getAllPlacesSearchedByEmail/text()");
 					
 					stmt = conn.prepareStatement(query);
@@ -394,25 +394,45 @@ public class PlaceDAO {
 	 * @author 이기연
 	 * @return
 	 */
-	public int getAllPlaceCount(int placeType) {
+	public int getAllPlaceCount(PlaceSearchVO placeSearchVO, int placeType) {
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
+		int placeCount = 0;
+		String query = "";
+
 		try {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/place/getAllPlaceCount/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, placeType);
+			if (placeSearchVO.getSearchList().equals("placeName")) { 
+				query = XML.getNodeString("//query/place/getAllPlaceCountSearchedByPlaceName/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, placeType);
+				stmt.setString(2, placeSearchVO.getSearchKeyword());
+			}
+			else if (placeSearchVO.getSearchList().equals("email")) {
+				query = XML.getNodeString("//query/place/getAllPlaceCountSearchedByEmail/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, placeType);
+				stmt.setString(2, placeSearchVO.getSearchKeyword());
+			} 
+			else if (placeSearchVO.getSearchList().equals("countryId")) {
+				query = XML.getNodeString("//query/place/getAllPlaceCountSearchedByCountryId/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, placeType);
+				stmt.setString(2, placeSearchVO.getSearchKeyword());
+			}
+			else {
+				query = XML.getNodeString("//query/place/getAllPlaceCount/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, placeType);
+			}
 			
 			rs = stmt.executeQuery();
 
-			int placeCount = 0;
-			
 			if ( rs.next() ) {
 				placeCount = rs.getInt(1);
 			}
@@ -483,100 +503,6 @@ public class PlaceDAO {
 	
 	}
 	
-	/**
-	 * @author 이기연
-	 * reported place count 받기
-	 * @return
-	 */
-	public int getAllReportedPlaceCount() {
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		try {
-
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/place/getAllReportedPlaceCount/text()");
-			stmt = conn.prepareStatement(query);
-			
-			rs = stmt.executeQuery();
-
-			int placeCount = 0;
-			
-			if ( rs.next() ) {
-				placeCount = rs.getInt(1);
-			}
-			return placeCount;
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-	}
-	
-	/**
-	 * @author reported 된 모든 place 불러오기
-	 * @param placeSearchVO
-	 * @return
-	 */
-	public List<PlaceVO> getAllReportedPlaces(PlaceSearchVO placeSearchVO) {
-		loadOracleDriver();
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		List<PlaceVO> places = new ArrayList<PlaceVO>();
-
-		try {
-
-			PlaceVO placeVO = null;
-			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			// article을 꺼내온다.
-			String query = XML.getNodeString("//query/place/getAllReportedPlaces/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, placeSearchVO.getEndIndex());
-			stmt.setInt(2, placeSearchVO.getStartIndex());
-					
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				placeVO = new PlaceVO();
-				placeVO.setPlaceId(rs.getInt("PLACE_ID"));
-				placeVO.setPlaceName(rs.getString("PLACE_NAME"));
-				placeVO.setLatitude(rs.getInt("LATITUDE"));
-				placeVO.setLongitude(rs.getInt("LONGITUDE"));
-				placeVO.setAddress(rs.getString("ADDRESS"));
-				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
-				placeVO.setLikeCount(rs.getInt("LIKE_COUNT"));
-				placeVO.setDescription(rs.getString("DESCRIPTION"));
-				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
-				String email = rs.getString("EMAIL");
-				placeVO.setCountryId(rs.getInt("COUNTRY_ID"));
-				
-				MemberVO member = new MemberVO();
-				
-				member.setEmail(email);
-				placeVO.setWriter(member);
-				
-				places.add(placeVO);
-			}
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
-
-		} finally {
-			closeDB(conn, stmt, rs);
-		}
-
-		return places;
-		
-	}
 	
 	
 	/**

@@ -80,7 +80,7 @@ public class OriginPlaceListServlet extends HttpServlet {
 
 		} catch (NumberFormatException nfe) {
 			// 그런데 이 searchVO도 null인 경우가 있다.
-			placeSearchVO = (PlaceSearchVO) session.getAttribute("_SEARCH_");
+			placeSearchVO = (PlaceSearchVO) session.getAttribute("_ORIGIN_PLACE_SEARCH_");
 
 			// 그러면 다시 0으로 맞춘다.
 			if (placeSearchVO == null) {
@@ -94,7 +94,7 @@ public class OriginPlaceListServlet extends HttpServlet {
 
 		// search를 session에 넣는다. session 정보로 detail을 본다음 다시 목록보기로 돌아가기 위해서
 		// session은 메모리가 허용하는 곳 까지 모두 저장할 수 있다.
-		session.setAttribute("_SEARCH_", placeSearchVO);
+		session.setAttribute("_ORIGIN_PLACE_SEARCH_", placeSearchVO);
 
 		request.setAttribute("places", placeListVO);
 

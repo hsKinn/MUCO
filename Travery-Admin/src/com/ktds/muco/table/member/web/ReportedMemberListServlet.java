@@ -74,7 +74,7 @@ public class ReportedMemberListServlet extends HttpServlet {
 		history.setHistoryDescription(BuildDescription.get(Description.REPORTED_MEMBER, member.getEmail()));
 		historyBiz.addHistory(history);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/memberList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/reportedMemberList.jsp");
 		rd.forward(request, response);
 	}
 

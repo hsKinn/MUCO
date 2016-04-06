@@ -5,7 +5,13 @@ import com.ktds.muco.table.member.vo.MemberVO;
 /**
  * 
  * @author 김광민
- *
+ * REPORT_ID
+ * EMAIl
+ * PLACE_ID
+ * REPORT_DT
+ * CATEGORY
+ * DESCRIPTION
+ * 
  */
 public class ReportedPlaceVO extends MemberVO {
 

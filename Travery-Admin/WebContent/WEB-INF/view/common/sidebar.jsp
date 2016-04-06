@@ -39,7 +39,7 @@ $(document).ready(function() {
 			id="sidebar-wrapper" role="navigation">
 			<ul class="nav sidebar-nav">
 				<li class="sidebar-brand">
-					<a href="#"> TRAVERY </a></li>
+					<a href="#"> TRAVERY ADMIN</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">여행지<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -62,7 +62,7 @@ $(document).ready(function() {
 					</ul>
 				</li>
 				<li><a href="<c:url value="/reserveList" />">예약</a></li>
-				<li><a href="<c:url value="/qnaList" />">QnA</a></li>
+				<li><a href="<c:url value="/qnaList" />">Q&A</a></li>
 				<li><a href="<c:url value="/historyList" />">History</a></li>
 			</ul>
 		</nav>
