@@ -55,6 +55,10 @@ div#menu1 {
 	height: 100%;
 }
 
+.axisX, .axisY{
+	cursor: pointer;
+}
+
 div#printAxisY1 {
 	text-align: center;
 	font-weight: bolder;
@@ -142,6 +146,13 @@ div#massiveSubmitBtn {
 	margin-bottom: 8%;
 	border-radius: 6px;
 	float: right;
+	color: #333333;
+	background-color: #eeeeee;
+	
+}
+
+/* 오른쪽 선택된 나라 디브 색깔 */
+div.selectedCountry, div.loginUserPack {
 	background-color: #eeeeee;
 	color: #333333;
 	opacity: 1;
@@ -151,6 +162,7 @@ div#massiveSubmitBtn {
 div#massiveSubmitBtn:hover {
 	text-decoration: none;
 	opacity: 0.7;
+
 }
 
 div.tempPlaceNameDiv {
@@ -168,6 +180,23 @@ div.tempPlaceNameDiv {
 a.tempPlaceName {
 	margin-left: 13px;
 	padding-right: 2px;
+}
+
+/* #Italy */
+div#Italy {
+	background-color: #ffffbb;
+	color: #333333;
+}
+
+/* #France */
+div#France {
+	background-color: #ff6666;
+	color: #333333;
+}
+
+/* #United-Kingdom */
+div#United-Kingdom {
+	background-color: #93c9ff;
 	color: #333333;
 	text-decoration: none;
 	opacity: 1;
@@ -179,6 +208,24 @@ a.tempPlaceName:hover {
 	text-decoration: none;
 	opacity: 0.7;
 }
+
+/* #Germany */
+div#Germany {
+	background-color: #ffb3d9;
+	color: #333333;
+}
+
+/* #Spain */
+div#Spain {
+	background-color: #b7fea5;
+	color: #333333;
+}
+/* #Korea */
+div#Korea {
+	background-color: #ffae88;
+	color: #333333;
+}
+
 
 div#massiveCleanBtn {
 	text-align: center;
@@ -280,41 +327,6 @@ div.selectedCountry, div.loginUserPack {
 	color: #333333;
 }
 
-/* #Italy */
-div#Italy {
-	background-color: #ffffbb;
-	color: #333333;
-}
-
-/* #France */
-div#France {
-	background-color: #ff6666;
-	color: #333333;
-}
-
-/* #United-Kingdom */
-div#United-Kingdom {
-	background-color: #93c9ff;
-	color: #333333;
-}
-
-/* #Germany */
-div#Germany {
-	background-color: #ffb3d9;
-	color: #333333;
-}
-
-/* #Spain */
-div#Spain {
-	background-color: #b7fea5;
-	color: #333333;
-}
-/* #Korea */
-div#Korea {
-	background-color: #ffae88;
-	color: #333333;
-}
-
 /* 여행지 점 색깔 */
 
 /* Italy */
@@ -346,3 +358,62 @@ a.countryIdIs68 {
 a.countryIdIs120 {
 	color: #ffae88;
 }
+
+div#massiveCleanBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+div#createMyPackBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 80px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+	float:left;
+	margin-top:5px;
+	margin-left:4px;
+}
+
+div#createMyPackBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+div#createMyPackModal input#createMyPackInput {
+	color:#eeeeee;
+	background-color: #333333;  
+	height:40px; 
+	width:400px;
+	float:left;
+	font-size:18px;
+}
+
+div#closeMyPackBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 80px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+	float:left;
+	margin-top:5px;
+	margin-left:4px;
+}
+
+div#closeMyPackBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+

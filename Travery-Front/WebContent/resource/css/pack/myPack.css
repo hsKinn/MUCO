@@ -8,6 +8,10 @@ div#mypackWrapperdiv {
 	width: 400px;
 }
 
+div#mypackWrapperdiv div#buttondiv {
+	margin-left:30px;
+}
+
 div#mypackListdiv {
 	float: left;
 	height: 80%;
@@ -35,7 +39,7 @@ div#packListdiv2 {
 
 
 div#placesOfPackListdiv {
-	align: center;
+	align: left;
 	float: left;
 	background-color: #333333;
 	height: 100%;
@@ -81,6 +85,10 @@ div#addPackFormdiv {
 
 table#packListTable {
 	margin: 30px;
+}
+
+table#packListTable td{
+	cursor: pointer;
 }
 
 td.pack {

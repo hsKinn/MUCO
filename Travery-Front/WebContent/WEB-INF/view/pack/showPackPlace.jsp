@@ -85,7 +85,7 @@
 			</div>
 			<div id="buttondiv">
 				<button type="button" class="btn btn-primary btn-sm"
-					id="wantModifyBtn" style="width: 150px; font-size: 15px;">
+					id="wantModifyBtn" style="width: 150px; font-size: 15px; ">
 					<span class="glyphicon glyphicon-wrench" style="font-size: 15px;"></span>modify
 				</button>
 			</div>

@@ -13,6 +13,9 @@
 <script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
 <!-- jVector Map CSS -->
 <link rel="stylesheet" media="all" href="<c:url value="/resource/css/place/jquery-jvectormap-2.0.3.css"/>" />
 
@@ -475,34 +478,46 @@
       });
       
       /* 3. 마이 패키지 탭 */
-      $(".loginUserPack").click(function(){
-         location.href = "/hitTheRoad?selectedPackageId=" + $(this).attr('id');
-      });
-      // myPack 추가 버튼 - 체크되있는 여행지가 있을 때만 가능
-      /* $("#massiveSubmitBtn").click(function(){
-         if( $( ".selectedPlaceId:checkbox:checked" ).val() == null ) {
-            alert("My Package에 추가하실 여행지를 선택해주세요.");
-         }
-         else {
-            $("#massiveSubmitBtn").attr('data-target', '#massiveSubmitModal');
-         }
-      }); */
-      
-      // 체크된 여행지들 myPack에 추가 확인
-      $(".addUserPackList").click(function(){
-         var packId = $(this).attr('id');
-         if ( confirm( "["+ $(this).text() + "]에 추가하시겠습니까?") ) {
-            var form = $("#massiveSubmitForm");
-            form.attr("method", "post");
-            form.attr("action", "/addMyPackByPlace?packId=" + packId);
-            form.submit();
-            return;
-         }
-      });
-      
-  	$("#massiveCleanBtn").click(function(){
-		location.href = "/tempSelectedPlace?clean=1"
-	});
+		$(".loginUserPack").click(function(){
+			location.href = "/hitTheRoad?selectedPackageId=" + $(this).attr('id');
+		});
+		// myPack 추가 버튼 - 체크되있는 여행지가 있을 때만 가능
+		/* $("#massiveSubmitBtn").click(function(){
+			if( $( ".selectedPlaceId:checkbox:checked" ).val() == null ) {
+				alert("My Package에 추가하실 여행지를 선택해주세요.");
+			}
+			else {
+				$("#massiveSubmitBtn").attr('data-target', '#massiveSubmitModal');
+			}
+		}); */
+		
+		// 체크된 여행지들 myPack에 추가 확인
+		$(".addUserPackList").click(function(){
+			var packId = $(this).attr('id');
+			if ( confirm( "["+ $(this).text() + "]에 추가하시겠습니까?") ) {
+				var form = $("#massiveSubmitForm");
+				form.attr("method", "post");
+				form.attr("action", "/addMyPackByPlace?packId=" + packId);
+				form.submit();
+				alert("추가되었습니다.");
+				return;
+			}
+		});
+		
+		$("#createMyPackBtn").click(function(){
+			var packTitle = $("#createMyPackInput").val();
+			if ( confirm( "["+ packTitle + "]에 추가하시겠습니까?" ) ) {
+				var form = $("#massiveSubmitForm");
+				form.attr("method", "post");
+				form.attr("action", "/addMyPackByPlace?packTitle=" + packTitle);
+				form.submit();
+				return;
+			} 
+		});
+		
+		$("#massiveCleanBtn").click(function(){
+			location.href = "/tempSelectedPlace?clean=1"
+		});
       
    });
    
@@ -521,10 +536,6 @@
       a.style.fontSize = "x-small";
    }
 		
-	
-		
-		
-	
 </script>
 
 <!-- Hit the road -->
@@ -574,7 +585,7 @@
                      <!-- 여행지 검색 탭 -->
                      <div id="menu1" class="tab-pane">
                         <div class="row">
-                           <div id="printAxisY1">${ axisY1 }</div>
+                           <div id="printAxisY1" style="width:100%; text-align: center;">${ axisY1 }</div>
                         </div>
                         <div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
                            <div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
@@ -607,13 +618,13 @@
                            <div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
                         </div>
                         <div class="row">
-                           <div id="printAxisY2">${ axisY2 }</div>
+                           <div id="printAxisY2" style="width:100%; text-align: center;">${ axisY2 }</div>
                         </div>
                      </div>
                      <!-- 나의 패키지 탭 -->
                      <div id="menu2" class="tab-pane fade">
                         <div class="row">
-                           <div id="printAxisY1">${ axisY1 }</div>
+                           <div id="printAxisY1" style="width:100%; text-align: center;">${ axisY1 }</div>
                         </div>
                         <div class="row" style="height: 350px; margin-top: 20px; margin-bottom: 20px;">
                            <div id="printAxisX2" class="col-sm-2">${ axisX2 }</div>
@@ -646,7 +657,7 @@
                            <div id="printAxisX1" class="col-sm-2">${ axisX1 }</div>
                         </div>
                         <div class="row">
-                           <div id="printAxisY2">${ axisY2 }</div>
+                           <div id="printAxisY2" style="width:100%; text-align: center;">${ axisY2 }</div>
                         </div>
                      </div>
       
@@ -736,9 +747,7 @@
                   </div>
                </div>
             </div>
-      
-
-		
+	
 				<!-- 선택된 나라 리스트 -->
 				<div id="showCountriesDiv" class="col-sm-1" style="height: 100%; overFlow-y: auto;" >
 					<div id="countries" style="width: 100%; height: 100%;">
@@ -764,19 +773,34 @@
 				<div id="tempPlaceList" class="col-sm-8" style="overFlow-y: auto;" >
 				<form id="massiveSubmitForm">
 					<!-- 여행지 상세보기 페이지 -->
+			<div class="inner">
+				<section class="tiles" style="padding-top: 0px; height:0px;">
 					<c:forEach items="${ tempSelectedPlaceList }" var="tempSelectedPlace">
-						<div class="tempSelectedPlace" id="${tempSelectedPlace.countryName}"
-						style="float:left;
-								width:15%;
-								height:150px;
-								text-align: center;
-								margin-left:45px;
-								margin-top:20px;
-								color:#333333;" 
-						>
-						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId"  value="${ tempSelectedPlace.placeId }" />
-							<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
-								<img src="/image?imageName=basic1.jpg" />
+
+						<input type="hidden" class="selectedPlaceId" name="addPackByPlaceId" value="${ tempSelectedPlace.placeId }" />
+						
+						<article class="${tempSelectedPlace.countryName}"
+									style="float:left;
+									width:15%;
+									height:150px;
+									text-align: center;
+									margin-left:45px;
+									position: relative;
+									top:25px;">
+									<span class="image" style="height: 150px;"> <img
+										src="/resource/img/common/santorini.jpg"
+										alt="" style="height:100%;"/>
+									</span> <a href="#"
+										onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+										<p>${ tempSelectedPlace.placeName }</p>
+										<div class="content">
+											<p>${ tempSelectedPlace.countryName}</p>
+										</div>
+									</a>
+						</article>
+						<%-- 	<div class="placeCards" style="width:100%; height:125px; background-color: #ffffff; float:left;">
+								<!-- <img src="/image?imageName=basic1.jpg" /> -->
+								<img src="/resource/img/common/deleteIcon.png" />
 							</div>
 							<div style="width:100%; height:100%;" >
 								<div class="tempPlaceNameDiv"><a class="tempPlaceName" href="#" onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
@@ -784,10 +808,11 @@
 								<div style=" position:relative; left:128px; bottom:22.4px; width:21px;height:21px"><a href="/tempSelectedPlace?selectedPlaceId=placeIdIs${tempSelectedPlace.placeId }">
 									<img class="deletePlace"  src="/resource/img/common/deleteIcon.png" style="width:20px; height:20px;" />
 								</a></div>
-							</div>
-						</div>
-									
+							</div> --%>
+															
 					</c:forEach>
+				</section>
+			</div>
 				</form>
 				</div>
 		
@@ -838,18 +863,28 @@
 							</div>
 							<div class="modal-footer" style="background-color: #333333;margin-bottom: 0px;">
 								<!-- myPack 생성하는 버튼 및 모달 -->
-								<button id="addMyPackBtn" type="button" class="btn btn-default"  >Add</button>
+								<button id="addMyPackBtn" type="button" class="btn btn-default" data-toggle="modal" data-target="#createMyPackModal" >Add</button>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div id="createMyPackModal" class="modal fade" role="dialog" style="margin: auto; margin-top: 20%;">
+				  <div class="modal-dialog">
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      
+				      <div class="modal-body" style="margin:auto;">
+				      	
+				        <input id="createMyPackInput" type="text" placeholder="New Package Name"/>
+				        <div id="createMyPackBtn"  >Confirm</div>
+				        <div id="closeMyPackBtn" data-dismiss="modal" >Close</div>
+				      	
+				      </div>      
+				    </div>
+				  </div>
+				</div>
 				
-				<script>
-									$("#createMyPack").click(function(){
-										
-									});
-								</script>
 				
 			</div>
 		</div>

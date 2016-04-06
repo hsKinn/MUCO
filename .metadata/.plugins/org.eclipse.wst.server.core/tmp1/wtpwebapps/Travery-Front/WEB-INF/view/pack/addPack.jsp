@@ -82,12 +82,12 @@
 		</div>
 
 		<div id="packListdiv2">
-			<div id="addPackFormdiv" align="center";>
+			<div id="addPackFormdiv" align="left">
 				<form id="addPack" enctype="multipart/form-data" role="form">
-					<div class="form-group" align="center" ; style="display: inline;">
+					<div class="form-group" align="left"  style="display: inline;">
 						<label for="file"> My package Image : </label> <br />
 					</div>
-					<div class="form-group" align="center" ; style="display: inline;">
+					<div class="form-group" align="left"  style="display: inline;">
 						<img id="addPackImg" class="img-rounded" src="#"
 							style="width: 150px; height: 150px;" /><br /> <br /> <br /> <input
 							type="file" id="image" name="image" accept="image/*"
@@ -100,7 +100,7 @@
 							style="width: 50%; display: inline;" />
 					</div>
 					<div class="form-group">
-						<label for="packData_Title">Share :</label> <label class="switch">
+						<label for="packData_Title">Private / Public </label> <label class="switch">
 							<input type="checkbox" id="packData_IsPublic"
 							name="packData_IsPublic" value="1" />
 							<div class="slider round"></div>
@@ -110,7 +110,7 @@
 						<label for="texthashtag">Hash Tag :</label> <input type="hidden"
 							name="texthashtag" id="texthashtag" /> <input type="text"
 							class="form-control" id="hashTag" name="hashTag"
-							style="width: 30%; display: inline;" />
+							style=" background-color:#eeeeee; color:#333333; width: 130px; display: inline;" />
 						<button type="button" id="hashtagAddBtn" class="btn btn-info">Push</button>
 						</br> <span class="hashtagBox"></span>
 					</div>

@@ -143,10 +143,10 @@
 		</div>
 
 		<div id="packListdiv2">
-			<div id="placesOfPackListdiv" align="center">
+			<div id="placesOfPackListdiv" align="left">
 				<img id="packData_image" src="#" /><br /> <br />
 				<form id="modifyForm" enctype="multipart/form-data">
-					<div class="form-group" align="center">
+					<div class="form-group" align="left">
 						<input type="file" name="file" value="file" />
 					</div>
 					<div class="form-group">
@@ -157,7 +157,7 @@
 							type="submit" style="display: none" />
 					</div>
 					<div class="form-group">
-						<label for="packData_Title">Share :</label> <label class="switch">
+						<label for="packData_Title">Private / Public </label> <label class="switch">
 							<input type="checkbox" id="packData_IsPublic"
 							name="packData_IsPublic" value="1" />
 							<div class="slider round"></div>
@@ -176,11 +176,11 @@
 							name="texthashtag" id="texthashtag" style="color:black;"/> 
 							<input type="text"
 							class="form-control" id="hashTag" name="hashTag"
-							style="width: 30%; display: inline;" />
+							style=" background-color:#eeeeee; color:#333333; width: 130px; display: inline;" />
 						<button type="button" id="hashtagAddBtn" class="btn btn-info" style="height:25px;font-size:13px;">Push</button>
 						</br> <span class="hashtagBox" name="hashtagBox"></span>
 
-						<button type="button" id="hashtagDeleteBtn" class="btn btn-primary" style="width:75px;height:25px;font-size:13px;">delete all</button>
+						<button type="button" id="hashtagDeleteBtn" class="btn btn-danger" style="width:75px; height:25px; font-size:13px;">delete all</button>
 
 					</div>
 				</form>

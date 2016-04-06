@@ -50,38 +50,82 @@ public class AddMyPackByPlaceServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String[] selectedPlaceId = request.getParameterValues("addPackByPlaceId");
-		int packId = Integer.parseInt(request.getParameter("packId"));
-	
-		boolean isSuccess = packBiz.getAddMyPackByPlace(selectedPlaceId, packId);
+		String packId2 = request.getParameter("packId");
+		String packTitle = request.getParameter("packTitle");
 		
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		
-		if (isSuccess) {
+
 			
-			// History
-			HistoryVO history = new HistoryVO();
-			history.setIp(request.getRemoteHost());
-			history.setEmail(member.getEmail());
-			history.setUrl(request.getRequestURI());
-			history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
-			history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK, member.getEmail(), packId + ""));
-			historyBiz.addHistory(history);
+		if ( packTitle == null) {
+			int packId = Integer.parseInt(packId2);
+			boolean isSuccess = packBiz.getAddMyPackByPlace(selectedPlaceId, packId);
 			
-			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			if (isSuccess) {
+				
+				// History
+				HistoryVO history = new HistoryVO();
+				history.setIp(request.getRemoteHost());
+				history.setEmail(member.getEmail());
+				history.setUrl(request.getRequestURI());
+				history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
+				history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK, member.getEmail(), packId + ""));
+				historyBiz.addHistory(history);
+				
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+			else {
+				
+				// History
+				HistoryVO history = new HistoryVO();
+				history.setIp(request.getRemoteHost());
+				history.setEmail(member.getEmail());
+				history.setUrl(request.getRequestURI());
+				history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
+				history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK_FAIL, member.getEmail(), packId + ""));
+				historyBiz.addHistory(history);
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+			
 		}
-		else {
+		
+		if ( packId2 == null ){
+			packTitle = request.getParameter("packTitle");
+			session = request.getSession();
+			MemberVO memberVO = (MemberVO) session.getAttribute("_MEMBER_");
 			
-			// History
-			HistoryVO history = new HistoryVO();
-			history.setIp(request.getRemoteHost());
-			history.setEmail(member.getEmail());
-			history.setUrl(request.getRequestURI());
-			history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
-			history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK_FAIL, member.getEmail(), packId + ""));
-			historyBiz.addHistory(history);
+			String email = memberVO.getEmail();
 			
-			response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			boolean isSuccess = packBiz.getCreateMyPackByPackTitle(email, packTitle, selectedPlaceId);
+			
+			if (isSuccess) {
+				
+				// History
+				HistoryVO history = new HistoryVO();
+				history.setIp(request.getRemoteHost());
+				history.setEmail(member.getEmail());
+				history.setUrl(request.getRequestURI());
+				history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
+				history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK, member.getEmail(), packId2 + ""));
+				historyBiz.addHistory(history);
+				
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+			else {
+				
+				// History
+				HistoryVO history = new HistoryVO();
+				history.setIp(request.getRemoteHost());
+				history.setEmail(member.getEmail());
+				history.setUrl(request.getRequestURI());
+				history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
+				history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK_FAIL, member.getEmail(), packId2 + ""));
+				historyBiz.addHistory(history);
+				
+				response.sendRedirect(Root.get(this) + "/hitTheRoad");
+			}
+			
 		}
 	}
 

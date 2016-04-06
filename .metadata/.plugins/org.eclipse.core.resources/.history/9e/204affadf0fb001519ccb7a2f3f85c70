@@ -1,0 +1,416 @@
+@CHARSET "UTF-8";
+
+/* 김광민 */
+ul#hitTheRoadTabs li a {
+	font-size: 13pt;
+}
+
+div#hitTheRoad {
+	width: 1550px;
+	height: 850px;
+	float: left;
+}
+
+div#firstRow {
+	width: 100%;
+	height: 60%;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+div#firstContainer {
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+
+div.tab-content {
+	height: 90%;
+	width: 100%;
+	margin-top: 10px;
+}
+
+div#home {
+	width: 100%;
+	height: 100%;
+}
+
+button#focus-multiple {
+	background-color: #333333;
+	color: #ffffff;
+	padding: 3px;
+	margin-top: 2px;
+}
+
+button#focus-init {
+	background-color: #333333;
+	color: #ffffff;
+	padding: 3px;
+	margin-top: 2px;
+	margin-left: 2px;
+}
+
+div#menu1 {
+	width: 100%;
+	height: 100%;
+}
+
+div#printAxisY1 {
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	color: #ffffff;
+	padding-top: 20px;
+}
+
+div#printAxisX2 {
+	height: 100%;
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	padding-top: 16%;
+	color: #ffffff;
+}
+
+div#printAxisX1 {
+	height: 100%;
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	padding-top: 16%;
+	color: #ffffff;
+}
+
+div#printAxisY2 {
+	text-align: center;
+	font-weight: bolder;
+	font-size: large;
+	color: #ffffff;
+}
+
+div#dottedDiv {
+	height: 100%;
+	position: relative;
+}
+
+div#dottedDiv2 {
+	height: 100%;
+	position: relative;
+}
+
+div#secondRowDiv {
+	width: 100%;
+	height: 25%;
+	float: left;
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+div#tempPlaceList {
+	height: 100%;
+	padding-left: 10px;
+}
+
+div.selectedCountry, div.loginUserPack {
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	margin-top: 10px;
+	cursor: pointer;
+	padding: 5px;
+	float: left;
+	margin-left: 1px;
+}
+
+div#showCountriesDiv {
+	display: none;
+}
+
+div#showPackagesDiv {
+	display: none;
+}
+
+div#massiveSubmitBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	height: 30px;
+	margin-top: 40px;
+	cursor: pointer;
+	padding: 5px;
+	margin-right: 26%;
+	margin-bottom: 8%;
+	border-radius: 6px;
+	float: right;
+	color: #333333;
+	background-color: #eeeeee;
+	
+}
+
+/* 오른쪽 선택된 나라 디브 색깔 */
+div.selectedCountry, div.loginUserPack {
+	background-color: #eeeeee;
+	color: #333333;
+	opacity: 1;
+	transition: all 0.3s ease-out;
+}
+
+div#massiveSubmitBtn:hover {
+	text-decoration: none;
+	opacity: 0.7;
+	background-color: #eeeeee;
+
+}
+
+div.tempPlaceNameDiv {
+	flaat: left;
+	width: 124px;
+	height: 24px;
+	text-align: center;
+	padding-top: 3px;
+	overflow-y: auto;
+	/* white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip ellipsis; */
+}
+
+a.tempPlaceName {
+	margin-left: 13px;
+	padding-right: 2px;
+}
+
+/* #Italy */
+div#Italy {
+	background-color: #ffffbb;
+	color: #333333;
+}
+
+/* #France */
+div#France {
+	background-color: #ff6666;
+	color: #333333;
+}
+
+/* #United-Kingdom */
+div#United-Kingdom {
+	background-color: #93c9ff;
+	color: #333333;
+	text-decoration: none;
+	opacity: 1;
+	transition: all 0.3s ease-out;
+	overflow-y: auto;
+}
+
+a.tempPlaceName:hover {
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+/* #Germany */
+div#Germany {
+	background-color: #ffb3d9;
+	color: #333333;
+}
+
+/* #Spain */
+div#Spain {
+	background-color: #b7fea5;
+	color: #333333;
+}
+/* #Korea */
+div#Korea {
+	background-color: #ffae88;
+	color: #333333;
+}
+
+
+div#massiveCleanBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+	height: 30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 6px;
+	float: right;
+	position: relative;
+	left: 6.51%;
+	bottom: 19%;
+	background-color: #eeeeee;
+	color: #333333;
+	opacity: 1;
+	transition: all 0.3s ease-out;
+}
+
+div#massiveCleanBtn:hover {
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+div.addUserPackList {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	width: 70%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 6px;
+	background-color: #eeeeee;
+	color: #333333;
+	cursor: pointer;
+}
+
+div.addUserPackList:hover {
+	background-color: #5a5a5a;
+	color: #eeeeee;
+}
+
+.countryMapBtn {
+	background-color: #333333;
+	color: #ffffff;
+	height: 29px;
+}
+
+/* 구글맵 경로 */
+#map {
+	height: 100%;
+	float: left;
+	width: 70%;
+	height: 100%;
+}
+
+#right-panel {
+	font-family: 'Roboto', 'sans-serif';
+	line-height: 30px;
+	padding-left: 10px;
+}
+
+div.placeCards img {
+	width: 100%;
+	height: 100%;
+}
+
+#right-panel select, #right-panel input {
+	font-size: 15px;
+}
+
+#right-panel select {
+	width: 100%;
+}
+
+#right-panel i {
+	font-size: 12px;
+}
+
+#right-panel {
+	margin: 20px;
+	border-width: 2px;
+	width: 20%;
+	float: left;
+	text-align: left;
+	padding-top: 20px;
+}
+
+#directions-panel {
+	margin-top: 20px;
+	background-color: #FFEE77;
+	padding: 10px;
+}
+
+/* 오른쪽 선택된 나라 디브 색깔 */
+div.selectedCountry, div.loginUserPack {
+	background-color: #eeeeee;
+	color: #333333;
+}
+
+/* 여행지 점 색깔 */
+
+/* Italy */
+a.countryIdIs163 {
+	color: #ffffbb;
+}
+
+/* France */
+a.countryIdIs85 {
+	color: #ff6666;
+}
+
+/* United-Kingdom */
+a.countryIdIs31 {
+	color: #93c9ff;
+}
+
+/* Germany */
+a.countryIdIs133 {
+	color: #ffb3d9;
+}
+
+/* Spain */
+a.countryIdIs68 {
+	color: #b7fea5;
+}
+
+/* Korea*/
+a.countryIdIs120 {
+	color: #ffae88;
+}
+
+div#massiveCleanBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+div#createMyPackBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 80px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+	float:left;
+	margin-top:5px;
+	margin-left:4px;
+}
+
+div#createMyPackBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+
+div#createMyPackModal input#createMyPackInput {
+	color:#eeeeee;
+	background-color: #333333;  
+	height:40px; 
+	width:400px;
+	float:left;
+	font-size:18px;
+}
+
+div#closeMyPackBtn {
+	text-align: center;
+	font-weight: bold;
+	width: 80px;
+	height:30px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:6px;
+	background-color: #eeeeee;
+	color:#333333;
+	opacity :1;
+	transition: all 0.3s ease-out;
+	float:left;
+	margin-top:5px;
+	margin-left:4px;
+}
+
+div#closeMyPackBtn:hover {
+	text-decoration:none;
+	opacity :0.7;
+}
+

@@ -1,0 +1,284 @@
+
+package com.ktds.muco.table.pack.biz;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.hashtag.dao.HashTagDAO;
+import com.ktds.muco.table.hashtag.vo.HashTagVO;
+import com.ktds.muco.table.image.dao.ImageDAO;
+import com.ktds.muco.table.image.vo.ImageVO;
+import com.ktds.muco.table.pack.dao.PackDAO;
+import com.ktds.muco.table.pack.vo.PackVO;
+import com.ktds.muco.table.place.dao.PlaceDAO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class PackBiz {
+
+	/**
+	 * @author 백지경
+	 */
+	private PackDAO packDAO;
+	private HashTagDAO hashTagDAO;
+	private PlaceDAO placeDAO;
+	private ImageDAO imageDAO;
+
+	public PackBiz() {
+		packDAO = new PackDAO();
+		hashTagDAO = new HashTagDAO();
+		placeDAO = new PlaceDAO();
+		imageDAO = new ImageDAO();
+	}
+
+	public List<PackVO> getPackListByEmail(String email) {
+		List<PackVO> packs = packDAO.getPackListByEmail(email);
+
+		return packs;
+	}
+
+	public PackVO getPackDataByPackId(int packId) {
+		PackVO pack = packDAO.getPackDataByPackId(packId);
+
+		List<PlaceVO> placeList = new ArrayList<PlaceVO>();
+
+		// 김광민
+		if (pack != null) {
+
+			placeList = placeDAO.getPlaceListByPackId(pack.getPackId());
+
+			if (placeList != null) {
+
+				pack.setPlaceList(placeList);
+			}
+		}
+
+		return pack;
+	}
+
+	public int addPack(PackVO newAddPack) {
+		int packId = packDAO.addPack(newAddPack);
+		return packId;
+	}
+
+	public int deletePacks(String[] deletePackIds) {
+		int deleteCount = 0;
+		for (String deletePackId : deletePackIds) {
+			deleteCount = packDAO.deletePack(Integer.parseInt(deletePackId));
+		}
+		return deleteCount;
+	}
+
+public List<PlaceVO> getPlaceListByPackId(int packId) {
+		
+		List<PlaceVO> places = packDAO.getPlaceListByPackId(packId);
+		
+		for (PlaceVO placeVO : places) {
+			int placeId = placeVO.getPlaceId();
+			List<ImageVO> images = new ArrayList<ImageVO>();
+			images = imageDAO.getImageVOListByPlaceId(placeId);
+			placeVO.setPlaceImageList(images);
+		}
+		
+		return places;
+	}
+
+	public int deletePlaceOfPack(int placeId, int packId) {
+		int deletePlaceOfPackCount = 0;
+		deletePlaceOfPackCount = packDAO.deletePlaceOfPack(placeId, packId);
+		return deletePlaceOfPackCount;
+	}
+
+	public int modifyPack(PackVO modifyPack) {
+		int modifyCount = 0;
+		modifyCount = packDAO.modifyPack(modifyPack);
+		return modifyCount;
+	}
+
+	public int addHashTagInPack(int packId, String hashtags) {
+		int insertCount = 0;
+		// 1. hashtags string을 split하여 배열로 바꾼다.
+		hashtags = hashtags.trim();
+		String hashtagArray[] = hashtags.split(" ");
+		// 2. hashtag vo들로 만든다.
+		// 3. dao로 tag를 넘겨 db에 넣는다.
+		for (String tag : hashtagArray) {
+			HashTagVO hashTagVO = new HashTagVO();
+			hashTagVO.setPackId(packId);
+			hashTagVO.setHashtagName(tag);
+			insertCount = hashTagDAO.addHashTagInPack(hashTagVO);
+		}
+
+		return insertCount;
+	}
+	
+	/**
+	 * 
+	 * @param packId
+	 * @param hashtags
+	 * @author 백지경
+	 * @return
+	 */
+	public int modifyHashTag(int packId, String hashtags) {
+		// 기존 해시태그 다지우고 새로넣기
+		// 다지우기
+		int deleteCount = 0;
+		deleteCount = hashTagDAO.deleteAllHashTagByPackId(packId);
+		
+		
+		int modifyCount = 0;
+		// 1. hashtags string을 split하여 배열로 바꾼다.
+		String hashtagArray[] = hashtags.split(" #");
+		// 2. hashtag vo들로 만든다.
+		// 3. dao로 tag를 넘겨 db에 넣는다.
+		for (String tag : hashtagArray) {
+			HashTagVO hashTagVO = new HashTagVO();
+			hashTagVO.setPackId(packId);
+			hashTagVO.setHashtagName(tag);
+			if(tag != null && tag.length()>0){
+				modifyCount = hashTagDAO.addHashTagInPack(hashTagVO);
+			}
+		}
+
+		return modifyCount;
+	}	
+
+	public String getHashTagsByPackId(int packId) {
+		List<HashTagVO> tags = new ArrayList<HashTagVO>();
+		tags = hashTagDAO.getHashTagOfPackage(packId);
+		String hashtagOfPack = "";
+
+		for (HashTagVO hashTagVO : tags) {
+			String tag = hashTagVO.getHashtagName();
+			hashtagOfPack = hashtagOfPack + " #" + tag;
+		}
+
+		return hashtagOfPack;
+	}
+
+	/**
+	 * pack Id convert String to Integer
+	 * 
+	 * @param packIdString
+	 * @return
+	 * @author 김광민
+	 */
+	public int convertPackIdStringToInteger(String packIdString) {
+
+		if (packIdString != null) {
+			String[] splitId = packIdString.split("s");
+			System.out.println("packId to Int : " + splitId[1]);
+			int packId = 0;
+			try {
+				packId = Integer.parseInt(splitId[1]);
+			} catch (NumberFormatException nfe) {
+			}
+			return packId;
+		}
+		return 0;
+	}
+
+	/**
+	 * 선택된 나라들 나의 패키지에 넣기
+	 * 
+	 * @author 유병훈
+	 * @author 김광민 수정
+	 * 
+	 */
+	public boolean getAddMyPackByPlace(String[] selectedPlaceId, int packId) {
+
+		int isSuccess = 0;
+		int checkPlaceId = packDAO.getMyPackCheckPlaceId(packId);
+		
+		// packDAO.getAddMyPackByPlace(selectedPlaceId, packId);
+		for (String placeId : selectedPlaceId) {
+			int ori_placeId = Integer.parseInt(placeId);
+			if ( checkPlaceId != ori_placeId ) {
+				isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
+			}
+		}
+		if (isSuccess > 0) {
+			return true;
+		}
+
+		return false;
+	}
+<<<<<<< HEAD
+
+	
+	/**
+	 * Add My Pack BY One Place
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param pack
+	 * @return
+	 */
+	public boolean addMyPackByOnePlace(PackVO pack) {
+		
+		return packDAO.getAddMyPackByPlace( pack.getPlaceId(), pack.getPackId() ) > 0;
+		
+	} // addMyPackByOnePlace END
+
+	
+	/**
+	 *
+	 * Get SharePack PlaceList Insert My Pack
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param seletedPack
+	 * @param myPack
+	 * @return
+	 */
+	public boolean getSharePackPlaceList(PackVO seletedPack, PackVO myPack) {
+		
+		int check = 0;
+		
+		// 선택한 패키지에 등록된 여행지 List 받아옴
+		seletedPack.setPlaceList( packDAO.getPlaceListByPackId(seletedPack.getPackId()) );
+		
+		for ( PlaceVO place : seletedPack.getPlaceList() ) {
+			check += packDAO.getAddMyPackByPlace(place.getPlaceId(), myPack.getPackId());
+		}
+		
+		if ( check > 0 ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	} // getSharePackPlaceList  END
+	
+=======
+	
+	/**
+	 * hitTheRoad에서 나의 패키지 만들기
+	 * @param packTitle
+	 * @return
+	 * @author 유병훈
+	 */
+	public boolean getCreateMyPackByPackTitle(String email, String packTitle, String[] selectedPlaceId) {
+
+		int isSuccess = 0;
+		int packId = packDAO.getCreateMyPackByLatestId(email,packTitle);
+		
+		for (String placeId : selectedPlaceId) {
+			int ori_placeId = Integer.parseInt(placeId);
+			
+			isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
+			
+		}
+		
+		if ( isSuccess > 0 ) {
+			return true;
+		}
+		
+		return false;
+	}
+>>>>>>> origin/YBH14
+}
