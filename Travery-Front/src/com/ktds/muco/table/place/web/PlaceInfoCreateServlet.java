@@ -14,6 +14,7 @@ import com.ktds.muco.table.history.vo.BuildDescription;
 import com.ktds.muco.table.history.vo.Description;
 import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.image.biz.ImageBiz;
+import com.ktds.muco.table.member.biz.MemberBiz;
 import com.ktds.muco.table.member.vo.MemberVO;
 import com.ktds.muco.table.place.biz.PlaceBiz;
 import com.ktds.muco.table.place.vo.PlaceVO;
@@ -32,6 +33,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 	private PlaceBiz placeBiz;
 	private ImageBiz imageBiz;
 	private HistoryBiz historyBiz;
+	private MemberBiz memberBiz;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -41,6 +43,7 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeBiz = new PlaceBiz();
 		imageBiz = new ImageBiz();
 		historyBiz = new HistoryBiz();
+		memberBiz = new MemberBiz();
 	}
 
 	/**
@@ -79,6 +82,17 @@ public class PlaceInfoCreateServlet extends HttpServlet {
 		placeVO = placeBiz.placeInfoCreate(placeVO);
 		// 세션생성
 		session.setAttribute("_PLACE_", placeVO);
+		
+		// 김광민 - 마일리지 주기
+		if( placeVO != null ) {
+			// 10점
+			if (memberBiz.updateMileage(member.getEmail(), 10) ) {
+				System.out.println("마일리지 입력 완료.");
+			}
+		}
+		else {
+			System.out.println("마일리지 입력 안됨.");
+		}
 
 		// History
 		HistoryVO history = new HistoryVO();

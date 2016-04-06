@@ -221,6 +221,18 @@ public class MemberBiz {
 		}
 		return false;
 	}
+
+	/**
+	 * 
+	 * 마일리지 주기
+	 * 
+	 * @param email : 멤버 아이디
+	 * @param i : 점수
+	 * @return
+	 */
+	public boolean updateMileage(String email, int point) {
+		return memberDAO.updateMileage(email, point) > 0;
+	}
 }
 
 

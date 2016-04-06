@@ -157,6 +157,13 @@
      				, MAIN_IMAGE_LOCATION = ?
      		WHERE	EMAIL = ?
      	</addMainImage>
+     	
+     	<updateMileage>
+     		UPDATE	MEMBER
+     		SET		MILEAGE = MILEAGE + ?
+     		WHERE	EMAIL = ?
+     	</updateMileage>
+     	
 	</member>
 	
 	<pack>

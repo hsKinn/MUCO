@@ -10,24 +10,14 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * 
  * Member VO
  * 
- * mainImageName 메인 사진 이름
- * mainImageLocation 메인 사진 위치
- * joinDate 회원가입 날짜
- * recentAccessDate 최근 접속 날짜
- * selectedCountryList 사용자가 Hit the road에서 선택한 나라들
+ * mainImageName 메인 사진 이름 mainImageLocation 메인 사진 위치 joinDate 회원가입 날짜
+ * recentAccessDate 최근 접속 날짜 selectedCountryList 사용자가 Hit the road에서 선택한 나라들
  * 
- * ---Selected Standard---
- * 0번 인덱스 : X축 오른쪽
- * 1번 인덱스 : X축 왼쪽
- * 2번 인덱스 : Y축 위
- * 3번 인덱스 :
+ * ---Selected Standard--- 0번 인덱스 : X축 오른쪽 1번 인덱스 : X축 왼쪽 2번 인덱스 : Y축 위 3번 인덱스 :
  * Y축 아래
  * 
- * ---------초기값---------
- * 0번 인덱스 : Bright
- * 1번 인덱스 : Dark
- * 2번 인덱스 : Active
- * 3번 인덱스 : Calm
+ * ---------초기값--------- 0번 인덱스 : Bright 1번 인덱스 : Dark 2번 인덱스 : Active 3번 인덱스 :
+ * Calm
  * 
  * @author 김광민
  *
@@ -44,11 +34,11 @@ public class MemberVO extends PlaceVO {
 	private String joinDate = "";
 	private String recentAccessDate = "";
 	private int recentViewPack = 0;
+	private int mileage = 0;
 
 	private List<CountryVO> selectedCountryList;
 	private List<PlaceVO> tempSelectedPlaceList;
 	private List<String> selectedStandardList;
-	
 
 	public MemberVO() {
 
@@ -61,6 +51,7 @@ public class MemberVO extends PlaceVO {
 		mainImageLocation = "";
 		joinDate = "";
 		recentAccessDate = "";
+		mileage = 0;
 
 		selectedCountryList = new ArrayList<CountryVO>();
 		tempSelectedPlaceList = new ArrayList<PlaceVO>();
@@ -71,6 +62,14 @@ public class MemberVO extends PlaceVO {
 		selectedStandardList.add("Dark");
 		selectedStandardList.add("Active");
 		selectedStandardList.add("Calm");
+	}
+
+	public int getMileage() {
+		return mileage;
+	}
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
 	}
 
 	public int getRecentViewPack() {
@@ -352,7 +351,7 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 임시 여행지 리스트 비우기
 	 * 
@@ -368,6 +367,5 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
-	
 
 }
