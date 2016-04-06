@@ -19,6 +19,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	
 <link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/place/detailPlace.css"/>" />
+<link rel="stylesheet" type="text/css"   href="<c:url value="/resource/css/place/hitTheRoad.css"/>" />
 
 <!-- Share Package -->
 <script type="text/javascript">
@@ -131,7 +132,7 @@
 			  });
 			};
 	
-			rangeSlider();
+			rangeSlider();		
 	});
 
 </script>
@@ -206,13 +207,11 @@
 						</span>
 					</div>
 				</div>
-				
 				<div id="info-Middle">
 					<div id="place-Description">
 						<textarea readonly="readonly">${ place.placeDescription }</textarea>
 					</div>
 				</div>
-				
 				<div id="info-Vote">
 					<div id="vote-Left">
 						<c:choose>
@@ -228,7 +227,6 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
-				
 					<div id="vote-Right">
 						<c:if test="${ !writer.isExistVote() }">
 							<span class="doVote" data-toggle="modal" data-target="#voteModal">
