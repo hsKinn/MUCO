@@ -352,5 +352,22 @@ public class MemberVO extends PlaceVO {
 		}
 		return false;
 	}
+	
+	/**
+	 * 임시 여행지 리스트 비우기
+	 * 
+	 * @return
+	 * @author 유병훈
+	 */
+	public boolean removeAllTempPlaceList() {
+
+		this.tempSelectedPlaceList.clear();
+
+		if (this.tempSelectedPlaceList.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+	
 
 }

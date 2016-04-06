@@ -487,6 +487,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>DoVoteServlet</display-name>
     <servlet-name>DoVoteServlet</servlet-name>
     <servlet-class>com.ktds.muco.table.evaluation.web.DoVoteServlet</servlet-class>
@@ -514,5 +515,14 @@
   <servlet-mapping>
     <servlet-name>AddMyPackByOnePlaceServlet</servlet-name>
     <url-pattern>/addMyPackByOnePlace</url-pattern>
+=======
+    <display-name>DoTripReservationServlet</display-name>
+    <servlet-name>DoTripReservationServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reserve.web.DoTripReservationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoTripReservationServlet</servlet-name>
+    <url-pattern>/doTripReservation</url-pattern>
+>>>>>>> origin/YBH14
   </servlet-mapping>
 </web-app>

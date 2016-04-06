@@ -2,9 +2,17 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.dao.EvaluationDAO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.biz.EvaluationBiz"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.vo.EvaluationVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.vo.reportedPlaceVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.biz.ReportedPlaceBiz"/>
+=======
+<fullyQualifiedTypeName name="java.lang.Boolean"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="com.ktds.muco.table.rent.vo.RentVO"/>
+>>>>>>> origin/YBH14
 </qualifiedTypeNameHistroy>

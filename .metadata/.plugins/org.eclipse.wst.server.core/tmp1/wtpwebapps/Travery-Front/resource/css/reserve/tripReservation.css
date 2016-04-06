@@ -9,8 +9,8 @@ div#tripReservationWrapper input {
 	width: 200px;
 }
 
-div#tripReservationWrapper img {
-	
+div#tripReservationWrapper .form-group {
+	margin: auto;
 }
 
 div#reserveSubmit {

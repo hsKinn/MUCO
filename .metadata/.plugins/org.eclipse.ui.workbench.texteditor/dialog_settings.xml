@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
 		<item value="View" key="selection"/>
+=======
+		<item value="border" key="selection"/>
+>>>>>>> origin/YBH14
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="view"/>
 			<item value="alert"/>
 			<item value="size"/>
@@ -16,6 +21,16 @@
 			<item value="bor"/>
 			<item value="place-Title"/>
 			<item value="placeVote"/>
+=======
+			<item value="border"/>
+			<item value="reserve"/>
+			<item value="getPackListByEmail"/>
+			<item value="pack"/>
+			<item value="getAddMyPackByPlace"/>
+			<item value="추가"/>
+			<item value="head"/>
+			<item value="addTempSelectedPlaceByPlaceId"/>
+>>>>>>> origin/YBH14
 		</list>
 		<list key="replacehistory">
 			<item value="placeInfo"/>

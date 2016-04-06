@@ -71,3 +71,42 @@ table#personalInfoTable td img {
    width: 85px;
    height: 85px;
 }
+
+div#reserveConfirmBtn {
+	float:right;
+	background-color: #eeeeee;
+	color:#333333;
+	width:100px;
+	height:22px;
+	border-radius:7px;
+	margin-right: 16px;
+	margin-bottom: 10px;
+	padding-top:1px;
+	cursor: pointer;
+	opacity :1;
+	transition: all 0.3s ease-out;  
+}
+div#reserveConfirmBtn:hover {
+	opacity : 0.7;
+}
+
+#reserveTable {
+	width:90%;
+	height:85%;
+	margin: auto;
+	margin-top: 4%;
+	
+}
+
+table#reserveTable tr, table#reserveTable td {
+	border : 3px Groove #5b5b5b;
+}
+
+table#reserveTable .firstTr {
+	color:#e8e8e8;
+}
+
+table#reserveTable .secondTr {
+	background-color: #5d5d5d;
+	font-size: 15px;
+}
