@@ -8661,3 +8661,13 @@
 10.225.152.165 - - [06/Apr/2016:11:32:54 +0900] "GET /resource/js/jvectormap/proj.js HTTP/1.1" 304 -
 10.225.152.165 - - [06/Apr/2016:11:32:54 +0900] "GET /resource/js/jvectormap/map.js HTTP/1.1" 304 -
 10.225.152.165 - - [06/Apr/2016:11:32:54 +0900] "GET /resource/js/jvectormap/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 -
+10.225.152.165 - - [06/Apr/2016:11:35:09 +0900] "GET /placeInfoInit HTTP/1.1" 302 -
+10.225.152.165 - - [06/Apr/2016:11:35:11 +0900] "GET /recommendPlace HTTP/1.1" 200 24374
+10.225.152.165 - - [06/Apr/2016:11:35:11 +0900] "GET /resource/img/pack/basic$1.jpg HTTP/1.1" 404 1052
+10.225.152.165 - - [06/Apr/2016:11:35:11 +0900] "GET /resource/img/pack/basic$1.jpg HTTP/1.1" 404 1052
+10.225.152.165 - - [06/Apr/2016:11:35:12 +0900] "GET /init HTTP/1.1" 302 -
+10.225.152.165 - - [06/Apr/2016:11:35:13 +0900] "GET /sharePack HTTP/1.1" 200 76308
+10.225.152.165 - - [06/Apr/2016:11:35:13 +0900] "GET /0 HTTP/1.1" 404 996
+10.225.152.165 - - [06/Apr/2016:11:35:13 +0900] "GET /0 HTTP/1.1" 404 996
+10.225.152.165 - - [06/Apr/2016:11:35:14 +0900] "GET /myPack HTTP/1.1" 200 10861
+10.225.152.165 - - [06/Apr/2016:11:35:15 +0900] "GET /hitTheRoad HTTP/1.1" 200 48197
