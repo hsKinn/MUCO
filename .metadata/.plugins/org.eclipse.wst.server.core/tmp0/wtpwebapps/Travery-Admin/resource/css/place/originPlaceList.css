@@ -30,3 +30,8 @@ table#tableList th {
 	text-align: center;
 	height: 25px;
 }	
+
+table#tableList {
+	margin-bottom: 50px;
+	padding-bottom: 50px;
+}

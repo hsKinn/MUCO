@@ -86,7 +86,7 @@ public class HistoryListServlet extends HttpServlet {
 		
 		historySearchVO.setPageNO(pageNO);
 		
-		historyListVO = historyBiz.getHistoryList(historySearchVO);
+		historyListVO = historyBiz.getHistoryList(historySearchVO, sortOption);
 		request.setAttribute("hisotryies", historyListVO);
 		
 		// History 기록

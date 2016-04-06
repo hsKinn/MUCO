@@ -23,11 +23,11 @@ public class HistoryBiz {
 		historyDAO = new HistoryDAO();
 	}
 
-	public HistoryListVO getHistoryList(HistorySearchVO historySearchVO) {
+	public HistoryListVO getHistoryList(HistorySearchVO historySearchVO, int sortOption) {
 		// 1. 전체 게시글의 수
 		int allHistoryCount = historyDAO.getAllHistoryCount();
 		// 1-1. 기본으로 페이지를 만들어준다.
-		Paging paging = new Paging(25);
+		Paging paging = new Paging(15);
 		paging.setTotalArticleCount(allHistoryCount);
 		// 1-2. page 가져올 때 계산 쉽게 하기 위해서 page number은 0부터 시작
 		paging.setPageNumber(historySearchVO.getPageNO() + "");
@@ -36,7 +36,7 @@ public class HistoryBiz {
 		historySearchVO.setEndIndex(paging.getEndArticleNumber());
 
 		// 전체 article 받아오기
-		List<HistoryVO> historys = historyDAO.getAllHistoryList(historySearchVO);
+		List<HistoryVO> historys = historyDAO.getAllHistoryList(historySearchVO, sortOption);
 
 		// 2. DAO로부터 받아온 결과를 출력
 		HistoryListVO historyList = new HistoryListVO();

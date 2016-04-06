@@ -66,6 +66,728 @@
 					)	
 			WHERE	RNUM >= ?		
 		</getAllHistoryList>
+		<getAllHistoryListSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListSearchedByIp>
+		<getAllHistoryListSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListSearchedByEmail>
+		<getAllHistoryListSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListSearchedByURL>
+		<getAllHistoryListSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListSearchedByActionCode>
+		<getAllHistoryListSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListSearchedByHistoryDescription>
+		<getAllHistoryListSearchedByETC>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListSearchedByETC>
+		<getAllHistoryListOrderByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByIp>
+		<getAllHistoryListOrderByIpSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByIpSearchedByIp>
+		<getAllHistoryListOrderByIpSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByIpSearchedByEmail>
+		<getAllHistoryListOrderByIpSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByIpSearchedByURL>
+		<getAllHistoryListOrderByIpSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByIpSearchedByActionCode>
+		<getAllHistoryListOrderByIpSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByIpSearchedByHistoryDescription>
+		<getAllHistoryListOrderByIpSearchedByEtc>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+									ORDER	BY IP 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		
+		</getAllHistoryListOrderByIpSearchedByEtc>
+		<getAllHistoryListOrderByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmail>
+		<getAllHistoryListOrderByEmailSearchedByEtc>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmailSearchedByEtc>
+		<getAllHistoryListOrderByEmailSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmailSearchedByHistoryDescription>
+		<getAllHistoryListOrderByEmailSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmailSearchedByActionCode>
+		<getAllHistoryListOrderByEmailSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmailSearchedByURL>
+		<getAllHistoryListOrderByEmailSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmailSearchedByEmail>
+		<getAllHistoryListOrderByEmailSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+									ORDER	BY EMAIL 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByEmailSearchedByIp>
+		<getAllHistoryListOrderByRecentCreateDate>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDate>
+		<getAllHistoryListOrderByRecentCreateDateSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDateSearchedByIp>
+		<getAllHistoryListOrderByRecentCreateDateSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDateSearchedByEmail>
+		<getAllHistoryListOrderByRecentCreateDateSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDateSearchedByURL>
+		<getAllHistoryListOrderByRecentCreateDateSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDateSearchedByActionCode>
+		<getAllHistoryListOrderByRecentCreateDateSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDateSearchedByHistoryDescription>
+		<getAllHistoryListOrderByRecentCreateDateSearchedByETC>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT DESC 
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByRecentCreateDateSearchedByETC>
+		<getAllHistoryListOrderByDatedDate>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByDatedDate>
+		<getAllHistoryListOrderByDatedDateSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?
+		</getAllHistoryListOrderByDatedDateSearchedByIp>
+		<getAllHistoryListOrderByDatedDateSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?
+		</getAllHistoryListOrderByDatedDateSearchedByEmail>
+		<getAllHistoryListOrderByDatedDateSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?
+		</getAllHistoryListOrderByDatedDateSearchedByURL>
+		<getAllHistoryListOrderByDatedDateSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?
+		</getAllHistoryListOrderByDatedDateSearchedByActionCode>
+		<getAllHistoryListOrderByDatedDateSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?
+		</getAllHistoryListOrderByDatedDateSearchedByHistoryDescription>
+		<getAllHistoryListOrderByDatedDateSearchedByETC>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+									ORDER	BY CRT_DT ASC
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?
+		</getAllHistoryListOrderByDatedDateSearchedByETC>
+		<getAllHistoryListOrderByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURL>
+		<getAllHistoryListOrderByURLSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURLSearchedByIp>
+		<getAllHistoryListOrderByURLSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURLSearchedByEmail>
+		<getAllHistoryListOrderByURLSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURLSearchedByURL>
+		<getAllHistoryListOrderByURLSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURLSearchedByActionCode>
+		<getAllHistoryListOrderByURLSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURLSearchedByHistoryDescription>
+		<getAllHistoryListOrderByURLSearchedByETC>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+									ORDER	BY URL
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByURLSearchedByETC>
+		<getAllHistoryListOrderByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCode>
+		<getAllHistoryListOrderByActionCodeSearchedByIp>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	IP LIKE '%' || ? || '%'
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCodeSearchedByIp>
+		<getAllHistoryListOrderByActionCodeSearchedByEmail>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	EMAIL LIKE '%' || ? || '%'
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCodeSearchedByEmail>
+		<getAllHistoryListOrderByActionCodeSearchedByURL>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	URL LIKE '%' || ? || '%'
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCodeSearchedByURL>
+		<getAllHistoryListOrderByActionCodeSearchedByActionCode>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ACTION_CODE LIKE '%' || ? || '%'
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCodeSearchedByActionCode>
+		<getAllHistoryListOrderByActionCodeSearchedByHistoryDescription>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	DESCRIPTION LIKE '%' || ? || '%'
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCodeSearchedByHistoryDescription>
+		<getAllHistoryListOrderByActionCodeSearchedByETC>
+			SELECT	* 
+			FROM	(
+						SELECT	ROWNUM AS RNUM
+								, A.*
+						FROM	(
+									SELECT  *
+									FROM    HISTORY
+									WHERE	ETC LIKE '%' || ? || '%'
+									ORDER	BY ACTION_CODE
+								) A 
+						WHERE	ROWNUM &lt;= ?	
+					)	
+			WHERE	RNUM >= ?		
+		</getAllHistoryListOrderByActionCodeSearchedByETC>
 		<getOver30DaysHistoryList>
 			SELECT	* 
 			FROM	(
@@ -84,6 +806,11 @@
 			DELETE	
 			FROM	HISTORY
 		</deleteAllHistories>
+		<deleteHistoryByHistoryId>
+			DELETE	
+			FROM	HISTORY
+			WHERE	HISTORY_ID = ?
+		</deleteHistoryByHistoryId>
 	</history>
 	
 	<image>

@@ -15,7 +15,6 @@
 <br/>
 
 <div class="clear"></div>
-
 <span id="footer">Copyright © TRAVERY Co.,Ltd. All Rights Reserved.</span>
 
 <!-- Close "#wrapper" -->

@@ -61,7 +61,7 @@ $(document).ready( function() {
 			// 지우는 로직 넣기 
 			var form = $("#massiveDeleteForm");
 			form.attr("method", "post");
-			form.attr("action", "<c:url value="/placeMassiveDelete" />");
+			form.attr("action", "<c:url value="/historyMassiveDelete" />");
 			form.submit();
 		}
 		
@@ -113,11 +113,11 @@ $(document).ready( function() {
 					    </button>
 					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=1" />">IP</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=2" />" >EMAIL</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">최근 생성일순</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=3" />">오래된 생성일</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=4" />">접근 URL</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/originPlaceList?sortOption=5" />">액션코드</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=2" />" >EMAIL</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=3" />">최근 생성일순</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=4" />">오래된 생성일</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=5" />">접근 URL</a></li>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value="/historyList?sortOption=6" />">액션코드</a></li>
 					    </ul>
 					</div>	
 					<!-- /#dropdown memberListdropDown -->		
@@ -150,8 +150,8 @@ $(document).ready( function() {
 									<td>${history.email}</td>
 									<td>${history.createdDate}</td>
 									<td>${history.url}</td>
-									<td><a href="<c:url value="#" />">${history.actionCode}</a></td>
-									<td><a href="<c:url value="#" />">${place.description}</a></td>
+									<td>${history.actionCode}</td>
+									<td style="color:#0080ff; font:bold;">${history.historyDescription}</td>
 									<td>${history.etc}</td>
 								</tr>
 							</c:forEach>
@@ -166,14 +166,14 @@ $(document).ready( function() {
 										${ hisotryies.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
-										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
+										<c:set var="selectedList" value="${sessionScope._HISOTRY_SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>IP</option>
-										  	<option value="memberEmail" ${selectedList eq "email" ? "selected" : "" }>EMAIL</option>
-										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>접근 URL</option>
-										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>액션코드</option>
-										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>내용</option>
-										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>ETC</option>
+											<option value="ip" ${selectedList eq "ip" ? "selected" : "" }>IP</option>
+										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>EMAIL</option>
+										  	<option value="url" ${selectedList eq "url" ? "selected" : "" }>접근 URL</option>
+										  	<option value="actionCode" ${selectedList eq "actionCode" ? "selected" : "" }>액션코드</option>
+										  	<option value="historyDescription" ${selectedList eq "historyDescription" ? "selected" : "" }>내용</option>
+										  	<option value="etc" ${selectedList eq "etc" ? "selected" : "" }>ETC</option>
 										</select>
 										
 										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
@@ -199,7 +199,13 @@ $(document).ready( function() {
 
 	</div>
 	<!-- /#wrapper -->
+	<br/>
+	<br/>
+	<br/>
 </body>
 
 <!-- Footer -->
+<br/>
+<br/>
+<br/>
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
