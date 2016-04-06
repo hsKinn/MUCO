@@ -51,7 +51,7 @@ public class AddMyPackByOnePlaceServlet extends HttpServlet {
 		PackVO pack = new PackVO();
 		
 		pack.setPackId( Integer.parseInt(request.getParameter("packList")) );
-		
+		// 패키지 선택하지 않은 경우
 		if ( pack.getPackId() == 0 ) {
 			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
 		}

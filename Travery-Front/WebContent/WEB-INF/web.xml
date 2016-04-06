@@ -545,4 +545,14 @@
     <servlet-name>AddPlacePhotoServlet</servlet-name>
     <url-pattern>/addPlacePhoto</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMyPackBySharePackServlet</display-name>
+    <servlet-name>AddMyPackBySharePackServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.AddMyPackBySharePackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMyPackBySharePackServlet</servlet-name>
+    <url-pattern>/addMyPackBySharePack</url-pattern>
+  </servlet-mapping>
 </web-app>

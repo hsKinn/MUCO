@@ -1,6 +1,8 @@
 package com.ktds.muco.table.pack.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +17,11 @@ import com.ktds.muco.table.history.vo.BuildDescription;
 import com.ktds.muco.table.history.vo.Description;
 import com.ktds.muco.table.history.vo.HistoryVO;
 import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.pack.biz.PackBiz;
 import com.ktds.muco.table.pack.biz.SharePackBiz;
 import com.ktds.muco.table.pack.vo.PackListVO;
 import com.ktds.muco.table.pack.vo.PackSearchVO;
+import com.ktds.muco.table.pack.vo.PackVO;
 
 /**
  * 
@@ -31,6 +35,7 @@ public class SharePackServlet extends HttpServlet {
 	
 	private SharePackBiz sharePackBiz;
 	private HistoryBiz historyBiz;
+	private PackBiz packBiz;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,6 +45,7 @@ public class SharePackServlet extends HttpServlet {
         
         sharePackBiz = new SharePackBiz();
         historyBiz = new HistoryBiz();
+        packBiz = new PackBiz();
     }
 
 	/**
@@ -67,6 +73,16 @@ public class SharePackServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		// 유저가 가진 패키지들 뿌려주기
+		List<PackVO> loginUserPackList = new ArrayList<PackVO>(); 
+		if(member != null){
+			
+			loginUserPackList = packBiz.getPackListByEmail(member.getEmail());
+			if(loginUserPackList != null){
+				request.setAttribute("loginUserPackList", loginUserPackList);
+			}
+		}
 		
 		try {
 			pageNo = Integer.parseInt(request.getParameter("pageNo"));

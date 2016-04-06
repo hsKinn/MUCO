@@ -1,6 +1,21 @@
 @CHARSET "UTF-8";
 
 /* 김현섭 */
+
+div.addMyPackBySharePackDiv {
+	width: 100%;
+	height: 22px;
+	float: left;
+}
+
+span.myPacksList {
+	float: right;
+}
+
+span.myPacksList select {
+	color: #a4a4a4;
+}
+
 div#share-wrapper {
 	float: left;
 	width: 100%;

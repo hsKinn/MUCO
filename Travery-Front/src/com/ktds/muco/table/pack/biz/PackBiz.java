@@ -222,5 +222,35 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 		return packDAO.getAddMyPackByPlace( pack.getPlaceId(), pack.getPackId() ) > 0;
 		
 	} // addMyPackByOnePlace END
+
+	
+	/**
+	 *
+	 * Get SharePack PlaceList Insert My Pack
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param seletedPack
+	 * @param myPack
+	 * @return
+	 */
+	public boolean getSharePackPlaceList(PackVO seletedPack, PackVO myPack) {
+		
+		int check = 0;
+		
+		// 선택한 패키지에 등록된 여행지 List 받아옴
+		seletedPack.setPlaceList( packDAO.getPlaceListByPackId(seletedPack.getPackId()) );
+		
+		for ( PlaceVO place : seletedPack.getPlaceList() ) {
+			check += packDAO.getAddMyPackByPlace(place.getPlaceId(), myPack.getPackId());
+		}
+		
+		if ( check > 0 ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	} // getSharePackPlaceList  END
 	
 }

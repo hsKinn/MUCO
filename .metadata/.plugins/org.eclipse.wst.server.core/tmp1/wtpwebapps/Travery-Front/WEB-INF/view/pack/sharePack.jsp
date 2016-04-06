@@ -42,8 +42,6 @@
 				$("#searchBtn").click();
 			}
 		});
-		
-
 	});
 </script>
 
@@ -129,7 +127,6 @@
 					      <!-- Modal content-->
 					    	<div class="modal-content">
 					        	<div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
 						          <h4 class="modal-title">
 						          		${ pack.packTitle } 
 						          		<span class="badge">view: ${ pack.viewCount }</span>
@@ -137,6 +134,28 @@
 						        </div>
 						        <!-- Modal Body -->
 						        <div class="modal-body">
+					          		<div class="addMyPackBySharePackDiv">
+										<form class="${ pack.packId }addMyPackBySharePackForm">
+										<span class="myPacksList">
+											Add My Package : 
+												<select name="packList" id="packList">
+													<c:if test="${ not empty loginUserPackList }">
+														<option value="0">Your Packages</option>
+															<c:forEach items="${ loginUserPackList }" var="myPack">
+																<option value="${ myPack.packId }">${ myPack.packTitle }</option>
+															</c:forEach>
+															<input type="hidden" id="packId" name="packId" value="${pack.packId}" />
+													</c:if>
+													<c:if test="${ empty loginUserPackList }">
+														<option value="none">Not Exist Packages</option>
+													</c:if>
+												</select>
+											<span class="${ pack.packId }addMyPackBySharePack">
+								   				<span class="glyphicon glyphicon-plus" style="cursor:pointer;"></span>
+								   			</span>
+							   			 </span>
+									 	</form>
+									</div>							        
 									  <table class="table table-hover table-bordered table-condensed">
 									    <thead>
 									      <tr>
@@ -156,7 +175,6 @@
 									        <th>${ places.address }</th>
 									        <td>${ places.likeCount }</td>
 									      </tr>
-									      </script>
 									    </c:forEach>
 									  </table>
 						        </div>
@@ -229,6 +247,16 @@
 					 </div>
 					 
 					 <script>
+					 
+						$(".${ pack.packId }addMyPackBySharePack").click( function() {
+							
+							var form = $(".${ pack.packId }addMyPackBySharePackForm");
+							
+							form.attr("method", "POST");
+							form.attr("action", "<c:url value="/addMyPackBySharePack"/>");
+							form.submit();
+						});
+					 
 			    		// Reply
 						$("#${pack.packId}writeReplyBtn").click( function() {
 							
