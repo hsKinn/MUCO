@@ -46,6 +46,21 @@
 			form.attr("action", "<c:url value="/doReport"/>");
 			form.submit();
 		});
+		
+		$("#addMyPackOnePlace").click( function() {
+			
+			if ( $("#selectBox option:selected").text() == "none" ) {
+				alert("Select Package");
+				return;
+			}
+			
+			var form = $("#addMyPackForm");
+			
+			form.attr("method", "POST");
+			form.attr("action", "<c:url value="/addMyPackByOnePlace"/>");
+			form.submit();
+			
+		});
 	
 		$("#writePlaceReplyBtn").click( function() {
 			
@@ -130,6 +145,29 @@
 			<hr class="primary">
 			<p>Place의 상세 정보를 확인하세요</p>
 		</div>
+		
+		<div id="addMyPack">
+			<form id="addMyPackForm">
+			<span id="myPackList">
+				Add My Package : 
+					<select name="packList" id="packList">
+						<c:if test="${ not empty loginUserPackList }">
+							<option value="none">Your Packages</option>
+								<c:forEach items="${ loginUserPackList }" var="myPack">
+									<option value="${ myPack.packId }">${ myPack.packTitle }</option>
+								</c:forEach>
+								<input type="hidden" id="placeId" name="placeId" value="${place.placeId}" />
+						</c:if>
+						<c:if test="${ empty loginUserPackList }">
+							<option value="none">Not Exist Packages</option>
+						</c:if>
+					</select>
+				<span id="addMyPackOnePlace">
+	   				<span class="glyphicon glyphicon-plus" style="cursor:pointer;"></span>
+	   			</span>
+   			 </span>
+		 	</form>
+		</div>		
 		
 		<div id="detail-Wrapper">
 			
@@ -370,8 +408,8 @@
 		    	<div class="modal-content">
 		        	<div class="modal-header">
 			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <h4 class="modal-title">
 			          	<span id="report-Title">Report Place</span><br>
+			          <h4 class="modal-title">
 		          		
 		          		<span class="glyphicon glyphicon-exclamation-sign"></span> 
 			          	<span id="report-Content">

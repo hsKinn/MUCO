@@ -172,4 +172,20 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 
 		return false;
 	}
+
+	
+	/**
+	 * Add My Pack BY One Place
+	 * 
+	 * @author 김현섭
+	 * 
+	 * @param pack
+	 * @return
+	 */
+	public boolean addMyPackByOnePlace(PackVO pack) {
+		
+		return packDAO.getAddMyPackByPlace( pack.getPlaceId(), pack.getPackId() ) > 0;
+		
+	} // addMyPackByOnePlace END
+	
 }

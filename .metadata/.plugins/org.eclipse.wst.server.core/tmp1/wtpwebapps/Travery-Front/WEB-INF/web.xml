@@ -505,4 +505,14 @@
     <servlet-name>DoReportServlet</servlet-name>
     <url-pattern>/doReport</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMyPackByOnePlaceServlet</display-name>
+    <servlet-name>AddMyPackByOnePlaceServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.pack.web.AddMyPackByOnePlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMyPackByOnePlaceServlet</servlet-name>
+    <url-pattern>/addMyPackByOnePlace</url-pattern>
+  </servlet-mapping>
 </web-app>

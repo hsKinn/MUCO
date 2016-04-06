@@ -314,8 +314,6 @@ public class PackDAO {
 
 			return stmt.executeUpdate();
 			
-
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
