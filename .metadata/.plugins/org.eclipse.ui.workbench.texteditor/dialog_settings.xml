@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="AVG_ARTIFICIAL_NATURAL_SCORE" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="AVG_ARTIFICIAL_NATURAL_SCORE"/>
-			<item value="avg"/>
-			<item value="mapBtn"/>
-			<item value="여행지"/>
-			<item value="getUserRecommendPlaceList"/>
-			<item value="&lt;getUser"/>
-			<item value="recommendList"/>
-			<item value="recommend"/>
+			<item value="myLists"/>
+			<item value="myList"/>
+			<item value="addMyPackBySharePack"/>
+			<item value="addMyPackBySharePackForm"/>
+			<item value="getAddMyPackByPlace"/>
+			<item value="addMyPackOnePlace"/>
+			<item value="modal-title"/>
+			<item value="add"/>
 		</list>
 		<list key="replacehistory">
 			<item value="I.IMAGE_NAME"/>
