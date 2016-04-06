@@ -191,8 +191,8 @@
       <div class="col-lg-8 col-lg-offset-2 text-center">
          <h2 class="margin-top-0 wow fadeIn">Personal Info</h2>
          <hr class="primary">
-         <p>회원 정보를 수정할 수 있습니다.</p>
-       	 <div id="reserveConfirmBtn" data-toggle="modal" data-target="#reserveConfirmModal" >예약정보확인</div>  
+         <p>Modify your personal information</p>
+       	 <div id="reserveConfirmBtn" data-toggle="modal" data-target="#reserveConfirmModal" >Reservation</div>  
       </div>
 		
 		<!-- Modal -->
@@ -210,8 +210,8 @@
 							<!-- 출발,여행지 입력 -->
 							<table id="reserveTable" >
 								<tr>
-									<td class="firstTr">출발지 :</td>
-									<td class="firstTr">여행지 :</td>
+									<td class="firstTr">Departure point</td>
+									<td class="firstTr">Destination</td>
 								</tr>
 								<tr>
 									<td class="secondTr">${reserveInfo.departureName }</td>
@@ -219,14 +219,14 @@
 								</tr>
 								<tr></tr>
 								<tr>
-									<td class="firstTr">교통 :</td>
-									<td class="firstTr">등급 :</td>
-									<td class="firstTr">출국일 :</td>
-									<td class="firstTr">귀국일 :</td>
-									<td class="firstTr">인원 :</td>
+									<td class="firstTr">Transport</td>
+									<td class="firstTr">Class</td>
+									<td class="firstTr">Departure date</td>
+									<td class="firstTr">Return date</td>
+									<td class="firstTr">The number of persons</td>
 								</tr>
 								<tr>
-									<td class="secondTr">비행기</td>
+									<td class="secondTr">Air</td>
 									<td class="secondTr">${transportInfo.transportClass }</td>
 									<td class="secondTr">${reserveInfo.departDate }</td>
 									<td class="secondTr">${reserveInfo.arriveDate }</td>
@@ -234,11 +234,11 @@
 								</tr>
 								<tr></tr>
 								<tr>
-									<td class="firstTr">숙소 :</td>
-									<td class="firstTr">등급 :</td>
-									<td class="firstTr">체크인 :</td>
-									<td class="firstTr">체크아웃 :</td>
-									<td class="firstTr">인원 :</td>
+									<td class="firstTr">Lodgings</td>
+									<td class="firstTr">Class</td>
+									<td class="firstTr">Check in</td>
+									<td class="firstTr">Check out</td>
+									<td class="firstTr">The number of persons</td>
 								</tr>
 								<tr>
 									<td class="secondTr">${stayInfo.stayType }</td>
@@ -249,10 +249,10 @@
 								</tr>
 								<tr></tr>
 								<tr>
-									<td class="firstTr">렌트카 :</td>
-									<td class="firstTr">대여일 :</td>
-									<td class="firstTr">반납일 :</td>
-									<td class="firstTr">인원 :</td>
+									<td class="firstTr">Rental car</td>
+									<td class="firstTr">Rental date</td>
+									<td class="firstTr">Return date</td>
+									<td class="firstTr">The number of persons</td>
 								</tr>
 								<tr>
 									<td class="secondTr">${rentInfo.rentType }</td>
@@ -278,7 +278,7 @@
             <!-- 사진 -->
             <tr id="photo">
                <td class="personalInfo1">
-                  <a href="#" data-toggle="tooltip" title="자신의 사진을 등록해주세요!">
+                  <a href="#" data-toggle="tooltip" title="Upload your image!">
                   <span class="glyphicon glyphicon-question-sign"></span>
                   </a>
                </td>
@@ -292,7 +292,7 @@
                         <input type="file" id="file" name="file" onchange="readURL(this);" style="display: none;" accept="image/*" required />
                      </label>
                      <br />
-                     <b>사진을 등록해주세요</b>
+                     <b>Please upload your image</b>
                   </c:if> 
                   
                   <c:if test="${ not empty mainImageLocation }">
@@ -334,7 +334,7 @@
                <td class="personalInfo3" style="text-align: center;">
                   <input type="text" class="form-control" placeholder="Username" name="name" value="${name}" id="nameInput">
                   <div id="nameAlertMsg" class="alert alert-danger" role="alert">
-                     <b>Oh snap!</b>사용할 수 없는 이름입니다.
+                     <b>Oh snap!</b>Please enter other name :)
                   </div>
                   <br />
                   <button type="button" class="btn btn-default btn-sm" id="cancelName">Cancel</button>
@@ -373,10 +373,10 @@
                   <br />
                   
                   <div id="currentPasswordAlertMsg" class="alert alert-danger" role="alert">
-                     <b style="color: red;">Oh snap! </b>기존 비밀번호를 다시 입력하세요
+                     <b style="color: red;">Oh snap! </b>Please re-enter current password
                   </div>
                   <div id="newPasswordAlertMsg" class="alert alert-danger" role="alert">
-                     <b style="color: red;">Oh snap!</b>새 비밀번호가 일치하지 않습니다
+                     <b style="color: red;">Oh snap!</b>Please re-enter new password
                   </div> 
                   <br />
                   <button type="button" class="btn btn-default btn-sm" id="cancelPassword">Cancel</button>
@@ -387,7 +387,7 @@
             <!-- 연락처 -->
             <tr id="phoneNumber">
                <td class="personalInfo1">
-                  <a href="#" data-toggle="tooltip" title="여행 예약을 하고 싶다면 필수!"> 
+                  <a href="#" data-toggle="tooltip" title="Need to reservation info"> 
                   <span class="glyphicon glyphicon-question-sign"></span>
                   </a>
                </td>
@@ -396,7 +396,7 @@
                
                <td class="editphoneNumberBtn personalInfo3" style="cursor: auto;">
                   <c:if test="${ empty phoneNumber }">
-                     입력된 전화번호가 없습니다.
+                     Enter your phone number
                   </c:if> 
                   <c:if test="${ not empty phoneNumber }">
                      ${ phoneNumber }
@@ -422,6 +422,13 @@
                <td class="personalInfo4"></td>
             </tr>
    
+   			<!-- 마일리지 -->
+            <tr id="email">
+               <td class="personalInfo1"></td>
+               <th class="personalInfo2">Mileage</th>
+               <td class="personalInfo3" colspan="2">${ mileage }</td>
+            </tr>
+   
             <tr>
                <td colspan="4" style="text-align: center;"><br /> 
                <label>
@@ -432,8 +439,6 @@
                </td>
             </tr>
          </table>
-
-
       </form>
    </div>
 </section>

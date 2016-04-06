@@ -496,7 +496,6 @@
             form.attr("method", "post");
             form.attr("action", "/addMyPackByPlace?packId=" + packId);
             form.submit();
-            alert("추가되었습니다.");
             return;
          }
       });
@@ -536,7 +535,7 @@
       <div class="col-lg-8 col-lg-offset-2 text-center">
          <h2 class="margin-top-0 wow fadeIn">HIT THE ROAD</h2>
          <hr class="primary">
-         <p>자신이 설정한 기준에 맞는 여행지를 검색하는 기능</p>
+         <p>Search places in selected countries by moods</p>
       </div>
 
       <!-- 내용 -->

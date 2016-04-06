@@ -92,6 +92,7 @@ public class MemberDAO {
 				validMemberVO.setMainImageLocation(rs.getString("MAIN_IMAGE_LOCATION"));
 				validMemberVO.setJoinDate(rs.getString("JOIN_DT"));
 				validMemberVO.setRecentAccessDate(rs.getString("RECENT_ACCESS_DT"));
+				validMemberVO.setMileage(rs.getInt("MILEAGE"));
 
 			}
 
@@ -297,6 +298,39 @@ public class MemberDAO {
 
 	}
 
+	/**
+	 * 마일리지 주기
+	 * 
+	 * @param email
+	 * @param point
+	 * @return
+	 */
+	public int updateMileage(String email, int point) {
+		
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/updateMileage/text()");
+
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, point);
+			stmt.setString(2, email);
+
+			return stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+		
+	}
+	
 	/**
 	 * Load Oracle Driver
 	 * 

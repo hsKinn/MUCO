@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
 		<item value="addPlacePhoto" key="selection"/>
+=======
+		<item value="id=&quot;place-LikeCount&quot;" key="selection"/>
+>>>>>>> origin/KGM18
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="addPlacePhoto"/>
 			<item value="addPhotoForm"/>
 			<item value="addPhotoUpload"/>
@@ -16,6 +21,16 @@
 			<item value="input file"/>
 			<item value="&lt;image"/>
 			<item value="style1"/>
+=======
+			<item value="id=&quot;place-likeCount&quot;"/>
+			<item value="like ♥"/>
+			<item value="like"/>
+			<item value="write reply"/>
+			<item value="♥"/>
+			<item value="추가"/>
+			<item value="view"/>
+			<item value="alert"/>
+>>>>>>> origin/KGM18
 		</list>
 		<list key="replacehistory">
 			<item value="placeInfo"/>

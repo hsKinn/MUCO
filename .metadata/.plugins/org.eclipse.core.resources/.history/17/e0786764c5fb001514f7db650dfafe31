@@ -1,0 +1,118 @@
+package com.ktds.muco.table.place.web;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ktds.muco.table.history.biz.HistoryBiz;
+import com.ktds.muco.table.history.vo.ActionCode;
+import com.ktds.muco.table.history.vo.BuildDescription;
+import com.ktds.muco.table.history.vo.Description;
+import com.ktds.muco.table.history.vo.HistoryVO;
+import com.ktds.muco.table.image.biz.ImageBiz;
+import com.ktds.muco.table.member.biz.MemberBiz;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.biz.PlaceBiz;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.util.file.MultipartFile;
+import com.ktds.muco.util.file.MultipartHttpServletRequest;
+
+/**
+ * 
+ * Servlet implementation class PlaceInfoCreateServlet
+ * 
+ * @author 김동규
+ * 
+ */
+public class PlaceInfoCreateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private PlaceBiz placeBiz;
+	private ImageBiz imageBiz;
+	private HistoryBiz historyBiz;
+	private MemberBiz memberBiz;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PlaceInfoCreateServlet() {
+		super();
+		placeBiz = new PlaceBiz();
+		imageBiz = new ImageBiz();
+		historyBiz = new HistoryBiz();
+		memberBiz = new MemberBiz();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		this.doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
+
+		MultipartHttpServletRequest multipartRequest = new MultipartHttpServletRequest(request);
+
+		PlaceVO placeVO = new PlaceVO();
+		placeVO.setPlaceName(multipartRequest.getParameter("placeName"));
+		placeVO.setAddress(multipartRequest.getParameter("address"));
+		placeVO.setLatitude(Double.parseDouble(multipartRequest.getParameter("lat")));
+		placeVO.setLongitude(Double.parseDouble(multipartRequest.getParameter("lng")));
+		placeVO.setCountryId(Integer.parseInt(multipartRequest.getParameter("countryId")));
+		placeVO.setPlaceDescription(multipartRequest.getParameter("description"));
+		placeVO.setWriter(member);
+
+		MultipartFile image = multipartRequest.getFile("image");
+
+		// 다시 갱신
+		placeVO = placeBiz.placeInfoCreate(placeVO);
+		// 세션생성
+		session.setAttribute("_PLACE_", placeVO);
+		
+		if( placeVO != null ) {
+			
+			// 10점
+			memberBiz.insertMileage(member.getEmail(), 10);
+			
+			System.out.println("마일리지 입력 완료.");
+		}
+		else {
+			
+			System.out.println("마일리지 입력 안됨.");
+		}
+
+		// History
+		HistoryVO history = new HistoryVO();
+		history.setIp(request.getRemoteHost());
+		history.setEmail(member.getEmail());
+		history.setUrl(request.getRequestURI());
+		history.setActionCode(ActionCode.ADD_NEW_PLACE);
+		history.setHistoryDescription(BuildDescription.get(Description.ADD_NEW_PLACE, member.getEmail(), placeVO.getPlaceId() + ""));
+		historyBiz.addHistory(history);
+		
+		if (image.getFileSize() > 0) {
+			imageBiz.insertImageToss(multipartRequest, placeVO);
+		}
+		try {
+			response.sendRedirect("/placeInfoControl");
+		} catch (RuntimeException re) {
+			System.out.println(re.getMessage());
+			response.sendRedirect("/placeInfoControl?placeId=" + placeVO.getPlaceId());
+		}
+		return;
+	}
+}
