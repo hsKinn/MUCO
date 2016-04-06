@@ -13,6 +13,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
 <!-- My Package -->
 <script type="text/javascript">
 	$(document).ready(
@@ -116,10 +119,10 @@
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
-				<table id="packListTable" >
+				<table id="packListTable">
 					<c:forEach items="${packs}" var="packs">
 						<tr>
-							<td class="pack">
+							<td class="pack" style="width:100px;">
 								<span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
 								<p id="title">${packs.packTitle}</p>
 								<input type="hidden" id="packId" value="${packs.packId}" />

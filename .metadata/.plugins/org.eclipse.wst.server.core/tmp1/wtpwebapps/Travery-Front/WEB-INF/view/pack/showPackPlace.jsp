@@ -8,8 +8,13 @@
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
 
 <!-- Boot Script -->
-<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
 
 <!-- My Package -->
 <script type="text/javascript">
@@ -48,13 +53,14 @@
 
 		});
 
-		$("#wantModifyBtn").click(function(){
-			location.href="/detailPack";
+		$("#wantModifyBtn").click(function() {
+			location.href = "/detailPack";
 		});
-		
+
 	});
 </script>
-<section class="bg-primary" >
+
+<section class="bg-primary">
 	<div class="container">
 		<!-- 제목 -->
 		<div class="col-lg-8 col-lg-offset-2 text-center">
@@ -66,62 +72,64 @@
 		<!-- 내용 -->
 		<div id="mypackWrapperdiv">
 			<div id="mypackListdiv">
-				<table id="packListTable" >
+				<table id="packListTable">
 					<c:forEach items="${packs}" var="packs">
 						<tr>
-							<td class="pack"><span class="glyphicon glyphicon-folder-close" id="folderImg"></span>
-								<p id="title">${packs.packTitle}</p>
-								<input type="hidden" id="packId" value="${packs.packId}" /></td>
+							<td class="pack"><span
+								class="glyphicon glyphicon-folder-close" id="folderImg"></span>
+								<p id="title">${packs.packTitle}</p> <input type="hidden"
+								id="packId" value="${packs.packId}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div id="buttondiv">
-				 <button type="button" class="btn btn-primary btn-sm" id="wantModifyBtn" style="width:100px;font-size: 15px;">
-				 <span class="glyphicon glyphicon-wrench" style="font-size: 15px;"></span>modify</button>
+				<button type="button" class="btn btn-primary btn-sm"
+					id="wantModifyBtn" style="width: 150px; font-size: 15px;">
+					<span class="glyphicon glyphicon-wrench" style="font-size: 15px;"></span>modify
+				</button>
 			</div>
 		</div>
 
+
+
 		<div id="packListdiv2">
 			<div id="placesOfPackListdiv">
-					<c:forEach items="${places}" var="places">
-							
-								<div class="placeInfodiv">
-								<div id="placeRemovediv">
-								
-								</div>
-									<div id="placeImgdiv">
-									
-										<form class="deletePlaceOfPackForm" style="position:absolute; text-align:right; z-index:5;">
-										<label class="submitLabel" style="z-index: 5;"> <span
-										class="glyphicon glyphicon-remove"
-										style="font-size: 20px; cursor: pointer;display: inline;"></span> <input
-										type="hidden" class="placeId" name="placeId"
-										value="${places.placeId}" /> <input type="hidden"
-										class="packId" name="packId" value="${packId}" /> <input
-										type="submit" style="display: none" />
-										</label>
-										</form>
-										
-										<img src="/image?imageName=${places.placeImageList[0].imageName}" class="placeImg"/>
-								
-								</div>
-									<div id="placeNamediv">
-											<p id="placetitle" style="display: inline; cursor: pointer; color:black;">
-												<a href="#" onclick="window.open('/detailPlace?placeId=${places.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
-													${ places.placeName }
-												</a>
-											</p>
-									</div>
-								<input type="hidden" class="placeId"
-								name="placeId" value="${places.placeId}" />
-								
-								</div>
-					</c:forEach>
-			
+				<div id="wrapper">
+					<!-- Header -->
+					<div>
+						<a href="index.html" class="logo"></a>
+					</div>
+
+
+					<!-- Main -->
+					<div class="inner">
+						<section class="tiles"
+							style="vertical-align: top; padding-top: 0px;">
+							<c:forEach items="${places}" var="places">
+
+								<article class="${places.countryName}">
+									<span class="image" style="height: 150px;"> <img
+										src="/image?imageName=${places.placeImageList[0].imageName}"
+										alt="" />
+									</span> <a href="#"
+										onclick="window.open('/detailPlace?placeId=${places.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
+										<p>${ places.placeName }</p>
+										<div class="content">
+											<p>${ places.countryName}</p>
+										</div>
+									</a>
+								</article>
+							</c:forEach>
+						</section>
+					</div>
+				</div>
 			</div>
 		</div>
+
 	</div>
+
+
 </section>
 
 <!-- Footer -->

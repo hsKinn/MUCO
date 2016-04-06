@@ -803,7 +803,7 @@
 							<li><a class="axisX">Bright-Dark</a></li>
 							<li><a class="axisX">HighPrice-LowPrice</a></li>
 							<li><a class="axisX">Active-Calm</a></li>
-							<li><a class="axisX">Artifitial-Natural</a></li>
+							<li><a class="axisX">Artificial-Natural</a></li>
 						</ul>
 					</div>
 					<br />
@@ -816,7 +816,7 @@
 							<li><a class="axisY">Bright-Dark</a></li>
 							<li><a class="axisY">HighPrice-LowPrice</a></li>
 							<li><a class="axisY">Active-Calm</a></li>
-							<li><a class="axisY">Artifitial-Natural</a></li>
+							<li><a class="axisY">Artificial-Natural</a></li>
 						</ul>
 					</div>
 				</div>
