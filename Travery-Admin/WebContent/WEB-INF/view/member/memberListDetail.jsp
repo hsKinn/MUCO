@@ -62,17 +62,6 @@
 							<td>${member.joinDate}</td>
 							<td>${member.recentAccessDate}</td>
 						</tr>
-				
-						<tr>
-							<th colspan="7">회원 프로필 이미지</th>
-						</tr>
-				
-						<tr>
-							<td colspan="7">
-								회원 프로필 이미지 넣기! here! 
-							</td>
-						</tr>
-
 						<tr>
 							<th colspan="7">회원 활동</th>
 						</tr>

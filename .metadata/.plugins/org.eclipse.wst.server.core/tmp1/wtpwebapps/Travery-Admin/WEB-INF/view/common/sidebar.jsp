@@ -47,7 +47,6 @@ $(document).ready(function() {
 						<li><a href="<c:url value="/originPlaceList?sortOption=9" />">Origin Place</a></li>
 						<li><a href="<c:url value="/newPlaceList?sortOption=9" />">New Place</a>
 						</li>
-						<li><a href="#">New Place Front Page</a></li>
 						<li><a href="<c:url value="/reportedPlaceList" />">Reported Place</a></li>
 					</ul>
 				</li>
@@ -58,7 +57,6 @@ $(document).ready(function() {
 						<li class="dropdown-header">회원관리 메뉴</li>
 						<li><a href="<c:url value="/memberList" />">멤버</a></li>
 						<li><a href="<c:url value="/reportedMemberList" />">신고된 멤버</a></li>
-						<li><a href="<c:url value="/blockedMemberList" />">차단된 멤버</a></li>
 					</ul>
 				</li>
 				<li><a href="<c:url value="/reserveList" />">예약</a></li>

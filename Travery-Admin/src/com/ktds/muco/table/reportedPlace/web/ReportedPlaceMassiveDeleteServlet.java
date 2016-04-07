@@ -36,8 +36,11 @@ public class ReportedPlaceMassiveDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] deletereportedIds = request.getParameterValues("deletePlaceId");
+		
+		String[] deletereportedIds = request.getParameterValues("deleteReportedPlaceId");
+		
 		reportedPlaceBiz.deleteReports(deletereportedIds);
+		
 		response.sendRedirect(Root.get(this) + "/reportedPlaceList");
 	}
 

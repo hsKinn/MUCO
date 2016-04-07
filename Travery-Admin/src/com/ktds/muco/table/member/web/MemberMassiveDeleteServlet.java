@@ -36,7 +36,9 @@ public class MemberMassiveDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		String[] deleteMemberEmails = request.getParameterValues("deleteMemberId");
+		
 		memberBiz.deleteMembers(deleteMemberEmails);
 		
 		response.sendRedirect(Root.get(this) + "/memberList");

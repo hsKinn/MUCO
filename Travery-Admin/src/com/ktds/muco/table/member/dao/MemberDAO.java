@@ -264,20 +264,38 @@ public class MemberDAO {
 	 * @author 이기연 memberCount 받아오기
 	 * @return
 	 */
-	public int getAllMemberCount() {
+	public int getAllMemberCount( MemberSearchVO memberSearchVO, int sortOption) {
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
+		String query = "";
 
 		try {
-
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
 
-			String query = XML.getNodeString("//query/member/getAllMemberCount/text()");
-			stmt = conn.prepareStatement(query);
-
+			if (memberSearchVO.getSearchList().equals("name")) { 
+				query = XML.getNodeString("//query/member/getAllMemberCountSearchedByName/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, memberSearchVO.getSearchKeyword());
+			}
+			else if (memberSearchVO.getSearchList().equals("email")) {
+				query = XML.getNodeString("//query/member/getAllMemberCountSearchedByEmail/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, memberSearchVO.getSearchKeyword());
+			} 
+			else if (memberSearchVO.getSearchList().equals("countryId")) {
+				query = XML.getNodeString("//query/member/getAllMemberCountSearchedByCountryId/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, memberSearchVO.getSearchKeyword());
+			}
+			else {
+				query = XML.getNodeString("//query/member/getAllMemberCount/text()");
+				stmt = conn.prepareStatement(query);
+			}
+			
 			rs = stmt.executeQuery();
 
 			int placeCount = 0;
@@ -815,7 +833,6 @@ public class MemberDAO {
 	 * @param placeId
 	 */
 	public void deleteMembers(String memberEmail) {
-		int insertCount = 0;
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -827,17 +844,10 @@ public class MemberDAO {
 
 			String query = XML.getNodeString("//query/member/deleteMembersByEmail/text()");
 			stmt = conn.prepareStatement(query);
-			System.out.println(query);
 
 			stmt.setString(1, memberEmail);
-
-			insertCount = stmt.executeUpdate();
-
-			if (insertCount > 0) {
-				stmt.close();
-				System.out.println("memberEmail 삭제 성공");
-			}
-
+			stmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {

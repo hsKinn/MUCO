@@ -66,6 +66,8 @@ public class MemberListServlet extends HttpServlet {
 
 			// 검색 종류 및 키워드 가져오기
 			memberSearchVO.setSearchList(request.getParameter("searchMemberList"));
+			System.out.println(memberSearchVO.getSearchKeyword());
+			
 			memberSearchVO.setSearchKeyword(request.getParameter("searchMemberKeyword"));
 			
 			// 정상적일 때만 pageNO을 설정하도록 한다.

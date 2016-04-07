@@ -905,10 +905,27 @@
      				, MAIN_IMAGE_LOCATION = ?
      		WHERE	EMAIL = ?
      	</addMainImage>
+     	
      	<getAllMemberCount>
 			SELECT	COUNT(EMAIL)
 			FROM	MEMBER     	
      	</getAllMemberCount>
+		<getAllMemberCountSearchedByName>
+			SELECT	COUNT(EMAIL)
+			FROM	MEMBER
+			WHERE	NAME LIKE '%' || ? || '%'			
+		</getAllMemberCountSearchedByName>
+		<getAllMemberCountSearchedByEmail>
+			SELECT	COUNT(EMAIL)
+			FROM	MEMBER
+			WHERE	EMAIL LIKE '%' || ? || '%'		
+		</getAllMemberCountSearchedByEmail>
+		<getAllMemberCountSearchedByCountryId>
+			SELECT	COUNT(EMAIL)
+			FROM	MEMBER
+			WHERE	COUNTRY_ID = ?		
+		</getAllMemberCountSearchedByCountryId>    
+		 	
      	<getAllMembers>
 			SELECT	* 
 			FROM	(
@@ -1291,8 +1308,12 @@
 			WHERE	RNUM >= ?      	
      	</getBlockedMembers>
      	<getReportedMemberCount>
-     		SELECT	COUNT(DISTINCT(EMAIL))
-     		FROM	REPORTED_PLACE
+     		SELECT  COUNT(DISTINCT(EMAIL))
+            FROM    PLACE P
+            WHERE   PLACE_ID IN (
+                                    SELECT	PLACE_ID
+                                    FROM	REPORTED_PLACE
+                                )
      	</getReportedMemberCount>
      	<getReportedMembers>
 			SELECT	* 
@@ -1300,7 +1321,7 @@
 						SELECT	ROWNUM AS RNUM
 								, A.*
 						FROM	(
-									SELECT  MEMBER.*
+									SELECT  DISTINCT MEMBER.*
 									FROM	MEMBER
 											, REPORTED_PLACE
 											, PLACE
@@ -2920,7 +2941,7 @@
 		<deleteReportedId>
 			DELETE
 			FROM	REPORTED_PLACE
-			WHERE	REPORT_ID = ?
+			WHERE	PLACE_ID = ?
 		</deleteReportedId>
 	</reportedPlace>
 	

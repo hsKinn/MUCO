@@ -328,11 +328,6 @@ public class ReportedPlaceDAO {
 
 			insertCount = stmt.executeUpdate();
 
-			if (insertCount > 0) {
-				stmt.close();
-				System.out.println("reportedId 삭제 성공");
-			}
-
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {

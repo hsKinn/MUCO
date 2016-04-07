@@ -123,27 +123,6 @@ $(document).ready( function() {
 						<tr>
 							<td id="articleDescript" colspan="7">${placeDetail.description}</td>
 						</tr>
-				
-						<tr>
-							<th colspan="7">여행지 이미지</th>
-						</tr>
-				
-						<tr>
-							<td colspan="7">
-								여행지 이미지 넣기! here! 
-							</td>
-						</tr>
-
-						<tr>
-							<th colspan="7">여행지 평균 Mood</th>
-						</tr>
-						
-						<c:forEach items="${evaluationList}" var="evaluation">
-						<tr>
-							<td colspan="7">여행지 Mood 1 ${evaluation.score} : ${evaluation.score} </td>
-						</tr>
-						</c:forEach>
-
 
 					</table>
 					<!-- /#detailTable -->

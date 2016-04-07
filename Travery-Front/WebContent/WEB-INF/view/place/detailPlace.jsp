@@ -386,12 +386,12 @@
 								<div class="range-slider">
 									<table border="1">
 										<tr>
-											<td colspan="2">Bright</td>
+											<td colspan="2">Dark</td>
 											<td>
 												<input class="range-slider__range" name="bright" type="range" min="1" max="100" value="50">
 												<span class="badge range-slider__value">0</span>
 											</td>
-											<td colspan="2">Dark</td>
+											<td colspan="2">Bright</td>
 										</tr>
 										<tr>
 											<td colspan="2">HightPrice</td>

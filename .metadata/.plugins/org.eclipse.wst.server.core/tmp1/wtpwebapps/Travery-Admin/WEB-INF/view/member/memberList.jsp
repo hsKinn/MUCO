@@ -177,10 +177,6 @@ $(document).ready( function() {
 						<button type="button" class="btn btn-default">Delete</button>
 					</span> 
 					
-					<span id="massiveBlockBtn" style="cursor: pointer">
-						<button type="button" class="btn btn-default">Block</button>
-					</span> 
-					
 					<span id="massiveAddAdminBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">+ Admin</button>
 					</span> 
@@ -227,7 +223,7 @@ $(document).ready( function() {
 										<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${member.email}" /></td>
 									<td>
 										<a href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
-									<td>${member.password}</a></td>
+									<td><input type="password" readonly="readonly" value="${member.password}" /></td>
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>
 									<td>${member.name}</td>
@@ -246,14 +242,16 @@ $(document).ready( function() {
 										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm2") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
+										<c:set var="memberSearch" value="${sessionScope._MEMBER_SEARCH_ }" />
 										<c:set var="selectedList" value="${sessionScope._MEMBER_SEARCH_.searchList }" />
 										<select name="searchMemberList" id="searchMemberList">
+											<option value="basic" ${selectedList eq "email" ? "selected" : "" }>검색 타입</option>
 											<option value="email" ${selectedList eq "email" ? "selected" : "" }>Email</option>
 											<option value="phoneNumber" ${selectedList eq "phoneNumber" ? "selected" : "" }>전화번호</option>
 											<option value="name" ${selectedList eq "name" ? "selected" : "" }>이름</option>
 										</select>
 										
-										<input type="text" id="searchMemberKeyword" name="searchMemberKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="text" id="searchMemberKeyword" name="searchMemberKeyword" value="${memberSearch.searchKeyword}"/>
 										<input type="button" id="searchMemberBtn" name="searchMemberBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 									</div>

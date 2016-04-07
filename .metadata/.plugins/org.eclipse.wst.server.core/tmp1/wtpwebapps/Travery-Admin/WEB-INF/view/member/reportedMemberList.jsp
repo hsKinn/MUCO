@@ -176,15 +176,6 @@ $(document).ready( function() {
 					<span id="massiveDeleteBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">Delete</button>
 					</span> 
-					
-					<span id="massiveBlockBtn" style="cursor: pointer">
-						<button type="button" class="btn btn-default">Block</button>
-					</span> 
-
-					<span id="massiveSubAdminBtn" style="cursor: pointer">
-						<button type="button" class="btn btn-default">- Admin</button>
-					</span> 
-				
 				
 					<div class="dropdown memberListdropDown" style="float: right;">
 					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
@@ -223,7 +214,7 @@ $(document).ready( function() {
 										<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${member.email}" /></td>
 									<td>
 										<a href="<c:url value="/memberDetail?email=${member.email}" />">${member.email}</a></td>
-									<td>${member.password}</a></td>
+									<td><input type="password" value="${member.password}" /></td>
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>
 									<td>${member.name}</td>
@@ -240,18 +231,6 @@ $(document).ready( function() {
 									<br/>
 									<div style="text-align: center;"> <!-- 페이징 -->
 										${ members.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm2") }
-									</div>
-									<div style="text-align: center;"> <!-- 검색어 -->
-										<c:set var="selectedList" value="${sessionScope._MEMBER_SEARCH_.searchList }" />
-										<select name="searchMemberList" id="searchMemberList">
-											<option value="email" ${selectedList eq "email" ? "selected" : "" }>Email</option>
-											<option value="phoneNumber" ${selectedList eq "phoneNumber" ? "selected" : "" }>전화번호</option>
-											<option value="name" ${selectedList eq "name" ? "selected" : "" }>이름</option>
-										</select>
-										
-										<input type="text" id="searchMemberKeyword" name="searchMemberKeyword" value="${searchVO.searchKeyword}"/>
-										<input type="button" id="searchMemberBtn" name="searchMemberBtn" value="검색"/>
-										<input type="button" id="initSearchBtn" value="검색초기화" />
 									</div>
 								</form>									
 								<br/>

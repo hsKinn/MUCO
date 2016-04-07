@@ -5,7 +5,7 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-04-07T06:28:09Z</updated>
+  <updated>2016-04-07T06:28:00Z</updated>
   <entry>
     <title>Spring Data Release Train Hopper Goes GA (and SR1)!</title>
     <link rel="alternate" href="https://spring.io/blog/2016/04/07/spring-data-release-train-hopper-goes-ga-and-sr1" />
@@ -14,7 +14,7 @@
       <name>Oliver Gierke</name>
     </author>
     <id>tag:spring.io,2016-04-06:2456</id>
-    <updated>2016-04-07T06:28:09Z</updated>
+    <updated>2016-04-07T06:28:00Z</updated>
     <content type="html">&lt;p&gt;On behalf of the entire Spring Data team I am happy to announce the general availability of the Spring Data release train Hopper. The train includes 395 tickets fixed and its most important additions are:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Upgrade of the Spring Framework baseline to 4.2 (4.2.5 in particular).&lt;/li&gt;
@@ -29,8 +29,9 @@
   &lt;li&gt;Addition of Spring Data Envers to the release train (previously maintained separately).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;NOTE: Due to a glitch during the release process the Spring Data JPA artifact deployed to Maven Central is broken. We issued a service release for the entire train immediately so that the recommended version to upgrade to is &lt;code&gt;Hopper-SR1&lt;/code&gt;!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Find out more links to the tickets these features are implemented by in our &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Hopper"&gt;curated changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The easiest way to upgrade to this release train is by using Spring Boot and setting the &lt;code&gt;spring-data-releasetrain.version&lt;/code&gt; property to &lt;code&gt;Hopper-SR1&lt;/code&gt;. If you&amp;rsquo;re using any of the modules with major store upgrades in the back be prepared to have to make some changes to your application code as well. Coming from Gosling, the same applies to Querydsl in case you happen to use that. There&amp;rsquo;s going to be a follow up blog post with an in-depth discussion of the new features added to the release in the upcoming days.&lt;/p&gt;
+&lt;p&gt;Find out more links to the tickets these features are implemented by in our &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Hopper"&gt;curated changelog&lt;/a&gt;. There&amp;rsquo;s going to be a follow up blog post with an in-depth discussion of the new features added to the release in the upcoming days.&lt;/p&gt;
+&lt;p&gt;The easiest way to upgrade to this release train is by using the Spring Data BOM in combination with the version &lt;code&gt;Hopper-SR1&lt;/code&gt;. If you&amp;rsquo;re using any of the modules with major store upgrades in the back be prepared to have to make some changes to your application code as well. Coming from Gosling, the same applies to Querydsl in case you happen to use that.&lt;/p&gt;
+&lt;p&gt;Spring Boot users have to be a bit more careful but &lt;em&gt;should&lt;/em&gt; be able to upgrade for the modules that didn&amp;rsquo;t undergo any major upgrades (e.g. JPA, MongoDB) on 1.3 even. If you&amp;rsquo;re using modules that did, be prepared to have to manually upgrade to newer versions of the store drivers and disable some auto-configuration. If in doubt, please consult the Spring Data Examples for sample setups. Full support for Hopper is going to be shipped with Spring Boot 1.4 M2.&lt;/p&gt;
 &lt;p&gt;The team will be busy presenting about the Hopper release train at different conferences coming up in the near future. &lt;a href="http://jax.de"&gt;JAX 2016&lt;/a&gt; is taking place in Germany in two weeks, followed by &lt;a href="http://www.springio.net/"&gt;Spring I/O&lt;/a&gt; in Barcelona and &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; in Las Vegas early August. Make sure you&amp;rsquo;ve got your tickets booked if you&amp;rsquo;re eager to learn more about the latest and greatest in the release train.&lt;/p&gt;
 &lt;p&gt;The next release train will be named &lt;a href="https://en.wikipedia.org/wiki/Daniel_Henry_Holmes_Ingalls,_Jr."&gt;Ingalls&lt;/a&gt; and is supposed to be released around SpringOne.&lt;/p&gt;
 &lt;p&gt;To round things off, here are the modules included in the release:&lt;/p&gt;

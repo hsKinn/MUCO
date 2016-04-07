@@ -667,7 +667,7 @@
                            <div id="floating-panel">
                               <button class="btn btn-info" id="drop" onclick="drop()">View Places</button>
                            </div>
-                           <div id="map"></div>
+                           <div id="map" style="width: 100%;"></div>
                            </c:if>
                            <c:if test="${ empty placeListByPackId}">
                            		<br/><br/>

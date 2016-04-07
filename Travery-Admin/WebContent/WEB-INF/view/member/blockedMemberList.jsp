@@ -82,7 +82,7 @@
 										<input type="checkbox" class="deleteMemberId" name="deleteMemberId" value="${member.email}" /></td>
 									<td>
 										<a href="<c:url value="/blockedMemberDetail?email=${member.email}" />">${member.email}</a></td>
-									<td>${member.password}</a></td>
+									<td><input type="password" readonly="readonly" value="${member.password}" /></td>
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>
 									<td>${member.name}</td>

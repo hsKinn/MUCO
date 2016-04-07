@@ -131,7 +131,7 @@ $(document).ready( function() {
 							<c:forEach items="${reportedPlaces.reportedPlaceList}" var="reportedPlace">
 								<tr>
 									<td>
-										<input type="checkbox" class="deleteReportedPlaceId" name="deleteReportedPlaceId" value="${reportedPlace.reportedId}" />
+										<input type="checkbox" class="deleteReportedPlaceId" name="deleteReportedPlaceId" value="${reportedPlace.placeId}" />
 									</td>
 									<td>${reportedPlace.reportedId}</td>
 									<td>${reportedPlace.email}</td>
