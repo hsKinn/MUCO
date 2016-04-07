@@ -192,8 +192,9 @@ $(document).ready( function() {
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._NEW_PLACE_SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
+											<option value="basic">검색 타입</option>
 											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>여행지명</option>
-										  	<option value="memberEmail" ${selectedList eq "email" ? "selected" : "" }>최초등록자Email</option>
+										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>최초등록자Email</option>
 										  	<option value="countryId" ${selectedList eq "countryId" ? "selected" : "" }>나라ID</option>
 										</select>
 										

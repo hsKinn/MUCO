@@ -24,7 +24,7 @@ public class ReserveBiz {
 	public ReserveListVO getReserveList(ReserveSearchVO reserveSearchVO, int sortOption) {
 		
 		// 1. 전체 게시글의 수
-		int allReserveCount = reserveDAO.getAllReserveListCount();
+		int allReserveCount = reserveDAO.getAllReserveListCount(reserveSearchVO);
 		// 1-1. 기본으로 페이지를 만들어준다. 
 		Paging paging = new Paging(10);
 		paging.setTotalArticleCount(allReserveCount);

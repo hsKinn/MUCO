@@ -390,7 +390,7 @@ public class PlaceDAO {
 
 	/** 
 	 * 
-	 * 모든 Origin Place 총 개수 출력
+	 * 모든 Place 총 개수 출력
 	 * @author 이기연
 	 * @return
 	 */

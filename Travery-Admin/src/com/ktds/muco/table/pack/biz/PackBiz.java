@@ -67,7 +67,7 @@ public class PackBiz {
 	 */
 	public PackListVO getPackList(PackSearchVO packSearchVO, int sortOption) {
 		// 1. 전체 게시글의 수
-		int allPackCount = packDAO.getPackListCount();
+		int allPackCount = packDAO.getPackListCount(packSearchVO);
 		// 1-1. 기본으로 페이지를 만들어준다. 
 		Paging paging = new Paging(20);
 		paging.setTotalArticleCount(allPackCount);

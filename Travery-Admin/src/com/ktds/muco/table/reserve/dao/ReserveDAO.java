@@ -22,19 +22,37 @@ public class ReserveDAO {
 	
 	
 	
-	public int getAllReserveListCount() {
+	public int getAllReserveListCount(ReserveSearchVO reserveSearchVO) {
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-
+		String query = "";
 		try {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/reserve/getReserveCount/text()");
-			stmt = conn.prepareStatement(query);
+			
+			if(reserveSearchVO.getSearchList().equals("email")) {
+				query = XML.getNodeString("//query/reserve/getReserveCountSearchedByEmail/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reserveSearchVO.getSearchKeyword());
+			}
+			else if (reserveSearchVO.getSearchList().equals("packId")) {
+				query = XML.getNodeString("//query/reserve/getReserveCountSearchedByPackId/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reserveSearchVO.getSearchKeyword());
+			}
+			else if (reserveSearchVO.getSearchList().equals("departureName")) {
+				query = XML.getNodeString("//query/reserve/getReserveCountSearchedByDepartureName/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reserveSearchVO.getSearchKeyword());
+			}
+			else  {
+				query = XML.getNodeString("//query/reserve/getReserveCount/text()");
+				stmt = conn.prepareStatement(query);
+			}
+			
 			
 			rs = stmt.executeQuery();
 
@@ -63,11 +81,156 @@ public class ReserveDAO {
 
 		try {
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/reserve/getAllReservation/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, reserveSearchVO.getEndIndex());
-			stmt.setInt(2, reserveSearchVO.getStartIndex());
+			String query = "";
+			//예약ID
+			if( sortOption==1 ) {
+				if(reserveSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByReserveIdSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("packId")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByReserveIdSearchedByPackId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("departureName")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByReserveIdSearchedByDepartureName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else  {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByReserveId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reserveSearchVO.getEndIndex());
+					stmt.setInt(2, reserveSearchVO.getStartIndex());
+				}
+			}
+			//예약 Email
+			else if (sortOption==2) {
+				if(reserveSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByEmailSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("packId")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByEmailSearchedByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("departureName")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByEmailSearchedByDepartureName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else  {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reserveSearchVO.getEndIndex());
+					stmt.setInt(2, reserveSearchVO.getStartIndex());
+				}
+			}
+			//패키지Id 
+			else if (sortOption==3) {
+				if(reserveSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPackIdSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("packId")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPackIdSearchedByPackId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("departureName")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPackIdSearchedByDepartureName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else  {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPackId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reserveSearchVO.getEndIndex());
+					stmt.setInt(2, reserveSearchVO.getStartIndex());
+				}
+			}
+			//동행수
+			else if (sortOption==4) {
+				if(reserveSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPersonCountSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("packId")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPersonCountSearchedByPackId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("departureName")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPersonCountSearchedByDepartureName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else  {
+					query = XML.getNodeString("//query/reserve/getAllReservationOrderByPersonCount/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reserveSearchVO.getEndIndex());
+					stmt.setInt(2, reserveSearchVO.getStartIndex());
+				}
+			}
+			else {
+				if(reserveSearchVO.getSearchList().equals("email")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("phoneNumber")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationSearchedByPhoneNumber/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else if (reserveSearchVO.getSearchList().equals("name")) {
+					query = XML.getNodeString("//query/reserve/getAllReservationSearchedByName/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reserveSearchVO.getSearchKeyword());
+					stmt.setInt(2, reserveSearchVO.getEndIndex());
+					stmt.setInt(3, reserveSearchVO.getStartIndex());
+				}
+				else  {
+					query = XML.getNodeString("//query/reserve/getAllReservation/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reserveSearchVO.getEndIndex());
+					stmt.setInt(2, reserveSearchVO.getStartIndex());
+				}
+			}
 
 			rs = stmt.executeQuery();
 

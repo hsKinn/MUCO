@@ -1,0 +1,267 @@
+package com.ktds.muco.table.reportedPlace.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.muco.table.member.dao.Const;
+import com.ktds.muco.table.member.vo.MemberVO;
+import com.ktds.muco.table.place.vo.PlaceVO;
+import com.ktds.muco.table.reportedPlace.vo.ReportedPlaceSearchVO;
+import com.ktds.muco.table.reportedPlace.vo.ReportedPlaceVO;
+import com.ktds.muco.util.xml.XML;
+
+/**
+ * 
+ * @author 김광민
+ *
+ */
+public class ReportedPlaceDAO {
+
+	/**
+	 * 신고된 place list 카운트 받아오기
+	 * @return
+	 */
+	public int getAllReportedPlaceCount(ReportedPlaceSearchVO reportedPlaceSearchVO) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		String query = "";
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			
+			if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByEmail/text()");
+			} 
+			else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByPlaceId/text()");
+			} 
+			else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByCategory/text()");
+			}
+			else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByDescription/text()");
+			}
+			else {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCount/text()");
+			}
+			
+			stmt = conn.prepareStatement(query);
+			rs = stmt.executeQuery();
+
+			int ReportedPlaceCount = 0;
+			
+			if ( rs.next() ) {
+				ReportedPlaceCount = rs.getInt(1);
+			}
+			return ReportedPlaceCount;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	public List<ReportedPlaceVO> getAllReportedPlaces(ReportedPlaceSearchVO reportedPlaceSearchVO, int sortOption) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		List<ReportedPlaceVO> reportedPlaces = new ArrayList<ReportedPlaceVO>();
+
+		try {
+
+			ReportedPlaceVO reportedPlaceVO = null;
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+			String query = "";
+			// 신고자 Email
+			if (sortOption==1) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+				
+			} 
+			// 신고된 여행지 
+			else if (sortOption==2) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+				
+			} 
+			// 신고일 
+			else if (sortOption==3) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+				}
+				else {
+				}
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByReportDate/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+				stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				
+			} 
+			// 신고이유
+			else if (sortOption==4) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+				}
+				else {
+				}
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByCategory/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+				stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				
+			} 
+			else {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+				}
+				else {
+				}
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaces/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+				stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+			}
+					
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				reportedPlaceVO = new ReportedPlaceVO();
+				
+				reportedPlaceVO.setReportedId(rs.getInt("REPORT_ID"));
+				reportedPlaceVO.setEmail(rs.getString("EMAIL"));
+				reportedPlaceVO.setPlaceId(rs.getInt("PLACE_ID"));
+				reportedPlaceVO.setReportedDate(rs.getString("REPORT_DT"));
+				reportedPlaceVO.setCategory(rs.getString("CATEGORY"));
+				reportedPlaceVO.setDescription(rs.getString("DESCRIPTION"));
+				
+				reportedPlaces.add(reportedPlaceVO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return reportedPlaces;
+	}
+	
+	/**
+	 * 
+	 * Load Oracle Driver
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 
+	 * Close DB
+	 * 
+	 * @author 김광민
+	 * 
+	 */
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+
+
+
+}

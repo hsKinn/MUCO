@@ -26,19 +26,41 @@ public class ReportedPlaceDAO {
 	 * 신고된 place list 카운트 받아오기
 	 * @return
 	 */
-	public int getAllReportedPlaceCount() {
+	public int getAllReportedPlaceCount(ReportedPlaceSearchVO reportedPlaceSearchVO) {
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
+		String query = "";
 		try {
-
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCount/text()");
-			stmt = conn.prepareStatement(query);
+			
+			if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByEmail/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+			} 
+			else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByPlaceId/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+			} 
+			else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByCategory/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+			}
+			else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCountSearchedByDescription/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+			}
+			else {
+				query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaceCount/text()");
+				stmt = conn.prepareStatement(query);
+			}
 			
 			rs = stmt.executeQuery();
 
@@ -56,7 +78,7 @@ public class ReportedPlaceDAO {
 		}
 	}
 	
-	public List<ReportedPlaceVO> getAllReportedPlaces(ReportedPlaceSearchVO reportedPlaceSearchVO) {
+	public List<ReportedPlaceVO> getAllReportedPlaces(ReportedPlaceSearchVO reportedPlaceSearchVO, int sortOption) {
 		loadOracleDriver();
 
 		Connection conn = null;
@@ -69,12 +91,195 @@ public class ReportedPlaceDAO {
 
 			ReportedPlaceVO reportedPlaceVO = null;
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			// article을 꺼내온다.
-			String query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaces/text()");
-			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
-			stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+			String query = "";
+			// 신고자 Email
+			if (sortOption==1) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmailSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+				
+			} 
+			// 신고된 여행지 
+			else if (sortOption==2) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByPlaceIdSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByPlaceIdSearchedByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByPlaceIdSearchedByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByPlaceIdSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+				
+			} 
+			// 신고일 
+			else if (sortOption==3) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByReportDateSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByReportDateSearchedByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByReportDateSearchedByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByReportDateSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByReportDate/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+				
+			} 
+			// 신고이유
+			else if (sortOption==4) {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByCategorySearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByCategorySearchedByPlaceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByCategorySearchedByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByCategorySearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesOrderyByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+				
+			} 
+			else {
+				if( reportedPlaceSearchVO.getSearchList().equals("email") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesSearchedByEmail/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("placeId") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesSearchedByPlceId/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				} 
+				else if ( reportedPlaceSearchVO.getSearchList().equals("category") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesSearchedByCategory/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else if ( reportedPlaceSearchVO.getSearchList().equals("description") ) {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlacesSearchedByDescription/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setString(1, reportedPlaceSearchVO.getSearchKeyword());
+					stmt.setInt(2, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(3, reportedPlaceSearchVO.getStartIndex());
+				}
+				else {
+					query = XML.getNodeString("//query/reportedPlace/getAllReportedPlaces/text()");
+					stmt = conn.prepareStatement(query);
+					stmt.setInt(1, reportedPlaceSearchVO.getEndIndex());
+					stmt.setInt(2, reportedPlaceSearchVO.getStartIndex());
+				}
+			}
 					
 			rs = stmt.executeQuery();
 
@@ -99,6 +304,40 @@ public class ReportedPlaceDAO {
 		}
 
 		return reportedPlaces;
+	}
+
+	/**
+	 * 신고 삭제하기
+	 * @param parseInt
+	 */
+	public void deleteReport(int reportedId) {
+		int insertCount = 0;
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/reportedPlace/deleteReportedId/text()");
+			stmt = conn.prepareStatement(query);
+
+			stmt.setInt(1, reportedId);
+
+			insertCount = stmt.executeUpdate();
+
+			if (insertCount > 0) {
+				stmt.close();
+				System.out.println("reportedId 삭제 성공");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}				
 	}
 	
 	/**

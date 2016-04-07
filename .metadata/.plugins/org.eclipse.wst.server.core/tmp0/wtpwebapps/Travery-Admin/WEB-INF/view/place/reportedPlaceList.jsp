@@ -18,7 +18,7 @@ $(document).ready( function() {
 	
 	// 검색 초기화 클릭
 	$("#initSearchBtn").click(function() {
-		location.href = "<c:url value="/list/init" />";
+		location.href = "<c:url value="/reportedPlaceList/init" />";
 	});
 	
 	// 검색 버튼 클릭 
@@ -38,13 +38,13 @@ $(document).ready( function() {
 	$("#massiveSelectCheckBox").click( function() {
 		var isChecked = $(this).prop("checked");
 		//일괄체크 되도록 하는 것 
-		$(".deletePlaceId").prop("checked", isChecked);
+		$(".deleteReportedPlaceId").prop("checked", isChecked);
 	});
 	
 	$("#massiveDeleteBtn").click( function() {
 		var isChecked = false;
 		
-		$(".deletePlaceId").each( function (index, data) {
+		$(".deleteReportedPlaceId").each( function (index, data) {
 			if (data.checked) {
 				isChecked = data.checked;
 			}
@@ -61,37 +61,12 @@ $(document).ready( function() {
 			// 지우는 로직 넣기 
 			var form = $("#massiveDeleteForm");
 			form.attr("method", "post");
-			form.attr("action", "<c:url value="/placeMassiveDelete" />");
+			form.attr("action", "<c:url value="/reportedPlaceMassiveDelete" />");
 			form.submit();
 		}
 		
 	});
 	
-	$("#massiveGoOriginBtn").click( function() {
-		var isChecked = false;
-		
-		$(".deletePlaceId").each( function (index, data) {
-			if (data.checked) {
-				isChecked = data.checked;
-			}
-			
-		});
-		
-		// 삭제할 대상을 정하지 않았으면 alert뜨기 
-		if( !isChecked ) {
-			alert("Go Origin할 Place를 선택하세요");
-		}
-		
-		// 사용자의 confirm 받기 
-		if( confirm("정말 Go Origin로 넘기시겠습니까?") ) {
-			// 지우는 로직 넣기 
-			var form = $("#massiveDeleteForm");
-			form.attr("method", "post");
-			form.attr("action", "<c:url value="/placeMassiveGoOrigin" />");
-			form.submit();
-		}
-		
-	});
 			
 });
 </script>
@@ -156,7 +131,7 @@ $(document).ready( function() {
 							<c:forEach items="${reportedPlaces.reportedPlaceList}" var="reportedPlace">
 								<tr>
 									<td>
-										<input type="checkbox" class="deletePlaceId" name="deletePlaceId" value="${reportedPlace.reportedId}" />
+										<input type="checkbox" class="deleteReportedPlaceId" name="deleteReportedPlaceId" value="${reportedPlace.reportedId}" />
 									</td>
 									<td>${reportedPlace.reportedId}</td>
 									<td>${reportedPlace.email}</td>
@@ -178,15 +153,17 @@ $(document).ready( function() {
 										${ reportedPlaces.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
-										<c:set var="selectedList" value="${sessionScope._SEARCH_.searchList }" />
+										<c:set var="selectedList" value="${sessionScope._RESERVE_SEARCH_.searchList }" />
+										<c:set var="reservedList" value="${sessionScope._RESERVE_SEARCH_ }" />
 										<select name="searchList" id="searchList">
-											<option value="placeName" ${selectedList eq "placeName" ? "selected" : "" }>신고자 Email</option>
-										  	<option value="memberEmail" ${selectedList eq "memberId" ? "selected" : "" }>신고된 여행지ID</option>
-										  	<option value="countryId" ${selectedList eq "memberNickName" ? "selected" : "" }>신고이유</option>
-										  	<option value="countryId" ${selectedList eq "memberNickName" ? "selected" : "" }>신고설명</option>
+											<option value="basic">검색 타입</option>
+											<option value="email" ${selectedList eq "email" ? "selected" : "" }>신고자 Email</option>
+										  	<option value="placeId" ${selectedList eq "placeId" ? "selected" : "" }>신고된 여행지ID</option>
+										  	<option value="category" ${selectedList eq "category" ? "selected" : "" }>신고이유</option>
+										  	<option value="description" ${selectedList eq "description" ? "selected" : "" }>신고설명</option>
 										</select>
 										
-										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="text" id="searchKeyword" name="searchKeyword" value="${reservedList.searchKeyword}"/>
 										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 									</div>

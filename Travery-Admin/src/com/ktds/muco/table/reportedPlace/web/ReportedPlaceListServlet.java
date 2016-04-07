@@ -57,6 +57,14 @@ public class ReportedPlaceListServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int pageNO = 0;
+		
+		int sortOption;
+		if (request.getParameter("sortOption") == null) {
+			sortOption = 9;
+		} else {
+			sortOption = Integer.parseInt(request.getParameter("sortOption"));
+		}
+		
 		RepoertedPlaceListVO reportedPlaceListVO;
 		ReportedPlaceSearchVO reportedPlaceSearchVO = new ReportedPlaceSearchVO();
 		HttpSession session = request.getSession();
@@ -84,7 +92,7 @@ public class ReportedPlaceListServlet extends HttpServlet {
 			}
 		}
 
-		reportedPlaceListVO = reportedPlaceBiz.getReportedPlaceList(reportedPlaceSearchVO);
+		reportedPlaceListVO = reportedPlaceBiz.getReportedPlaceList(reportedPlaceSearchVO, sortOption);
 		session.setAttribute("_REPORT_PLACE_SEARCH_", reportedPlaceSearchVO);
 
 

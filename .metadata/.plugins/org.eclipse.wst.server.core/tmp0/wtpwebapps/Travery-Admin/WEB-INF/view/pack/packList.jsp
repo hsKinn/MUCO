@@ -154,13 +154,15 @@ $(document).ready( function() {
 										${ packs.paging.getPagingList("pageNO", "[@]", "[이전]", "[다음]", "searchForm") }
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
+										<c:set var="SEAAR" value="${sessionScope._PACK_SEARCH_}" />
 										<c:set var="selectedList" value="${sessionScope._PACK_SEARCH_.searchList }" />
 										<select name="searchList" id="searchList">
+											<option value="basic">검색 타입</option>
 											<option value="packTitle" ${selectedList eq "packTitle" ? "selected" : "" }>패키지 타이틀</option>
 										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>등록자 Email</option>
 										</select>
 										
-										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="text" id="searchKeyword" name="searchKeyword" value="${SEAAR.searchKeyword}"/>
 										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 									</div>

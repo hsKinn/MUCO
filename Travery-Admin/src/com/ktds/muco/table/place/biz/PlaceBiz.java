@@ -42,7 +42,7 @@ public class PlaceBiz {
 	}
 	
 	/**
-	 * placeId로 origin place list 받기
+	 * placeId로 place list 받기
 	 * @author 이기연
 	 * @param placeSearchVO
 	 * @param sortOption 

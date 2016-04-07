@@ -16,7 +16,7 @@
 
 		// 검색 초기화 클릭
 		$("#initSearchBtn").click(function() {
-			location.href = "<c:url value="/memberList/init" />";
+			location.href = "<c:url value="/reserveList/init" />";
 		});
 
 		// 검색 버튼 클릭 
@@ -105,11 +105,11 @@
 							<li role="presentation"><a role="menuitem" tabindex="-1"
 								href="<c:url value="/reserveList?sortOption=1" />"">예약ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=3" />"">예약한EMAIL</a></li>
+								href="<c:url value="/reserveList?sortOption=2" />"">예약한EMAIL</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=2" />"">패키지ID</a></li>
+								href="<c:url value="/reserveList?sortOption=3" />"">패키지ID</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="<c:url value="/reserveList?sortOption=2" />"">동행인수</a></li>
+								href="<c:url value="/reserveList?sortOption=4" />"">동행인수</a></li>
 						</ul>
 					</div>
 					<!-- /#dropdown memberListdropDown -->
@@ -135,7 +135,7 @@
 								<tr>
 									<td> <input type="checkbox" class="deleteReserveId" name="deleteReserveId" value="${reservation.reserveId}" /></td>
 									<td>${reservation.reserveId}</td>
-									<td>예약한EMAIL</td>
+									<td>${reservation.email}</td>
 									<td>${reservation.departDate}</td>
 									<td>${reservation.arriveDate}</td>
 									<td>${reservation.isOneWay}</td>
@@ -157,17 +157,18 @@
 									</div>
 									<div style="text-align: center;">
 										<!-- 검색어 -->
-										<c:set var="selectedList"
-											value="${sessionScope._RESERVE_SEARCH_.searchList }" />
+										<c:set var="selectedList" value="${sessionScope._RESERVE_SEARCH_.searchList}" />
+										<c:set var="reserveSelectedList" value="${sessionScope._RESERVE_SEARCH_}" />
 										<select name="searchList" id="searchList">
+											<option value="basic">검색 타입</option>
 											<option value="email"
-												${selectedList eq "email" ? "selected" : "" }>Email</option>
-											<option value="phoneNumber"
-												${selectedList eq "phoneNumber" ? "selected" : "" }>전화번호</option>
-											<option value="name"
-												${selectedList eq "name" ? "selected" : "" }>이름</option>
+												${selectedList eq "email" ? "selected" : "" }>예약한 Email</option>
+											<option value="packId"
+												${selectedList eq "packId" ? "selected" : "" }>패키지ID</option>
+											<option value="departureName"
+												${selectedList eq "departureName" ? "selected" : "" }>출발지명</option>
 										</select> <input type="text" id="searchKeyword" name="searchKeyword"
-											value="${searchVO.searchKeyword}" /> <input type="button"
+											value="${reserveSelectedList.searchKeyword}" /> <input type="button"
 											id="searchBtn" name="searchBtn" value="검색" /> <input
 											type="button" id="initSearchBtn" value="검색초기화" />
 									</div>

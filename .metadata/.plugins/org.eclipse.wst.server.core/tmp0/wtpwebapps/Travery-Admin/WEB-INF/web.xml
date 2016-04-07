@@ -9,6 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <display-name>CharacterEncodingFilter</display-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>com.ktds.muco.filter.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>JoinServlet</display-name>
@@ -786,5 +795,35 @@
   <servlet-mapping>
     <servlet-name>HistoryMassiveDeleteServlet</servlet-name>
     <url-pattern>/historyMassiveDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitReportedPlaceListServlet</display-name>
+    <servlet-name>InitReportedPlaceListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reportedPlace.web.InitReportedPlaceListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitReportedPlaceListServlet</servlet-name>
+    <url-pattern>/reportedPlaceList/init</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReportedPlaceMassiveDeleteServlet</display-name>
+    <servlet-name>ReportedPlaceMassiveDeleteServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reportedPlace.web.ReportedPlaceMassiveDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportedPlaceMassiveDeleteServlet</servlet-name>
+    <url-pattern>/reportedPlaceMassiveDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitReserveListServlet</display-name>
+    <servlet-name>InitReserveListServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.reserve.web.InitReserveListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitReserveListServlet</servlet-name>
+    <url-pattern>/reserveList/init</url-pattern>
   </servlet-mapping>
 </web-app>
