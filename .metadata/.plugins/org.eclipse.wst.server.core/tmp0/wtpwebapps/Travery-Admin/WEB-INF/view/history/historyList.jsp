@@ -167,6 +167,7 @@ $(document).ready( function() {
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._HISOTRY_SEARCH_.searchList }" />
+										<c:set var="historyList" value="${sessionScope._HISOTRY_SEARCH_ }" />
 										<select name="searchList" id="searchList">
 											<option value="ip" ${selectedList eq "ip" ? "selected" : "" }>IP</option>
 										  	<option value="email" ${selectedList eq "email" ? "selected" : "" }>EMAIL</option>
@@ -176,7 +177,7 @@ $(document).ready( function() {
 										  	<option value="etc" ${selectedList eq "etc" ? "selected" : "" }>ETC</option>
 										</select>
 										
-										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="text" id="searchKeyword" name="searchKeyword" value="${historyList.searchKeyword}"/>
 										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 										<input type="hidden" id="placeType" name="placeType" value="0" />

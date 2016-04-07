@@ -97,9 +97,6 @@ $(document).ready( function() {
 					<span id="massiveDeleteBtn" style="cursor: pointer">
 						<button type="button" class="btn btn-default">Delete</button>
 					</span> 
-					<a href="<c:url value="/qnaWrite" />">
-						<button id="placeDeleteBtn" type="button" class="btn btn-default">Write</button>
-					</a>
 					
 					<!-- dropdown 정렬 메뉴 -->
 					<div class="dropdown memberListdropDown" style="float: right;">
@@ -157,13 +154,15 @@ $(document).ready( function() {
 									</div>
 									<div style="text-align: center;"> <!-- 검색어 -->
 										<c:set var="selectedList" value="${sessionScope._QNA_SEARCH_.searchList }" />
+										<c:set var="qnaList" value="${sessionScope._QNA_SEARCH_ }" />
 										<select name="searchList" id="searchList">
+											<option value="basic">검색 타입</option>
 											<option value="title" ${selectedList eq "title" ? "selected" : "" }>제목</option>
 											<option value="description" ${selectedList eq "description" ? "selected" : "" }>내용</option>
 											<option value="email" ${selectedList eq "email" ? "selected" : "" }>질문자 Email</option>
 										</select>
 										
-										<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+										<input type="text" id="searchKeyword" name="searchKeyword" value="${qnaList.searchKeyword}"/>
 										<input type="button" id="searchBtn" name="searchBtn" value="검색"/>
 										<input type="button" id="initSearchBtn" value="검색초기화" />
 									</div>

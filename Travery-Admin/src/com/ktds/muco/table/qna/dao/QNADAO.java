@@ -24,19 +24,38 @@ public class QNADAO {
 	 * @author 이기연
 	 * @return
 	 */
-	public int getQnaListCount() {
+	public int getQnaListCount(QNASearchVO qnaSearchV) {
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-
+		String query = "";
 		try {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/qna/getQnaListCount/text()");
-			stmt = conn.prepareStatement(query);
+			// 제목
+			if(qnaSearchV.getSearchList().equals("title")) {
+				query = XML.getNodeString("//query/qna/getQnaListCountSearchedByTitle/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, qnaSearchV.getSearchKeyword());
+			}
+			// 내용
+			else if (qnaSearchV.getSearchList().equals("description")) {
+				query = XML.getNodeString("//query/qna/getQnaListCountSearchedByDescription/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, qnaSearchV.getSearchKeyword());
+			}
+			// 글쓴이
+			else if (qnaSearchV.getSearchList().equals("email")) {
+				query = XML.getNodeString("//query/qna/getQnaListCountSearchedByEmail/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, qnaSearchV.getSearchKeyword());
+			}
+			else {
+				query = XML.getNodeString("//query/qna/getQnaListCount/text()");
+				stmt = conn.prepareStatement(query);
+			}
 
 			rs = stmt.executeQuery();
 

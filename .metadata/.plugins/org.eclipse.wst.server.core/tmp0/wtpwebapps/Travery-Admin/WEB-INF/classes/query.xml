@@ -48,6 +48,36 @@
 			SELECT	COUNT(HISTORY_ID)
 			FROM	HISTORY
 		</getAllHistoryCount>
+		<getAllHistoryCountSearchedByIp>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE	IP = ? 
+		</getAllHistoryCountSearchedByIp>
+		<getAllHistoryCountSearchedByEmail>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE	EMAIL LIKE '%' || ? || '%' 
+		</getAllHistoryCountSearchedByEmail>
+		<getAllHistoryCountSearchedByURL>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE	URL LIKE '%' || ? || '%' 
+		</getAllHistoryCountSearchedByURL>
+		<getAllHistoryCountSearchedByActioncode>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE	ACTION_CODE LIKE '%' || ? || '%' 
+		</getAllHistoryCountSearchedByActioncode>
+		<getAllHistoryCountSearchedByHistoryDescription>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE	DESCRIPTION LIKE '%' || ? || '%' 
+		</getAllHistoryCountSearchedByHistoryDescription>
+		<getAllHistoryCountSearchedByETC>
+			SELECT	COUNT(HISTORY_ID)
+			FROM	HISTORY
+			WHERE	ETC LIKE '%' || ? || '%' 
+		</getAllHistoryCountSearchedByETC>
 		<getOver30DaysHistoryListCount>
 			SELECT	COUNT(HISTORY_ID)
 			FROM	HISTORY
@@ -2087,6 +2117,21 @@
 			SELECT	COUNT(QNA_ID)
 			FROM	QNA
 		</getQnaListCount>
+		<getQnaListCountSearchedByTitle>
+			SELECT	COUNT(QNA_ID)
+			FROM	QNA
+			WHERE	TITLE LIKE '%' || ? || '%'
+		</getQnaListCountSearchedByTitle>
+		<getQnaListCountSearchedByDescription>
+			SELECT	COUNT(QNA_ID)
+			FROM	QNA
+			WHERE	DESCRIPTION LIKE '%' || ? || '%'
+		</getQnaListCountSearchedByDescription>
+		<getQnaListCountSearchedByEmail>
+			SELECT	COUNT(QNA_ID)
+			FROM	QNA
+			WHERE	EMAIL LIKE '%' || ? || '%'
+		</getQnaListCountSearchedByEmail>
 		<getAllQnas>
 			SELECT	* 
 			FROM	(

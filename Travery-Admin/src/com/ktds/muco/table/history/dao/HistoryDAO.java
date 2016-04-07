@@ -60,19 +60,57 @@ public class HistoryDAO {
 	 * 
 	 * @return
 	 */
-	public int getAllHistoryCount() {
+	public int getAllHistoryCount(HistorySearchVO historySearchVO) {
 		loadOracleDriver();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-
+		String query = "";
 		try {
 
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
-
-			String query = XML.getNodeString("//query/history/getAllHistoryCount/text()");
-			stmt = conn.prepareStatement(query);
+			
+			// ip
+			if (historySearchVO.getSearchList().equals("ip"))  {
+				query = XML.getNodeString("//query/history/getAllHistoryCountSearchedByIp/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, historySearchVO.getSearchKeyword());
+			}
+			// email
+			else if (historySearchVO.getSearchList().equals("email")) {
+				query = XML.getNodeString("//query/history/getAllHistoryCountSearchedByEmail/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, historySearchVO.getSearchKeyword());
+			}
+			// url
+			else if (historySearchVO.getSearchList().equals("url")) {
+				query = XML.getNodeString("//query/history/getAllHistoryCountSearchedByURL/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, historySearchVO.getSearchKeyword());
+			}
+			//action code
+			else if (historySearchVO.getSearchList().equals("actionCode")) {
+				query = XML.getNodeString("//query/history/getAllHistoryCountSearchedByActioncode/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, historySearchVO.getSearchKeyword());
+			}
+			//history description
+			else if (historySearchVO.getSearchList().equals("historyDescription")) {
+				query = XML.getNodeString("//query/history/getAllHistoryCountSearchedByHistoryDescription/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, historySearchVO.getSearchKeyword());
+			}
+			//etc
+			else if (historySearchVO.getSearchList().equals("etc")) {
+				query = XML.getNodeString("//query/history/getAllHistoryCountSearchedByETC/text()");
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, historySearchVO.getSearchKeyword());
+			}
+			else {
+				query = XML.getNodeString("//query/history/getAllHistoryCount/text()");
+				stmt = conn.prepareStatement(query);
+			}
 
 			rs = stmt.executeQuery();
 

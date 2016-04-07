@@ -25,7 +25,7 @@ public class HistoryBiz {
 
 	public HistoryListVO getHistoryList(HistorySearchVO historySearchVO, int sortOption) {
 		// 1. 전체 게시글의 수
-		int allHistoryCount = historyDAO.getAllHistoryCount();
+		int allHistoryCount = historyDAO.getAllHistoryCount(historySearchVO);
 		// 1-1. 기본으로 페이지를 만들어준다.
 		Paging paging = new Paging(15);
 		paging.setTotalArticleCount(allHistoryCount);
