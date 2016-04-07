@@ -32,21 +32,21 @@
          var userEmail = $("#userEmail").val();
          userEmail = $.trim(userEmail);
          if (userEmail == "") {
-            alert("이메일을 입력하세요!");
+            alert("Enter email!");
             $("#userEmail").focus();
             return;
          }
          var userPassword = $("#userPassword").val();
          userPassword = $.trim(userPassword);
          if (userPassword == "") {
-            alert("비밀번호를 입력하세요!");
+            alert("Enter password!");
             $("#userPassword").focus();
             return;
          }
          var userName = $("#userName").val();
          userName = $.trim(userName);
          if (userName == "") {
-            alert("닉네임을 입력하세요!");
+            alert("Enter name!");
             $("#userName").focus();
             return;
          }
@@ -140,7 +140,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="margin-top-0 text-primary">Travery Service</h2>
-                    <hr class="primary">
+                    <hr class="primary"><br/>
                 </div>
             </div>
         </div>

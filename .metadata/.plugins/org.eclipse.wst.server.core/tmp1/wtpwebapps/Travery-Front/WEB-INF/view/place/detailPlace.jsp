@@ -149,9 +149,9 @@
 
 		<!-- 제목 -->
 		<div class="col-lg-8 col-lg-offset-2 text-center">
-			<h2 class="margin-top-0 wow fadeIn">Detail Place Page</h2>
+			<h2 class="margin-top-0 wow fadeIn">Place Detail Page</h2>
 			<hr class="primary">
-			<p>Place의 상세 정보를 확인하세요</p>
+			<p>Take a look the place detail information</p>
 		</div>
 		
 		<div id="addMyPack">
@@ -437,7 +437,7 @@
 		          		
 		          		<span class="glyphicon glyphicon-exclamation-sign"></span> 
 			          	<span id="report-Content">
-			          		[허위 신고시 신고하신 분의 활동이 제한될 수 있습니다]
+			          		[Your activity can be limited when you report a false report]
 			          	</span>
 			          </h4>
 			        </div>

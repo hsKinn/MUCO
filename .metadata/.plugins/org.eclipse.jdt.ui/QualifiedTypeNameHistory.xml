@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.dao.EvaluationDAO"/>
-<<<<<<< HEAD
-=======
 <fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
->>>>>>> origin/KGM18
 <fullyQualifiedTypeName name="com.ktds.muco.table.member.vo.MemberVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.biz.EvaluationBiz"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.evaluation.vo.EvaluationVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.vo.reportedPlaceVO"/>
 <fullyQualifiedTypeName name="com.ktds.muco.table.reportedPlace.biz.ReportedPlaceBiz"/>
-<<<<<<< HEAD
-<fullyQualifiedTypeName name="com.sun.java.util.jar.pack.Package.File"/>
-<fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="com.ktds.muco.table.place.vo.PlaceVO"/>
-<fullyQualifiedTypeName name="com.ktds.muco.util.root.Root"/>
-=======
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
->>>>>>> origin/KGM18
 </qualifiedTypeNameHistroy>

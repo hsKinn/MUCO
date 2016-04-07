@@ -222,6 +222,7 @@ public class PackDAO {
 				placeVO.setViewCount(rs.getInt("VIEW_COUNT"));
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
+				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
 				places.add(placeVO);
 			}
 
