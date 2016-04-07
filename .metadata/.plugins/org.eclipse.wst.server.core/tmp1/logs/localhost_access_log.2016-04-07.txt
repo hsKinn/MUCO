@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [07/Apr/2016:09:06:00 +0900] "GET / HTTP/1.1" 200 16754
+0:0:0:0:0:0:0:1 - - [07/Apr/2016:09:06:00 +0900] "GET /resource/css/place/jquery-jvectormap-2.0.3.css;jsessionid=7F90A404C2471ED1D5241C881812E384 HTTP/1.1" 200 6590
+0:0:0:0:0:0:0:1 - - [07/Apr/2016:09:06:00 +0900] "GET /resource/styles.css;jsessionid=7F90A404C2471ED1D5241C881812E384 HTTP/1.1" 200 11202
+0:0:0:0:0:0:0:1 - - [07/Apr/2016:09:06:00 +0900] "GET /resource/js/scripts.js;jsessionid=7F90A404C2471ED1D5241C881812E384 HTTP/1.1" 200 849
+0:0:0:0:0:0:0:1 - - [07/Apr/2016:09:06:01 +0900] "GET /favicon.ico HTTP/1.1" 404 1016
