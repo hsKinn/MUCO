@@ -1,6 +1,7 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=origin/KGM
+browser-choice=1
+browsers=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<web-browsers current\="0">\r\n<system/>\r\n<external location\="C\:\\Program Files\\Internet Explorer\\iexplore.exe" name\="Internet Explorer"/>\r\n</web-browsers>
 eclipse.preferences.version=1
-<<<<<<< HEAD
-internalWebBrowserHistory=http\://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css|*|file\:/C\:/Users/206-001/Documents/MUCO/.metadata/.plugins/org.springsource.ide.eclipse.commons.gettingstarted/dashboard/1458705515103/index.html|*|file\:/C\:/Users/206-001/workspace/MUCO/.metadata/.plugins/org.springsource.ide.eclipse.commons.gettingstarted/dashboard/1458635624760/index.html|*|
-=======
 internalWebBrowserHistory=http\://localhost\:8080/hitTheRoad|*|http\://localhost\:8080/WEB-INF/view/place/hitTheRoad.jsp|*|file\:/C\:/Users/206-001/workspace/MUCO/.metadata/.plugins/org.springsource.ide.eclipse.commons.gettingstarted/dashboard/1458635624760/index.html|*|
->>>>>>> origin/KGM

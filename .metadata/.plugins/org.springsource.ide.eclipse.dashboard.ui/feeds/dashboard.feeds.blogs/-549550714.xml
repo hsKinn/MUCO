@@ -5,7 +5,7 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-04-06T09:00:20Z</updated>
+  <updated>2016-04-06T09:00:00Z</updated>
   <entry>
     <title>Spring Framework 4.3 goes RC1</title>
     <link rel="alternate" href="https://spring.io/blog/2016/04/06/spring-framework-4-3-goes-rc1" />
@@ -14,9 +14,9 @@
       <name>Juergen Hoeller</name>
     </author>
     <id>tag:spring.io,2016-04-05:2451</id>
-    <updated>2016-04-06T09:00:20Z</updated>
+    <updated>2016-04-06T09:00:00Z</updated>
     <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
-&lt;p&gt;It is my pleasure to announce that a feature-complete Spring Framework 4.3 release candidate is available now! This is a perfect opportunity for you to get involved: Please run your regression tests against it, and of course, feel free to try the new features&amp;hellip;&lt;/p&gt;
+&lt;p&gt;It is my pleasure to announce that a feature-complete Spring Framework 4.3 release candidate is &lt;a href="http://projects.spring.io/spring-framework/"&gt;available&lt;/a&gt; now! This is a perfect opportunity for you to get involved: Please run your regression tests against it, and of course, feel free to try the new features&amp;hellip;&lt;/p&gt;
 &lt;h3&gt;Dependency injection refinements:&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;@Autowired injection of Map/Collection beans and self references&lt;/li&gt;
@@ -47,26 +47,52 @@
   <entry>
     <title>This Week in Spring  - April 5th, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/04/05/this-week-in-spring-april-5th-2016" />
-    <category term="engineering" label="Engineering" />
+    <category term="news" label="News and Events" />
     <author>
       <name>Josh Long</name>
     </author>
     <id>tag:spring.io,2016-04-05:2453</id>
-    <updated>2016-04-05T14:40:41Z</updated>
+    <updated>2016-04-05T14:40:00Z</updated>
     <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! As usual, we&amp;rsquo;ve got a &lt;em&gt;lot&lt;/em&gt; to cover so let&amp;rsquo;s get to it!&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Spring Security lead &lt;a href="https://spring.io/blog/2016/03/31/spring-ldap-2-1-0-rc1-released"&gt;Rob Winch has just announced Spring LDAP 2.1.0.RC1 has been released!&lt;/a&gt; Get the bits and try it out.&lt;/li&gt;
   &lt;li&gt;Oracle&amp;rsquo;s amazing &lt;a href="http://twitter.com/GeertjanW"&gt;Geertjan Wielenga&lt;/a&gt; put together an &lt;em&gt;awesome&lt;/em&gt;, 100% live demo &lt;a href="https://spring.io/blog/2016/03/30/webinar-replay-up-and-running-with-spring-boot-in-netbeans-ide"&gt;looking at how to use Spring Boot with NetBeans&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;I love Spring Cloud Data Flow! Whether you want a way to describe and compose complex processing streams from simple actor-like components, want to orchestrate stream processing solutions, manage tasks like data at-scale data ingest or otherwise, Spring Cloud Data Flow is probably what you&amp;rsquo;re looking for. Check out this quick look &lt;a href="https://spring.io/blog/2016/04/05/1-stream-2-applications-and-3-dependencies-for-spring-cloud-data-flow"&gt;at standing up a Spring Cloud Data Flow server, shell and a custom module that I put together&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Cloud team member Marcin Grzejszczak, on the cusp of a recent Spring Cloud release, takes a look at what&amp;rsquo;s changed and &lt;a href="http://toomuchcoding.com/blog/2016/03/25/spring-cloud-sleuth-rc1-deployed/"&gt;what&amp;rsquo;s awesome in Spring Cloud Sleuth&lt;/a&gt;, the distributed tracing abstraction in Spring Cloud&lt;/li&gt;
+  &lt;li&gt;Don&amp;rsquo;t miss this epic &lt;a href="https://spring.io/blog/2016/03/09/webinar-spring-boot-and-ratpack-web-framework"&gt;look at reactive programming with Spring Boot and Ratpack&lt;/a&gt; by the amazing &lt;a href="http://twitter.com/Lspacewalker"&gt;Danny Hyun&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Rossen Stoyanchev, and Stephane Maldini&amp;rsquo;s follow on talk to their &lt;a href="http://spring.io/blog/2016/02/02/springone2gx-2015-replay-introduction-to-reactive-programming"&gt;Introduction to reactive programming&lt;/a&gt; from SpringOne2GX 2015 is now live on the Spring Developer channel. Check out &lt;a href="http://spring.io/blog/2016/04/05/springone2gx-2015-replay-reactive-web-applications"&gt;Reactive Web Applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Michael Wilmes from Lufthansa, and Laurent Dougin from Couchbase double down on NoSQL and Spring in their SpringOne2GX 2015 talk, &lt;a href="http://spring.io/blog/2016/04/05/springone2gx-2015-replay-spring-data-daily-double-couchbase-and-neo4j"&gt;Spring Data Daily Double - Couchbase and Neo4J&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Michael Scharhag put together a really cool &lt;a href="http://www.mscharhag.com/spring/spring-retry"&gt;look at Spring Retry, one of my favorite projects&lt;/a&gt;. Spring Retry is &lt;em&gt;very&lt;/em&gt; popular, according to our download numbers!&lt;/li&gt;
   &lt;li&gt;This post, by the Pivotal Data Science team, looks at how they integrated disparate, &lt;a href="https://blog.pivotal.io/data-science-pivotal/products/scoring-as-a-service-to-operationalize-algorithms-for-real-time"&gt;polyglot services with RabbitMQ and Spring XD, among other things, to operationalize a scoring service&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;our pals at Codecentric are at it again, this time with a great &lt;a href="https://blog.codecentric.de/en/2016/04/event-driven-microservices-spring-cloud-stream/"&gt;surface-look at Spring Cloud Stream&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;nice new entry in an ongoing series, this one &lt;a href="https://dzone.com/articles/the-netflix-stack-using-spring-boot-part-3-feign"&gt;on using Spring Cloud&amp;rsquo;s Netflix Feign support&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;the &lt;a href="https://github.com/mybatis/spring-boot-starter"&gt;MyBatis Spring Boot starter continues to improve&lt;/a&gt; by leaps and bounds. I am super happy to see this (and to have contributed some to it) because MyBatis is used a &lt;em&gt;lot&lt;/em&gt; in China at large (China scale!) services who otherwise abhor ORM technologies like Hibernate.&lt;/li&gt;
   &lt;li&gt;There are lot&amp;rsquo;s of exciting new choices in the world of [the Spring Initializr] this week! choose Spring Boot &lt;code&gt;1.3.4 (SNAPSHOT)&lt;/code&gt; and you&amp;rsquo;ll see checkboxes for the &lt;code&gt;Zipkin UI&lt;/code&gt; (combine it with the &lt;code&gt;Zipkin Stream Server&lt;/code&gt; to get an instant span collection and visualization service), &lt;a href="https://twitter.com/davsclaus/status/715924136426610688"&gt;&lt;code&gt;Apache Camel&lt;/code&gt;&lt;/a&gt;, &lt;code&gt;Spring Cloud Data Flow Shell&lt;/code&gt; (a client for the &lt;code&gt;Spring Cloud Data Flow Local Server&lt;/code&gt;).&lt;/li&gt;
-  &lt;li&gt;the &lt;a href="https://github.com/mybatis/spring-boot-starter"&gt;MyBatis Spring Boot starter&lt;/a&gt; continues to get slicker and slicker&lt;/li&gt;
 &lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>SpringOne2GX 2015 replay: Reactive Web Applications</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/05/springone2gx-2015-replay-reactive-web-applications" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-04-06:2454</id>
+    <updated>2016-04-05T14:39:00Z</updated>
+    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Stephane Maldini, Rossen Stoyanchev&lt;br/&gt;Web / Javascript track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/reactive-web-applications-53170985"&gt;http://www.slideshare.net/SpringCentral/reactive-web-applications-53170985&lt;/a&gt;&lt;br/&gt;In our previous talk &amp;ldquo;Intro to Reactive Programming&amp;rdquo; we defined reactive programming and provided details around key initiatives such as Reactive Streams and ReactiveX. In this talk we&amp;rsquo;ll focus on where we are today with building reactive web applications. We&amp;rsquo;ll take a look at the choice of runtimes, how Reactive Streams may be applied to network I/O, and what the programming model may look like. While this is a forward looking talk, we&amp;rsquo;ll spend plenty of time demoing code built with with back-pressure ready libraries available today.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/f4Teko8vauk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
+  <entry>
+    <title>SpringOne2GX 2015 replay:  Spring Data Daily Double - Couchbase and Neo4J</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/05/springone2gx-2015-replay-spring-data-daily-double-couchbase-and-neo4j" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-04-06:2455</id>
+    <updated>2016-04-05T14:38:00Z</updated>
+    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speakers: Michael Wilmes, Lufthansa and Laurent Doguin, Couchbase&lt;br/&gt;Data / Integration Track&lt;br/&gt;&lt;a href="http://www.slideshare.net/SpringCentral/inflight-asset-management-with-spring-data-and-neo4j"&gt;http://www.slideshare.net/SpringCentral/inflight-asset-management-with-spring-data-and-neo4j&lt;/a&gt;&lt;br/&gt;We invite you to join these two speakers from the Spring Data community, each speaking about their respective projects for 45 minutes.&lt;br/&gt;Michael Wilmes from Lufthansa Systems will speak about Graph-based Asset Management with the Spring Framework. He is part of a flagship project that brings next-generation Inflight-Entertainment systems onto passenger aircrafts, and tackles the operational aspects of managing IT systems in flight, on ground and anywhere in between. Within his talk he will give insight on how Lufthansa Systems leverages the Spring Stack for solving an asset management problem scope with Spring Data and Neo4j.&lt;br/&gt;Next, Laurent Doguin from Couchbase will tell us how to &amp;ldquo;Manage Time-base data with Spring Data Couchbase&amp;rdquo;. A common thing to do in the big data world is store time-based data. It can be logs, user events, social media metrics, market data indicators or even more common now sensor data. You can do that very easily with Spring Data Couchbase. I this talk I will tell you what you need to know before starting to store time-based data. I&amp;rsquo;ll talk about use cases, data modeling, how Couchbase is a perfect fit for this kind of job and code a little demo that reflects all of this.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/SigEreDcHr4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
   <entry>
     <title>1 Stream, 2 Applications, and 3 Dependencies for Spring Cloud Data Flow</title>
@@ -691,123 +717,5 @@ public class VoteHandler {&#xD;
     <updated>2016-03-22T12:03:00Z</updated>
     <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Michael Ploed&lt;br/&gt;Cloud Native Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/building-microservices-with-event-sourcing-and-cqrs-53211567"&gt;http://www.slideshare.net/SpringCentral/building-microservices-with-event-sourcing-and-cqrs-53211567&lt;/a&gt;&lt;br/&gt;CQRS and Event Sourcing are two architectural patterns that have become very popular through the rise of cloud architectures and No-SQL databases. Both work very well together and take a different take at the handling and storage of data compared to the &amp;ldquo;classic enterprise approach&amp;rdquo;. CQRS splits your application in a read- and a write-part whereas through Event Sourcing the state of your data is represented by sequences of events. This talk introduces both patterns and shows how applications leveraging CQRS and Event Sourcing can be implemented with the Spring Ecosystem.The talk will have slides and live demos.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/A0goyZ9F4bg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>The Spring Boot Dashboard in STS - Part 4: Working with Cloud Foundry manifest files</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/22/the-spring-boot-dashboard-in-sts-part-4-working-with-cloud-foundry-manifest-files" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Martin Lippert</name>
-    </author>
-    <id>tag:spring.io,2016-03-22:2434</id>
-    <updated>2016-03-22T10:58:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome back Spring community,&lt;/p&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;the latest release 3.7.3 of the Spring Tool Suite introduces a number of new features around the Spring Boot Dashboard. Therefore we continue the blog post series that started last year and introduced you to the new way of working with Spring Boot based microservice projects in your IDE (you can find links to the previous parts at the bottom).&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;h2&gt;Cloud Foundry manifest files&lt;/h2&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;In this new part of the series we take a closer look at Cloud Foundry manifest files. They are a Cloud Foundry concept used as a shortcut to define configurations for applications on Cloud Foundry. Instead of passing every argument and configuration to the command line when doing a ¡°cf push¡±, you can put all your configuration data into a YAML file and pass that to the push command instead. More detailed information about Cloud Foundry Manifest files can be found here.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The early versions of the Spring Boot Dashboard already used the manifest files for deploying an app to CF if a file called ¡°manifest.yml¡± existed in the project. This was done ¡°under the hood¡± for your convenience. That was nice and useful. But it also caused confusion due to the ¡°hidden nature¡± of this support.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;h2&gt;Choose a manifest file when deploying an app&lt;/h2&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The new version of the Spring Boot Dashboard supports Cloud Foundry manifest files as a first-class citizen. This starts to show up when you deploy an application from within the Boot Dashboard to a Cloud Foundry target for the first time. A dialog comes up and asks you which manifest file should be used for this deployment operation.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/01-boot-dashboard-select-manifest-dialog.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;This dialog allows you to select the manifest file you would like to use to deploy the app. This also allows you to have multiple manifest files in your projects - for example for different spaces on Cloud Foundry or different deployment environments. You can also deploy the same app multiple times to the same Cloud Foundry target by choosing a different manifest file for each deploy operation.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The dialog shows the content of the selected manifest file, so that you can verify that you selected the correct one. And if something is wrong inside of the manifest file, you don¡¯t need to go back to the main IDE workbench, open the file, edit it, save it, and go back to the deploy operation. Instead edit the manifest file content directly within the dialog. This makes deploying an app to Cloud Foundry really easy.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The boot dashboard will remember your choice and use the same manifest file again if you update your project on Cloud Foundry. That also means that changes to the manifest file will be taken into account the next time the app is re-deployed to Cloud Foundry (during a boot dashboard restart operation, for example).&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;Of course you can change your mind and decide to choose a different manifest file. An action in the context menu allows you to open the same ¡°choose the manifest file¡± dialog and make a different choice. The next redeploy of the app will take that change into account. You can also use this dialog to quickly check which manifest file is currently associated with the project.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/02-boot-dashboard-select-manifest-action.png"/&gt;
-&lt;h2&gt;Deploying without a manifest file&lt;/h2&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;Sometimes you don¡¯t already have a manifest file or you don¡¯t want to use an existing manifest file. In that case you can choose the ¡°manual mode¡± in the dialog.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/03-boot-dashboard-manifest-manual-mode.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;It opens up an editor area for a temporary manifest file and fills that with some default content. You can edit this temporary manifest content, add properties or change existing ones. This allows you to completely define the way the app should be deployed to Cloud Foundry.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The content of that temporary manifest is not stored anywhere (we may add a convenience option to quickly save the manually entered manifest content to a new file) and the IDE doesn¡¯t remember it for the next time you update the application on Cloud Foundry. Instead the existing configuration on Cloud Foundry will be kept and used while updating the application.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;This is also true if you have used a manifest file in the past and then decided to switch to the manual mode. Subsequent updates to the application will keep the configuration on Cloud Foundry untouched.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;h2&gt;Changed configurations on CF&lt;/h2&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;Let¡¯s imagine you have used a manifest file to deploy your application from within the boot dashboard to Cloud Foundry. Then you go to the web console and add a service to the already deployed app - or change the memory settings, scale it up, or do similar changes to the configuration.  If you go back to the boot dashboard, maybe change some code of the app, and restart (and therefore update) the app on Cloud Foundry, the boot dashboard would use the manifest file again - and trash all the changes to the configuration that you made on CF. To avoid this, the boot dashboard checks for configuration changes on Cloud Foundry when re-deploying an application that uses a manifest file. If a configuration mismatch is found, it opens up a diff and merge dialog - and displays the detailed changes.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/04-boot-dashboard-manifest-diff-merge-dialog.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;This feature prevents you from override configuration changes by accident. And it is a powerful dialog that lets you merge configuration changes on CF to your local manifest file. You can merge individual changes as well as all changes at once. That makes it easy to update the local manifest file with those changes and you can continue to use the manifest file when updating the application in the future.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;In case you don¡¯t want those configuration changes on CF to be reflected in your local manifest file, select the ¡°forget manifest¡± button and the boot dashboard will keep the configuration on Cloud Foundry as it is. It switches the application to the ¡°manual mode¡± deployment.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;Again, if you would like to explicitly change those settings, go to the context menu and choose the ¡°select manifest¡± operation.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;h2&gt;Editing manifest files&lt;/h2&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;While the Cloud Foundry manifest files are a nice and clean way to configure your application for Cloud Foundry, it can be cumbersome to edit those files. Luckily the new version of the Spring Tool Suite comes with a specialized editor for Cloud Foundry manifest files.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/05-manifest-yml-open-with.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;It provides nice content-assist for property names and selected property values.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/06-manifest-yml-content-assist.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;If you hover over the properties, you get additional help about the property and examples how and when to use it.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/07-manifest-yml-hover.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The file is also validated while typing. Reconcile errors are showing up directly in the editor in the same way they do in Spring Boot property files or when editing Java code.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/08-manifest-yml-reconcile.png"/&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;And the good news is: this advanced editing support is available in the ¡°select the manifest file¡± dialog, too (for example when working on the manual manifest or changing the selected manifest file content):&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;img src="http://docs.spring.io/sts/nan/v373/img/blog-series/09-boot-dashboard-manifest-manual-mode-editing.png"/&gt;
-&lt;h2&gt;Coming up&lt;/h2&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;The next part of this blog series will cover the new support for working with multiple launch configurations for local Spring Boot applications. Stay tuned.&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;h2&gt;The Spring Boot Dashboard blog series:&lt;/h2&gt;
-&lt;ul&gt;&#xD;
-&lt;li&gt;&lt;a href="https://spring.io/blog/2015/10/08/the-spring-boot-dashboard-in-sts-part-1-local-boot-apps"&gt;The Spring Boot Dashboard in STS - Part 1: Local Boot Apps&lt;/a&gt;&lt;/li&gt;&#xD;
-&lt;li&gt;&lt;a href="https://spring.io/blog/2015/10/15/the-spring-boot-dashboard-in-sts-part-2-working-with-cloud-foundry"&gt;The Spring Boot Dashboard in STS - Part 2: Working with Cloud Foundry&lt;/a&gt;&lt;/li&gt;&#xD;
-&lt;li&gt;&lt;a href="https://spring.io/blog/2015/10/22/the-spring-boot-dashboard-in-sts-part-3-spring-boot-devtools-reloaded"&gt;The Spring Boot Dashboard in STS - Part 3: Spring Boot Devtools reloaded&lt;/a&gt;&lt;/li&gt;&#xD;
-&lt;/ul&gt;
-&lt;div class="paragraph"&gt;&#xD;
-&lt;p&gt;If you happen to be in Barcelona mid May (never a bad time to be in Barcelona anyway!), don't miss the chance to join the &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where I'll be presenting on the latest and greatest in Spring in general. Also, the registration for &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; (early August, Las Vegas) has opened recently, in case you want to benefit from early bird ticket pricing.&lt;/p&gt;&#xD;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security SAML 1.0.2 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/21/spring-security-saml-1-0-2-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2016-03-18:2432</id>
-    <updated>2016-03-21T14:03:39Z</updated>
-    <content type="html">&lt;p&gt;I&amp;rsquo;m pleased to announce the release of Spring Security SAML 1.0.2. Among other things, this release provides a critical update that resolves Deadlock in MetadataManager. Updating is recommended for everyone.&lt;/p&gt;
-&lt;div class="callout"&gt;&#xD;
-&lt;div class="callout-title"&gt;Upcoming Conferences&lt;/div&gt;&#xD;
-&lt;p&gt;Make sure to register for &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where you can learn about the latest and greatest Spring has to offer.&lt;/p&gt;&#xD;
-&lt;p&gt;If you are interested in attending &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; make sure you register before the early bird discount ends to save big!&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;p&gt;&lt;a href="https://spring.io/spring-security-saml"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security-saml/docs/1.0.x/reference/html/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-security-saml/issues?q=milestone%3A1.0.2"&gt;Changelog&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>
