@@ -682,12 +682,14 @@
 							  
                               var markers = [];
                               var map;
+                              var infowindow;
                               
                               <c:forEach items="${placeListByPackId}" var="place" varStatus="status">
                               	 var data = {};
                               	 
                               	 data.lat = parseFloat("${place.latitude}");
                               	 data.lng = parseFloat("${place.longitude}");
+                              	 data.contents = '${ place.placeName }';
                               	 
                               	neighborhoods.push(data);
 
@@ -701,6 +703,9 @@
                                        lng : neighborhoods[0].lng
                                     }
                                  });
+                                 infowindow = new google.maps.InfoWindow({
+                        			    content: ""
+                        			  });
                               }
                               
                               function initMap2(lat1, lng1) {
@@ -723,14 +728,22 @@
                                     initMap2(neighborhoods[0].lat, neighborhoods[0].lng);
                                  }
                               }
-                        
+                              
                               function addMarkerWithTimeout(position, timeout) {
                                  window.setTimeout(function() {
-                                    markers.push(new google.maps.Marker({
-                                       position : position,
-                                       map : map,
-                                       animation : google.maps.Animation.DROP
-                                    }));
+                                	 var marker = new google.maps.Marker({
+                                         position : {lat: position.lat, lng: position.lng},
+                                         map : map,
+                                         animation : google.maps.Animation.DROP
+                                      });
+                                	 marker.addListener('mouseover', function(){
+                                 		infowindow.setContent( position.contents );
+                             		 	infowindow.open(map, marker);
+                                	 });
+                                	 marker.addListener('mouseout', function(){
+                             		 	infowindow.close();
+                                	 });
+                                    markers.push(marker);
                                  }, timeout);
                               }
                         
