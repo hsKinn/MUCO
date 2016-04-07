@@ -564,7 +564,7 @@
                      <li id="homeTab" class="tabMenu1"><a data-toggle="tab" href="#home">Country</a></li>
                      <li id="menu1Tab" class="tabMenu1"><a data-toggle="tab" href="#menu1">Mood</a></li>
                      <li id="menu2Tab" class="tabMenu2"><a data-toggle="tab" href="#menu2">My package</a></li>
-                     <li id="menu3Tab" class="tabMenu2"><a data-toggle="tab" href="#menu3">Route</a></li>
+                     <li id="menu3Tab" class="tabMenu2"><a data-toggle="tab" href="#menu3">Location</a></li>
                   </ul>
       
                   <!-- 탭 내용 -->
@@ -679,20 +679,22 @@
                               // window.setTimeout() to space your markers' animation.
                         
                               var neighborhoods = new Array();
-							  
+                       
                               var markers = [];
                               var map;
+                              var infowindow;
                               
                               <c:forEach items="${placeListByPackId}" var="place" varStatus="status">
-                              	 var data = {};
-                              	 
-                              	 data.lat = parseFloat("${place.latitude}");
-                              	 data.lng = parseFloat("${place.longitude}");
-                              	 
-                              	neighborhoods.push(data);
+                                  var data = {};
+                                  
+                                  data.lat = parseFloat("${place.latitude}");
+                                  data.lng = parseFloat("${place.longitude}");
+                                  data.contents = '${ place.placeName }';
+                                  
+                                 neighborhoods.push(data);
 
-                              	</c:forEach>
-                              	
+                                 </c:forEach>
+                                 
                               function initMap() {
                                  map = new google.maps.Map(document.getElementById('map'), {
                                     zoom : 10,
@@ -701,6 +703,9 @@
                                        lng : neighborhoods[0].lng
                                     }
                                  });
+                                 infowindow = new google.maps.InfoWindow({
+                                     content: ""
+                                   });
                               }
                               
                               function initMap2(lat1, lng1) {
@@ -718,19 +723,27 @@
                                  
                                  for (var i = 0; i < neighborhoods.length ; i++) {
                                     
-                                    addMarkerWithTimeout(neighborhoods[i], i * 500);
+                                    addMarkerWithTimeout(neighborhoods[i], i * 300);
                                     
                                     initMap2(neighborhoods[0].lat, neighborhoods[0].lng);
                                  }
                               }
-                        
+                              
                               function addMarkerWithTimeout(position, timeout) {
                                  window.setTimeout(function() {
-                                    markers.push(new google.maps.Marker({
-                                       position : position,
-                                       map : map,
-                                       animation : google.maps.Animation.DROP
-                                    }));
+                                    var marker = new google.maps.Marker({
+                                         position : {lat: position.lat, lng: position.lng},
+                                         map : map,
+                                         animation : google.maps.Animation.DROP
+                                      });
+                                    marker.addListener('mouseover', function(){
+                                       infowindow.setContent( position.contents );
+                                       infowindow.open(map, marker);
+                                    });
+                                    marker.addListener('mouseout', function(){
+                                       infowindow.close();
+                                    });
+                                    markers.push(marker);
                                  }, timeout);
                               }
                         

@@ -244,8 +244,9 @@ div#new_content {
 }
 
 div.new_contents {
-	width: 25%;
+	width: 23%;
 	height: 87%;
+	margin: 1%;
 	float: left;
 }
 

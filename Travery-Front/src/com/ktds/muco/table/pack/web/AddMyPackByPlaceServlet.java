@@ -1,5 +1,6 @@
 package com.ktds.muco.table.pack.web;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -98,6 +99,7 @@ public class AddMyPackByPlaceServlet extends HttpServlet {
 			String email = memberVO.getEmail();
 			
 			boolean isSuccess = packBiz.getCreateMyPackByPackTitle(email, packTitle, selectedPlaceId);
+		
 			
 			if (isSuccess) {
 				

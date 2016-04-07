@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+div#detailWrapper {
+   text-align: center;
+   background-color: #8ebe5a;
+   height: 100%;
+   margin: 0 auto;   
+}
+
+div#detailWrapper table#detailTable {
+	background-color: white;
+	border :solid 2px;
+	text-align: center;
+	width: 100%;
+	
+	margin: 0 auto; 
+}
+
+table#detailTable th {
+	background-color: #333333;
+	color: #ffffff;
+	text-align: center;
+	height: 40px;
+	vertical-align: middle;
+}	
+
+table#detailTable td {
+	height: 70px;
+	vertical-align: middle;
+}
+
+div#memberButtonCollection {
+	margin-top: 10px;
+	float: right;
+}
+
+input#placeDescriptionInputBox {
+	width: 80%;
+	background-color: #333333;
+	color: #ffffff; 
+	height: 50px; 
+}
+
+input#placeNameInputBox {
+	background-color: #333333;
+	color: #ffffff; 
+	
+}

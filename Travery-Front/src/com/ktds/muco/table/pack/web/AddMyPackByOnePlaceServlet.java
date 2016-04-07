@@ -51,44 +51,49 @@ public class AddMyPackByOnePlaceServlet extends HttpServlet {
 		PackVO pack = new PackVO();
 		
 		pack.setPackId( Integer.parseInt(request.getParameter("packList")) );
+		pack.setPlaceId( Integer.parseInt(request.getParameter("placeId")) );
+		
 		// 패키지 선택하지 않은 경우
 		if ( pack.getPackId() == 0 ) {
 			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
 		}
-		
-		pack.setPlaceId( Integer.parseInt(request.getParameter("placeId")) );
-		
-		boolean isSuccess = packBiz.addMyPackByOnePlace( pack );
-		
-		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
-		
-		if (isSuccess) {
-			
-			// History
-			HistoryVO history = new HistoryVO();
-			history.setIp(request.getRemoteHost());
-			history.setEmail(member.getEmail());
-			history.setUrl(request.getRequestURI());
-			history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
-			history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK, member.getEmail(), pack.getPackId() + ""));
-			historyBiz.addHistory(history);
-			
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
-		}
 		else {
+		
+			boolean isSuccess = packBiz.addMyPackByOnePlace( pack );
 			
-			// History
-			HistoryVO history = new HistoryVO();
-			history.setIp(request.getRemoteHost());
-			history.setEmail(member.getEmail());
-			history.setUrl(request.getRequestURI());
-			history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
-			history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK_FAIL, member.getEmail(), pack.getPackId() + ""));
-			historyBiz.addHistory(history);
+			HttpSession session = request.getSession();
+			MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 			
-			response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
+			if (isSuccess) {
+				
+				// History
+				HistoryVO history = new HistoryVO();
+				history.setIp(request.getRemoteHost());
+				history.setEmail(member.getEmail());
+				history.setUrl(request.getRequestURI());
+				history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
+				history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK, member.getEmail(), pack.getPackId() + ""));
+				historyBiz.addHistory(history);
+				
+				
+				
+				response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
+			}
+			else {
+				
+				// History
+				HistoryVO history = new HistoryVO();
+				history.setIp(request.getRemoteHost());
+				history.setEmail(member.getEmail());
+				history.setUrl(request.getRequestURI());
+				history.setActionCode(ActionCode.ADD_PLACE_TO_MYPACK);
+				history.setHistoryDescription(BuildDescription.get(Description.ADD_PLACE_TO_MYPACK_FAIL, member.getEmail(), pack.getPackId() + ""));
+				historyBiz.addHistory(history);
+				
+				response.sendRedirect(Root.get(this) + "/detailPlace?placeId=" + pack.getPlaceId());
+			}
 		}
+		
 	}
 
 }

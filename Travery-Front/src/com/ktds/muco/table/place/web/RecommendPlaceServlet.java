@@ -59,7 +59,7 @@ public class RecommendPlaceServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		int sortOption = 1;
+		int sortOption = 3;
 		int pageNo = 0;
 
 		try {

@@ -131,19 +131,14 @@
 						My places
 					</div>
 					<div id="myPlace_btn">
-						<div id="btn-delete">
-							<span class="glyphicon glyphicon-minus-sign"></span>
-						</div>
-						<div id="btn-create">
-							<span class="glyphicon glyphicon-plus-sign"></span>
-						</div>
+				
 					</div>
 				</div>
 				<div id="myPlace_Content">
 					<c:forEach items="${ placeList }" var="placeInfo">
 						<div class="myPlace_Contents">
 							<div class="myPlace_Contents_top">
-								<img src="/image?imageName=${ placeInfo.placeImageList[1].imageName }" />
+								<img src="/image?imageName=${ placeInfo.imageName }" />
 							</div>
 							<div class="myPlace_Contents_bottom">
 								 <a href="#" onclick="window.open('/detailPlace?placeId=${placeInfo.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">
@@ -197,7 +192,7 @@
 								</span>
 								<textarea id="description" name="description" style="height: 100%; width: 100%;">${ placeInfo.description }</textarea>
 							</div>
-							<div id="description_Bottom">
+							<div id="description_Bottom" style="cursor: pointer;">
 								SUBMIT
 								<c:if test="${ empty placeInfo }">
 									<span class="glyphicon glyphicon-send" id="submitBtn"></span>

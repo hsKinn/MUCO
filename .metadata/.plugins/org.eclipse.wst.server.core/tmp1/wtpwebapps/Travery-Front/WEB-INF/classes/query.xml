@@ -315,11 +315,13 @@
    									PACK_ID
    									, PACK_TITLE
    									, EMAIL
+   									, SHARE_IMAGE_NAME
    								) 
 			VALUES 				( 
 									PACK_ID_SEQ.NEXTVAL
 									, ?
 									, ? 
+									, ?
 								)
 		</getCreateMyPackByPackTitle>
 	</pack>
@@ -1096,7 +1098,6 @@
 					, DESCRIPTION
 			FROM    PLACE P
 			WHERE	P.EMAIL = ?
-			AND		P.PLACE_ID = I.PLACE_ID(+)
 		</getUserRecommendPlaceList>
 		
 		<insertPlaceInfo>

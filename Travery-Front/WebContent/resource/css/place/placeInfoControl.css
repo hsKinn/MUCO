@@ -86,6 +86,7 @@ div.myPlace_Contents_bottom {
 	float: left;
 	text-align: center;
 	margin-top: 3px;
+	overFlow-y: auto;
 }
 
 

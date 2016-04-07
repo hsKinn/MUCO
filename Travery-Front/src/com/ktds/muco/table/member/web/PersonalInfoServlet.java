@@ -93,9 +93,7 @@ public class PersonalInfoServlet extends HttpServlet {
 			request.setAttribute("mainImageName", loginMemberVO.getMainImageName());
 			request.setAttribute("mainImageLocation", loginMemberVO.getMainImageLocation());
 			request.setAttribute("mileage", loginMemberVO.getMileage());
-
-			System.out.println("파일 location: " + loginMemberVO.getMainImageLocation());
-
+			
 			// History
 			HistoryVO history = new HistoryVO();
 			history.setIp(request.getRemoteHost());
@@ -108,7 +106,6 @@ public class PersonalInfoServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/personalInfo.jsp");
 			rd.forward(request, response);
 
-			System.out.println(loginMemberVO.getPassword());
 		}
 		// false : 세션 정보 없음 - 회원 정보 열람 불가
 		else {

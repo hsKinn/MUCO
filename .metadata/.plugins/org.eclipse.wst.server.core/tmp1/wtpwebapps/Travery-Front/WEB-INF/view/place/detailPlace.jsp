@@ -173,7 +173,7 @@
 								<input type="hidden" id="placeId" name="placeId" value="${place.placeId}" />
 						</c:if>
 						<c:if test="${ empty loginUserPackList }">
-							<option value="none">Not Exist Packages</option>
+							<option value="0">Not Exist Packages</option>
 						</c:if>
 					</select>
 				<span id="addMyPackOnePlace">
@@ -266,7 +266,7 @@
 							</span>
 						</c:if>
 						<c:if test="${ writer.isExistVote() }">
-							<span class="doNotVote">
+							<span class="doNotVote" style="cursor: pointer;">
 								Vote
 							</span>						
 						</c:if>
@@ -276,36 +276,36 @@
 						<div class="range-slider">
 							<table border="1">
 								<tr>
-									<td colspan="2">Bright</td>
+									<td colspan="2">Dark</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgBrightDarkScore }">
 										<span class="badge range-slider__value">0</span>
 									</td>
-									<td colspan="2">Dark</td>
+									<td colspan="2">Bright</td>
 								</tr>
 								<tr>
-									<td colspan="2">HightPrice</td>
+									<td colspan="2">LowPrice</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgHighPriceLowPriceScore }">
 										<span class="badge range-slider__value">0</span>
 									</td>
-									<td colspan="2">LowPrice</td>
+									<td colspan="2">HightPrice</td>
 								</tr>
 								<tr>
-									<td colspan="2">Active</td>
+									<td colspan="2">Calm</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgActiveCalmScore }">
 										<span class="badge range-slider__value">0</span>
 									</td>
-									<td colspan="2">Calm</td>
+									<td colspan="2">Active</td>
 								</tr>
 								<tr>
-									<td colspan="2">Artificial</td>
+									<td colspan="2">Natural</td>
 									<td>
 										<input class="range-slider__range" type="range" readonly="readonly" min="1" max="100" value="${ place.avgArtificialNaturalScore }">
 										<span class="badge range-slider__value">0</span>
 									</td>
-									<td colspan="2">Natural</td>
+									<td colspan="2">Artificial</td>
 								</tr>
 							</table>
 						</div>						
@@ -456,6 +456,7 @@
 									<th id="cate">Category :</th>
 									<td>
 										<select name="reportReason">
+											<option value="정보수정요청">정보 수정요청</option>
 											<option value="욕설/비방">욕설/비방</option>
 											<option value="음란성">음란성</option>
 											<option value="광고">광고</option>

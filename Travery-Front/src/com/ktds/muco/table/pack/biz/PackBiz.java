@@ -1,6 +1,7 @@
 
 package com.ktds.muco.table.pack.biz;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -262,13 +263,15 @@ public List<PlaceVO> getPlaceListByPackId(int packId) {
 	public boolean getCreateMyPackByPackTitle(String email, String packTitle, String[] selectedPlaceId) {
 
 		int isSuccess = 0;
-		int packId = packDAO.getCreateMyPackByLatestId(email,packTitle);
+		int random = (int) (Math.random() * 4) + 1;
+		String randomFile= "basic"+random+".jpg";
+		
+		int packId = packDAO.getCreateMyPackByLatestId(email,packTitle, randomFile);
 		
 		for (String placeId : selectedPlaceId) {
 			int ori_placeId = Integer.parseInt(placeId);
 			
 			isSuccess = packDAO.getAddMyPackByPlace(ori_placeId, packId);
-			
 		}
 		
 		if ( isSuccess > 0 ) {

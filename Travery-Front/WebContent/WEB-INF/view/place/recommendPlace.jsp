@@ -66,7 +66,7 @@
 						<c:forEach items="${ recommendPlaceList.dailyList }" var="daily" >
 							<div class="content">
 								<div class="content_top">
-									<img src="/image?imageName=${ daily.imageName }" class="img-thumbnail" />
+									<img src="/image?imageName=${ daily.imageName }" class="img-rounded" />
 								</div>					
 								<div class="content_middle">
 									<a href="#" onclick="window.open('/detailPlace?placeId=${daily.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ daily.placeName }</a>
@@ -97,7 +97,7 @@
 						<c:forEach items="${ recommendPlaceList.weeklyList }" var="weekly" >
 							<div class="content">
 								<div class="content_top">
-									<img src="/image?imageName=${ weekly.imageName }" class="img-thumbnail" />
+									<img src="/image?imageName=${ weekly.imageName }" class="img-rounded" />
 								</div>					
 								<div class="content_middle">
 									<a href="#" onclick="window.open('/detailPlace?placeId=${weekly.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ weekly.placeName }</a>
@@ -128,7 +128,7 @@
 						<c:forEach items="${ recommendPlaceList.monthlyList }" var="monthly" >
 							<div class="content">
 								<div class="content_top">
-									<img src="/image?imageName=${ monthly.imageName }" class="img-thumbnail" />
+									<img src="/image?imageName=${ monthly.imageName }" class="img-rounded" />
 								</div>					
 								<div class="content_middle">
 									<a href="#" onclick="window.open('/detailPlace?placeId=${monthly.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">${ monthly.placeName }</a>
@@ -197,7 +197,7 @@
 						<c:forEach items="${ placeList.placeList }" var="place">
 							<div class="new_contents">
 								<div class="content_top">
-									<img src="/image?imageName=${ place.imageName }" />
+									<img src="/image?imageName=${ place.imageName }" class="img-rounded"/>
 								</div>					
 								<div class="content_middle">
 									<span class="header" data-toggle="modal" data-target="#myModal" data-placeId="${ place.placeId }">

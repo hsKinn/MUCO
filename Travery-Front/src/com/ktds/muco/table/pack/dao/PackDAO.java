@@ -299,7 +299,7 @@ public class PackDAO {
 	 * @author 유병훈
 	 * 
 	 */
-	public int getAddMyPackByPlace(int ori_placeId, int packId) {
+	public int getAddMyPackByPlace(int ori_placeId, int packId ) {
 		
 		loadOracleDriver();
 		Connection conn = null;
@@ -312,7 +312,7 @@ public class PackDAO {
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, packId);
 			stmt.setInt(2, ori_placeId);
-
+			
 			return stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -365,7 +365,7 @@ public class PackDAO {
 	 * @return
 	 * @author 유병훈
 	 */
-	public int getCreateMyPackByLatestId(String email, String packTitle) {
+	public int getCreateMyPackByLatestId(String email, String packTitle, String fileName) {
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -378,6 +378,7 @@ public class PackDAO {
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, packTitle);
 			stmt.setString(2, email);
+			stmt.setString(3, fileName);
 			
 			insertCount = stmt.executeUpdate();
 			

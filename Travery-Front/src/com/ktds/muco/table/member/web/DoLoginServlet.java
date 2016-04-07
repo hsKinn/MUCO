@@ -54,6 +54,7 @@ public class DoLoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		boolean isLoginSuccess = memberBiz.login(request);
 
 		HttpSession session = request.getSession();
