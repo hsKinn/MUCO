@@ -125,7 +125,7 @@ public class PlaceDAO {
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setAvgLikeCount(rs.getInt("DAILY_LIKE"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
-				place.setImageName( imageDAO.getPlaceMainImageByPlaceId(place.getPlaceId()) );
+				place.setImageName(rs.getString("IMAGE_NAME"));
 				// TODO 무드 별 평균값 가져와야함
 
 				placeLikeVO.setPlaceId(place.getPlaceId());
@@ -186,7 +186,7 @@ public class PlaceDAO {
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setAvgLikeCount(rs.getInt("WEEKLY_LIKE"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
-				place.setImageName( imageDAO.getPlaceMainImageByPlaceId(place.getPlaceId()) );				
+				place.setImageName(rs.getString("IMAGE_NAME"));				
 				// TODO 무드 별 평균값 가져와야함
 
 				placeLikeVO.setPlaceId(place.getPlaceId());
@@ -247,7 +247,7 @@ public class PlaceDAO {
 				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 				place.setAvgLikeCount(rs.getInt("MONTHLY_LIKE"));
 				place.setPlaceDescription(rs.getString("DESCRIPTION"));
-				place.setImageName( imageDAO.getPlaceMainImageByPlaceId(place.getPlaceId()) );				
+				place.setImageName(rs.getString("IMAGE_NAME"));				
 				// TODO 무드 별 평균값 가져와야함
 
 				placeLikeVO.setPlaceId(place.getPlaceId());

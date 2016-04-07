@@ -197,7 +197,7 @@
 						<c:forEach items="${ placeList.placeList }" var="place">
 							<div class="new_contents">
 								<div class="content_top">
-									<img src="${ place.imageName }" />
+									<img src="/image?imageName=${ place.imageName }" />
 								</div>					
 								<div class="content_middle">
 									<span class="header" data-toggle="modal" data-target="#myModal" data-placeId="${ place.placeId }">

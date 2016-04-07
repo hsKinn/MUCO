@@ -1055,6 +1055,7 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
+			 AND	P.PLACE_ID = I.PLACE_ID(+)	  			                        
 			 ORDER	BY MONTHLY_LIKE DESC  			                        
 		</getPlaceListByMonthly>
 		

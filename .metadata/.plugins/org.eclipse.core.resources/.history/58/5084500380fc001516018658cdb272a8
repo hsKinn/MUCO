@@ -1042,7 +1042,14 @@
                             GROUP   BY PLACE_ID
                          ) MONTHLY_LIKE	        
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -1055,6 +1062,7 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
+			 AND	P.PLACE_ID = I.PLACE_ID(+)	  			                        
 			 ORDER	BY MONTHLY_LIKE DESC  			                        
 		</getPlaceListByMonthly>
 		

@@ -974,7 +974,14 @@
                             GROUP   BY PLACE_ID
                          ) DAILY_LIKE				                    
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -987,6 +994,7 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
+			 AND	P.PLACE_ID = I.PLACE_ID(+) 
 			ORDER	BY DAILY_LIKE DESC                     	
 		</getPlaceListByDaily>
 		
@@ -1008,7 +1016,14 @@
                             GROUP   BY PLACE_ID
                          ) WEEKLY_LIKE	        			            	        
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -1021,6 +1036,7 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
+			 AND	P.PLACE_ID = I.PLACE_ID(+)  			                        
 			 ORDER	BY WEEKLY_LIKE DESC   			                        
 		</getPlaceListByWeekly>
 		
@@ -1042,7 +1058,14 @@
                             GROUP   BY PLACE_ID
                          ) MONTHLY_LIKE	        
 			        , P.DESCRIPTION
+			        , (
+                         SELECT IMAGE_NAME
+                         FROM   IMAGE I
+                         WHERE P.PLACE_ID = I.PLACE_ID
+                         AND  ROWNUM = 1
+                       ) IMAGE_NAME
 			 FROM   PLACE P
+			 		, IMAGE I
 			 WHERE  P.PLACE_ID IN  (
 			                            SELECT  PLACE_ID
 			                            FROM    (
@@ -1055,6 +1078,7 @@
 			                                    )
 			                            WHERE   ROWNUM &lt;= 4
 			                        )	
+			 AND	P.PLACE_ID = I.PLACE_ID(+)	  			                        
 			 ORDER	BY MONTHLY_LIKE DESC  			                        
 		</getPlaceListByMonthly>
 		
@@ -1094,7 +1118,15 @@
                         WHERE   PLACE_ID = P.PLACE_ID
                       ) LIKE_COUNT					
 					, DESCRIPTION
+					, (
+					    SELECT IMAGE_NAME
+					    FROM   IMAGE I
+					    WHERE P.PLACE_ID = I.PLACE_ID
+					    AND  ROWNUM = 1
+					    ORDER	BY	IMAGE_ID ASC
+					   ) IMAGE_NAME					
 			FROM    PLACE P
+					, IMAGE I
 			WHERE	P.EMAIL = ?
 			AND		P.PLACE_ID = I.PLACE_ID(+)
 		</getUserRecommendPlaceList>
