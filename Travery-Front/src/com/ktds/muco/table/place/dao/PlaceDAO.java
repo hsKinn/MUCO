@@ -70,6 +70,7 @@ public class PlaceDAO {
 				place.setPlaceId(rs.getInt("PLACE_ID"));
 				place.setPlaceName(rs.getString("PLACE_NAME"));
 				place.setAddress(rs.getString("ADDRESS"));
+				place.setLikeCount(rs.getInt("LIKE_COUNT"));
 
 				placeList.add(place);
 			}

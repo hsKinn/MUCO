@@ -67,7 +67,7 @@
 																}
 															});
 											if (!isChecked) {
-												alert("삭제하실 추천리스트를 선택해주세요.");
+												alert("Select place.");
 												return;
 											}
 											if (confirm("정말로 삭제 하시겠습니까?")) {
@@ -120,7 +120,7 @@
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h2 class="margin-top-0 wow fadeIn">Add New placeInfo</h2>
 			<hr class="primary">
-			<p>새로운 Place를 등록하세요</p>
+			<p>Add new place.</p>
 		</div>
 		
 		<div id="placeInfoControl_Wrapper">
@@ -128,7 +128,7 @@
 				<div id="myPlace_Top">
 					<div id="myPlace_Title">
 						<span class="glyphicon glyphicon-folder-open"></span>
-						내 추천 여행지
+						My places
 					</div>
 					<div id="myPlace_btn">
 						<div id="btn-delete">
@@ -158,7 +158,7 @@
 			<div id="addNewPlace_Wrapper">
 				<div id="newPlace_Title">
 					<span class="glyphicon glyphicon-cloud-upload"></span>
-					<span id="newPlace_Title">여행지 등록</span>
+					<span id="newPlace_Title">Add place</span>
 				</div>
 			
 				<form id="dataForm" name="dataform" enctype="multipart/form-data">

@@ -282,7 +282,7 @@ div#placeReplyWrapper {
 	width: 100%;
 }
 
-td#placeReply_content textarea {
+td#placeReply_content input {
 	width: 230px;
 	height: 30px;
 	wrap: off;

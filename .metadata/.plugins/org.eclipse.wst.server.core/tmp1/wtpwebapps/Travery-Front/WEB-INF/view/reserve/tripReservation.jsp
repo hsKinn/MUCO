@@ -98,10 +98,10 @@
 				<!-- 출발,여행지 입력 -->
 				<div class="form-group">
 
-					<label for="departure">출발지: <input type="text"
+					<label for="departure">Departure: <input type="text"
 						class="form-control" id="departure" name="departure" />
 					</label> <img src="/resource/img/reserve/arrow.png" style="height: 20px;" />
-					<label for="destination">여행지: <select class="form-control"
+					<label for="destination">Place: <select class="form-control"
 						id="destination" name="destination" style="width: 200px;">
 							<c:forEach items="${loginUserPackList }" var="myDestinationPack">
 							<option value="${myDestinationPack.packId }">${myDestinationPack.packTitle }</option>
@@ -116,18 +116,18 @@
 				<!-- 교통 입력 -->
 				<div class="form-group">
 
-					<label for="traffic">교통: <input type="text"
-						disabled="disabled" value="비행기" class="form-control" id="traffic" name="traffic" />
-					</label> <label for="grade">등급: <select class="form-control"
+					<label for="traffic">Traffic: <input type="text"
+						disabled="disabled" value="AirPlane" class="form-control" id="traffic" name="traffic" />
+					</label> <label for="grade">Grade: <select class="form-control"
 						id="traGrade" name="traGrade" style="width: 200px;">
-							<option >이코노미</option>
-							<option >비지니스</option>
+							<option >Economy</option>
+							<option >Business</option>
 					</select>
-					</label> <label for="departureDate">출국일: <input type="date"
+					</label> <label for="departureDate">Departure day: <input type="date"
 						class="form-control" id="departureDate" name="departureDate" />
-					</label> <label for="destinationDate">귀국일: <input type="date"
+					</label> <label for="destinationDate">Return date: <input type="date"
 						class="form-control" id="destinationDate" name="destinationDate" />
-					</label> <label for="traPerson">인원: <input type="number"
+					</label> <label for="traPerson">Person: <input type="number"
 						class="form-control" id="traPerson" name="traPerson" value="1" />
 					</label>
 
@@ -138,27 +138,27 @@
 				<!-- 숙소 입력 -->
 				<div class="form-group">
 
-					<label for="accommodations">숙소: <select
+					<label for="accommodations">Lodgment: <select
 						class="form-control" id="accommodations" name="accommodations" style="width: 200px;">
-							<option>호텔</option>
-							<option>호스텔</option>
-							<option>게스트하우스</option>
+							<option>Hotel</option>
+							<option>Hostel</option>
+							<option>Guest House</option>
 					</select>
-					</label> <label for="accGrade">등급: <select class="form-control"
+					</label> <label for="accGrade">Grade: <select class="form-control"
 						id="accGrade" name="accGrade" style="width: 200px;">
-							<option>1인실</option>
-							<option>2인실</option>
-							<option>3인실</option>
-							<option>4인실</option>
-							<option>남녀혼용</option>
-							<option>남자전용</option>
-							<option>여자전용</option>
+							<option>Single</option>
+							<option>Double</option>
+							<option>Triple</option>
+							<option>Quad</option>
+							<option>Both</option>
+							<option>Man Only</option>
+							<option>Women Only</option>
 					</select>
-					</label> <label for="checkIn">체크인: <input type="date"
+					</label> <label for="checkIn">Check In: <input type="date"
 						class="form-control" id="checkIn" name="checkIn" />
-					</label> <label for="checkOut">체크아웃: <input type="date"
+					</label> <label for="checkOut">Check Out: <input type="date"
 						class="form-control" id="checkOut" name="checkOut" />
-					</label> <label for="accPerson">인원: <input type="number"
+					</label> <label for="accPerson">Person: <input type="number"
 						class="form-control" id="accPerson" name="accPerson" value="1" />
 					</label>
 
@@ -169,19 +169,19 @@
 				<!-- 렌트 입력 -->
 				<div class="form-group">
 
-					<label for="rentCar">렌트카: <select class="form-control"
+					<label for="rentCar">Rent: <select class="form-control"
 						id="rentCar" name="rentCar"style="width: 200px;">
-							<option>대형</option>
-							<option>중형</option>
-							<option>소형</option>
-							<option>경차</option>
-							<option>suv</option>
+							<option>Large</option>
+							<option>Middle</option>
+							<option>Small</option>
+							<option>Compact</option>
+							<option>Suv</option>
 					</select>
-					</label> <label for="rentDate">대여일: <input type="date"
+					</label> <label for="rentDate">Rent Date: <input type="date"
 						class="form-control" id="rentDate" name="rentDate" />
-					</label> <label for="returnDate">반납일: <input type="date"
+					</label> <label for="returnDate">Return Date: <input type="date"
 						class="form-control" id="returnDate" name="returnDate" />
-					</label> <label for="rentPerson">인원: <input type="number"
+					</label> <label for="rentPerson">Person: <input type="number"
 						class="form-control" id="rentPerson" name="rentPerson" value="1" />
 					</label>
 
@@ -192,7 +192,7 @@
 				<!-- 제출 -->
 				<div id="reserveSubmit">
 					<button type="submit" class="btn btn-default" id="reserveSubminBtn"
-						name="reserveSubminBtn">제출</button>
+						name="reserveSubminBtn">Submit</button>
 				</div>
 
 			</form>

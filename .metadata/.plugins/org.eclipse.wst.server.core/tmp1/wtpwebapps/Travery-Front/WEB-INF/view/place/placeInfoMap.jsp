@@ -291,9 +291,9 @@
 				</td>
 			</tr>
 			<tr>
-				<th width="100">주소</th>
+				<th width="100">Address</th>
 				<td><input type="text" id="address" name="address" size="50" /></td>
-				<th width="100">나라선택</th>
+				<th width="100">Country</th>
 				<td><select id="countryId" name="countryId" style="color: #333333; size: 30;">
 						<c:forEach items="${ countryList }" var="selectPlace">
 							<option value="${ selectPlace.countryId }">${ selectPlace.countryName }</option>

@@ -66,7 +66,7 @@
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h2 class="margin-top-0 wow fadeIn">MY PACKAGE</h2>
 			<hr class="primary">
-			<p>Create and manage your packages.</p>
+			<p>Manage packages.</p>
 		</div>
 
 		<!-- 내용 -->

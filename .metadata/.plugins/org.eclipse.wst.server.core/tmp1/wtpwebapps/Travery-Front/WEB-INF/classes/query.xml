@@ -766,7 +766,11 @@
 			SELECT	P.PLACE_ID
 					, PLACE_NAME
 					, ADDRESS
-					, LIKE_COUNT
+                    , (
+                        SELECT  COUNT(PLACE_LIKE_ID)
+                        FROM    PLACE_LIKE
+                        WHERE   PLACE_ID = P.PLACE_ID
+                      ) LIKE_COUNT
 			FROM	PLACE P
 					, PACK_PLACE PACKPLACE
 			WHERE	PACKPLACE.PACK_ID = ?

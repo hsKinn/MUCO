@@ -87,6 +87,12 @@
 			form.submit();
 		});
 		
+		$("#description").keyup(function(e) {
+			if (e.keyCode == 13) {
+				$("#writePlaceReplyBtn").click();
+			}
+		});
+		
 		$(".placeLike").click( function() {
 			
 			$.post(
@@ -313,7 +319,7 @@
 								<table id="placeReply_table">
 									<tr>
 										<td id="placeReply_content">
-											<textarea id="description" name="description" placeholder="Write Reply"></textarea>
+											<input id="description" name="description" placeholder="Write Reply"></textarea>
 										</td>
 										<td id="placeReply_btn">
 											<button type="button" class="btn btn-info" id="writePlaceReplyBtn">

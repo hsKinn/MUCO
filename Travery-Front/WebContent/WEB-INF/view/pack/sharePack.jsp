@@ -65,10 +65,10 @@
 				<div id="searchBox">
 						<input type="text" id="searchKeyword" name="searchKeyword" value="${packSearchVO.searchKeyword}" placeholder="   #Hash Tag"  />
 						<button type="button" class="btn btn-info" id="searchBtn">
-				      		<span class="glyphicon glyphicon-search"></span>검색
+				      		<span class="glyphicon glyphicon-search"></span>Search
 				    	</button>
 						<button type="button" class="btn btn-info" id="initSearchBtn">
-				      		<span class="glyphicon glyphicon-repeat"></span>초기화
+				      		<span class="glyphicon glyphicon-repeat"></span>Reset
 				    	</button>
 				</div>
 				
@@ -78,9 +78,9 @@
 			  				<span class="caret"></span>
 			  			</button>
 			 			<ul class="dropdown-menu">
-						    <li><a href="/sharePack?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-						    <li><a href="/sharePack?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-						    <li><a href="/sharePack?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+						    <li><a href="/sharePack?sortOption=1">Like<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+						    <li><a href="/sharePack?sortOption=2">View<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+						    <li><a href="/sharePack?sortOption=3">Recent<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
 			  			</ul>
 					</div>
 				</div>
@@ -159,9 +159,9 @@
 									  <table class="table table-hover table-bordered table-condensed">
 									    <thead>
 									      <tr>
-									        <td width="130px">여행지 명</td>
-									        <td>주소</td>
-									        <td width="80px">추천수</td>
+									        <td width="130px">Place Name</td>
+									        <td>Address</td>
+									        <td width="80px">Like Count</td>
 									      </tr>
 									    </thead>
 									    <tbody>
@@ -199,11 +199,11 @@
 												<table class="reply_table">
 													<tr>
 														<td class="reply_content">
-															<input type="text" class="${pack.packId}description" name="description" placeholder="댓글을 달아보세요"></textarea>
+															<input type="text" class="${pack.packId}description" name="description" placeholder="Do write Reply"></textarea>
 														</td>
 														<td class="reply_btn">
 															<button type="button" class="btn btn-info" id="${pack.packId}writeReplyBtn">
-													     		<span class="glyphicon glyphicon-pencil"></span>댓글 등록
+													     		<span class="glyphicon glyphicon-pencil"></span>submit
 													   		</button>  													
 														</td>
 													</tr>
@@ -263,7 +263,7 @@
 							var description = $(".${pack.packId}description").val();
 							description = $.trim(description);
 							if ( description == "" ) {
-								alert("댓글을 입력해주세요");
+								alert("Input Reply");
 								$(".${pack.packId}description").focus();
 								return;
 							}
@@ -330,7 +330,7 @@
 				
 				<c:if test="${ packages.paging.totalArticleCount == 0 }">
 					<div class="notFoundPack">
-						<h3><span class="blue">#${packSearchVO.searchKeyword}</span>로 태그된 패키지가 존재하지 않습니다<br/><span class="red">초기화</span> 후 재 검색해주세요</h3>
+						<h3><span class="blue">Not Exist Packages Hash Tag in #${packSearchVO.searchKeyword}</span><br/><span class="red">Do reset</span></h3>
 						
 					</div>
 				</c:if>

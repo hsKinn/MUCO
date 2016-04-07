@@ -59,7 +59,7 @@
 			<div id="inner_wrapper">
 				<div id="daily_wrapper">
 					<div id="daily_top">
-						Daily Top Place
+						Daily Top
 					</div>
 					
 					<div id="daily_content">
@@ -73,7 +73,7 @@
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
-										 일일 추천수 : ${ daily.avgLikeCount }	
+										 Daily Like : ${ daily.avgLikeCount }	
 									</div>
 									<div class="bottom_first">
 										<span class="badge">View: ${ daily.viewCount }</span>
@@ -90,7 +90,7 @@
 				
 				<div id="weekly_wrapper">
 					<div id="weekly_top">
-						Weekly Top Place
+						Weekly Top
 					</div>
 		
 					<div id="weekly_content">
@@ -104,7 +104,7 @@
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
-										 주간 추천수 : ${ weekly.avgLikeCount }	
+										 Weekly Like : ${ weekly.avgLikeCount }	
 									</div>
 									<div class="bottom_first">
 										<span class="badge">View: ${ weekly.viewCount }</span>
@@ -121,7 +121,7 @@
 				
 				<div id="monthly_wrapper">
 					<div id="monthly_top">
-						Monthly Top Place
+						Monthly Top
 					</div>
 		
 					<div id="monthly_content">
@@ -135,7 +135,7 @@
 								</div>
 								<div class="content_bottom">
 									<div class="bottom_top">
-										 월간 추천수 : ${ monthly.avgLikeCount }		
+										 Monthly Like : ${ monthly.avgLikeCount }		
 									</div>
 									<div class="bottom_first">
 										<span class="badge">View: ${ monthly.viewCount }</span>
@@ -156,10 +156,10 @@
 					<div id="search_part">
 						<input type="text" id="searchPlaceKeyword" name="searchPlaceKeyword" value="${ placeSearchVO.searchKeyword }" placeholder="  # Search" />
 						<button type="button" class="btn btn-info" id="searchBtn">
-							<span class="glyphicon glyphicon-search"></span>검색
+							<span class="glyphicon glyphicon-search"></span>Search
 						</button>
 						<button type="button" class="btn btn-info" id="initBtn">
-							<span class="glyphicon glyphicon-repeat"></span>초기화
+							<span class="glyphicon glyphicon-repeat"></span>Reset
 						</button>
 					</div>
 					<div id="top_sort">
@@ -168,16 +168,16 @@
 				  				<span class="caret"></span>
 				  			</button>
 				 			<ul class="dropdown-menu">
-							    <li><a href="/recommendPlace?sortOption=1">추천 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-							    <li><a href="/recommendPlace?sortOption=2">조회 순<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
-							    <li><a href="/recommendPlace?sortOption=3">등록 순<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
+							    <li><a href="/recommendPlace?sortOption=1">Like<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+							    <li><a href="/recommendPlace?sortOption=2">View<span class="glyphicon glyphicon-sort-by-attributes-alt"></span></a></li>
+							    <li><a href="/recommendPlace?sortOption=3">Recent<span class="glyphicon glyphicon-sort-by-order-alt"></span></a></li>
 				  			</ul>
 				  		</div>
 		  			</div>
 					<div id="write_part">
 						<a href="/placeInfoControl" id="placeInfoControl">
 							<button type="button" class="btn btn-info" id="writeBtn">
-								<span class="glyphicon glyphicon-pencil"></span>등록하기
+								<span class="glyphicon glyphicon-pencil"></span>Add place
 							</button>
 						</a>		 
 					</div>
@@ -225,7 +225,7 @@
 			
 		<c:if test="${ placeList.paging.totalArticleCount == 0 }">
 			<div class="notFoundPack">
-				<h3><span class="blue">${placeSearch.searchKeyword}</span>로 검색된 여행지가 존재하지 않습니다<br/><span class="red">초기화</span> 후 재 검색해주세요</h3>
+				<h3><span class="blue">${placeSearch.searchKeyword}</span> IS NOT FOUND<br/><span class="red">Do Reset</span></h3>
 			</div>
 		</c:if>	
 	</div>
