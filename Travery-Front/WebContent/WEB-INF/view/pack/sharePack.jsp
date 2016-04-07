@@ -56,7 +56,7 @@
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h2 class="margin-top-0 wow fadeIn">SHARE PACKAGE</h2>
 			<hr class="primary">
-			<p>자신만의 Package을 공유하세요</p>
+			<p>Share your packages.</p>
 		</div>
 
 		<div id="share-wrapper">

@@ -23,7 +23,7 @@ import com.ktds.muco.table.place.vo.PlaceVO;
  * 
  * Servlet implementation class PlaceInfoControlServlet
  * 
- * @author 김동규
+ * @author 김동규R
  * 
  */
 public class PlaceInfoControlServlet extends HttpServlet {

@@ -546,7 +546,7 @@
       <div class="col-lg-8 col-lg-offset-2 text-center">
          <h2 class="margin-top-0 wow fadeIn">HIT THE ROAD</h2>
          <hr class="primary">
-         <p>Search places in selected countries by moods</p>
+         <p>Search places in selected countries by moods.</p>
       </div>
 
       <!-- 내용 -->
@@ -788,7 +788,7 @@
 									position: relative;
 									top:25px;">
 									<span class="image" style="height: 150px;"> <img
-										src="/resource/img/common/santorini.jpg"
+										src="/image?imageName=${tempSelectedPlace.imageName }"
 										alt="" style="height:100%;"/>
 									</span> <a href="#"
 										onclick="window.open('/detailPlace?placeId=${tempSelectedPlace.placeId}','Place Detail','toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizeable=no, width=930, height=820');">

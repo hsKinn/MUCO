@@ -1199,18 +1199,28 @@
 		</viewCountRecommendPlace>
 		
 		<addTempSelectedPlaceByPlaceId>
-			SELECT	PLACE_ID
+			SELECT	P.PLACE_ID
 					, PLACE_NAME
 					, LATITUDE
 					, LONGITUDE
 					, ADDRESS
 					, VIEW_COUNT
-					, LIKE_COUNT
+                    , (
+                        SELECT  COUNT(PLACE_LIKE_ID)
+                        FROM    PLACE_LIKE
+                        WHERE   PLACE_ID = P.PLACE_ID
+                      ) LIKE_COUNT
 					, DESCRIPTION
 					, IS_NEW_PLACE
-					, EMAIL
+					, P.EMAIL
 					, C.COUNTRY_ID
 					, COUNTRY_NAME
+					 , (
+					    SELECT IMAGE_NAME
+					    FROM   IMAGE I
+					    WHERE P.PLACE_ID = I.PLACE_ID
+					    AND  ROWNUM = 1
+					   ) IMAGE_NAME					
 			FROM 	PLACE P
 					, COUNTRY C
 			WHERE	P.COUNTRY_ID = C.COUNTRY_ID

@@ -31,7 +31,7 @@ public class CountryDAO {
 		loadOracleDriver();
 
 		Connection conn = null;
-		PreparedStatement stmt = null;
+		PreparedStatement stmt = null;;
 		ResultSet rs = null;
 
 		try {

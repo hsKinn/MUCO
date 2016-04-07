@@ -52,7 +52,7 @@
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h2 class="margin-top-0 wow fadeIn">RECOMMEND PLACE</h2>
 			<hr class="primary">
-			<p>추천 Place를 확인하세요</p>
+			<p>Check the recommended place of others.</p>
 		</div>
 	
 		<div id="recommendPlace_Wrapper">

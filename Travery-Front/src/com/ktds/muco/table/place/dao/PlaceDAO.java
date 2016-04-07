@@ -732,6 +732,7 @@ public class PlaceDAO {
 				placeVO.setPlaceDescription(rs.getString("DESCRIPTION"));
 				placeVO.setIsNewPlace(rs.getInt("IS_NEW_PLACE"));
 				placeVO.setCountryName(rs.getString("COUNTRY_NAME"));
+				placeVO.setImageName(rs.getString("IMAGE_NAME"));
 			}
 
 			return placeVO;
