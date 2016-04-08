@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="filter_imports;" key="filters_last_used"/>
-<<<<<<< HEAD
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>
@@ -10,8 +9,6 @@
 		<item value="1" key="updateSimilarElementsMatchStrategy"/>
 		<item value="false" key="updateTextualMatches"/>
 	</section>
-=======
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="1" key="layout"/>
 		<item value="true" key="group_libraries"/>
@@ -30,29 +27,12 @@
 		<item value="540" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="695" key="DIALOG_HEIGHT"/>
-<<<<<<< HEAD
 		<item value="420" key="DIALOG_X_ORIGIN"/>
 		<item value="65" key="DIALOG_Y_ORIGIN"/>
-=======
-		<item value="194" key="DIALOG_X_ORIGIN"/>
-		<item value="77" key="DIALOG_Y_ORIGIN"/>
-	</section>
-	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
-		<item value="true" key="ShowStatusLine"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;" key="History"/>
-		<section name="DialogBoundsSettings">
-			<item value="600" key="DIALOG_WIDTH"/>
-			<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
-			<item value="180" key="DIALOG_X_ORIGIN"/>
-			<item value="187" key="DIALOG_Y_ORIGIN"/>
-		</section>
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
 		<item value="true" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE"/>
 		<item value="400" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_WIDTH"/>
-<<<<<<< HEAD
 		<item value="340" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT"/>
 		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>
 		<item value="false" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
@@ -61,12 +41,6 @@
 		<item value="600" key="width"/>
 		<item value="400" key="height"/>
 	</section>
-=======
-		<item value="400" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT"/>
-		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>
-		<item value="false" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
-	</section>
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 	<section name="SourceActionDialog.methods">
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="Comments"/>
@@ -78,7 +52,6 @@
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
-<<<<<<< HEAD
 	<section name="JavaSearchPage">
 		<item value="3" key="HISTORY_SIZE"/>
 		<item value="false" key="CASE_SENSITIVE"/>
@@ -95,21 +68,11 @@
 			<list key="workingSets">
 			</list>
 		</section>
-=======
-	<section name="NewPackageWizardPage">
-		<item value="false" key="create_package_info_java"/>
-	</section>
-	<section name="JavaSearchPage">
-		<item value="1" key="HISTORY_SIZE"/>
-		<item value="false" key="CASE_SENSITIVE"/>
-		<item value="11" key="INCLUDE_MASK"/>
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 		<section name="HISTORY0">
 			<item value="false" key="isCaseSensitive"/>
 			<item value="" key="javaElement"/>
 			<item value="0" key="scope"/>
 			<item value="11" key="includeMask"/>
-<<<<<<< HEAD
 			<item value="KGM" key="pattern"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="matchLocations"/>
@@ -122,8 +85,6 @@
 			<item value="" key="javaElement"/>
 			<item value="0" key="scope"/>
 			<item value="11" key="includeMask"/>
-=======
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 			<item value="YBH" key="pattern"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="matchLocations"/>
@@ -132,16 +93,10 @@
 			</list>
 		</section>
 	</section>
-<<<<<<< HEAD
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>
 	</section>
 	<section name="completion_proposal_size">
-		<item value="221" key="contextSelector.size.y"/>
-		<item value="331" key="contextSelector.size.x"/>
-=======
-	<section name="completion_proposal_size">
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 	</section>
 	<section name="AddGetterSetterDialog">
 		<item value="false" key="SortOrdering"/>
