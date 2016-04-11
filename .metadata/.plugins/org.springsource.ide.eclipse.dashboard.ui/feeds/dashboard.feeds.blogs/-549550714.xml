@@ -5,7 +5,55 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-04-07T06:28:00Z</updated>
+  <updated>2016-04-07T20:50:00Z</updated>
+  <entry>
+    <title>Spring Cloud Stream 1.0.0.RC2 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/07/spring-cloud-stream-1-0-0-rc2-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2016-04-07:2458</id>
+    <updated>2016-04-07T20:50:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce the release of Spring Cloud Stream 1.0.0.RC2, available &lt;a href="http://repo.spring.io/libs-milestone/"&gt;here&lt;/a&gt;. As part of the release candidate cycle, it comes with a number of bug fixes and a small number adjustments. The complete list of changes is available &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues?q=milestone%3A1.0.0.RC2"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some highlights:&lt;br/&gt;- Spring Cloud Stream applications now use the &lt;code&gt;ObjectMapper&lt;/code&gt; provided by Spring Boot, if available;&lt;br/&gt;- Header embedding is now a general purpose producer/consumer property. It can be enabled or disabled by middlewares that require embedding for header propagation. This allows easier interoperability outside Spring Cloud Stream; (until now it was a Kafka-specific property);&lt;br/&gt;- Further documentation and sample improvements.&lt;/p&gt;
+&lt;p&gt;We are looking forward to a &lt;code&gt;1.0.0.RELEASE&lt;/code&gt; in a couple of weeks, in the second part of April.&lt;/p&gt;
+&lt;p&gt;And, as always, we welcome feedback: either in &lt;a href="https://github.com/spring-cloud/spring-cloud-stream"&gt;GitHub&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/springcentral"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Session 1.2.0 RC2 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/07/spring-session-1-2-0-rc2-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-04-07:2457</id>
+    <updated>2016-04-07T13:02:55Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.2.0.RC2. The release can be found in the &lt;a href="https://github.com/spring-projects/spring-framework/wiki/Spring-repository-FAQ#what-repositories-are-available"&gt;Spring Milestone Repository&lt;/a&gt; (&lt;a href="https://repo.spring.io/milestone/)"&gt;https://repo.spring.io/milestone/)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release contains &lt;a href="https://github.com/spring-projects/spring-session/issues?q=milestone%3A1.2.0.RC2+is%3Aclosed"&gt;some fixes&lt;/a&gt; for the previous release. &lt;/p&gt;
+&lt;p&gt;Some highlights of the issues in this release include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A number of fixes for the JDBC support have been included&lt;/li&gt;
+  &lt;li&gt;A new &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC2/reference/html5/guides/grails3.html"&gt;Grails 3 Sample&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC2/reference/html5/#what-s-new-in-1-2"&gt;What&amp;rsquo;s New in 1.2&lt;/a&gt; for more details.&lt;/p&gt;&lt;h1&gt;&lt;a href="#our-community-support" class="anchor" name="our-community-support"&gt;&lt;/a&gt;Our Community Support&lt;/h1&gt;
+&lt;p&gt;As always, I&amp;rsquo;d like to thank our awesome community for their contributions. A very big thanks to those who submitted Pull Requests:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/436"&gt;#436&lt;/a&gt; - Use Flapdoodle Embedded MongoDB for integration tests Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/437"&gt;#437&lt;/a&gt; - Externalize H2 database dependency version Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/440"&gt;#440&lt;/a&gt; - Fix SessionRepositoryFilter comment typo Thanks &lt;a href="https://github.com/lowzj"&gt;Jin Zhang&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/442"&gt;#442&lt;/a&gt; - Add Grails 3 Sample Thanks &lt;a href="https://github.com/erichelgeson"&gt;Eric Helgeson&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/444"&gt;#444&lt;/a&gt; - Add Dispatcher types to web.xml Thanks &lt;a href="https://github.com/sc-moonlight"&gt;moonlight&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/450"&gt;#450&lt;/a&gt; - Fix loading of JdbcSession&amp;rsquo;s lastAccessedTime attribute Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/451"&gt;#451&lt;/a&gt; - Polish JdbcHttpSessionConfigurationTests Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/454"&gt;#454&lt;/a&gt; - Add JDBC Spring Boot sample Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/462"&gt;#462&lt;/a&gt; - Update WebSocket sample to use H2 console auto-configuration Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/463"&gt;#463&lt;/a&gt; - Make H2 console URL consistent across sample projects Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/464"&gt;#464&lt;/a&gt; - Enable transaction management for JdbcOperationsSessionRepository operations Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We look forward to your feedback and if all goes well plan to release 1.2.0.RELEASE in the next few weeks.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC2/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Data Release Train Hopper Goes GA (and SR1)!</title>
     <link rel="alternate" href="https://spring.io/blog/2016/04/07/spring-data-release-train-hopper-goes-ga-and-sr1" />
@@ -726,29 +774,5 @@ public class VoteHandler {&#xD;
   &lt;li&gt;I&amp;rsquo;ll &lt;a href="http://www.jug-da.de/2016/04/Spring-Cloud/"&gt;be speaking at the Darmstadt JUG April 21st, come join me&lt;/a&gt;!&lt;/li&gt;
   &lt;li&gt;Take a look at what&amp;rsquo;s coming in JHipster 3.0, &lt;a href="http://www.ipponusa.com/blog/jhipster-3-0-introducing-microservices/"&gt;complete with deep Spring Cloud integration!&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: What it means to be Just In Time</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/22/springone2gx-2015-replay-what-it-means-to-be-just-in-time" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-23:2437</id>
-    <updated>2016-03-22T12:05:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Ashley Puls, NewRelic&lt;br/&gt;Core Spring Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/what-it-means-to-be-just-in-time"&gt;http://www.slideshare.net/SpringCentral/what-it-means-to-be-just-in-time&lt;/a&gt;&lt;br/&gt;We write Java code on a daily basis which then gets compiled down to bytecode and run on the JVM. This talk explains what happens to bytecode inside the JVM. It begins with an overview of the Just In Time (JIT) compiler. This overview discusses JIT optimizations such as method inlining and loop unrolling. The talk then inspects JIT logs to explain the optimizations performed on a spring boot application. By the end of the talk, you should be able to examine the impact of the JIT compiler on your own code.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/S35ELMRWvDc" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Comparing Hot JavaScript Frameworks: AngularJS, Ember.js and React.js</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/22/springone2gx-2015-replay-comparing-hot-javascript-frameworks-angularjs-ember-js-and-react-js" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-23:2438</id>
-    <updated>2016-03-22T12:04:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Matt Raible&lt;br/&gt;Web / JavaScript Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/comparing-hot-javascript-frameworks"&gt;http://www.slideshare.net/SpringCentral/comparing-hot-javascript-frameworks&lt;/a&gt;&lt;br/&gt;JavaScript MVC Frameworks are all the rage these days. They¡¯ve taken the web development world by storm. This session explores the various features of the three hottest JavaScript MVC frameworks: AngularJS, Ember.js and React.js. It also compares client-side templating vs. server-side templating and how well each framework supports Isomorphic JavaScript (code that can run both client-side and server-side). Finally, we¡¯ll rank each framework on 10 different criteria using Yevgeniy Brikman¡¯s scorecard.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/2rD_HuTuXfg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>

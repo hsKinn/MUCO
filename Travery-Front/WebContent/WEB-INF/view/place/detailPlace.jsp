@@ -394,28 +394,28 @@
 											<td colspan="2">Bright</td>
 										</tr>
 										<tr>
-											<td colspan="2">HightPrice</td>
+											<td colspan="2">LowPrice</td>
 											<td>
 												<input class="range-slider__range" name="highPrice" type="range" min="1" max="100" value="50">
 												<span class="badge range-slider__value">0</span>
 											</td>
-											<td colspan="2">LowPrice</td>
+											<td colspan="2">HightPrice</td>
 										</tr>
 										<tr>
-											<td colspan="2">Active</td>
+											<td colspan="2">Calm</td>
 											<td>
 												<input class="range-slider__range" name="active" type="range" min="1" max="100" value="50">
 												<span class="badge range-slider__value">0</span>
 											</td>
-											<td colspan="2">Calm</td>
+											<td colspan="2">Active</td>
 										</tr>
 										<tr>
-											<td colspan="2">Artificial</td>
+											<td colspan="2">Natural</td>
 											<td>
 												<input class="range-slider__range" name="artificial" type="range" min="1" max="100" value="50">
 												<span class="badge range-slider__value">0</span>
 											</td>
-											<td colspan="2">Natural</td>
+											<td colspan="2">Artificial</td>
 										</tr>
 									</table>
 								</div>

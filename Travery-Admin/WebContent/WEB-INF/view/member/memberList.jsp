@@ -212,8 +212,6 @@ $(document).ready( function() {
 							<th>운영자 여부</th>
 							<th>전화번호</th>
 							<th>이름</th>
-							<th>가입일</th>
-							<th>최근 접속일</th>
 						</tr>
 
 						<form id="massiveDeleteForm">
@@ -227,8 +225,6 @@ $(document).ready( function() {
 									<td>${member.isAdmin}</td>
 									<td>${member.phoneNumber}</td>
 									<td>${member.name}</td>
-									<td>${member.joinDate}</td>
-									<td>${member.recentAccessDate}</td>
 								</tr>
 							</c:forEach>
 						</form>
