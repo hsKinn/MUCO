@@ -1,15 +1,11 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
->>>>>>>=origin/bjg17
+>>>>>>>=2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1\:7,1
 PROBLEMS_FILTERS_MIGRATE=true
 SWITCH_PERSPECTIVE_ON_PROJECT_CREATION=never
 eclipse.preferences.version=1
-<<<<<<< HEAD
-platformState=1454299227096
-=======
-platformState=1454299362712
->>>>>>> 2a11eea7ebc6c7930787a2d05497ebe2ccbc9dd9
+platformState=1454299362715
 quickStart=false
 tipsAndTricks=true
