@@ -175,7 +175,17 @@
      		SET		MILEAGE = MILEAGE + ?
      		WHERE	EMAIL = ?
      	</updateMileage>
-     	
+     	<isExistEmail>
+     	 	SELECT	COUNT(EMAIL) 
+     	 	FROM 	MEMBER
+     	 	WHERE	EMAIL = ?
+     	</isExistEmail>
+     	<isCorrectLoginInfo>
+     	 	SELECT	COUNT(EMAIL) 
+     	 	FROM 	MEMBER
+     	 	WHERE	EMAIL = ?
+     	 	AND		PASSWORD = ?
+     	</isCorrectLoginInfo>
 	</member>
 	
 	<pack>

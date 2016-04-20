@@ -34,9 +34,9 @@ public class MemberBiz {
 
 		MemberVO memberVO = new MemberVO();
 		
-		String email = request.getParameter("userEmail");
-		String password = request.getParameter("userPassword");
-		String name = request.getParameter("userName");
+		String email = request.getParameter("SignUpUserEmail");
+		String password = request.getParameter("SignUpuserPassword");
+		String name = request.getParameter("SignUpUserName");
 
 		memberVO.setEmail(email);
 		memberVO.setPassword(password);
@@ -56,8 +56,8 @@ public class MemberBiz {
 	public boolean login(HttpServletRequest request) {
 
 		MemberVO memberVO = new MemberVO();
-		memberVO.setEmail(request.getParameter("userEmail"));
-		memberVO.setPassword(request.getParameter("userPw"));
+		memberVO.setEmail(request.getParameter("LoginUserEmail"));
+		memberVO.setPassword(request.getParameter("LoginPassword"));
 
 		MemberVO loginMemberVO = memberDAO.getMemberByEmailAndPassword(memberVO);
 
@@ -232,6 +232,20 @@ public class MemberBiz {
 	 */
 	public boolean updateMileage(String email, int point) {
 		return memberDAO.updateMileage(email, point) > 0;
+	}
+
+	public boolean isExistEmail(String email) {
+		return memberDAO.isExistEmail(email) > 0;
+	}
+
+	/**
+	 * 로그인 여부 확인하기
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	public boolean isCorrectLoginInfo(String email, String password) {
+		return memberDAO.isCorrectLoginInfo(email, password) > 0;
 	}
 }
 

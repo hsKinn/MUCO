@@ -555,4 +555,24 @@
     <servlet-name>AddMyPackBySharePackServlet</servlet-name>
     <url-pattern>/addMyPackBySharePack</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignUpEmailCheckServlet</display-name>
+    <servlet-name>SignUpEmailCheckServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.SignUpEmailCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpEmailCheckServlet</servlet-name>
+    <url-pattern>/signUpEmailCheck</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginPasswordCheckServlet</display-name>
+    <servlet-name>LoginPasswordCheckServlet</servlet-name>
+    <servlet-class>com.ktds.muco.table.member.web.LoginPasswordCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginPasswordCheckServlet</servlet-name>
+    <url-pattern>/loginPasswordCheck</url-pattern>
+  </servlet-mapping>
 </web-app>

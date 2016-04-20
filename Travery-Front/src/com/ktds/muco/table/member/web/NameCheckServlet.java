@@ -47,24 +47,21 @@ public class NameCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 세션정보 받아오기
-		HttpSession session = request.getSession();
-		MemberVO loginMemberVO = (MemberVO) session.getAttribute("_MEMBER_");
-
 		String name = request.getParameter("name");
 		System.out.println("이름 중복 체크: " + name);
 
 		boolean isExistName;
+		isExistName = memberBiz.isExistName(name);
 
 		// 자기 자신의 이름이 들어간 경우
 		// true : 존재 / false : 존재X
-		if (name.equals(loginMemberVO.getName())) {
-			isExistName = false;
+		if (isExistName) {
+		
 		}
 		// 자신의 이름이 아닌 다른 이름을 넣었을 경우
 		else {
-			isExistName = memberBiz.isExistName(name);
 		}
+		
 		StringBuffer json = new StringBuffer();
 		json.append("{");
 		json.append("\"result\" : true");

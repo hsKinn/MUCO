@@ -49,7 +49,7 @@ public class DoJoinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String email = request.getParameter("userEmail");
+		String email = request.getParameter("SignUpUserEmail");
 		
 		// History
 		if (memberBiz.addNewMember(request) ) {

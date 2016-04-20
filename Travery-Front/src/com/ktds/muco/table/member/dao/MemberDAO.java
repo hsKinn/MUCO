@@ -373,4 +373,66 @@ public class MemberDAO {
 		}
 	}
 
+	public int isExistEmail(String email) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/isExistEmail/text()");
+
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, email);
+
+			rs = stmt.executeQuery();
+			rs.next();
+
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
+	/**
+	 * 로그인 정보 확인하기 
+	 * email, password 확인여부
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	public int isCorrectLoginInfo(String email, String password) {
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_TRAVERY_USER, Const.DB_TRAVERY_PASSWORD);
+
+			String query = XML.getNodeString("//query/member/isCorrectLoginInfo/text()");
+
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, email);
+			stmt.setString(2, password);
+
+			rs = stmt.executeQuery();
+			rs.next();
+
+			return rs.getInt(1);
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+
 }
